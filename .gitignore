@@ -1,0 +1,10 @@
+.DS_Store
+.build/
+.swiftpm/xcode/xcuserdata/
+.swiftpm/xcode/package.xcworkspace/xcuserdata/
+*.o
+*.d
+*.swp
+xcuserdata/
+DerivedData/
+AstroMalik.app/

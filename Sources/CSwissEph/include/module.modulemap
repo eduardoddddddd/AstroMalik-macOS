@@ -1,0 +1,15 @@
+module CSwissEph {
+    umbrella header "umbrella.h"
+    exclude header "swedate.h"
+    exclude header "swedll.h"
+    exclude header "sweephe4.h"
+    exclude header "swehouse.h"
+    exclude header "swejpl.h"
+    exclude header "swemptab.h"
+    exclude header "swenut2000a.h"
+    exclude header "sweodef.h"
+    exclude header "sweph.h"
+    exclude header "swephlib.h"
+    exclude header "swevents.h"
+    export *
+}
