@@ -4,6 +4,28 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ## [Unreleased]
 
+### Añadido
+- Rueda natal interactiva en SwiftUI con signos, casas, planetas, ASC/MC y líneas de aspecto.
+- Modo "Lectura" con triada Sol/Luna/ASC, regente del Ascendente, casas angulares, aspectos dominantes y síntesis editable.
+- Entrada "Lectura" en la navegación principal.
+- Diagnóstico de Horaria: Python detectado, versión, fuente del módulo, path y último error.
+- Archivo de cartas con notas, etiquetas y búsqueda por texto/tag.
+- Nota Markdown preparada para Joplin desde la vista de carta.
+- Timeline de tránsitos con barras diarias de intensidad por orbe, eje temporal adaptable y apertura del detalle al pulsar.
+- Tests de `swe_houses_ex2`, cancelación de tránsitos, timeline de intensidad, timezones conocidos y diagnóstico de Horaria.
+
+### Cambiado
+- La arquitectura oficial queda como ventana única. Se retiró el código muerto de hosts multi-ventana y registros de sesión asociados.
+- Tránsitos conserva resultados por carta y marca cuándo hay cambios pendientes de recalcular.
+- Horaria ya no depende de un path local hardcodeado; resuelve bundle, variables de entorno/configuración local y paquete instalado.
+- Cálculo de casas migrado de `swe_houses` a `swe_houses_ex2` con captura de error `serr`.
+- Loop de tránsitos optimizado: usa fechas internas, materializa ISO solo al construir resultados y guarda muestras diarias de intensidad.
+- `PlacesService` reemplaza regiones solapadas por zonas conocidas y bandas no solapadas.
+
+### Corregido
+- Eliminados force unwraps en cálculo de días, Application Support y UTC.
+- Cancelación explícita de tareas largas de tránsitos e interpretaciones.
+
 ## [0.3.0] — 2026-04-19
 
 ### Añadido
@@ -17,12 +39,9 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 ## [0.2.0] — 2026-04-17
 
 ### Añadido
-- Arquitectura multi-ventana: cada carta calculada abre en su propia ventana independiente mediante `WindowGroup(id: "chart", for: UUID.self)`
-- `ChartWindowHost.swift` como contenedor de ventanas secundarias con fallback elegante cuando el UUID no resuelve
-- `AppState.sessionCharts` — registro en memoria de cartas calculadas en la sesión
-- `AppState.register(_:)` y `AppState.chart(for:)` para resolución UUID → NatalChart
+- Etapa experimental de apertura de cartas en ventanas secundarias, retirada posteriormente al consolidar la ventana única.
 - Atajo de teclado ⌘↩ en el formulario de nacimiento
-- Feedback visual tras calcular: "Carta abierta en ventana: X"
+- Feedback visual tras calcular la carta
 - `Info.plist` embebido en la sección `__TEXT,__info_plist` del binario mediante linker flag `-sectcreate`
 - Activación explícita con `NSApplication.setActivationPolicy(.regular)` + `activate(ignoringOtherApps:)`
 - `docs/ARCHITECTURE.md` con explicación de decisiones técnicas
@@ -32,9 +51,8 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - README reescrito de arriba a abajo (más honesto sobre stack real, añade roadmap y relación con otros repos)
 - `NatalChartView` ya no se muestra como `.sheet` — se muestra como contenido de ventana completa, redimensionable
 - Ancho de columna de posiciones en `NatalChartView` ahora flexible (340 min / 400 ideal / 520 max) en lugar de fijo
-- `SavedChartsView` abre cartas en ventana secundaria en lugar de sheet modal
 - Ventana principal con dimensiones ideales (1100×780) además de mínimas
-- `.windowResizability(.contentMinSize)` en ambos `WindowGroup`
+- `.windowResizability(.contentMinSize)` en la app
 
 ### Corregido
 - **Bug crítico de arranque:** `Task.detached` en `NatalChartView.loadInterpretaciones` rompía aislamiento de actor en Swift 6 → la app salía con `failure (0x5)` al arrancar desde Xcode. Refactorizado al patrón correcto: task padre en MainActor + `Task.detached { ... }.value` solo para el trabajo pesado de SQLite

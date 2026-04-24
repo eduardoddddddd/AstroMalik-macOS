@@ -1,6 +1,6 @@
 # AstroMalik · macOS
 
-App nativa de astrología para macOS. Calcula cartas natales con interpretaciones en castellano, tránsitos con scoring de intensidad, consultas de horaria clásica y gestiona un archivo personal de cartas y consultas guardadas, todo en local y sin cuentas.
+App nativa de astrología para macOS. Calcula cartas natales con interpretaciones en castellano, tránsitos con scoring y línea temporal de intensidad diaria, consultas de horaria clásica y gestiona un archivo personal de cartas y consultas guardadas, todo en local y sin cuentas.
 
 Esta es la variante macOS del proyecto [AstroMalik](https://github.com/eduardoddddddd/AstroMalik) (Python + React). Comparte motor astronómico (Swiss Ephemeris) y corpus de interpretaciones, pero reescritos en Swift + SwiftUI para ejecución nativa en Apple Silicon.
 
@@ -11,10 +11,12 @@ Esta es la variante macOS del proyecto [AstroMalik](https://github.com/eduardodd
 ## ✨ Características
 
 - **Carta natal completa** — posiciones planetarias, ángulos (ASC, MC), 12 casas, aspectos
-- **Interpretaciones en castellano** — corpus de 1.766 textos indexados (planeta en signo, planeta en casa, aspectos natales)
-- **Tránsitos con scoring** — intensidad 1–5 ★ por rango de fechas
+- **Interpretaciones en castellano** — corpus de 1.779 textos indexados (planeta en signo, planeta en casa, aspectos natales, Ascendente)
+- **Rueda natal interactiva** — signos, casas, planetas, ASC/MC y líneas de aspecto en SwiftUI
+- **Lectura guiada** — Sol/Luna/ASC, regente del Ascendente, casas angulares, aspectos dominantes y síntesis editable
+- **Tránsitos con timeline** — intensidad 1–5 ★, curva diaria por orbe y detalle textual por rango de fechas
 - **Horaria integrada** — cálculo doctrinal en Python, visualización y archivo nativos en macOS
-- **Archivo personal** — guardar, renombrar y eliminar cartas y consultas; base local en `~/Library/Application Support/AstroMalik/user.db`
+- **Archivo personal** — guardar, renombrar, etiquetar, anotar y buscar cartas; base local en `~/Library/Application Support/AstroMalik/user.db`
 - **Búsqueda de lugares** — seed offline + Nominatim (OpenStreetMap)
 - **Ventana única** — sidebar fija y panel de detalle para natal, tránsitos, horaria e historial
 - **Tema configurable** — modo `Sistema`, `Claro` u `Oscuro`
@@ -27,7 +29,7 @@ Esta es la variante macOS del proyecto [AstroMalik](https://github.com/eduardodd
 |---|---|
 | UI | SwiftUI (macOS 14+, `NavigationSplitView`, ventana única) |
 | Efemérides | [Swiss Ephemeris](https://www.astro.com/swisseph/) en C, embebido como target SPM `CSwissEph` |
-| Horaria | Proceso externo Python (`python3 -m horaria.cli --json`) invocado desde `Foundation.Process` |
+| Horaria | Proceso Python configurable (`horaria.cli`) invocado desde `Foundation.Process` + diagnóstico integrado |
 | Persistencia | `SQLite3` del sistema (sin GRDB ni otras dependencias) |
 | Paquete | Swift Package Manager puro — cero dependencias externas |
 | Target | macOS 14+, Apple Silicon (arm64) |
@@ -40,13 +42,14 @@ Esta es la variante macOS del proyecto [AstroMalik](https://github.com/eduardodd
 
 ### Requisito extra para Horaria
 
-La parte de Horaria necesita `python3` disponible y el paquete [`horaria`](https://github.com/eduardoddddddd/horaria) instalado, o bien el repositorio local presente en:
+La parte de Horaria necesita `python3` disponible y el paquete [`horaria`](https://github.com/eduardoddddddd/horaria) instalado. También puedes fijar rutas sin tocar código:
 
 ```text
-/Users/eduardoariasbravo/Developer/horaria
+ASTROMALIK_PYTHON_PATH=/ruta/a/python3
+ASTROMALIK_HORARIA_PATH=/ruta/al/repo/horaria
 ```
 
-La app intenta primero importar el paquete normalmente y, si no lo encuentra, usa ese fallback local.
+La app busca primero un módulo embebido, luego `ASTROMALIK_HORARIA_PATH`, después configuración local y finalmente el paquete instalado en Python. En Horaria hay una pantalla de diagnóstico.
 
 ## 🚀 Ejecución rápida
 
@@ -62,9 +65,15 @@ open .build/arm64-apple-macosx/debug/AstroMalik
 ### Activar Horaria en local
 
 ```bash
-git clone https://github.com/eduardoddddddd/horaria.git /Users/eduardoariasbravo/Developer/horaria
-cd /Users/eduardoariasbravo/Developer/horaria
+git clone https://github.com/eduardoddddddd/horaria.git ~/Developer/horaria
+cd ~/Developer/horaria
 python3 -m pip install -e .
+```
+
+Si prefieres no instalar el paquete globalmente:
+
+```bash
+export ASTROMALIK_HORARIA_PATH="$HOME/Developer/horaria"
 ```
 
 ## 🛠️ Build release (binario optimizado)
@@ -109,7 +118,7 @@ Sanity check: carta natal del autor (`1976-10-11 20:33 Europe/Madrid`) verifica 
 │       ├── Engine/
 │       │   ├── AstroEngine.swift     ← Cálculo de carta natal
 │       │   ├── JulianDay.swift       ← Hora local IANA → JD UT
-│       │   └── TransitEngine.swift   ← Tránsitos + scoring 1–5 ★
+│       │   └── TransitEngine.swift   ← Tránsitos + scoring 1–5 ★ + muestras de intensidad diaria
 │       ├── Store/
 │       │   ├── SQLiteDB.swift        ← Wrapper minimalista sobre sqlite3
 │       │   ├── CorpusStore.swift     ← corpus.db (read-only, bundle)
@@ -125,14 +134,17 @@ Sanity check: carta natal del autor (`1976-10-11 20:33 Europe/Madrid`) verifica 
 │       ├── Views/
 │       │   ├── ContentView.swift         ← Sidebar + detail (NavigationSplitView)
 │       │   ├── BirthChartForm.swift      ← Formulario de nacimiento
-│       │   ├── NatalChartView.swift      ← HSplitView: posiciones + interpretaciones
+│       │   ├── NatalChartView.swift      ← rueda, lectura guiada y textos
+│       │   ├── NatalWheelView.swift      ← rueda natal interactiva
+│       │   ├── GuidedReadingView.swift   ← lectura natal guiada
 │       │   ├── InterpretacionesView.swift← Lista filtrable y expandible
 │       │   ├── SavedChartsView.swift     ← Grid de cartas guardadas
 │       │   ├── SettingsView.swift        ← Selector de apariencia
 │       │   ├── HelpView.swift            ← Ayuda integrada
-│       │   ├── TransitsView.swift        ← Tabla de tránsitos por periodo
+│       │   ├── TransitsView.swift        ← Tránsitos: timeline + tabla por periodo
+│       │   ├── TransitTimelineView.swift ← Línea temporal de intensidad por orbe
 │       └── Resources/
-│           ├── corpus.db      ← 1.766 interpretaciones (read-only, 4 MB)
+│           ├── corpus.db      ← 1.779 interpretaciones (read-only, 4 MB)
 │           ├── cities_seed.json
 │           └── ephe/          ← Archivos Swiss Ephemeris (.se1, 1800–2400)
 └── Tests/
@@ -151,7 +163,11 @@ La app usa una sola ventana con `NavigationSplitView`: la sidebar fija cambia de
 - Cambio de contexto sin perder la sidebar ni abrir ventanas nuevas
 - Mejor encaje para tema claro/oscuro y ayuda integrada
 
-El estado compartido (`AppState`) mantiene la ruta de detalle, la apariencia elegida y las sesiones cargadas en memoria.
+El estado compartido (`AppState`) mantiene la ruta de detalle, la apariencia elegida, la carta activa y el estado vivo de tránsitos.
+
+### Tránsitos con timeline de intensidad
+
+`TransitEngine` calcula los eventos del periodo y, además del score global 1–5 ★, guarda muestras diarias con fecha, orbe e intensidad normalizada. La vista de Tránsitos combina una línea temporal superior con la tabla existente: cada fila dibuja barras por día que suben hacia el aspecto exacto y bajan al alejarse, coloreadas por tipo de aspecto. Al pulsar una fila o barra se abre el detalle textual del tránsito.
 
 ### Horaria vía subproceso Python
 
@@ -161,7 +177,7 @@ La lógica doctrinal de Horaria no se porta a Swift en v1. La app invoca `python
 - `judgementJSON`
 - `judgementText`
 
-Esto evita duplicar reglas astrológicas en Swift, mantiene paridad con el motor Python probado y deja la parte macOS centrada en UI, persistencia e integración.
+Esto evita duplicar reglas astrológicas en Swift, mantiene paridad con el motor Python probado y deja la parte macOS centrada en UI, persistencia e integración. La resolución del módulo ya no depende de un path local hardcodeado.
 
 ### Zero external dependencies en Swift
 
@@ -196,19 +212,26 @@ La hora de nacimiento introducida por el usuario es siempre **local** (en la zon
 - Ayuda integrada en el menú `Help`
 - Script de empaquetado `AstroMalik.app`
 
-### 🚧 Fase 3 — Rueda astrológica (en diseño)
-- Render SVG/Canvas de la rueda natal con glifos zodiacales
-- Planetas posicionados en sus grados exactos
-- Líneas de aspecto coloreadas por tipo (tensos / suaves / menores)
-- Interactividad: hover/click → interpretación lateral
+### ✅ Fase 3 — Lectura pro inicial (completada abril 2026)
+- Rueda natal interactiva en SwiftUI
+- Planetas, casas, ASC/MC y aspectos natales
+- Lectura guiada con regente del Ascendente
+- Síntesis editable y nota Markdown preparada para Joplin
+- Archivo con notas, etiquetas y búsqueda
+- Tránsitos con línea temporal de intensidad diaria por orbe
 
-### 📌 Fase 4 — Distribución pulida
+### 🚧 Fase 4 — Rueda y exportación avanzada
+- Refinar geometría visual de la rueda
+- Export PNG/PDF de carta y lectura
+- Plantilla Joplin configurable
+
+### 📌 Fase 5 — Distribución pulida
 - Icono personalizado en `.icns`
 - Notarización opcional con Apple Developer ID
 - Exportadores y flujo de instalación más pulidos
 
-### 🔮 Fase 5 — Avanzado
-- Tránsitos interactivos con slider temporal en la rueda
+### 🔮 Fase 6 — Avanzado
+- Slider temporal de tránsitos integrado en la rueda natal
 - Sinastría (superposición de dos cartas)
 - Export PNG/PDF de la carta
 - Integración opcional con Joplin (log de consultas)

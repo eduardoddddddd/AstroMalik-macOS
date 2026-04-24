@@ -54,6 +54,24 @@ final class AstroEngineTests: XCTestCase {
         }
     }
 
+    func testHousesEx2ReferenceMatchesNatalChartAngles() throws {
+        let jdResult = try julianDayFromLocal(
+            birthDate: "1976-10-11",
+            birthTime: "20:33",
+            timezoneName: "Europe/Madrid"
+        )
+        let houses = try AstroEngine.calcHouses(jd: jdResult.jd, lat: 40.4168, lon: -3.7038)
+        let chart = try AstroEngine.computeNatalChart(
+            jd: jdResult.jd,
+            lat: 40.4168,
+            lon: -3.7038
+        )
+
+        XCTAssertEqual(houses.asc, chart.ascendant.longitude, accuracy: 0.0001)
+        XCTAssertEqual(houses.mc, chart.mc.longitude, accuracy: 0.0001)
+        XCTAssertEqual(houses.cusps.count, 12)
+    }
+
     func testNatalAspects() throws {
         let jdResult = try julianDayFromLocal(
             birthDate: "1976-10-11",
@@ -77,6 +95,40 @@ final class AstroEngineTests: XCTestCase {
         }
     }
 
+    func testNatalInterpretationsIncludeAscendant() throws {
+        let jdResult = try julianDayFromLocal(
+            birthDate: "1976-10-11",
+            birthTime: "20:33",
+            timezoneName: "Europe/Madrid"
+        )
+        let chart = try AstroEngine.computeNatalChart(
+            jd: jdResult.jd, lat: 40.4168, lon: -3.7038
+        )
+
+        let testFile = URL(fileURLWithPath: #filePath)
+        let repoRoot = testFile
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let corpusURL = repoRoot
+            .appendingPathComponent("Sources/AstroMalik/Resources/corpus.db")
+        let store = try CorpusStore(path: corpusURL.path)
+        let interps = store.buildNatalInterpretations(chart: chart)
+
+        XCTAssertTrue(
+            interps.contains { $0.clave == "ASC_GEMINIS" },
+            "Debe incluir Ascendente en Géminis desde el corpus"
+        )
+        XCTAssertTrue(
+            interps.contains { $0.clave == "ASC_CASA_1" },
+            "Debe incluir Ascendente en Casa 1 desde el corpus"
+        )
+        XCTAssertTrue(
+            interps.contains { $0.clave.contains("_ASC_") },
+            "Debe incluir aspectos al Ascendente cuando haya alguno con texto en corpus"
+        )
+    }
+
     func testDegToSign() {
         XCTAssertTrue(AstroEngine.degToSign(0).contains("Aries"))
         XCTAssertTrue(AstroEngine.degToSign(30).contains("Tauro"))
@@ -93,6 +145,165 @@ final class AstroEngineTests: XCTestCase {
         let score = buildScoreForTest(transitKey: "SATURNO", aspectKey: "CONJUNCION", minOrb: 0.1)
         XCTAssertGreaterThanOrEqual(score, 25.0, "Saturno conjunción debe ser 5★")
     }
+
+    func testTransitInvalidRangeThrows() async throws {
+        let chart = try referenceChart()
+        let store = try referenceCorpusStore()
+        let from = Date(timeIntervalSince1970: 1_800_000)
+        let to = Date(timeIntervalSince1970: 1_700_000)
+
+        do {
+            _ = try await computeTransitPeriod(
+                natalChart: chart,
+                fromDate: from,
+                toDate: to,
+                timezone: chart.timezone,
+                corpusStore: store
+            )
+            XCTFail("Rango inverso debería lanzar error")
+        } catch TransitError.invalidRange {
+            // OK
+        } catch {
+            XCTFail("Error inesperado: \(error)")
+        }
+    }
+
+    func testTransitCalculationCanBeCancelled() async throws {
+        let chart = try referenceChart()
+        let store = try referenceCorpusStore()
+        let from = Date(timeIntervalSince1970: 0)
+        let to = Date(timeIntervalSince1970: 60 * 60 * 24 * 3600)
+
+        let task = Task {
+            try await computeTransitPeriod(
+                natalChart: chart,
+                fromDate: from,
+                toDate: to,
+                timezone: chart.timezone,
+                corpusStore: store
+            )
+        }
+        task.cancel()
+
+        do {
+            _ = try await task.value
+            XCTFail("El cálculo cancelado debería lanzar CancellationError")
+        } catch is CancellationError {
+            // OK
+        }
+    }
+
+    func testTransitEventsIncludeTimelineSamplesInsideEventRange() async throws {
+        let chart = try referenceChart()
+        let store = try referenceCorpusStore()
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: utcDate(year: 2026, month: 1, day: 1),
+            toDate: utcDate(year: 2026, month: 6, day: 30),
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        XCTAssertFalse(events.isEmpty, "El rango de referencia debería producir tránsitos")
+        for event in events {
+            XCTAssertFalse(event.samples.isEmpty, "Cada tránsito debe incluir muestras para la timeline")
+            guard let eventStart = isoDate(event.fromDate),
+                  let eventEnd = isoDate(event.toDate) else {
+                XCTFail("Fechas de evento inválidas: \(event.fromDate) → \(event.toDate)")
+                continue
+            }
+            for sample in event.samples {
+                guard let sampleDate = isoDate(sample.date) else {
+                    XCTFail("Fecha de muestra inválida: \(sample.date)")
+                    continue
+                }
+                XCTAssertGreaterThanOrEqual(sampleDate, eventStart)
+                XCTAssertLessThanOrEqual(sampleDate, eventEnd)
+                XCTAssertGreaterThanOrEqual(sample.intensity, 0)
+                XCTAssertLessThanOrEqual(sample.intensity, 1)
+            }
+        }
+    }
+
+    func testTransitExactDateSampleMatchesMinimumOrbAndPeakIntensity() async throws {
+        let chart = try referenceChart()
+        let store = try referenceCorpusStore()
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: utcDate(year: 2026, month: 1, day: 1),
+            toDate: utcDate(year: 2026, month: 6, day: 30),
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        XCTAssertFalse(events.isEmpty, "El rango de referencia debería producir tránsitos")
+        for event in events {
+            guard let exactSample = event.samples.first(where: { $0.date == event.exactDate }) else {
+                XCTFail("Debe existir una muestra en la fecha exacta \(event.exactDate)")
+                continue
+            }
+            let maxIntensity = event.samples.map(\.intensity).max() ?? 0
+            XCTAssertEqual(exactSample.orb, event.minOrb, accuracy: 0.01)
+            XCTAssertEqual(exactSample.intensity, maxIntensity, accuracy: 0.001)
+        }
+    }
+
+    func testTimezoneInferenceKnownCities() {
+        let service = PlacesService()
+        XCTAssertEqual(service.timezoneForCoordinates(lat: 40.4168, lon: -3.7038), "Europe/Madrid")
+        XCTAssertEqual(service.timezoneForCoordinates(lat: 48.8566, lon: 2.3522), "Europe/Paris")
+        XCTAssertEqual(service.timezoneForCoordinates(lat: 51.5072, lon: -0.1276), "Europe/London")
+        XCTAssertEqual(service.timezoneForCoordinates(lat: 40.7128, lon: -74.0060), "America/New_York")
+        XCTAssertEqual(service.timezoneForCoordinates(lat: 41.8781, lon: -87.6298), "America/Chicago")
+        XCTAssertEqual(service.timezoneForCoordinates(lat: 39.7392, lon: -104.9903), "America/Denver")
+        XCTAssertEqual(service.timezoneForCoordinates(lat: 34.0522, lon: -118.2437), "America/Los_Angeles")
+    }
+
+    func testHoraryDiagnosticsDoesNotThrow() async {
+        let diagnostics = await HoraryEngine.diagnostics()
+        XCTAssertFalse(diagnostics.checkedSources.isEmpty)
+    }
+}
+
+private func referenceChart() throws -> NatalChart {
+    let jdResult = try julianDayFromLocal(
+        birthDate: "1976-10-11",
+        birthTime: "20:33",
+        timezoneName: "Europe/Madrid"
+    )
+    var chart = try AstroEngine.computeNatalChart(
+        jd: jdResult.jd,
+        lat: 40.4168,
+        lon: -3.7038
+    )
+    chart.name = "Referencia"
+    chart.birthDate = "1976-10-11"
+    chart.birthTime = "20:33"
+    chart.timezone = "Europe/Madrid"
+    return chart
+}
+
+private func referenceCorpusStore() throws -> CorpusStore {
+    let testFile = URL(fileURLWithPath: #filePath)
+    let repoRoot = testFile
+        .deletingLastPathComponent()
+        .deletingLastPathComponent()
+        .deletingLastPathComponent()
+    let corpusURL = repoRoot
+        .appendingPathComponent("Sources/AstroMalik/Resources/corpus.db")
+    return try CorpusStore(path: corpusURL.path)
+}
+
+private func utcDate(year: Int, month: Int, day: Int) -> Date {
+    var cal = Calendar(identifier: .gregorian)
+    cal.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
+    return cal.date(from: DateComponents(timeZone: cal.timeZone, year: year, month: month, day: day)) ?? Date()
+}
+
+private func isoDate(_ value: String) -> Date? {
+    let parts = value.split(separator: "-").compactMap { Int($0) }
+    guard parts.count == 3 else { return nil }
+    return utcDate(year: parts[0], month: parts[1], day: parts[2])
 }
 
 // Helper para test de score

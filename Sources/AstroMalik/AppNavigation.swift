@@ -3,6 +3,7 @@ import Foundation
 enum NavItem: String, CaseIterable, Identifiable {
     case nuevaCarta  = "Nueva Carta"
     case cartas      = "Cartas Guardadas"
+    case lectura     = "Lectura"
     case transitos   = "Tránsitos"
     case horaria     = "Horaria"
 
@@ -12,6 +13,7 @@ enum NavItem: String, CaseIterable, Identifiable {
         switch self {
         case .nuevaCarta: return "star.circle"
         case .cartas:     return "tray.full"
+        case .lectura:    return "book.pages"
         case .transitos:  return "calendar.circle"
         case .horaria:    return "questionmark.bubble"
         }
@@ -28,8 +30,28 @@ enum HoraryHomeTab: String, CaseIterable, Identifiable, Equatable {
 enum DetailRoute: Equatable {
     case birthForm
     case natalResult(NatalChart, returnTo: NavItem)
+    case reading
     case savedCharts
     case transits
     case horaryHome(HoraryHomeTab)
     case horaryResult(SavedHoraryQuery, returnTo: HoraryHomeTab)
+
+    var viewIdentity: String {
+        switch self {
+        case .birthForm:
+            return "birthForm"
+        case .natalResult(let chart, _):
+            return "natalResult-\(chart.id.uuidString)"
+        case .reading:
+            return "reading"
+        case .savedCharts:
+            return "savedCharts"
+        case .transits:
+            return "transits"
+        case .horaryHome(let tab):
+            return "horaryHome-\(tab.id)"
+        case .horaryResult(let query, _):
+            return "horaryResult-\(query.id.uuidString)"
+        }
+    }
 }

@@ -105,7 +105,9 @@ final class SQLiteDB {
         case SQLITE_TEXT:    return .text(String(cString: sqlite3_column_text(stmt, index)))
         case SQLITE_BLOB:
             let n = sqlite3_column_bytes(stmt, index)
-            let p = sqlite3_column_blob(stmt, index)!
+            guard let p = sqlite3_column_blob(stmt, index) else {
+                return .blob(Data())
+            }
             return .blob(Data(bytes: p, count: Int(n)))
         default:             return .null
         }

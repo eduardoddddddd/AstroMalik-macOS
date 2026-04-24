@@ -4,10 +4,10 @@ struct InterpretacionesView: View {
     var interpretaciones: [Interpretation]
 
     @State private var expanded: Set<String> = []
-    @State private var filterTipo: InterpretationType? = nil
+    @State private var selectedFilter: InterpretationFilter = .all
 
     private var filtered: [Interpretation] {
-        guard let t = filterTipo else { return interpretaciones }
+        guard let t = selectedFilter.tipo else { return interpretaciones }
         return interpretaciones.filter { $0.tipo == t }
     }
 
@@ -19,13 +19,12 @@ struct InterpretacionesView: View {
                 emptyState
             } else {
                 ScrollView {
-                    LazyVStack(spacing: 0) {
+                    LazyVStack(spacing: 10) {
                         ForEach(filtered) { interp in
                             interpretationRow(interp)
-                            Divider().padding(.leading, 16)
                         }
                     }
-                    .padding(.bottom, 20)
+                    .padding(18)
                 }
             }
         }
@@ -35,32 +34,19 @@ struct InterpretacionesView: View {
     // MARK: - Filter Bar
 
     private var filterBar: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 8) {
-                filterChip(label: "Todas", tipo: nil)
-                filterChip(label: "Planeta/Signo", tipo: .natalPlanetaSigno)
-                filterChip(label: "Planeta/Casa",  tipo: .natalPlanetaCasa)
-                filterChip(label: "Aspectos",      tipo: .aspectoNatal)
+        HStack {
+            Picker("Tipo", selection: $selectedFilter) {
+                ForEach(InterpretationFilter.allCases) { filter in
+                    Text(filter.label).tag(filter)
+                }
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
+            .pickerStyle(.segmented)
+            .frame(maxWidth: 560)
+            Spacer()
         }
-    }
-
-    private func filterChip(label: String, tipo: InterpretationType?) -> some View {
-        let active = filterTipo == tipo
-        return Button {
-            filterTipo = tipo
-        } label: {
-            Text(label)
-                .font(.caption.weight(active ? .semibold : .regular))
-                .padding(.horizontal, 12)
-                .padding(.vertical, 5)
-                .background(active ? Color.appAccentFill : Color.appChipBackground)
-                .foregroundColor(active ? .appAccentForeground : .appPrimaryText)
-                .cornerRadius(20)
-        }
-        .buttonStyle(.plain)
+        .padding(.horizontal, 18)
+        .padding(.vertical, 12)
+        .background(Color.appPanel)
     }
 
     // MARK: - Row
@@ -107,7 +93,12 @@ struct InterpretacionesView: View {
                     .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
-        .background(isExpanded ? Color.appPanel : Color.clear)
+        .background(Color.appPanel)
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .stroke(isExpanded ? Color.appAccentFill.opacity(0.45) : Color.appBorder.opacity(0.75), lineWidth: 1)
+        )
         .animation(.easeInOut(duration: 0.18), value: isExpanded)
     }
 
@@ -123,5 +114,32 @@ struct InterpretacionesView: View {
                 .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+private enum InterpretationFilter: String, CaseIterable, Identifiable {
+    case all
+    case planetaSigno
+    case planetaCasa
+    case aspectos
+
+    var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .all: return "Todas"
+        case .planetaSigno: return "Signos"
+        case .planetaCasa: return "Casas"
+        case .aspectos: return "Aspectos"
+        }
+    }
+
+    var tipo: InterpretationType? {
+        switch self {
+        case .all: return nil
+        case .planetaSigno: return .natalPlanetaSigno
+        case .planetaCasa: return .natalPlanetaCasa
+        case .aspectos: return .aspectoNatal
+        }
     }
 }

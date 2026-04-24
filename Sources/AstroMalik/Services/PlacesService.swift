@@ -120,24 +120,44 @@ final class PlacesService {
     }
 
     // MARK: - Timezone inference
-    // Approximación por región geográfica → zona IANA más cercana
+    // Aproximación offline determinista: primero zonas conocidas, luego bandas no solapadas.
 
     func timezoneForCoordinates(lat: Double, lon: Double) -> String {
-        // Tabla de regiones comunes → IANA timezone
+        let knownZones: [(lat: Double, lon: Double, radius: Double, tz: String)] = [
+            (40.4168, -3.7038, 2.5, "Europe/Madrid"),
+            (48.8566, 2.3522, 2.5, "Europe/Paris"),
+            (51.5072, -0.1276, 2.5, "Europe/London"),
+            (52.5200, 13.4050, 2.5, "Europe/Berlin"),
+            (41.9028, 12.4964, 2.5, "Europe/Rome"),
+            (37.9838, 23.7275, 2.5, "Europe/Athens"),
+            (40.7128, -74.0060, 3.0, "America/New_York"),
+            (41.8781, -87.6298, 3.0, "America/Chicago"),
+            (39.7392, -104.9903, 3.0, "America/Denver"),
+            (34.0522, -118.2437, 3.0, "America/Los_Angeles"),
+            (35.6762, 139.6503, 3.0, "Asia/Tokyo"),
+            (28.6139, 77.2090, 3.0, "Asia/Kolkata"),
+            (-33.8688, 151.2093, 3.0, "Australia/Sydney"),
+        ]
+        if let known = knownZones.first(where: {
+            abs(lat - $0.lat) <= $0.radius && abs(lon - $0.lon) <= $0.radius
+        }) {
+            return known.tz
+        }
+
         let regions: [(latRange: ClosedRange<Double>, lonRange: ClosedRange<Double>, tz: String)] = [
-            (35...44, -10...5,   "Europe/Madrid"),
-            (41...52, -5...10,   "Europe/Paris"),
-            (47...55, 5...15,    "Europe/Berlin"),
-            (35...47, 10...20,   "Europe/Rome"),
-            (36...42, 25...35,   "Europe/Athens"),
-            (50...60, -8...2,    "Europe/London"),
-            (51...71, 24...30,   "Europe/Helsinki"),
-            (55...70, 10...24,   "Europe/Stockholm"),
-            (55...60, 23...27,   "Europe/Tallinn"),
+            (35...44, -10 ... -1, "Europe/Madrid"),
+            (42...51, -1 ... 8,   "Europe/Paris"),
+            (47...55, 8...16,     "Europe/Berlin"),
+            (35...47, 10...19,    "Europe/Rome"),
+            (36...42, 19...30,    "Europe/Athens"),
+            (50...60, -8 ... 1.5, "Europe/London"),
+            (51...71, 24...31,    "Europe/Helsinki"),
+            (55...70, 10...24,    "Europe/Stockholm"),
+            (55...60, 23...27,    "Europe/Tallinn"),
             (39...47, -9.5 ... -6, "Atlantic/Azores"),
-            (25...50, -130 ... -60, "America/New_York"),
-            (25...50, -100 ... -80, "America/Chicago"),
-            (25...50, -125 ... -100, "America/Denver"),
+            (24...50, -82.5 ... -66, "America/New_York"),
+            (24...50, -97.5 ... -82.5, "America/Chicago"),
+            (24...50, -115 ... -97.5, "America/Denver"),
             (20...65, -170 ... -115, "America/Los_Angeles"),
             (-55...12, -80 ... -35, "America/Sao_Paulo"),
             (23...45, 100...145,  "Asia/Tokyo"),

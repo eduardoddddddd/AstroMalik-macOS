@@ -6,18 +6,48 @@ struct SavedChartsView: View {
     @State private var chartToDelete: NatalChart? = nil
     @State private var renaming: NatalChart? = nil
     @State private var newName = ""
+    @State private var searchText = ""
+    @State private var metadataChart: NatalChart? = nil
 
-    private var charts: [NatalChart] { appState.userStore.savedCharts }
+    private var allCharts: [NatalChart] { appState.userStore.savedCharts }
+    private var charts: [NatalChart] {
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        guard !query.isEmpty else { return allCharts }
+        return allCharts.filter { chart in
+            let metadata = appState.userStore.chartMetadata[chart.id] ?? ChartMetadata(notes: "", tags: [])
+            let haystack = [
+                chart.name,
+                chart.birthDate,
+                chart.birthTime,
+                chart.timezone,
+                chart.placeName,
+                metadata.notes,
+                metadata.tags.joined(separator: " "),
+            ].joined(separator: " ").lowercased()
+            return haystack.contains(query)
+        }
+    }
 
     var body: some View {
         Group {
-            if charts.isEmpty {
+            if allCharts.isEmpty {
                 emptyState
             } else {
                 chartsGrid
             }
         }
         .navigationTitle("Cartas Guardadas")
+        .sheet(item: $metadataChart) { chart in
+            ChartMetadataEditor(
+                chart: chart,
+                metadata: appState.userStore.chartMetadata[chart.id] ?? ChartMetadata(notes: "", tags: []),
+                onSave: { notes, tags in
+                    try? appState.userStore.setMetadata(id: chart.id, notes: notes, tags: tags)
+                    metadataChart = nil
+                },
+                onCancel: { metadataChart = nil }
+            )
+        }
         .alert("Renombrar carta", isPresented: .init(
             get: { renaming != nil },
             set: { if !$0 { renaming = nil } }
@@ -49,50 +79,84 @@ struct SavedChartsView: View {
     }
 
     private func openChart(_ chart: NatalChart) {
-        appState.register(chart)
         onOpenChart(chart)
     }
 
     // MARK: - Grid
 
     private var chartsGrid: some View {
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 260))], spacing: 16) {
-                ForEach(charts) { chart in
-                    chartCard(chart)
-                        .onTapGesture(count: 2) { openChart(chart) }
-                        .onTapGesture { openChart(chart) }
-                        .contextMenu {
-                            Button {
-                                newName = chart.name
-                                renaming = chart
-                            } label: {
-                                Label("Renombrar", systemImage: "pencil")
-                            }
+        VStack(spacing: 0) {
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.secondary)
+                TextField("Buscar por nombre, lugar, fecha, etiqueta o nota", text: $searchText)
+                    .textFieldStyle(.plain)
+                if !searchText.isEmpty {
+                    Button {
+                        searchText = ""
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundColor(.secondary)
+                }
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .background(Color.appPanel)
+            .overlay(Rectangle().fill(Color.appBorder).frame(height: 1), alignment: .bottom)
+
+            if charts.isEmpty {
+                noMatchesState
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 260))], spacing: 16) {
+                        ForEach(charts) { chart in
                             Button {
                                 openChart(chart)
                             } label: {
-                                Label("Ver carta", systemImage: "star.circle")
+                                chartCard(chart)
                             }
-                            Divider()
-                            Button(role: .destructive) {
-                                chartToDelete = chart
-                            } label: {
-                                Label("Eliminar", systemImage: "trash")
+                            .buttonStyle(.plain)
+                            .contextMenu {
+                                Button {
+                                    newName = chart.name
+                                    renaming = chart
+                                } label: {
+                                    Label("Renombrar", systemImage: "pencil")
+                                }
+                                Button {
+                                    metadataChart = chart
+                                } label: {
+                                    Label("Notas y etiquetas", systemImage: "tag")
+                                }
+                                Button {
+                                    openChart(chart)
+                                } label: {
+                                    Label("Ver carta", systemImage: "star.circle")
+                                }
+                                Divider()
+                                Button(role: .destructive) {
+                                    chartToDelete = chart
+                                } label: {
+                                    Label("Eliminar", systemImage: "trash")
+                                }
                             }
                         }
+                    }
+                    .padding(24)
                 }
             }
-            .padding(20)
         }
         .background(Color.appBackground)
     }
 
     private func chartCard(_ chart: NatalChart) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
+        let metadata = appState.userStore.chartMetadata[chart.id] ?? ChartMetadata(notes: "", tags: [])
+        return VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top) {
                 Image(systemName: "star.circle.fill")
-                    .foregroundColor(.appPrimaryText)
+                    .foregroundColor(.appAccentFill)
                     .font(.title3)
                 Spacer()
                 Text(chart.birthDate)
@@ -113,16 +177,41 @@ struct SavedChartsView: View {
                     .font(.caption).foregroundColor(.secondary)
             }
 
+            if !metadata.tags.isEmpty {
+                HStack(spacing: 5) {
+                    ForEach(metadata.tags.prefix(3), id: \.self) { tag in
+                        Text("#\(tag)")
+                            .font(.caption2.weight(.semibold))
+                            .foregroundColor(.appSecondaryAccent)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 3)
+                            .background(Color.appChipBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                    }
+                }
+            }
+
             if let asc = chart.bodies.first(where: { $0.key == "SOL" }) {
                 Text("☉ " + asc.formatted)
                     .font(.caption.monospacedDigit())
                     .foregroundColor(.appSecondaryAccent)
             }
         }
-        .padding(16)
-        .background(Color.appPanel)
-        .cornerRadius(12)
-        .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
+        .frame(maxWidth: .infinity, minHeight: 132, alignment: .topLeading)
+        .contentShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .appCard()
+    }
+
+    private var noMatchesState: some View {
+        VStack(spacing: 10) {
+            Image(systemName: "magnifyingglass")
+                .font(.system(size: 38))
+                .foregroundColor(.secondary)
+            Text("Sin resultados")
+                .font(.headline)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     // MARK: - Empty State
@@ -140,5 +229,77 @@ struct SavedChartsView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.appBackground)
+    }
+}
+
+private struct ChartMetadataEditor: View {
+    let chart: NatalChart
+    @State var notes: String
+    @State var tagsText: String
+    var onSave: (String, [String]) -> Void
+    var onCancel: () -> Void
+
+    init(
+        chart: NatalChart,
+        metadata: ChartMetadata,
+        onSave: @escaping (String, [String]) -> Void,
+        onCancel: @escaping () -> Void
+    ) {
+        self.chart = chart
+        _notes = State(initialValue: metadata.notes)
+        _tagsText = State(initialValue: metadata.tags.joined(separator: ", "))
+        self.onSave = onSave
+        self.onCancel = onCancel
+    }
+
+    var body: some View {
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 14) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(chart.name)
+                        .font(.headline)
+                        .foregroundColor(.appPrimaryText)
+                    Text("\(chart.birthDate) · \(chart.placeName)")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Etiquetas")
+                        .appSectionHeader()
+                    TextField("cliente, estudio, importante", text: $tagsText)
+                        .textFieldStyle(.roundedBorder)
+                }
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Notas")
+                        .appSectionHeader()
+                    TextEditor(text: $notes)
+                        .frame(minHeight: 180)
+                        .scrollContentBackground(.hidden)
+                        .background(Color.appInputBackground)
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                .stroke(Color.appBorder, lineWidth: 1)
+                        )
+                }
+            }
+            .padding(20)
+            .background(Color.appBackground)
+            .navigationTitle("Notas y etiquetas")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancelar") { onCancel() }
+                }
+                ToolbarItem(placement: .primaryAction) {
+                    Button("Guardar") {
+                        let tags = tagsText.split(separator: ",").map(String.init)
+                        onSave(notes, tags)
+                    }
+                }
+            }
+        }
+        .frame(minWidth: 500, minHeight: 420)
     }
 }

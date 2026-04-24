@@ -4,19 +4,18 @@ struct TransitsView: View {
     @EnvironmentObject var appState: AppState
 
     var natalChart: NatalChart
-
-    @State private var fromDate  = Date()
-    @State private var toDate    = Calendar.current.date(byAdding: .month, value: 6, to: Date())!
-    @State private var excludeMoon = true
-    @State private var events: [TransitEvent] = []
-    @State private var isCalculating = false
-    @State private var error: String? = nil
-    @State private var selectedEventID: UUID? = nil
-    @State private var selectedEvent: TransitEvent? = nil
-    @State private var minStars: Int = 1
+    @ObservedObject var state: TransitWorkspaceState
+    @State private var calculationTask: Task<Void, Never>? = nil
 
     private var filtered: [TransitEvent] {
-        events.filter { $0.stars >= minStars }
+        state.events.filter { $0.stars >= state.minStars }
+    }
+
+    private var timelineEvents: [TransitEvent] {
+        filtered.sorted {
+            if $0.exactDate != $1.exactDate { return $0.exactDate < $1.exactDate }
+            return $0.score > $1.score
+        }
     }
 
     var body: some View {
@@ -24,22 +23,41 @@ struct TransitsView: View {
             VStack(spacing: 0) {
                 controlsBar
                 Divider()
-                if isCalculating {
+                if state.isCalculating {
                     ProgressView("Calculando tránsitos…")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else if let err = error {
+                } else if let err = state.error {
                     errorView(err)
-                } else if events.isEmpty {
+                } else if state.events.isEmpty {
                     emptyState
                 } else {
-                    transitsList
+                    VStack(spacing: 0) {
+                        TransitTimelineView(
+                            events: timelineEvents,
+                            fromDate: state.fromDate,
+                            toDate: state.toDate
+                        ) { event in
+                            state.selectedEvent = event
+                        }
+                        .frame(minHeight: 220, idealHeight: 300, maxHeight: 420)
+                        Divider()
+                        transitsList
+                    }
                 }
             }
             .background(Color.appBackground)
             .navigationTitle("Tránsitos — \(natalChart.name)")
         }
         .frame(minWidth: 700, minHeight: 500)
-        .sheet(item: $selectedEvent) { event in
+        .task(id: natalChart.id) {
+            state.prepare(for: natalChart)
+        }
+        .onDisappear {
+            calculationTask?.cancel()
+            calculationTask = nil
+            state.isCalculating = false
+        }
+        .sheet(item: $state.selectedEvent) { event in
             transitDetail(event)
         }
     }
@@ -48,20 +66,23 @@ struct TransitsView: View {
 
     private var controlsBar: some View {
         HStack(spacing: 16) {
-            DatePicker("Desde", selection: $fromDate, displayedComponents: .date)
+            DatePicker("Desde", selection: $state.fromDate, displayedComponents: .date)
                 .labelsHidden()
+                .onChange(of: state.fromDate) { _, _ in state.markInputsChanged() }
             Text("→")
-            DatePicker("Hasta", selection: $toDate, displayedComponents: .date)
+            DatePicker("Hasta", selection: $state.toDate, displayedComponents: .date)
                 .labelsHidden()
+                .onChange(of: state.toDate) { _, _ in state.markInputsChanged() }
             Divider().frame(height: 20)
-            Toggle("Sin Luna", isOn: $excludeMoon)
+            Toggle("Sin Luna", isOn: $state.excludeMoon)
                 .toggleStyle(.switch)
                 .controlSize(.small)
+                .onChange(of: state.excludeMoon) { _, _ in state.markInputsChanged() }
             Divider().frame(height: 20)
             HStack(spacing: 4) {
                 Text("Min:")
                     .font(.caption).foregroundColor(.secondary)
-                Picker("", selection: $minStars) {
+                Picker("", selection: $state.minStars) {
                     ForEach(1...5, id: \.self) { s in
                         Text("\(s)★").tag(s)
                     }
@@ -70,13 +91,19 @@ struct TransitsView: View {
                 .pickerStyle(.menu)
             }
             Spacer()
+            if state.needsRecalculation && !state.events.isEmpty {
+                Label("Cambios sin recalcular", systemImage: "exclamationmark.circle")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
             Button {
-                Task { await calculate() }
+                startCalculation()
             } label: {
-                Label("Calcular", systemImage: "calendar.circle")
+                Label(state.events.isEmpty ? "Calcular" : "Recalcular", systemImage: "calendar.circle")
             }
             .buttonStyle(.borderedProminent)
             .tint(.appAccentFill)
+            .disabled(state.isCalculating)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
@@ -85,7 +112,7 @@ struct TransitsView: View {
     // MARK: - List
 
     private var transitsList: some View {
-        Table(filtered, selection: $selectedEventID) {
+        Table(filtered, selection: $state.selectedEventID) {
             TableColumn("Tránsito") { e in
                 HStack(spacing: 6) {
                     Circle()
@@ -131,11 +158,11 @@ struct TransitsView: View {
             .width(40)
         }
         .tableStyle(.inset(alternatesRowBackgrounds: true))
-        .onChange(of: selectedEventID) { _, eventID in
+        .onChange(of: state.selectedEventID) { _, eventID in
             guard let id = eventID else { return }
             if let ev = filtered.first(where: { $0.id == id }) {
-                selectedEvent = ev
-                selectedEventID = nil
+                state.selectedEvent = ev
+                state.selectedEventID = nil
             }
         }
     }
@@ -178,7 +205,7 @@ struct TransitsView: View {
             .navigationTitle("Detalle de Tránsito")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cerrar") { selectedEvent = nil }
+                    Button("Cerrar") { state.selectedEvent = nil }
                 }
             }
         }
@@ -216,22 +243,41 @@ struct TransitsView: View {
 
     // MARK: - Calculation
 
-    private func calculate() async {
-        isCalculating = true
-        error = nil
-        do {
-            events = try await computeTransitPeriod(
-                natalChart: natalChart,
-                fromDate: fromDate,
-                toDate: toDate,
-                timezone: natalChart.timezone,
-                excludeMoon: excludeMoon,
-                corpusStore: appState.corpusStore
-            )
-        } catch {
-            self.error = error.localizedDescription
+    private func startCalculation() {
+        calculationTask?.cancel()
+        state.isCalculating = true
+        state.error = nil
+
+        let chart = natalChart
+        let fromDate = state.fromDate
+        let toDate = state.toDate
+        let excludeMoon = state.excludeMoon
+        let store = appState.corpusStore
+
+        calculationTask = Task {
+            do {
+                let events = try await computeTransitPeriod(
+                    natalChart: chart,
+                    fromDate: fromDate,
+                    toDate: toDate,
+                    timezone: chart.timezone,
+                    excludeMoon: excludeMoon,
+                    corpusStore: store
+                )
+                guard !Task.isCancelled else { return }
+                state.events = events
+                state.markCalculated()
+            } catch is CancellationError {
+                if !Task.isCancelled {
+                    state.error = "Cálculo de tránsitos cancelado."
+                }
+            } catch {
+                state.error = error.localizedDescription
+            }
+            if !Task.isCancelled {
+                state.isCalculating = false
+            }
         }
-        isCalculating = false
     }
 
     // MARK: - Helpers

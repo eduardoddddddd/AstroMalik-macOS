@@ -13,11 +13,15 @@ struct HelpView: View {
                 """)
 
                 section("Cartas Guardadas y Tránsitos", """
-                Desde Cartas Guardadas puedes reabrir cartas ya archivadas. Tránsitos usa una carta guardada para calcular periodos y detalle de eventos.
+                Desde Cartas Guardadas puedes reabrir, buscar, etiquetar y anotar cartas ya archivadas. Tránsitos usa una carta guardada para calcular periodos, línea temporal de intensidad diaria, tabla y detalle de eventos.
+                """)
+
+                section("Lectura", """
+                La sección Lectura abre la carta activa con rueda interactiva, lectura guiada, regente del Ascendente, aspectos dominantes y síntesis editable.
                 """)
 
                 section("Horaria", """
-                Horaria calcula el juicio en Python y muestra el resultado en la app. Necesita Python 3 disponible y el paquete horaria instalado o el repositorio local en /Users/eduardoariasbravo/Developer/horaria.
+                Horaria calcula el juicio en Python y muestra el resultado en la app. Necesita Python 3 y el paquete horaria instalado, o una ruta configurada con ASTROMALIK_HORARIA_PATH. Usa el botón de diagnóstico para revisar la instalación.
                 """)
 
                 section("Apariencia", """
@@ -25,7 +29,7 @@ struct HelpView: View {
                 """)
 
                 section("Guardar frente a exportar", """
-                El botón principal de resultado guarda localmente en la base de datos de AstroMalik. En esta versión no exporta PDF.
+                El botón principal de resultado guarda localmente en la base de datos de AstroMalik. La vista de carta puede copiar una nota Markdown preparada para Joplin.
                 """)
             }
             .padding(24)

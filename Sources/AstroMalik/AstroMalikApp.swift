@@ -49,35 +49,16 @@ final class AppState: ObservableObject {
     let horaryStore = HoraryStore()
     let placesService = PlacesService()
 
-    /// Cartas calculadas en la sesión actual pero aún no guardadas,
-    /// indexadas por UUID para que las ventanas secundarias las recuperen por id.
-    @Published var sessionCharts: [UUID: NatalChart] = [:]
-    @Published var sessionHoraryQueries: [UUID: SavedHoraryQuery] = [:]
     @Published var selectedNav: NavItem = .nuevaCarta
     @Published var detailRoute: DetailRoute = .birthForm
+    @Published var activeNatalChart: NatalChart? = nil
+    @Published var transitChartIndex: Int = 0
+    let transitState = TransitWorkspaceState()
     @Published var isHelpPresented = false
     @Published var appearanceMode: AppAppearanceMode = .system {
         didSet {
             UserDefaults.standard.set(appearanceMode.rawValue, forKey: Self.appearanceKey)
         }
-    }
-
-    func register(_ chart: NatalChart) {
-        sessionCharts[chart.id] = chart
-    }
-
-    func chart(for id: UUID) -> NatalChart? {
-        if let c = sessionCharts[id] { return c }
-        return userStore.savedCharts.first(where: { $0.id == id })
-    }
-
-    func registerHorary(_ query: SavedHoraryQuery) {
-        sessionHoraryQueries[query.id] = query
-    }
-
-    func horaryQuery(for id: UUID) -> SavedHoraryQuery? {
-        if let query = sessionHoraryQueries[id] { return query }
-        return horaryStore.savedQueries.first(where: { $0.id == id })
     }
 
     func showDefaultDetail(for nav: NavItem) {
@@ -86,6 +67,8 @@ final class AppState: ObservableObject {
             detailRoute = .birthForm
         case .cartas:
             detailRoute = .savedCharts
+        case .lectura:
+            detailRoute = .reading
         case .transitos:
             detailRoute = .transits
         case .horaria:
@@ -94,12 +77,11 @@ final class AppState: ObservableObject {
     }
 
     func showNatalResult(_ chart: NatalChart, returnTo nav: NavItem) {
-        register(chart)
+        activeNatalChart = chart
         detailRoute = .natalResult(chart, returnTo: nav)
     }
 
     func showHoraryResult(_ query: SavedHoraryQuery, returnTo tab: HoraryHomeTab) {
-        registerHorary(query)
         detailRoute = .horaryResult(query, returnTo: tab)
     }
 

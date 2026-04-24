@@ -33,7 +33,6 @@ struct SavedHoraryView: View {
     }
 
     private func openQuery(_ query: SavedHoraryQuery) {
-        appState.registerHorary(query)
         onOpenQuery(query)
     }
 
@@ -41,25 +40,28 @@ struct SavedHoraryView: View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 280))], spacing: 16) {
                 ForEach(queries) { query in
-                    queryCard(query)
-                        .onTapGesture(count: 2) { openQuery(query) }
-                        .onTapGesture { openQuery(query) }
-                        .contextMenu {
-                            Button {
-                                openQuery(query)
-                            } label: {
-                                Label("Abrir consulta", systemImage: "questionmark.bubble")
-                            }
-                            Divider()
-                            Button(role: .destructive) {
-                                queryToDelete = query
-                            } label: {
-                                Label("Eliminar", systemImage: "trash")
-                            }
+                    Button {
+                        openQuery(query)
+                    } label: {
+                        queryCard(query)
+                    }
+                    .buttonStyle(.plain)
+                    .contextMenu {
+                        Button {
+                            openQuery(query)
+                        } label: {
+                            Label("Abrir consulta", systemImage: "questionmark.bubble")
                         }
+                        Divider()
+                        Button(role: .destructive) {
+                            queryToDelete = query
+                        } label: {
+                            Label("Eliminar", systemImage: "trash")
+                        }
+                    }
                 }
             }
-            .padding(20)
+            .padding(24)
         }
         .background(Color.appBackground)
     }
@@ -68,7 +70,7 @@ struct SavedHoraryView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .top) {
                 Image(systemName: "questionmark.bubble.fill")
-                    .foregroundColor(.appPrimaryText)
+                    .foregroundColor(.appAccentFill)
                     .font(.title3)
                 Spacer()
                 Text(query.request.datetimeLocal.replacingOccurrences(of: "T", with: " "))
@@ -91,10 +93,9 @@ struct SavedHoraryView: View {
                     .font(.caption).foregroundColor(.secondary)
             }
         }
-        .padding(16)
-        .background(Color.appPanel)
-        .cornerRadius(12)
-        .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
+        .frame(maxWidth: .infinity, minHeight: 150, alignment: .topLeading)
+        .contentShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .appCard()
     }
 
     private var emptyState: some View {

@@ -8,12 +8,14 @@ enum JulianDayError: LocalizedError {
     case invalidTimezone(String)
     case invalidDate(String)
     case invalidTime(String)
+    case utcUnavailable
 
     var errorDescription: String? {
         switch self {
         case .invalidTimezone(let tz): return "Zona horaria IANA no válida: \(tz)"
         case .invalidDate(let d):      return "Fecha inválida: \(d)"
         case .invalidTime(let t):      return "Hora fuera de rango: \(t)"
+        case .utcUnavailable:          return "No se pudo resolver la zona horaria UTC del sistema."
         }
     }
 }
@@ -59,7 +61,10 @@ func julianDayFromLocal(
     }
 
     let utcCal = Calendar(identifier: .gregorian)
-    let utcComps = utcCal.dateComponents(in: TimeZone(identifier: "UTC")!, from: localDate)
+    guard let utc = TimeZone(identifier: "UTC") else {
+        throw JulianDayError.utcUnavailable
+    }
+    let utcComps = utcCal.dateComponents(in: utc, from: localDate)
 
     let utHour = Double(utcComps.hour ?? 0)
         + Double(utcComps.minute ?? 0) / 60.0
@@ -74,7 +79,7 @@ func julianDayFromLocal(
     let isoFormatter = ISO8601DateFormatter()
     isoFormatter.timeZone = tz
     let localISO = isoFormatter.string(from: localDate)
-    isoFormatter.timeZone = TimeZone(identifier: "UTC")
+    isoFormatter.timeZone = utc
     let utcISO = isoFormatter.string(from: localDate)
 
     return JulianDayResult(

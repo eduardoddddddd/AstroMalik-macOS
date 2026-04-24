@@ -1,221 +1,103 @@
 # Arquitectura de AstroMalik-macOS
 
-Este documento explica las decisiones técnicas no obvias del proyecto. Si vienes del README y te preguntas "¿por qué hicieron X así?", respuestas aquí.
+AstroMalik-macOS es una app nativa SwiftUI de ventana única. El objetivo actual es uso pro personal: lectura natal guiada, archivo local, tránsitos y horaria integrada sin cuentas ni telemetría.
 
-## Tabla de contenidos
+## Ventana Única
 
-1. [Por qué Swift Package en lugar de .xcodeproj](#por-qué-swift-package)
-2. [El problema del Info.plist en executables SPM](#infoplist-embebido)
-3. [Activación de la app y ventanas en primer plano](#activación-de-app)
-4. [Arquitectura multi-ventana](#multi-ventana)
-5. [Aislamiento de actores en Swift 6](#actor-isolation)
-6. [Swiss Ephemeris embebido como target C](#swiss-ephemeris)
-7. [SQLite sin GRDB](#sqlite-directo)
+La app usa un solo `WindowGroup` con `NavigationSplitView`. La sidebar decide la sección y el panel derecho contiene el flujo activo:
 
----
+- Nueva Carta
+- Cartas Guardadas
+- Lectura
+- Tránsitos
+- Horaria
 
-## Por qué Swift Package
+La arquitectura multi-ventana experimental se retiró. Las cartas y consultas se abren dentro del detalle principal, y el estado vivo queda en `AppState`.
 
-Usar `Package.swift` en lugar de `.xcodeproj` tiene ventajas claras:
+## Estado De Aplicación
 
-- **Portabilidad** — compila desde terminal en cualquier Mac con toolchain Swift, sin Xcode
-- **Reproducibilidad** — un único archivo de manifiesto versiona todo el build
-- **Sin secretos** — nada de `xcuserdata` o schemes binarios que ensucien el repo
+`AppState` mantiene navegación, tema, carta natal activa y estado persistente de tránsitos. `UserStore` y `HoraryStore` publican datos desde `user.db`.
 
-Contra: ejecutar con ▶ desde Xcode es resbaladizo (ver secciones siguientes). La recomendación es desarrollar con Xcode para lectura/edición y ejecutar con `open` desde terminal.
+El archivo de cartas admite metadatos locales:
 
-## Info.plist embebido
+- notas por carta
+- etiquetas
+- búsqueda por nombre, fecha, lugar, etiqueta o nota
 
-Un executable SPM **no genera bundle `.app`** — produce un binario Mach-O a secas en `.build/.../AstroMalik`. Sin `Info.plist`, macOS lo trata como daemon y **no le da ventana GUI**.
+Joplin se trata como destino de salida de lectura. La app genera una nota Markdown lista para pegar en Joplin.
 
-La solución estándar es incrustar el `Info.plist` directamente en la sección `__TEXT,__info_plist` del binario:
+## Motores Astronómicos
 
-```swift
-// En Package.swift
-linkerSettings: [
-    .linkedLibrary("sqlite3"),
-    .unsafeFlags([
-        "-Xlinker", "-sectcreate",
-        "-Xlinker", "__TEXT",
-        "-Xlinker", "__info_plist",
-        "-Xlinker", "Info.plist",
-    ]),
-]
-```
+`AstroEngine` usa Swiss Ephemeris embebido como target C. Las casas se calculan con `swe_houses_ex2`, capturando código de retorno y mensaje `serr`; esto deja preparada la lectura futura de velocidades de cúspides y ángulos.
 
-Verificable con `otool`:
+La hora local IANA se convierte a JD UT en `JulianDay.swift`. UTC se resuelve sin force unwraps y los errores de fecha/hora/zona se propagan como `LocalizedError`.
+
+## Tránsitos
+
+`TransitEngine` calcula eventos por rango de fechas y agrupa días contiguos por tránsito/aspecto/punto natal. El loop trabaja con `Date` y calendario UTC; los strings ISO se materializan al crear el resultado final.
+
+Cada `TransitEvent` conserva el resumen interpretativo del tránsito y una serie `samples` con fecha, orbe e intensidad diaria normalizada (`1 - orb / maxOrb`). El score 1–5 ★ sigue siendo la fuerza global del evento, mientras que las muestras permiten dibujar la curva temporal real hacia el aspecto exacto.
+
+La vista de tránsitos:
+
+- muestra una timeline superior (`TransitTimelineView`) con barras diarias por intensidad y color de aspecto
+- mantiene la tabla inferior para lectura rápida de evento, estrellas, periodo, orbe y disponibilidad de texto
+- abre el mismo detalle textual al pulsar una fila de la timeline o una fila de tabla
+- conserva resultados al cambiar de sección
+- marca resultados como pendientes de recalcular si cambian fechas, carta o Luna
+- cancela cálculos en curso al abandonar la vista o lanzar otro cálculo
+- muestra errores controlados para rango inválido, rango excesivo o cancelación
+
+## Horaria
+
+Horaria sigue ejecutándose mediante Python, pero ya no depende de un path local hardcodeado. La resolución busca:
+
+1. módulo `horaria` embebido en el bundle, si existe
+2. `ASTROMALIK_HORARIA_PATH`
+3. ruta guardada en configuración local
+4. paquete `horaria` instalado en el Python detectado
+
+`ASTROMALIK_PYTHON_PATH` permite fijar un Python concreto. La pantalla de diagnóstico de Horaria muestra Python, versión, fuente del módulo, path real y último error.
+
+La dirección futura preferente es portar el núcleo de Horaria a Swift o empaquetar un runtime Python controlado dentro del `.app`.
+
+## UI De Lectura
+
+`NatalChartView` ofrece tres modos:
+
+- **Rueda**: rueda natal interactiva en SwiftUI con signos, casas, planetas, ASC/MC y aspectos.
+- **Lectura**: lectura guiada con triada Sol/Luna/ASC, regente del Ascendente, casas angulares, aspectos dominantes y síntesis editable.
+- **Textos**: corpus expandible de interpretaciones.
+
+La nota de lectura se genera desde `ReadingNoteBuilder` como Markdown.
+
+## Build Y Distribución
+
+El proyecto sigue siendo Swift Package Manager puro. Para desarrollo:
 
 ```bash
-otool -P .build/arm64-apple-macosx/debug/AstroMalik | head -20
-# muestra el plist en texto plano
+swift build
+open .build/arm64-apple-macosx/debug/AstroMalik
 ```
 
-El `Info.plist` está en la raíz del repo (no dentro de `Resources/` — SPM lo prohíbe para ese nombre).
+Para app de doble clic:
 
-## Activación de app
-
-Aun con Info.plist embebido, macOS puede no activar la app en primer plano al ejecutarla desde terminal. Se fuerza en código:
-
-```swift
-// AstroMalikApp.init()
-NSApplication.shared.setActivationPolicy(.regular)
-NSApplication.shared.activate(ignoringOtherApps: true)
+```bash
+./scripts/package_app.sh
+open AstroMalik.app
 ```
 
-Sin estas dos líneas la app vive en background y no puedes traer la ventana al frente con Cmd+Tab. Con ellas, se comporta como cualquier app nativa.
+El script compila release, crea el bundle, copia recursos, firma ad-hoc y elimina cuarentena.
 
-## Navegación principal
+## Validación
 
-El sidebar expone tres ítems fijos via `NavItem` (enum `CaseIterable`):
+La suite cubre:
 
-| Ítem | Vista | Icono |
-|------|-------|-------|
-| Nueva Carta | `BirthChartForm` | `star.circle` |
-| Cartas Guardadas | `SavedChartsView` | `tray.full` |
-| Tránsitos | `TransitsView` (inline) | `calendar.circle` |
-
-**Tránsitos** muestra directamente `TransitsView` en el panel de detalle. Si hay más de una carta guardada, aparece un `Picker` segmentado para elegir cuál carta usar. Si no hay cartas guardadas, se muestra un estado vacío con mensaje.
-
-No hay botón flotante de tránsitos en la toolbar de `NatalChartView` — la funcionalidad vive en el sidebar.
-
----
-
-## Multi-ventana
-
-### Problema
-
-La primera versión (Fase 0) usaba `.sheet(item: $pendingChart)` para mostrar la carta calculada. En macOS los sheets:
-
-- Tienen tamaño fijo por defecto
-- Bloquean la ventana padre mientras están abiertos
-- No permiten comparar dos cartas simultáneamente
-
-### Solución
-
-Segundo `WindowGroup` parametrizado por UUID:
-
-```swift
-// AstroMalikApp.swift
-WindowGroup(id: "chart", for: UUID.self) { $chartId in
-    ChartWindowHost(chartId: chartId)
-        .environmentObject(appState)
-        .frame(minWidth: 960, idealWidth: 1180, minHeight: 640, idealHeight: 800)
-}
-.windowResizability(.contentMinSize)
-```
-
-Apertura desde cualquier vista:
-
-```swift
-@Environment(\.openWindow) private var openWindow
-
-appState.register(chart)
-openWindow(id: "chart", value: chart.id)
-```
-
-### AppState como registro
-
-Como `WindowGroup(for:)` serializa el UUID (SwiftUI lo persiste para restauración de ventanas), el UUID por sí solo no basta para reconstruir la `NatalChart`. `AppState` mantiene dos fuentes resolubles:
-
-```swift
-@Published var sessionCharts: [UUID: NatalChart] = [:]   // calculadas en esta sesión
-
-func chart(for id: UUID) -> NatalChart? {
-    if let c = sessionCharts[id] { return c }
-    return userStore.savedCharts.first(where: { $0.id == id })
-}
-```
-
-Si el UUID no se resuelve, `ChartWindowHost` muestra un estado vacío elegante en lugar de crashear.
-
-## Actor isolation
-
-En Swift 6 el modelo de concurrencia es estricto. `AppState` está marcado `@MainActor`, y todas las vistas SwiftUI corren en el main actor. Un error común es usar `Task.detached` para trabajo pesado y luego asignar a `@State` desde dentro:
-
-```swift
-// ❌ Antipatrón — falla en Swift 6
-Task.detached { [chart] in
-    let result = appState.corpusStore.build(chart: chart)  // cross-actor sin await
-    interpretaciones = result                              // cross-actor a @State
-}
-```
-
-El patrón correcto: la task vive en el main actor, y solo el trabajo pesado se delega a detached con `.value`:
-
-```swift
-// ✅ Patrón correcto
-let store = appState.corpusStore
-let currentChart = chart
-Task {
-    let interps = await Task.detached(priority: .userInitiated) {
-        store.buildNatalInterpretations(chart: currentChart)
-    }.value
-    interpretaciones = interps   // ya en main actor
-    isLoadingInterp = false
-}
-```
-
-Este fix está aplicado en `NatalChartView.loadInterpretaciones()`.
-
-## Swiss Ephemeris
-
-Swiss Ephemeris es una librería C de alta precisión (Astrodienst). Se integra como **target SPM `CSwissEph`** compilando los `.c` directamente en el paquete:
-
-```swift
-.target(
-    name: "CSwissEph",
-    path: "Sources/CSwissEph",
-    exclude: ["include/module.modulemap"],
-    publicHeadersPath: "include",
-    cSettings: [.define("JAVAME", to: "0")]
-)
-```
-
-El target Swift importa con `import CSwissEph` y llama a `swe_calc_ut`, `swe_houses_ex`, etc. directamente. Los archivos de efemérides (`.se1`, 1800–2400) se embeben en el bundle de recursos.
-
-## SQLite directo
-
-El proyecto usa `sqlite3` del sistema (`-lsqlite3`) con un wrapper Swift propio (`SQLiteDB.swift`, ~150 líneas). Se eliminó GRDB en un commit anterior porque:
-
-- GRDB añadía ~200 KB y 100+ archivos al checkout
-- El uso es elemental (CRUD sobre ~5 tablas pequeñas)
-- SQLite del sistema siempre está disponible en macOS
-
-El coste es mantener nuestro wrapper, pero cabe en un archivo y es trivial de auditar.
-
----
-
-## Pendientes / Technical Debt
-
-Hallazgos del code review del 2026-04-19. Ordenados por criticidad.
-
-### Crítico
-
-| # | Archivo | Línea | Problema |
-|---|---------|-------|---------|
-| 1 | `Engine/TransitEngine.swift` | 86, 107, 128, 165 | Force unwrap en `.day!` de `dateComponents` — puede retornar nil y crashear |
-| 2 | `Store/UserStore.swift` | 34 | Force unwrap `.first!` en URLs de FileManager sin nil-check |
-| 3 | `Models/SavedChartRecord.swift` | 27 | `(try? ...) ?? "{}"` silencia errores de encoding — puede guardar JSON vacío sin aviso |
-
-**Fix sugerido #1 y #2:** reemplazar `!` por `?? 0` / `?? fallback` y manejar el caso nil explícitamente.  
-**Fix sugerido #3:** lanzar o loguear el error en lugar de usar `??`.
-
-### Thread Safety
-
-| # | Archivo | Problema |
-|---|---------|---------|
-| 4 | `Store/UserStore.swift` | Métodos que tocan SwiftData/UI sin `@MainActor` |
-| 5 | `Views/TransitsView.swift` | Async `computeTransitPeriod` sin cancellation token; el usuario puede lanzar cálculos concurrentes |
-| 6 | `Views/NatalChartView.swift` | Task detached no cancela si el view se desmonta antes de terminar |
-
-**Fix sugerido #4:** añadir `@MainActor` a `UserStore` o aislar los métodos que escriben a `@Published`.  
-**Fix sugerido #5 y #6:** guardar la task en `@State var currentTask: Task<Void,Never>?` y cancelar en `.onDisappear`.
-
-### SwiftUI / Calidad
-
-| # | Archivo | Problema |
-|---|---------|---------|
-| 7 | `Views/BirthChartForm.swift` | Usa `DispatchQueue.main.asyncAfter` — preferir `Task { try? Task.sleep(nanoseconds:) }` |
-| 8 | `Views/SavedChartsView.swift` | Doble tap + single tap en el mismo elemento genera UX confusa y lógica duplicada |
-| 9 | `Engine/TransitEngine.swift` | Fallback a `.capitalized` para nombres no traducidos puede producir mayúsculas incorrectas (p.ej. "PLUTON") |
-| 10 | `Engine/JulianDay.swift` | `TimeZone(identifier: "UTC")!` — UTC siempre es válido pero rompe el patrón de manejo seguro |
+- carta natal de referencia
+- ASC y corpus asociado
+- `swe_houses_ex2`
+- rangos/cancelación de tránsitos
+- muestras diarias de timeline y pico de intensidad en fecha exacta
+- timezones conocidos
+- diagnóstico de Horaria
+- paridad de Horaria con casos de referencia

@@ -114,11 +114,18 @@ final class AstroEngine {
 
     static func calcHouses(
         jd: Double, lat: Double, lon: Double, system: Character = "P"
-    ) -> (cusps: [Double], asc: Double, mc: Double) {
+    ) throws -> (cusps: [Double], asc: Double, mc: Double) {
         var cusps  = [Double](repeating: 0, count: 13)   // [0] unused, [1..12]
         var ascmc  = [Double](repeating: 0, count: 10)
+        var cuspSpeeds = [Double](repeating: 0, count: 13)
+        var ascmcSpeeds = [Double](repeating: 0, count: 10)
+        var serr = [CChar](repeating: 0, count: 256)
         let hsys   = Int32(system.asciiValue ?? 80)       // 'P' = 80
-        swe_houses(jd, lat, lon, hsys, &cusps, &ascmc)
+        let rc = swe_houses_ex2(jd, 0, lat, lon, hsys, &cusps, &ascmc, &cuspSpeeds, &ascmcSpeeds, &serr)
+        guard rc >= 0 else {
+            let message = String(cString: serr).trimmingCharacters(in: .whitespacesAndNewlines)
+            throw AstroError.housesUnavailable(message.isEmpty ? "Swiss Ephemeris no devolvió casas." : message)
+        }
         return (
             Array(cusps[1...12]),   // grados de las 12 cúspides
             ascmc[0],               // ASC
@@ -202,7 +209,7 @@ final class AstroEngine {
         jd: Double, lat: Double, lon: Double
     ) throws -> NatalChart {
         let rawPlanets = try calcPlanets(jd: jd)
-        let (cusps, asc, mc) = calcHouses(jd: jd, lat: lat, lon: lon, system: "P")
+        let (cusps, asc, mc) = try calcHouses(jd: jd, lat: lat, lon: lon, system: "P")
 
         var bodies: [PlanetBody] = []
         for planet in PLANET_LIST {
@@ -257,12 +264,12 @@ struct TransitAspectRaw {
 
 enum AstroError: LocalizedError {
     case calcFailed(String, String)
-    case housesUnavailable
+    case housesUnavailable(String)
 
     var errorDescription: String? {
         switch self {
         case .calcFailed(let planet, let msg): return "Error calculando \(planet): \(msg)"
-        case .housesUnavailable: return "No se pudieron calcular las casas"
+        case .housesUnavailable(let msg): return "No se pudieron calcular las casas: \(msg)"
         }
     }
 }

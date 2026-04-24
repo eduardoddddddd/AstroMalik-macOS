@@ -26,16 +26,18 @@ enum AppAppearanceMode: String, CaseIterable, Identifiable {
 }
 
 extension Color {
-    static let appBackground = adaptive(light: "#FAF6F0", dark: "#14110F")
-    static let appPanel = adaptive(light: "#F5EFE7", dark: "#231D1A")
-    static let appSurface = adaptive(light: "#FFFFFF", dark: "#2B2420")
-    static let appPrimaryText = adaptive(light: "#3C2A1E", dark: "#F1E3D2")
-    static let appSecondaryAccent = adaptive(light: "#6B4F3A", dark: "#D1B08F")
-    static let appAccentFill = adaptive(light: "#3C2A1E", dark: "#D4B08A")
-    static let appAccentForeground = adaptive(light: "#FFFFFF", dark: "#1D1713")
-    static let appChipBackground = adaptive(light: "#EDE5DA", dark: "#3B312B")
-    static let appBorder = adaptive(light: "#D6C9BA", dark: "#4A3D35")
-    static let appInputBackground = adaptive(light: "#FFFFFF", dark: "#2D2622")
+    static let appBackground = adaptive(light: "#F6F7F4", dark: "#12151A")
+    static let appSidebar = adaptive(light: "#ECEFF3", dark: "#171B22")
+    static let appPanel = adaptive(light: "#FFFFFF", dark: "#202630")
+    static let appSurface = adaptive(light: "#F9FAFB", dark: "#252B35")
+    static let appPrimaryText = adaptive(light: "#202833", dark: "#F3F5F7")
+    static let appSecondaryAccent = adaptive(light: "#0F766E", dark: "#7DD3C7")
+    static let appAccentFill = adaptive(light: "#6554C0", dark: "#A89BFF")
+    static let appAccentForeground = adaptive(light: "#FFFFFF", dark: "#15131F")
+    static let appChipBackground = adaptive(light: "#E6E9EE", dark: "#303844")
+    static let appBorder = adaptive(light: "#D0D7DE", dark: "#3B4652")
+    static let appInputBackground = adaptive(light: "#FFFFFF", dark: "#1D232B")
+    static let appWarning = adaptive(light: "#B45309", dark: "#FBBF24")
 
     private static func adaptive(light: String, dark: String) -> Color {
         Color(nsColor: NSColor(name: nil) { appearance in
@@ -52,6 +54,25 @@ extension Color {
         let g = Double((value >> 8)  & 0xFF) / 255
         let b = Double(value & 0xFF) / 255
         self.init(red: r, green: g, blue: b)
+    }
+}
+
+extension View {
+    func appCard(padding: CGFloat = 16) -> some View {
+        self
+            .padding(padding)
+            .background(Color.appPanel)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .stroke(Color.appBorder.opacity(0.75), lineWidth: 1)
+            )
+    }
+
+    func appSectionHeader() -> some View {
+        self
+            .font(.headline)
+            .foregroundColor(.appPrimaryText)
     }
 }
 

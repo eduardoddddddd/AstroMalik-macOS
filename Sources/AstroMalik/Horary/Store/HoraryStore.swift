@@ -24,9 +24,11 @@ final class HoraryStore: ObservableObject {
     }
 
     private static func userDBURL() throws -> URL {
-        let appSupport = FileManager.default.urls(
+        guard let appSupport = FileManager.default.urls(
             for: .applicationSupportDirectory, in: .userDomainMask
-        ).first!
+        ).first else {
+            throw HoraryStoreError.applicationSupportUnavailable
+        }
         let dir = appSupport.appendingPathComponent("AstroMalik", isDirectory: true)
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         return dir.appendingPathComponent("user.db")
@@ -56,6 +58,14 @@ final class HoraryStore: ObservableObject {
             args: [.text(query.id.uuidString)]
         )
         Task { await load() }
+    }
+}
+
+private enum HoraryStoreError: LocalizedError {
+    case applicationSupportUnavailable
+
+    var errorDescription: String? {
+        "No se pudo localizar Application Support para guardar consultas horarias."
     }
 }
 

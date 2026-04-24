@@ -2,18 +2,36 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var appState: AppState
-    @State private var transitChartIndex: Int = 0
 
     var body: some View {
         NavigationSplitView {
-            List(NavItem.allCases, selection: $appState.selectedNav) { item in
-                Label(item.rawValue, systemImage: item.systemImage)
-                    .tag(item)
+            VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("AstroMalik")
+                        .font(.system(size: 24, weight: .semibold))
+                        .foregroundColor(.appPrimaryText)
+                    Text("Cartas, tránsitos y horaria")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.horizontal, 18)
+                .padding(.top, 20)
+                .padding(.bottom, 14)
+
+                List(NavItem.allCases, selection: $appState.selectedNav) { item in
+                    Label(item.rawValue, systemImage: item.systemImage)
+                        .font(.body.weight(.medium))
+                        .tag(item)
+                        .padding(.vertical, 3)
+                }
+                .listStyle(.sidebar)
+                .scrollContentBackground(.hidden)
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 220)
-            .navigationTitle("AstroMalik")
+            .background(Color.appSidebar)
+            .navigationSplitViewColumnWidth(min: 210, ideal: 230, max: 270)
         } detail: {
             detailView
+                .id(appState.detailRoute.viewIdentity)
         }
         .background(Color.appBackground)
         .sheet(isPresented: $appState.isHelpPresented) {
@@ -40,9 +58,13 @@ struct ContentView: View {
         case .natalResult(let chart, let returnTo):
             NatalChartView(
                 chart: chart,
+                initialMode: returnTo == .lectura ? .reading : .wheel,
                 onBack: { appState.showDefaultDetail(for: returnTo) }
             )
             .environmentObject(appState)
+
+        case .reading:
+            readingDetail
 
         case .savedCharts:
             SavedChartsView(onOpenChart: { chart in
@@ -71,6 +93,28 @@ struct ContentView: View {
     }
 
     @ViewBuilder
+    private var readingDetail: some View {
+        if let chart = appState.activeNatalChart ?? appState.userStore.savedCharts.first {
+            NatalChartView(
+                chart: chart,
+                initialMode: .reading,
+                onBack: nil
+            )
+            .environmentObject(appState)
+        } else {
+            VStack(spacing: 12) {
+                Image(systemName: "book.pages")
+                    .font(.system(size: 48))
+                    .foregroundColor(.secondary)
+                Text("Abre o guarda una carta para iniciar una lectura.")
+                    .foregroundColor(.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.appBackground)
+        }
+    }
+
+    @ViewBuilder
     private var transitosDetail: some View {
         let charts = appState.userStore.savedCharts
         if charts.isEmpty {
@@ -85,7 +129,7 @@ struct ContentView: View {
         } else {
             VStack(spacing: 0) {
                 if charts.count > 1 {
-                    Picker("Carta", selection: $transitChartIndex) {
+                    Picker("Carta", selection: $appState.transitChartIndex) {
                         ForEach(charts.indices, id: \.self) { i in
                             Text(charts[i].name.isEmpty ? "Carta \(i + 1)" : charts[i].name).tag(i)
                         }
@@ -93,7 +137,10 @@ struct ContentView: View {
                     .pickerStyle(.segmented)
                     .padding()
                 }
-                TransitsView(natalChart: charts[min(transitChartIndex, charts.count - 1)])
+                TransitsView(
+                    natalChart: charts[min(appState.transitChartIndex, charts.count - 1)],
+                    state: appState.transitState
+                )
                     .environmentObject(appState)
             }
         }

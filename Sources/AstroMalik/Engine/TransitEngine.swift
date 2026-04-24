@@ -38,6 +38,12 @@ private func buildScore(transitKey: String, aspectKey: String, minOrb: Double) -
     return (pw * aw * (0.5 + 0.5 * orbFactor) * 10).rounded() / 10
 }
 
+private func intensityFor(aspectKey: String, orb: Double) -> Double {
+    let maxOrb = ASPECT_ORBS[aspectKey] ?? 6.0
+    guard maxOrb > 0 else { return 0 }
+    return min(1, max(0, 1 - orb / maxOrb))
+}
+
 private func starsForScore(_ score: Double) -> Int {
     switch score {
     case 25...: return 5
@@ -58,12 +64,13 @@ private struct EventAccum {
     var aspectKey: String
     var aspectLabel: String
     var color: String
-    var fromDate: String
-    var toDate: String
-    var exactDate: String
+    var fromDate: Date
+    var toDate: Date
+    var exactDate: Date
     var minOrb: Double
     var retrogradeOnExact: Bool
     var lastDate: Date
+    var samples: [TransitIntensitySample]
 }
 
 // MARK: - Main Calculation
@@ -82,8 +89,13 @@ func computeTransitPeriod(
         throw TransitError.invalidRange
     }
 
-    let cal = Calendar(identifier: .gregorian)
-    let totalDays = cal.dateComponents([.day], from: fromDate, to: toDate).day! + 1
+    guard let utc = TimeZone(identifier: "UTC") else { throw TransitError.utcUnavailable }
+    var cal = Calendar(identifier: .gregorian)
+    cal.timeZone = utc
+    guard let dayDelta = cal.dateComponents([.day], from: fromDate, to: toDate).day else {
+        throw TransitError.dateCalculationFailed
+    }
+    let totalDays = dayDelta + 1
     guard totalDays <= 3660 else { throw TransitError.rangeTooBig }
 
     let natalPlanets = Dictionary(uniqueKeysWithValues: natalChart.bodies.map { body in
@@ -98,22 +110,24 @@ func computeTransitPeriod(
 
     var events: [String: EventAccum] = [:]
     var lastEventKeyByBase: [String: String] = [:]
-
+    var eventSequenceByBase: [String: Int] = [:]
     let isoFmt = ISO8601DateFormatter()
     isoFmt.formatOptions = [.withFullDate]
-    isoFmt.timeZone = TimeZone(identifier: "UTC")
+    isoFmt.timeZone = utc
 
     for dayIdx in 0..<totalDays {
-        let currentDate = cal.date(byAdding: .day, value: dayIdx, to: fromDate)!
-        let noonISO = isoFmt.string(from: currentDate)
+        try Task.checkCancellation()
 
-        guard let jdResult = try? julianDayFromLocal(
-            birthDate: noonISO,
-            birthTime: "12:00",
-            timezoneName: "UTC"
-        ) else { continue }
+        guard let currentDate = cal.date(byAdding: .day, value: dayIdx, to: fromDate) else {
+            throw TransitError.dateCalculationFailed
+        }
+        let comps = cal.dateComponents([.year, .month, .day], from: currentDate)
+        guard let year = comps.year, let month = comps.month, let day = comps.day else {
+            throw TransitError.dateCalculationFailed
+        }
+        let jd = swe_julday(Int32(year), Int32(month), Int32(day), 12.0, SE_GREG_CAL)
 
-        let transitPlanets = try AstroEngine.calcPlanets(jd: jdResult.jd)
+        let transitPlanets = try AstroEngine.calcPlanets(jd: jd)
         let aspects = AstroEngine.findAspects(from: natalPlanets, to: transitPlanets)
 
         for asp in aspects {
@@ -121,22 +135,28 @@ func computeTransitPeriod(
             if asp.trKey == asp.nKey { continue }
 
             let baseKey = "\(asp.trKey):\(asp.aspKey):\(asp.nKey)"
-            let currentISO = noonISO
+            let sample = TransitIntensitySample(
+                date: isoFmt.string(from: currentDate),
+                orb: (asp.orb * 100).rounded() / 100,
+                intensity: (intensityFor(aspectKey: asp.aspKey, orb: asp.orb) * 1000).rounded() / 1000
+            )
 
             if let prevKey = lastEventKeyByBase[baseKey],
                let existing = events[prevKey],
-               cal.dateComponents([.day], from: existing.lastDate, to: currentDate).day! <= EVENT_GAP_DAYS {
+               daysBetween(existing.lastDate, currentDate, calendar: cal) <= EVENT_GAP_DAYS {
                 var ev = existing
-                ev.toDate = currentISO
+                ev.toDate = currentDate
                 ev.lastDate = currentDate
+                ev.samples.append(sample)
                 if asp.orb < ev.minOrb {
                     ev.minOrb = asp.orb
-                    ev.exactDate = currentISO
+                    ev.exactDate = currentDate
                     ev.retrogradeOnExact = transitPlanets[asp.trKey]?.retro ?? false
                 }
                 events[prevKey] = ev
             } else {
-                let suffix = events.keys.filter { $0.hasPrefix(baseKey) }.count + 1
+                let suffix = (eventSequenceByBase[baseKey] ?? 0) + 1
+                eventSequenceByBase[baseKey] = suffix
                 let newKey = suffix == 1 ? baseKey : "\(baseKey):\(suffix)"
                 events[newKey] = EventAccum(
                     transitKey: asp.trKey,
@@ -146,12 +166,13 @@ func computeTransitPeriod(
                     aspectKey: asp.aspKey,
                     aspectLabel: ASPECT_NAMES[asp.aspKey] ?? asp.aspKey.capitalized,
                     color: ASPECT_COLORS[asp.aspKey] ?? "#6b6560",
-                    fromDate: currentISO,
-                    toDate: currentISO,
-                    exactDate: currentISO,
+                    fromDate: currentDate,
+                    toDate: currentDate,
+                    exactDate: currentDate,
                     minOrb: asp.orb,
                     retrogradeOnExact: transitPlanets[asp.trKey]?.retro ?? false,
-                    lastDate: currentDate
+                    lastDate: currentDate,
+                    samples: [sample]
                 )
                 lastEventKeyByBase[baseKey] = newKey
             }
@@ -160,9 +181,9 @@ func computeTransitPeriod(
 
     var results: [TransitEvent] = []
     for accum in events.values {
-        let fromD = isoFmt.date(from: accum.fromDate) ?? fromDate
-        let toD   = isoFmt.date(from: accum.toDate)   ?? fromDate
-        let activeDays = cal.dateComponents([.day], from: fromD, to: toD).day! + 1
+        try Task.checkCancellation()
+
+        let activeDays = daysBetween(accum.fromDate, accum.toDate, calendar: cal) + 1
         let score = buildScore(transitKey: accum.transitKey, aspectKey: accum.aspectKey, minOrb: accum.minOrb)
         let stars = starsForScore(score)
         let (text, source) = corpusStore.lookupTransit(
@@ -176,16 +197,17 @@ func computeTransitPeriod(
             aspectKey: accum.aspectKey,
             aspectLabel: accum.aspectLabel,
             color: accum.color,
-            fromDate: accum.fromDate,
-            toDate: accum.toDate,
-            exactDate: accum.exactDate,
+            fromDate: isoFmt.string(from: accum.fromDate),
+            toDate: isoFmt.string(from: accum.toDate),
+            exactDate: isoFmt.string(from: accum.exactDate),
             activeDays: activeDays,
             minOrb: accum.minOrb,
             retrogradeOnExact: accum.retrogradeOnExact,
             score: score,
             stars: stars,
             text: text,
-            source: source
+            source: source,
+            samples: accum.samples.sorted { $0.date < $1.date }
         ))
     }
 
@@ -197,6 +219,10 @@ func computeTransitPeriod(
 }
 
 // MARK: - Aux
+
+private func daysBetween(_ start: Date, _ end: Date, calendar: Calendar) -> Int {
+    calendar.dateComponents([.day], from: start, to: end).day ?? 0
+}
 
 private let PLANET_NAMES: [String: String] = [
     "SOL": "Sol", "LUNA": "Luna", "MERCURIO": "Mercurio",
@@ -212,10 +238,14 @@ private let ASPECT_NAMES: [String: String] = [
 enum TransitError: LocalizedError {
     case invalidRange
     case rangeTooBig
+    case dateCalculationFailed
+    case utcUnavailable
     var errorDescription: String? {
         switch self {
         case .invalidRange: return "La fecha final debe ser posterior a la inicial"
         case .rangeTooBig:  return "El rango máximo es 10 años"
+        case .dateCalculationFailed: return "No se pudo construir el calendario diario de tránsitos"
+        case .utcUnavailable: return "No se pudo resolver UTC para calcular tránsitos"
         }
     }
 }

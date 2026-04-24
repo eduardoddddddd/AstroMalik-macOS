@@ -319,7 +319,6 @@ struct HoraryFormView: View {
             let response = try await HoraryEngine.calculate(request)
             let query = try SavedHoraryQuery(request: request, response: response)
             try appState.horaryStore.save(query)
-            appState.registerHorary(query)
             onQueryCalculated(query)
             lastCalculated = trimmedQuestion
         } catch {

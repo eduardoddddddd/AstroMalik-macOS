@@ -20,36 +20,65 @@ struct BirthChartForm: View {
     @State private var isCalculating = false
     @State private var errorMsg: String? = nil
     @State private var lastCalculated: String? = nil
+    @State private var lastCalculatedTask: Task<Void, Never>? = nil
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 headerSection
-                Divider()
-                personalSection
-                Divider()
-                dateTimeSection
-                Divider()
-                locationSection
-                Divider()
-                actionSection
+                formLayout
             }
             .padding(28)
+            .frame(maxWidth: 1080, alignment: .leading)
         }
         .background(Color.appBackground)
         .navigationTitle("Nueva Carta Natal")
+        .onDisappear {
+            lastCalculatedTask?.cancel()
+            lastCalculatedTask = nil
+        }
     }
 
     // MARK: - Sections
 
     private var headerSection: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("Carta Natal")
-                .font(.system(size: 28, weight: .light))
+                .font(.system(size: 30, weight: .semibold))
                 .foregroundColor(.appPrimaryText)
             Text("Calcula tu carta natal con interpretaciones en castellano")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
+        }
+    }
+
+    private var formLayout: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(alignment: .top, spacing: 20) {
+                primaryColumn
+                    .frame(minWidth: 330, maxWidth: 480, alignment: .topLeading)
+                secondaryColumn
+                    .frame(minWidth: 330, maxWidth: 520, alignment: .topLeading)
+            }
+
+            VStack(alignment: .leading, spacing: 16) {
+                primaryColumn
+                secondaryColumn
+            }
+        }
+    }
+
+    private var primaryColumn: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            personalSection
+            dateTimeSection
+        }
+    }
+
+    private var secondaryColumn: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            locationSection
+            actionSection
         }
     }
 
@@ -58,47 +87,66 @@ struct BirthChartForm: View {
             label("Nombre (opcional)")
             TextField("Tu nombre o apodo", text: $name)
                 .textFieldStyle(.roundedBorder)
-                .frame(maxWidth: 360)
+                .frame(maxWidth: .infinity)
         }
+        .appCard()
     }
 
     private var dateTimeSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             label("Fecha y Hora de Nacimiento")
-            HStack(spacing: 20) {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Fecha").font(.caption).foregroundColor(.secondary)
-                    DatePicker("", selection: $birthDate, displayedComponents: .date)
-                        .labelsHidden()
-                        .datePickerStyle(.compact)
+            Grid(alignment: .leading, horizontalSpacing: 18, verticalSpacing: 14) {
+                GridRow {
+                    dateField
+                    timeField
                 }
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Hora").font(.caption).foregroundColor(.secondary)
-                    HStack {
-                        Picker("H", selection: $birthHour) {
-                            ForEach(0..<24, id: \.self) { h in
-                                Text(String(format: "%02d", h)).tag(h)
-                            }
-                        }
-                        .frame(width: 70)
-                        Text(":").font(.title3)
-                        Picker("M", selection: $birthMinute) {
-                            ForEach(0..<60, id: \.self) { m in
-                                Text(String(format: "%02d", m)).tag(m)
-                            }
-                        }
-                        .frame(width: 70)
-                    }
-                    .pickerStyle(.menu)
-                }
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Zona IANA").font(.caption).foregroundColor(.secondary)
-                    TextField("Europe/Madrid", text: $timezone)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(width: 200)
-                        .autocorrectionDisabled()
+                GridRow {
+                    timezoneField
+                        .gridCellColumns(2)
                 }
             }
+        }
+        .appCard()
+    }
+
+    private var dateField: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Fecha").font(.caption).foregroundColor(.secondary)
+            DatePicker("", selection: $birthDate, displayedComponents: .date)
+                .labelsHidden()
+                .datePickerStyle(.compact)
+        }
+    }
+
+    private var timeField: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Hora").font(.caption).foregroundColor(.secondary)
+            HStack {
+                Picker("H", selection: $birthHour) {
+                    ForEach(0..<24, id: \.self) { h in
+                        Text(String(format: "%02d", h)).tag(h)
+                    }
+                }
+                .frame(width: 70)
+                Text(":").font(.title3)
+                Picker("M", selection: $birthMinute) {
+                    ForEach(0..<60, id: \.self) { m in
+                        Text(String(format: "%02d", m)).tag(m)
+                    }
+                }
+                .frame(width: 70)
+            }
+            .pickerStyle(.menu)
+        }
+    }
+
+    private var timezoneField: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Zona IANA").font(.caption).foregroundColor(.secondary)
+            TextField("Europe/Madrid", text: $timezone)
+                .textFieldStyle(.roundedBorder)
+                .frame(maxWidth: .infinity)
+                .autocorrectionDisabled()
         }
     }
 
@@ -108,14 +156,19 @@ struct BirthChartForm: View {
             HStack {
                 TextField("Ciudad, país…", text: $placeQuery)
                     .textFieldStyle(.roundedBorder)
-                    .frame(maxWidth: 300)
+                    .frame(maxWidth: .infinity)
                     .onChange(of: placeQuery) { _, q in
                         Task { await searchPlaces(q) }
                     }
                 if !placeQuery.isEmpty {
-                    Button("✕") { placeQuery = ""; placeResults = [] }
-                        .buttonStyle(.plain)
-                        .foregroundColor(.secondary)
+                    Button {
+                        placeQuery = ""
+                        placeResults = []
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundColor(.secondary)
                 }
             }
             if !placeResults.isEmpty {
@@ -141,8 +194,11 @@ struct BirthChartForm: View {
                     }
                 }
                 .background(Color.appBackground)
-                .cornerRadius(8)
-                .shadow(radius: 4)
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .stroke(Color.appBorder, lineWidth: 1)
+                )
                 .frame(maxWidth: 500)
             }
             if selectedPlace != nil || !placeName.isEmpty {
@@ -162,6 +218,7 @@ struct BirthChartForm: View {
                 }
             }
         }
+        .appCard()
     }
 
     private var actionSection: some View {
@@ -195,14 +252,14 @@ struct BirthChartForm: View {
             .disabled(isCalculating)
             .keyboardShortcut(.return, modifiers: [.command])
         }
+        .appCard()
     }
 
     // MARK: - Helpers
 
     private func label(_ text: String) -> some View {
         Text(text)
-            .font(.headline)
-            .foregroundColor(.appPrimaryText)
+            .appSectionHeader()
     }
 
     private func searchPlaces(_ query: String) async {
@@ -258,9 +315,11 @@ struct BirthChartForm: View {
             )
             onChartCalculated(chart)
             lastCalculated = chart.name
-            // Mensaje efímero: se borra a los 4s
             let thisChart = chart.name
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            lastCalculatedTask?.cancel()
+            lastCalculatedTask = Task {
+                try? await Task.sleep(nanoseconds: 4_000_000_000)
+                guard !Task.isCancelled else { return }
                 if lastCalculated == thisChart { lastCalculated = nil }
             }
         } catch {

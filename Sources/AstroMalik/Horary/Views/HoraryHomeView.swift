@@ -5,6 +5,7 @@ struct HoraryHomeView: View {
     var onOpenQuery: (SavedHoraryQuery, HoraryHomeTab) -> Void
 
     @State private var selectedTab: HoraryHomeTab
+    @State private var isDiagnosticsPresented = false
 
     init(
         initialTab: HoraryHomeTab,
@@ -45,5 +46,17 @@ struct HoraryHomeView: View {
         }
         .background(Color.appBackground)
         .navigationTitle("Horaria")
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    isDiagnosticsPresented = true
+                } label: {
+                    Label("Diagnóstico", systemImage: "stethoscope")
+                }
+            }
+        }
+        .sheet(isPresented: $isDiagnosticsPresented) {
+            HoraryDiagnosticsView()
+        }
     }
 }

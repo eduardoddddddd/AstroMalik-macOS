@@ -12,6 +12,8 @@ struct SavedChartRecord {
     var longitude: Double
     var placeName: String
     var chartJSON: String
+    var notes: String
+    var tags: [String]
     var createdAt: Double       // Unix timestamp
 
     init(from chart: NatalChart) {
@@ -25,6 +27,8 @@ struct SavedChartRecord {
         self.placeName = chart.placeName
         let encoder = JSONEncoder()
         self.chartJSON = (try? String(data: encoder.encode(chart), encoding: .utf8)) ?? "{}"
+        self.notes = ""
+        self.tags = []
         self.createdAt = chart.createdAt.timeIntervalSince1970
     }
 
@@ -50,16 +54,27 @@ struct SavedChartRecord {
         """)
     }
 
+    static func migrateMetadataColumns(db: SQLiteDB) throws {
+        let rows = try db.query("PRAGMA table_info(saved_charts)")
+        let columns = Set(rows.compactMap { $0["name"]?.string })
+        if !columns.contains("notes") {
+            try db.execute("ALTER TABLE saved_charts ADD COLUMN notes TEXT NOT NULL DEFAULT ''")
+        }
+        if !columns.contains("tags") {
+            try db.execute("ALTER TABLE saved_charts ADD COLUMN tags TEXT NOT NULL DEFAULT ''")
+        }
+    }
+
     func save(to db: SQLiteDB) throws {
         let sql = """
             INSERT OR REPLACE INTO saved_charts
-            (id, name, birth_date, birth_time, timezone, latitude, longitude, place_name, chart_json, created_at)
-            VALUES (?,?,?,?,?,?,?,?,?,?)
+            (id, name, birth_date, birth_time, timezone, latitude, longitude, place_name, chart_json, notes, tags, created_at)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
         """
         try db.run(sql, args: [
             .text(id), .text(name), .text(birthDate), .text(birthTime),
             .text(timezone), .real(latitude), .real(longitude), .text(placeName),
-            .text(chartJSON), .real(createdAt)
+            .text(chartJSON), .text(notes), .text(tags.joined(separator: ",")), .real(createdAt)
         ])
     }
 
@@ -80,9 +95,18 @@ struct SavedChartRecord {
                 id: id, name: name, birthDate: bd, birthTime: bt,
                 timezone: tz, latitude: lat, longitude: lon,
                 placeName: row["place_name"]?.string ?? "",
-                chartJSON: json, createdAt: ca
+                chartJSON: json,
+                notes: row["notes"]?.string ?? "",
+                tags: parseTags(row["tags"]?.string ?? ""),
+                createdAt: ca
             )
         }
+    }
+
+    private static func parseTags(_ raw: String) -> [String] {
+        raw.split(separator: ",")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
     }
 }
 
@@ -90,11 +114,12 @@ struct SavedChartRecord {
 extension SavedChartRecord {
     init(id: String, name: String, birthDate: String, birthTime: String,
          timezone: String, latitude: Double, longitude: Double,
-         placeName: String, chartJSON: String, createdAt: Double) {
+         placeName: String, chartJSON: String, notes: String = "", tags: [String] = [], createdAt: Double) {
         self.id = id; self.name = name; self.birthDate = birthDate
         self.birthTime = birthTime; self.timezone = timezone
         self.latitude = latitude; self.longitude = longitude
         self.placeName = placeName; self.chartJSON = chartJSON
+        self.notes = notes; self.tags = tags
         self.createdAt = createdAt
     }
 }

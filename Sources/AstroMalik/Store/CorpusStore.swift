@@ -54,6 +54,15 @@ final class CorpusStore {
         var claves: [String] = []
         var meta: [String: (titulo: String, tipo: InterpretationType, orden: Int)] = [:]
 
+        let ascSignKey = AstroEngine.degToSignKey(chart.ascendant.longitude)
+        let ascSignIndex = signIndex(for: chart.ascendant.longitude)
+        let ascSignLabel = SIGN_LABELS[ascSignIndex]
+        let ascSignClave = "ASC_\(ascSignKey)"
+        let ascHouseClave = "ASC_CASA_1"
+        claves += [ascSignClave, ascHouseClave]
+        meta[ascSignClave] = ("Ascendente en \(ascSignLabel)", .natalPlanetaSigno, 0)
+        meta[ascHouseClave] = ("Ascendente en Casa 1", .natalPlanetaCasa, 0)
+
         for body in chart.bodies {
             let sk = AstroEngine.degToSignKey(body.longitude)
             let cSigno = "\(body.key)_\(sk)"
@@ -110,6 +119,12 @@ final class CorpusStore {
         return results.sorted {
             $0.orden != $1.orden ? $0.orden < $1.orden : $0.titulo < $1.titulo
         }
+    }
+
+    private func signIndex(for longitude: Double) -> Int {
+        let normalized = ((longitude.truncatingRemainder(dividingBy: 360)) + 360)
+            .truncatingRemainder(dividingBy: 360)
+        return max(0, min(11, Int(normalized / 30)))
     }
 
     // MARK: - Transit Lookup
