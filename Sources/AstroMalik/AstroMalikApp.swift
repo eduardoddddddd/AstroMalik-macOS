@@ -43,6 +43,10 @@ struct AstroMalikApp: App {
 @MainActor
 final class AppState: ObservableObject {
     private static let appearanceKey = "appAppearanceMode"
+    private static let joplinHostKey = "joplinHost"
+    private static let joplinPortKey = "joplinPort"
+    private static let joplinTokenKey = "joplinToken"
+    private static let joplinNotebookKey = "joplinNotebook"
 
     let corpusStore: CorpusStore
     let userStore = UserStore()
@@ -60,6 +64,9 @@ final class AppState: ObservableObject {
             UserDefaults.standard.set(appearanceMode.rawValue, forKey: Self.appearanceKey)
         }
     }
+    @Published var joplinSettings: JoplinClipperSettings = .default {
+        didSet { saveJoplinSettings() }
+    }
 
     func showDefaultDetail(for nav: NavItem) {
         switch nav {
@@ -69,6 +76,8 @@ final class AppState: ObservableObject {
             detailRoute = .savedCharts
         case .lectura:
             detailRoute = .reading
+        case .sinastria:
+            detailRoute = .synastry
         case .transitos:
             detailRoute = .transits
         case .horaria:
@@ -85,11 +94,16 @@ final class AppState: ObservableObject {
         detailRoute = .horaryResult(query, returnTo: tab)
     }
 
+    func toggleLightDarkMode() {
+        appearanceMode = appearanceMode == .dark ? .light : .dark
+    }
+
     init() {
         if let storedAppearance = UserDefaults.standard.string(forKey: Self.appearanceKey),
            let mode = AppAppearanceMode(rawValue: storedAppearance) {
             appearanceMode = mode
         }
+        joplinSettings = Self.loadJoplinSettings().resolvingDetectedToken()
 
         guard let url = AppResources.bundle.url(forResource: "corpus", withExtension: "db") else {
             fatalError("corpus.db no encontrado en el bundle")
@@ -108,5 +122,32 @@ final class AppState: ObservableObject {
             // Fallback: Moshier (menos preciso pero sin archivos)
             AstroEngine.configure(ephePath: nil)
         }
+    }
+
+    private static func loadJoplinSettings() -> JoplinClipperSettings {
+        let defaults = UserDefaults.standard
+        var settings = JoplinClipperSettings.default
+        if let host = defaults.string(forKey: joplinHostKey), !host.isEmpty {
+            settings.host = host
+        }
+        let port = defaults.integer(forKey: joplinPortKey)
+        if port > 0 {
+            settings.port = port
+        }
+        if let token = defaults.string(forKey: joplinTokenKey) {
+            settings.token = token
+        }
+        if let notebook = defaults.string(forKey: joplinNotebookKey), !notebook.isEmpty {
+            settings.notebook = notebook
+        }
+        return settings
+    }
+
+    private func saveJoplinSettings() {
+        let defaults = UserDefaults.standard
+        defaults.set(joplinSettings.host, forKey: Self.joplinHostKey)
+        defaults.set(joplinSettings.port, forKey: Self.joplinPortKey)
+        defaults.set(joplinSettings.token, forKey: Self.joplinTokenKey)
+        defaults.set(joplinSettings.notebook, forKey: Self.joplinNotebookKey)
     }
 }

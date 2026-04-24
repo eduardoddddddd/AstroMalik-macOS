@@ -203,6 +203,61 @@ final class AstroEngine {
         return found.sorted { $0.orb < $1.orb }
     }
 
+    static func computeSynastryAspects(chartA: NatalChart, chartB: NatalChart) -> [SynastryAspect] {
+        let planetsA = Dictionary(uniqueKeysWithValues: chartA.bodies.map { ($0.key, $0) })
+        let planetsB = Dictionary(uniqueKeysWithValues: chartB.bodies.map { ($0.key, $0) })
+        let aToB = computeSynastryAspects(
+            source: planetsA,
+            target: planetsB,
+            direction: .aToB
+        )
+        let bToA = computeSynastryAspects(
+            source: planetsB,
+            target: planetsA,
+            direction: .bToA
+        )
+        return (aToB + bToA).sorted {
+            if $0.direction != $1.direction {
+                return $0.direction.rawValue < $1.direction.rawValue
+            }
+            return $0.orb < $1.orb
+        }
+    }
+
+    private static func computeSynastryAspects(
+        source: [String: PlanetBody],
+        target: [String: PlanetBody],
+        direction: SynastryDirection
+    ) -> [SynastryAspect] {
+        let keys = PLANET_LIST.map { $0.key }
+        var found: [SynastryAspect] = []
+        for sourceKey in keys {
+            guard let sourcePlanet = source[sourceKey] else { continue }
+            for targetKey in keys {
+                guard let targetPlanet = target[targetKey] else { continue }
+                let diff = angularDiff(sourcePlanet.longitude, targetPlanet.longitude)
+                for aspect in ASPECT_DEFS {
+                    let orb = abs(diff - aspect.angle)
+                    if orb <= aspect.orb {
+                        found.append(SynastryAspect(
+                            direction: direction,
+                            sourcePlanetKey: sourceKey,
+                            sourcePlanetLabel: sourcePlanet.label,
+                            targetPlanetKey: targetKey,
+                            targetPlanetLabel: targetPlanet.label,
+                            aspectKey: aspect.key,
+                            aspectLabel: aspect.label,
+                            orb: (orb * 100).rounded() / 100,
+                            corpusClave: "SYN_\(sourceKey)_\(targetKey)_\(aspect.key)",
+                            interpretation: nil
+                        ))
+                    }
+                }
+            }
+        }
+        return found.sorted { $0.orb < $1.orb }
+    }
+
     // MARK: Natal Chart
 
     static func computeNatalChart(

@@ -129,6 +129,146 @@ final class AstroEngineTests: XCTestCase {
         )
     }
 
+    func testSynastryCorpusCoverage() throws {
+        let db = try referenceCorpusDB()
+        let rows = try db.query("""
+            SELECT clave, texto_largo
+            FROM interpretaciones
+            WHERE tipo = 'sinastria'
+        """)
+
+        XCTAssertEqual(rows.count, 420)
+        var pairs: [String: Set<String>] = [:]
+        for row in rows {
+            guard let clave = row["clave"]?.string else {
+                XCTFail("Fila de sinastría sin clave")
+                continue
+            }
+            XCTAssertTrue(clave.hasPrefix("SYN_"))
+            XCTAssertFalse((row["texto_largo"]?.string ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+
+            let parts = clave.split(separator: "_").map(String.init)
+            XCTAssertEqual(parts.count, 4)
+            guard parts.count == 4 else { continue }
+            let pair = "\(parts[1])_\(parts[2])"
+            pairs[pair, default: []].insert(parts[3])
+            XCTAssertNotEqual(parts[1], parts[2])
+        }
+
+        XCTAssertEqual(pairs.count, 84)
+        for aspects in pairs.values {
+            XCTAssertEqual(aspects, Set(["CONJUNCION", "SEXTIL", "CUADRADO", "TRIGONO", "OPOSICION"]))
+        }
+    }
+
+    func testSynastryEngineGeneratesBothDirectionsAndCorpusKeys() throws {
+        let chartA = try referenceChart()
+        var chartB = try referenceChart(
+            birthDate: "1988-04-20",
+            birthTime: "09:15",
+            lat: 48.8566,
+            lon: 2.3522
+        )
+        chartB.name = "Referencia B"
+
+        let aspects = AstroEngine.computeSynastryAspects(chartA: chartA, chartB: chartB)
+        XCTAssertFalse(aspects.isEmpty)
+        XCTAssertTrue(aspects.contains { $0.direction == .aToB })
+        XCTAssertTrue(aspects.contains { $0.direction == .bToA })
+        XCTAssertTrue(aspects.allSatisfy { $0.corpusClave.hasPrefix("SYN_") })
+        XCTAssertTrue(aspects.allSatisfy { $0.corpusClave == "SYN_\($0.sourcePlanetKey)_\($0.targetPlanetKey)_\($0.aspectKey)" })
+    }
+
+    func testSynastryLookupAndReadingAllowsMissingTexts() throws {
+        let store = try referenceCorpusStore()
+        let lookup = store.lookupSynastry(claves: [
+            "SYN_JUPITER_LUNA_CONJUNCION",
+            "SYN_SOL_SOL_CONJUNCION",
+        ])
+        XCTAssertNotNil(lookup["SYN_JUPITER_LUNA_CONJUNCION"])
+        XCTAssertNil(lookup["SYN_SOL_SOL_CONJUNCION"])
+
+        let chartA = try referenceChart()
+        var chartB = try referenceChart(
+            birthDate: "1988-04-20",
+            birthTime: "09:15",
+            lat: 48.8566,
+            lon: 2.3522
+        )
+        chartB.name = "Referencia B"
+        let reading = store.buildSynastryReading(chartA: chartA, chartB: chartB)
+        XCTAssertFalse(reading.aspects.isEmpty)
+        XCTAssertGreaterThanOrEqual(reading.aspects.count, reading.aspectsWithText.count)
+    }
+
+    func testSynastryNoteBuilderIncludesCoverageAndDirections() throws {
+        var chartA = try referenceChart()
+        chartA.name = "Persona A"
+        var chartB = try referenceChart(
+            birthDate: "1988-04-20",
+            birthTime: "09:15",
+            lat: 48.8566,
+            lon: 2.3522
+        )
+        chartB.name = "Persona B"
+        let aspect = SynastryAspect(
+            direction: .aToB,
+            sourcePlanetKey: "JUPITER",
+            sourcePlanetLabel: "♃ Júpiter",
+            targetPlanetKey: "LUNA",
+            targetPlanetLabel: "☽ Luna",
+            aspectKey: "CONJUNCION",
+            aspectLabel: "☌ Conjunción",
+            orb: 0.42,
+            corpusClave: "SYN_JUPITER_LUNA_CONJUNCION",
+            interpretation: Interpretation(
+                clave: "SYN_JUPITER_LUNA_CONJUNCION",
+                tipo: .sinastria,
+                titulo: "",
+                texto: "Texto de prueba.",
+                fuente: "Test",
+                orden: 0
+            )
+        )
+        let reading = SynastryReading(chartA: chartA, chartB: chartB, aspects: [aspect])
+        let markdown = SynastryNoteBuilder.markdown(reading: reading)
+
+        XCTAssertTrue(markdown.contains("# Sinastría - Persona A y Persona B"))
+        XCTAssertTrue(markdown.contains("Cobertura: 1 textos de 1 aspectos"))
+        XCTAssertTrue(markdown.contains("Persona A sobre Persona B"))
+        XCTAssertTrue(markdown.contains("Texto de prueba."))
+    }
+
+    func testJoplinClipperCreatesNotebookAndNotePayload() async throws {
+        let client = MockJoplinHTTPClient(responses: [
+            #"{"items":[],"has_more":false}"#,
+            #"{"id":"folder-1","title":"AstroMalik"}"#,
+            #"{"id":"note-1"}"#,
+        ])
+        let service = JoplinClipperService(
+            settings: JoplinClipperSettings(
+                host: "127.0.0.1",
+                port: 41184,
+                token: "secret",
+                notebook: "AstroMalik"
+            ),
+            client: client
+        )
+
+        try await service.createNote(title: "Sinastría", body: "Contenido")
+
+        XCTAssertEqual(client.requests.count, 3)
+        XCTAssertEqual(client.requests[0].url?.path, "/folders")
+        XCTAssertEqual(client.requests[1].url?.path, "/folders")
+        XCTAssertEqual(client.requests[2].url?.path, "/notes")
+        XCTAssertTrue(client.requests[2].url?.query?.contains("token=secret") == true)
+        let body = try XCTUnwrap(client.requests[2].httpBody)
+        let payload = try JSONSerialization.jsonObject(with: body) as? [String: Any]
+        XCTAssertEqual(payload?["title"] as? String, "Sinastría")
+        XCTAssertEqual(payload?["body"] as? String, "Contenido")
+        XCTAssertEqual(payload?["parent_id"] as? String, "folder-1")
+    }
+
     func testDegToSign() {
         XCTAssertTrue(AstroEngine.degToSign(0).contains("Aries"))
         XCTAssertTrue(AstroEngine.degToSign(30).contains("Tauro"))
@@ -265,33 +405,46 @@ final class AstroEngineTests: XCTestCase {
     }
 }
 
-private func referenceChart() throws -> NatalChart {
+private func referenceChart(
+    birthDate: String = "1976-10-11",
+    birthTime: String = "20:33",
+    timezoneName: String = "Europe/Madrid",
+    lat: Double = 40.4168,
+    lon: Double = -3.7038
+) throws -> NatalChart {
     let jdResult = try julianDayFromLocal(
-        birthDate: "1976-10-11",
-        birthTime: "20:33",
-        timezoneName: "Europe/Madrid"
+        birthDate: birthDate,
+        birthTime: birthTime,
+        timezoneName: timezoneName
     )
     var chart = try AstroEngine.computeNatalChart(
         jd: jdResult.jd,
-        lat: 40.4168,
-        lon: -3.7038
+        lat: lat,
+        lon: lon
     )
     chart.name = "Referencia"
-    chart.birthDate = "1976-10-11"
-    chart.birthTime = "20:33"
-    chart.timezone = "Europe/Madrid"
+    chart.birthDate = birthDate
+    chart.birthTime = birthTime
+    chart.timezone = timezoneName
     return chart
 }
 
 private func referenceCorpusStore() throws -> CorpusStore {
+    try CorpusStore(path: referenceCorpusURL().path)
+}
+
+private func referenceCorpusDB() throws -> SQLiteDB {
+    try SQLiteDB(path: referenceCorpusURL().path, readonly: true)
+}
+
+private func referenceCorpusURL() -> URL {
     let testFile = URL(fileURLWithPath: #filePath)
     let repoRoot = testFile
         .deletingLastPathComponent()
         .deletingLastPathComponent()
         .deletingLastPathComponent()
-    let corpusURL = repoRoot
+    return repoRoot
         .appendingPathComponent("Sources/AstroMalik/Resources/corpus.db")
-    return try CorpusStore(path: corpusURL.path)
 }
 
 private func utcDate(year: Int, month: Int, day: Int) -> Date {
@@ -323,4 +476,25 @@ private func buildScoreForTest(transitKey: String, aspectKey: String, minOrb: Do
     let maxOrb = aspectOrbs[aspectKey] ?? 6
     let orbFactor = maxOrb > 0 ? max(0, 1 - minOrb / maxOrb) : 0.5
     return (pw * aw * (0.5 + 0.5 * orbFactor) * 10).rounded() / 10
+}
+
+private final class MockJoplinHTTPClient: JoplinHTTPClient {
+    var requests: [URLRequest] = []
+    private var responses: [Data]
+
+    init(responses: [String]) {
+        self.responses = responses.map { Data($0.utf8) }
+    }
+
+    func data(for request: URLRequest) async throws -> (Data, URLResponse) {
+        requests.append(request)
+        let data = responses.isEmpty ? Data("{}".utf8) : responses.removeFirst()
+        let response = HTTPURLResponse(
+            url: request.url ?? URL(string: "http://127.0.0.1")!,
+            statusCode: 200,
+            httpVersion: nil,
+            headerFields: nil
+        )!
+        return (data, response)
+    }
 }

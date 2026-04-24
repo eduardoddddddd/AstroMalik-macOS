@@ -28,7 +28,7 @@ struct TransitTimelineView: View {
         max(1, daysBetween(startDate, endDate) + 1)
     }
 
-    private var dayWidth: CGFloat {
+    private var minimumDayWidth: CGFloat {
         switch totalDays {
         case ...21: return 24
         case ...60: return 16
@@ -38,29 +38,54 @@ struct TransitTimelineView: View {
         }
     }
 
-    private var timelineWidth: CGFloat {
-        max(CGFloat(totalDays) * dayWidth, 520)
+    private func dayWidth(for availableWidth: CGFloat) -> CGFloat {
+        let availablePlotWidth = max(0, availableWidth - labelWidth - 24)
+        let fillWidth = availablePlotWidth / CGFloat(totalDays)
+        return max(minimumDayWidth, fillWidth)
+    }
+
+    private func timelineWidth(for availableWidth: CGFloat, dayWidth: CGFloat) -> CGFloat {
+        let availablePlotWidth = max(0, availableWidth - labelWidth - 24)
+        return max(CGFloat(totalDays) * dayWidth, availablePlotWidth, 520)
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            header
-            if events.isEmpty {
-                emptyFilteredState
-            } else {
-                ScrollView([.horizontal, .vertical]) {
-                    VStack(alignment: .leading, spacing: 0) {
-                        axisRow
-                        ForEach(Array(events.enumerated()), id: \.element.id) { index, event in
-                            timelineRow(event: event, index: index)
+        GeometryReader { proxy in
+            let effectiveDayWidth = dayWidth(for: proxy.size.width)
+            let effectiveTimelineWidth = timelineWidth(
+                for: proxy.size.width,
+                dayWidth: effectiveDayWidth
+            )
+
+            VStack(alignment: .leading, spacing: 0) {
+                header
+                if events.isEmpty {
+                    emptyFilteredState
+                } else {
+                    ScrollView(.horizontal) {
+                        VStack(alignment: .leading, spacing: 0) {
+                            axisRow(dayWidth: effectiveDayWidth, timelineWidth: effectiveTimelineWidth)
+                            ScrollView(.vertical) {
+                                LazyVStack(alignment: .leading, spacing: 0) {
+                                    ForEach(Array(events.enumerated()), id: \.element.id) { index, event in
+                                        timelineRow(
+                                            event: event,
+                                            index: index,
+                                            dayWidth: effectiveDayWidth,
+                                            timelineWidth: effectiveTimelineWidth
+                                        )
+                                    }
+                                }
+                            }
+                            .frame(minHeight: 120)
                         }
+                        .padding(.horizontal, 12)
+                        .padding(.bottom, 12)
                     }
-                    .padding(.horizontal, 12)
-                    .padding(.bottom, 12)
                 }
             }
+            .background(Color.appSurface)
         }
-        .background(Color.appSurface)
     }
 
     private var header: some View {
@@ -88,7 +113,7 @@ struct TransitTimelineView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    private var axisRow: some View {
+    private func axisRow(dayWidth: CGFloat, timelineWidth: CGFloat) -> some View {
         HStack(spacing: 0) {
             Color.clear
                 .frame(width: labelWidth, height: 34)
@@ -114,7 +139,12 @@ struct TransitTimelineView: View {
         }
     }
 
-    private func timelineRow(event: TransitEvent, index: Int) -> some View {
+    private func timelineRow(
+        event: TransitEvent,
+        index: Int,
+        dayWidth: CGFloat,
+        timelineWidth: CGFloat
+    ) -> some View {
         Button {
             onSelect(event)
         } label: {

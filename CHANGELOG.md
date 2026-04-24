@@ -8,23 +8,35 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Rueda natal interactiva en SwiftUI con signos, casas, planetas, ASC/MC y líneas de aspecto.
 - Modo "Lectura" con triada Sol/Luna/ASC, regente del Ascendente, casas angulares, aspectos dominantes y síntesis editable.
 - Entrada "Lectura" en la navegación principal.
+- Entrada "Sinastría" en la navegación principal.
+- Motor de sinastría para dos cartas guardadas, con cálculo de aspectos A→B y B→A.
+- Modelos `SynastryAspect` y `SynastryReading`.
+- Lookup de corpus `tipo='sinastria'` con claves `SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>`.
+- Rueda doble de sinastría con planetas A/B y líneas de aspecto.
+- Botón para crear nota de sinastría directamente en Joplin vía Web Clipper local.
+- Configuración de Joplin en Ajustes: host, puerto, token y cuaderno.
+- Autodetección del token local de Joplin desde `ASTROMALIK_JOPLIN_TOKEN` o settings de Joplin Desktop.
+- Botón rápido claro/oscuro en la cabecera lateral.
 - Diagnóstico de Horaria: Python detectado, versión, fuente del módulo, path y último error.
 - Archivo de cartas con notas, etiquetas y búsqueda por texto/tag.
 - Nota Markdown preparada para Joplin desde la vista de carta.
-- Timeline de tránsitos con barras diarias de intensidad por orbe, eje temporal adaptable y apertura del detalle al pulsar.
-- Tests de `swe_houses_ex2`, cancelación de tránsitos, timeline de intensidad, timezones conocidos y diagnóstico de Horaria.
+- Timeline de tránsitos con barras diarias de intensidad por orbe, eje temporal adaptable, eje de fechas fijo y apertura del detalle al pulsar.
+- Tests de `swe_houses_ex2`, cancelación de tránsitos, timeline de intensidad, timezones conocidos, diagnóstico de Horaria, corpus/motor de sinastría y payload Joplin.
 
 ### Cambiado
 - La arquitectura oficial queda como ventana única. Se retiró el código muerto de hosts multi-ventana y registros de sesión asociados.
 - Tránsitos conserva resultados por carta y marca cuándo hay cambios pendientes de recalcular.
+- El eje de fechas de tránsitos queda fijo durante el scroll vertical y ocupa todo el ancho disponible.
 - Horaria ya no depende de un path local hardcodeado; resuelve bundle, variables de entorno/configuración local y paquete instalado.
 - Cálculo de casas migrado de `swe_houses` a `swe_houses_ex2` con captura de error `serr`.
 - Loop de tránsitos optimizado: usa fechas internas, materializa ISO solo al construir resultados y guarda muestras diarias de intensidad.
 - `PlacesService` reemplaza regiones solapadas por zonas conocidas y bandas no solapadas.
+- Roadmap actualizado: Sinastría pasa a fase completada y la exportación avanzada queda como trabajo futuro.
 
 ### Corregido
 - Eliminados force unwraps en cálculo de días, Application Support y UTC.
 - Cancelación explícita de tareas largas de tránsitos e interpretaciones.
+- Mensaje específico para errores HTTP 403 de Joplin, apuntando a token/puerto de Web Clipper.
 
 ## [0.3.0] — 2026-04-19
 

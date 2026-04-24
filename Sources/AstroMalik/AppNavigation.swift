@@ -4,6 +4,7 @@ enum NavItem: String, CaseIterable, Identifiable {
     case nuevaCarta  = "Nueva Carta"
     case cartas      = "Cartas Guardadas"
     case lectura     = "Lectura"
+    case sinastria   = "Sinastría"
     case transitos   = "Tránsitos"
     case horaria     = "Horaria"
 
@@ -14,6 +15,7 @@ enum NavItem: String, CaseIterable, Identifiable {
         case .nuevaCarta: return "star.circle"
         case .cartas:     return "tray.full"
         case .lectura:    return "book.pages"
+        case .sinastria:  return "person.2.circle"
         case .transitos:  return "calendar.circle"
         case .horaria:    return "questionmark.bubble"
         }
@@ -31,6 +33,7 @@ enum DetailRoute: Equatable {
     case birthForm
     case natalResult(NatalChart, returnTo: NavItem)
     case reading
+    case synastry
     case savedCharts
     case transits
     case horaryHome(HoraryHomeTab)
@@ -44,6 +47,8 @@ enum DetailRoute: Equatable {
             return "natalResult-\(chart.id.uuidString)"
         case .reading:
             return "reading"
+        case .synastry:
+            return "synastry"
         case .savedCharts:
             return "savedCharts"
         case .transits:

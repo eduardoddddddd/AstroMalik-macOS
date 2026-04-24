@@ -23,6 +23,14 @@ enum AppAppearanceMode: String, CaseIterable, Identifiable {
         case .dark: return .dark
         }
     }
+
+    var quickToggleIcon: String {
+        self == .dark ? "sun.max" : "moon"
+    }
+
+    var quickToggleLabel: String {
+        self == .dark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"
+    }
 }
 
 extension Color {

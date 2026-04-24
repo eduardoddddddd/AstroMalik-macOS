@@ -20,6 +20,10 @@ struct HelpView: View {
                 La sección Lectura abre la carta activa con rueda interactiva, lectura guiada, regente del Ascendente, aspectos dominantes y síntesis editable.
                 """)
 
+                section("Sinastría", """
+                Sinastría compara dos cartas guardadas, calcula aspectos en ambas direcciones y puede crear una nota directa en Joplin con los textos disponibles.
+                """)
+
                 section("Horaria", """
                 Horaria calcula el juicio en Python y muestra el resultado en la app. Necesita Python 3 y el paquete horaria instalado, o una ruta configurada con ASTROMALIK_HORARIA_PATH. Usa el botón de diagnóstico para revisar la instalación.
                 """)
@@ -29,7 +33,7 @@ struct HelpView: View {
                 """)
 
                 section("Guardar frente a exportar", """
-                El botón principal de resultado guarda localmente en la base de datos de AstroMalik. La vista de carta puede copiar una nota Markdown preparada para Joplin.
+                El botón principal de resultado guarda localmente en la base de datos de AstroMalik. La vista de carta puede copiar una nota Markdown preparada para Joplin, y Sinastría puede crear la nota directamente con Web Clipper.
                 """)
             }
             .padding(24)

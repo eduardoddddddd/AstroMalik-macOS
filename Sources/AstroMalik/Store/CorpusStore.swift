@@ -146,6 +146,52 @@ final class CorpusStore {
         return (texto, row["fuente_nombre"]?.string)
     }
 
+    // MARK: - Synastry Lookup
+
+    func lookupSynastry(claves: [String]) -> [String: Interpretation] {
+        guard !claves.isEmpty else { return [:] }
+        let clavesPH = claves.map { _ in "?" }.joined(separator: ",")
+        let sql = """
+            SELECT clave, texto_largo, texto_corto, fuente_nombre
+            FROM interpretaciones
+            WHERE tipo = ? AND clave IN (\(clavesPH))
+            ORDER BY calidad DESC, LENGTH(COALESCE(texto_largo,'')) DESC
+        """
+        let args: [SQLiteValue] = [.text(InterpretationType.sinastria.rawValue)]
+            + claves.map { .text($0) }
+        var result: [String: Interpretation] = [:]
+        guard let rows = try? db.query(sql, args: args) else { return result }
+        for row in rows {
+            guard let clave = row["clave"]?.string else { continue }
+            if result[clave] != nil { continue }
+            let tl = row["texto_largo"]?.string ?? ""
+            let tc = row["texto_corto"]?.string ?? ""
+            var texto = (tl.isEmpty ? tc : tl).trimmingCharacters(in: .whitespacesAndNewlines)
+            if texto.isEmpty { continue }
+            if texto.count > 4000 { texto = String(texto.prefix(3997)) + "…" }
+            result[clave] = Interpretation(
+                clave: clave,
+                tipo: .sinastria,
+                titulo: "",
+                texto: texto,
+                fuente: row["fuente_nombre"]?.string ?? "",
+                orden: 0
+            )
+        }
+        return result
+    }
+
+    func buildSynastryReading(chartA: NatalChart, chartB: NatalChart) -> SynastryReading {
+        let aspects = AstroEngine.computeSynastryAspects(chartA: chartA, chartB: chartB)
+        let textos = lookupSynastry(claves: aspects.map(\.corpusClave))
+        let hydrated = aspects.map { aspect in
+            var copy = aspect
+            copy.interpretation = textos[aspect.corpusClave]
+            return copy
+        }
+        return SynastryReading(chartA: chartA, chartB: chartB, aspects: hydrated)
+    }
+
     func stats() -> [String: Int] {
         let sql = "SELECT tipo, COUNT(*) as n FROM interpretaciones GROUP BY tipo"
         guard let rows = try? db.query(sql) else { return [:] }

@@ -6,13 +6,25 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             VStack(alignment: .leading, spacing: 0) {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("AstroMalik")
-                        .font(.system(size: 24, weight: .semibold))
-                        .foregroundColor(.appPrimaryText)
-                    Text("Cartas, tránsitos y horaria")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                HStack(alignment: .top, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("AstroMalik")
+                            .font(.system(size: 24, weight: .semibold))
+                            .foregroundColor(.appPrimaryText)
+                        Text("Cartas, tránsitos y horaria")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    Spacer()
+                    Button {
+                        appState.toggleLightDarkMode()
+                    } label: {
+                        Image(systemName: appState.appearanceMode.quickToggleIcon)
+                            .frame(width: 26, height: 26)
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                    .help(appState.appearanceMode.quickToggleLabel)
                 }
                 .padding(.horizontal, 18)
                 .padding(.top, 20)
@@ -65,6 +77,10 @@ struct ContentView: View {
 
         case .reading:
             readingDetail
+
+        case .synastry:
+            SynastryView()
+                .environmentObject(appState)
 
         case .savedCharts:
             SavedChartsView(onOpenChart: { chart in
