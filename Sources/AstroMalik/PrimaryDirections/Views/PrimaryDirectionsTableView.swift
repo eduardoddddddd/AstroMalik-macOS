@@ -74,6 +74,17 @@ struct PrimaryDirectionsTableView: View {
             }
             .width(min: 86, ideal: 108)
 
+            TableColumn("Peso", value: \.tableWeight) { enriched in
+                HStack(spacing: 5) {
+                    Text(enriched.direction.weight.glyph)
+                        .font(.caption.monospaced())
+                    Text(enriched.direction.weight.label)
+                        .font(.caption)
+                }
+                .foregroundStyle(weightTone(enriched.direction.weight))
+            }
+            .width(min: 82, ideal: 104)
+
             TableColumn("Texto", value: \.tableTextState) { enriched in
                 Label(
                     enriched.hasInterpretation ? "Corpus" : "Auxiliar",
@@ -98,6 +109,15 @@ struct PrimaryDirectionsTableView: View {
             .font(.caption.monospaced())
             .foregroundStyle(.primary)
     }
+
+    private func weightTone(_ weight: PDWeight) -> Color {
+        switch weight {
+        case .critical: return Color.appWarning
+        case .major: return Color.appAccentFill
+        case .moderate: return .secondary
+        case .minor: return Color.secondary.opacity(0.7)
+        }
+    }
 }
 
 private extension EnrichedPrimaryDirection {
@@ -109,6 +129,7 @@ private extension EnrichedPrimaryDirection {
     var tableArc: Double { abs(direction.arc) }
     var tableDirectionType: String { direction.directionType.rawValue }
     var tablePlane: String { direction.aspectPlane.displayName }
+    var tableWeight: Int { direction.weight.rawValue }
     var tableTextState: String { hasInterpretation ? "Corpus" : "Auxiliar" }
 
     var ageCompact: String {

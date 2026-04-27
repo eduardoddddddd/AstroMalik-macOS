@@ -38,7 +38,7 @@ struct PrimaryDirectionsView: View {
         .sheet(isPresented: $showSettings, onDismiss: {
             vm.refreshForUpdatedSettings()
         }) {
-            PDSettingsSheet(settings: $vm.settings)
+            PDSettingsSheet(settings: $vm.settings, activePreset: $vm.activePreset)
         }
         .alert("Error", isPresented: Binding(
             get: { vm.error != nil || noteError != nil },
@@ -131,15 +131,21 @@ struct PrimaryDirectionsView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
+                    presetSegmentedPicker
                     summaryChip("\(vm.filteredDirections.count)/\(result.metadata.totalDirections) visibles", tone: .secondary)
+                    summaryChip("Preset: \(vm.presetDisplayName)", tone: vm.activePreset == nil ? Color.appAccentFill : .secondary)
+                    summaryChip(
+                        "\(vm.visibleCriticalCount) críticas",
+                        tone: vm.visibleCriticalCount == 0 ? .secondary : Color.appWarning
+                    )
                     summaryChip(
                         "\(vm.curatedVisibleDirections.count) textos curados",
                         tone: vm.curatedVisibleDirections.isEmpty ? .secondary : Color.appSecondaryAccent
                     )
-                    summaryChip("\(vm.filteredDirections.filter { vm.cachedContextualDirectionIDs.contains($0.id) }.count) con contextual", tone: .secondary)
                     summaryChip("Plano \(vm.settings.aspectPlane.displayName.lowercased())", tone: .secondary)
                     summaryChip(vm.settings.key.rawValue, tone: .secondary)
                     summaryChip("\(Int(vm.visibleAgeDomain.lowerBound))-\(Int(vm.visibleAgeDomain.upperBound)) años", tone: .secondary)
+                    minimumWeightPicker
                 }
             }
 
@@ -545,6 +551,29 @@ struct PrimaryDirectionsView: View {
         .buttonStyle(.bordered)
     }
 
+    private var presetSegmentedPicker: some View {
+        Picker("Preset", selection: $vm.activePreset) {
+            ForEach(PDFilterPreset.allCases) { preset in
+                Text(preset.rawValue).tag(Optional(preset))
+            }
+        }
+        .pickerStyle(.segmented)
+        .labelsHidden()
+        .frame(width: 265)
+        .help("Preset de filtro")
+    }
+
+    private var minimumWeightPicker: some View {
+        Picker("Peso mínimo", selection: $vm.filters.minimumWeight) {
+            ForEach([PDWeight.minor, .moderate, .major, .critical], id: \.self) { weight in
+                Text(weight.filterLabel).tag(weight)
+            }
+        }
+        .pickerStyle(.menu)
+        .frame(width: 132)
+        .help("Peso mínimo")
+    }
+
     private func summaryChip(_ text: String, tone: Color) -> some View {
         Text(text)
             .font(.caption.monospaced())
@@ -633,11 +662,29 @@ private struct PDVisibleDirectionRow: View {
 
 private struct PDSettingsSheet: View {
     @Binding var settings: PDSettings
+    @Binding var activePreset: PDFilterPreset?
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationStack {
             Form {
+                Section("Preset de filtro") {
+                    Picker("Preset", selection: $activePreset) {
+                        ForEach(PDFilterPreset.allCases) { preset in
+                            Text(preset.rawValue).tag(Optional(preset))
+                        }
+                        if activePreset == nil {
+                            Text("Personalizado").tag(Optional<PDFilterPreset>.none)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+
+                    Text(presetDescription)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
                 Section("Método de proyección") {
                     Text(PrimaryDirectionMethod.regiomontanus.rawValue)
                         .foregroundStyle(.primary)
@@ -687,5 +734,10 @@ private struct PDSettingsSheet: View {
             }
             .frame(minWidth: 440, minHeight: 380)
         }
+    }
+
+    private var presetDescription: String {
+        activePreset?.settingsDescription
+            ?? "Personalizado: filtros modificados manualmente. El conjunto visible puede no corresponder a un preset cerrado."
     }
 }

@@ -108,6 +108,48 @@ final class PrimaryDirectionsGoldenTests: XCTestCase {
         XCTAssertEqual(actual.first5Converse.count, 5)
     }
 
+    func testClassicalPresetReducesDirectionCount() throws {
+        let fixture = PDChartFixture.eduardo
+        let jdResult = try julianDayFromLocal(
+            birthDate: fixture.birthDate,
+            birthTime: fixture.birthTime,
+            timezoneName: fixture.timezone
+        )
+        let chart = try makeNatalChart(fixture: fixture, jd: jdResult.jd)
+        let birthDate = try makeBirthDate(fixture.birthDate)
+        let preset = PDFilterPreset.classical
+        let config = PrimaryDirectionCalculator.Config(
+            method: .regiomontanus,
+            key: .naibod,
+            maxYears: 90,
+            aspects: preset.orderedAspects,
+            promissors: preset.orderedPromissors,
+            significators: preset.orderedSignificators,
+            includeConverse: true,
+            aspectPlane: .zodiacal
+        )
+
+        let classicalDirections = PrimaryDirectionCalculator().calculate(
+            chart: chart,
+            jd: jdResult.jd,
+            birthDate: birthDate,
+            config: config
+        )
+        let fullDirections = PrimaryDirectionCalculator().calculate(
+            chart: chart,
+            jd: jdResult.jd,
+            birthDate: birthDate,
+            config: defaultGoldenConfig()
+        )
+        let minimumWeight = PDFilters(maxYears: 90, preset: preset).minimumWeight
+        let visibleClassicalDirections = classicalDirections.filter { $0.weight >= minimumWeight }
+
+        XCTAssertGreaterThanOrEqual(visibleClassicalDirections.count, 40)
+        XCTAssertLessThanOrEqual(visibleClassicalDirections.count, 120)
+        XCTAssertLessThan(visibleClassicalDirections.count, fullDirections.count)
+        XCTAssertLessThan(classicalDirections.count, fullDirections.count)
+    }
+
     private func assertGoldenChart(_ fixture: PDChartFixture) throws {
         let expected = try loadGoldenFile().chart(for: fixture.key)
         let actual = try buildGoldenChart(fixture)

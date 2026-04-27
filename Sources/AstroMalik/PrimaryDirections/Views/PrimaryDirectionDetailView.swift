@@ -56,7 +56,10 @@ struct PrimaryDirectionDetailView: View {
                 }
 
                 Spacer(minLength: 12)
-                polarityBadge(direction.aspect.polarity)
+                VStack(alignment: .trailing, spacing: 6) {
+                    polarityBadge(direction.aspect.polarity)
+                    weightBadge(direction.weight)
+                }
             }
 
             HStack(spacing: 8) {
@@ -452,6 +455,36 @@ struct PrimaryDirectionDetailView: View {
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
         .background(color.opacity(0.12), in: Capsule())
+    }
+
+    @ViewBuilder
+    private func weightBadge(_ weight: PDWeight) -> some View {
+        switch weight {
+        case .critical:
+            HStack(spacing: 6) {
+                Text(weight.glyph)
+                    .font(.headline)
+                Text("Dirección crítica")
+                    .font(.caption.weight(.semibold))
+            }
+            .foregroundStyle(Color.appWarning)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(Color.appWarning.opacity(0.14), in: Capsule())
+        case .major:
+            HStack(spacing: 6) {
+                Text(weight.glyph)
+                    .font(.headline)
+                Text("Mayor")
+                    .font(.caption.weight(.semibold))
+            }
+            .foregroundStyle(Color.appAccentFill)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(Color.appAccentFill.opacity(0.1), in: Capsule())
+        case .moderate, .minor:
+            EmptyView()
+        }
     }
 
     private func intensidadBadge(_ score: Int) -> some View {

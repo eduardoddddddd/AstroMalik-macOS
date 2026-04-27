@@ -194,6 +194,7 @@ final class PrimaryDirectionsTests: XCTestCase {
             key: .naibod,
             maxYears: 60,
             aspects: [.sextile, .trine, .square],
+            significators: [.asc, .dsc, .mc, .ic, .sun, .moon, .mercury, .venus, .mars, .jupiter, .saturn],
             includeConverse: true,
             aspectPlane: .ecliptic
         )
@@ -862,6 +863,7 @@ final class PrimaryDirectionsTests: XCTestCase {
             key: .naibod,
             maxYears: 60,
             aspects: PDaspect.allCases,
+            significators: [.asc, .dsc, .mc, .ic, .sun, .moon, .mercury, .venus, .mars, .jupiter, .saturn],
             includeConverse: true,
             aspectPlane: .ecliptic
         )

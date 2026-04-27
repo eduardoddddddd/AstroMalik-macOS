@@ -68,9 +68,6 @@ final class PrimaryDirectionCalculator: Sendable {
         }
 
         private static func defaultSignificators(for plane: PDAspectPlane) -> [PDSignificator] {
-            if plane == .ecliptic {
-                return [.asc, .dsc, .mc, .ic, .sun, .moon, .mercury, .venus, .mars, .jupiter, .saturn]
-            }
             return [.asc, .mc, .sun, .moon]
         }
     }
@@ -144,6 +141,11 @@ final class PrimaryDirectionCalculator: Sendable {
 
                 let age = abs(arc) / degreesPerYear
                 let estimatedDate = birthDate.addingTimeInterval(age * secondsPerYear)
+                let weight = computeWeight(
+                    promissor: promissorKey,
+                    significator: significatorKey,
+                    aspect: aspect
+                )
 
                 let pd = PrimaryDirection(
                     promissor: promissorKey,
@@ -168,7 +170,8 @@ final class PrimaryDirectionCalculator: Sendable {
                         obliquity: obliquity,
                         ramc: ramc,
                         geoLatitude: chart.latitude
-                    )
+                    ),
+                    weight: weight
                 )
                 directions.append(pd)
             }
@@ -258,6 +261,36 @@ final class PrimaryDirectionCalculator: Sendable {
         }
 
         return directions.sorted { abs($0.arc) < abs($1.arc) }
+    }
+
+    func computeWeight(
+        promissor: String,
+        significator: String,
+        aspect: PDaspect
+    ) -> PDWeight {
+        let isLuminary = ["SOL", "LUNA"].contains(promissor)
+        let isMalefic = ["MARTE", "SATURNO"].contains(promissor)
+        let isBenefic = ["JUPITER", "VENUS"].contains(promissor)
+        let isAngle = ["ASC", "MC"].contains(significator)
+        let isHardAspect: Bool = [.conjunction, .opposition, .square].contains(aspect)
+
+        if isAngle && (isLuminary || isMalefic) && isHardAspect {
+            return .critical
+        }
+        if isAngle {
+            return .major
+        }
+        if isLuminary && (isMalefic || isBenefic) {
+            return .major
+        }
+        let isTranspersonal = ["URANO", "NEPTUNO", "PLUTON"].contains(promissor)
+        if isTranspersonal {
+            return .minor
+        }
+        if aspect == .sextile || aspect == .trine {
+            return .moderate
+        }
+        return .moderate
     }
 
     // MARK: - Directional Arc Calculation (Core Algorithm)

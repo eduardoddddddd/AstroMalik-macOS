@@ -42,6 +42,9 @@ struct PrimaryDirection: Identifiable, Codable, Equatable {
     /// Datos técnicos para debug/display.
     let technicalData: PDTechnicalData
 
+    /// Jerarquía clásica de importancia para filtrado y énfasis visual.
+    let weight: PDWeight
+
     init(
         id: UUID = UUID(),
         promissor: String,
@@ -57,7 +60,8 @@ struct PrimaryDirection: Identifiable, Codable, Equatable {
         estimatedDate: Date,
         method: PrimaryDirectionMethod,
         key: PrimaryDirectionKey,
-        technicalData: PDTechnicalData
+        technicalData: PDTechnicalData,
+        weight: PDWeight = .moderate
     ) {
         self.id = id
         self.promissor = promissor
@@ -74,6 +78,46 @@ struct PrimaryDirection: Identifiable, Codable, Equatable {
         self.method = method
         self.key = key
         self.technicalData = technicalData
+        self.weight = weight
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case promissor
+        case promissorLabel
+        case significator
+        case significatorLabel
+        case aspect
+        case aspectAngle
+        case directionType
+        case aspectPlane
+        case arc
+        case estimatedAge
+        case estimatedDate
+        case method
+        case key
+        case technicalData
+        case weight
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(UUID.self, forKey: .id)
+        self.promissor = try container.decode(String.self, forKey: .promissor)
+        self.promissorLabel = try container.decode(String.self, forKey: .promissorLabel)
+        self.significator = try container.decode(String.self, forKey: .significator)
+        self.significatorLabel = try container.decode(String.self, forKey: .significatorLabel)
+        self.aspect = try container.decode(PDaspect.self, forKey: .aspect)
+        self.aspectAngle = try container.decode(Double.self, forKey: .aspectAngle)
+        self.directionType = try container.decode(PDDirectionType.self, forKey: .directionType)
+        self.aspectPlane = try container.decode(PDAspectPlane.self, forKey: .aspectPlane)
+        self.arc = try container.decode(Double.self, forKey: .arc)
+        self.estimatedAge = try container.decode(Double.self, forKey: .estimatedAge)
+        self.estimatedDate = try container.decode(Date.self, forKey: .estimatedDate)
+        self.method = try container.decode(PrimaryDirectionMethod.self, forKey: .method)
+        self.key = try container.decode(PrimaryDirectionKey.self, forKey: .key)
+        self.technicalData = try container.decode(PDTechnicalData.self, forKey: .technicalData)
+        self.weight = try container.decodeIfPresent(PDWeight.self, forKey: .weight) ?? .moderate
     }
 }
 

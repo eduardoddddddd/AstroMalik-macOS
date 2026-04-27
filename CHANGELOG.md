@@ -10,6 +10,9 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Vista "Año en curso" con selector anual, ventana residual de ±18 meses y tarjetas cronológicas con texto principal abreviado.
 - Tabla de Espéculo Regiomontano completo en el detalle, resaltando prómissor y significador.
 
+- Presets de filtro para Direcciones Primarias (Clásico/Extendido/Completo) con exclusión de transpersonales en modo clásico.
+- Sistema de peso por dirección (crítica/mayor/moderada/menor) con jerarquía visual en timeline, tabla y detalle.
+- Filtro por peso mínimo para reducir ruido sin recalcular el motor.
 ### Cambiado
 
 - Reorganizada la UI de Direcciones Primarias en header compacto, timeline semántico y panel maestro con tabs.
@@ -17,6 +20,9 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - El banner de honestidad del corpus pasa a popover informativo en el header.
 - El plano por defecto de direcciones pasa a zodiacal con migración de `UserDefaults` a versión 2.
 
+- El default para usuarios nuevos de Direcciones Primarias pasa al preset Clásico.
+- El tooltip del timeline muestra dirección del movimiento, edad compacta, tipo y peso.
+- El banner superior de Direcciones Primarias muestra preset activo y conteo de direcciones críticas visibles.
 ### Corregido
 
 - Direcciones conversas calculadas con roles invertidos y polo del prómissor, en vez de derivarlas del signo del arco.

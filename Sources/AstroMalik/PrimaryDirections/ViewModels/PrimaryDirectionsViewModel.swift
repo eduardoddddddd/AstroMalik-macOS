@@ -40,7 +40,24 @@ final class PrimaryDirectionsViewModel: ObservableObject {
     /// Error de cálculo o interpretación para mostrar en la UI.
     @Published var error: String? = nil
     /// Filtros activos.
-    @Published var filters = PDFilters() { didSet { applyFilters() } }
+    @Published var filters: PDFilters {
+        didSet {
+            if !isApplyingPresetFilters && filters != oldValue {
+                markPresetAsCustom()
+            }
+            applyFilters()
+        }
+    }
+    /// Preset de cálculo activo. `nil` representa filtros personalizados.
+    @Published var activePreset: PDFilterPreset? {
+        didSet {
+            guard activePreset != oldValue else { return }
+            settings.filterPreset = activePreset
+            guard let preset = activePreset else { return }
+            applyPresetFilters(preset)
+            reloadCurrentChart()
+        }
+    }
     /// Configuración de cálculo persistida.
     @Published var settings: PDSettings {
         didSet { settings.persist() }
@@ -57,6 +74,7 @@ final class PrimaryDirectionsViewModel: ObservableObject {
     /// Task activa de cálculo (para cancelación).
     private var calculationTask: Task<Void, Never>? = nil
     private var interpretationTask: Task<Void, Never>? = nil
+    private var isApplyingPresetFilters = false
 
     // MARK: - Init
 
@@ -64,10 +82,12 @@ final class PrimaryDirectionsViewModel: ObservableObject {
         service: PrimaryDirectionsService,
         interpreter: PrimaryDirectionContextualInterpreter? = nil
     ) {
+        let loadedSettings = PDSettings.load()
         self.service = service
         self.interpreter = interpreter
-        self.settings = PDSettings.load()
-        self.filters = PDFilters(maxYears: self.settings.maxYears)
+        self.settings = loadedSettings
+        self.activePreset = loadedSettings.filterPreset
+        self.filters = PDFilters(maxYears: loadedSettings.maxYears, preset: loadedSettings.filterPreset)
     }
 
     // MARK: - Load Directions
@@ -156,7 +176,15 @@ final class PrimaryDirectionsViewModel: ObservableObject {
     }
 
     var filtersAreDefault: Bool {
-        filters == PDFilters(maxYears: settings.maxYears)
+        filters == PDFilters(maxYears: settings.maxYears, preset: activePreset)
+    }
+
+    var presetDisplayName: String {
+        activePreset?.rawValue ?? "Personalizado"
+    }
+
+    var visibleCriticalCount: Int {
+        filteredDirections.filter { $0.direction.weight == .critical }.count
     }
 
     var currentChart: NatalChart? { chart }
@@ -252,10 +280,34 @@ final class PrimaryDirectionsViewModel: ObservableObject {
         let desired = clampedLower...nextUpper
 
         if filtersAreDefault || current == PDFilters().ageRange {
-            filters.ageRange = 0...settings.maxYears
+            updateFiltersInternally { $0.ageRange = 0...settings.maxYears }
         } else if current != desired {
-            filters.ageRange = desired
+            updateFiltersInternally { $0.ageRange = desired }
         }
+    }
+
+    private func applyPresetFilters(_ preset: PDFilterPreset) {
+        var next = PDFilters(maxYears: settings.maxYears, preset: preset)
+        let lower = min(filters.ageRange.lowerBound, max(0, settings.maxYears - 1))
+        let upper = max(lower + 1, min(filters.ageRange.upperBound, settings.maxYears))
+        next.ageRange = lower...upper
+        isApplyingPresetFilters = true
+        defer { isApplyingPresetFilters = false }
+        filters = next
+    }
+
+    private func updateFiltersInternally(_ mutate: (inout PDFilters) -> Void) {
+        var next = filters
+        mutate(&next)
+        guard next != filters else { return }
+        isApplyingPresetFilters = true
+        defer { isApplyingPresetFilters = false }
+        filters = next
+    }
+
+    private func markPresetAsCustom() {
+        guard activePreset != nil else { return }
+        activePreset = nil
     }
 
     private func refreshCachedContextualAvailability() {
@@ -296,10 +348,16 @@ struct PDFilters: Equatable, Sendable {
     var directionTypes: Set<PDDirectionType> = Set(PDDirectionType.allCases)
     var aspectPlanes: Set<PDAspectPlane> = Set(PDAspectPlane.allCases)
     var promissors: Set<String> = []         // vacío = todos
+    var minimumWeight: PDWeight = .minor
     var onlyWithCorpus: Bool = false
 
-    init(maxYears: Double = 90) {
+    init(maxYears: Double = 90, preset: PDFilterPreset? = nil) {
         self.ageRange = 0...maxYears
+        if let preset {
+            self.aspects = preset.aspects
+            self.promissors = preset.promissors
+            self.minimumWeight = preset.defaultMinimumWeight
+        }
     }
 
     var isDefault: Bool {
@@ -312,6 +370,7 @@ struct PDFilters: Equatable, Sendable {
         guard aspects.contains(dir.aspect) else { return false }
         guard directionTypes.contains(dir.directionType) else { return false }
         guard aspectPlanes.contains(dir.aspectPlane) else { return false }
+        guard dir.weight >= minimumWeight else { return false }
         if !promissors.isEmpty, !promissors.contains(dir.promissor) { return false }
         if onlyWithCorpus, !enriched.hasInterpretation { return false }
         return true
@@ -328,12 +387,15 @@ struct PDSettings: Equatable, Sendable {
     var key: PrimaryDirectionKey = .naibod
     var maxYears: Double = 90
     var aspectPlane: PDAspectPlane = .zodiacal
+    var filterPreset: PDFilterPreset? = .classical
 
     private static let keyUD = "PrimaryDirections.Key"
     private static let methodUD = "PrimaryDirections.Method"
     private static let maxYearsUD = "PrimaryDirections.MaxYears"
     private static let planeUD = "PrimaryDirections.AspectPlane"
     private static let planeVersionUD = "PrimaryDirections.AspectPlane.Version"
+    private static let filterPresetUD = "PrimaryDirections.FilterPreset"
+    private static let customPresetValue = "Personalizado"
 
     static func load() -> PDSettings {
         var s = PDSettings()
@@ -353,6 +415,11 @@ struct PDSettings: Equatable, Sendable {
         }
         let years = ud.double(forKey: maxYearsUD)
         if years > 0 { s.maxYears = years }
+        if ud.object(forKey: filterPresetUD) == nil {
+            s.filterPreset = .classical
+        } else if let raw = ud.string(forKey: filterPresetUD) {
+            s.filterPreset = raw == customPresetValue ? nil : PDFilterPreset(rawValue: raw)
+        }
         return s
     }
 
@@ -363,13 +430,18 @@ struct PDSettings: Equatable, Sendable {
         ud.set(aspectPlane.rawValue, forKey: Self.planeUD)
         ud.set(2, forKey: Self.planeVersionUD)
         ud.set(maxYears, forKey: Self.maxYearsUD)
+        ud.set(filterPreset?.rawValue ?? Self.customPresetValue, forKey: Self.filterPresetUD)
     }
 
     var calculatorConfig: PrimaryDirectionCalculator.Config {
-        PrimaryDirectionCalculator.Config(
+        let preset = filterPreset
+        return PrimaryDirectionCalculator.Config(
             method: method,
             key: key,
             maxYears: maxYears,
+            aspects: preset?.orderedAspects ?? PDaspect.allCases,
+            promissors: preset?.orderedPromissors ?? [],
+            significators: preset?.orderedSignificators ?? [],
             aspectPlane: aspectPlane
         )
     }

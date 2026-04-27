@@ -9,7 +9,7 @@ struct PrimaryDirectionFiltersView: View {
     @Environment(\.dismiss) private var dismiss
 
     // Available promissors derived from the filter
-    private let availablePromissors = PLANET_LIST.map(\.key) + ["ASC", "MC"]
+    private let availablePromissors = PLANET_LIST.map(\.key) + ["ASC", "MC", "DSC", "IC", "PARTFORTUNA"]
 
     var body: some View {
         NavigationStack {

@@ -145,7 +145,8 @@ struct PrimaryDirectionsTimelineView: View {
         let isSelected = selectedDirection?.id == enriched.id
         let isHovered = hoveredId == enriched.id
         let color = polarityColor(dir.aspect.polarity)
-        let markerSize: CGFloat = isSelected ? 16 : (isHovered ? 13 : 10)
+        let baseSize = markerSize(for: dir.weight)
+        let markerSize: CGFloat = isSelected ? max(16, baseSize + 4) : (isHovered ? baseSize + 3 : baseSize)
 
         return ZStack {
             Path { path in
@@ -251,24 +252,52 @@ struct PrimaryDirectionsTimelineView: View {
 
     @ViewBuilder
     private func markerDot(for direction: PrimaryDirection, color: Color, size: CGFloat, isSelected: Bool) -> some View {
+        let opacity = markerOpacity(for: direction.weight)
+        let borderWidth = isSelected ? 2 : markerBorderWidth(for: direction.weight)
+        let shadowRadius = direction.weight == .critical || isSelected ? 7.0 : 0
         if direction.directionType == .direct {
             Circle()
-                .fill(color)
+                .fill(color.opacity(opacity))
                 .frame(width: size, height: size)
                 .overlay {
                     Circle()
-                        .stroke(Color.white.opacity(isSelected ? 0.95 : 0.45), lineWidth: isSelected ? 2 : 1)
+                        .stroke(Color.white.opacity(borderWidth > 0 ? 0.82 : 0), lineWidth: borderWidth)
                 }
-                .shadow(color: color.opacity(isSelected ? 0.45 : 0), radius: 8, y: 2)
+                .shadow(color: color.opacity(shadowRadius > 0 ? 0.32 : 0), radius: shadowRadius, y: 2)
         } else {
             RoundedRectangle(cornerRadius: 3, style: .continuous)
-                .fill(color)
+                .fill(color.opacity(opacity))
                 .frame(width: size, height: size)
                 .overlay {
                     RoundedRectangle(cornerRadius: 3, style: .continuous)
-                        .stroke(Color.white.opacity(isSelected ? 0.95 : 0.45), lineWidth: isSelected ? 2 : 1)
+                        .stroke(Color.white.opacity(borderWidth > 0 ? 0.82 : 0), lineWidth: borderWidth)
                 }
-                .shadow(color: color.opacity(isSelected ? 0.45 : 0), radius: 8, y: 2)
+                .shadow(color: color.opacity(shadowRadius > 0 ? 0.32 : 0), radius: shadowRadius, y: 2)
+        }
+    }
+
+    private func markerSize(for weight: PDWeight) -> CGFloat {
+        switch weight {
+        case .critical: return 12
+        case .major: return 10
+        case .moderate: return 8
+        case .minor: return 6
+        }
+    }
+
+    private func markerOpacity(for weight: PDWeight) -> Double {
+        switch weight {
+        case .critical, .major: return 1
+        case .moderate: return 0.85
+        case .minor: return 0.6
+        }
+    }
+
+    private func markerBorderWidth(for weight: PDWeight) -> CGFloat {
+        switch weight {
+        case .critical: return 2
+        case .major: return 1
+        case .moderate, .minor: return 0
         }
     }
 
@@ -293,25 +322,47 @@ struct PrimaryDirectionsTimelineView: View {
 
     private func tooltipView(for enriched: EnrichedPrimaryDirection) -> some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(enriched.displaySummary)
+            Text(semanticTooltipText(for: enriched.direction))
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(.primary)
                 .lineLimit(2)
-            Text(enriched.ageFormatted)
-                .font(.caption.monospaced())
-                .foregroundStyle(Color.appAccentFill)
             Text("Arco \(enriched.arcFormatted)")
                 .font(.caption.monospaced())
                 .foregroundStyle(.secondary)
         }
         .padding(8)
-        .frame(width: 210, alignment: .leading)
+        .frame(width: 270, alignment: .leading)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 8, style: .continuous)
                 .stroke(Color.appBorder.opacity(0.6), lineWidth: 1)
         )
         .shadow(color: .black.opacity(0.14), radius: 10, y: 4)
+    }
+
+    private func semanticTooltipText(for direction: PrimaryDirection) -> String {
+        let age = compactAge(direction.estimatedAge)
+        let suffix = "(\(direction.directionType.rawValue), \(direction.weight.label.lowercased()))"
+        if direction.directionType == .converse {
+            return "\(direction.significatorLabel) → \(direction.promissorLabel) × \(aspectName(direction.aspect))  \(age)  \(suffix)"
+        }
+        return "\(direction.promissorLabel) → \(direction.significatorLabel) × \(aspectName(direction.aspect))  \(age)  \(suffix)"
+    }
+
+    private func compactAge(_ age: Double) -> String {
+        let years = Int(age)
+        let months = Int((age - Double(years)) * 12)
+        return "\(years)a \(months)m"
+    }
+
+    private func aspectName(_ aspect: PDaspect) -> String {
+        switch aspect {
+        case .conjunction: return "Conjunción"
+        case .sextile: return "Sextil"
+        case .square: return "Cuadratura"
+        case .trine: return "Trígono"
+        case .opposition: return "Oposición"
+        }
     }
 
     private func timelineClusters(width: CGFloat) -> [TimelineCluster] {
