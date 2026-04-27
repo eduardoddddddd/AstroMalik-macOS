@@ -8,3 +8,7 @@
 xcuserdata/
 DerivedData/
 AstroMalik.app/
+corpus_sources/raw/
+corpus_sources/text/
+corpus_sources/staging/
+corpus_sources/reports/

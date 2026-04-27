@@ -121,6 +121,33 @@ final class CorpusStore {
         }
     }
 
+    func buildSolarReturnInterpretations(chart: NatalChart) -> [Interpretation] {
+        buildNatalInterpretations(chart: chart).map { interpretation in
+            var copy = interpretation
+            copy.titulo = solarReturnTitle(interpretation.titulo, chart: chart)
+            return copy
+        }
+    }
+
+    private func solarReturnTitle(_ title: String, chart: NatalChart) -> String {
+        var result = title
+        for body in chart.bodies {
+            result = result.replacingOccurrences(
+                of: "\(body.label) en ",
+                with: "\(body.label) de revolución en "
+            )
+        }
+        result = result.replacingOccurrences(
+            of: "Ascendente en ",
+            with: "Ascendente de revolución en "
+        )
+        result = result.replacingOccurrences(
+            of: " ASC ",
+            with: " ASC de revolución "
+        )
+        return result
+    }
+
     private func signIndex(for longitude: Double) -> Int {
         let normalized = ((longitude.truncatingRemainder(dividingBy: 360)) + 360)
             .truncatingRemainder(dividingBy: 360)

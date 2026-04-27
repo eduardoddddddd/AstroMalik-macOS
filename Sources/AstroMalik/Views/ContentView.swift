@@ -11,7 +11,7 @@ struct ContentView: View {
                         Text("AstroMalik")
                             .font(.system(size: 24, weight: .semibold))
                             .foregroundColor(.appPrimaryText)
-                        Text("Cartas, tránsitos y horaria")
+                        Text("Cartas, direcciones, revoluciones y horaria")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -50,6 +50,14 @@ struct ContentView: View {
             HelpView()
                 .preferredColorScheme(appState.appearanceMode.colorScheme)
         }
+        .alert("Error de base de datos", isPresented: Binding(
+            get: { appState.migrationError != nil },
+            set: { if !$0 { appState.migrationError = nil } }
+        )) {
+            Button("OK") { appState.migrationError = nil }
+        } message: {
+            Text(appState.migrationError ?? "")
+        }
         .onChange(of: appState.selectedNav) { _, newValue in
             appState.showDefaultDetail(for: newValue)
         }
@@ -82,6 +90,14 @@ struct ContentView: View {
             SynastryView()
                 .environmentObject(appState)
 
+        case .solarReturn:
+            SolarReturnView()
+                .environmentObject(appState)
+
+        case .lunarReturn:
+            LunarReturnView()
+                .environmentObject(appState)
+
         case .savedCharts:
             SavedChartsView(onOpenChart: { chart in
                 appState.showNatalResult(chart, returnTo: .cartas)
@@ -105,8 +121,36 @@ struct ContentView: View {
                 query: query,
                 onBack: { appState.detailRoute = .horaryHome(returnTo) }
             )
+
+        case .primaryDirections(let chart):
+            primaryDirectionsDetail(chart: chart)
         }
     }
+
+    // MARK: - Primary Directions Detail (Phase 6)
+
+    @ViewBuilder
+    private func primaryDirectionsDetail(chart: NatalChart) -> some View {
+        if chart.id == NatalChart.placeholder.id {
+            VStack(spacing: 12) {
+                Image(systemName: "arrow.triangle.swap")
+                    .font(.system(size: 48))
+                    .foregroundColor(.secondary)
+                Text("Guarda o abre una carta natal para calcular las Direcciones Primarias.")
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 360)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.appBackground)
+        } else {
+            PDDetailContainer(chart: chart,
+                              pdService: appState.pdService,
+                              interpreter: appState.pdInterpreter)
+        }
+    }
+
+    // MARK: - Reading Detail
 
     @ViewBuilder
     private var readingDetail: some View {
@@ -129,6 +173,8 @@ struct ContentView: View {
             .background(Color.appBackground)
         }
     }
+
+    // MARK: - Transits Detail
 
     @ViewBuilder
     private var transitosDetail: some View {

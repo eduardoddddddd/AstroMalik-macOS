@@ -68,6 +68,11 @@ struct NatalChartView: View {
             }
             ToolbarItemGroup(placement: .primaryAction) {
                 Button {
+                    appState.showPrimaryDirections(for: chart)
+                } label: {
+                    Label("Direcciones Primarias", systemImage: "arrow.triangle.swap")
+                }
+                Button {
                     Task { await saveChart() }
                 } label: {
                     Label(saveSuccess ? "Guardada" : "Guardar carta", systemImage: saveSuccess ? "checkmark.circle" : "tray.and.arrow.down")

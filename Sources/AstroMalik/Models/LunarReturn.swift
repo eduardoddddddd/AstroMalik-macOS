@@ -27,7 +27,7 @@ struct LunarReturnReading: Identifiable, Codable, Equatable {
     var statistics: LunarReturnStatistics
 
     var coverageSummary: String {
-        "\(events.count) retornos lunares"
+        "\(events.count) retornos tecnicos"
     }
 }
 

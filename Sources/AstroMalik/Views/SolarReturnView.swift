@@ -636,6 +636,13 @@ enum SolarReturnNoteBuilder {
             lines.append("- \(placement.planetLabel): casa natal \(placement.natalHouse), casa solar \(placement.solarHouse), \(placement.formatted)")
         }
 
+        if !reading.interpretations.isEmpty {
+            lines += ["", "## Textos principales"]
+            for interpretation in reading.interpretations.prefix(8) {
+                lines.append("- \(interpretation.titulo): \(interpretation.texto)")
+            }
+        }
+
         lines += ["", "## Aspectos dominantes"]
         for aspect in reading.dominantAspects.prefix(8) {
             lines.append("- \(aspect.labelA) \(aspect.aspLabel) \(aspect.labelB), orbe \(String(format: "%.2f°", aspect.orb))")

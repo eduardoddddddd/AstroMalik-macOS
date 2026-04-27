@@ -5,8 +5,11 @@ enum NavItem: String, CaseIterable, Identifiable {
     case cartas      = "Cartas Guardadas"
     case lectura     = "Lectura"
     case sinastria   = "Sinastría"
+    case revolucionSolar = "Revolución Solar"
+    case revolucionLunar = "Revolución Lunar"
     case transitos   = "Tránsitos"
     case horaria     = "Horaria"
+    case direccionesPrimarias = "Direcciones Primarias"
 
     var id: String { rawValue }
 
@@ -16,8 +19,11 @@ enum NavItem: String, CaseIterable, Identifiable {
         case .cartas:     return "tray.full"
         case .lectura:    return "book.pages"
         case .sinastria:  return "person.2.circle"
+        case .revolucionSolar: return "sun.max.circle"
+        case .revolucionLunar: return "moon.circle"
         case .transitos:  return "calendar.circle"
         case .horaria:    return "questionmark.bubble"
+        case .direccionesPrimarias: return "arrow.triangle.swap"
         }
     }
 }
@@ -34,10 +40,13 @@ enum DetailRoute: Equatable {
     case natalResult(NatalChart, returnTo: NavItem)
     case reading
     case synastry
+    case solarReturn
+    case lunarReturn
     case savedCharts
     case transits
     case horaryHome(HoraryHomeTab)
     case horaryResult(SavedHoraryQuery, returnTo: HoraryHomeTab)
+    case primaryDirections(NatalChart)
 
     var viewIdentity: String {
         switch self {
@@ -49,6 +58,10 @@ enum DetailRoute: Equatable {
             return "reading"
         case .synastry:
             return "synastry"
+        case .solarReturn:
+            return "solarReturn"
+        case .lunarReturn:
+            return "lunarReturn"
         case .savedCharts:
             return "savedCharts"
         case .transits:
@@ -57,6 +70,8 @@ enum DetailRoute: Equatable {
             return "horaryHome-\(tab.id)"
         case .horaryResult(let query, _):
             return "horaryResult-\(query.id.uuidString)"
+        case .primaryDirections(let chart):
+            return "primaryDirections-\(chart.id.uuidString)"
         }
     }
 }

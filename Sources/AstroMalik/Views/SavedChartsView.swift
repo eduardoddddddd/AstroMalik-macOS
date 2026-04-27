@@ -135,6 +135,11 @@ struct SavedChartsView: View {
                                 } label: {
                                     Label("Ver carta", systemImage: "star.circle")
                                 }
+                                Button {
+                                    appState.showPrimaryDirections(for: chart)
+                                } label: {
+                                    Label("Direcciones Primarias", systemImage: "arrow.triangle.swap")
+                                }
                                 Divider()
                                 Button(role: .destructive) {
                                     chartToDelete = chart

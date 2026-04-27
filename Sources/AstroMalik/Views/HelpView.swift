@@ -5,7 +5,7 @@ struct HelpView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 section("AstroMalik Help", """
-                AstroMalik reúne carta natal, tránsitos y horaria en una sola ventana. La barra lateral sirve para cambiar de función y el panel derecho muestra formularios, listados o resultados.
+                AstroMalik reúne carta natal, sinastría, revolución solar, tránsitos y horaria en una sola ventana. La barra lateral sirve para cambiar de función y el panel derecho muestra formularios, listados o resultados.
                 """)
 
                 section("Nueva Carta", """
@@ -24,6 +24,10 @@ struct HelpView: View {
                 Sinastría compara dos cartas guardadas, calcula aspectos en ambas direcciones y puede crear una nota directa en Joplin con los textos disponibles.
                 """)
 
+                section("Revolución Solar", """
+                Revolución Solar calcula el retorno exacto del Sol para un año y lugar concretos. Muestra carta anual, superposición sobre la natal, lectura con corpus natal reutilizado y nota directa en Joplin.
+                """)
+
                 section("Horaria", """
                 Horaria calcula el juicio en Python y muestra el resultado en la app. Necesita Python 3 y el paquete horaria instalado, o una ruta configurada con ASTROMALIK_HORARIA_PATH. Usa el botón de diagnóstico para revisar la instalación.
                 """)
@@ -33,7 +37,7 @@ struct HelpView: View {
                 """)
 
                 section("Guardar frente a exportar", """
-                El botón principal de resultado guarda localmente en la base de datos de AstroMalik. La vista de carta puede copiar una nota Markdown preparada para Joplin, y Sinastría puede crear la nota directamente con Web Clipper.
+                El botón principal de resultado guarda localmente en la base de datos de AstroMalik. La vista de carta puede copiar una nota Markdown preparada para Joplin; Sinastría y Revolución Solar pueden crear la nota directamente con Web Clipper.
                 """)
             }
             .padding(24)

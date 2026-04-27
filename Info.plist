@@ -8,6 +8,8 @@
     <string>AstroMalik</string>
     <key>CFBundleIdentifier</key>
     <string>com.eduardoarias.astromalik</string>
+    <key>CFBundleIconFile</key>
+    <string>AstroMalik</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>CFBundleShortVersionString</key>

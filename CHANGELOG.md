@@ -2,18 +2,39 @@
 
 Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el versionado sigue [SemVer](https://semver.org/lang/es/).
 
-## [Unreleased]
+## \[Unreleased\]
+
+## \[0.4.0\] — 2026-04-27
+
+### Añadido (Módulo Direcciones Primarias - Fases 1 a 6)
+
+- **Cálculo de Direcciones Primarias:** Implementado motor completo con proyección de Regiomontanus, abarcando direcciones mundanas y zodiacales, con soporte para las claves de Naibod, Ptolomeo y Brahe.
+- **Corpus y Política de Honestidad (Capa 1):** Nuevo repositorio local SQLite para interpretaciones tradicionales. Se establece la regla de "honestidad", iniciando con 29 entradas como placeholders (`populated=0`) hasta contar con citas verificables de textos fuente clásicos.
+- **Intérprete Contextual LLM (Capa 2):** Motor generativo basado en OpenRouter que utiliza un prompt validado con el sistema de Morinus, considerando dignidades, secta, estado natal y factores accidentales para generar interpretaciones ricas y consistentes en JSON.
+- **Dignidades Esenciales Ptolemaicas:** Nuevo `EssentialDignityEngine` para evaluar domicilios, exaltaciones, términos egipcios, decanatos caldeos y secta diurna/nocturna.
+- **Gestión de Caché e Invalidación:** Tabla `user.db` con soporte de versionado de prompts (`prompt_version`), permitiendo una invalidación inmediata y sin estado tras ajustes en el modelo de lenguaje.
+- **UI Completa en SwiftUI:** 
+  - Nueva barra de filtros y línea de tiempo horizontal dinámica (color por polaridad, altura por peso del aspecto).
+  - Panel maestro de detalles con desglose Técnico (Speculum y períodos de activación), Corpus y Contextual.
+  - Ajustes de usuario guardados en `UserDefaults` para seleccionar proyección y clave por defecto.
+- **Sistema de Migraciones SQL:** Runner idempotente integrado en `AppState` para ejecutar migraciones progresivas `001_*` y `002_*`.
+- **Ejemplo End-to-End validado:** Carta de Eduardo procesada con éxito (ASC ♊ 00°32', MC ♒ 07°38', RAMC 310.058°). Validada la asimetría entre direcciones directas y conversas, incluyendo desglose del Speculum completo e interpretación generativa de muestra.
 
 ### Añadido
+
 - Rueda natal interactiva en SwiftUI con signos, casas, planetas, ASC/MC y líneas de aspecto.
 - Modo "Lectura" con triada Sol/Luna/ASC, regente del Ascendente, casas angulares, aspectos dominantes y síntesis editable.
 - Entrada "Lectura" en la navegación principal.
 - Entrada "Sinastría" en la navegación principal.
+- Entrada "Revolución Solar" en la navegación principal.
 - Motor de sinastría para dos cartas guardadas, con cálculo de aspectos A→B y B→A.
+- Motor de revolución solar con `swe_solcross_ut`, carta anual por lugar y superposición natal/solar.
 - Modelos `SynastryAspect` y `SynastryReading`.
+- Modelos `SolarReturnRequest`, `SolarReturnReading` y planetas de revolución en casas natales.
 - Lookup de corpus `tipo='sinastria'` con claves `SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>`.
 - Rueda doble de sinastría con planetas A/B y líneas de aspecto.
 - Botón para crear nota de sinastría directamente en Joplin vía Web Clipper local.
+- Botón para crear nota de revolución solar directamente en Joplin vía Web Clipper local.
 - Configuración de Joplin en Ajustes: host, puerto, token y cuaderno.
 - Autodetección del token local de Joplin desde `ASTROMALIK_JOPLIN_TOKEN` o settings de Joplin Desktop.
 - Botón rápido claro/oscuro en la cabecera lateral.
@@ -21,9 +42,10 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Archivo de cartas con notas, etiquetas y búsqueda por texto/tag.
 - Nota Markdown preparada para Joplin desde la vista de carta.
 - Timeline de tránsitos con barras diarias de intensidad por orbe, eje temporal adaptable, eje de fechas fijo y apertura del detalle al pulsar.
-- Tests de `swe_houses_ex2`, cancelación de tránsitos, timeline de intensidad, timezones conocidos, diagnóstico de Horaria, corpus/motor de sinastría y payload Joplin.
+- Tests de `swe_houses_ex2`, cancelación de tránsitos, timeline de intensidad, timezones conocidos, diagnóstico de Horaria, corpus/motor de sinastría, revolución solar y payload Joplin.
 
 ### Cambiado
+
 - La arquitectura oficial queda como ventana única. Se retiró el código muerto de hosts multi-ventana y registros de sesión asociados.
 - Tránsitos conserva resultados por carta y marca cuándo hay cambios pendientes de recalcular.
 - El eje de fechas de tránsitos queda fijo durante el scroll vertical y ocupa todo el ancho disponible.
@@ -34,23 +56,27 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Roadmap actualizado: Sinastría pasa a fase completada y la exportación avanzada queda como trabajo futuro.
 
 ### Corregido
+
 - Eliminados force unwraps en cálculo de días, Application Support y UTC.
 - Cancelación explícita de tareas largas de tránsitos e interpretaciones.
 - Mensaje específico para errores HTTP 403 de Joplin, apuntando a token/puerto de Web Clipper.
 
-## [0.3.0] — 2026-04-19
+## \[0.3.0\] — 2026-04-19
 
 ### Añadido
+
 - Tránsitos accesible desde el sidebar principal, al mismo nivel que "Nueva Carta" y "Cartas Guardadas"
 - Picker segmentado en la vista de Tránsitos para elegir entre múltiples cartas guardadas
 - Estado vacío con mensaje claro cuando no hay cartas guardadas al entrar en Tránsitos
 
 ### Cambiado
+
 - Eliminado el botón de Tránsitos de la toolbar de `NatalChartView` — la funcionalidad vive ahora en la navegación principal
 
-## [0.2.0] — 2026-04-17
+## \[0.2.0\] — 2026-04-17
 
 ### Añadido
+
 - Etapa experimental de apertura de cartas en ventanas secundarias, retirada posteriormente al consolidar la ventana única.
 - Atajo de teclado ⌘↩ en el formulario de nacimiento
 - Feedback visual tras calcular la carta
@@ -60,6 +86,7 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Este CHANGELOG
 
 ### Cambiado
+
 - README reescrito de arriba a abajo (más honesto sobre stack real, añade roadmap y relación con otros repos)
 - `NatalChartView` ya no se muestra como `.sheet` — se muestra como contenido de ventana completa, redimensionable
 - Ancho de columna de posiciones en `NatalChartView` ahora flexible (340 min / 400 ideal / 520 max) en lugar de fijo
@@ -67,14 +94,16 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - `.windowResizability(.contentMinSize)` en la app
 
 ### Corregido
+
 - **Bug crítico de arranque:** `Task.detached` en `NatalChartView.loadInterpretaciones` rompía aislamiento de actor en Swift 6 → la app salía con `failure (0x5)` al arrancar desde Xcode. Refactorizado al patrón correcto: task padre en MainActor + `Task.detached { ... }.value` solo para el trabajo pesado de SQLite
 - `JulianDay.swift:62` — `var utcComps` → `let utcComps` (nunca se muta)
 - `SQLiteDB.swift:96` — descarte explícito del resultado de `withUnsafeBytes { sqlite3_bind_blob(...) }`
 - Eliminado botón "Cerrar" en `NatalChartView` (ya no es sheet; la ventana se cierra con su propia cruz o ⌘W)
 
-## [0.1.0] — marzo/abril 2026
+## \[0.1.0\] — marzo/abril 2026
 
 ### Añadido
+
 - Port inicial desde Python (pyswisseph) a Swift + target C `CSwissEph`
 - UI básica SwiftUI: formulario de nacimiento, vista de carta, lista de interpretaciones
 - Tests de sanity sobre carta de referencia (1976-10-11 20:33 Europe/Madrid)

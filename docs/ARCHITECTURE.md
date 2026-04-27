@@ -1,6 +1,6 @@
 # Arquitectura de AstroMalik-macOS
 
-AstroMalik-macOS es una app nativa SwiftUI de ventana única. El objetivo actual es uso pro personal: lectura natal guiada, sinastría, archivo local, tránsitos y horaria integrada sin cuentas ni telemetría.
+AstroMalik-macOS es una app nativa SwiftUI de ventana única. El objetivo actual es uso pro personal: lectura natal guiada, sinastría, revolución solar, archivo local, tránsitos y horaria integrada sin cuentas ni telemetría.
 
 ## Ventana Única
 
@@ -10,6 +10,7 @@ La app usa un solo `WindowGroup` con `NavigationSplitView`. La sidebar decide la
 - Cartas Guardadas
 - Lectura
 - Sinastría
+- Revolución Solar
 - Tránsitos
 - Horaria
 
@@ -25,7 +26,7 @@ El archivo de cartas admite metadatos locales:
 - etiquetas
 - búsqueda por nombre, fecha, lugar, etiqueta o nota
 
-Joplin se trata como destino de salida de lectura. La lectura natal genera una nota Markdown lista para pegar en Joplin; Sinastría crea notas directas mediante Web Clipper local.
+Joplin se trata como destino de salida de lectura. La lectura natal genera una nota Markdown lista para pegar en Joplin; Sinastría y Revolución Solar crean notas directas mediante Web Clipper local.
 
 ## Motores Astronómicos
 
@@ -53,6 +54,14 @@ SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>
 `CorpusStore.lookupSynastry` filtra `tipo = 'sinastria'` y `buildSynastryReading` hidrata los aspectos con textos. El corpus contiene 420 textos de sinastría: 84 pares ordenados por 5 aspectos clásicos. Las ausencias esperadas son planeta consigo mismo y pares entre Urano/Neptuno/Plutón en ambas direcciones.
 
 `SynastryView` muestra dos pickers de cartas guardadas, cálculo manual, resumen de cobertura, lista agrupada por dirección y rueda doble A/B. El toggle “Mostrar sin texto” afecta a la lista y a las líneas dibujadas: los aspectos sin texto aparecen atenuados cuando se muestran.
+
+## Revolución Solar
+
+`SolarReturnEngine` calcula el retorno exacto del Sol con `swe_solcross_ut`. El punto de partida es el 1 de enero UTC del año solicitado; la longitud objetivo es la longitud natal del Sol. El JD exacto no depende del lugar, pero la carta anual sí se levanta con las coordenadas donde la persona estará ese año.
+
+`SolarReturnReading` conserva carta natal, carta anual, JD exacto, fecha/hora local y UTC, casa natal donde caen ASC/MC de revolución, planetas de revolución por casas natales, aspectos dominantes e interpretaciones reutilizadas del corpus natal.
+
+`SolarReturnView` usa una carta guardada, año y buscador de lugar. El resultado ofrece pestañas de rueda solar, superposición natal/solar, lectura técnica y textos. La v1 no persiste revoluciones solares en `user.db`; el archivo profesional del informe se hace creando una nota Joplin directa.
 
 ## Tránsitos
 
@@ -101,6 +110,7 @@ La app tiene dos caminos de salida hacia Joplin:
 
 - natal: `ReadingNoteBuilder` genera Markdown para copiar/pegar
 - sinastría: `SynastryNoteBuilder` genera Markdown y `JoplinClipperService` crea la nota vía Web Clipper
+- revolución solar: `SolarReturnNoteBuilder` genera el informe anual y lo envía por el mismo servicio
 
 `JoplinClipperService` usa `URLSession` contra el servidor local de Joplin (`127.0.0.1:41184` por defecto). Host, puerto, token y cuaderno viven en `AppState.joplinSettings` y se editan desde Ajustes. Si el token está vacío, el servicio intenta resolverlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop (`api.token`). Si el cuaderno no existe, se crea antes de crear la nota.
 
@@ -135,6 +145,9 @@ La suite cubre:
 - corpus de sinastría, formato de claves y cobertura de 420 textos
 - motor de sinastría en ambas direcciones
 - lookup de sinastría y generación de nota Markdown
+- motor de revolución solar, exactitud del retorno solar y cambio de lugar
+- lectura de revolución solar con corpus natal reutilizado
+- generación de nota Markdown de revolución solar
 - payload de creación de nota Joplin con cliente HTTP mock
 - `swe_houses_ex2`
 - rangos/cancelación de tránsitos

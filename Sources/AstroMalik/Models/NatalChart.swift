@@ -85,3 +85,27 @@ struct NatalAspect: Identifiable, Codable, Equatable {
 extension PlanetBody {
     var signIndex: Int { Int(longitude.truncatingRemainder(dividingBy: 360) / 30) }
 }
+
+// MARK: - Placeholder
+
+extension NatalChart {
+    /// Carta vacía utilizada como placeholder cuando no hay ninguna carta activa.
+    /// Nunca se muestra al usuario; activa el estado "sin carta" en PrimaryDirectionsView.
+    static let placeholder = NatalChart(
+        id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!,
+        name: "",
+        birthDate: "1970-01-01",
+        birthTime: "00:00",
+        timezone: "UTC",
+        latitude: 0,
+        longitude: 0,
+        placeName: "",
+        houseSystem: "Regiomontanus",
+        ascendant: AngularPoint(longitude: 0, formatted: ""),
+        mc: AngularPoint(longitude: 270, formatted: ""),
+        cusps: Array(repeating: 0.0, count: 12),
+        bodies: []
+    )
+
+    var isPlaceholder: Bool { id.uuidString == "00000000-0000-0000-0000-000000000000" }
+}

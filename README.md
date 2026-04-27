@@ -1,6 +1,6 @@
 # AstroMalik · macOS
 
-App nativa de astrología para macOS. Calcula cartas natales con interpretaciones en castellano, sinastrías de dos cartas guardadas, tránsitos con scoring y línea temporal de intensidad diaria, consultas de horaria clásica y gestiona un archivo personal de cartas y consultas guardadas, todo en local y sin cuentas.
+App nativa de astrología para macOS. Calcula cartas natales con interpretaciones en castellano, sinastrías de dos cartas guardadas, revoluciones solares anuales, tránsitos con scoring y línea temporal de intensidad diaria, consultas de horaria clásica y gestiona un archivo personal de cartas y consultas guardadas, todo en local y sin cuentas.
 
 Esta es la variante macOS del proyecto [AstroMalik](https://github.com/eduardoddddddd/AstroMalik) (Python + React). Comparte motor astronómico (Swiss Ephemeris) y corpus de interpretaciones, pero reescritos en Swift + SwiftUI para ejecución nativa en Apple Silicon.
 
@@ -15,12 +15,13 @@ Esta es la variante macOS del proyecto [AstroMalik](https://github.com/eduardodd
 - **Rueda natal interactiva** — signos, casas, planetas, ASC/MC y líneas de aspecto en SwiftUI
 - **Lectura guiada** — Sol/Luna/ASC, regente del Ascendente, casas angulares, aspectos dominantes y síntesis editable
 - **Sinastría** — compara dos cartas guardadas, calcula aspectos A→B y B→A, dibuja rueda doble y usa claves `SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>`
+- **Revolución Solar** — retorno solar exacto con `swe_solcross_ut`, carta anual, superposición natal/solar y lectura anual
 - **Tránsitos con timeline** — intensidad 1–5 ★, curva diaria por orbe y detalle textual por rango de fechas
 - **Horaria integrada** — cálculo doctrinal en Python, visualización y archivo nativos en macOS
 - **Archivo personal** — guardar, renombrar, etiquetar, anotar y buscar cartas; base local en `~/Library/Application Support/AstroMalik/user.db`
-- **Joplin directo** — creación de notas de sinastría vía Web Clipper local, con autodetección de token si está disponible
+- **Joplin directo** — creación de notas de sinastría y revolución solar vía Web Clipper local, con autodetección de token si está disponible
 - **Búsqueda de lugares** — seed offline + Nominatim (OpenStreetMap)
-- **Ventana única** — sidebar fija y panel de detalle para natal, sinastría, tránsitos, horaria e historial
+- **Ventana única** — sidebar fija y panel de detalle para natal, sinastría, revolución solar, tránsitos, horaria e historial
 - **Tema configurable** — modo `Sistema`, `Claro` u `Oscuro`, más botón rápido claro/oscuro en la sidebar
 - **Ayuda integrada** — entrada `Help > AstroMalik Help` con guía rápida de uso
 - **100 % offline y local** — cálculos en el dispositivo, sin telemetría, sin cuentas
@@ -55,7 +56,7 @@ La app busca primero un módulo embebido, luego `ASTROMALIK_HORARIA_PATH`, despu
 
 ### Integración opcional con Joplin
 
-Sinastría puede crear notas directamente en Joplin mediante el Web Clipper local. Por defecto usa:
+Sinastría y Revolución Solar pueden crear notas directamente en Joplin mediante el Web Clipper local. Por defecto usa:
 
 ```text
 Host: 127.0.0.1
@@ -130,14 +131,15 @@ Sanity check: carta natal del autor (`1976-10-11 20:33 Europe/Madrid`) verifica 
 │       ├── AppTheme.swift            ← Tokens de color + modo claro/oscuro/sistema
 │       ├── AppResources.swift        ← Localización del bundle de recursos
 │       ├── Engine/
-│       │   ├── AstroEngine.swift     ← Cálculo de carta natal
+│       │   ├── AstroEngine.swift     ← Cálculo de carta natal y aspectos
 │       │   ├── JulianDay.swift       ← Hora local IANA → JD UT
+│       │   ├── SolarReturnEngine.swift← Retorno solar exacto + lectura anual
 │       │   └── TransitEngine.swift   ← Tránsitos + scoring 1–5 ★ + muestras de intensidad diaria
 │       ├── Store/
 │       │   ├── SQLiteDB.swift        ← Wrapper minimalista sobre sqlite3
 │       │   ├── CorpusStore.swift     ← corpus.db (read-only, natal/tránsitos/sinastría)
 │       │   └── UserStore.swift       ← user.db (CRUD, Application Support)
-│       ├── Models/            ← NatalChart, PlanetBody, Interpretation, Transit, Synastry
+│       ├── Models/            ← NatalChart, PlanetBody, Interpretation, Transit, Synastry, SolarReturn
 │       ├── Horary/
 │       │   ├── HoraryEngine.swift    ← Wrapper Swift del proceso Python
 │       │   ├── Models/               ← Codable para chart/judgement JSON
@@ -152,6 +154,7 @@ Sanity check: carta natal del autor (`1976-10-11 20:33 Europe/Madrid`) verifica 
 │       │   ├── NatalChartView.swift      ← rueda, lectura guiada y textos
 │       │   ├── NatalWheelView.swift      ← rueda natal interactiva
 │       │   ├── SynastryView.swift        ← comparación de dos cartas + rueda doble
+│       │   ├── SolarReturnView.swift     ← revolución solar + superposición natal/solar
 │       │   ├── GuidedReadingView.swift   ← lectura natal guiada
 │       │   ├── InterpretacionesView.swift← Lista filtrable y expandible
 │       │   ├── SavedChartsView.swift     ← Grid de cartas guardadas
@@ -175,7 +178,7 @@ Sanity check: carta natal del autor (`1976-10-11 20:33 Europe/Madrid`) verifica 
 
 La app usa una sola ventana con `NavigationSplitView`: la sidebar fija cambia de sección y el panel derecho carga formularios, listados y resultados. Esto simplifica el flujo y evita que natal, horaria o historial vayan abriendo ventanas adicionales.
 
-- Navegación consistente entre Nueva Carta, Cartas Guardadas, Lectura, Sinastría, Tránsitos y Horaria
+- Navegación consistente entre Nueva Carta, Cartas Guardadas, Lectura, Sinastría, Revolución Solar, Tránsitos y Horaria
 - Cambio de contexto sin perder la sidebar ni abrir ventanas nuevas
 - Mejor encaje para tema claro/oscuro y ayuda integrada
 
@@ -191,13 +194,19 @@ SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>
 
 El corpus incluye 420 textos de sinastría: 84 pares ordenados con los 5 aspectos clásicos. Quedan fuera de forma intencional planeta consigo mismo y pares exclusivamente transpersonales entre Urano, Neptuno y Plutón. La vista muestra por defecto los aspectos con texto, permite revelar los aspectos sin texto y dibuja una rueda doble A/B con líneas coloreadas por aspecto.
 
+### Revolución Solar
+
+La sección Revolución Solar usa una carta guardada, un año y el lugar donde la persona estará para ese cumpleaños. El motor toma la longitud natal del Sol, calcula el retorno exacto con `swe_solcross_ut` y levanta una carta anual con `computeNatalChart` usando las coordenadas del lugar elegido.
+
+La vista muestra carta de revolución, superposición natal/solar, lectura técnica, textos reutilizados del corpus natal y nota Joplin directa. No se crea una tabla nueva en `user.db`: la revolución se genera bajo demanda y Joplin funciona como archivo del informe anual.
+
 ### Tránsitos con timeline de intensidad
 
 `TransitEngine` calcula los eventos del periodo y, además del score global 1–5 ★, guarda muestras diarias con fecha, orbe e intensidad normalizada. La vista de Tránsitos combina una línea temporal superior con la tabla existente: cada fila dibuja barras por día que suben hacia el aspecto exacto y bajan al alejarse, coloreadas por tipo de aspecto. La fila de fechas queda fija al hacer scroll vertical, y el eje se expande para ocupar todo el ancho disponible. Al pulsar una fila o barra se abre el detalle textual del tránsito.
 
 ### Joplin
 
-La lectura natal conserva la salida Markdown preparada para pegar. Sinastría añade creación directa de notas vía Joplin Web Clipper local, con cuaderno configurable. Si el token está vacío, `JoplinClipperService` intenta leerlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop.
+La lectura natal conserva la salida Markdown preparada para pegar. Sinastría y Revolución Solar añaden creación directa de notas vía Joplin Web Clipper local, con cuaderno configurable. Si el token está vacío, `JoplinClipperService` intenta leerlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop.
 
 ### Horaria vía subproceso Python
 
@@ -259,17 +268,28 @@ La hora de nacimiento introducida por el usuario es siempre **local** (en la zon
 - Timeline de tránsitos con eje de fechas fijo y ancho adaptable
 - Botón rápido claro/oscuro en la sidebar
 
-### 🚧 Fase 5 — Exportación avanzada
+### ✅ Fase 5 — Revolución Solar (completada abril 2026)
+- Sección propia para revolución solar anual
+- Retorno solar exacto con `swe_solcross_ut`
+- Carta anual levantada para el lugar de revolución
+- Superposición natal/revolución
+- Reutilización del corpus natal para textos anuales
+- Nota directa en Joplin con resumen técnico
+
+### 🚧 Fase 6 — Exportación avanzada
 - Export PNG/PDF de carta, lectura y sinastría
 - Plantillas Joplin configurables
 
-### 📌 Fase 6 — Distribución pulida
+### 📌 Fase 7 — Distribución pulida
 - Icono personalizado en `.icns`
 - Notarización opcional con Apple Developer ID
 - Exportadores y flujo de instalación más pulidos
 
-### 🔮 Fase 7 — Avanzado
+### 🔮 Fase 8 — Avanzado
 - Slider temporal de tránsitos integrado en la rueda natal
+- Revolución lunar
+- Progresiones secundarias y direcciones de arco solar
+- Profeciones anuales y retornos planetarios
 - Export PNG/PDF de la carta
 - Log ampliado de consultas en Joplin
 

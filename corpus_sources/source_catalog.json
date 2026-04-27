@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "lilly_christian_astrology_1659_commons",
+      "author": "William Lilly",
+      "title": "Christian Astrology",
+      "year": 1659,
+      "module_scope": ["primary_directions", "solar_return", "lunar_return", "horary", "general_doctrine"],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Christian%20Astrology%20%28Lilly%2C%201659%29.djvu",
+      "landing_url": "https://commons.wikimedia.org/wiki/File:Christian_Astrology_(Lilly,_1659).djvu",
+      "format": "djvu",
+      "rights_status": "public_domain",
+      "license_note": "Wikimedia Commons marks the scan as public domain.",
+      "priority": 1
+    },
+    {
+      "id": "lilly_christian_astrology_wikisource",
+      "author": "William Lilly",
+      "title": "Christian Astrology",
+      "year": 1659,
+      "module_scope": ["primary_directions", "solar_return", "lunar_return", "horary", "general_doctrine"],
+      "url": "https://en.wikisource.org/wiki/Christian_Astrology",
+      "landing_url": "https://en.wikisource.org/wiki/Christian_Astrology",
+      "format": "html",
+      "rights_status": "public_domain",
+      "license_note": "Wikisource transcription of a public domain work.",
+      "priority": 1
+    },
+    {
+      "id": "ptolemy_tetrabiblos_lacuscurtius",
+      "author": "Claudius Ptolemy",
+      "title": "Tetrabiblos",
+      "year": 1940,
+      "module_scope": ["solar_return", "lunar_return", "general_doctrine"],
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Ptolemy/Tetrabiblos/home.html",
+      "landing_url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Ptolemy/Tetrabiblos/home.html",
+      "format": "html",
+      "rights_status": "public_domain_or_permission_claimed_by_host",
+      "license_note": "LacusCurtius states the hosted text is public domain under US rules; verify before quoting extensively.",
+      "priority": 2
+    },
+    {
+      "id": "ptolemy_tetrabiblos_ashmand_wikimedia",
+      "author": "Claudius Ptolemy",
+      "title": "Tetrabiblos, Ashmand translation",
+      "year": 1822,
+      "module_scope": ["solar_return", "lunar_return", "general_doctrine"],
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Ptolemy%27s_Tetrabiblos_-_or%2C_Quadripartite_-_being_four_books_of_the_influence_of_the_stars_%28IA_ptolemystetrabib00ptol%29.pdf",
+      "landing_url": "https://commons.wikimedia.org/wiki/File:Ptolemy%27s_Tetrabiblos_-_or,_Quadripartite_-_being_four_books_of_the_influence_of_the_stars_(IA_ptolemystetrabib00ptol).pdf",
+      "format": "pdf",
+      "rights_status": "public_domain",
+      "license_note": "1822 translation, Wikimedia/Internet Archive public domain scan.",
+      "priority": 2
+    },
+    {
+      "id": "morin_astrologia_gallica_erara",
+      "author": "Jean-Baptiste Morin",
+      "title": "Astrologia Gallica",
+      "year": 1661,
+      "module_scope": ["solar_return", "primary_directions", "general_doctrine"],
+      "url": "https://www.e-rara.ch/download/pdf/1871945.pdf",
+      "landing_url": "https://www.e-rara.ch/doi/10.3931/e-rara-1843",
+      "format": "pdf",
+      "rights_status": "public_domain",
+      "license_note": "17th century scan from e-rara; verify local reuse terms before redistribution.",
+      "priority": 2
+    },
+    {
+      "id": "coley_clavis_skyscript",
+      "author": "Henry Coley",
+      "title": "Clavis Astrologiae Elimata",
+      "year": 1676,
+      "module_scope": ["solar_return", "primary_directions", "general_doctrine"],
+      "url": "https://www.skyscript.co.uk/pdf/Coley_clavis_astrologiae_elimata.pdf",
+      "landing_url": "https://www.skyscript.co.uk/clavis.html",
+      "format": "pdf",
+      "rights_status": "public_domain_text_modern_scan",
+      "license_note": "Historic public domain text; scan is hosted by Skyscript. Keep attribution and verify redistribution policy.",
+      "priority": 2
+    },
+    {
+      "id": "bonatti_anima_astrologiae_commons",
+      "author": "Guido Bonatti / Henry Coley",
+      "title": "Anima Astrologiae",
+      "year": 1676,
+      "module_scope": ["horary", "general_doctrine", "solar_return"],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Medical%20Heritage%20Library%20%28IA%20b24884054%29.pdf",
+      "landing_url": "https://commons.wikimedia.org/wiki/File:Medical_Heritage_Library_(IA_b24884054).pdf",
+      "format": "pdf",
+      "rights_status": "public_domain",
+      "license_note": "Wikimedia Commons marks the scan PD-old-100-expired / public domain.",
+      "priority": 2
+    },
+    {
+      "id": "bonatti_anima_astrologiae_skyscript",
+      "author": "Guido Bonatti / Henry Coley",
+      "title": "Anima Astrologiae: Considerations of Guido Bonatti",
+      "year": 1676,
+      "module_scope": ["horary", "general_doctrine", "solar_return"],
+      "url": "https://www.skyscript.co.uk/guido146.html",
+      "landing_url": "https://www.skyscript.co.uk/guido146.html",
+      "format": "html",
+      "rights_status": "public_domain_text_modern_edition",
+      "license_note": "Modern digital edition of a public domain text; use for discovery and attribution, verify terms before bulk reuse.",
+      "priority": 3
+    },
+    {
+      "id": "dariot_judgement_starres_astrolearn",
+      "author": "Claude Dariot",
+      "title": "A Brief and Most Easie Introduction to the Astrological Judgement of the Starres",
+      "year": 1598,
+      "module_scope": ["horary", "general_doctrine"],
+      "url": "https://www.astrolearn.com/downloads/dariot-judgement-of-the-starres-1598/",
+      "landing_url": "https://www.astrolearn.com/downloads/dariot-judgement-of-the-starres-1598/",
+      "format": "html",
+      "rights_status": "public_domain_text_modern_scan_notice",
+      "license_note": "Historic text; landing page describes a modern private scan. Treat as discovery only until reuse terms are checked.",
+      "priority": 3
+    }
+  ]
+}

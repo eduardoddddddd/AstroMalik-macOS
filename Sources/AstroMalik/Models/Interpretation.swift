@@ -16,4 +16,5 @@ enum InterpretationType: String, Codable, CaseIterable {
     case aspectoNatal      = "aspecto_natal"
     case transito          = "transito"
     case sinastria         = "sinastria"
+    case direccionPrimaria = "direccion_primaria"
 }

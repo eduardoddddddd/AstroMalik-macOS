@@ -269,6 +269,283 @@ final class AstroEngineTests: XCTestCase {
         XCTAssertEqual(payload?["parent_id"] as? String, "folder-1")
     }
 
+    func testSolarReturnJDIsInsideYearAndMatchesNatalSun() throws {
+        let natal = try referenceChart()
+        let jd = try SolarReturnEngine.solarReturnJD(natalChart: natal, year: 2026)
+        let start = sweJuldayForTest(year: 2026, month: 1, day: 1)
+        let end = sweJuldayForTest(year: 2027, month: 1, day: 1)
+        XCTAssertGreaterThan(jd, start)
+        XCTAssertLessThan(jd, end)
+
+        let solarChart = try AstroEngine.computeNatalChart(jd: jd, lat: 40.4168, lon: -3.7038)
+        let natalSun = try XCTUnwrap(natal.bodies.first { $0.key == "SOL" })
+        let solarSun = try XCTUnwrap(solarChart.bodies.first { $0.key == "SOL" })
+        XCTAssertEqual(angularDiffForTest(natalSun.longitude, solarSun.longitude), 0, accuracy: 0.01)
+    }
+
+    func testSolarReturnLocationChangesAnglesButNotExactJD() throws {
+        let natal = try referenceChart()
+        let store = try referenceCorpusStore()
+        let madrid = SolarReturnRequest(
+            natalChart: natal,
+            year: 2026,
+            placeName: "Madrid",
+            latitude: 40.4168,
+            longitude: -3.7038,
+            timezone: "Europe/Madrid"
+        )
+        let paris = SolarReturnRequest(
+            natalChart: natal,
+            year: 2026,
+            placeName: "Paris",
+            latitude: 48.8566,
+            longitude: 2.3522,
+            timezone: "Europe/Paris"
+        )
+
+        let madridReading = try SolarReturnEngine.calculate(request: madrid, corpusStore: store)
+        let parisReading = try SolarReturnEngine.calculate(request: paris, corpusStore: store)
+
+        XCTAssertEqual(madridReading.exactJD, parisReading.exactJD, accuracy: 0.000001)
+        XCTAssertGreaterThan(
+            angularDiffForTest(
+                madridReading.solarChart.ascendant.longitude,
+                parisReading.solarChart.ascendant.longitude
+            ),
+            1.0
+        )
+    }
+
+    func testSolarReturnReadingIncludesNatalCorpusAndNatalHouses() throws {
+        let natal = try referenceChart()
+        let store = try referenceCorpusStore()
+        let request = SolarReturnRequest(
+            natalChart: natal,
+            year: 2026,
+            placeName: "Madrid",
+            latitude: 40.4168,
+            longitude: -3.7038,
+            timezone: "Europe/Madrid"
+        )
+
+        let reading = try SolarReturnEngine.calculate(request: request, corpusStore: store)
+        XCTAssertFalse(reading.interpretations.isEmpty)
+        XCTAssertTrue(reading.interpretations.contains { $0.titulo.contains("de revolución") })
+        XCTAssertTrue((1...12).contains(reading.natalHouseForSolarAsc))
+        XCTAssertTrue((1...12).contains(reading.natalHouseForSolarMC))
+        XCTAssertEqual(reading.solarPlanetsInNatalHouses.count, 10)
+    }
+
+    func testSolarReturnThrowsWhenNatalSunIsMissing() throws {
+        var natal = try referenceChart()
+        natal.bodies.removeAll { $0.key == "SOL" }
+        XCTAssertThrowsError(try SolarReturnEngine.solarReturnJD(natalChart: natal, year: 2026)) { error in
+            XCTAssertEqual(error as? SolarReturnError, .missingNatalSun)
+        }
+    }
+
+    func testSolarReturnNoteBuilderIncludesAnnualData() throws {
+        let natal = try referenceChart()
+        let store = try referenceCorpusStore()
+        let request = SolarReturnRequest(
+            natalChart: natal,
+            year: 2026,
+            placeName: "Madrid",
+            latitude: 40.4168,
+            longitude: -3.7038,
+            timezone: "Europe/Madrid"
+        )
+        let reading = try SolarReturnEngine.calculate(request: request, corpusStore: store)
+        let markdown = SolarReturnNoteBuilder.markdown(reading: reading)
+
+        XCTAssertTrue(markdown.contains("# Revolución Solar 2026"))
+        XCTAssertTrue(markdown.contains("Retorno exacto"))
+        XCTAssertTrue(markdown.contains("ASC revolución"))
+        XCTAssertTrue(markdown.contains("Planetas de revolución en casas natales"))
+        XCTAssertTrue(markdown.contains("Textos principales"))
+    }
+
+    func testJoplinClipperCreatesSolarReturnNotePayload() async throws {
+        let client = MockJoplinHTTPClient(responses: [
+            #"{"items":[{"id":"folder-1","title":"AstroMalik"}],"has_more":false}"#,
+            #"{"id":"note-1"}"#,
+        ])
+        let service = JoplinClipperService(
+            settings: JoplinClipperSettings(
+                host: "127.0.0.1",
+                port: 41184,
+                token: "secret",
+                notebook: "AstroMalik"
+            ),
+            client: client
+        )
+
+        try await service.createNote(title: "Revolución Solar 2026", body: "Informe anual")
+
+        XCTAssertEqual(client.requests.count, 2)
+        XCTAssertEqual(client.requests[1].url?.path, "/notes")
+        let body = try XCTUnwrap(client.requests[1].httpBody)
+        let payload = try JSONSerialization.jsonObject(with: body) as? [String: Any]
+        XCTAssertEqual(payload?["title"] as? String, "Revolución Solar 2026")
+        XCTAssertEqual(payload?["body"] as? String, "Informe anual")
+        XCTAssertEqual(payload?["parent_id"] as? String, "folder-1")
+    }
+
+    func testLunarReturnSequenceIsOrderedAndAlignedWithNatalMoon() throws {
+        let natal = try referenceChart()
+        let request = LunarReturnRequest(
+            natalChart: natal,
+            startDate: utcDate(year: 2026, month: 4, day: 25),
+            count: 24,
+            placeName: "Madrid",
+            latitude: 40.4168,
+            longitude: -3.7038,
+            timezone: "Europe/Madrid"
+        )
+
+        let reading = try LunarReturnEngine.calculate(request: request)
+        XCTAssertEqual(reading.events.count, 24)
+
+        guard let natalMoon = natal.bodies.first(where: { $0.key == "LUNA" }) else {
+            return XCTFail("La carta de referencia debe contener Luna")
+        }
+
+        for pair in zip(reading.events, reading.events.dropFirst()) {
+            XCTAssertLessThan(pair.0.exactJD, pair.1.exactJD)
+        }
+        for event in reading.events {
+            XCTAssertEqual(angularDiffForTest(event.moon.longitude, natalMoon.longitude), 0, accuracy: 0.01)
+            XCTAssertLessThan(event.moon.precisionArcseconds, 60)
+        }
+
+        let intervals = zip(reading.events, reading.events.dropFirst()).map { $1.exactJD - $0.exactJD }
+        let average = intervals.reduce(0, +) / Double(intervals.count)
+        XCTAssertEqual(average, 27.3, accuracy: 1.0)
+    }
+
+    func testLunarReturnLocationChangesAnglesButNotExactJD() throws {
+        let natal = try referenceChart()
+        let startDate = utcDate(year: 2026, month: 4, day: 25)
+        let madrid = LunarReturnRequest(
+            natalChart: natal,
+            startDate: startDate,
+            count: 3,
+            placeName: "Madrid",
+            latitude: 40.4168,
+            longitude: -3.7038,
+            timezone: "Europe/Madrid"
+        )
+        let paris = LunarReturnRequest(
+            natalChart: natal,
+            startDate: startDate,
+            count: 3,
+            placeName: "Paris",
+            latitude: 48.8566,
+            longitude: 2.3522,
+            timezone: "Europe/Paris"
+        )
+
+        let madridReading = try LunarReturnEngine.calculate(request: madrid)
+        let parisReading = try LunarReturnEngine.calculate(request: paris)
+        XCTAssertEqual(madridReading.events.count, parisReading.events.count)
+        XCTAssertEqual(madridReading.events[0].exactJD, parisReading.events[0].exactJD, accuracy: 0.000001)
+        XCTAssertGreaterThan(
+            angularDiffForTest(
+                madridReading.events[0].returnChart.ascendant.longitude,
+                parisReading.events[0].returnChart.ascendant.longitude
+            ),
+            1.0
+        )
+    }
+
+    func testLunarReturnReadingContainsTechnicalMetrics() throws {
+        let natal = try referenceChart()
+        let request = LunarReturnRequest(
+            natalChart: natal,
+            startDate: utcDate(year: 2026, month: 4, day: 25),
+            count: 6,
+            placeName: "Madrid",
+            latitude: 40.4168,
+            longitude: -3.7038,
+            timezone: "Europe/Madrid"
+        )
+
+        let reading = try LunarReturnEngine.calculate(request: request)
+        let first = try XCTUnwrap(reading.events.first)
+        XCTAssertEqual(reading.coverageSummary, "6 retornos tecnicos")
+        XCTAssertTrue((1...12).contains(first.moon.house))
+        XCTAssertTrue((1...12).contains(first.natalHouseForReturnAsc))
+        XCTAssertTrue((1...12).contains(first.natalHouseForReturnMC))
+        XCTAssertEqual(first.returnPlanetsInNatalHouses.count, 10)
+        XCTAssertFalse(first.dominantAspects.isEmpty)
+        XCTAssertGreaterThan(reading.statistics.maxSpeed, reading.statistics.minSpeed)
+    }
+
+    func testLunarReturnThrowsWhenNatalMoonIsMissing() throws {
+        var natal = try referenceChart()
+        natal.bodies.removeAll { $0.key == "LUNA" }
+        let request = LunarReturnRequest(
+            natalChart: natal,
+            startDate: utcDate(year: 2026, month: 4, day: 25),
+            count: 3,
+            placeName: "Madrid",
+            latitude: 40.4168,
+            longitude: -3.7038,
+            timezone: "Europe/Madrid"
+        )
+
+        XCTAssertThrowsError(try LunarReturnEngine.calculate(request: request)) { error in
+            XCTAssertEqual(error as? LunarReturnError, .missingNatalMoon)
+        }
+    }
+
+    func testLunarReturnNoteBuilderIncludesTechnicalSections() throws {
+        let natal = try referenceChart()
+        let request = LunarReturnRequest(
+            natalChart: natal,
+            startDate: utcDate(year: 2026, month: 4, day: 25),
+            count: 3,
+            placeName: "Madrid",
+            latitude: 40.4168,
+            longitude: -3.7038,
+            timezone: "Europe/Madrid"
+        )
+        let reading = try LunarReturnEngine.calculate(request: request)
+        let event = try XCTUnwrap(reading.events.first)
+        let markdown = LunarReturnNoteBuilder.markdown(reading: reading, selectedEvent: event)
+
+        XCTAssertTrue(markdown.contains("# Revolución Lunar"))
+        XCTAssertTrue(markdown.contains("## Tabla de retornos"))
+        XCTAssertTrue(markdown.contains("## Retorno seleccionado"))
+        XCTAssertTrue(markdown.contains("## Aspectos dominantes"))
+    }
+
+    func testJoplinClipperCreatesLunarReturnNotePayload() async throws {
+        let client = MockJoplinHTTPClient(responses: [
+            #"{"items":[{"id":"folder-1","title":"AstroMalik"}],"has_more":false}"#,
+            #"{"id":"note-1"}"#,
+        ])
+        let service = JoplinClipperService(
+            settings: JoplinClipperSettings(
+                host: "127.0.0.1",
+                port: 41184,
+                token: "secret",
+                notebook: "AstroMalik"
+            ),
+            client: client
+        )
+
+        try await service.createNote(title: "Revolución Lunar", body: "Informe técnico lunar")
+
+        XCTAssertEqual(client.requests.count, 2)
+        XCTAssertEqual(client.requests[1].url?.path, "/notes")
+        let body = try XCTUnwrap(client.requests[1].httpBody)
+        let payload = try JSONSerialization.jsonObject(with: body) as? [String: Any]
+        XCTAssertEqual(payload?["title"] as? String, "Revolución Lunar")
+        XCTAssertEqual(payload?["body"] as? String, "Informe técnico lunar")
+        XCTAssertEqual(payload?["parent_id"] as? String, "folder-1")
+    }
+
     func testDegToSign() {
         XCTAssertTrue(AstroEngine.degToSign(0).contains("Aries"))
         XCTAssertTrue(AstroEngine.degToSign(30).contains("Tauro"))
@@ -451,6 +728,16 @@ private func utcDate(year: Int, month: Int, day: Int) -> Date {
     var cal = Calendar(identifier: .gregorian)
     cal.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
     return cal.date(from: DateComponents(timeZone: cal.timeZone, year: year, month: month, day: day)) ?? Date()
+}
+
+private func sweJuldayForTest(year: Int, month: Int, day: Int) -> Double {
+    utcDate(year: year, month: month, day: day).timeIntervalSince1970 / 86_400 + 2_440_587.5
+}
+
+private func angularDiffForTest(_ a: Double, _ b: Double) -> Double {
+    var diff = abs((a - b + 360).truncatingRemainder(dividingBy: 360))
+    if diff > 180 { diff = 360 - diff }
+    return diff
 }
 
 private func isoDate(_ value: String) -> Date? {
