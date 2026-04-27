@@ -6,23 +6,24 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Añadido
 
+- Corpus clásico de Direcciones Primarias poblado con 29 entradas verificadas contra Lilly, `Christian Astrology` Libro III, y migración `006_populate_pd_classical_corpus.sql`.
 - Vista "Lista profesional" para Direcciones Primarias con tabla nativa ordenable, columnas densas y selección sincronizada con el detalle.
 - Vista "Año en curso" con selector anual, ventana residual de ±18 meses y tarjetas cronológicas con texto principal abreviado.
 - Tabla de Espéculo Regiomontano completo en el detalle, resaltando prómissor y significador.
-
 - Presets de filtro para Direcciones Primarias (Clásico/Extendido/Completo) con exclusión de transpersonales en modo clásico.
 - Sistema de peso por dirección (crítica/mayor/moderada/menor) con jerarquía visual en timeline, tabla y detalle.
 - Filtro por peso mínimo para reducir ruido sin recalcular el motor.
+
 ### Cambiado
 
 - Reorganizada la UI de Direcciones Primarias en header compacto, timeline semántico y panel maestro con tabs.
 - Rediseñado el detalle de una dirección con hero permanente, texto principal priorizado, alternativos bajo demanda, factores morinistas y datos técnicos en tabla estricta.
 - El banner de honestidad del corpus pasa a popover informativo en el header.
 - El plano por defecto de direcciones pasa a zodiacal con migración de `UserDefaults` a versión 2.
-
 - El default para usuarios nuevos de Direcciones Primarias pasa al preset Clásico.
 - El tooltip del timeline muestra dirección del movimiento, edad compacta, tipo y peso.
 - El banner superior de Direcciones Primarias muestra preset activo y conteo de direcciones críticas visibles.
+
 ### Corregido
 
 - Direcciones conversas calculadas con roles invertidos y polo del prómissor, en vez de derivarlas del signo del arco.

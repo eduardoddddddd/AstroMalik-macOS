@@ -11,4 +11,6 @@ AstroMalik.app/
 corpus_sources/raw/
 corpus_sources/text/
 corpus_sources/staging/
-corpus_sources/reports/
+corpus_sources/reports/*
+!corpus_sources/reports/
+!corpus_sources/reports/pd_corpus_population_report.md
