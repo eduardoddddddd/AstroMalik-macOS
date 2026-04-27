@@ -12,10 +12,14 @@ struct PrimaryDirectionDetailView: View {
     let onInvalidateInterpretation: () -> Void
 
     @State private var technicalExpanded = true
+    @State private var localReadingExpanded = true
     @State private var corpusExpanded = true
     @State private var contextualExpanded = true
 
     private var direction: PrimaryDirection { enriched.direction }
+    private var localReading: PrimaryDirectionLocalReading {
+        PrimaryDirectionLocalReading.build(for: direction)
+    }
 
     var body: some View {
         ScrollView(.vertical) {
@@ -27,6 +31,8 @@ struct PrimaryDirectionDetailView: View {
                     .overlay(alignment: .bottom) { Divider() }
 
                 VStack(alignment: .leading, spacing: 12) {
+                    localReadingSection
+
                     // Sección 1: Cálculo Técnico
                     technicalSection
 
@@ -79,6 +85,37 @@ struct PrimaryDirectionDetailView: View {
     }
 
     // MARK: - Sección 1: Técnica
+
+    private var localReadingSection: some View {
+        DisclosureGroup(isExpanded: $localReadingExpanded) {
+            VStack(alignment: .leading, spacing: 12) {
+                Text(localReading.summary)
+                    .font(.callout)
+                    .foregroundStyle(.primary)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Divider()
+
+                Label(localReading.practicalFocus, systemImage: "scope")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Label(localReading.caution, systemImage: "exclamationmark.triangle")
+                    .font(.caption)
+                    .foregroundStyle(Color.appWarning)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Text(localReading.sourceLabel)
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+            }
+            .padding(.top, 10)
+        } label: {
+            sectionLabel("Lectura Operativa", icon: "text.bubble")
+        }
+        .appCard()
+    }
 
     private var technicalSection: some View {
         DisclosureGroup(isExpanded: $technicalExpanded) {
