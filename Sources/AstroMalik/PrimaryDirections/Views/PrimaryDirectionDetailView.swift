@@ -70,7 +70,7 @@ struct PrimaryDirectionDetailView: View {
             HStack(spacing: 16) {
                 Label(direction.directionType == .direct ? "Directa" : "Conversa",
                       systemImage: direction.directionType == .direct ? "arrow.forward" : "arrow.backward")
-                Label(direction.aspectPlane == .mundane ? "Mundano" : "Zodiacal",
+                Label(direction.aspectPlane.displayName,
                       systemImage: "globe")
                 Label(direction.method.rawValue,
                       systemImage: "house.circle")

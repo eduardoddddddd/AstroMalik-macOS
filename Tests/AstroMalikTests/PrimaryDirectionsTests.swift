@@ -172,6 +172,59 @@ final class PrimaryDirectionsTests: XCTestCase {
         }
     }
 
+    func testEduardoEclipticModeMatchesReferenceSequence() throws {
+        let jdResult = try julianDayFromLocal(
+            birthDate: "1976-10-11",
+            birthTime: "20:33",
+            timezoneName: "Europe/Madrid"
+        )
+
+        let chart = try AstroEngine.computeNatalChart(
+            jd: jdResult.jd,
+            lat: 40.4168,
+            lon: -3.7038
+        )
+
+        let birthDate = Calendar.current.date(
+            from: DateComponents(year: 1976, month: 10, day: 11)
+        )!
+
+        let config = PrimaryDirectionCalculator.Config(
+            method: .regiomontanus,
+            key: .naibod,
+            maxYears: 60,
+            aspects: [.sextile, .trine, .square],
+            includeConverse: true,
+            aspectPlane: .ecliptic
+        )
+
+        let directions = calculator.calculate(
+            chart: chart,
+            jd: jdResult.jd,
+            birthDate: birthDate,
+            config: config
+        )
+
+        func find(_ promissor: String, _ aspect: PDaspect, _ significator: String) throws -> PrimaryDirection {
+            try XCTUnwrap(
+                directions.first {
+                    $0.promissor == promissor &&
+                    $0.significator == significator &&
+                    $0.aspect == aspect &&
+                    $0.arc > 0
+                },
+                "\(promissor) \(aspect.rawValue) \(significator) no encontrado"
+            )
+        }
+
+        XCTAssertEqual(try find("ASC", .trine, "VENUS").estimatedAge, 49.3, accuracy: 0.8)
+        XCTAssertEqual(try find("SOL", .sextile, "MC").estimatedAge, 49.8, accuracy: 0.8)
+        XCTAssertEqual(try find("MC", .sextile, "LUNA").estimatedAge, 50.8, accuracy: 0.8)
+        XCTAssertEqual(try find("LUNA", .trine, "VENUS").estimatedAge, 52.2, accuracy: 0.8)
+        XCTAssertEqual(try find("SATURNO", .trine, "MC").estimatedAge, 53.5, accuracy: 0.8)
+        XCTAssertEqual(try find("MC", .trine, "DSC").estimatedAge, 53.7, accuracy: 0.8)
+    }
+
     /// Verifica datos intermedios de la carta de Eduardo
     func testEduardoEquatorialData() throws {
         let jdResult = try julianDayFromLocal(

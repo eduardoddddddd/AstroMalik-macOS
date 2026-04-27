@@ -275,12 +275,13 @@ struct PDSettings: Equatable, Sendable {
     var method: PrimaryDirectionMethod = .regiomontanus
     var key: PrimaryDirectionKey = .naibod
     var maxYears: Double = 90
-    var aspectPlane: PDAspectPlane = .mundane
+    var aspectPlane: PDAspectPlane = .ecliptic
 
     private static let keyUD = "PrimaryDirections.Key"
     private static let methodUD = "PrimaryDirections.Method"
     private static let maxYearsUD = "PrimaryDirections.MaxYears"
     private static let planeUD = "PrimaryDirections.AspectPlane"
+    private static let planeVersionUD = "PrimaryDirections.AspectPlane.Version"
 
     static func load() -> PDSettings {
         var s = PDSettings()
@@ -291,7 +292,13 @@ struct PDSettings: Equatable, Sendable {
         if let raw = ud.string(forKey: methodUD), let m = PrimaryDirectionMethod(rawValue: raw) {
             s.method = m
         }
-        if let raw = ud.string(forKey: planeUD), let p = PDAspectPlane(rawValue: raw) {
+        if ud.integer(forKey: planeVersionUD) == 0 {
+            // Old builds defaulted silently to "mundano", which made reference
+            // ecliptic reports look wrong. New installs start in compatibility mode.
+            s.aspectPlane = .ecliptic
+            ud.set(PDAspectPlane.ecliptic.rawValue, forKey: planeUD)
+            ud.set(1, forKey: planeVersionUD)
+        } else if let raw = ud.string(forKey: planeUD), let p = PDAspectPlane(rawValue: raw) {
             s.aspectPlane = p
         }
         let years = ud.double(forKey: maxYearsUD)
@@ -307,6 +314,7 @@ struct PDSettings: Equatable, Sendable {
         ud.set(key.rawValue, forKey: Self.keyUD)
         ud.set(method.rawValue, forKey: Self.methodUD)
         ud.set(aspectPlane.rawValue, forKey: Self.planeUD)
+        ud.set(1, forKey: Self.planeVersionUD)
         ud.set(maxYears, forKey: Self.maxYearsUD)
     }
 

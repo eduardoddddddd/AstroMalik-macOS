@@ -22,6 +22,15 @@ if [[ -d "$BIN_DIR/AstroMalik_AstroMalik.bundle" ]]; then
   cp -R "$BIN_DIR/AstroMalik_AstroMalik.bundle" "$RESOURCES_DIR/AstroMalik_AstroMalik.bundle"
 fi
 
+if [[ -d "$ROOT_DIR/Resources/migrations" ]]; then
+  mkdir -p "$RESOURCES_DIR/AstroMalik_AstroMalik.bundle/migrations"
+  cp "$ROOT_DIR"/Resources/migrations/*.sql "$RESOURCES_DIR/AstroMalik_AstroMalik.bundle/migrations/"
+fi
+
+if [[ -f "$ROOT_DIR/Resources/pd_contextual_prompt.md" ]]; then
+  cp "$ROOT_DIR/Resources/pd_contextual_prompt.md" "$RESOURCES_DIR/AstroMalik_AstroMalik.bundle/"
+fi
+
 ICON_PATH=""
 if [[ -f "$ROOT_DIR/AstroMalik.icns" ]]; then
   ICON_PATH="$ROOT_DIR/AstroMalik.icns"

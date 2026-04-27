@@ -92,7 +92,7 @@ struct PrimaryDirectionFiltersView: View {
                 // MARK: Plano
                 Section {
                     ForEach(PDAspectPlane.allCases, id: \.self) { plane in
-                        Toggle(plane == .mundane ? "Mundano (Regiomontanus)" : "Zodiacal", isOn: Binding(
+                        Toggle(plane.displayName, isOn: Binding(
                             get: { filters.aspectPlanes.contains(plane) },
                             set: { on in
                                 if on { filters.aspectPlanes.insert(plane) }

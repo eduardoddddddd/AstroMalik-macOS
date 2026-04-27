@@ -107,7 +107,7 @@ struct PrimaryDirectionsView: View {
                 summaryChip("\(vm.filteredDirections.count)/\(result.metadata.totalDirections) visibles", tone: .secondary)
                 summaryChip("\(vm.filteredDirections.filter(\.hasInterpretation).count) con corpus", tone: .secondary)
                 summaryChip("\(vm.filteredDirections.filter { vm.cachedContextualDirectionIDs.contains($0.id) }.count) con contextual", tone: .secondary)
-                summaryChip(vm.settings.aspectPlane == .mundane ? "Plano mundano" : "Plano zodiacal", tone: .secondary)
+                summaryChip("Plano \(vm.settings.aspectPlane.displayName.lowercased())", tone: .secondary)
                 summaryChip(vm.settings.key.rawValue, tone: .secondary)
                 summaryChip("\(Int(vm.visibleAgeDomain.lowerBound))-\(Int(vm.visibleAgeDomain.upperBound)) años", tone: .secondary)
             }
@@ -444,7 +444,7 @@ private struct PDVisibleDirectionRow: View {
 
             HStack(spacing: 8) {
                 rowBadge(enriched.direction.directionType == .direct ? "Directa" : "Conversa", tone: .secondary)
-                rowBadge(enriched.direction.aspectPlane == .mundane ? "Mundano" : "Zodiacal", tone: .secondary)
+                rowBadge(enriched.direction.aspectPlane.displayName, tone: .secondary)
                 rowBadge(enriched.hasInterpretation ? "Corpus" : "Sin corpus", tone: enriched.hasInterpretation ? Color.appSecondaryAccent : .secondary)
                 rowBadge(hasCachedContextual ? "Contextual" : "Sin contextual", tone: hasCachedContextual ? Color.appAccentFill : .secondary)
             }
@@ -503,9 +503,14 @@ private struct PDSettingsSheet: View {
                 Section("Plano del aspecto") {
                     Picker("Plano", selection: $settings.aspectPlane) {
                         Text("Mundano (Regiomontanus)").tag(PDAspectPlane.mundane)
-                        Text("Zodiacal").tag(PDAspectPlane.zodiacal)
+                        Text("Zodiacal por espéculo").tag(PDAspectPlane.zodiacal)
+                        Text("Longitud zodiacal (informe de referencia)").tag(PDAspectPlane.ecliptic)
                     }
                     .pickerStyle(.radioGroup)
+
+                    Label("Longitud zodiacal reproduce informes simbólicos tipo ASC/MC/Sol dirigidos a planetas y cúspides por arco eclíptico. Mundano usa el espéculo Regiomontanus clásico.", systemImage: "info.circle")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
 
                 Section("Rango de cálculo") {

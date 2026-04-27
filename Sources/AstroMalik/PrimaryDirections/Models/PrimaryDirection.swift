@@ -124,6 +124,15 @@ enum PDDirectionType: String, CaseIterable, Codable, Equatable {
 enum PDAspectPlane: String, CaseIterable, Codable, Equatable {
     case zodiacal = "zodiacal"   // Longitud eclíptica
     case mundane = "mundano"     // Distancia ecuatorial / arco diurno
+    case ecliptic = "longitud_zodiacal" // Arco simple por longitud, compatible con informes simbólicos
+
+    var displayName: String {
+        switch self {
+        case .mundane: return "Mundano"
+        case .zodiacal: return "Zodiacal"
+        case .ecliptic: return "Longitud zodiacal"
+        }
+    }
 }
 
 // MARK: - Technical Data
@@ -161,17 +170,37 @@ struct PDTechnicalData: Codable, Equatable {
 /// Significadores hylegíacos y Parte de Fortuna con secta.
 enum PDSignificator: String, CaseIterable {
     case asc = "ASC"
+    case dsc = "DSC"
     case mc = "MC"
+    case ic = "IC"
     case sun = "SOL"
     case moon = "LUNA"
+    case mercury = "MERCURIO"
+    case venus = "VENUS"
+    case mars = "MARTE"
+    case jupiter = "JUPITER"
+    case saturn = "SATURNO"
+    case uranus = "URANO"
+    case neptune = "NEPTUNO"
+    case pluto = "PLUTON"
     case partOfFortune = "PARTFORTUNA"
 
     var label: String {
         switch self {
         case .asc: return "ASC"
+        case .dsc: return "DSC / Casa 7"
         case .mc: return "MC"
+        case .ic: return "IC / Casa 4"
         case .sun: return "☉ Sol"
         case .moon: return "☽ Luna"
+        case .mercury: return "☿ Mercurio"
+        case .venus: return "♀ Venus"
+        case .mars: return "♂ Marte"
+        case .jupiter: return "♃ Júpiter"
+        case .saturn: return "♄ Saturno"
+        case .uranus: return "⛢ Urano"
+        case .neptune: return "♆ Neptuno"
+        case .pluto: return "♇ Plutón"
         case .partOfFortune: return "⊗ Parte de Fortuna"
         }
     }

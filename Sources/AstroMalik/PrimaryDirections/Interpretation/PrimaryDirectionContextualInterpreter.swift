@@ -155,7 +155,7 @@ actor PrimaryDirectionContextualInterpreter {
         lines.append("- Significador: \(direction.significatorLabel)")
         lines.append("- Aspecto: \(direction.aspect.label) (\(direction.aspectAngle)°)")
         lines.append("- Tipo: \(direction.directionType == .direct ? "Directa" : "Conversa")")
-        lines.append("- Plano: \(direction.aspectPlane == .zodiacal ? "Zodiacal" : "Mundano")")
+        lines.append("- Plano: \(direction.aspectPlane.displayName)")
         lines.append("- Método: \(direction.method.rawValue)")
         lines.append("- Clave temporal: \(direction.key == .naibod ? "Naibod" : direction.key == .ptolemy ? "Ptolemy" : "Brahe")")
         lines.append("- Arco: \(String(format: "%.4f", direction.arc))°")

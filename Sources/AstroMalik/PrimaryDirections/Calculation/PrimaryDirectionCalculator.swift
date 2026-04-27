@@ -48,7 +48,7 @@ final class PrimaryDirectionCalculator: Sendable {
             maxYears: Double = 120,
             aspects: [PDaspect] = PDaspect.allCases,
             promissors: [String] = [],
-            significators: [PDSignificator] = [.asc, .mc, .sun, .moon],
+            significators: [PDSignificator] = [],
             includeConverse: Bool = true,
             aspectPlane: PDAspectPlane = .zodiacal
         ) {
@@ -60,9 +60,18 @@ final class PrimaryDirectionCalculator: Sendable {
             self.promissors = promissors.isEmpty
                 ? PLANET_LIST.map(\.key) + ["ASC", "MC"]
                 : promissors
-            self.significators = significators
+            self.significators = significators.isEmpty
+                ? Self.defaultSignificators(for: aspectPlane)
+                : significators
             self.includeConverse = includeConverse
             self.aspectPlane = aspectPlane
+        }
+
+        private static func defaultSignificators(for plane: PDAspectPlane) -> [PDSignificator] {
+            if plane == .ecliptic {
+                return [.asc, .dsc, .mc, .ic, .sun, .moon, .mercury, .venus, .mars, .jupiter, .saturn]
+            }
+            return [.asc, .mc, .sun, .moon]
         }
     }
 
@@ -223,7 +232,13 @@ final class PrimaryDirectionCalculator: Sendable {
         }
 
         for aspAngle in aspectAngles {
-            if plane == .mundane {
+            if plane == .ecliptic {
+                let targetLongitude = RegiomontanusSpeculum.normalize(significator.longitude + aspAngle)
+                var arc = targetLongitude - promissor.longitude
+                if arc < 0 { arc += 360 }
+                if arc > 180 { arc -= 360 }
+                results.append(arc)
+            } else if plane == .mundane {
                 // --- MUNDANE DIRECTIONS ---
                 // Significator's W is its equatorial position
                 let wsig = sigSpeculum.w
@@ -516,12 +531,32 @@ final class PrimaryDirectionCalculator: Sendable {
         switch sig {
         case .asc:
             return bodies["ASC"]
+        case .dsc:
+            return bodies["DSC"]
         case .mc:
             return bodies["MC"]
+        case .ic:
+            return bodies["IC"]
         case .sun:
             return bodies["SOL"]
         case .moon:
             return bodies["LUNA"]
+        case .mercury:
+            return bodies["MERCURIO"]
+        case .venus:
+            return bodies["VENUS"]
+        case .mars:
+            return bodies["MARTE"]
+        case .jupiter:
+            return bodies["JUPITER"]
+        case .saturn:
+            return bodies["SATURNO"]
+        case .uranus:
+            return bodies["URANO"]
+        case .neptune:
+            return bodies["NEPTUNO"]
+        case .pluto:
+            return bodies["PLUTON"]
         case .partOfFortune:
             // Pars Fortunae = ASC + Luna - Sol (diurna) / ASC + Sol - Luna (nocturna)
             guard let sol = bodies["SOL"], let luna = bodies["LUNA"] else { return nil }
