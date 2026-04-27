@@ -29,6 +29,10 @@ final class PrimaryDirectionsViewModel: ObservableObject {
     @Published private(set) var contextualInterpretation: ContextualInterpretation? = nil
     /// IDs que ya tienen contextual persistida en caché.
     @Published private(set) var cachedContextualDirectionIDs: Set<UUID> = []
+    /// Año enfocado en la vista de consulta anual.
+    @Published var selectedYear: Int = Calendar.current.component(.year, from: Date())
+    /// Espéculo Regiomontano completo de la carta cargada.
+    @Published private(set) var fullSpeculum: [SpeculumRow] = []
     /// True mientras se calcula el espéculo completo.
     @Published private(set) var isCalculating = false
     /// True mientras se genera interpretación LLM.
@@ -80,9 +84,11 @@ final class PrimaryDirectionsViewModel: ObservableObject {
         error = nil
         result = nil
         filteredDirections = []
+        fullSpeculum = []
         selectedDirection = nil
         contextualInterpretation = nil
         cachedContextualDirectionIDs = []
+        selectedYear = Self.currentYear(for: chart)
 
         let service = self.service          // capture for Sendable boundary
         let config = settings.calculatorConfig
@@ -90,13 +96,16 @@ final class PrimaryDirectionsViewModel: ObservableObject {
         calculationTask = Task {
             // Compute off main thread
             let computed = await Task.detached(priority: .userInitiated) {
-                service.compute(chart: chart, jd: jd, birthDate: birthDate, config: config)
+                let result = service.compute(chart: chart, jd: jd, birthDate: birthDate, config: config)
+                let speculum = PrimaryDirectionCalculator().computeFullSpeculum(chart: chart, jd: jd)
+                return (result, speculum)
             }.value
 
             guard !Task.isCancelled else { return }
 
             // Assign back on MainActor (we're already on it — @MainActor func)
-            self.result = computed
+            self.result = computed.0
+            self.fullSpeculum = computed.1
             self.applyFilters()
             self.refreshCachedContextualAvailability()
             self.isCalculating = false
@@ -131,6 +140,12 @@ final class PrimaryDirectionsViewModel: ObservableObject {
         visible.first(where: \.hasInterpretation) ?? visible.first
     }
 
+    nonisolated private static func currentYear(for chart: NatalChart) -> Int {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: chart.timezone) ?? .current
+        return calendar.component(.year, from: Date())
+    }
+
     var curatedVisibleDirections: [EnrichedPrimaryDirection] {
         filteredDirections.filter(\.hasInterpretation)
     }
@@ -145,6 +160,33 @@ final class PrimaryDirectionsViewModel: ObservableObject {
     }
 
     var currentChart: NatalChart? { chart }
+
+    var directionsForSelectedYear: [EnrichedPrimaryDirection] {
+        let calendar = Calendar.current
+        var startComponents = DateComponents()
+        startComponents.year = selectedYear
+        startComponents.month = 1
+        startComponents.day = 1
+
+        var endComponents = DateComponents()
+        endComponents.year = selectedYear
+        endComponents.month = 12
+        endComponents.day = 31
+        endComponents.hour = 23
+        endComponents.minute = 59
+        endComponents.second = 59
+
+        guard let yearStart = calendar.date(from: startComponents),
+              let yearEnd = calendar.date(from: endComponents),
+              let windowStart = calendar.date(byAdding: .month, value: -18, to: yearStart),
+              let windowEnd = calendar.date(byAdding: .month, value: 18, to: yearEnd) else {
+            return []
+        }
+
+        return filteredDirections
+            .filter { windowStart...windowEnd ~= $0.direction.estimatedDate }
+            .sorted { $0.direction.estimatedDate < $1.direction.estimatedDate }
+    }
 
     func reloadCurrentChart() {
         guard let chart else { return }
@@ -285,7 +327,7 @@ struct PDSettings: Equatable, Sendable {
     var method: PrimaryDirectionMethod = .regiomontanus
     var key: PrimaryDirectionKey = .naibod
     var maxYears: Double = 90
-    var aspectPlane: PDAspectPlane = .ecliptic
+    var aspectPlane: PDAspectPlane = .zodiacal
 
     private static let keyUD = "PrimaryDirections.Key"
     private static let methodUD = "PrimaryDirections.Method"
@@ -302,20 +344,15 @@ struct PDSettings: Equatable, Sendable {
         if let raw = ud.string(forKey: methodUD), let m = PrimaryDirectionMethod(rawValue: raw) {
             s.method = m
         }
-        if ud.integer(forKey: planeVersionUD) == 0 {
-            // Old builds defaulted silently to "mundano", which made reference
-            // ecliptic reports look wrong. New installs start in compatibility mode.
-            s.aspectPlane = .ecliptic
-            ud.set(PDAspectPlane.ecliptic.rawValue, forKey: planeUD)
-            ud.set(1, forKey: planeVersionUD)
+        if ud.integer(forKey: planeVersionUD) < 2 {
+            s.aspectPlane = .zodiacal
+            ud.set(PDAspectPlane.zodiacal.rawValue, forKey: planeUD)
+            ud.set(2, forKey: planeVersionUD)
         } else if let raw = ud.string(forKey: planeUD), let p = PDAspectPlane(rawValue: raw) {
             s.aspectPlane = p
         }
         let years = ud.double(forKey: maxYearsUD)
         if years > 0 { s.maxYears = years }
-        if s.method == .placidus {
-            s.method = .regiomontanus
-        }
         return s
     }
 
@@ -324,7 +361,7 @@ struct PDSettings: Equatable, Sendable {
         ud.set(key.rawValue, forKey: Self.keyUD)
         ud.set(method.rawValue, forKey: Self.methodUD)
         ud.set(aspectPlane.rawValue, forKey: Self.planeUD)
-        ud.set(1, forKey: Self.planeVersionUD)
+        ud.set(2, forKey: Self.planeVersionUD)
         ud.set(maxYears, forKey: Self.maxYearsUD)
     }
 

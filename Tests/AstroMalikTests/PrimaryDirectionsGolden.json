@@ -1,0 +1,1043 @@
+{
+  "buenosAires" : {
+    "converseCount" : 116,
+    "directCount" : 124,
+    "first10" : [
+      {
+        "age" : 0.85027037,
+        "arc" : 0.83806663,
+        "aspect" : "cuadratura",
+        "promissor" : "VENUS",
+        "significator" : "LUNA",
+        "type" : "directa"
+      },
+      {
+        "age" : 1.13199562,
+        "arc" : 1.11574834,
+        "aspect" : "sextil",
+        "promissor" : "VENUS",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.15008894,
+        "arc" : 1.13358197,
+        "aspect" : "cuadratura",
+        "promissor" : "VENUS",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.59029152,
+        "arc" : 1.56746642,
+        "aspect" : "cuadratura",
+        "promissor" : "SOL",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 1.59029152,
+        "arc" : 1.56746642,
+        "aspect" : "cuadratura",
+        "promissor" : "ASC",
+        "significator" : "SOL",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.638558,
+        "arc" : -1.61504014,
+        "aspect" : "sextil",
+        "promissor" : "LUNA",
+        "significator" : "SOL",
+        "type" : "directa"
+      },
+      {
+        "age" : 1.638558,
+        "arc" : -1.61504014,
+        "aspect" : "sextil",
+        "promissor" : "SOL",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.65305745,
+        "arc" : 1.62933148,
+        "aspect" : "conjuncion",
+        "promissor" : "MERCURIO",
+        "significator" : "MC",
+        "type" : "directa"
+      },
+      {
+        "age" : 2.09100107,
+        "arc" : -2.0609894,
+        "aspect" : "sextil",
+        "promissor" : "JUPITER",
+        "significator" : "MC",
+        "type" : "directa"
+      },
+      {
+        "age" : 2.11751227,
+        "arc" : -2.08712008,
+        "aspect" : "cuadratura",
+        "promissor" : "SOL",
+        "significator" : "ASC",
+        "type" : "conversa"
+      }
+    ],
+    "first5Converse" : [
+      {
+        "age" : 1.13199562,
+        "arc" : 1.11574834,
+        "aspect" : "sextil",
+        "promissor" : "VENUS",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.15008894,
+        "arc" : 1.13358197,
+        "aspect" : "cuadratura",
+        "promissor" : "VENUS",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.59029152,
+        "arc" : 1.56746642,
+        "aspect" : "cuadratura",
+        "promissor" : "ASC",
+        "significator" : "SOL",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.638558,
+        "arc" : -1.61504014,
+        "aspect" : "sextil",
+        "promissor" : "SOL",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 2.11751227,
+        "arc" : -2.08712008,
+        "aspect" : "cuadratura",
+        "promissor" : "SOL",
+        "significator" : "ASC",
+        "type" : "conversa"
+      }
+    ],
+    "obliquity" : 23.44294246,
+    "ramc" : 9.8571522,
+    "speculum" : {
+      "ASC" : {
+        "decl" : 23.26845462,
+        "pole" : -34.6037,
+        "q" : -17.25883372,
+        "ra" : 82.59831848,
+        "w" : 99.8571522
+      },
+      "JUPITER" : {
+        "decl" : -18.6541516,
+        "pole" : -27.58248761,
+        "q" : 10.15759355,
+        "ra" : 310.48555357,
+        "w" : 320.64314713
+      },
+      "LUNA" : {
+        "decl" : -26.413044,
+        "pole" : -31.09326923,
+        "q" : 17.43008733,
+        "ra" : 291.48947834,
+        "w" : 308.91956567
+      },
+      "MARTE" : {
+        "decl" : 11.67756544,
+        "pole" : -14.09546929,
+        "q" : -2.9748434,
+        "ra" : 28.22453791,
+        "w" : 31.19938131
+      },
+      "MC" : {
+        "decl" : 4.24550374,
+        "pole" : -0,
+        "q" : -0,
+        "ra" : 9.8571522,
+        "w" : 9.8571522
+      },
+      "MERCURIO" : {
+        "decl" : 6.96746763,
+        "pole" : -1.22726672,
+        "q" : -0.15000522,
+        "ra" : 11.48648369,
+        "w" : 11.63648891
+      },
+      "NEPTUNO" : {
+        "decl" : -22.26375886,
+        "pole" : -34.18882091,
+        "q" : 16.14714907,
+        "ra" : 273.78296488,
+        "w" : 289.93011396
+      },
+      "PLUTON" : {
+        "decl" : 3.22824745,
+        "pole" : -17.3582545,
+        "q" : -1.01021045,
+        "ra" : 217.80686267,
+        "w" : 216.79665222
+      },
+      "SATURNO" : {
+        "decl" : -17.51176486,
+        "pole" : -30.05874274,
+        "q" : 10.5212255,
+        "ra" : 236.34783332,
+        "w" : 246.86905882
+      },
+      "SOL" : {
+        "decl" : -1.96449386,
+        "pole" : -9.51781186,
+        "q" : 0.32950232,
+        "ra" : 355.46358759,
+        "w" : 355.79308991
+      },
+      "URANO" : {
+        "decl" : -22.91147487,
+        "pole" : -34.45242873,
+        "q" : 16.85584155,
+        "ra" : 256.91431304,
+        "w" : 273.77015459
+      },
+      "VENUS" : {
+        "decl" : 15.47050552,
+        "pole" : -6.62443035,
+        "q" : -1.84197604,
+        "ra" : 17.70565381,
+        "w" : 19.54762985
+      }
+    },
+    "totalDirections" : 240
+  },
+  "eduardo" : {
+    "converseCount" : 143,
+    "directCount" : 155,
+    "first10" : [
+      {
+        "age" : 0.12039079,
+        "arc" : 0.11866285,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.27728906,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "LUNA",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 0.27728906,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "ASC",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.39767339,
+        "arc" : 0.39196567,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.41137065,
+        "arc" : -0.40546634,
+        "aspect" : "cuadratura",
+        "promissor" : "URANO",
+        "significator" : "MC",
+        "type" : "directa"
+      },
+      {
+        "age" : 0.62746498,
+        "arc" : -0.61845911,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.90438696,
+        "arc" : -0.8914065,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.2787534,
+        "arc" : 1.26039974,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 1.40203006,
+        "arc" : 1.38190703,
+        "aspect" : "cuadratura",
+        "promissor" : "URANO",
+        "significator" : "MC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.9373657,
+        "arc" : -1.90955912,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "MC",
+        "type" : "directa"
+      }
+    ],
+    "first5Converse" : [
+      {
+        "age" : 0.12039079,
+        "arc" : 0.11866285,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.27728906,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "ASC",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.39767339,
+        "arc" : 0.39196567,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.62746498,
+        "arc" : -0.61845911,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.90438696,
+        "arc" : -0.8914065,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "ASC",
+        "type" : "conversa"
+      }
+    ],
+    "obliquity" : 23.44029386,
+    "ramc" : 310.05818738,
+    "speculum" : {
+      "ASC" : {
+        "decl" : 20.26530979,
+        "pole" : 40.4168,
+        "q" : 18.32581511,
+        "ra" : 58.38400249,
+        "w" : 40.05818738
+      },
+      "JUPITER" : {
+        "decl" : 19.11880968,
+        "pole" : 40.40990958,
+        "q" : 17.16500925,
+        "ra" : 58.48790875,
+        "w" : 41.3228995
+      },
+      "LUNA" : {
+        "decl" : 17.53138194,
+        "pole" : 40.4164778,
+        "q" : 15.60533901,
+        "ra" : 55.93701789,
+        "w" : 40.33167889
+      },
+      "MARTE" : {
+        "decl" : -12.00500859,
+        "pole" : 38.67445338,
+        "q" : -9.79988389,
+        "ra" : 209.89803396,
+        "w" : 200.09815007
+      },
+      "MC" : {
+        "decl" : -18.3586126,
+        "pole" : 0,
+        "q" : -0,
+        "ra" : 310.05818738,
+        "w" : 310.05818738
+      },
+      "MERCURIO" : {
+        "decl" : 1.09980823,
+        "pole" : 34.1919884,
+        "q" : 0.74731709,
+        "ra" : 182.23256189,
+        "w" : 182.97987897
+      },
+      "NEPTUNO" : {
+        "decl" : -20.74586037,
+        "pole" : 39.78174923,
+        "q" : -18.38412677,
+        "ra" : 250.55006937,
+        "w" : 232.16594259
+      },
+      "PLUTON" : {
+        "decl" : 10.44251212,
+        "pole" : 39.57553684,
+        "q" : 8.76226158,
+        "ra" : 197.37287722,
+        "w" : 206.1351388
+      },
+      "SATURNO" : {
+        "decl" : 16.98321501,
+        "pole" : 8.52771904,
+        "q" : 2.62477542,
+        "ra" : 137.57497731,
+        "w" : 140.19975273
+      },
+      "SOL" : {
+        "decl" : -7.29163461,
+        "pole" : 36.83782051,
+        "q" : -5.50047672,
+        "ra" : 197.16448234,
+        "w" : 191.66400562
+      },
+      "URANO" : {
+        "decl" : -13.20797275,
+        "pole" : 39.1657917,
+        "q" : -11.02160337,
+        "ra" : 214.13132995,
+        "w" : 203.10972658
+      },
+      "VENUS" : {
+        "decl" : -18.00551934,
+        "pole" : 40.0366293,
+        "q" : -15.84784454,
+        "ra" : 226.5274732,
+        "w" : 210.67962867
+      }
+    },
+    "totalDirections" : 298
+  },
+  "eduardoBraheKey" : {
+    "converseCount" : 137,
+    "directCount" : 145,
+    "first10" : [
+      {
+        "age" : 0.12848503,
+        "arc" : 0.11866285,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.29593205,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "LUNA",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 0.29593205,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "ASC",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.42441018,
+        "arc" : 0.39196567,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.43902835,
+        "arc" : -0.40546634,
+        "aspect" : "cuadratura",
+        "promissor" : "URANO",
+        "significator" : "MC",
+        "type" : "directa"
+      },
+      {
+        "age" : 0.66965136,
+        "arc" : -0.61845911,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.96519165,
+        "arc" : -0.8914065,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.36472789,
+        "arc" : 1.26039974,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 1.4962928,
+        "arc" : 1.38190703,
+        "aspect" : "cuadratura",
+        "promissor" : "URANO",
+        "significator" : "MC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 2.06762069,
+        "arc" : -1.90955912,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "MC",
+        "type" : "directa"
+      }
+    ],
+    "first5Converse" : [
+      {
+        "age" : 0.12848503,
+        "arc" : 0.11866285,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.29593205,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "ASC",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.42441018,
+        "arc" : 0.39196567,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.66965136,
+        "arc" : -0.61845911,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.96519165,
+        "arc" : -0.8914065,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "ASC",
+        "type" : "conversa"
+      }
+    ],
+    "partOfFortunePromissorCount" : 0,
+    "totalDirections" : 282
+  },
+  "eduardoConverseDirections" : {
+    "converseCount" : 143,
+    "directCount" : 155,
+    "first10" : [
+      {
+        "age" : 0.12039079,
+        "arc" : 0.11866285,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.27728906,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "LUNA",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 0.27728906,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "ASC",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.39767339,
+        "arc" : 0.39196567,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.41137065,
+        "arc" : -0.40546634,
+        "aspect" : "cuadratura",
+        "promissor" : "URANO",
+        "significator" : "MC",
+        "type" : "directa"
+      },
+      {
+        "age" : 0.62746498,
+        "arc" : -0.61845911,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.90438696,
+        "arc" : -0.8914065,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.2787534,
+        "arc" : 1.26039974,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 1.40203006,
+        "arc" : 1.38190703,
+        "aspect" : "cuadratura",
+        "promissor" : "URANO",
+        "significator" : "MC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.9373657,
+        "arc" : -1.90955912,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "MC",
+        "type" : "directa"
+      }
+    ],
+    "first5Converse" : [
+      {
+        "age" : 0.12039079,
+        "arc" : 0.11866285,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.27728906,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "ASC",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.39767339,
+        "arc" : 0.39196567,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.62746498,
+        "arc" : -0.61845911,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.90438696,
+        "arc" : -0.8914065,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "ASC",
+        "type" : "conversa"
+      }
+    ],
+    "partOfFortunePromissorCount" : 0,
+    "totalDirections" : 298
+  },
+  "eduardoPartOfFortunePromissor" : {
+    "converseCount" : 156,
+    "directCount" : 169,
+    "first10" : [
+      {
+        "age" : 0.12039079,
+        "arc" : 0.11866285,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.27728906,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "LUNA",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 0.27728906,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "ASC",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.39767339,
+        "arc" : 0.39196567,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.41137065,
+        "arc" : -0.40546634,
+        "aspect" : "cuadratura",
+        "promissor" : "URANO",
+        "significator" : "MC",
+        "type" : "directa"
+      },
+      {
+        "age" : 0.62746498,
+        "arc" : -0.61845911,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.90438696,
+        "arc" : -0.8914065,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.2787534,
+        "arc" : 1.26039974,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 1.40203006,
+        "arc" : 1.38190703,
+        "aspect" : "cuadratura",
+        "promissor" : "URANO",
+        "significator" : "MC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.85319822,
+        "arc" : -1.82659967,
+        "aspect" : "conjuncion",
+        "promissor" : "PARTFORTUNA",
+        "significator" : "SOL",
+        "type" : "conversa"
+      }
+    ],
+    "first5Converse" : [
+      {
+        "age" : 0.12039079,
+        "arc" : 0.11866285,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.27728906,
+        "arc" : 0.27330919,
+        "aspect" : "conjuncion",
+        "promissor" : "ASC",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.39767339,
+        "arc" : 0.39196567,
+        "aspect" : "conjuncion",
+        "promissor" : "JUPITER",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.62746498,
+        "arc" : -0.61845911,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "LUNA",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.90438696,
+        "arc" : -0.8914065,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "ASC",
+        "type" : "conversa"
+      }
+    ],
+    "partOfFortunePromissorCount" : 27,
+    "totalDirections" : 325
+  },
+  "reykjavik" : {
+    "converseCount" : 146,
+    "directCount" : 163,
+    "first10" : [
+      {
+        "age" : 0.12658021,
+        "arc" : 0.12476343,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "MC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 0.33173627,
+        "arc" : -0.32697493,
+        "aspect" : "conjuncion",
+        "promissor" : "NEPTUNO",
+        "significator" : "SOL",
+        "type" : "directa"
+      },
+      {
+        "age" : 1.00919923,
+        "arc" : -0.99471442,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "MC",
+        "type" : "directa"
+      },
+      {
+        "age" : 1.35887721,
+        "arc" : -1.33937355,
+        "aspect" : "conjuncion",
+        "promissor" : "NEPTUNO",
+        "significator" : "SOL",
+        "type" : "conversa"
+      },
+      {
+        "age" : 2.68292679,
+        "arc" : 2.64441933,
+        "aspect" : "conjuncion",
+        "promissor" : "PLUTON",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 3.0747108,
+        "arc" : -3.03058016,
+        "aspect" : "sextil",
+        "promissor" : "SATURNO",
+        "significator" : "ASC",
+        "type" : "directa"
+      },
+      {
+        "age" : 3.99382302,
+        "arc" : 3.93650056,
+        "aspect" : "conjuncion",
+        "promissor" : "SATURNO",
+        "significator" : "SOL",
+        "type" : "directa"
+      },
+      {
+        "age" : 4.17689756,
+        "arc" : -4.11694748,
+        "aspect" : "conjuncion",
+        "promissor" : "URANO",
+        "significator" : "SOL",
+        "type" : "directa"
+      },
+      {
+        "age" : 4.65334295,
+        "arc" : -4.58655456,
+        "aspect" : "conjuncion",
+        "promissor" : "SATURNO",
+        "significator" : "SOL",
+        "type" : "conversa"
+      },
+      {
+        "age" : 4.67524255,
+        "arc" : 4.60813983,
+        "aspect" : "conjuncion",
+        "promissor" : "URANO",
+        "significator" : "SOL",
+        "type" : "conversa"
+      }
+    ],
+    "first5Converse" : [
+      {
+        "age" : 0.12658021,
+        "arc" : 0.12476343,
+        "aspect" : "trigono",
+        "promissor" : "MERCURIO",
+        "significator" : "MC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 1.35887721,
+        "arc" : -1.33937355,
+        "aspect" : "conjuncion",
+        "promissor" : "NEPTUNO",
+        "significator" : "SOL",
+        "type" : "conversa"
+      },
+      {
+        "age" : 2.68292679,
+        "arc" : 2.64441933,
+        "aspect" : "conjuncion",
+        "promissor" : "PLUTON",
+        "significator" : "ASC",
+        "type" : "conversa"
+      },
+      {
+        "age" : 4.65334295,
+        "arc" : -4.58655456,
+        "aspect" : "conjuncion",
+        "promissor" : "SATURNO",
+        "significator" : "SOL",
+        "type" : "conversa"
+      },
+      {
+        "age" : 4.67524255,
+        "arc" : 4.60813983,
+        "aspect" : "conjuncion",
+        "promissor" : "URANO",
+        "significator" : "SOL",
+        "type" : "conversa"
+      }
+    ],
+    "obliquity" : 23.4423634,
+    "ramc" : 176.21099191,
+    "speculum" : {
+      "ASC" : {
+        "decl" : -17.34521755,
+        "pole" : 64.1466,
+        "q" : -40.13228401,
+        "ra" : 226.0787079,
+        "w" : 266.21099191
+      },
+      "JUPITER" : {
+        "decl" : 23.22352693,
+        "pole" : 54.72327742,
+        "q" : 37.33997226,
+        "ra" : 95.63765045,
+        "w" : 132.97762271
+      },
+      "LUNA" : {
+        "decl" : -10.28448072,
+        "pole" : 32.24590617,
+        "q" : -6.57299489,
+        "ra" : 331.83819577,
+        "w" : 338.41119066
+      },
+      "MARTE" : {
+        "decl" : -21.95864236,
+        "pole" : 61.06072449,
+        "q" : -46.81851492,
+        "ra" : 248.18432558,
+        "w" : 295.0028405
+      },
+      "MC" : {
+        "decl" : 1.64133103,
+        "pole" : 0,
+        "q" : 0,
+        "ra" : 176.21099191,
+        "w" : 176.21099191
+      },
+      "MERCURIO" : {
+        "decl" : -20.45076374,
+        "pole" : 48.70540537,
+        "q" : -25.12219789,
+        "ra" : 297.60655103,
+        "w" : 322.72874892
+      },
+      "NEPTUNO" : {
+        "decl" : -22.05394761,
+        "pole" : 53.21853329,
+        "q" : -32.81327729,
+        "ra" : 282.99364088,
+        "w" : 315.80691817
+      },
+      "PLUTON" : {
+        "decl" : -2.24818884,
+        "pole" : 59.85947312,
+        "q" : -3.87696068,
+        "ra" : 228.90456763,
+        "w" : 232.78152831
+      },
+      "SATURNO" : {
+        "decl" : -22.23514061,
+        "pole" : 51.79353238,
+        "q" : -31.29078996,
+        "ra" : 286.92215418,
+        "w" : 318.21294414
+      },
+      "SOL" : {
+        "decl" : -23.02061261,
+        "pole" : 53.11334081,
+        "q" : -34.48479168,
+        "ra" : 281.50812063,
+        "w" : 315.99291231
+      },
+      "URANO" : {
+        "decl" : -23.58628896,
+        "pole" : 54.32578597,
+        "q" : -37.45777501,
+        "ra" : 276.29982339,
+        "w" : 313.7575984
+      },
+      "VENUS" : {
+        "decl" : -16.92495238,
+        "pole" : 45.76420832,
+        "q" : -18.21156572,
+        "ra" : 308.15338795,
+        "w" : 326.36495366
+      }
+    },
+    "totalDirections" : 309
+  }
+}

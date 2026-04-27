@@ -10,6 +10,7 @@ struct PrimaryDirectionsView: View {
     @State private var isCreatingReportNote = false
     @State private var noteStatus: String?
     @State private var noteError: String?
+    @State private var showHonestyPolicy = false
 
     private var charts: [NatalChart] { appState.userStore.savedCharts }
     private var selectableCharts: [NatalChart] {
@@ -57,7 +58,6 @@ struct PrimaryDirectionsView: View {
 
         return VStack(spacing: 0) {
             header(result: result)
-            honestyBanner(metadata: result.metadata)
             PrimaryDirectionsTimelineView(
                 directions: vm.filteredDirections,
                 timeline: visibleTimeline,
@@ -69,8 +69,8 @@ struct PrimaryDirectionsView: View {
             .overlay(alignment: .bottom) { Divider() }
 
             HSplitView {
-                directionsListPanel
-                    .frame(minWidth: 320, idealWidth: 380)
+                leftTabs
+                    .frame(minWidth: 420, idealWidth: 520)
                 detailPanel
             }
 
@@ -102,6 +102,18 @@ struct PrimaryDirectionsView: View {
                 }
                 headerButton("Ajustes", systemImage: "gearshape") {
                     showSettings = true
+                }
+                Button {
+                    showHonestyPolicy.toggle()
+                } label: {
+                    Image(systemName: "info.circle")
+                }
+                .buttonStyle(.borderless)
+                .help("Política de honestidad del corpus")
+                .popover(isPresented: $showHonestyPolicy, arrowEdge: .bottom) {
+                    honestyPolicyPopover(metadata: result.metadata)
+                        .frame(width: 360)
+                        .padding(14)
                 }
             }
 
@@ -146,6 +158,49 @@ struct PrimaryDirectionsView: View {
         .padding(.vertical, 14)
         .background(Color.appSurface)
         .overlay(alignment: .bottom) { Divider() }
+    }
+
+    private var leftTabs: some View {
+        TabView {
+            professionalListPanel
+                .tabItem { Text("Lista profesional") }
+
+            directionsListPanel
+                .tabItem { Text("Cards") }
+
+            CurrentYearView(vm: vm)
+                .tabItem { Text("Año en curso") }
+        }
+    }
+
+    private var professionalListPanel: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Text("Lista profesional")
+                    .font(.headline)
+                Spacer()
+                Text("\(vm.filteredDirections.count)")
+                    .font(.caption.monospaced())
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(Color.appSurface)
+
+            Divider()
+
+            if vm.filteredDirections.isEmpty {
+                filteredEmptyState
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.appBackground)
+            } else {
+                PrimaryDirectionsTableView(
+                    directions: vm.filteredDirections,
+                    selection: $vm.selectedDirection
+                )
+            }
+        }
+        .background(Color.appBackground)
     }
 
     private var chartPicker: some View {
@@ -256,7 +311,7 @@ struct PrimaryDirectionsView: View {
                                     .foregroundStyle(.primary)
                                     .lineLimit(2)
                                 Text(enriched.ageFormatted)
-                                    .font(.caption2.monospaced())
+                                    .font(.caption.monospaced())
                                     .foregroundStyle(Color.appAccentFill)
                             }
                             Spacer()
@@ -294,6 +349,7 @@ struct PrimaryDirectionsView: View {
             PrimaryDirectionDetailView(
                 enriched: selected,
                 contextualInterpretation: vm.contextualInterpretation,
+                speculumRows: vm.fullSpeculum,
                 isGeneratingInterpretation: vm.isGeneratingInterpretation,
                 contextualAvailability: appState.openRouterAvailability.badgeLabel,
                 onRequestInterpretation: {
@@ -310,7 +366,7 @@ struct PrimaryDirectionsView: View {
         }
     }
 
-    private func honestyBanner(metadata: PrimaryDirectionsMetadata) -> some View {
+    private func honestyPolicyPopover(metadata: PrimaryDirectionsMetadata) -> some View {
         let curatedCount = vm.curatedVisibleDirections.count
         let referenceMode = vm.settings.aspectPlane == .ecliptic
         let title = referenceMode && curatedCount > 0
@@ -329,17 +385,14 @@ struct PrimaryDirectionsView: View {
                 .foregroundStyle(curatedCount > 0 ? Color.appSecondaryAccent : Color.appAccentFill)
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.subheadline.weight(.semibold))
+                    .font(.headline)
                 Text(message)
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 10)
-        .background(Color.appPanel)
-        .overlay(alignment: .bottom) { Divider() }
     }
 
     private var loadingView: some View {
@@ -570,7 +623,7 @@ private struct PDVisibleDirectionRow: View {
 
     private func rowBadge(_ text: String, tone: Color) -> some View {
         Text(text)
-            .font(.caption2)
+            .font(.caption)
             .foregroundStyle(tone)
             .padding(.horizontal, 7)
             .padding(.vertical, 3)
@@ -586,16 +639,8 @@ private struct PDSettingsSheet: View {
         NavigationStack {
             Form {
                 Section("Método de proyección") {
-                    Picker("Método", selection: $settings.method) {
-                        ForEach([PrimaryDirectionMethod.regiomontanus], id: \.self) { method in
-                            Text(method.rawValue).tag(method)
-                        }
-                    }
-                    .pickerStyle(.radioGroup)
-
-                    Label("Regiomontanus es el único método soportado actualmente en la app. Placidus queda fuera hasta tener motor real.", systemImage: "info.circle")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                    Text(PrimaryDirectionMethod.regiomontanus.rawValue)
+                        .foregroundStyle(.primary)
                 }
 
                 Section("Clave temporal") {

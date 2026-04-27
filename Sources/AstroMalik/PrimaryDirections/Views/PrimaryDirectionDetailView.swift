@@ -1,483 +1,457 @@
 import SwiftUI
 
-// MARK: - PrimaryDirectionDetailView
-// Panel de detalle con 3 DisclosureGroups colapsables.
-
 struct PrimaryDirectionDetailView: View {
     let enriched: EnrichedPrimaryDirection
     let contextualInterpretation: ContextualInterpretation?
+    let speculumRows: [SpeculumRow]
     let isGeneratingInterpretation: Bool
     let contextualAvailability: String
     let onRequestInterpretation: () -> Void
     let onInvalidateInterpretation: () -> Void
 
-    @State private var technicalExpanded = true
-    @State private var localReadingExpanded = false
-    @State private var corpusExpanded = true
-    @State private var contextualExpanded = true
+    @State private var alternativesExpanded = false
+    @State private var factorsExpanded = true
+    @State private var speculumExpanded = false
+    @State private var calculationExpanded = false
 
     private var direction: PrimaryDirection { enriched.direction }
     private var localReading: PrimaryDirectionLocalReading {
         PrimaryDirectionLocalReading.build(for: direction)
     }
-    private var hasCuratedText: Bool {
-        guard let interpretation = enriched.interpretation else { return false }
-        return !interpretation.textoCortoPD.isEmpty
-    }
-    private var isReferenceReportMode: Bool {
-        direction.aspectPlane == .ecliptic
-    }
-    private var shouldShowLocalReading: Bool {
-        !(hasCuratedText && isReferenceReportMode)
-    }
 
     var body: some View {
         ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: 0) {
-                // Header
-                headerView
-                    .padding(16)
-                    .background(Color.appSurface)
-                    .overlay(alignment: .bottom) { Divider() }
+            VStack(alignment: .leading, spacing: 14) {
+                heroBlock
+                mainTextBlock
 
-                VStack(alignment: .leading, spacing: 12) {
-                    if hasCuratedText {
-                        corpusSection
-                        technicalSection
-                        if shouldShowLocalReading {
-                            localReadingSection
-                        }
-                        contextualSection
-                    } else {
-                        if shouldShowLocalReading {
-                            localReadingSection
-                        }
-                        technicalSection
-                        corpusSection
-                        contextualSection
-                    }
+                if contextualInterpretation != nil || isGeneratingInterpretation {
+                    factorsSection
+                } else {
+                    contextualDiscovery
                 }
-                .padding(16)
+
+                speculumSection
+                calculationSection
             }
+            .padding(16)
         }
         .background(Color.appBackground)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
 
-    // MARK: - Header
-
-    private var headerView: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack(alignment: .firstTextBaseline, spacing: 12) {
-                Text(enriched.displaySummary)
-                    .font(.title3.bold())
-                    .foregroundStyle(.primary)
-
-                polarityBadge(direction.aspect.polarity)
-
-                Spacer()
-
-                Text(enriched.ageFormatted)
-                    .font(.headline.monospaced())
-                    .foregroundStyle(Color.appAccentFill)
-            }
-
-            HStack(spacing: 16) {
-                Label(direction.directionType == .direct ? "Directa" : "Conversa",
-                      systemImage: direction.directionType == .direct ? "arrow.forward" : "arrow.backward")
-                Label(direction.aspectPlane.displayName,
-                      systemImage: "globe")
-                Label(direction.method.rawValue,
-                      systemImage: "house.circle")
-                if enriched.hasInterpretation {
-                    Label(isReferenceReportMode ? "Texto curado" : "Corpus", systemImage: "checkmark.seal.fill")
-                        .foregroundStyle(Color.appSecondaryAccent)
-                } else {
-                    Label(isReferenceReportMode ? "Sin texto curado" : "Sin corpus", systemImage: "clock.badge.exclamationmark")
-                        .foregroundStyle(Color.appWarning)
-                }
-            }
-            .font(.caption)
-            .foregroundStyle(.secondary)
-        }
-    }
-
-    // MARK: - Sección 1: Técnica
-
-    private var localReadingSection: some View {
-        DisclosureGroup(isExpanded: $localReadingExpanded) {
-            VStack(alignment: .leading, spacing: 12) {
-                Text(localReading.summary)
-                    .font(.callout)
-                    .foregroundStyle(.primary)
-                    .fixedSize(horizontal: false, vertical: true)
-
-                Divider()
-
-                Label(localReading.practicalFocus, systemImage: "scope")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
-
-                Label(localReading.caution, systemImage: "exclamationmark.triangle")
-                    .font(.caption)
-                    .foregroundStyle(Color.appWarning)
-                    .fixedSize(horizontal: false, vertical: true)
-
-                Text(localReading.sourceLabel)
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-            }
-            .padding(.top, 10)
-        } label: {
-            sectionLabel("Lectura auxiliar", icon: "text.bubble")
-        }
-        .appCard()
-    }
-
-    private var technicalSection: some View {
-        DisclosureGroup(isExpanded: $technicalExpanded) {
-            VStack(alignment: .leading, spacing: 10) {
-                technicalGrid
-                Divider()
-                estimatedDateRow
-            }
-            .padding(.top, 10)
-        } label: {
-            sectionLabel("Cálculo Técnico", icon: "function")
-        }
-        .appCard()
-    }
-
-    private var technicalGrid: some View {
-        let td = direction.technicalData
-        return LazyVGrid(columns: [
-            GridItem(.flexible(), alignment: .leading),
-            GridItem(.flexible(), alignment: .leading),
-        ], spacing: 8) {
-            technicalRow("Arco", enriched.arcFormatted)
-            technicalRow("Clave", direction.key.rawValue)
-            technicalRow("AR Prómissor", "\(String(format: "%.4f", td.promissorRA))°")
-            technicalRow("AR Significador", "\(String(format: "%.4f", td.significatorRA))°")
-            technicalRow("Dec. Prómissor", "\(String(format: "%.4f", td.promissorDeclination))°")
-            technicalRow("Polo Regiomontanus", "\(String(format: "%.4f", td.significatorPole))°")
-            technicalRow("Oblicuidad", "\(String(format: "%.4f", td.obliquity))°")
-            technicalRow("RAMC", "\(String(format: "%.4f", td.ramc))°")
-            technicalRow("Latitud", "\(String(format: "%.4f", td.geoLatitude))°")
-            technicalRow("Aspecto", "\(direction.aspect.label) (\(Int(direction.aspectAngle))°)")
-        }
-    }
-
-    private func technicalRow(_ label: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(label)
-                .font(.caption2)
-                .foregroundStyle(.secondary)
-            Text(value)
-                .font(.caption.monospaced())
-                .foregroundStyle(.primary)
-        }
-    }
-
-    private var estimatedDateRow: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("Período de activación")
-                .font(.caption2)
-                .foregroundStyle(.secondary)
-
-            let calendar = Calendar.current
-            let baseDate = direction.estimatedDate
-            let orbeMonths = 6
-            let start = calendar.date(byAdding: .month, value: -orbeMonths, to: baseDate) ?? baseDate
-            let end   = calendar.date(byAdding: .month, value:  orbeMonths, to: baseDate) ?? baseDate
-
-            HStack(spacing: 8) {
-                Image(systemName: "calendar")
-                    .foregroundStyle(Color.appAccentFill)
-                    .font(.caption)
-                Text("\(formattedDate(start)) – \(formattedDate(end))")
-                    .font(.caption.monospaced())
-            }
-        }
-    }
-
-    // MARK: - Sección 2: Corpus
-
-    private var corpusSection: some View {
-        DisclosureGroup(isExpanded: $corpusExpanded) {
-            corpusContent
-                .padding(.top, 10)
-        } label: {
-            sectionLabel(corpusSectionTitle, icon: "books.vertical")
-        }
-        .appCard()
-    }
-
-    private var corpusSectionTitle: String {
-        if isReferenceReportMode {
-            return "Longitud zodiacal - texto curado"
-        }
-        return "Corpus tradicional (Capa 1)"
-    }
-
-    @ViewBuilder
-    private var corpusContent: some View {
-        if let interp = enriched.interpretation, !interp.textoCortoPD.isEmpty {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(interp.title)
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                    .fixedSize(horizontal: false, vertical: true)
-
-                if let fuente = interp.fuenteNombre, !fuente.isEmpty {
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack(spacing: 8) {
-                            Label(fuente, systemImage: "quote.opening")
-                                .font(.caption.italic())
-                                .foregroundStyle(Color.appSecondaryAccent)
-                            qualityBadge(interp.quality)
-                        }
-                        if !interp.sourceReference.isEmpty {
-                            Text(interp.sourceReference)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                    }
-                }
-
-                Text(interp.textoCortoPD)
-                    .font(.body)
-                    .foregroundStyle(.primary)
-                    .lineSpacing(3)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-        } else {
-            HStack(alignment: .top, spacing: 10) {
-                Image(systemName: "clock.badge.exclamationmark")
-                    .font(.headline)
-                    .foregroundStyle(Color.appWarning)
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(isReferenceReportMode
-                         ? "Esta clave de longitud zodiacal aún no tiene texto curado"
-                         : "Esta clave aún no tiene texto verificado")
-                        .font(.callout.weight(.semibold))
-                        .foregroundStyle(Color.appWarning)
-                    Text("La ausencia de lectura indica cobertura doctrinal todavía incompleta, no un fallo del cálculo. Solo se muestran textos curados manualmente y con atribución verificable.")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-            }
-            .padding(10)
-            .background(Color.appWarning.opacity(0.08))
-            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
-        }
-    }
-
-    // MARK: - Sección 3: Contextual (LLM)
-
-    private var contextualSection: some View {
-        DisclosureGroup(isExpanded: $contextualExpanded) {
-            contextualContent
-                .padding(.top, 10)
-        } label: {
-            HStack(spacing: 8) {
-                sectionLabel("Interpretación Contextual (Capa 2)", icon: "sparkles")
-                if isGeneratingInterpretation {
-                    ProgressView().controlSize(.mini)
-                }
-            }
-        }
-        .appCard()
-    }
-
-    @ViewBuilder
-    private var contextualContent: some View {
-        if isGeneratingInterpretation {
-            HStack(spacing: 12) {
-                ProgressView().controlSize(.regular)
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Generando interpretación morinista…")
-                        .font(.callout)
-                    Text("Evaluando los 6 factores moduladores con el LLM")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .padding(12)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        } else if let interp = contextualInterpretation {
-            interpretationBody(interp)
-        } else {
-            generateButton
-        }
-    }
-
-    private func interpretationBody(_ interp: ContextualInterpretation) -> some View {
-        VStack(alignment: .leading, spacing: 16) {
-            // Título y polaridad
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(interp.tituloPrincipal)
-                        .font(.callout.bold())
+    private var heroBlock: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top, spacing: 12) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(enriched.displaySummary)
+                        .font(.title2.bold())
                         .foregroundStyle(.primary)
                         .fixedSize(horizontal: false, vertical: true)
 
-                    HStack(spacing: 10) {
+                    Text(heroSubtitle)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                Spacer(minLength: 12)
+                polarityBadge(direction.aspect.polarity)
+            }
+
+            HStack(spacing: 8) {
+                metadataBadge(direction.directionType == .direct ? "Directa" : "Conversa", icon: direction.directionType == .direct ? "arrow.forward" : "arrow.backward")
+                metadataBadge(direction.aspectPlane.displayName, icon: "globe")
+                metadataBadge(direction.method.rawValue, icon: "scope")
+            }
+        }
+        .padding(16)
+        .background(Color.appSurface, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .stroke(Color.appBorder.opacity(0.55), lineWidth: 1)
+        )
+    }
+
+    private var heroSubtitle: String {
+        let peak = orbRange(months: direction.key.peakOrbMonths)
+        return "\(exactAgeCompact) · \(formattedDate(direction.estimatedDate)) · peak \(peak)"
+    }
+
+    private var mainTextBlock: some View {
+        let source = primaryTextSource
+        return VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text("Fuente: \(source.label)")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                if hasAlternatives {
+                    Button(alternativesExpanded ? "Ocultar alternativos" : "Ver alternativos") {
+                        withAnimation(.easeInOut(duration: 0.16)) {
+                            alternativesExpanded.toggle()
+                        }
+                    }
+                    .font(.caption)
+                    .buttonStyle(.borderless)
+                }
+            }
+
+            Text(source.title)
+                .font(.headline)
+                .foregroundStyle(.primary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            Text(source.text)
+                .font(.body)
+                .lineSpacing(4)
+                .foregroundStyle(.primary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            if alternativesExpanded {
+                alternativesBlock
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+            }
+        }
+        .padding(16)
+        .background(Color.appSurface, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .stroke(Color.appBorder.opacity(0.45), lineWidth: 1)
+        )
+    }
+
+    private var factorsSection: some View {
+        DisclosureGroup(isExpanded: $factorsExpanded) {
+            if isGeneratingInterpretation {
+                generatingContextualView
+                    .padding(.top, 10)
+            } else if let interp = contextualInterpretation {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
                         intensidadBadge(interp.intensidad)
                         Text(interp.polaridadEmoji + " " + interp.polaridad.capitalized)
                             .font(.caption)
                             .foregroundStyle(.secondary)
+                        Spacer()
+                        Button {
+                            onInvalidateInterpretation()
+                        } label: {
+                            Label("Regenerar", systemImage: "arrow.clockwise")
+                                .font(.caption)
+                        }
+                        .buttonStyle(.borderless)
                     }
+
+                    LazyVGrid(columns: [
+                        GridItem(.flexible(), alignment: .topLeading),
+                        GridItem(.flexible(), alignment: .topLeading),
+                    ], alignment: .leading, spacing: 12) {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Factores")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.secondary)
+                            ForEach(interp.factoresConsiderados, id: \.factor) { factor in
+                                factorRow(factor)
+                            }
+                        }
+
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Áreas")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.secondary)
+                            ForEach(interp.areasAfectadas, id: \.area) { area in
+                                areaRow(area)
+                            }
+                        }
+                    }
+
+                    Text("Prompt v\(interp.promptVersion)")
+                        .font(.caption.monospaced())
+                        .foregroundStyle(.tertiary)
                 }
-                Spacer()
-                Button {
-                    onInvalidateInterpretation()
-                } label: {
-                    Image(systemName: "arrow.clockwise")
-                        .font(.caption)
-                }
-                .buttonStyle(.borderless)
-                .help("Regenerar interpretación")
+                .padding(.top, 10)
             }
+        } label: {
+            sectionLabel("Factores Morinistas", icon: "sparkles")
+        }
+        .appCard()
+    }
 
-            Divider()
-
-            // Texto estructural
-            Text(interp.textoEstructural)
-                .font(.callout)
-                .foregroundStyle(.primary)
+    private var contextualDiscovery: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            sectionLabel("Interpretación contextual", icon: "sparkles")
+            Text("La lectura generativa evalúa factores morinistas de la carta natal sin sustituir al corpus curado.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
+            generateButton
+        }
+        .appCard()
+    }
 
-            Divider()
+    private var speculumSection: some View {
+        DisclosureGroup(isExpanded: $speculumExpanded) {
+            SpeculumTableView(
+                rows: speculumRows,
+                promissorKey: direction.promissor,
+                significatorKey: direction.significator
+            )
+            .padding(.top, 10)
+        } label: {
+            sectionLabel("Espéculo Regiomontano", icon: "tablecells")
+        }
+        .appCard()
+    }
 
-            // Factores moduladores + Áreas en HStack
-            HStack(alignment: .top, spacing: 16) {
-                // Factores
-                        if !interp.factoresConsiderados.isEmpty {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("Factores Morinistas")
-                            .font(.caption.bold())
-                            .foregroundStyle(.secondary)
-                        ForEach(interp.factoresConsiderados, id: \.factor) { f in
-                            factorRow(f)
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .topLeading)
-                }
+    private var calculationSection: some View {
+        DisclosureGroup(isExpanded: $calculationExpanded) {
+            VStack(alignment: .leading, spacing: 12) {
+                technicalTable
+                Divider()
+                activationOrbView
+            }
+            .padding(.top, 10)
+        } label: {
+            sectionLabel("Datos del cálculo", icon: "function")
+        }
+        .appCard()
+    }
 
-                // Áreas
-                if !interp.areasAfectadas.isEmpty {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("Áreas Afectadas")
-                            .font(.caption.bold())
-                            .foregroundStyle(.secondary)
-                        ForEach(interp.areasAfectadas, id: \.area) { a in
-                            areaRow(a)
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .topLeading)
+    private var technicalTable: some View {
+        let td = direction.technicalData
+        return VStack(spacing: 0) {
+            technicalRow("Arco", enriched.arcFormatted)
+            technicalRow("Clave", direction.key.rawValue)
+            technicalRow("AR prómissor", degrees(td.promissorRA, precision: 4))
+            technicalRow("Decl prómissor", signedDegrees(td.promissorDeclination, precision: 4))
+            technicalRow("AR significador", degrees(td.significatorRA, precision: 4))
+            technicalRow("Decl significador", signedDegrees(td.significatorDeclination, precision: 4))
+            technicalRow("Polo significador", degrees(td.significatorPole, precision: 4))
+            technicalRow("Aspecto", "\(direction.aspect.label) (\(Int(direction.aspectAngle))°)")
+            technicalRow("Tipo", direction.directionType == .direct ? "Directa" : "Conversa")
+            technicalRow("Plano", direction.aspectPlane.displayName)
+            technicalRow("Orbe de activación", "peak ±\(direction.key.peakOrbMonths)m · residual ±\(direction.key.residualOrbMonths)m")
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                .stroke(Color.appBorder.opacity(0.45), lineWidth: 1)
+        )
+    }
+
+    private func technicalRow(_ key: String, _ value: String) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 12) {
+            Text(key)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .frame(width: 150, alignment: .leading)
+            Text(value)
+                .font(.caption.monospaced())
+                .foregroundStyle(.primary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 7)
+        .background(Color.appPanel.opacity(0.5))
+    }
+
+    private var activationOrbView: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Orbe de activación")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+
+            GeometryReader { geo in
+                ZStack(alignment: .center) {
+                    Capsule()
+                        .fill(Color.appAccentFill.opacity(0.12))
+                        .frame(width: geo.size.width, height: 8)
+                    Capsule()
+                        .fill(
+                            LinearGradient(
+                                colors: [Color.appAccentFill.opacity(0.35), Color.appSecondaryAccent.opacity(0.75), Color.appAccentFill.opacity(0.35)],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .frame(width: max(44, geo.size.width / 3), height: 12)
                 }
             }
+            .frame(height: 14)
 
-            // Período de activación
-            periodRow(interp.periodoActivacion)
-
-            // Prompt version
-            Text("Prompt v\(interp.promptVersion)")
-                .font(.system(size: 9, design: .monospaced))
-                .foregroundStyle(.quaternary)
+            HStack {
+                Text("Residual: \(orbRange(months: direction.key.residualOrbMonths))")
+                Spacer()
+                Text("Peak: \(orbRange(months: direction.key.peakOrbMonths))")
+            }
+            .font(.caption.monospaced())
+            .foregroundStyle(.secondary)
         }
     }
 
-    private func factorRow(_ f: ContextualInterpretation.FactorModulador) -> some View {
-        HStack(alignment: .top, spacing: 6) {
-            Text(modulacionEmoji(f.modulacion))
-                .font(.caption2)
-            VStack(alignment: .leading, spacing: 1) {
-                Text(f.factor.replacingOccurrences(of: "_", with: " ").capitalized)
-                    .font(.caption2.bold())
-                Text(f.valor)
-                    .font(.caption2)
+    private var alternativesBlock: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(alternativeSources) { source in
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Fuente: \(source.label)")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(source.title)
+                        .font(.caption.weight(.semibold))
+                    Text(source.text)
+                        .font(.body)
+                        .lineSpacing(4)
+                        .foregroundStyle(.primary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .padding(10)
+                .background(Color.appPanel, in: RoundedRectangle(cornerRadius: 6, style: .continuous))
+            }
+
+            if contextualInterpretation == nil && !isGeneratingInterpretation {
+                generateButton
+                    .padding(.top, 2)
+            }
+        }
+    }
+
+    private var primaryTextSource: MainTextSource {
+        if let curatedSource {
+            return curatedSource
+        }
+        if let contextualSource {
+            return contextualSource
+        }
+        return localSource
+    }
+
+    private var alternativeSources: [MainTextSource] {
+        let primaryID = primaryTextSource.id
+        return [curatedSource, contextualSource, localSource]
+            .compactMap(\.self)
+            .filter { $0.id != primaryID }
+    }
+
+    private var hasAlternatives: Bool {
+        !alternativeSources.isEmpty || contextualInterpretation == nil
+    }
+
+    private var curatedSource: MainTextSource? {
+        guard let interp = enriched.interpretation, !interp.textoCortoPD.isEmpty else { return nil }
+        let label = interp.fuenteNombre?.isEmpty == false ? interp.fuenteNombre! : "Corpus curado"
+        return MainTextSource(id: "corpus", label: label, title: interp.title, text: interp.textoCortoPD)
+    }
+
+    private var contextualSource: MainTextSource? {
+        guard let interp = contextualInterpretation else { return nil }
+        return MainTextSource(
+            id: "contextual",
+            label: "Generado por LLM",
+            title: interp.tituloPrincipal,
+            text: interp.textoEstructural
+        )
+    }
+
+    private var localSource: MainTextSource {
+        MainTextSource(
+            id: "local",
+            label: "Lectura auxiliar",
+            title: "Síntesis auxiliar",
+            text: localReading.summary
+        )
+    }
+
+    private var generatingContextualView: some View {
+        HStack(spacing: 12) {
+            ProgressView().controlSize(.regular)
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Generando interpretación morinista...")
+                    .font(.body)
+                Text("Evaluando factores natales, secta, dignidades y áreas afectadas.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var generateButton: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Label(contextualAvailability, systemImage: "key")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            Button {
+                onRequestInterpretation()
+            } label: {
+                Label("Generar interpretación contextual", systemImage: "sparkles")
+                    .font(.body.weight(.semibold))
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(Color.appAccentFill)
+            .disabled(isGeneratingInterpretation)
+        }
+    }
+
+    private func factorRow(_ factor: ContextualInterpretation.FactorModulador) -> some View {
+        HStack(alignment: .top, spacing: 8) {
+            Text(modulationEmoji(factor.modulacion))
+                .font(.body)
+                .help(modulationHelp(factor.modulacion))
+            VStack(alignment: .leading, spacing: 2) {
+                Text(factor.factor.replacingOccurrences(of: "_", with: " ").capitalized)
+                    .font(.caption.weight(.semibold))
+                Text(factor.valor)
+                    .font(.caption)
                     .foregroundStyle(.secondary)
             }
         }
     }
 
-    private func areaRow(_ a: ContextualInterpretation.AreaVida) -> some View {
-        HStack(spacing: 6) {
-            Text(String(repeating: "●", count: a.peso))
-                .font(.system(size: 8))
-                .foregroundStyle(Color.appAccentFill)
-            Text(a.area.capitalized)
-                .font(.caption2)
-        }
-    }
-
-    private func periodRow(_ p: ContextualInterpretation.PeriodoActivacion) -> some View {
+    private func areaRow(_ area: ContextualInterpretation.AreaVida) -> some View {
         HStack(spacing: 8) {
-            Image(systemName: "calendar")
-                .font(.caption)
-                .foregroundStyle(Color.appAccentFill)
-            Text(p.displayString)
+            Text(String(repeating: "●", count: area.peso))
                 .font(.caption.monospaced())
+                .foregroundStyle(Color.appAccentFill)
+                .help("Peso \(area.peso) sobre 3")
+            Text(area.area.capitalized)
+                .font(.caption)
         }
     }
-
-    private var generateButton: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Label(contextualAvailability, systemImage: "key")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            Text("La interpretación contextual aplica los 6 factores moduladores morinistas (Astrologia Gallica) usando un LLM. Requiere API key de OpenRouter.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-
-            Button {
-                onRequestInterpretation()
-            } label: {
-                Label("Generar interpretación contextual", systemImage: "sparkles")
-                    .font(.callout.bold())
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(Color.appAccentFill)
-            .controlSize(.regular)
-        }
-    }
-
-    // MARK: - Shared helpers
 
     private func sectionLabel(_ title: String, icon: String) -> some View {
         Label(title, systemImage: icon)
-            .font(.callout.bold())
+            .font(.headline)
             .foregroundStyle(.primary)
     }
 
-    private func qualityBadge(_ quality: Int) -> some View {
-        Text("calidad \(quality)/10")
-            .font(.caption2.monospaced())
-            .foregroundStyle(Color.appSecondaryAccent)
-            .padding(.horizontal, 7)
-            .padding(.vertical, 3)
-            .background(Color.appSecondaryAccent.opacity(0.1), in: Capsule())
+    private func metadataBadge(_ title: String, icon: String) -> some View {
+        Label(title, systemImage: icon)
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(Color.appPanel, in: Capsule())
     }
 
     private func polarityBadge(_ polarity: String) -> some View {
-        let (color, emoji): (Color, String) = switch polarity {
-        case "benefico":  (Color(hex: "#16A34A"), "🟢")
-        case "malefico":  (Color(hex: "#DC2626"), "🔴")
-        case "mixto":     (Color(hex: "#D97706"), "🟡")
-        default:          (Color(hex: "#6B7280"), "⚪️")
+        let (color, symbol): (Color, String) = switch polarity {
+        case "benefico": (Color(hex: "#16A34A"), "●")
+        case "malefico": (Color(hex: "#DC2626"), "●")
+        case "mixto": (Color(hex: "#D97706"), "●")
+        default: (Color(hex: "#64748B"), "●")
         }
-        return Text("\(emoji) \(polarity.capitalized)")
-            .font(.caption.bold())
-            .padding(.horizontal, 8)
-            .padding(.vertical, 3)
-            .background(color.opacity(0.12))
-            .foregroundStyle(color)
-            .clipShape(Capsule())
+        return HStack(spacing: 6) {
+            Text(symbol)
+                .font(.headline)
+            Text(polarity.capitalized)
+                .font(.headline)
+        }
+        .foregroundStyle(color)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(color.opacity(0.12), in: Capsule())
     }
 
     private func intensidadBadge(_ score: Int) -> some View {
@@ -488,15 +462,39 @@ struct PrimaryDirectionDetailView: View {
                     .frame(width: 6, height: 10)
             }
         }
+        .help("Intensidad \(score) sobre 10")
     }
 
-    private func modulacionEmoji(_ mod: String) -> String {
-        switch mod {
-        case "amplifica": return "⬆️"
-        case "atenua":    return "⬇️"
-        case "invierte":  return "↔️"
-        default:          return "➡️"
+    private func modulationEmoji(_ modulation: String) -> String {
+        switch modulation {
+        case "amplifica": return "↑"
+        case "atenua": return "↓"
+        case "invierte": return "↔"
+        default: return "→"
         }
+    }
+
+    private func modulationHelp(_ modulation: String) -> String {
+        switch modulation {
+        case "amplifica": return "Este factor aumenta la expresión de la dirección."
+        case "atenua": return "Este factor suaviza o retrasa la expresión de la dirección."
+        case "invierte": return "Este factor cambia la forma esperada de manifestación."
+        default: return "Este factor contextualiza sin alterar fuertemente la dirección."
+        }
+    }
+
+    private var exactAgeCompact: String {
+        let years = Int(direction.estimatedAge)
+        let months = Int((direction.estimatedAge - Double(years)) * 12)
+        return "\(years)a \(months)m"
+    }
+
+    private func orbRange(months: Int) -> String {
+        let calendar = Calendar.current
+        let base = direction.estimatedDate
+        let start = calendar.date(byAdding: .month, value: -months, to: base) ?? base
+        let end = calendar.date(byAdding: .month, value: months, to: base) ?? base
+        return "\(formattedDate(start)) - \(formattedDate(end))"
     }
 
     private func formattedDate(_ date: Date) -> String {
@@ -505,11 +503,25 @@ struct PrimaryDirectionDetailView: View {
         fmt.locale = Locale(identifier: "es_ES")
         return fmt.string(from: date)
     }
+
+    private func degrees(_ value: Double, precision: Int = 2) -> String {
+        "\(String(format: "%.\(precision)f", value))°"
+    }
+
+    private func signedDegrees(_ value: Double, precision: Int = 2) -> String {
+        "\(value >= 0 ? "+" : "")\(String(format: "%.\(precision)f", value))°"
+    }
+}
+
+private struct MainTextSource: Identifiable {
+    let id: String
+    let label: String
+    let title: String
+    let text: String
 }
 
 // MARK: - PrimaryDirectionInterpretation display helper
 
-/// Typed access to corpus interpretation for PD.
 extension PrimaryDirectionInterpretation {
     var textoCortoPD: String { structuralText }
     var fuenteNombre: String? { source.isEmpty ? nil : source }
@@ -524,7 +536,7 @@ extension ContextualInterpretation.PeriodoActivacion {
         var parts = ["\(ageYears) años"]
         if ageMonths > 0 { parts.append("\(ageMonths) meses") }
         if let inicio = fechaInicio, let fin = fechaFin {
-            parts.append("(\(inicio) – \(fin))")
+            parts.append("(\(inicio) - \(fin))")
         }
         return parts.joined(separator: " · ")
     }

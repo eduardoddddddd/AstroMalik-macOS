@@ -201,7 +201,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertEqual(settings.method, .regiomontanus)
         XCTAssertEqual(settings.key, .naibod)
         XCTAssertEqual(settings.maxYears, 90)
-        XCTAssertEqual(settings.aspectPlane, .ecliptic)
+        XCTAssertEqual(settings.aspectPlane, .zodiacal)
     }
 
     func testSettingsPersistAndLoad() {

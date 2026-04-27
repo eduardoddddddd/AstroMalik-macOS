@@ -27,3 +27,24 @@ enum PrimaryDirectionKey: String, CaseIterable, Identifiable, Codable {
         }
     }
 }
+
+// MARK: - Activation Orb
+
+extension PrimaryDirectionKey {
+    /// Meses de orbe peak: zona de intensidad máxima de la dirección.
+    var peakOrbMonths: Int {
+        switch self {
+        case .ptolemy:
+            return 6
+        case .naibod:
+            return 6
+        case .brahe:
+            return 6
+        }
+    }
+
+    /// Meses de orbe residual: zona de influencia perceptible.
+    var residualOrbMonths: Int {
+        peakOrbMonths * 3
+    }
+}

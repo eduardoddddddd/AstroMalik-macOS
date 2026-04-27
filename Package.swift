@@ -43,7 +43,11 @@ let package = Package(
         .testTarget(
             name: "AstroMalikTests",
             dependencies: ["AstroMalik"],
-            path: "Tests/AstroMalikTests"
+            path: "Tests/AstroMalikTests",
+            exclude: ["PRIMARY_DIRECTIONS_TESTS.md"],
+            resources: [
+                .process("PrimaryDirectionsGolden.json"),
+            ]
         ),
     ]
 )

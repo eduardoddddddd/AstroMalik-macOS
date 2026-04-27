@@ -4,6 +4,31 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ## \[Unreleased\]
 
+### Añadido
+
+- Vista "Lista profesional" para Direcciones Primarias con tabla nativa ordenable, columnas densas y selección sincronizada con el detalle.
+- Vista "Año en curso" con selector anual, ventana residual de ±18 meses y tarjetas cronológicas con texto principal abreviado.
+- Tabla de Espéculo Regiomontano completo en el detalle, resaltando prómissor y significador.
+
+### Cambiado
+
+- Reorganizada la UI de Direcciones Primarias en header compacto, timeline semántico y panel maestro con tabs.
+- Rediseñado el detalle de una dirección con hero permanente, texto principal priorizado, alternativos bajo demanda, factores morinistas y datos técnicos en tabla estricta.
+- El banner de honestidad del corpus pasa a popover informativo en el header.
+- El plano por defecto de direcciones pasa a zodiacal con migración de `UserDefaults` a versión 2.
+
+### Corregido
+
+- Direcciones conversas calculadas con roles invertidos y polo del prómissor, en vez de derivarlas del signo del arco.
+- Clave Brahe basada en el arco de ascensión recta del Sol entre el nacimiento y +24h.
+- RAMC calculado con `swe_sidtime0` para paridad con Morinus.
+- Pars Fortunae soportada como prómissor opt-in en el motor de Direcciones Primarias.
+- Fecha estimada de las direcciones calculada con precisión sub-día.
+
+### Eliminado
+
+- Método Placidus retirado de Direcciones Primarias hasta tener un motor real.
+
 ## \[0.4.0\] — 2026-04-27
 
 ### Añadido (Módulo Direcciones Primarias - Fases 1 a 6)
@@ -64,7 +89,6 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 ## \[0.3.0\] — 2026-04-19
 
 ### Añadido
-
 - Tránsitos accesible desde el sidebar principal, al mismo nivel que "Nueva Carta" y "Cartas Guardadas"
 - Picker segmentado en la vista de Tránsitos para elegir entre múltiples cartas guardadas
 - Estado vacío con mensaje claro cuando no hay cartas guardadas al entrar en Tránsitos

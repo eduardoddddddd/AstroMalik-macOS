@@ -14,7 +14,7 @@ final class PrimaryDirectionCalculator: Sendable {
     // MARK: - Configuration
 
     struct Config: Sendable {
-        /// Método de proyección (Regiomontanus o Placidus)
+        /// Método de proyección (Regiomontanus)
         let method: PrimaryDirectionMethod
 
         /// Clave de conversión arco → tiempo
@@ -110,10 +110,15 @@ final class PrimaryDirectionCalculator: Sendable {
         let ramc = getRamc(jd: jd, lon: chart.longitude)
 
         // 3. Calcular coordenadas ecuatoriales de todos los cuerpos
-        let bodies = computeEquatorialBodies(chart: chart, jd: jd, obliquity: obliquity)
+        let bodies = computeEquatorialBodies(chart: chart, jd: jd, obliquity: obliquity, ramc: ramc)
 
         // 4. Grados por año para la clave seleccionada
-        let degreesPerYear = resolveDegreesPerYear(config: config, bodies: bodies)
+        let degreesPerYear = resolveDegreesPerYear(
+            config: config,
+            jd: jd,
+            obliquity: obliquity,
+            bodies: bodies
+        )
         guard degreesPerYear > 0 else { return [] }
 
         // 5. Arco máximo
@@ -121,6 +126,53 @@ final class PrimaryDirectionCalculator: Sendable {
 
         // 6. Generar todas las direcciones
         var directions: [PrimaryDirection] = []
+        let secondsPerYear = 365.25 * 24 * 3600.0
+
+        func appendDirections(
+            arcs: [Double],
+            directionType: PDDirectionType,
+            promissorKey: String,
+            promissorBody: EquatorialBody,
+            significatorKey: String,
+            significatorLabel: String,
+            significatorBody: EquatorialBody,
+            referenceSpeculum: RegiomontanusSpeculum,
+            aspect: PDaspect
+        ) {
+            for arc in arcs {
+                if abs(arc) > maxArc || abs(arc) < 0.001 { continue }
+
+                let age = abs(arc) / degreesPerYear
+                let estimatedDate = birthDate.addingTimeInterval(age * secondsPerYear)
+
+                let pd = PrimaryDirection(
+                    promissor: promissorKey,
+                    promissorLabel: promissorBody.label,
+                    significator: significatorKey,
+                    significatorLabel: significatorLabel,
+                    aspect: aspect,
+                    aspectAngle: aspect.angle,
+                    directionType: directionType,
+                    aspectPlane: config.aspectPlane,
+                    arc: arc,
+                    estimatedAge: age,
+                    estimatedDate: estimatedDate,
+                    method: config.method,
+                    key: config.key,
+                    technicalData: PDTechnicalData(
+                        promissorRA: promissorBody.ra,
+                        promissorDeclination: promissorBody.declination,
+                        significatorRA: significatorBody.ra,
+                        significatorDeclination: significatorBody.declination,
+                        significatorPole: referenceSpeculum.pole,
+                        obliquity: obliquity,
+                        ramc: ramc,
+                        geoLatitude: chart.latitude
+                    )
+                )
+                directions.append(pd)
+            }
+        }
 
         for sig in config.significators {
             guard let sigBody = resolveSignificatorBody(
@@ -159,43 +211,48 @@ final class PrimaryDirectionCalculator: Sendable {
                         plane: config.aspectPlane
                     )
 
-                    for arc in directArcs {
-                        if abs(arc) > maxArc || abs(arc) < 0.001 { continue }
+                    appendDirections(
+                        arcs: directArcs,
+                        directionType: .direct,
+                        promissorKey: promKey,
+                        promissorBody: promBody,
+                        significatorKey: sig.rawValue,
+                        significatorLabel: sig.label,
+                        significatorBody: sigBody,
+                        referenceSpeculum: sigSpec,
+                        aspect: aspect
+                    )
 
-                        let age = abs(arc) / degreesPerYear
-                        let estimatedDate = Calendar.current.date(
-                            byAdding: .day,
-                            value: Int(age * 365.25),
-                            to: birthDate
-                        ) ?? birthDate
+                    guard config.includeConverse else { continue }
 
-                        let pd = PrimaryDirection(
-                            promissor: promKey,
-                            promissorLabel: promBody.label,
-                            significator: sig.rawValue,
-                            significatorLabel: sig.label,
-                            aspect: aspect,
-                            aspectAngle: aspect.angle,
-                            directionType: arc > 0 ? .direct : .converse,
-                            aspectPlane: config.aspectPlane,
-                            arc: arc,
-                            estimatedAge: age,
-                            estimatedDate: estimatedDate,
-                            method: config.method,
-                            key: config.key,
-                            technicalData: PDTechnicalData(
-                                promissorRA: promBody.ra,
-                                promissorDeclination: promBody.declination,
-                                significatorRA: sigBody.ra,
-                                significatorDeclination: sigBody.declination,
-                                significatorPole: sigSpec.pole,
-                                obliquity: obliquity,
-                                ramc: ramc,
-                                geoLatitude: chart.latitude
-                            )
-                        )
-                        directions.append(pd)
-                    }
+                    let promSpec = RegiomontanusSpeculum(
+                        placelat: chart.latitude, ramc: ramc,
+                        lon: promBody.longitude, lat: promBody.latitude,
+                        ra: promBody.ra, decl: promBody.declination
+                    )
+
+                    let converseArcs = calculateDirectionArc(
+                        promissor: sigBody,
+                        significator: promBody,
+                        sigSpeculum: promSpec,
+                        aspect: aspect,
+                        placelat: chart.latitude,
+                        ramc: ramc,
+                        obliquity: obliquity,
+                        plane: config.aspectPlane
+                    )
+
+                    appendDirections(
+                        arcs: converseArcs,
+                        directionType: .converse,
+                        promissorKey: promKey,
+                        promissorBody: promBody,
+                        significatorKey: sig.rawValue,
+                        significatorLabel: sig.label,
+                        significatorBody: sigBody,
+                        referenceSpeculum: promSpec,
+                        aspect: aspect
+                    )
                 }
             }
         }
@@ -422,7 +479,12 @@ final class PrimaryDirectionCalculator: Sendable {
     /// Obtiene RAMC (Right Ascension of MC) para un JD y longitud geográfica.
     func getRamc(jd: Double, lon: Double) -> Double {
         // RAMC = Sidereal Time * 15 at the given geographic longitude
-        let siderealTime = swe_sidtime(jd) // hours at Greenwich
+        var nut = [Double](repeating: 0, count: 6)
+        var serr = [CChar](repeating: 0, count: 256)
+        swe_calc_ut(jd, SE_ECL_NUT, 0, &nut, &serr)
+        let eps = nut[0]   // oblicuidad verdadera
+        let dpsi = nut[2]  // nutación en longitud
+        let siderealTime = swe_sidtime0(jd, eps, dpsi) // hours at Greenwich
         let ramc = RegiomontanusSpeculum.normalize(siderealTime * 15.0 + lon)
         return ramc
     }
@@ -433,7 +495,8 @@ final class PrimaryDirectionCalculator: Sendable {
     func computeEquatorialBodies(
         chart: NatalChart,
         jd: Double,
-        obliquity: Double
+        obliquity: Double,
+        ramc: Double? = nil
     ) -> [String: EquatorialBody] {
 
         var result: [String: EquatorialBody] = [:]
@@ -499,6 +562,17 @@ final class PrimaryDirectionCalculator: Sendable {
             ra: icRA, declination: icDecl, speed: 0
         )
 
+        let chartRamc = ramc ?? getRamc(jd: jd, lon: chart.longitude)
+        if let fortune = computePartOfFortune(
+            chart: chart,
+            bodies: result,
+            obliquity: obliquity,
+            ramc: chartRamc,
+            placelat: chart.latitude
+        ) {
+            result[fortune.key] = fortune
+        }
+
         return result
     }
 
@@ -518,6 +592,33 @@ final class PrimaryDirectionCalculator: Sendable {
             )
         }
         return result
+    }
+
+    /// Calcula el espéculo Regiomontano completo de la carta para uso tabular.
+    func computeFullSpeculum(chart: NatalChart, jd: Double) -> [SpeculumRow] {
+        let obliquity = getObliquity(jd: jd)
+        let ramc = getRamc(jd: jd, lon: chart.longitude)
+        let bodies = computeEquatorialBodies(chart: chart, jd: jd, obliquity: obliquity, ramc: ramc)
+
+        let speculums = computeSpeculums(bodies: bodies, placelat: chart.latitude, ramc: ramc)
+        let orderedKeys = PLANET_LIST.map(\.key) + ["ASC", "MC", "DSC", "IC", "PARTFORTUNA"]
+
+        return orderedKeys.compactMap { key in
+            guard let body = bodies[key], let speculum = speculums[key] else { return nil }
+            return SpeculumRow(
+                key: key,
+                label: body.label,
+                longitude: speculum.longitude,
+                latitude: speculum.latitude,
+                rightAscension: speculum.ra,
+                declination: speculum.declination,
+                meridianDistance: speculum.meridianDistance,
+                zenithDistance: speculum.zenithDistance,
+                pole: speculum.pole,
+                q: speculum.q,
+                w: speculum.w
+            )
+        }
     }
 
     /// Resuelve un significador a su EquatorialBody.
@@ -558,33 +659,55 @@ final class PrimaryDirectionCalculator: Sendable {
         case .pluto:
             return bodies["PLUTON"]
         case .partOfFortune:
-            // Pars Fortunae = ASC + Luna - Sol (diurna) / ASC + Sol - Luna (nocturna)
-            guard let sol = bodies["SOL"], let luna = bodies["LUNA"] else { return nil }
-            let ascLon = chart.ascendant.longitude
-            let solLon = sol.longitude
-            let lunaLon = luna.longitude
-
-            // Determine sect: diurnal if Sun above horizon
-            let solSpec = RegiomontanusSpeculum(
-                placelat: chart.latitude, ramc: ramc,
-                lon: solLon, lat: sol.latitude, ra: sol.ra, decl: sol.declination
-            )
-            let isDiurnal = solSpec.aboveHorizon
-
-            let fortuneLon: Double
-            if isDiurnal {
-                fortuneLon = RegiomontanusSpeculum.normalize(ascLon + lunaLon - solLon)
-            } else {
-                fortuneLon = RegiomontanusSpeculum.normalize(ascLon + solLon - lunaLon)
-            }
-
-            let (fRA, fDecl) = eclipticToEquatorial(lon: fortuneLon, lat: 0, obliquity: obliquity)
-            return EquatorialBody(
-                key: "PARTFORTUNA", label: "⊗ Parte de Fortuna",
-                longitude: fortuneLon, latitude: 0,
-                ra: fRA, declination: fDecl, speed: 0
+            return bodies["PARTFORTUNA"] ?? computePartOfFortune(
+                chart: chart,
+                bodies: bodies,
+                obliquity: obliquity,
+                ramc: ramc,
+                placelat: chart.latitude
             )
         }
+    }
+
+    /// Calcula Pars Fortunae con fórmula dependiente de secta.
+    private func computePartOfFortune(
+        chart: NatalChart,
+        bodies: [String: EquatorialBody],
+        obliquity: Double,
+        ramc: Double,
+        placelat: Double
+    ) -> EquatorialBody? {
+        guard let sol = bodies["SOL"], let luna = bodies["LUNA"] else { return nil }
+        let ascLon = chart.ascendant.longitude
+
+        // Secta diurna si el Sol está sobre el horizonte.
+        let solSpec = RegiomontanusSpeculum(
+            placelat: placelat, ramc: ramc,
+            lon: sol.longitude, lat: sol.latitude,
+            ra: sol.ra, decl: sol.declination
+        )
+
+        let fortuneLon: Double
+        if solSpec.aboveHorizon {
+            fortuneLon = RegiomontanusSpeculum.normalize(ascLon + luna.longitude - sol.longitude)
+        } else {
+            fortuneLon = RegiomontanusSpeculum.normalize(ascLon + sol.longitude - luna.longitude)
+        }
+
+        let (fortuneRA, fortuneDecl) = eclipticToEquatorial(
+            lon: fortuneLon,
+            lat: 0,
+            obliquity: obliquity
+        )
+        return EquatorialBody(
+            key: "PARTFORTUNA",
+            label: "⊗ Parte de Fortuna",
+            longitude: fortuneLon,
+            latitude: 0,
+            ra: fortuneRA,
+            declination: fortuneDecl,
+            speed: 0
+        )
     }
 
     /// Resuelve un prómissor key a su EquatorialBody.
@@ -601,6 +724,8 @@ final class PrimaryDirectionCalculator: Sendable {
     /// Resuelve grados por año según la clave.
     private func resolveDegreesPerYear(
         config: Config,
+        jd: Double,
+        obliquity: Double,
         bodies: [String: EquatorialBody]
     ) -> Double {
         switch config.key {
@@ -609,12 +734,52 @@ final class PrimaryDirectionCalculator: Sendable {
         case .ptolemy:
             return config.key.degreesPerYear!
         case .brahe:
-            if let speed = config.natalSolarSpeed {
-                return speed  // °/day solar speed as °/year for directions
-            } else if let sol = bodies["SOL"] {
-                return sol.speed  // fallback to computed solar speed
+            // Brahe canónico: arco de AR del Sol entre nacimiento y +24h.
+            if let speed = config.natalSolarSpeed, let sol = bodies["SOL"] {
+                return solarRightAscensionArc(
+                    longitude: sol.longitude,
+                    latitude: sol.latitude,
+                    longitudeDelta: speed,
+                    obliquity: obliquity
+                )
             }
-            return 0.98564722  // ultimate fallback: Naibod
+            return computeBraheArc(jd: jd, obliquity: obliquity)
         }
+    }
+
+    /// Brahe = arco de AR del Sol entre nacimiento y +24h.
+    private func computeBraheArc(jd: Double, obliquity: Double) -> Double {
+        guard let (ra0, _) = solarPosition(jd: jd, obliquity: obliquity),
+              let (ra1, _) = solarPosition(jd: jd + 1.0, obliquity: obliquity) else {
+            return 0
+        }
+        var diff = ra1 - ra0
+        if diff < 0 { diff += 360 }
+        return diff
+    }
+
+    /// Convierte una velocidad solar eclíptica (°/día) a arco equivalente de AR.
+    private func solarRightAscensionArc(
+        longitude: Double,
+        latitude: Double,
+        longitudeDelta: Double,
+        obliquity: Double
+    ) -> Double {
+        let (ra0, _) = eclipticToEquatorial(lon: longitude, lat: latitude, obliquity: obliquity)
+        let shiftedLongitude = RegiomontanusSpeculum.normalize(longitude + longitudeDelta)
+        let (ra1, _) = eclipticToEquatorial(lon: shiftedLongitude, lat: latitude, obliquity: obliquity)
+        var diff = ra1 - ra0
+        if diff < 0 { diff += 360 }
+        return diff
+    }
+
+    /// Posición ecuatorial aparente del Sol para la clave Brahe.
+    private func solarPosition(jd: Double, obliquity: Double) -> (ra: Double, declination: Double)? {
+        var xx = [Double](repeating: 0, count: 6)
+        var serr = [CChar](repeating: 0, count: 256)
+        let rc = swe_calc_ut(jd, SE_SUN, SEFLG_SPEED, &xx, &serr)
+        guard rc >= 0 else { return nil }
+        let converted = eclipticToEquatorial(lon: xx[0], lat: xx[1], obliquity: obliquity)
+        return (converted.ra, converted.decl)
     }
 }
