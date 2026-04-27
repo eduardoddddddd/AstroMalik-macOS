@@ -13,7 +13,7 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - **Intérprete Contextual LLM (Capa 2):** Motor generativo basado en OpenRouter que utiliza un prompt validado con el sistema de Morinus, considerando dignidades, secta, estado natal y factores accidentales para generar interpretaciones ricas y consistentes en JSON.
 - **Dignidades Esenciales Ptolemaicas:** Nuevo `EssentialDignityEngine` para evaluar domicilios, exaltaciones, términos egipcios, decanatos caldeos y secta diurna/nocturna.
 - **Gestión de Caché e Invalidación:** Tabla `user.db` con soporte de versionado de prompts (`prompt_version`), permitiendo una invalidación inmediata y sin estado tras ajustes en el modelo de lenguaje.
-- **UI Completa en SwiftUI:** 
+- **UI Completa en SwiftUI:**
   - Nueva barra de filtros y línea de tiempo horizontal dinámica (color por polaridad, altura por peso del aspecto).
   - Panel maestro de detalles con desglose Técnico (Speculum y períodos de activación), Corpus y Contextual.
   - Ajustes de usuario guardados en `UserDefaults` para seleccionar proyección y clave por defecto.

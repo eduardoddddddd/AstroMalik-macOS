@@ -12,13 +12,23 @@ struct PrimaryDirectionDetailView: View {
     let onInvalidateInterpretation: () -> Void
 
     @State private var technicalExpanded = true
-    @State private var localReadingExpanded = true
+    @State private var localReadingExpanded = false
     @State private var corpusExpanded = true
     @State private var contextualExpanded = true
 
     private var direction: PrimaryDirection { enriched.direction }
     private var localReading: PrimaryDirectionLocalReading {
         PrimaryDirectionLocalReading.build(for: direction)
+    }
+    private var hasCuratedText: Bool {
+        guard let interpretation = enriched.interpretation else { return false }
+        return !interpretation.textoCortoPD.isEmpty
+    }
+    private var isReferenceReportMode: Bool {
+        direction.aspectPlane == .ecliptic
+    }
+    private var shouldShowLocalReading: Bool {
+        !(hasCuratedText && isReferenceReportMode)
     }
 
     var body: some View {
@@ -31,16 +41,21 @@ struct PrimaryDirectionDetailView: View {
                     .overlay(alignment: .bottom) { Divider() }
 
                 VStack(alignment: .leading, spacing: 12) {
-                    localReadingSection
-
-                    // Sección 1: Cálculo Técnico
-                    technicalSection
-
-                    // Sección 2: Capa 1 — Corpus tradicional
-                    corpusSection
-
-                    // Sección 3: Capa 2 — Interpretación contextual LLM
-                    contextualSection
+                    if hasCuratedText {
+                        corpusSection
+                        technicalSection
+                        if shouldShowLocalReading {
+                            localReadingSection
+                        }
+                        contextualSection
+                    } else {
+                        if shouldShowLocalReading {
+                            localReadingSection
+                        }
+                        technicalSection
+                        corpusSection
+                        contextualSection
+                    }
                 }
                 .padding(16)
             }
@@ -74,8 +89,11 @@ struct PrimaryDirectionDetailView: View {
                       systemImage: "globe")
                 Label(direction.method.rawValue,
                       systemImage: "house.circle")
-                if !enriched.hasInterpretation {
-                    Label("Sin corpus", systemImage: "clock.badge.exclamationmark")
+                if enriched.hasInterpretation {
+                    Label(isReferenceReportMode ? "Texto curado" : "Corpus", systemImage: "checkmark.seal.fill")
+                        .foregroundStyle(Color.appSecondaryAccent)
+                } else {
+                    Label(isReferenceReportMode ? "Sin texto curado" : "Sin corpus", systemImage: "clock.badge.exclamationmark")
                         .foregroundStyle(Color.appWarning)
                 }
             }
@@ -112,7 +130,7 @@ struct PrimaryDirectionDetailView: View {
             }
             .padding(.top, 10)
         } label: {
-            sectionLabel("Lectura Operativa", icon: "text.bubble")
+            sectionLabel("Lectura auxiliar", icon: "text.bubble")
         }
         .appCard()
     }
@@ -190,29 +208,48 @@ struct PrimaryDirectionDetailView: View {
             corpusContent
                 .padding(.top, 10)
         } label: {
-            sectionLabel("Corpus Tradicional (Capa 1)", icon: "books.vertical")
+            sectionLabel(corpusSectionTitle, icon: "books.vertical")
         }
         .appCard()
+    }
+
+    private var corpusSectionTitle: String {
+        if isReferenceReportMode {
+            return "Longitud zodiacal - texto curado"
+        }
+        return "Corpus tradicional (Capa 1)"
     }
 
     @ViewBuilder
     private var corpusContent: some View {
         if let interp = enriched.interpretation, !interp.textoCortoPD.isEmpty {
-            // Populated
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(interp.title)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                    .fixedSize(horizontal: false, vertical: true)
+
                 if let fuente = interp.fuenteNombre, !fuente.isEmpty {
-                    HStack(spacing: 4) {
-                        Image(systemName: "quote.opening")
-                            .font(.caption2)
-                            .foregroundStyle(Color.appSecondaryAccent)
-                        Text(fuente)
-                            .font(.caption.italic())
-                            .foregroundStyle(Color.appSecondaryAccent)
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack(spacing: 8) {
+                            Label(fuente, systemImage: "quote.opening")
+                                .font(.caption.italic())
+                                .foregroundStyle(Color.appSecondaryAccent)
+                            qualityBadge(interp.quality)
+                        }
+                        if !interp.sourceReference.isEmpty {
+                            Text(interp.sourceReference)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
                     }
                 }
+
                 Text(interp.textoCortoPD)
-                    .font(.callout)
+                    .font(.body)
                     .foregroundStyle(.primary)
+                    .lineSpacing(3)
                     .fixedSize(horizontal: false, vertical: true)
             }
         } else {
@@ -221,10 +258,12 @@ struct PrimaryDirectionDetailView: View {
                     .font(.headline)
                     .foregroundStyle(Color.appWarning)
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Esta clave aún no tiene texto verificado")
+                    Text(isReferenceReportMode
+                         ? "Esta clave de longitud zodiacal aún no tiene texto curado"
+                         : "Esta clave aún no tiene texto verificado")
                         .font(.callout.weight(.semibold))
                         .foregroundStyle(Color.appWarning)
-                    Text("La ausencia de lectura en la Capa 1 indica cobertura doctrinal todavía incompleta, no un fallo del cálculo. Solo se muestran textos curados manualmente y con atribución verificable.")
+                    Text("La ausencia de lectura indica cobertura doctrinal todavía incompleta, no un fallo del cálculo. Solo se muestran textos curados manualmente y con atribución verificable.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -414,6 +453,15 @@ struct PrimaryDirectionDetailView: View {
         Label(title, systemImage: icon)
             .font(.callout.bold())
             .foregroundStyle(.primary)
+    }
+
+    private func qualityBadge(_ quality: Int) -> some View {
+        Text("calidad \(quality)/10")
+            .font(.caption2.monospaced())
+            .foregroundStyle(Color.appSecondaryAccent)
+            .padding(.horizontal, 7)
+            .padding(.vertical, 3)
+            .background(Color.appSecondaryAccent.opacity(0.1), in: Capsule())
     }
 
     private func polarityBadge(_ polarity: String) -> some View {

@@ -754,6 +754,147 @@ final class PrimaryDirectionsTests: XCTestCase {
                        "Clave debe seguir formato PROM_SIG_ASPECTO")
     }
 
+    /// Test: ecliptic reference mode uses a separate namespace from classical PD corpus.
+    func testEclipticCorpusClaveGenerationUsesSeparateNamespace() throws {
+        let db = try makeInMemoryCorpusDB()
+        let store = PrimaryDirectionCorpusStore(db: db)
+
+        let ecliptic = makeCorpusDirection(
+            promissor: "ASC",
+            significator: "VENUS",
+            aspect: .trine,
+            aspectPlane: .ecliptic
+        )
+        let zodiacal = makeCorpusDirection(
+            promissor: "ASC",
+            significator: "VENUS",
+            aspect: .trine,
+            aspectPlane: .zodiacal
+        )
+
+        XCTAssertEqual(store.directionCorpusClave(ecliptic), "ECLIPTIC_ASC_VENUS_TRIGONO")
+        XCTAssertEqual(store.directionCorpusClave(zodiacal), "ASC_VENUS_TRIGONO")
+    }
+
+    /// Test: curated 2025-2030 ecliptic reference keys all return text.
+    func testEclipticReferenceMeaningsReturnInterpretations() throws {
+        let db = try makeInMemoryCorpusDB()
+        let store = PrimaryDirectionCorpusStore(db: db)
+
+        let repoRoot = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let sqlURL = repoRoot.appendingPathComponent("Resources/migrations/003_primary_direction_ecliptic_meanings.sql")
+        guard FileManager.default.fileExists(atPath: sqlURL.path) else {
+            return XCTFail("No encuentro 003_primary_direction_ecliptic_meanings.sql en \(sqlURL.path)")
+        }
+        let sql = try String(contentsOf: sqlURL, encoding: .utf8)
+        try db.execute(sql)
+
+        let directions = [
+            makeCorpusDirection(promissor: "ASC", significator: "VENUS", aspect: .trine, aspectPlane: .ecliptic),
+            makeCorpusDirection(promissor: "SOL", significator: "MC", aspect: .sextile, aspectPlane: .ecliptic),
+            makeCorpusDirection(promissor: "MC", significator: "LUNA", aspect: .sextile, aspectPlane: .ecliptic),
+            makeCorpusDirection(promissor: "LUNA", significator: "VENUS", aspect: .trine, aspectPlane: .ecliptic),
+            makeCorpusDirection(promissor: "SATURNO", significator: "MC", aspect: .trine, aspectPlane: .ecliptic),
+            makeCorpusDirection(promissor: "MC", significator: "DSC", aspect: .trine, aspectPlane: .ecliptic),
+            makeCorpusDirection(promissor: "SATURNO", significator: "ASC", aspect: .trine, aspectPlane: .ecliptic),
+            makeCorpusDirection(promissor: "ASC", significator: "SOL", aspect: .square, aspectPlane: .ecliptic),
+        ]
+        let expectedKeys = [
+            "ECLIPTIC_ASC_VENUS_TRIGONO",
+            "ECLIPTIC_SOL_MC_SEXTIL",
+            "ECLIPTIC_MC_LUNA_SEXTIL",
+            "ECLIPTIC_LUNA_VENUS_TRIGONO",
+            "ECLIPTIC_SATURNO_MC_TRIGONO",
+            "ECLIPTIC_MC_DSC_TRIGONO",
+            "ECLIPTIC_SATURNO_ASC_TRIGONO",
+            "ECLIPTIC_ASC_SOL_CUADRATURA",
+        ]
+
+        XCTAssertEqual(directions.map { store.directionCorpusClave($0) }, expectedKeys)
+        XCTAssertNil(store.lookup(clave: "ASC_VENUS_TRIGONO"),
+                     "La clave clásica desnuda no debe quedar poblada por la migración eclíptica")
+
+        let meanings = store.lookupBatch(claves: expectedKeys)
+        XCTAssertEqual(meanings.count, expectedKeys.count)
+        for key in expectedKeys {
+            let meaning = try XCTUnwrap(meanings[key], "Falta significado para \(key)")
+            XCTAssertFalse(meaning.textoCorto.isEmpty)
+            XCTAssertFalse(meaning.textoLargo.isEmpty)
+            XCTAssertTrue(meaning.fuenteReferencia.contains("Longitud zodiacal"))
+            XCTAssertGreaterThanOrEqual(meaning.calidad, 6)
+        }
+
+        let interpretations = store.buildInterpretations(for: directions)
+        XCTAssertEqual(interpretations.count, expectedKeys.count)
+        XCTAssertTrue(interpretations.allSatisfy { $0.clave.hasPrefix("ECLIPTIC_") })
+    }
+
+    func testEduardoEclipticReferenceSequenceIsActuallyEnrichedByCorpus() throws {
+        let db = try makeInMemoryCorpusDB()
+        let store = PrimaryDirectionCorpusStore(db: db)
+
+        let repoRoot = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let sqlURL = repoRoot.appendingPathComponent("Resources/migrations/003_primary_direction_ecliptic_meanings.sql")
+        let sql = try String(contentsOf: sqlURL, encoding: .utf8)
+        try db.execute(sql)
+
+        let birth = try julianDayFromLocal(
+            birthDate: "1976-10-11",
+            birthTime: "20:33",
+            timezoneName: "Europe/Madrid"
+        )
+        let chart = try AstroEngine.computeNatalChart(
+            jd: birth.jd,
+            lat: 40.4168,
+            lon: -3.7038
+        )
+        let birthDate = Calendar.current.date(
+            from: DateComponents(year: 1976, month: 10, day: 11)
+        )!
+        let config = PrimaryDirectionCalculator.Config(
+            method: .regiomontanus,
+            key: .naibod,
+            maxYears: 60,
+            aspects: PDaspect.allCases,
+            includeConverse: true,
+            aspectPlane: .ecliptic
+        )
+
+        let result = PrimaryDirectionsService(corpusStore: store).compute(
+            chart: chart,
+            jd: birth.jd,
+            birthDate: birthDate,
+            config: config
+        )
+        let foundKeys = Set(result.enrichedDirections.compactMap(\.interpretation?.clave))
+        let expectedKeys: Set<String> = [
+            "ECLIPTIC_ASC_VENUS_TRIGONO",
+            "ECLIPTIC_SOL_MC_SEXTIL",
+            "ECLIPTIC_MC_LUNA_SEXTIL",
+            "ECLIPTIC_LUNA_VENUS_TRIGONO",
+            "ECLIPTIC_SATURNO_MC_TRIGONO",
+            "ECLIPTIC_MC_DSC_TRIGONO",
+            "ECLIPTIC_SATURNO_ASC_TRIGONO",
+            "ECLIPTIC_ASC_SOL_CUADRATURA",
+        ]
+
+        XCTAssertTrue(
+            expectedKeys.isSubset(of: foundKeys),
+            "Faltan claves eclípticas esperadas: \(expectedKeys.subtracting(foundKeys).sorted())"
+        )
+        XCTAssertTrue(
+            PrimaryDirectionsViewModel
+                .preferredInitialSelection(from: result.enrichedDirections)?
+                .hasInterpretation == true
+        )
+    }
+
     /// Test: buildInterpretations integrates correctly with direction results
     func testCorpusBuildInterpretations() throws {
         let db = try makeInMemoryCorpusDB()
@@ -1373,6 +1514,39 @@ final class PrimaryDirectionsTests: XCTestCase {
             jd: reference.jd,
             birthDate: reference.birthDate,
             config: config
+        )
+    }
+
+    private func makeCorpusDirection(
+        promissor: String,
+        significator: String,
+        aspect: PDaspect,
+        aspectPlane: PDAspectPlane
+    ) -> PrimaryDirection {
+        PrimaryDirection(
+            promissor: promissor,
+            promissorLabel: promissor,
+            significator: significator,
+            significatorLabel: significator,
+            aspect: aspect,
+            aspectAngle: aspect.angle,
+            directionType: .direct,
+            aspectPlane: aspectPlane,
+            arc: 10,
+            estimatedAge: 10,
+            estimatedDate: Date(),
+            method: .regiomontanus,
+            key: .naibod,
+            technicalData: PDTechnicalData(
+                promissorRA: 0,
+                promissorDeclination: 0,
+                significatorRA: 0,
+                significatorDeclination: 0,
+                significatorPole: 0,
+                obliquity: 23.44,
+                ramc: 0,
+                geoLatitude: 0
+            )
         )
     }
 }

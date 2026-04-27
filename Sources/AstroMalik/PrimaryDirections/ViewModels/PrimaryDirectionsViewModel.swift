@@ -121,8 +121,18 @@ final class PrimaryDirectionsViewModel: ObservableObject {
             return
         }
 
-        selectedDirection = visible.first
+        selectedDirection = Self.preferredInitialSelection(from: visible)
         refreshCachedContextualAvailability()
+    }
+
+    nonisolated static func preferredInitialSelection(
+        from visible: [EnrichedPrimaryDirection]
+    ) -> EnrichedPrimaryDirection? {
+        visible.first(where: \.hasInterpretation) ?? visible.first
+    }
+
+    var curatedVisibleDirections: [EnrichedPrimaryDirection] {
+        filteredDirections.filter(\.hasInterpretation)
     }
 
     func refreshForUpdatedSettings() {

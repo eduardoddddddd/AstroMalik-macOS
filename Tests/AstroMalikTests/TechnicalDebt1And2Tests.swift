@@ -420,17 +420,9 @@ final class MigrationRunnerTests: XCTestCase {
     }
 
     func testIsCorpusMigrationConvention() {
-        // The naming convention: 001_ → corpus, anything else → user
-        XCTAssertTrue(MigrationRunner.isCorpusMigration("001_primary_direction_meanings.sql"))  // wait - this is private
-        // We can test indirectly via apply result: corpus table exists after apply
-        // Direct test skipped as method is private — covered by testCorpusMigrationsGoToCorpusDB
-    }
-}
-
-// MARK: - Private method exposure for test (extension trick)
-// Since isCorpusMigration is private, expose it for testing only via @testable
-extension MigrationRunner {
-    static func isCorpusMigration(_ name: String) -> Bool {
-        name.hasPrefix("001_")
+        // The naming convention: 001_* plus curated ecliptic PD meanings → corpus.
+        XCTAssertTrue(MigrationRunner.isCorpusMigration("001_primary_direction_meanings.sql"))
+        XCTAssertTrue(MigrationRunner.isCorpusMigration("003_primary_direction_ecliptic_meanings.sql"))
+        XCTAssertFalse(MigrationRunner.isCorpusMigration("002_primary_directions_interpretations.sql"))
     }
 }

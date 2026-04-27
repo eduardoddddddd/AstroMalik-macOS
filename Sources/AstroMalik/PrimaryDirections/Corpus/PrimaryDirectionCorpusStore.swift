@@ -5,8 +5,11 @@ import Foundation
 /// Almacén de significados tradicionales para direcciones primarias.
 /// Lee de la tabla `primary_direction_meanings` en corpus.db (read-only).
 ///
-/// Clave del corpus: "{PROMISSOR}_{SIGNIFICADOR}_{ASPECTO}"
+/// Clave del corpus clásico: "{PROMISSOR}_{SIGNIFICADOR}_{ASPECTO}"
 /// Ejemplo: "MARTE_ASC_CONJUNCION", "SOL_MC_CUADRATURA"
+///
+/// Clave del informe por longitud zodiacal: "ECLIPTIC_{PROMISSOR}_{SIGNIFICADOR}_{ASPECTO}"
+/// Ejemplo: "ECLIPTIC_ASC_VENUS_TRIGONO"
 ///
 /// Regla de oro: si la fuente no está verificada, el campo texto permanece vacío.
 final class PrimaryDirectionCorpusStore: @unchecked Sendable {
@@ -153,8 +156,9 @@ final class PrimaryDirectionCorpusStore: @unchecked Sendable {
 
     // MARK: - Clave Generation
 
-    /// Genera la clave de corpus para una dirección primaria.
-    /// Formato: "{PROMISSOR}_{SIGNIFICADOR}_{ASPECTO}"
+    /// Genera la clave de corpus para una dirección.
+    /// Formato clásico: "{PROMISSOR}_{SIGNIFICADOR}_{ASPECTO}".
+    /// Formato longitud zodiacal: "ECLIPTIC_{PROMISSOR}_{SIGNIFICADOR}_{ASPECTO}".
     func directionCorpusClave(_ direction: PrimaryDirection) -> String {
         let aspKey: String
         switch direction.aspect {
@@ -164,7 +168,8 @@ final class PrimaryDirectionCorpusStore: @unchecked Sendable {
         case .trine:       aspKey = "TRIGONO"
         case .opposition:  aspKey = "OPOSICION"
         }
-        return "\(direction.promissor)_\(direction.significator)_\(aspKey)"
+        let base = "\(direction.promissor)_\(direction.significator)_\(aspKey)"
+        return direction.aspectPlane == .ecliptic ? "ECLIPTIC_\(base)" : base
     }
 
     // MARK: - Private

@@ -240,6 +240,29 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertTrue(vm.filteredDirections.isEmpty)
     }
 
+    func testPreferredInitialSelectionPrioritizesCuratedText() {
+        let silent = makeEnriched(promissor: "MARTE", age: 1, withInterpretation: false)
+        let curated = makeEnriched(promissor: "VENUS", age: 49, withInterpretation: true)
+        let laterSilent = makeEnriched(promissor: "SOL", age: 50, withInterpretation: false)
+
+        let selected = PrimaryDirectionsViewModel.preferredInitialSelection(
+            from: [silent, curated, laterSilent]
+        )
+
+        XCTAssertEqual(selected?.id, curated.id)
+    }
+
+    func testPreferredInitialSelectionFallsBackToFirstVisibleDirection() {
+        let first = makeEnriched(promissor: "MARTE", age: 1, withInterpretation: false)
+        let second = makeEnriched(promissor: "SOL", age: 2, withInterpretation: false)
+
+        let selected = PrimaryDirectionsViewModel.preferredInitialSelection(
+            from: [first, second]
+        )
+
+        XCTAssertEqual(selected?.id, first.id)
+    }
+
     func testSelectedDirectionClearedOnNewLoad() async {
         let vm = PrimaryDirectionsViewModel(service: PrimaryDirectionsService())
         // Pre-select a direction

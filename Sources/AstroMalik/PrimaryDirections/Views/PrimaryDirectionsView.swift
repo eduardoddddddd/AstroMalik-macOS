@@ -12,6 +12,14 @@ struct PrimaryDirectionsView: View {
     @State private var noteError: String?
 
     private var charts: [NatalChart] { appState.userStore.savedCharts }
+    private var selectableCharts: [NatalChart] {
+        var available = charts
+        if let current = vm.currentChart,
+           !available.contains(where: { $0.id == current.id }) {
+            available.insert(current, at: 0)
+        }
+        return available
+    }
 
     var body: some View {
         Group {
@@ -84,8 +92,10 @@ struct PrimaryDirectionsView: View {
 
     private func header(result: PrimaryDirectionsResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .center, spacing: 14) {
+            HStack(alignment: .bottom, spacing: 12) {
                 chartPicker
+                    .frame(minWidth: 260, maxWidth: .infinity, alignment: .leading)
+
                 Spacer()
                 headerButton("Filtros", systemImage: vm.filtersAreDefault ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill") {
                     showFilters = true
@@ -93,6 +103,9 @@ struct PrimaryDirectionsView: View {
                 headerButton("Ajustes", systemImage: "gearshape") {
                     showSettings = true
                 }
+            }
+
+            HStack(alignment: .center, spacing: 10) {
                 headerButton("Nota seleccionada", systemImage: "note.text.badge.plus", isBusy: isCreatingSelectedNote) {
                     createSelectedDirectionNote()
                 }
@@ -101,15 +114,21 @@ struct PrimaryDirectionsView: View {
                     createFilteredReportNote()
                 }
                 .disabled(vm.filteredDirections.isEmpty || isCreatingSelectedNote || isCreatingReportNote)
+                Spacer()
             }
 
-            HStack(spacing: 8) {
-                summaryChip("\(vm.filteredDirections.count)/\(result.metadata.totalDirections) visibles", tone: .secondary)
-                summaryChip("\(vm.filteredDirections.filter(\.hasInterpretation).count) con corpus", tone: .secondary)
-                summaryChip("\(vm.filteredDirections.filter { vm.cachedContextualDirectionIDs.contains($0.id) }.count) con contextual", tone: .secondary)
-                summaryChip("Plano \(vm.settings.aspectPlane.displayName.lowercased())", tone: .secondary)
-                summaryChip(vm.settings.key.rawValue, tone: .secondary)
-                summaryChip("\(Int(vm.visibleAgeDomain.lowerBound))-\(Int(vm.visibleAgeDomain.upperBound)) años", tone: .secondary)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    summaryChip("\(vm.filteredDirections.count)/\(result.metadata.totalDirections) visibles", tone: .secondary)
+                    summaryChip(
+                        "\(vm.curatedVisibleDirections.count) textos curados",
+                        tone: vm.curatedVisibleDirections.isEmpty ? .secondary : Color.appSecondaryAccent
+                    )
+                    summaryChip("\(vm.filteredDirections.filter { vm.cachedContextualDirectionIDs.contains($0.id) }.count) con contextual", tone: .secondary)
+                    summaryChip("Plano \(vm.settings.aspectPlane.displayName.lowercased())", tone: .secondary)
+                    summaryChip(vm.settings.key.rawValue, tone: .secondary)
+                    summaryChip("\(Int(vm.visibleAgeDomain.lowerBound))-\(Int(vm.visibleAgeDomain.upperBound)) años", tone: .secondary)
+                }
             }
 
             HStack(spacing: 8) {
@@ -135,15 +154,17 @@ struct PrimaryDirectionsView: View {
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(.secondary)
 
-            if charts.count > 1 {
+            let availableCharts = selectableCharts
+
+            if availableCharts.count > 1 {
                 Picker("Carta", selection: selectedChartIDBinding) {
-                    ForEach(charts) { chart in
+                    ForEach(availableCharts) { chart in
                         Text(chartDisplayName(chart)).tag(Optional(chart.id))
                     }
                 }
                 .labelsHidden()
-                .frame(width: 280)
-            } else if let chart = vm.currentChart {
+                .frame(minWidth: 260, idealWidth: 360, maxWidth: 520, alignment: .leading)
+            } else if let chart = availableCharts.first ?? vm.currentChart {
                 Text(chartDisplayName(chart))
                     .font(.body.weight(.medium))
             } else {
@@ -165,6 +186,13 @@ struct PrimaryDirectionsView: View {
                         .font(.caption.monospaced())
                         .foregroundStyle(.secondary)
                 }
+                Button {
+                    vm.filters.onlyWithCorpus.toggle()
+                } label: {
+                    Image(systemName: vm.filters.onlyWithCorpus ? "checkmark.seal.fill" : "checkmark.seal")
+                }
+                .buttonStyle(.borderless)
+                .help(vm.filters.onlyWithCorpus ? "Mostrar todas las direcciones" : "Mostrar solo textos curados")
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
@@ -177,6 +205,11 @@ struct PrimaryDirectionsView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.appBackground)
             } else {
+                if !vm.curatedVisibleDirections.isEmpty {
+                    curatedDirectionsSection
+                    Divider()
+                }
+
                 List(vm.filteredDirections) { enriched in
                     PDVisibleDirectionRow(
                         enriched: enriched,
@@ -194,6 +227,60 @@ struct PrimaryDirectionsView: View {
                 .listStyle(.inset)
             }
         }
+        .background(Color.appBackground)
+    }
+
+    private var curatedDirectionsSection: some View {
+        let curated = vm.curatedVisibleDirections
+
+        return VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Label("Textos curados cargados", systemImage: "checkmark.seal.fill")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.appSecondaryAccent)
+                Spacer()
+                Text("\(curated.count)")
+                    .font(.caption.monospaced())
+                    .foregroundStyle(.secondary)
+            }
+
+            VStack(spacing: 6) {
+                ForEach(curated.prefix(8)) { enriched in
+                    Button {
+                        vm.selectedDirection = enriched
+                    } label: {
+                        HStack(alignment: .firstTextBaseline, spacing: 8) {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(enriched.displaySummary)
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundStyle(.primary)
+                                    .lineLimit(2)
+                                Text(enriched.ageFormatted)
+                                    .font(.caption2.monospaced())
+                                    .foregroundStyle(Color.appAccentFill)
+                            }
+                            Spacer()
+                            Image(systemName: vm.selectedDirection?.id == enriched.id ? "arrow.right.circle.fill" : "arrow.right.circle")
+                                .foregroundStyle(Color.appSecondaryAccent)
+                        }
+                        .padding(8)
+                        .background(
+                            vm.selectedDirection?.id == enriched.id
+                            ? Color.appSecondaryAccent.opacity(0.12)
+                            : Color.appSurface,
+                            in: RoundedRectangle(cornerRadius: 6, style: .continuous)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                                .stroke(Color.appSecondaryAccent.opacity(vm.selectedDirection?.id == enriched.id ? 0.35 : 0.16), lineWidth: 1)
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
         .background(Color.appBackground)
     }
 
@@ -224,13 +311,26 @@ struct PrimaryDirectionsView: View {
     }
 
     private func honestyBanner(metadata: PrimaryDirectionsMetadata) -> some View {
-        HStack(alignment: .top, spacing: 10) {
-            Image(systemName: "books.vertical.fill")
-                .foregroundStyle(Color.appAccentFill)
+        let curatedCount = vm.curatedVisibleDirections.count
+        let referenceMode = vm.settings.aspectPlane == .ecliptic
+        let title = referenceMode && curatedCount > 0
+            ? "Informe de referencia cargado"
+            : "Corpus en curación manual"
+        let message = if referenceMode && curatedCount > 0 {
+            "\(curatedCount) textos curados de longitud zodiacal están disponibles en el rango visible. Las lecturas se muestran con fuente, referencia y calidad."
+        } else if referenceMode {
+            "Longitud zodiacal está activa, pero los filtros actuales no incluyen ninguna clave curada. La cobertura total del corpus es \(String(format: "%.1f", metadata.corpusCoverage))%."
+        } else {
+            "La Capa 1 solo muestra textos verificados y atribuidos. Cobertura actual del corpus: \(String(format: "%.1f", metadata.corpusCoverage))%."
+        }
+
+        return HStack(alignment: .top, spacing: 10) {
+            Image(systemName: curatedCount > 0 ? "checkmark.seal.fill" : "books.vertical.fill")
+                .foregroundStyle(curatedCount > 0 ? Color.appSecondaryAccent : Color.appAccentFill)
             VStack(alignment: .leading, spacing: 4) {
-                Text("Corpus en curación manual")
+                Text(title)
                     .font(.subheadline.weight(.semibold))
-                Text("La Capa 1 solo muestra textos verificados y atribuidos. Cobertura actual del corpus: \(String(format: "%.1f", metadata.corpusCoverage))%.")
+                Text(message)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -369,7 +469,7 @@ struct PrimaryDirectionsView: View {
             get: { vm.currentChart?.id },
             set: { newValue in
                 guard let newValue,
-                      let chart = charts.first(where: { $0.id == newValue }) else { return }
+                      let chart = selectableCharts.first(where: { $0.id == newValue }) else { return }
                 appState.showPrimaryDirections(for: chart)
             }
         )
@@ -445,7 +545,7 @@ private struct PDVisibleDirectionRow: View {
             HStack(spacing: 8) {
                 rowBadge(enriched.direction.directionType == .direct ? "Directa" : "Conversa", tone: .secondary)
                 rowBadge(enriched.direction.aspectPlane.displayName, tone: .secondary)
-                rowBadge(enriched.hasInterpretation ? "Corpus" : "Sin corpus", tone: enriched.hasInterpretation ? Color.appSecondaryAccent : .secondary)
+                rowBadge(corpusBadgeTitle, tone: enriched.hasInterpretation ? Color.appSecondaryAccent : .secondary)
                 rowBadge(hasCachedContextual ? "Contextual" : "Sin contextual", tone: hasCachedContextual ? Color.appAccentFill : .secondary)
             }
 
@@ -459,6 +559,13 @@ private struct PDVisibleDirectionRow: View {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .stroke(isSelected ? Color.appAccentFill.opacity(0.35) : Color.appBorder.opacity(0.5), lineWidth: 1)
         )
+    }
+
+    private var corpusBadgeTitle: String {
+        if enriched.hasInterpretation {
+            return enriched.direction.aspectPlane == .ecliptic ? "Texto curado" : "Corpus"
+        }
+        return enriched.direction.aspectPlane == .ecliptic ? "Sin texto" : "Sin corpus"
     }
 
     private func rowBadge(_ text: String, tone: Color) -> some View {

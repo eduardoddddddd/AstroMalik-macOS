@@ -6,6 +6,7 @@ import Foundation
 //
 // Convención de naming de ficheros:
 //   001_*.sql → corpus.db (primero se copia a writable si es solo lectura en bundle)
+//   003_primary_direction_ecliptic_meanings.sql → corpus.db
 //   002_*.sql → user.db  (lectura-escritura directo)
 //   N*_*.sql  → user.db  (por defecto para migraciones futuras)
 //
@@ -134,9 +135,10 @@ final class MigrationRunner {
         }
     }
 
-    /// True si el fichero pertenece al corpus.db (comienza con "001_").
-    private static func isCorpusMigration(_ name: String) -> Bool {
-        name.hasPrefix("001_")
+    /// True si el fichero pertenece al corpus.db.
+    static func isCorpusMigration(_ name: String) -> Bool {
+        name.hasPrefix("001_") ||
+        name == "003_primary_direction_ecliptic_meanings.sql"
     }
 
     /// Aplica una migración si no ha sido aplicada ya.
