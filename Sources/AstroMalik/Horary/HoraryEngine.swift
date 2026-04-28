@@ -45,6 +45,19 @@ enum HoraryEngine {
     private static let timeoutNanoseconds: UInt64 = 10_000_000_000
 
     static func calculate(_ req: HoraryRequest) async throws -> HoraryResponse {
+        if ProcessInfo.processInfo.environment["ASTROMALIK_HORARIA_ENGINE"] != "python" {
+            do {
+                return try HoraryNativeEngine.calculate(req)
+            } catch {
+                if ProcessInfo.processInfo.environment["ASTROMALIK_HORARIA_ENGINE"] == "swift" {
+                    throw error
+                }
+            }
+        }
+        return try await calculateWithPython(req)
+    }
+
+    static func calculateWithPython(_ req: HoraryRequest) async throws -> HoraryResponse {
         let executable = try resolvePythonExecutable()
         let payload = try JSONEncoder().encode(req)
         var attemptedSources: [String] = []

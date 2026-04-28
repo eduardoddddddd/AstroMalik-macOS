@@ -119,6 +119,13 @@ struct HoraryJudgement: Codable, Equatable {
     let perfectionRoute: HoraryPerfectionRoute
     let activeConsiderationKeys: [String]
     let notes: [String]
+    let verdict: String?
+    let confidence: String?
+    let mainReason: String?
+    let supportingFactors: [String]?
+    let blockingFactors: [String]?
+    let technicalWarnings: [String]?
+    let timingRange: String?
 }
 
 struct HorarySignificators: Codable, Equatable {
@@ -136,4 +143,9 @@ struct HoraryPerfectionRoute: Codable, Equatable {
     let intermediary: String?
     let aspectName: String?
     let usesCosignifier: Bool
+    let degreesToPerfect: Double?
+    let degreesToSignChange: Double?
+    let fasterBody: String?
+    let perfectsBeforeSignChange: Bool?
+    let confidence: String?
 }

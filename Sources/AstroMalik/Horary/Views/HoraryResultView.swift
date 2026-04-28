@@ -222,23 +222,120 @@ struct HoraryResultView: View {
     private var rightPanel: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(parsedSections) { section in
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(section.title)
-                            .font(.headline)
-                            .foregroundColor(.appPrimaryText)
-                        Text(section.body)
-                            .font(.body)
-                            .lineSpacing(5)
-                            .textSelection(.enabled)
+                if hasStructuredJudgement {
+                    judgementSummaryCard
+                    moonCourseCard
+                    factorListCard(title: "A favor", items: query.judgement.supportingFactors ?? [], empty: "No hay factores favorables dominantes.")
+                    factorListCard(title: "En contra", items: query.judgement.blockingFactors ?? [], empty: "No hay bloqueos dominantes.")
+                    factorListCard(title: "Notas técnicas", items: query.judgement.technicalWarnings ?? [], empty: "Sin advertencias técnicas activas.")
+                } else {
+                    ForEach(parsedSections) { section in
+                        textSectionCard(section)
                     }
-                    .padding(20)
-                    .background(Color.appPanel)
-                    .cornerRadius(14)
                 }
             }
             .padding(20)
         }
+    }
+
+    private var judgementSummaryCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .firstTextBaseline) {
+                Text(verdictLabel(query.judgement.verdict))
+                    .font(.title2.weight(.semibold))
+                    .foregroundColor(.appPrimaryText)
+                Spacer()
+                Text("Confianza \(query.judgement.confidence ?? "media")")
+                    .font(.caption.weight(.semibold))
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(Color.appBackground)
+                    .clipShape(Capsule())
+            }
+            if let mainReason = query.judgement.mainReason {
+                Text(mainReason)
+                    .font(.body)
+                    .lineSpacing(4)
+                    .textSelection(.enabled)
+            }
+            Divider()
+            HStack(alignment: .top, spacing: 18) {
+                VStack(alignment: .leading, spacing: 8) {
+                    metaRow("Ruta", query.judgement.perfectionRoute.kind)
+                    metaRow("Aspecto", query.judgement.perfectionRoute.aspectName.map(aspectLabel) ?? "sin aspecto directo")
+                    metaRow("Tiempo", query.judgement.timingRange ?? "sin tiempo claro")
+                }
+                VStack(alignment: .leading, spacing: 8) {
+                    metaRow("Consultante", query.judgement.significators.querent)
+                    metaRow("Quesited", query.judgement.significators.quesited)
+                    metaRow("Luna", query.judgement.significators.moon)
+                }
+            }
+        }
+        .padding(20)
+        .background(Color.appPanel)
+        .cornerRadius(12)
+    }
+
+    private var moonCourseCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            sectionTitle("Luna y curso")
+            if let moon = query.chart.body(named: "Luna") {
+                HStack(spacing: 18) {
+                    metaRow("Posición", moon.formatted)
+                    metaRow("Casa", "Casa \(moon.house)")
+                    metaRow("Velocidad", String(format: "%.2f°/día", moon.speed))
+                    metaRow("Hasta cambio", String(format: "%.2f°", max(0, 30 - moon.degreeInSign)))
+                }
+            }
+            HStack(spacing: 18) {
+                metaRow("Estado", query.judgement.activeConsiderationKeys.contains("luna_vacia") ? "Fuera de curso" : "Con aplicación")
+                metaRow("Próxima ruta", query.judgement.perfectionRoute.aspectName.map(aspectLabel) ?? "sin perfección")
+                if let perfects = query.judgement.perfectionRoute.perfectsBeforeSignChange {
+                    metaRow("Antes de signo", perfects ? "Sí" : "No")
+                }
+            }
+        }
+        .padding(20)
+        .background(Color.appPanel)
+        .cornerRadius(12)
+    }
+
+    private func factorListCard(title: String, items: [String], empty: String) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            sectionTitle(title)
+            if items.isEmpty {
+                Text(empty)
+                    .font(.body)
+                    .foregroundColor(.secondary)
+            } else {
+                ForEach(items, id: \.self) { item in
+                    Label(item, systemImage: "smallcircle.filled.circle")
+                        .font(.body)
+                        .lineSpacing(4)
+                        .textSelection(.enabled)
+                }
+            }
+        }
+        .padding(20)
+        .background(Color.appPanel)
+        .cornerRadius(12)
+    }
+
+    private func textSectionCard(_ section: HoraryTextSection) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(section.title)
+                .font(.headline)
+                .foregroundColor(.appPrimaryText)
+            Text(section.body)
+                .font(.body)
+                .lineSpacing(5)
+                .textSelection(.enabled)
+        }
+        .padding(20)
+        .background(Color.appPanel)
+        .cornerRadius(12)
     }
 
     private func metaRow(_ title: String, _ value: String) -> some View {
@@ -318,6 +415,30 @@ struct HoraryResultView: View {
             query.judgement.significators.quesitedCosignifiers
         )
         return query.chart.dignities.filter { names.contains($0.name) }
+    }
+
+    private var hasStructuredJudgement: Bool {
+        query.judgement.verdict != nil || query.judgement.mainReason != nil
+    }
+
+    private func verdictLabel(_ verdict: String?) -> String {
+        switch verdict {
+        case "si": return "Sí"
+        case "no": return "No"
+        case "no_todavia": return "No todavía"
+        case "requiere_mediacion": return "Requiere ajuste"
+        case "dudoso": return "Dudoso"
+        default: return "Juicio prudente"
+        }
+    }
+
+    private func aspectLabel(_ aspect: String) -> String {
+        switch aspect {
+        case "conjuncion": return "conjunción"
+        case "trigono": return "trígono"
+        case "oposicion": return "oposición"
+        default: return aspect
+        }
     }
 
     private var parsedSections: [HoraryTextSection] {

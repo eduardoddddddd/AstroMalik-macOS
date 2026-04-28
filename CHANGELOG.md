@@ -6,7 +6,7 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Añadido
 
-- Corpus clásico de Direcciones Primarias poblado con 29 entradas verificadas contra Lilly, `Christian Astrology` Libro III, y migración `006_populate_pd_classical_corpus.sql`.
+- Corpus completo de 165 interpretaciones de direcciones primarias basado en Lilly, `Christian Astrology` Libro III (1647): 165 verdes, 0 amarillas, 0 pendientes.
 - Vista "Lista profesional" para Direcciones Primarias con tabla nativa ordenable, columnas densas y selección sincronizada con el detalle.
 - Vista "Año en curso" con selector anual, ventana residual de ±18 meses y tarjetas cronológicas con texto principal abreviado.
 - Tabla de Espéculo Regiomontano completo en el detalle, resaltando prómissor y significador.
