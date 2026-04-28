@@ -29,7 +29,7 @@ struct HelpView: View {
                 """)
 
                 section("Horaria", """
-                Horaria calcula el juicio en Python y muestra el resultado en la app. Necesita Python 3 y el paquete horaria instalado, o una ruta configurada con ASTROMALIK_HORARIA_PATH. Usa el botón de diagnóstico para revisar la instalación.
+                Horaria calcula el juicio con motor Swift nativo: significadores, dignidades, recepción, perfección, Luna fuera de curso y veredicto estructurado. Python queda solo como modo legado opcional para comparación.
                 """)
 
                 section("Apariencia", """

@@ -1,8 +1,8 @@
-# Primary Directions Architecture
+# Arquitectura de Direcciones Primarias
 
-## 1. Overview
+## 1. Resumen
 
-The Primary Directions module implements the calculation and interpretation of primary directions, a traditional predictive astrological technique. It uses rigorous astronomical algorithms based on the Regiomontanus projection system (adapted from Morinus) and supports Ptolemaic, Naibod, and Brahe keys for time conversions.
+El módulo de Direcciones Primarias implementa cálculo, navegación profesional e interpretación de direcciones primarias tradicionales. Usa proyección Regiomontana adaptada de Morinus, soporta claves Naibod/Ptolomeo/Brahe y combina tres capas: cálculo determinista, corpus clásico curado y lectura contextual opcional.
 
 ## 2. Motor Astronómico
 
@@ -23,13 +23,20 @@ Las claves temporales convierten arco en edad así:
 
 Pars Fortunae se calcula con la fórmula dependiente de secta (`ASC + Luna - Sol` de día, `ASC + Sol - Luna` de noche) y se registra como cuerpo ecuatorial. No forma parte de los prómissores por defecto, pero funciona si el usuario lo activa en filtros/configuración.
 
-## 3. Corpus Honesty Policy (Capa 1)
+## 3. Corpus Clásico (Capa 1)
 
-All primary direction meanings stored in the internal SQLite database (`001_primary_direction_meanings.sql`) strictly adhere to an "Honesty Policy". They are inserted with `populated=0` and generic placeholders until verified citations from traditional sources (e.g., Bonatti, Lilly) are curated. This ensures that only historically accurate textual interpretations are eventually shown as primary sources. The UI actively reflects this status, hiding unpopulated entries unless explicitly requested.
+El corpus de producción ya incluye 165 interpretaciones clásicas pobladas desde Lilly, `Christian Astrology`, Libro III, sección de efectos de direcciones. La migración `006_populate_pd_classical_corpus.sql` deja esas claves en verde, con referencia localizable y texto editorial en castellano.
+
+La política de honestidad sigue vigente:
+
+- solo se marca `populated = 1` cuando existe fuente trazable
+- las claves sin fuente suficiente permanecen fuera del texto principal
+- el UI prioriza corpus curado sobre cualquier lectura contextual
+- el informe de población vive en `corpus_sources/reports/pd_corpus_population_report.md`
 
 ## 4. Contextual Interpretation (Capa 2)
 
-An autonomous, LLM-based interpretation engine (via OpenRouter) operates independently of the populated status of Capa 1. The contextual prompt (`pd_contextual_prompt.md`) follows the Morinian system and dynamically incorporates:
+Un motor contextual opcional vía OpenRouter opera independientemente del corpus clásico. El prompt (`pd_contextual_prompt.md`) sigue el sistema morinista y dinámicamente incorpora:
 
 - Natal state of the Promissor and Significator
 - Essential and Accidental dignities (via `EssentialDignityEngine`)
@@ -48,22 +55,36 @@ Migrations are managed linearly via `MigrationRunner`.
 - Files prefixed `001_*` apply to the read-only `corpus.db` (usually copied on first launch).
 - Files prefixed `002_*` and above apply to `user.db` for user-specific data and caches. Migrations are tracked in the `migrations_applied` table to ensure idempotency.
 
-## 7. UI Architecture
+## 7. Arquitectura UI
 
-The Primary Directions UI is organized into three persistent zones:
+La UI de Direcciones Primarias se organiza en tres zonas persistentes:
 
 - **Header:** chart selector, filters, settings, Joplin note actions, status chips, and a compact info popover for the corpus honesty policy.
 - **Timeline:** horizontal age navigator with semantic lanes by significator: ASC, MC, Sun, Moon, other bodies, and DSC/IC. Dense events in the same lane are clustered and opened through a popover.
 - **Two-pane workspace:** the left pane is a tabbed navigator and the right pane is the selected direction detail.
 
-The left pane exposes three alternative workflows:
+El panel izquierdo expone tres flujos alternativos:
 
 - **Lista profesional:** dense native SwiftUI `Table`, sortable by age, date, promissor, aspect, significator, arc, type, plane, and text status.
 - **Cards:** the previous card-based exploration list, preserved for discovery and quick scanning.
 - **Año en curso:** annual consultation view centered on a selected year, including directions whose estimated dates fall within the residual activation window of ±18 months.
 
-The detail pane follows a professional reading hierarchy:
+El panel de detalle sigue una jerarquía de lectura profesional:
 
-- A non-collapsible hero block with the direction title, exact age, estimated date, activation window, polarity, type, and plane.
-- A non-collapsible primary interpretation selected by priority: curated corpus, contextual LLM text, then local auxiliary reading.
-- Optional alternatives, contextual factors, full Regiomontanus speculum, and calculation data behind explicit disclosure sections.
+- Hero no colapsable con título de dirección, edad exacta, fecha estimada, ventana de activación, polaridad, tipo y plano.
+- Interpretación principal no colapsable, elegida por prioridad: corpus curado, texto contextual LLM y lectura auxiliar local.
+- Alternativas opcionales, factores contextuales, espéculo Regiomontano completo y datos de cálculo detrás de secciones desplegables.
+
+## 8. Presets Y Pesos
+
+Los presets controlan ruido interpretativo sin recalcular doctrina:
+
+- **Clásico:** default para usuarios nuevos; excluye transpersonales y prioriza significadores tradicionales.
+- **Extendido:** añade más puntos y aspectos útiles.
+- **Completo:** muestra el universo amplio disponible para investigación.
+
+Cada dirección recibe un peso (`crítica`, `mayor`, `moderada`, `menor`) que afecta timeline, tabla y detalle. El filtro de peso mínimo permite convertir una lista enorme en una consulta anual legible.
+
+## 9. Año En Curso
+
+La vista “Año en curso” centra la consulta en un año civil y muestra direcciones cuya fecha estimada cae dentro de una ventana residual de ±18 meses. Está pensada como vista de consulta, no solo como tabla técnica: tarjetas cronológicas, texto principal abreviado y señales de peso/polaridad.

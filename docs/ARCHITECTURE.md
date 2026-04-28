@@ -1,6 +1,6 @@
 # Arquitectura de AstroMalik-macOS
 
-AstroMalik-macOS es una app nativa SwiftUI de ventana única. El objetivo actual es uso pro personal: lectura natal guiada, sinastría, revolución solar, archivo local, tránsitos y horaria integrada sin cuentas ni telemetría.
+AstroMalik-macOS es una app nativa SwiftUI de ventana única. El objetivo actual es uso pro personal: lectura natal guiada, sinastría, revoluciones solar/lunar, archivo local, tránsitos, direcciones primarias y horaria nativa, sin cuentas ni telemetría.
 
 ## Ventana Única
 
@@ -11,7 +11,9 @@ La app usa un solo `WindowGroup` con `NavigationSplitView`. La sidebar decide la
 - Lectura
 - Sinastría
 - Revolución Solar
+- Revolución Lunar
 - Tránsitos
+- Direcciones Primarias
 - Horaria
 
 La arquitectura multi-ventana experimental se retiró. Las cartas y consultas se abren dentro del detalle principal, y el estado vivo queda en `AppState`.
@@ -26,7 +28,7 @@ El archivo de cartas admite metadatos locales:
 - etiquetas
 - búsqueda por nombre, fecha, lugar, etiqueta o nota
 
-Joplin se trata como destino de salida de lectura. La lectura natal genera una nota Markdown lista para pegar en Joplin; Sinastría y Revolución Solar crean notas directas mediante Web Clipper local.
+Joplin se trata como destino de salida de lectura. La lectura natal genera una nota Markdown lista para pegar en Joplin; Sinastría, Revolución Solar, Revolución Lunar y Direcciones Primarias crean notas directas mediante Web Clipper local.
 
 ## Motores Astronómicos
 
@@ -63,6 +65,12 @@ SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>
 
 `SolarReturnView` usa una carta guardada, año y buscador de lugar. El resultado ofrece pestañas de rueda solar, superposición natal/solar, lectura técnica y textos. La v1 no persiste revoluciones solares en `user.db`; el archivo profesional del informe se hace creando una nota Joplin directa.
 
+## Revolución Lunar
+
+`LunarReturnEngine` calcula retornos sucesivos de la Luna a su longitud natal con `swe_mooncross_ut`. Cada evento conserva JD exacto, fecha local/UTC, carta de retorno, Luna de retorno, ASC/MC de retorno y casas natales donde caen los ángulos.
+
+La lectura resume foco lunar por casa, tono del Ascendente, intensidad mensual y estadísticas del periodo. La vista expone métricas técnicas y permite crear una nota Joplin directa del ciclo lunar.
+
 ## Tránsitos
 
 `TransitEngine` calcula eventos por rango de fechas y agrupa días contiguos por tránsito/aspecto/punto natal. El loop trabaja con `Date` y calendario UTC; los strings ISO se materializan al crear el resultado final.
@@ -81,18 +89,40 @@ La vista de tránsitos:
 - cancela cálculos en curso al abandonar la vista o lanzar otro cálculo
 - muestra errores controlados para rango inválido, rango excesivo o cancelación
 
+## Direcciones Primarias
+
+El módulo de Direcciones Primarias vive completo en Swift. `PrimaryDirectionCalculator` implementa proyección Regiomontana, direcciones directas y conversas, claves Naibod/Ptolomeo/Brahe, plano zodiacal y modo eclíptico de compatibilidad. `PrimaryDirectionsService` orquesta cálculo, corpus, interpretación contextual y note builder.
+
+El UI se organiza en header compacto, timeline semántico, panel maestro con tabs y detalle profesional. El preset Clásico es el default para usuarios nuevos y reduce ruido excluyendo transpersonales; los presets Extendido/Completo permiten ampliar el universo. El detalle incluye hero permanente, texto principal priorizado, alternativas bajo demanda, factores contextuales y espéculo Regiomontano completo.
+
+El corpus clásico de direcciones incluye 165 textos poblados desde Lilly, `Christian Astrology`, Libro III. Las migraciones de corpus y usuario son idempotentes y están separadas por `MigrationRunner`.
+
 ## Horaria
 
-Horaria sigue ejecutándose mediante Python, pero ya no depende de un path local hardcodeado. La resolución busca:
+Horaria es nativa en Swift por defecto. `HoraryNativeEngine` usa `CSwissEph` y el mismo contrato `HoraryResponse`/`HoraryChart`/`HoraryJudgement` que ya consumía la UI, pero sin proceso externo.
 
-1. módulo `horaria` embebido en el bundle, si existe
-2. `ASTROMALIK_HORARIA_PATH`
-3. ruta guardada en configuración local
-4. paquete `horaria` instalado en el Python detectado
+El motor nativo calcula:
 
-`ASTROMALIK_PYTHON_PATH` permite fijar un Python concreto. La pantalla de diagnóstico de Horaria muestra Python, versión, fuente del módulo, path real y último error.
+- siete planetas tradicionales y Nodo Norte verdadero
+- casas Regiomontanus
+- Parte de Fortuna y Parte del Espíritu
+- hora planetaria y radicalidad
+- dignidades esenciales y accidentales
+- vía combusta y Luna fuera de curso
+- significadores por casa
+- recepción simple/mutua
+- perfección directa, translación y colección básica
+- veredicto estructurado, confianza, factores a favor/en contra y warnings técnicos
 
-La dirección futura preferente es portar el núcleo de Horaria a Swift o empaquetar un runtime Python controlado dentro del `.app`.
+La regla doctrinal crítica es que una perfección lunar solo cuenta si el aspecto exacto ocurre antes de que la Luna salga de signo. Si la Luna está vacía de curso, el motor no acepta una perfección posterior al cambio de signo como “sí” limpio.
+
+`HoraryEngine` conserva el motor Python como legado/fallback temporal:
+
+- sin variable: intenta Swift nativo y cae a Python solo si Swift falla inesperadamente
+- `ASTROMALIK_HORARIA_ENGINE=swift`: fuerza Swift y propaga errores
+- `ASTROMALIK_HORARIA_ENGINE=python`: fuerza el paquete `horaria` externo
+
+`ASTROMALIK_PYTHON_PATH` y `ASTROMALIK_HORARIA_PATH` solo son relevantes para el modo legado. La pantalla de diagnóstico de Horaria queda como herramienta de compatibilidad Python, no como requisito del flujo normal.
 
 ## UI De Lectura
 
@@ -111,6 +141,8 @@ La app tiene dos caminos de salida hacia Joplin:
 - natal: `ReadingNoteBuilder` genera Markdown para copiar/pegar
 - sinastría: `SynastryNoteBuilder` genera Markdown y `JoplinClipperService` crea la nota vía Web Clipper
 - revolución solar: `SolarReturnNoteBuilder` genera el informe anual y lo envía por el mismo servicio
+- revolución lunar: `LunarReturnNoteBuilder` genera el informe mensual y lo envía por el mismo servicio
+- direcciones primarias: `PrimaryDirectionsNoteBuilder` genera notas filtradas o de dirección seleccionada
 
 `JoplinClipperService` usa `URLSession` contra el servidor local de Joplin (`127.0.0.1:41184` por defecto). Host, puerto, token y cuaderno viven en `AppState.joplinSettings` y se editan desde Ajustes. Si el token está vacío, el servicio intenta resolverlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop (`api.token`). Si el cuaderno no existe, se crea antes de crear la nota.
 
@@ -148,10 +180,12 @@ La suite cubre:
 - motor de revolución solar, exactitud del retorno solar y cambio de lugar
 - lectura de revolución solar con corpus natal reutilizado
 - generación de nota Markdown de revolución solar
+- motor de revolución lunar y secuencia ordenada de retornos
+- direcciones primarias Regiomontanus, conversas, presets, corpus y goldens
 - payload de creación de nota Joplin con cliente HTTP mock
 - `swe_houses_ex2`
 - rangos/cancelación de tránsitos
 - muestras diarias de timeline y pico de intensidad en fecha exacta
 - timezones conocidos
-- diagnóstico de Horaria
-- paridad de Horaria con casos de referencia
+- diagnóstico de Horaria legado
+- Horaria nativa, JSON legacy y regresión de Luna fuera de curso

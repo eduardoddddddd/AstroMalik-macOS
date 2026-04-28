@@ -42,10 +42,14 @@ struct HoraryDiagnosticsView: View {
             VStack(alignment: .leading, spacing: 16) {
                 statusHeader(diagnostics)
                 VStack(alignment: .leading, spacing: 10) {
-                    row("Python", diagnostics.pythonPath ?? "No encontrado")
+                    Text("El cálculo normal de Horaria usa el motor Swift nativo. Este diagnóstico revisa únicamente el modo Python legado.")
+                        .font(.callout)
+                        .foregroundColor(.secondary)
+                        .textSelection(.enabled)
+                    row("Python legacy", diagnostics.pythonPath ?? "No encontrado")
                     row("Versión", diagnostics.pythonVersion ?? "No disponible")
-                    row("Fuente Horaria", diagnostics.moduleSource ?? "No disponible")
-                    row("Módulo", diagnostics.modulePath ?? "No disponible")
+                    row("Fuente legacy", diagnostics.moduleSource ?? "No disponible")
+                    row("Módulo legacy", diagnostics.modulePath ?? "No disponible")
                 }
                 .appCard()
 
@@ -82,10 +86,10 @@ struct HoraryDiagnosticsView: View {
                 .font(.title2)
                 .foregroundColor(diagnostics.isReady ? .appSecondaryAccent : .appWarning)
             VStack(alignment: .leading, spacing: 3) {
-                Text(diagnostics.isReady ? "Horaria disponible" : "Horaria no disponible")
+                Text(diagnostics.isReady ? "Python legacy disponible" : "Python legacy no disponible")
                     .font(.headline)
                     .foregroundColor(.appPrimaryText)
-                Text(diagnostics.isReady ? "El motor se puede invocar desde la app." : "Configura el módulo o revisa Python.")
+                Text(diagnostics.isReady ? "Puedes forzarlo con ASTROMALIK_HORARIA_ENGINE=python." : "La Horaria nativa Swift no depende de este diagnóstico.")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }

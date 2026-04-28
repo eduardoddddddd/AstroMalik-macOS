@@ -6,6 +6,11 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Añadido
 
+- Motor de Horaria nativo en Swift (`HoraryNativeEngine`) con siete planetas tradicionales, casas Regiomontanus, dignidades, recepción, perfección, translación/colección básica y juicio estructurado.
+- Campos estructurados en el juicio horario: veredicto, confianza, motivo principal, factores a favor/en contra, advertencias técnicas y rango temporal simbólico.
+- Vista de resultado horario reorganizada en tarjetas de veredicto, Luna/curso, factores favorables, bloqueos y notas técnicas.
+- Tests de regresión para las 8 consultas horarias guardadas actuales y para el caso de Luna vacía al final de signo.
+- Documento `docs/HORARY_NATIVE.md` con arquitectura, contrato y modo legado Python.
 - Corpus completo de 165 interpretaciones de direcciones primarias basado en Lilly, `Christian Astrology` Libro III (1647): 165 verdes, 0 amarillas, 0 pendientes.
 - Vista "Lista profesional" para Direcciones Primarias con tabla nativa ordenable, columnas densas y selección sincronizada con el detalle.
 - Vista "Año en curso" con selector anual, ventana residual de ±18 meses y tarjetas cronológicas con texto principal abreviado.
@@ -16,6 +21,8 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Cambiado
 
+- Horaria usa Swift nativo por defecto; Python queda como motor legado/fallback forzable con `ASTROMALIK_HORARIA_ENGINE=python`.
+- README y documentación de arquitectura actualizados para reflejar Horaria nativa, Direcciones Primarias, corpus clásico, revoluciones y el flujo real de Joplin.
 - Reorganizada la UI de Direcciones Primarias en header compacto, timeline semántico y panel maestro con tabs.
 - Rediseñado el detalle de una dirección con hero permanente, texto principal priorizado, alternativos bajo demanda, factores morinistas y datos técnicos en tabla estricta.
 - El banner de honestidad del corpus pasa a popover informativo en el header.
@@ -26,6 +33,7 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Corregido
 
+- La Luna fuera de curso ya no puede producir una perfección directa si el aspecto exacto ocurre después del cambio de signo.
 - Direcciones conversas calculadas con roles invertidos y polo del prómissor, en vez de derivarlas del signo del arco.
 - Clave Brahe basada en el arco de ascensión recta del Sol entre el nacimiento y +24h.
 - RAMC calculado con `swe_sidtime0` para paridad con Morinus.

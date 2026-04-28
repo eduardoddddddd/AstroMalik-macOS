@@ -86,7 +86,7 @@ struct HoraryFormView: View {
             Text("Consulta Horaria")
                 .font(.system(size: 28, weight: .light))
                 .foregroundColor(.appPrimaryText)
-            Text("Calcula el juicio horario en Python y léelo en el panel principal de AstroMalik.")
+            Text("Calcula el juicio horario con el motor Swift nativo y léelo estructurado en el panel principal.")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }

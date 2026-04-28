@@ -2,7 +2,7 @@
 
 This pipeline keeps research material out of production until it is cited and reviewed.
 It downloads public-domain or publicly hosted sources, extracts text when local tools
-are available, imports the existing Horaria/Lilly YAML into staging, and creates a
+are available, imports legacy Horaria/Lilly research material into staging, and creates a
 semaphore report.
 
 ## Commands
@@ -27,7 +27,7 @@ artifacts.
 
 - Review generated candidate passages for the 29 primary direction seed keys.
 - Keep Frawley, Dykes, Zoller, Barclay, or any modern copyrighted material out of green status unless legal excerpts and human approval are supplied.
-- Decide whether Horaria doctrine is direct evidence for a target module or only supporting doctrine.
+- Decide whether Horaria doctrine is direct evidence for a target module or only supporting doctrine. Horaria itself now has a native Swift engine; this pipeline is only for corpus research and citation review.
 - Translate and polish final Spanish text only after the citation and scope are locked.
 - Promote entries from staging to production only with a reviewed citation trail.
 

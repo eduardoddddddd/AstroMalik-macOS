@@ -54,6 +54,11 @@ Ejemplos no válidos:
 
 ## Alcance actual
 
-La prioridad actual es cerrar correctamente la tranche seed de 29 claves definida en `Resources/migrations/001_primary_direction_meanings.sql`.
+La tranche seed inicial de 29 claves ya no es el límite operativo del corpus. La migración `006_populate_pd_classical_corpus.sql` incorporó 165 interpretaciones clásicas pobladas desde Lilly, `Christian Astrology`, Libro III, con informe de cobertura en `corpus_sources/reports/pd_corpus_population_report.md`.
 
-No se amplía el universo de claves hasta que esa tranche tenga referencias verificadas o se decida explícitamente una nueva tanda editorial.
+Para nuevas tandas editoriales:
+
+- no ampliar claves sin definir primero fuente primaria y alcance
+- conservar el informe de población junto al SQL
+- preferir textos breves, trazables y doctrinalmente sobrios frente a síntesis especulativas
+- mantener separada la lectura contextual LLM de la Capa 1 clásica

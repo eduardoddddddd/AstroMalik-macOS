@@ -1,62 +1,95 @@
 # AstroMalik · macOS
 
-App nativa de astrología para macOS. Calcula cartas natales con interpretaciones en castellano, sinastrías de dos cartas guardadas, revoluciones solares anuales, tránsitos con scoring y línea temporal de intensidad diaria, consultas de horaria clásica y gestiona un archivo personal de cartas y consultas guardadas, todo en local y sin cuentas.
+AstroMalik-macOS es una app nativa de astrología para macOS, escrita en Swift y SwiftUI, pensada para trabajo astrológico personal/profesional en local. Calcula cartas natales, lecturas guiadas, sinastrías, revoluciones solares y lunares, tránsitos, direcciones primarias y consultas de horaria clásica. Guarda cartas y consultas en una base local, usa Swiss Ephemeris embebido y no requiere cuentas ni servicios externos para los cálculos.
 
-Esta es la variante macOS del proyecto [AstroMalik](https://github.com/eduardoddddddd/AstroMalik) (Python + React). Comparte motor astronómico (Swiss Ephemeris) y corpus de interpretaciones, pero reescritos en Swift + SwiftUI para ejecución nativa en Apple Silicon.
+Esta app es la variante nativa de la familia [AstroMalik](https://github.com/eduardoddddddd/AstroMalik). El proyecto web original nació con Python/React; esta versión macOS concentra la experiencia en una app de escritorio Apple Silicon con motores Swift, persistencia SQLite y UI SwiftUI.
 
 ![Platform](https://img.shields.io/badge/platform-macOS%2014%2B-blue) ![Swift](https://img.shields.io/badge/Swift-6.0-orange) ![Arch](https://img.shields.io/badge/arch-arm64-green) ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 ---
 
-## ✨ Características
+## Estado Actual
 
-- **Carta natal completa** — posiciones planetarias, ángulos (ASC, MC), 12 casas, aspectos
-- **Interpretaciones en castellano** — corpus de 1.779 textos indexados: natal, aspectos, tránsitos y 420 textos de sinastría
-- **Rueda natal interactiva** — signos, casas, planetas, ASC/MC y líneas de aspecto en SwiftUI
-- **Lectura guiada** — Sol/Luna/ASC, regente del Ascendente, casas angulares, aspectos dominantes y síntesis editable
-- **Sinastría** — compara dos cartas guardadas, calcula aspectos A→B y B→A, dibuja rueda doble y usa claves `SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>`
-- **Revolución Solar** — retorno solar exacto con `swe_solcross_ut`, carta anual, superposición natal/solar y lectura anual
-- **Tránsitos con timeline** — intensidad 1–5 ★, curva diaria por orbe y detalle textual por rango de fechas
-- **Horaria integrada** — cálculo doctrinal en Python, visualización y archivo nativos en macOS
-- **Archivo personal** — guardar, renombrar, etiquetar, anotar y buscar cartas; base local en `~/Library/Application Support/AstroMalik/user.db`
-- **Joplin directo** — creación de notas de sinastría y revolución solar vía Web Clipper local, con autodetección de token si está disponible
-- **Búsqueda de lugares** — seed offline + Nominatim (OpenStreetMap)
-- **Ventana única** — sidebar fija y panel de detalle para natal, sinastría, revolución solar, tránsitos, horaria e historial
-- **Tema configurable** — modo `Sistema`, `Claro` u `Oscuro`, más botón rápido claro/oscuro en la sidebar
-- **Ayuda integrada** — entrada `Help > AstroMalik Help` con guía rápida de uso
-- **100 % offline y local** — cálculos en el dispositivo, sin telemetría, sin cuentas
+AstroMalik-macOS ya no depende de Python para Horaria. El módulo horario se calcula por defecto con un motor Swift nativo (`HoraryNativeEngine`) que usa `CSwissEph`, casas Regiomontanus y reglas tradicionales estrictas. El antiguo paquete Python `horaria` queda únicamente como modo legado/fallback para comparación o diagnóstico.
 
-## 🧱 Stack técnico
+La app empaquetada se genera con:
+
+```bash
+./scripts/package_app.sh
+open AstroMalik.app
+```
+
+Después de cualquier cambio de código o UI, este repo espera regenerar `AstroMalik.app` y comprobar que `AstroMalik.app/Contents/MacOS/AstroMalik` tiene timestamp actualizado.
+
+## Características
+
+- **Carta natal completa**: posiciones planetarias, casas, ASC/MC, aspectos y rueda natal interactiva.
+- **Lectura natal guiada**: tríada Sol/Luna/ASC, regente del Ascendente, casas angulares, aspectos dominantes y síntesis editable.
+- **Corpus interpretativo local**: textos natales, aspectos, tránsitos, sinastría y corpus clásico de direcciones primarias.
+- **Sinastría**: comparación de dos cartas guardadas, aspectos A→B y B→A, rueda doble y notas Joplin.
+- **Revolución solar**: retorno exacto con `swe_solcross_ut`, carta anual por lugar, superposición natal/solar y lectura técnica.
+- **Revolución lunar**: retornos lunares secuenciales, métricas técnicas y lectura mensual.
+- **Tránsitos**: eventos por rango, scoring 1–5, muestras diarias de intensidad y timeline visual.
+- **Direcciones primarias**: motor Regiomontano con direcciones directas/conversas, claves Naibod/Ptolomeo/Brahe, presets clásicos y corpus Lilly.
+- **Horaria clásica nativa**: juicio horario en Swift, siete planetas tradicionales, Nodo Norte, Partes, dignidades, recepción, perfección y Luna fuera de curso coherente.
+- **Archivo local**: cartas y consultas guardadas en `~/Library/Application Support/AstroMalik/user.db`.
+- **Joplin directo**: creación de notas desde sinastría, revolución solar/lunar y direcciones, vía Web Clipper local.
+- **Búsqueda de lugares**: seed offline + Nominatim/OpenStreetMap.
+- **Ventana única**: `NavigationSplitView` con sidebar fija y panel de detalle.
+- **Tema configurable**: Sistema, Claro, Oscuro y botón rápido claro/oscuro.
+- **Local-first**: cálculos y archivo en el Mac, sin telemetría.
+
+## Stack Técnico
 
 | Capa | Tecnología |
 |---|---|
-| UI | SwiftUI (macOS 14+, `NavigationSplitView`, ventana única) |
-| Efemérides | [Swiss Ephemeris](https://www.astro.com/swisseph/) en C, embebido como target SPM `CSwissEph` |
-| Horaria | Proceso Python configurable (`horaria.cli`) invocado desde `Foundation.Process` + diagnóstico integrado |
-| Persistencia | `SQLite3` del sistema (sin GRDB ni otras dependencias) |
-| Paquete | Swift Package Manager puro — cero dependencias externas |
-| Target | macOS 14+, Apple Silicon (arm64) |
+| UI | SwiftUI, macOS 14+, `NavigationSplitView` |
+| Efemérides | Swiss Ephemeris en C, target SPM `CSwissEph` |
+| Motores | Swift nativo para natal, tránsitos, revoluciones, direcciones y horaria |
+| Persistencia | SQLite3 del sistema mediante wrapper propio `SQLiteDB` |
+| Corpus | `Resources/corpus.db` + migraciones SQL idempotentes |
+| Joplin | Web Clipper local opcional (`127.0.0.1:41184`) |
+| Paquete | Swift Package Manager puro, sin paquetes Swift externos |
+| Target | macOS 14+, Apple Silicon arm64 |
 
-## 📋 Requisitos
+## Requisitos
 
 - macOS 14 Sonoma o superior
-- Xcode 15+ *o* toolchain Swift 6.0+
-- ~50 MB de disco (binario + corpus + efemérides)
+- Xcode 15+ o toolchain Swift 6.0+
+- ~50 MB de disco para binario, corpus y efemérides
+- Joplin Desktop solo si quieres crear notas directas
+- OpenRouter API key solo si quieres interpretaciones contextuales LLM en Direcciones Primarias
 
-### Requisito extra para Horaria
+### Horaria
 
-La parte de Horaria necesita `python3` disponible y el paquete [`horaria`](https://github.com/eduardoddddddd/horaria) instalado. También puedes fijar rutas sin tocar código:
+Horaria funciona de forma nativa en Swift por defecto y no necesita Python.
 
-```text
-ASTROMALIK_PYTHON_PATH=/ruta/a/python3
-ASTROMALIK_HORARIA_PATH=/ruta/al/repo/horaria
+Modo normal:
+
+```bash
+swift build
+open .build/arm64-apple-macosx/debug/AstroMalik
 ```
 
-La app busca primero un módulo embebido, luego `ASTROMALIK_HORARIA_PATH`, después configuración local y finalmente el paquete instalado en Python. En Horaria hay una pantalla de diagnóstico.
+Modo legado opcional para comparar con el antiguo paquete Python:
 
-### Integración opcional con Joplin
+```bash
+export ASTROMALIK_HORARIA_ENGINE=python
+export ASTROMALIK_PYTHON_PATH=/ruta/a/python3
+export ASTROMALIK_HORARIA_PATH=/ruta/al/repo/horaria
+```
 
-Sinastría y Revolución Solar pueden crear notas directamente en Joplin mediante el Web Clipper local. Por defecto usa:
+Modo Swift estricto, útil para tests o depuración:
+
+```bash
+export ASTROMALIK_HORARIA_ENGINE=swift
+```
+
+La pantalla de diagnóstico de Horaria queda enfocada al modo Python legado. La app no la necesita para calcular en el flujo normal.
+
+### Joplin
+
+Joplin es opcional y se usa como destino de notas. Por defecto:
 
 ```text
 Host: 127.0.0.1
@@ -64,9 +97,13 @@ Puerto: 41184
 Cuaderno: AstroMalik
 ```
 
-El token se puede introducir en Ajustes, o dejar vacío para que la app intente detectarlo desde la configuración local de Joplin (`api.token`) o desde `ASTROMALIK_JOPLIN_TOKEN`.
+El token se puede introducir en Ajustes. Si está vacío, la app intenta resolverlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop (`api.token`). Si el cuaderno no existe, lo crea antes de guardar la nota.
 
-## 🚀 Ejecución rápida
+### OpenRouter
+
+Direcciones Primarias puede generar interpretaciones contextuales con OpenRouter. La app prefiere key en Keychain; también puede importarla desde una nota local de Joplin o usar `OPENROUTER_API_KEY` como fallback de desarrollo.
+
+## Ejecución
 
 ```bash
 git clone https://github.com/eduardoddddddd/AstroMalik-macOS.git
@@ -75,241 +112,183 @@ swift build
 open .build/arm64-apple-macosx/debug/AstroMalik
 ```
 
-> ⚠️ **Importante — ejecución desde Xcode:** darle a ▶ en Xcode sobre un Swift Package ejecutable es problemático (el proceso puede arrancar en segundo plano sin ventana). Usa `open` desde terminal — la app incrusta un `Info.plist` en el binario y se registra como app GUI regular. Ver [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) si quieres entender por qué.
-
-### Activar Horaria en local
-
-```bash
-git clone https://github.com/eduardoddddddd/horaria.git ~/Developer/horaria
-cd ~/Developer/horaria
-python3 -m pip install -e .
-```
-
-Si prefieres no instalar el paquete globalmente:
-
-```bash
-export ASTROMALIK_HORARIA_PATH="$HOME/Developer/horaria"
-```
-
-## 🛠️ Build release (binario optimizado)
-
-```bash
-swift build -c release
-open .build/arm64-apple-macosx/release/AstroMalik
-```
-
-O empaquetar la app lista para doble clic:
+Para app de doble clic:
 
 ```bash
 ./scripts/package_app.sh
 open AstroMalik.app
 ```
 
-## 🧪 Tests
+> Nota: ejecutar el target SPM directamente con ▶ en Xcode puede abrir un proceso sin ventana. Usa `open` o el `.app` empaquetado. El proyecto incrusta `Info.plist` en el binario para que macOS lo trate como app GUI regular.
+
+## Tests
 
 ```bash
 swift test
 ```
 
-Incluye tests de natal y tests de paridad de Horaria contra el motor Python externo.
+La suite cubre:
 
-Sanity check: carta natal del autor (`1976-10-11 20:33 Europe/Madrid`) verifica que Saturno queda en Casa 4 y ASC en Géminis ~0°.
+- carta natal de referencia y conversión de zonas horarias
+- casas con `swe_houses_ex2`
+- tránsitos, cancelación y muestras diarias de intensidad
+- sinastría y corpus `SYN_*`
+- revolución solar y lunar
+- Joplin con cliente HTTP mock
+- direcciones primarias Regiomontanus, conversas, corpus y goldens
+- Horaria nativa, compatibilidad JSON legacy y regresión de Luna fuera de curso
 
-## 📂 Estructura del proyecto
+## Estructura Del Proyecto
 
-```
+```text
 .
-├── Package.swift              ← Manifiesto SPM (2 targets: CSwissEph + AstroMalik)
-├── Info.plist                 ← Incrustado en __TEXT,__info_plist del binario
+├── Package.swift
+├── Info.plist
+├── Resources/
+│   ├── corpus.db
+│   ├── cities_seed.json
+│   ├── ephe/
+│   └── migrations/
 ├── Sources/
-│   ├── CSwissEph/             ← Swiss Ephemeris C library (libswe)
-│   │   ├── include/           ← Headers + module.modulemap
-│   │   └── *.c                ← sweph.c, swehouse.c, swecl.c, …
+│   ├── CSwissEph/
 │   └── AstroMalik/
-│       ├── AstroMalikApp.swift       ← @main + escena principal + AppState
-│       ├── AppNavigation.swift       ← Rutas internas y navegación de detalle
-│       ├── AppTheme.swift            ← Tokens de color + modo claro/oscuro/sistema
-│       ├── AppResources.swift        ← Localización del bundle de recursos
 │       ├── Engine/
-│       │   ├── AstroEngine.swift     ← Cálculo de carta natal y aspectos
-│       │   ├── JulianDay.swift       ← Hora local IANA → JD UT
-│       │   ├── SolarReturnEngine.swift← Retorno solar exacto + lectura anual
-│       │   └── TransitEngine.swift   ← Tránsitos + scoring 1–5 ★ + muestras de intensidad diaria
-│       ├── Store/
-│       │   ├── SQLiteDB.swift        ← Wrapper minimalista sobre sqlite3
-│       │   ├── CorpusStore.swift     ← corpus.db (read-only, natal/tránsitos/sinastría)
-│       │   └── UserStore.swift       ← user.db (CRUD, Application Support)
-│       ├── Models/            ← NatalChart, PlanetBody, Interpretation, Transit, Synastry, SolarReturn
 │       ├── Horary/
-│       │   ├── HoraryEngine.swift    ← Wrapper Swift del proceso Python
-│       │   ├── Models/               ← Codable para chart/judgement JSON
-│       │   ├── Store/                ← Historial horario en user.db
-│       │   └── Views/                ← Formulario, historial y resultado horario
+│       ├── Models/
+│       ├── Persistence/
+│       ├── PrimaryDirections/
 │       ├── Services/
-│       │   ├── PlacesService.swift       ← Seed local + Nominatim
-│       │   └── JoplinClipperService.swift← Joplin Web Clipper local
-│       ├── Views/
-│       │   ├── ContentView.swift         ← Sidebar + detail (NavigationSplitView)
-│       │   ├── BirthChartForm.swift      ← Formulario de nacimiento
-│       │   ├── NatalChartView.swift      ← rueda, lectura guiada y textos
-│       │   ├── NatalWheelView.swift      ← rueda natal interactiva
-│       │   ├── SynastryView.swift        ← comparación de dos cartas + rueda doble
-│       │   ├── SolarReturnView.swift     ← revolución solar + superposición natal/solar
-│       │   ├── GuidedReadingView.swift   ← lectura natal guiada
-│       │   ├── InterpretacionesView.swift← Lista filtrable y expandible
-│       │   ├── SavedChartsView.swift     ← Grid de cartas guardadas
-│       │   ├── SettingsView.swift        ← Apariencia + configuración Joplin
-│       │   ├── HelpView.swift            ← Ayuda integrada
-│       │   ├── TransitsView.swift        ← Tránsitos: timeline + tabla por periodo
-│       │   ├── TransitTimelineView.swift ← Línea temporal de intensidad por orbe
-│       └── Resources/
-│           ├── corpus.db      ← 1.779 interpretaciones (incluye 420 de sinastría)
-│           ├── cities_seed.json
-│           └── ephe/          ← Archivos Swiss Ephemeris (.se1, 1800–2400)
-└── Tests/
-    └── AstroMalikTests/
-        ├── AstroEngineTests.swift
-        └── HoraryParityTests.swift
+│       ├── Store/
+│       └── Views/
+├── Tests/AstroMalikTests/
+├── docs/
+└── scripts/
 ```
 
-## 🏛️ Decisiones de arquitectura
+Puntos de entrada relevantes:
 
-### Ventana única con panel de detalle
+- `AstroEngine.swift`: carta natal, aspectos, casas y utilidades comunes.
+- `HoraryNativeEngine.swift`: motor horario Swift nativo.
+- `PrimaryDirectionsService.swift`: cálculo y lectura de direcciones primarias.
+- `MigrationRunner.swift`: copia/migración de `corpus.db` y `user.db`.
+- `JoplinClipperService.swift`: salida a Joplin Web Clipper.
+- `scripts/package_app.sh`: build release, bundle `.app`, firma ad-hoc y quita cuarentena.
 
-La app usa una sola ventana con `NavigationSplitView`: la sidebar fija cambia de sección y el panel derecho carga formularios, listados y resultados. Esto simplifica el flujo y evita que natal, horaria o historial vayan abriendo ventanas adicionales.
+## Arquitectura Por Módulo
 
-- Navegación consistente entre Nueva Carta, Cartas Guardadas, Lectura, Sinastría, Revolución Solar, Tránsitos y Horaria
-- Cambio de contexto sin perder la sidebar ni abrir ventanas nuevas
-- Mejor encaje para tema claro/oscuro y ayuda integrada
+### Ventana Única
 
-El estado compartido (`AppState`) mantiene la ruta de detalle, la apariencia elegida, la configuración de Joplin, la carta activa y el estado vivo de tránsitos.
+La app usa un único `WindowGroup` con `NavigationSplitView`. La sidebar cambia de sección y el panel derecho conserva el flujo activo. `AppState` centraliza navegación, tema, configuración Joplin, carta activa, stores y estado persistente de tránsitos.
+
+### Natal Y Lectura
+
+`AstroEngine` calcula planetas, casas y aspectos con Swiss Ephemeris. `NatalChartView` combina rueda SwiftUI, lectura guiada y textos del corpus. La lectura natal puede copiar una nota Markdown lista para pegar en Joplin.
 
 ### Sinastría
 
-La sección Sinastría usa dos cartas ya guardadas. Calcula aspectos ordenados en ambas direcciones, A→B y B→A, porque el corpus distingue la posición de cada planeta en la clave:
+La sinastría requiere dos cartas guardadas. Calcula aspectos en ambas direcciones porque el corpus distingue planeta origen y planeta destino:
 
 ```text
 SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>
 ```
 
-El corpus incluye 420 textos de sinastría: 84 pares ordenados con los 5 aspectos clásicos. Quedan fuera de forma intencional planeta consigo mismo y pares exclusivamente transpersonales entre Urano, Neptuno y Plutón. La vista muestra por defecto los aspectos con texto, permite revelar los aspectos sin texto y dibuja una rueda doble A/B con líneas coloreadas por aspecto.
+El corpus contiene 420 textos de sinastría. La UI muestra cobertura textual, lista agrupada por dirección y rueda doble.
 
-### Revolución Solar
+### Revolución Solar Y Lunar
 
-La sección Revolución Solar usa una carta guardada, un año y el lugar donde la persona estará para ese cumpleaños. El motor toma la longitud natal del Sol, calcula el retorno exacto con `swe_solcross_ut` y levanta una carta anual con `computeNatalChart` usando las coordenadas del lugar elegido.
+La revolución solar calcula el retorno exacto del Sol para un año y un lugar de revolución. La revolución lunar calcula retornos sucesivos de la Luna a su posición natal. Ambas vistas exponen datos técnicos, lectura y salida a Joplin.
 
-La vista muestra carta de revolución, superposición natal/solar, lectura técnica, textos reutilizados del corpus natal y nota Joplin directa. No se crea una tabla nueva en `user.db`: la revolución se genera bajo demanda y Joplin funciona como archivo del informe anual.
+### Tránsitos
 
-### Tránsitos con timeline de intensidad
+`TransitEngine` agrupa eventos por rango y guarda muestras diarias con orbe e intensidad normalizada. La UI combina timeline visual y tabla, conserva resultados al cambiar de sección y marca cuándo hay cambios pendientes de recalcular.
 
-`TransitEngine` calcula los eventos del periodo y, además del score global 1–5 ★, guarda muestras diarias con fecha, orbe e intensidad normalizada. La vista de Tránsitos combina una línea temporal superior con la tabla existente: cada fila dibuja barras por día que suben hacia el aspecto exacto y bajan al alejarse, coloreadas por tipo de aspecto. La fila de fechas queda fija al hacer scroll vertical, y el eje se expande para ocupar todo el ancho disponible. Al pulsar una fila o barra se abre el detalle textual del tránsito.
+### Direcciones Primarias
+
+El módulo de Direcciones Primarias implementa proyección Regiomontana adaptada de Morinus. Soporta:
+
+- direcciones directas y conversas reales
+- plano zodiacal y eclíptico de compatibilidad
+- claves Naibod, Ptolomeo y Brahe
+- Pars Fortunae opt-in
+- presets Clásico, Extendido y Completo
+- pesos crítica/mayor/moderada/menor
+- vista Lista profesional, Cards y Año en curso
+- espéculo Regiomontano completo en el detalle
+- corpus clásico poblado desde Lilly, `Christian Astrology`, Libro III
+- interpretación contextual opcional con OpenRouter
+
+La política documental del corpus está en `docs/PRIMARY_DIRECTIONS.md` y `docs/primary-directions-corpus-curation.md`.
+
+### Horaria Nativa
+
+Horaria es Swift nativa por defecto. `HoraryNativeEngine` calcula:
+
+- siete planetas tradicionales y Nodo Norte verdadero
+- casas Regiomontanus
+- Parte de Fortuna y Parte del Espíritu
+- dignidades esenciales y accidentales
+- hora planetaria y radicalidad
+- Luna vía combusta y Luna fuera de curso
+- significadores por casa
+- recepción simple/mutua
+- perfección directa, translación y colección básica
+- veredicto estructurado: sí, no, no todavía, dudoso o requiere mediación
+
+La corrección doctrinal más importante es que una perfección lunar solo cuenta si el aspecto exacto ocurre antes de que la Luna salga de signo. Esto evita contradicciones como “Luna vacía” y, a la vez, “perfección por esa misma Luna” después del cambio de signo.
+
+`HoraryEngine` mantiene Python como fallback temporal. Variables:
+
+- `ASTROMALIK_HORARIA_ENGINE=swift`: fuerza Swift y propaga error si falla.
+- `ASTROMALIK_HORARIA_ENGINE=python`: fuerza el motor legado Python.
+- sin variable: intenta Swift y cae a Python si hay error inesperado.
 
 ### Joplin
 
-La lectura natal conserva la salida Markdown preparada para pegar. Sinastría y Revolución Solar añaden creación directa de notas vía Joplin Web Clipper local, con cuaderno configurable. Si el token está vacío, `JoplinClipperService` intenta leerlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop.
+Joplin es una salida de informes, no un requisito de cálculo. Actualmente crean notas directas Sinastría, Revolución Solar, Revolución Lunar y Direcciones Primarias. Natal conserva copia Markdown.
 
-### Horaria vía subproceso Python
+## Base De Datos Y Recursos
 
-La lógica doctrinal de Horaria no se porta a Swift en v1. La app invoca `python3 -m horaria.cli --json` desde `Foundation.Process`, envía el request en `stdin` y recibe en `stdout`:
+- `Resources/corpus.db`: corpus distribuido con la app.
+- `~/Library/Application Support/AstroMalik/user.db`: cartas, consultas y cachés del usuario.
+- `Resources/migrations/`: migraciones idempotentes. Las de corpus se aplican sobre una copia writable del corpus; las de usuario sobre `user.db`.
+- `Resources/ephe/`: efemérides Swiss `.se1`.
 
-- `chartJSON`
-- `judgementJSON`
-- `judgementText`
+## Roadmap Actual
 
-Esto evita duplicar reglas astrológicas en Swift, mantiene paridad con el motor Python probado y deja la parte macOS centrada en UI, persistencia e integración. La resolución del módulo ya no depende de un path local hardcodeado.
+Completado en abril de 2026:
 
-### Zero external dependencies en Swift
+- app nativa SwiftUI de ventana única
+- natal, lectura guiada, tránsitos, sinastría
+- revolución solar y lunar
+- Joplin Web Clipper
+- direcciones primarias Regiomontanus con corpus clásico
+- Horaria nativa Swift
+- empaquetado `.app`
 
-El proyecto **no depende de ningún paquete Swift externo**. SQLite usa la librería del sistema (linker flag `-lsqlite3`) y el wrapper `SQLiteDB.swift` es propio. Swiss Ephemeris va embebido como target C dentro del mismo SPM. La única dependencia externa funcional es Python para el modo Horaria.
+Siguientes líneas probables:
 
-### Info.plist embebido en el binario
+- pulir export PNG/PDF
+- mejorar visualización técnica de Horaria y tabla de aspectos aplicativos
+- ampliar corpus clásico verificable
+- notarización opcional con Apple Developer ID
+- distribución más cómoda para usuarios no técnicos
 
-Como es un executable SPM sin bundle `.app`, se incrusta el `Info.plist` en la sección `__TEXT,__info_plist` mediante linker flag (`-sectcreate`). Esto permite que macOS trate el proceso como app GUI regular en lugar de daemon de background. La activación de ventana se fuerza también con `NSApplication.shared.setActivationPolicy(.regular)` en el `init()` del App.
+## Relación Con Otros Repos
 
-### Zonas horarias locales → JD UT
+- [`AstroMalik`](https://github.com/eduardoddddddd/AstroMalik): variante web Python/FastAPI + React/Vite.
+- `AstroMalik-macOS`: este repo, app nativa Swift/SwiftUI para Apple Silicon.
 
-La hora de nacimiento introducida por el usuario es siempre **local** (en la zona IANA del lugar de nacimiento). `JulianDay.swift` convierte a UT antes de pasarla a Swiss Ephemeris. Este punto es crítico y fácil de equivocar — hay tests específicos para ello.
+Ambos comparten orientación y parte del corpus, pero el macOS actual ya no es un wrapper de la versión Python: sus motores principales viven dentro de Swift.
 
-## 🗺️ Roadmap
+## Licencia Y Créditos
 
-### ✅ Fase 0 — Bootstrap (completada)
-- Port del motor Python a Swift + CSwissEph
-- UI básica SwiftUI con formulario + lista de resultados
-- Persistencia local con SQLite puro
-- Tests de sanity sobre carta de referencia
+Código de aplicación: MIT License.
 
-### ✅ Fase 1 — UX base (completada abril 2026)
-- Info.plist embebido + activación explícita de la app GUI
-- Feedback visual al calcular (confirmación + atajo ⌘↩)
-- Fix de aislamiento de actor (`Task.detached` + `@State`) para Swift 6
-
-### ✅ Fase 2 — Horaria + shell de app (completada abril 2026)
-- Modo Horaria integrado en la app macOS
-- Historial horario persistente en `user.db`
-- Navegación de ventana única
-- Modo `Sistema / Claro / Oscuro`
-- Ayuda integrada en el menú `Help`
-- Script de empaquetado `AstroMalik.app`
-
-### ✅ Fase 3 — Lectura pro inicial (completada abril 2026)
-- Rueda natal interactiva en SwiftUI
-- Planetas, casas, ASC/MC y aspectos natales
-- Lectura guiada con regente del Ascendente
-- Síntesis editable y nota Markdown preparada para Joplin
-- Archivo con notas, etiquetas y búsqueda
-- Tránsitos con línea temporal de intensidad diaria por orbe
-
-### ✅ Fase 4 — Sinastría y exportación a notas (completada abril 2026)
-- Sinastría entre dos cartas guardadas
-- Aspectos en ambas direcciones A→B y B→A
-- Rueda doble de sinastría con líneas de aspecto
-- Corpus de 420 textos `SYN_*`
-- Creación directa de notas Joplin vía Web Clipper local
-- Timeline de tránsitos con eje de fechas fijo y ancho adaptable
-- Botón rápido claro/oscuro en la sidebar
-
-### ✅ Fase 5 — Revolución Solar (completada abril 2026)
-- Sección propia para revolución solar anual
-- Retorno solar exacto con `swe_solcross_ut`
-- Carta anual levantada para el lugar de revolución
-- Superposición natal/revolución
-- Reutilización del corpus natal para textos anuales
-- Nota directa en Joplin con resumen técnico
-
-### 🚧 Fase 6 — Exportación avanzada
-- Export PNG/PDF de carta, lectura y sinastría
-- Plantillas Joplin configurables
-
-### 📌 Fase 7 — Distribución pulida
-- Icono personalizado en `.icns`
-- Notarización opcional con Apple Developer ID
-- Exportadores y flujo de instalación más pulidos
-
-### 🔮 Fase 8 — Avanzado
-- Slider temporal de tránsitos integrado en la rueda natal
-- Revolución lunar
-- Progresiones secundarias y direcciones de arco solar
-- Profeciones anuales y retornos planetarios
-- Export PNG/PDF de la carta
-- Log ampliado de consultas en Joplin
-
-## 🔗 Relación con otros repos
-
-Este repo es la variante **macOS nativa** de una familia de proyectos:
-
-- [`AstroMalik`](https://github.com/eduardoddddddd/AstroMalik) — backend FastAPI + frontend React/Vite (variante web, desplegada en HuggingFace Spaces / GitHub Pages)
-- `AstroMalik-macOS` — *este repo* (app nativa Swift/SwiftUI para Apple Silicon)
-- Ambas comparten corpus `corpus.db` y el motor Swiss Ephemeris
-
-## 📜 Licencia y créditos
-
-Código de aplicación: **MIT License**.
-
-**Swiss Ephemeris** © [Astrodienst AG](https://www.astro.com/swisseph/) — licenciado bajo [Swiss Ephemeris Public License](https://www.astro.com/ftp/swisseph/LICENSE) (GPL-compatible dual-licensing para uso no comercial). Si redistribuyes una build comercial, revisa las condiciones de Astrodienst.
+Swiss Ephemeris © [Astrodienst AG](https://www.astro.com/swisseph/) bajo [Swiss Ephemeris Public License](https://www.astro.com/ftp/swisseph/LICENSE). Si redistribuyes una build comercial, revisa las condiciones de Astrodienst.
 
 Los archivos `.se1` en `Resources/ephe/` son datos de efemérides de Astrodienst y están sujetos a su licencia.
 
-## 👤 Autor
+## Autor
 
 Eduardo Arias · [@eduardoddddddd](https://github.com/eduardoddddddd)
 
