@@ -8,14 +8,24 @@ struct TransitsView: View {
     @State private var calculationTask: Task<Void, Never>? = nil
 
     private var filtered: [TransitEvent] {
-        state.events.filter { $0.stars >= state.minStars }
+        let events: [TransitEvent]
+        switch state.focusFilter {
+        case .focus:
+            events = state.events.filter { $0.priorityBand == .critical || $0.priorityBand == .high }
+        case .important:
+            events = state.events.filter {
+                $0.priorityBand == .critical || $0.priorityBand == .high || $0.priorityBand == .medium
+            }
+        case .all:
+            events = state.events
+        case .technical:
+            events = state.events.filter { $0.technicalStars >= 4 }
+        }
+        return events.sorted(by: transitPrioritySort)
     }
 
     private var timelineEvents: [TransitEvent] {
-        filtered.sorted {
-            if $0.exactDate != $1.exactDate { return $0.exactDate < $1.exactDate }
-            return $0.score > $1.score
-        }
+        filtered
     }
 
     var body: some View {
@@ -80,15 +90,16 @@ struct TransitsView: View {
                 .onChange(of: state.excludeMoon) { _, _ in state.markInputsChanged() }
             Divider().frame(height: 20)
             HStack(spacing: 4) {
-                Text("Min:")
+                Text("Mostrar")
                     .font(.caption).foregroundColor(.secondary)
-                Picker("", selection: $state.minStars) {
-                    ForEach(1...5, id: \.self) { s in
-                        Text("\(s)★").tag(s)
+                Picker("", selection: $state.focusFilter) {
+                    ForEach(TransitFocusFilter.allCases) { filter in
+                        Text(filter.label).tag(filter)
                     }
                 }
-                .frame(width: 70)
+                .frame(width: 118)
                 .pickerStyle(.menu)
+                .help("Foco muestra solo los tránsitos prioritarios por combinación de técnica, relevancia personal e impacto temporal.")
             }
             Spacer()
             if state.needsRecalculation && !state.events.isEmpty {
@@ -127,12 +138,26 @@ struct TransitsView: View {
             }
             .width(min: 200)
 
-            TableColumn("Intensidad") { e in
-                Text(e.starsDisplay)
-                    .font(.caption.monospacedDigit())
-                    .foregroundColor(starColor(e.stars))
+            TableColumn("Prioridad") { e in
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("\(e.priorityStarsDisplay) \(e.priorityLabel)")
+                        .font(.caption.monospacedDigit().weight(.semibold))
+                        .foregroundColor(priorityColor(e.priorityBand))
+                    Text(String(format: "%.1f", e.priorityScore))
+                        .font(.caption2.monospacedDigit())
+                        .foregroundColor(.secondary)
+                }
             }
-            .width(90)
+            .width(125)
+
+            TableColumn("Motivo") { e in
+                Text(e.compactReason)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+            }
+            .width(min: 210, ideal: 280)
 
             TableColumn("Periodo") { e in
                 Text("\(e.fromDate) → \(e.toDate)")
@@ -180,9 +205,57 @@ struct TransitsView: View {
                         if event.retrogradeOnExact { Text("℞").foregroundColor(.orange) }
                     }
                     HStack(spacing: 20) {
-                        metaLabel("Intensidad", Text(event.starsDisplay).foregroundColor(starColor(event.stars)))
                         metaLabel("Activo", Text("\(event.fromDate) → \(event.toDate)").font(.caption.monospacedDigit()))
                         metaLabel("Orbe exacto", Text(String(format: "%.2f°", event.minOrb)).font(.caption.monospacedDigit()))
+                    }
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Por qué importa")
+                            .font(.headline)
+                        if event.metricReasons.isEmpty {
+                            Text("Sin énfasis personal claro")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        } else {
+                            FlowLayout(spacing: 6) {
+                                ForEach(event.metricReasons, id: \.self) { reason in
+                                    Text(reason)
+                                        .font(.caption)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background(Color.appPanel)
+                                        .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                                }
+                            }
+                        }
+                    }
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Métricas")
+                            .font(.headline)
+                        VStack(alignment: .leading, spacing: 6) {
+                            metricRow(
+                                "Prioridad",
+                                "\(event.priorityStarsDisplay) \(event.priorityLabel) · \(String(format: "%.1f", event.priorityScore))",
+                                priorityColor(event.priorityBand)
+                            )
+                            metricRow(
+                                "Técnica",
+                                "\(event.technicalStarsDisplay) · \(String(format: "%.1f", event.technicalScore))",
+                                starColor(event.technicalStars)
+                            )
+                            metricRow(
+                                "Personal",
+                                "\(event.personalRelevanceStarsDisplay) · ×\(String(format: "%.2f", event.personalRelevance))",
+                                starColor(event.personalRelevanceStars)
+                            )
+                            metricRow(
+                                "Impacto",
+                                "\(event.temporalImpactStarsDisplay) · ×\(String(format: "%.2f", event.temporalImpact))",
+                                starColor(event.temporalImpactStars)
+                            )
+                        }
+                        Text("Técnica mide planeta transitante, aspecto y orbe. Personal mide cuánto toca esta carta natal concreta. Impacto mide duración, repetición, exactitud y acumulación temporal.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     }
                     Divider()
                     if let texto = event.text {
@@ -216,6 +289,17 @@ struct TransitsView: View {
         VStack(alignment: .leading, spacing: 2) {
             Text(title).font(.caption2).foregroundColor(.secondary)
             value
+        }
+    }
+
+    private func metricRow(_ title: String, _ value: String, _ color: Color) -> some View {
+        HStack(spacing: 8) {
+            Text("\(title):")
+                .font(.caption.weight(.semibold))
+                .frame(width: 70, alignment: .leading)
+            Text(value)
+                .font(.caption.monospacedDigit())
+                .foregroundColor(color)
         }
     }
 
@@ -288,6 +372,64 @@ struct TransitsView: View {
         case 4: return Color(hex: "#2563eb")
         case 3: return Color(hex: "#15803d")
         default: return .secondary
+        }
+    }
+
+    private func priorityColor(_ band: TransitPriorityBand) -> Color {
+        switch band {
+        case .critical: return Color(hex: "#d97706")
+        case .high: return Color(hex: "#2563eb")
+        case .medium: return Color(hex: "#15803d")
+        case .low: return .secondary
+        }
+    }
+
+    private func transitPrioritySort(_ lhs: TransitEvent, _ rhs: TransitEvent) -> Bool {
+        if lhs.priorityBand.rank != rhs.priorityBand.rank { return lhs.priorityBand.rank > rhs.priorityBand.rank }
+        if lhs.priorityScore != rhs.priorityScore { return lhs.priorityScore > rhs.priorityScore }
+        if lhs.exactDate != rhs.exactDate { return lhs.exactDate < rhs.exactDate }
+        if lhs.minOrb != rhs.minOrb { return lhs.minOrb < rhs.minOrb }
+        return lhs.transitKey < rhs.transitKey
+    }
+}
+
+private struct FlowLayout: Layout {
+    var spacing: CGFloat = 6
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let maxWidth = proposal.width ?? 420
+        var x: CGFloat = 0
+        var y: CGFloat = 0
+        var lineHeight: CGFloat = 0
+
+        for subview in subviews {
+            let size = subview.sizeThatFits(.unspecified)
+            if x > 0 && x + size.width > maxWidth {
+                x = 0
+                y += lineHeight + spacing
+                lineHeight = 0
+            }
+            x += size.width + spacing
+            lineHeight = max(lineHeight, size.height)
+        }
+        return CGSize(width: maxWidth, height: y + lineHeight)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        var x = bounds.minX
+        var y = bounds.minY
+        var lineHeight: CGFloat = 0
+
+        for subview in subviews {
+            let size = subview.sizeThatFits(.unspecified)
+            if x > bounds.minX && x + size.width > bounds.maxX {
+                x = bounds.minX
+                y += lineHeight + spacing
+                lineHeight = 0
+            }
+            subview.place(at: CGPoint(x: x, y: y), proposal: ProposedViewSize(size))
+            x += size.width + spacing
+            lineHeight = max(lineHeight, size.height)
         }
     }
 }

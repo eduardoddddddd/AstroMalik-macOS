@@ -29,7 +29,7 @@ Después de cualquier cambio de código o UI, este repo espera regenerar `AstroM
 - **Sinastría**: comparación de dos cartas guardadas, aspectos A→B y B→A, rueda doble y notas Joplin.
 - **Revolución solar**: retorno exacto con `swe_solcross_ut`, carta anual por lugar, superposición natal/solar y lectura técnica.
 - **Revolución lunar**: retornos lunares secuenciales, métricas técnicas y lectura mensual.
-- **Tránsitos**: eventos por rango, scoring 1–5, muestras diarias de intensidad y timeline visual.
+- **Tránsitos**: eventos por rango, foco por prioridad, desglose técnico/personal/temporal, motivos compactos, muestras diarias de intensidad y timeline visual.
 - **Direcciones primarias**: motor Regiomontano con direcciones directas/conversas, claves Naibod/Ptolomeo/Brahe, presets clásicos y corpus Lilly.
 - **Horaria clásica nativa**: juicio horario en Swift, siete planetas tradicionales, Nodo Norte, Partes, dignidades, recepción, perfección y Luna fuera de curso coherente.
 - **Archivo local**: cartas y consultas guardadas en `~/Library/Application Support/AstroMalik/user.db`.
@@ -131,7 +131,7 @@ La suite cubre:
 
 - carta natal de referencia y conversión de zonas horarias
 - casas con `swe_houses_ex2`
-- tránsitos, cancelación y muestras diarias de intensidad
+- tránsitos, cancelación, muestras diarias de intensidad, ASC/MC como puntos transitables y bandas de prioridad
 - sinastría y corpus `SYN_*`
 - revolución solar y lunar
 - Joplin con cliente HTTP mock
@@ -200,7 +200,16 @@ La revolución solar calcula el retorno exacto del Sol para un año y un lugar d
 
 ### Tránsitos
 
-`TransitEngine` agrupa eventos por rango y guarda muestras diarias con orbe e intensidad normalizada. La UI combina timeline visual y tabla, conserva resultados al cambiar de sección y marca cuándo hay cambios pendientes de recalcular.
+`TransitEngine` agrupa eventos por rango y guarda muestras diarias con orbe e intensidad normalizada. La UI combina timeline visual y tabla de foco, conserva resultados al cambiar de sección y marca cuándo hay cambios pendientes de recalcular.
+
+La vista distingue cuatro capas:
+
+- **Técnica**: fuerza abstracta del tránsito según planeta transitante, aspecto y orbe.
+- **Personal**: cuánto toca la carta natal concreta, incluyendo ASC, MC, regente del Ascendente, luminares y angularidad.
+- **Impacto**: duración, repetición, exactitud y concentración temporal.
+- **Prioridad**: señal práctica para decidir qué mirar primero, clasificada en Baja, Media, Alta o Crítica.
+
+El documento de referencia del módulo está en [`docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md`](docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md).
 
 ### Direcciones Primarias
 

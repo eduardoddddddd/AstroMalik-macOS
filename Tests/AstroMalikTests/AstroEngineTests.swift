@@ -665,6 +665,261 @@ final class AstroEngineTests: XCTestCase {
         }
     }
 
+    func testTransitPersonalRelevancePrioritizesSunOverNonAngularUranus() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let saturnLongitude = try transitLongitudeForTest("SATURNO", on: date)
+        let chart = syntheticTransitChart(
+            ascendant: 120,
+            mc: 210,
+            bodies: [
+                PlanetBody(
+                    key: "SOL",
+                    label: "Sol",
+                    longitude: saturnLongitude,
+                    formatted: "",
+                    house: 6,
+                    retrograde: false
+                ),
+                PlanetBody(
+                    key: "URANO",
+                    label: "Urano",
+                    longitude: saturnLongitude,
+                    formatted: "",
+                    house: 6,
+                    retrograde: false
+                ),
+            ]
+        )
+
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: date,
+            toDate: date,
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+        let sun = try XCTUnwrap(events.first {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "SOL"
+        })
+        let uranus = try XCTUnwrap(events.first {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "URANO"
+        })
+
+        XCTAssertGreaterThan(sun.personalRelevance, uranus.personalRelevance)
+        XCTAssertTrue(sun.metricReasons.contains("Toca Sol/Luna"))
+    }
+
+    func testTransitPersonalRelevanceAddsAscendantRulerBonus() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let saturnLongitude = try transitLongitudeForTest("SATURNO", on: date)
+        let ariesRising = syntheticTransitChart(
+            ascendant: 0,
+            mc: 90,
+            bodies: [
+                PlanetBody(
+                    key: "MARTE",
+                    label: "Marte",
+                    longitude: saturnLongitude,
+                    formatted: "",
+                    house: 6,
+                    retrograde: false
+                ),
+            ]
+        )
+        let taurusRising = syntheticTransitChart(
+            ascendant: 30,
+            mc: 120,
+            bodies: ariesRising.bodies
+        )
+
+        let ariesEvents = try await computeTransitPeriod(
+            natalChart: ariesRising,
+            fromDate: date,
+            toDate: date,
+            timezone: ariesRising.timezone,
+            corpusStore: store
+        )
+        let taurusEvents = try await computeTransitPeriod(
+            natalChart: taurusRising,
+            fromDate: date,
+            toDate: date,
+            timezone: taurusRising.timezone,
+            corpusStore: store
+        )
+        let ariesMars = try XCTUnwrap(ariesEvents.first {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "MARTE"
+        })
+        let taurusMars = try XCTUnwrap(taurusEvents.first {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "MARTE"
+        })
+
+        XCTAssertGreaterThan(ariesMars.personalRelevance, taurusMars.personalRelevance)
+        XCTAssertTrue(ariesMars.metricReasons.contains("Regente del Ascendente"))
+    }
+
+    func testTransitPersonalRelevanceAddsNatalAngularHouseBonus() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let saturnLongitude = try transitLongitudeForTest("SATURNO", on: date)
+        let angularChart = syntheticTransitChart(
+            bodies: [
+                PlanetBody(
+                    key: "VENUS",
+                    label: "Venus",
+                    longitude: saturnLongitude,
+                    formatted: "",
+                    house: 1,
+                    retrograde: false
+                ),
+            ]
+        )
+        let cadentChart = syntheticTransitChart(
+            bodies: [
+                PlanetBody(
+                    key: "VENUS",
+                    label: "Venus",
+                    longitude: saturnLongitude,
+                    formatted: "",
+                    house: 6,
+                    retrograde: false
+                ),
+            ]
+        )
+
+        let angularEvents = try await computeTransitPeriod(
+            natalChart: angularChart,
+            fromDate: date,
+            toDate: date,
+            timezone: angularChart.timezone,
+            corpusStore: store
+        )
+        let cadentEvents = try await computeTransitPeriod(
+            natalChart: cadentChart,
+            fromDate: date,
+            toDate: date,
+            timezone: cadentChart.timezone,
+            corpusStore: store
+        )
+        let angularVenus = try XCTUnwrap(angularEvents.first {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "VENUS"
+        })
+        let cadentVenus = try XCTUnwrap(cadentEvents.first {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "VENUS"
+        })
+
+        XCTAssertGreaterThan(angularVenus.personalRelevance, cadentVenus.personalRelevance)
+        XCTAssertTrue(angularVenus.metricReasons.contains("Planeta natal angular"))
+    }
+
+    func testTransitPriorityScoreUsesTechnicalPersonalAndTemporalMetrics() async throws {
+        let chart = try referenceChart()
+        let store = try referenceCorpusStore()
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: utcDate(year: 2026, month: 1, day: 1),
+            toDate: utcDate(year: 2026, month: 1, day: 31),
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        let event = try XCTUnwrap(events.first)
+        XCTAssertEqual(
+            event.priorityScore,
+            event.score * event.personalRelevance * event.temporalImpact,
+            accuracy: 0.000001
+        )
+        XCTAssertEqual(event.technicalScore, event.score)
+        XCTAssertEqual(event.technicalStars, event.stars)
+    }
+
+    func testTransitPriorityStarsFollowPriorityBand() async throws {
+        let chart = try referenceChart()
+        let store = try referenceCorpusStore()
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: utcDate(year: 2026, month: 1, day: 1),
+            toDate: utcDate(year: 2026, month: 6, day: 30),
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        XCTAssertFalse(events.isEmpty)
+        for event in events {
+            switch event.priorityBand {
+            case .critical:
+                XCTAssertEqual(event.priorityStars, 5)
+            case .high:
+                XCTAssertEqual(event.priorityStars, 4)
+            case .medium:
+                XCTAssertEqual(event.priorityStars, 3)
+            case .low:
+                XCTAssertEqual(event.priorityStars, 2)
+            }
+        }
+    }
+
+    func testTransitPriorityBandUsesRelativeAndAbsoluteThresholds() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let saturnLongitude = try transitLongitudeForTest("SATURNO", on: date)
+        let chart = syntheticTransitChart(
+            ascendant: saturnLongitude,
+            mc: 90,
+            bodies: [
+                PlanetBody(
+                    key: "SOL",
+                    label: "Sol",
+                    longitude: saturnLongitude,
+                    formatted: "",
+                    house: 1,
+                    retrograde: false
+                ),
+            ]
+        )
+
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: date,
+            toDate: date,
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+        let topEvent = try XCTUnwrap(events.first)
+
+        XCTAssertEqual(topEvent.priorityBand, .critical)
+        XCTAssertGreaterThanOrEqual(topEvent.priorityScore, 35)
+        XCTAssertTrue(events.allSatisfy { $0.priorityBand == .critical || $0.priorityScore < topEvent.priorityScore || $0.id == topEvent.id })
+    }
+
+    func testTransitEventsIncludeAscendantAndMidheavenAsNatalTargets() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let jupiterLongitude = try transitLongitudeForTest("JUPITER", on: date)
+        let saturnLongitude = try transitLongitudeForTest("SATURNO", on: date)
+        let chart = syntheticTransitChart(
+            ascendant: jupiterLongitude,
+            mc: saturnLongitude,
+            bodies: []
+        )
+
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: date,
+            toDate: date,
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        XCTAssertTrue(events.contains {
+            $0.transitKey == "JUPITER" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "ASC"
+        })
+        XCTAssertTrue(events.contains {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "MC"
+        })
+    }
+
     func testTimezoneInferenceKnownCities() {
         let service = PlacesService()
         XCTAssertEqual(service.timezoneForCoordinates(lat: 40.4168, lon: -3.7038), "Europe/Madrid")
@@ -728,6 +983,38 @@ private func utcDate(year: Int, month: Int, day: Int) -> Date {
     var cal = Calendar(identifier: .gregorian)
     cal.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
     return cal.date(from: DateComponents(timeZone: cal.timeZone, year: year, month: month, day: day)) ?? Date()
+}
+
+private func transitLongitudeForTest(_ key: String, on date: Date) throws -> Double {
+    var cal = Calendar(identifier: .gregorian)
+    cal.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
+    let comps = cal.dateComponents([.year, .month, .day], from: date)
+    let jd = sweJuldayForTest(
+        year: try XCTUnwrap(comps.year),
+        month: try XCTUnwrap(comps.month),
+        day: try XCTUnwrap(comps.day)
+    ) + 0.5
+    return try XCTUnwrap(AstroEngine.calcPlanets(jd: jd)[key]?.deg)
+}
+
+private func syntheticTransitChart(
+    ascendant: Double = 0,
+    mc: Double = 90,
+    bodies: [PlanetBody]
+) -> NatalChart {
+    NatalChart(
+        name: "Sintetica",
+        birthDate: "2000-01-01",
+        birthTime: "00:00",
+        timezone: "UTC",
+        latitude: 0,
+        longitude: 0,
+        placeName: "Test",
+        ascendant: AngularPoint(longitude: ascendant, formatted: ""),
+        mc: AngularPoint(longitude: mc, formatted: ""),
+        cusps: stride(from: 0.0, to: 360.0, by: 30.0).map { $0 },
+        bodies: bodies
+    )
 }
 
 private func sweJuldayForTest(year: Int, month: Int, day: Int) -> Double {

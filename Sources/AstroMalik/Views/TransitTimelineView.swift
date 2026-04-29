@@ -106,7 +106,7 @@ struct TransitTimelineView: View {
         VStack(spacing: 6) {
             Image(systemName: "slider.horizontal.3")
                 .font(.title3)
-            Text("No hay tránsitos con el filtro de intensidad actual")
+            Text("No hay tránsitos con el filtro de prioridad actual")
                 .font(.caption)
         }
         .foregroundColor(.secondary)
@@ -190,13 +190,14 @@ struct TransitTimelineView: View {
                     .foregroundColor(.appPrimaryText)
                     .lineLimit(1)
                     .truncationMode(.tail)
-                Text(event.starsDisplay)
+                Text("\(event.priorityStarsDisplay) \(event.priorityLabel)")
                     .font(.caption2.monospacedDigit())
-                    .foregroundColor(starColor(event.stars))
+                    .foregroundColor(priorityColor(event.priorityBand))
                     .lineLimit(1)
             }
         }
         .padding(.trailing, 12)
+        .help("Prioridad \(event.priorityLabel) · Técnica \(event.technicalStars)★ · Personal \(event.personalRelevanceStars)★ · Impacto \(event.temporalImpactStars)★")
     }
 
     private var axisMarks: [TimelineAxisMark] {
@@ -284,12 +285,12 @@ struct TransitTimelineView: View {
         calendar.dateComponents([.day], from: start, to: end).day ?? 0
     }
 
-    private func starColor(_ stars: Int) -> Color {
-        switch stars {
-        case 5: return Color(hex: "#d97706")
-        case 4: return Color(hex: "#2563eb")
-        case 3: return Color(hex: "#15803d")
-        default: return .secondary
+    private func priorityColor(_ band: TransitPriorityBand) -> Color {
+        switch band {
+        case .critical: return Color(hex: "#d97706")
+        case .high: return Color(hex: "#2563eb")
+        case .medium: return Color(hex: "#15803d")
+        case .low: return .secondary
         }
     }
 }
