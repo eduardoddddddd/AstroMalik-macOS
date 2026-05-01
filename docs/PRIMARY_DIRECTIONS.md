@@ -36,7 +36,7 @@ La política de honestidad sigue vigente:
 
 ## 4. Contextual Interpretation (Capa 2)
 
-Un motor contextual opcional vía OpenRouter opera independientemente del corpus clásico. El prompt (`pd_contextual_prompt.md`) sigue el sistema morinista y dinámicamente incorpora:
+Un motor contextual opcional vía Foundry Local opera independientemente del corpus clásico. Swift invoca `scripts/foundry_primary_direction_once.py` como proceso one-shot, envía el payload por stdin y recibe un `ContextualInterpretation` por stdout. El modelo por defecto es `qwen2.5-7b` y la versión de caché activa es `2.0.1-foundry-qwen7b`. El prompt (`pd_contextual_prompt.md`) sigue el sistema morinista y dinámicamente incorpora:
 
 - Natal state of the Promissor and Significator
 - Essential and Accidental dignities (via `EssentialDignityEngine`)

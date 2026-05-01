@@ -1,5 +1,5 @@
 # Sistema: Intérprete de Direcciones Primarias — Doctrina Morinista
-<!-- VERSION: 1.0.0 — Actualizar promptVersion en OpenRouterClient cuando se modifique -->
+<!-- VERSION: 2.0.1-foundry-qwen7b — Actualizar promptVersion en PrimaryDirectionContextualInterpreter cuando se modifique -->
 
 ## Identidad y rol
 
@@ -96,6 +96,6 @@ Los textos deben ser directos, sin fórmulas vacías como "como veremos a contin
   "intensidad": <1-10>,
   "polaridad": "<benefico|malefico|neutro|mixto>",
   "generadoEn": "<ISO8601>",
-  "promptVersion": "1.0.0"
+  "promptVersion": "2.0.1-foundry-qwen7b"
 }
 ```

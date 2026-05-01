@@ -151,9 +151,7 @@ final class AppState: ObservableObject {
         corpusStore = store
 
         var resolvedPDService = PrimaryDirectionsService()
-        var resolvedPDInterpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: resolvedOpenRouterClient
-        )
+        var resolvedPDInterpreter = PrimaryDirectionContextualInterpreter()
         var resolvedPersistentPDCache = false
 
         // MARK: SQL Migrations
@@ -166,10 +164,7 @@ final class AppState: ObservableObject {
                 corpusPath: migConfig.corpusWritableURL.path
             )
             if let userDB = try? SQLiteDB(path: migConfig.userDBURL.path, readonly: false) {
-                resolvedPDInterpreter = PrimaryDirectionContextualInterpreter(
-                    openRouterClient: resolvedOpenRouterClient,
-                    db: userDB
-                )
+                resolvedPDInterpreter = PrimaryDirectionContextualInterpreter(db: userDB)
                 resolvedPersistentPDCache = true
             }
             if !result.applied.isEmpty {

@@ -11,6 +11,10 @@ struct HoraryResultView: View {
     let query: SavedHoraryQuery
     var onBack: (() -> Void)? = nil
 
+    @State private var aiInterpretation: HoraryAIInterpretation?
+    @State private var isGeneratingAI = false
+    @State private var aiError: String?
+
     private let sectionOrder = [
         "CABECERA",
         "SIGNIFICADORES",
@@ -224,11 +228,13 @@ struct HoraryResultView: View {
             VStack(alignment: .leading, spacing: 20) {
                 if hasStructuredJudgement {
                     judgementSummaryCard
+                    localAISection
                     moonCourseCard
                     factorListCard(title: "A favor", items: query.judgement.supportingFactors ?? [], empty: "No hay factores favorables dominantes.")
                     factorListCard(title: "En contra", items: query.judgement.blockingFactors ?? [], empty: "No hay bloqueos dominantes.")
                     factorListCard(title: "Notas técnicas", items: query.judgement.technicalWarnings ?? [], empty: "Sin advertencias técnicas activas.")
                 } else {
+                    localAISection
                     ForEach(parsedSections) { section in
                         textSectionCard(section)
                     }
@@ -278,6 +284,75 @@ struct HoraryResultView: View {
         .cornerRadius(12)
     }
 
+    private var localAISection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .firstTextBaseline) {
+                sectionTitle("Interpretación IA local")
+                Spacer()
+                if let aiInterpretation {
+                    Text(aiInterpretation.model)
+                        .font(.caption.weight(.semibold))
+                        .foregroundColor(.secondary)
+                }
+            }
+
+            if let aiInterpretation {
+                Text(aiInterpretation.title)
+                    .font(.title3.weight(.semibold))
+                    .foregroundColor(.appPrimaryText)
+                if !aiInterpretation.summary.isEmpty {
+                    Text(aiInterpretation.summary)
+                        .font(.body)
+                        .foregroundColor(.secondary)
+                        .lineSpacing(4)
+                        .textSelection(.enabled)
+                }
+                Text(aiInterpretation.interpretation)
+                    .font(.body)
+                    .lineSpacing(5)
+                    .textSelection(.enabled)
+
+                if !aiInterpretation.technicalReading.isEmpty {
+                    Divider()
+                    compactFactorRows(title: "Lectura técnica", items: aiInterpretation.technicalReading)
+                }
+                if !aiInterpretation.cautions.isEmpty {
+                    Divider()
+                    compactFactorRows(title: "Cautelas", items: aiInterpretation.cautions)
+                }
+            } else {
+                Text("Genera una lectura local con Foundry a partir del juicio técnico ya calculado por AstroMalik.")
+                    .font(.body)
+                    .foregroundColor(.secondary)
+                    .lineSpacing(4)
+            }
+
+            if let aiError {
+                Label(aiError, systemImage: "exclamationmark.triangle.fill")
+                    .font(.caption)
+                    .foregroundColor(.red)
+                    .textSelection(.enabled)
+            }
+
+            Button {
+                Task { await generateLocalAIInterpretation() }
+            } label: {
+                HStack {
+                    if isGeneratingAI {
+                        ProgressView().controlSize(.small)
+                    }
+                    Label(aiInterpretation == nil ? "Generar interpretación local" : "Regenerar", systemImage: "sparkles")
+                }
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.appAccentFill)
+            .disabled(isGeneratingAI)
+        }
+        .padding(20)
+        .background(Color.appPanel)
+        .cornerRadius(12)
+    }
+
     private var moonCourseCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             sectionTitle("Luna y curso")
@@ -321,6 +396,20 @@ struct HoraryResultView: View {
         .padding(20)
         .background(Color.appPanel)
         .cornerRadius(12)
+    }
+
+    private func compactFactorRows(title: String, items: [String]) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.subheadline.weight(.semibold))
+                .foregroundColor(.appPrimaryText)
+            ForEach(items, id: \.self) { item in
+                Label(item, systemImage: "smallcircle.filled.circle")
+                    .font(.body)
+                    .lineSpacing(4)
+                    .textSelection(.enabled)
+            }
+        }
     }
 
     private func textSectionCard(_ section: HoraryTextSection) -> some View {
@@ -475,5 +564,18 @@ struct HoraryResultView: View {
                 body: query.response.judgementText.trimmingCharacters(in: .whitespacesAndNewlines)
             )
         ]
+    }
+
+    @MainActor
+    private func generateLocalAIInterpretation() async {
+        isGeneratingAI = true
+        aiError = nil
+        defer { isGeneratingAI = false }
+
+        do {
+            aiInterpretation = try await HoraryFoundryClient().interpret(query: query)
+        } catch {
+            aiError = error.localizedDescription
+        }
     }
 }

@@ -58,7 +58,7 @@ Después de cualquier cambio de código o UI, este repo espera regenerar `AstroM
 - Xcode 15+ o toolchain Swift 6.0+
 - ~50 MB de disco para binario, corpus y efemérides
 - Joplin Desktop solo si quieres crear notas directas
-- OpenRouter API key solo si quieres interpretaciones contextuales LLM en Direcciones Primarias
+- Foundry Local opcional si quieres interpretaciones contextuales locales en Direcciones Primarias y Horaria
 
 ### Horaria
 
@@ -99,9 +99,25 @@ Cuaderno: AstroMalik
 
 El token se puede introducir en Ajustes. Si está vacío, la app intenta resolverlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop (`api.token`). Si el cuaderno no existe, lo crea antes de guardar la nota.
 
-### OpenRouter
+### Foundry Local
 
-Direcciones Primarias puede generar interpretaciones contextuales con OpenRouter. La app prefiere key en Keychain; también puede importarla desde una nota local de Joplin o usar `OPENROUTER_API_KEY` como fallback de desarrollo.
+Direcciones Primarias y Horaria pueden generar interpretaciones locales con Foundry Local. La integración actual usa el SDK Python instalado en:
+
+```text
+/Users/eduardoariasbravo/Developer/Foundry Local/.venv/bin/python
+```
+
+Variables útiles:
+
+```text
+ASTROMALIK_FOUNDRY_PYTHON
+ASTROMALIK_FOUNDRY_PD_SCRIPT
+ASTROMALIK_FOUNDRY_HORARY_SCRIPT
+ASTROMALIK_FOUNDRY_MODEL
+ASTROMALIK_FOUNDRY_MODEL_CACHE_DIR
+```
+
+Direcciones Primarias y Horaria usan `qwen2.5-7b` por defecto; `ASTROMALIK_FOUNDRY_MODEL` puede forzar otro alias.
 
 ## Ejecución
 
@@ -224,7 +240,7 @@ El módulo de Direcciones Primarias implementa proyección Regiomontana adaptada
 - vista Lista profesional, Cards y Año en curso
 - espéculo Regiomontano completo en el detalle
 - corpus clásico poblado desde Lilly, `Christian Astrology`, Libro III
-- interpretación contextual opcional con OpenRouter
+- interpretación contextual local con Foundry Local
 
 La política documental del corpus está en `docs/PRIMARY_DIRECTIONS.md` y `docs/primary-directions-corpus-curation.md`.
 

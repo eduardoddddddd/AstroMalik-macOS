@@ -30,6 +30,28 @@ final class MockOpenRouterHTTPClient: OpenRouterHTTPClient, @unchecked Sendable 
     }
 }
 
+final class MockPrimaryDirectionLLMClient: PrimaryDirectionLLMClient, @unchecked Sendable {
+    var response: String
+    var error: Error?
+    private(set) var requestCount = 0
+
+    init(response: String = "") {
+        self.response = response
+    }
+
+    func complete(
+        direction: PrimaryDirection,
+        context: PDInterpretationContext,
+        systemPrompt: String,
+        userPrompt: String,
+        promptVersion: String
+    ) async throws -> String {
+        requestCount += 1
+        if let error { throw error }
+        return response
+    }
+}
+
 // MARK: - Helpers
 
 private func makeValidLLMResponse(for direction: PrimaryDirection) -> String {
@@ -57,7 +79,7 @@ private func makeValidLLMResponse(for direction: PrimaryDirection) -> String {
       "intensidad": 7,
       "polaridad": "malefico",
       "generadoEn": "2026-04-27T10:00:00Z",
-      "promptVersion": "1.0.0"
+      "promptVersion": "2.0.1-foundry-qwen7b"
     }
     """
 }
@@ -153,7 +175,7 @@ final class ContextualInterpretationTests: XCTestCase {
         XCTAssertEqual(interp.factoresConsiderados.count, 3)
         XCTAssertEqual(interp.areasAfectadas.count, 2)
         XCTAssertEqual(interp.periodoActivacion.orbeEnMeses, 6)
-        XCTAssertEqual(interp.promptVersion, "1.0.0")
+        XCTAssertEqual(interp.promptVersion, "2.0.1-foundry-qwen7b")
     }
 
     func testComputedProperties() throws {
@@ -180,7 +202,7 @@ final class ContextualInterpretationTests: XCTestCase {
           "intensidad": 4,
           "polaridad": "benefico",
           "generadoEn": "2026-04-27T10:00:00Z",
-          "promptVersion": "1.0.0"
+          "promptVersion": "2.0.1-foundry-qwen7b"
         }
         """
         let interp = try JSONDecoder().decode(
@@ -197,7 +219,7 @@ final class ContextualInterpretationTests: XCTestCase {
             {"directionId":"\(UUID().uuidString)","clave":"X","tituloPrincipal":"T",
              "textoEstructural":"T","factoresConsiderados":[],"areasAfectadas":[],
              "periodoActivacion":{"edadExacta":10.0,"orbeEnMeses":6,"fechaInicio":null,"fechaFin":null},
-             "intensidad":5,"polaridad":"\(polaridad)","generadoEn":"2026-04-27T10:00:00Z","promptVersion":"1.0.0"}
+             "intensidad":5,"polaridad":"\(polaridad)","generadoEn":"2026-04-27T10:00:00Z","promptVersion":"2.0.1-foundry-qwen7b"}
             """
             return try! JSONDecoder().decode(ContextualInterpretation.self, from: json.data(using: .utf8)!)
         }
@@ -419,10 +441,7 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
     // MARK: - Prompt Builder Tests (no network, no API key needed)
 
     func testBuildUserPromptContainsAllSections() async {
-        let client = OpenRouterClient(httpClient: MockOpenRouterHTTPClient())
-        let interpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: client, db: nil
-        )
+        let interpreter = PrimaryDirectionContextualInterpreter(llmClient: MockPrimaryDirectionLLMClient())
         let prompt = interpreter.buildUserPrompt(
             direction: makeMockDirection(),
             context: makeMockContext()
@@ -437,14 +456,11 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
         XCTAssertTrue(prompt.contains("Nocturna"), "Debe indicar sect nocturna")
         XCTAssertTrue(prompt.contains("Casa 6"), "Debe incluir la casa natal")
         XCTAssertTrue(prompt.contains("1976"), "Debe incluir el año de nacimiento")
-        XCTAssertTrue(prompt.contains("1.0.0"), "Debe especificar el promptVersion")
+        XCTAssertTrue(prompt.contains("2.0.1-foundry-qwen7b"), "Debe especificar el promptVersion")
     }
 
     func testBuildUserPromptWithMissingFactors() async {
-        let client = OpenRouterClient(httpClient: MockOpenRouterHTTPClient())
-        let interpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: client, db: nil
-        )
+        let interpreter = PrimaryDirectionContextualInterpreter(llmClient: MockPrimaryDirectionLLMClient())
         let sparseContext = PDInterpretationContext(
             promissorDignity: nil, promissorNatalHouse: nil,
             natalAspectBetweenPromissorAndSignificator: nil,
@@ -460,10 +476,7 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
     }
 
     func testBuildUserPromptConversa() async {
-        let client = OpenRouterClient(httpClient: MockOpenRouterHTTPClient())
-        let interpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: client, db: nil
-        )
+        let interpreter = PrimaryDirectionContextualInterpreter(llmClient: MockPrimaryDirectionLLMClient())
         let conversaDir = PrimaryDirection(
             promissor: "SOL", promissorLabel: "☉ Sol",
             significator: "ASC", significatorLabel: "ASC",
@@ -485,17 +498,11 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
         XCTAssertTrue(prompt.contains("Mundano"), "Plano mundano debe indicarse")
     }
 
-    // MARK: - Interpret Tests (require OPENROUTER_API_KEY in env)
+    // MARK: - Interpret Tests (Foundry client mocked, no API key needed)
 
     func testInterpretWithMockReturnsDecodedResult() async throws {
-        guard hasTestAPIKey else {
-            print("⚠️ Skipping: OPENROUTER_API_KEY no disponible en env")
-            return
-        }
         let direction = makeMockDirection()
-        let mock = MockOpenRouterHTTPClient()
-        mock.responseData = makeOpenRouterResponse(content: makeValidLLMResponse(for: direction))
-        mock.responseStatusCode = 200
+        let mock = MockPrimaryDirectionLLMClient(response: makeValidLLMResponse(for: direction))
 
         let db = try SQLiteDB(path: ":memory:", readonly: false)
         try db.execute("""
@@ -508,7 +515,7 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
         """)
 
         let interpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: OpenRouterClient(httpClient: mock), db: db
+            llmClient: mock, db: db
         )
         let result = try await interpreter.interpret(
             direction: direction, context: makeMockContext()
@@ -524,17 +531,10 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
 
     func testInterpretUsesMemoryCache() async throws {
         let direction = makeMockDirection()
-        let mock = MockOpenRouterHTTPClient()
-        mock.responseData = makeOpenRouterResponse(content: makeValidLLMResponse(for: direction))
-        let client = makeIsolatedClient(
-            mock: mock,
-            keychainService: "com.astromalik.tests.memorycache"
-        )
-        try client.saveAPIKey("memory-cache-key")
-        defer { client.deleteAPIKey() }
+        let mock = MockPrimaryDirectionLLMClient(response: makeValidLLMResponse(for: direction))
 
         let interpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: client, db: nil
+            llmClient: mock, db: nil
         )
 
         // Primera llamada — LLM consultado
@@ -542,8 +542,7 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
         XCTAssertEqual(mock.requestCount, 1)
 
         // Reset mock para detectar segunda llamada
-        mock.responseData = Data()
-        mock.responseStatusCode = 500
+        mock.error = PrimaryDirectionFoundryError.invalidOutput("No debe consultarse")
 
         // Segunda llamada — debe usar caché (no lanza error del mock)
         let second = try await interpreter.interpret(
@@ -555,13 +554,11 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
     }
 
     func testInvalidateCacheForDirection() async throws {
-        guard hasTestAPIKey else { return }
         let direction = makeMockDirection()
-        let mock = MockOpenRouterHTTPClient()
-        mock.responseData = makeOpenRouterResponse(content: makeValidLLMResponse(for: direction))
+        let mock = MockPrimaryDirectionLLMClient(response: makeValidLLMResponse(for: direction))
 
         let interpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: OpenRouterClient(httpClient: mock), db: nil
+            llmClient: mock, db: nil
         )
 
         // Poblar caché
@@ -570,20 +567,14 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
         await interpreter.invalidateCache(for: direction.id)
 
         // Reset a respuesta vacía — si la caché fue borrada, se llamará al LLM y fallará al decodificar
-        mock.responseData = Data()
-        mock.responseStatusCode = 200
+        mock.response = ""
 
         do {
             _ = try await interpreter.interpret(direction: direction, context: makeMockContext())
         } catch {
             // Esperado: decodingError o emptyResponse — confirma que la caché fue borrada
-            let isExpectedError: Bool
-            switch error as? OpenRouterError {
-            case .decodingError, .emptyResponse: isExpectedError = true
-            default: isExpectedError = false
-            }
-            XCTAssertTrue(isExpectedError,
-                          "Tras invalidar caché, el LLM debe ser consultado (error esperado)")
+            XCTAssertTrue(error is PrimaryDirectionContextualError,
+                          "Tras invalidar caché, Foundry debe ser consultado (error esperado)")
         }
     }
 
@@ -592,17 +583,10 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
         // Simula LLM que devuelve JSON envuelto en bloque markdown
         let wrapped = "```json\n\(makeValidLLMResponse(for: direction))\n```"
 
-        let mock = MockOpenRouterHTTPClient()
-        mock.responseData = makeOpenRouterResponse(content: wrapped)
-        let client = makeIsolatedClient(
-            mock: mock,
-            keychainService: "com.astromalik.tests.markdown"
-        )
-        try client.saveAPIKey("markdown-key")
-        defer { client.deleteAPIKey() }
+        let mock = MockPrimaryDirectionLLMClient(response: wrapped)
 
         let interpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: client, db: nil
+            llmClient: mock, db: nil
         )
         let result = try? await interpreter.interpret(
             direction: direction, context: makeMockContext()
@@ -627,33 +611,20 @@ final class PrimaryDirectionContextualInterpreterTests: XCTestCase {
         """)
 
         let direction = makeMockDirection()
-        let firstMock = MockOpenRouterHTTPClient()
-        firstMock.responseData = makeOpenRouterResponse(content: makeValidLLMResponse(for: direction))
-        let firstClient = makeIsolatedClient(
-            mock: firstMock,
-            keychainService: "com.astromalik.tests.persist.1"
-        )
-        try firstClient.saveAPIKey("persist-key-1")
-        defer { firstClient.deleteAPIKey() }
+        let firstMock = MockPrimaryDirectionLLMClient(response: makeValidLLMResponse(for: direction))
 
         let firstInterpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: firstClient,
+            llmClient: firstMock,
             db: db
         )
         _ = try await firstInterpreter.interpret(direction: direction, context: makeMockContext())
         XCTAssertEqual(firstMock.requestCount, 1)
 
-        let secondMock = MockOpenRouterHTTPClient()
-        secondMock.responseStatusCode = 500
-        let secondClient = makeIsolatedClient(
-            mock: secondMock,
-            keychainService: "com.astromalik.tests.persist.2"
-        )
-        try secondClient.saveAPIKey("persist-key-2")
-        defer { secondClient.deleteAPIKey() }
+        let secondMock = MockPrimaryDirectionLLMClient(response: "")
+        secondMock.error = PrimaryDirectionFoundryError.invalidOutput("No debe consultarse")
 
         let secondInterpreter = PrimaryDirectionContextualInterpreter(
-            openRouterClient: secondClient,
+            llmClient: secondMock,
             db: try SQLiteDB(path: tempURL.path, readonly: false)
         )
         let cached = try await secondInterpreter.interpret(direction: direction, context: makeMockContext())

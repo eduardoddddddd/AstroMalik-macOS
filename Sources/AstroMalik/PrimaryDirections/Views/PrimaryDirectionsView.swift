@@ -13,6 +13,9 @@ struct PrimaryDirectionsView: View {
     @State private var showHonestyPolicy = false
 
     private var charts: [NatalChart] { appState.userStore.savedCharts }
+    private var foundryAvailabilityLabel: String {
+        "Foundry Local · \(PrimaryDirectionFoundryClient.configuredModel)"
+    }
     private var selectableCharts: [NatalChart] {
         var available = charts
         if let current = vm.currentChart,
@@ -150,8 +153,8 @@ struct PrimaryDirectionsView: View {
             }
 
             HStack(spacing: 8) {
-                statusBadge(appState.openRouterAvailability.badgeLabel, tone: availabilityTone(appState.openRouterAvailability))
-                statusBadge(appState.openRouterAvailability.sourceLabel, tone: .secondary)
+                statusBadge("Foundry Local", tone: Color.appSecondaryAccent)
+                statusBadge("Modelo \(PrimaryDirectionFoundryClient.configuredModel)", tone: .secondary)
                 if appState.hasPersistentPDInterpretationCache {
                     statusBadge("Caché disponible", tone: Color.appSecondaryAccent)
                 }
@@ -357,7 +360,7 @@ struct PrimaryDirectionsView: View {
                 contextualInterpretation: vm.contextualInterpretation,
                 speculumRows: vm.fullSpeculum,
                 isGeneratingInterpretation: vm.isGeneratingInterpretation,
-                contextualAvailability: appState.openRouterAvailability.badgeLabel,
+                contextualAvailability: foundryAvailabilityLabel,
                 onRequestInterpretation: {
                     vm.requestContextualInterpretation(for: selected)
                 },
@@ -588,17 +591,6 @@ struct PrimaryDirectionsView: View {
             .font(.caption)
             .foregroundStyle(tone)
             .labelStyle(.titleAndIcon)
-    }
-
-    private func availabilityTone(_ availability: OpenRouterAvailability) -> Color {
-        switch availability {
-        case .notConfigured:
-            return .secondary
-        case .ready:
-            return Color.appSecondaryAccent
-        case .invalid:
-            return Color.appWarning
-        }
     }
 
     private func chartDisplayName(_ chart: NatalChart) -> String {

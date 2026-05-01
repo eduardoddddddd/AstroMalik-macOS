@@ -7,7 +7,7 @@ import Foundation
 ///
 /// Pipeline por dirección:
 ///   1. Construye el user prompt con los factores moduladores de la carta natal
-///   2. Llama a OpenRouterClient con el system prompt morinista
+///   2. Llama a Foundry Local con el system prompt morinista
 ///   3. Decodifica el JSON estructurado en ContextualInterpretation
 ///   4. Persiste en primary_directions_interpretations (user.db) via SQLite
 ///
@@ -16,19 +16,22 @@ actor PrimaryDirectionContextualInterpreter {
 
     // MARK: - Dependencies
 
-    private let openRouterClient: OpenRouterClient
+    private let llmClient: any PrimaryDirectionLLMClient
     private let db: SQLiteDB?               // user.db (read-write) para caché persistente
     private let systemPrompt: String
     private let decoder = JSONDecoder()
-    private let promptVersion = "1.0.0"     // Sincronizar con VERSION en pd_contextual_prompt.md
+    private let promptVersion = "2.0.1-foundry-qwen7b"
 
     // Cache en memoria para evitar re-llamadas dentro de la misma sesión
     private var memoryCache: [String: ContextualInterpretation] = [:]
 
     // MARK: - Init
 
-    init(openRouterClient: OpenRouterClient, db: SQLiteDB? = nil) {
-        self.openRouterClient = openRouterClient
+    init(
+        llmClient: any PrimaryDirectionLLMClient = PrimaryDirectionFoundryClient(),
+        db: SQLiteDB? = nil
+    ) {
+        self.llmClient = llmClient
         self.db = db
         self.systemPrompt = Self.loadSystemPrompt()
     }
@@ -59,9 +62,12 @@ actor PrimaryDirectionContextualInterpreter {
 
         // 3. Llamada al LLM
         let userPrompt = buildUserPrompt(direction: direction, context: context)
-        let rawJSON = try await openRouterClient.complete(
+        let rawJSON = try await llmClient.complete(
+            direction: direction,
+            context: context,
             systemPrompt: systemPrompt,
-            userPrompt: userPrompt
+            userPrompt: userPrompt,
+            promptVersion: promptVersion
         )
 
         let interpretation = try decodeInterpretation(rawJSON: rawJSON, direction: direction)
@@ -230,13 +236,13 @@ actor PrimaryDirectionContextualInterpreter {
         let cleanJSON = extractJSON(from: rawJSON)
 
         guard let data = cleanJSON.data(using: .utf8) else {
-            throw OpenRouterError.decodingError("No se pudo convertir la respuesta a Data")
+            throw PrimaryDirectionContextualError.decodingError("No se pudo convertir la respuesta a Data")
         }
 
         do {
             return try decoder.decode(ContextualInterpretation.self, from: data)
         } catch {
-            throw OpenRouterError.decodingError(error.localizedDescription)
+            throw PrimaryDirectionContextualError.decodingError(error.localizedDescription)
         }
     }
 
@@ -282,17 +288,26 @@ actor PrimaryDirectionContextualInterpreter {
         guard let db else { return }
         guard let data = try? JSONEncoder().encode(interpretation),
               let json = String(data: data, encoding: .utf8) else { return }
+        let sqlWithModel = """
+            INSERT OR REPLACE INTO primary_directions_interpretations
+            (direction_id, clave, prompt_version, json_payload, model_used, created_at)
+            VALUES (?, ?, ?, ?, ?, datetime('now'))
+        """
+        let args: [SQLiteValue] = [
+            .text(interpretation.directionId.uuidString),
+            .text(interpretation.clave),
+            .text(interpretation.promptVersion),
+            .text(json),
+            .text(PrimaryDirectionFoundryClient.configuredModel)
+        ]
+        if (try? db.run(sqlWithModel, args: args)) != nil { return }
+
         let sql = """
             INSERT OR REPLACE INTO primary_directions_interpretations
             (direction_id, clave, prompt_version, json_payload, created_at)
             VALUES (?, ?, ?, ?, datetime('now'))
         """
-        _ = try? db.run(sql, args: [
-            .text(interpretation.directionId.uuidString),
-            .text(interpretation.clave),
-            .text(interpretation.promptVersion),
-            .text(json)
-        ])
+        _ = try? db.run(sql, args: Array(args.dropLast()))
     }
 
     private func deleteFromDB(directionId: UUID) {
@@ -319,8 +334,19 @@ actor PrimaryDirectionContextualInterpreter {
         // Fallback: prompt embebido mínimo para no romper en tests
         return """
         Eres un intérprete de direcciones primarias bajo doctrina morinista.
-        Responde EXCLUSIVAMENTE con JSON estructurado. promptVersion: "1.0.0".
+        Responde EXCLUSIVAMENTE con JSON estructurado. promptVersion: "2.0.1-foundry-qwen7b".
         """
+    }
+}
+
+enum PrimaryDirectionContextualError: LocalizedError, Equatable {
+    case decodingError(String)
+
+    var errorDescription: String? {
+        switch self {
+        case .decodingError(let detail):
+            return "Foundry Local respondio, pero la interpretacion de Direcciones no era valida: \(detail)"
+        }
     }
 }
 
@@ -328,7 +354,7 @@ actor PrimaryDirectionContextualInterpreter {
 
 /// Contexto natal que el intérprete necesita para evaluar los 6 factores moduladores.
 /// Se construye a partir de NatalChart antes de llamar al intérprete.
-struct PDInterpretationContext: Sendable {
+struct PDInterpretationContext: Codable, Sendable {
     /// Dignidad esencial del promissor: "domicilio", "exaltacion", "triplicidad",
     /// "termino", "faz", "peregrine", "detrimento", "caida"
     let promissorDignity: String?

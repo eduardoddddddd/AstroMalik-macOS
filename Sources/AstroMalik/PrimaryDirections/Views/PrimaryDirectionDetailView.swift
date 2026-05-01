@@ -184,7 +184,7 @@ struct PrimaryDirectionDetailView: View {
     private var contextualDiscovery: some View {
         VStack(alignment: .leading, spacing: 12) {
             sectionLabel("Interpretación contextual", icon: "sparkles")
-            Text("La lectura generativa evalúa factores morinistas de la carta natal sin sustituir al corpus curado.")
+            Text("La lectura local evalúa factores morinistas de la carta natal sin sustituir al corpus curado.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -371,7 +371,7 @@ struct PrimaryDirectionDetailView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Generando interpretación morinista...")
                     .font(.body)
-                Text("Evaluando factores natales, secta, dignidades y áreas afectadas.")
+                Text("Foundry Local evalúa factores natales, secta, dignidades y áreas afectadas.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -388,7 +388,7 @@ struct PrimaryDirectionDetailView: View {
             Button {
                 onRequestInterpretation()
             } label: {
-                Label("Generar interpretación contextual", systemImage: "sparkles")
+                Label("Generar interpretación local", systemImage: "sparkles")
                     .font(.body.weight(.semibold))
             }
             .buttonStyle(.borderedProminent)

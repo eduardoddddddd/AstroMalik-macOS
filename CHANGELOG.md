@@ -50,7 +50,7 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 - **Cálculo de Direcciones Primarias:** Implementado motor completo con proyección de Regiomontanus, abarcando direcciones mundanas y zodiacales, con soporte para las claves de Naibod, Ptolomeo y Brahe.
 - **Corpus y Política de Honestidad (Capa 1):** Nuevo repositorio local SQLite para interpretaciones tradicionales. Se establece la regla de "honestidad", iniciando con 29 entradas como placeholders (`populated=0`) hasta contar con citas verificables de textos fuente clásicos.
-- **Intérprete Contextual LLM (Capa 2):** Motor generativo basado en OpenRouter que utiliza un prompt validado con el sistema de Morinus, considerando dignidades, secta, estado natal y factores accidentales para generar interpretaciones ricas y consistentes en JSON.
+- **Intérprete Contextual LLM (Capa 2):** Motor generativo local basado en Foundry Local y `qwen2.5-7b` que utiliza un prompt validado con el sistema de Morinus, considerando dignidades, secta, estado natal y factores accidentales para generar interpretaciones ricas y consistentes en JSON.
 - **Dignidades Esenciales Ptolemaicas:** Nuevo `EssentialDignityEngine` para evaluar domicilios, exaltaciones, términos egipcios, decanatos caldeos y secta diurna/nocturna.
 - **Gestión de Caché e Invalidación:** Tabla `user.db` con soporte de versionado de prompts (`prompt_version`), permitiendo una invalidación inmediata y sin estado tras ajustes en el modelo de lenguaje.
 - **UI Completa en SwiftUI:**

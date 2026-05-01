@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - Contextual Interpretation Model
 
-/// Respuesta decodable del LLM (OpenRouter → modelo configurado).
+/// Respuesta decodable del LLM local (Foundry Local → modelo configurado).
 /// El LLM devuelve JSON estructurado con este schema.
 /// Phase 4: Capa 2 de interpretación — autónoma, no depende del corpus Capa 1.
 struct ContextualInterpretation: Codable, Equatable, Sendable {
