@@ -269,10 +269,13 @@ extension TransitEvent {
 
     var compactReason: String {
         let priorityOrder = [
+            "Activación del eje nodal",
             "Toca Ascendente",
             "Toca Medio Cielo",
             "Toca Sol/Luna",
             "Regente del Ascendente",
+            "Nodo natal angular",
+            "Toca Nodo natal",
             "Planeta natal angular",
             "Tránsito por casa angular",
             "Tres pasadas por retrogradación",

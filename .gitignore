@@ -8,6 +8,8 @@
 xcuserdata/
 DerivedData/
 AstroMalik.app/
+user.db
+user.db-*
 corpus_sources/raw/
 corpus_sources/text/
 corpus_sources/staging/

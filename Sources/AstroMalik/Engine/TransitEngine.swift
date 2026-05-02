@@ -9,6 +9,7 @@ private let EVENT_GAP_DAYS = 5
 private let PLANET_WEIGHTS: [String: Double] = [
     "PLUTON": 10, "NEPTUNO": 9, "URANO": 8,
     "SATURNO": 7, "JUPITER": 6,
+    "EJE_NODAL": 5, "NODO_NORTE": 5, "NODO_SUR": 5,
     "MARTE": 4, "VENUS": 2, "MERCURIO": 2, "SOL": 2, "LUNA": 1,
 ]
 
@@ -16,11 +17,21 @@ private let ASPECT_WEIGHTS: [String: Double] = [
     "CONJUNCION": 5, "OPOSICION": 4.5, "CUADRADO": 4, "TRIGONO": 3, "SEXTIL": 2,
 ]
 
-private let ASPECT_ORBS: [String: Double] = {
-    var d: [String: Double] = [:]
-    for asp in ASPECT_DEFS { d[asp.key] = asp.orb }
-    return d
-}()
+private let TRANSIT_ASPECT_ORBS: [String: Double] = [
+    "CONJUNCION": 3.0,
+    "OPOSICION": 3.0,
+    "CUADRADO": 3.0,
+    "TRIGONO": 2.0,
+    "SEXTIL": 1.5,
+]
+
+private let NODE_TRANSIT_ASPECT_ORBS: [String: Double] = [
+    "CONJUNCION": 2.0,
+    "OPOSICION": 2.0,
+    "CUADRADO": 2.0,
+    "TRIGONO": 1.5,
+    "SEXTIL": 1.0,
+]
 
 private let ASPECT_COLORS: [String: String] = [
     "CONJUNCION": "#d97706", "SEXTIL": "#2563eb",
@@ -30,16 +41,23 @@ private let ASPECT_COLORS: [String: String] = [
 
 // MARK: - Score
 
+private func transitAspectOrb(transitKey: String, aspectKey: String) -> Double {
+    if transitKey == "EJE_NODAL" || transitKey == "NODO_NORTE" || transitKey == "NODO_SUR" {
+        return NODE_TRANSIT_ASPECT_ORBS[aspectKey] ?? TRANSIT_ASPECT_ORBS[aspectKey] ?? 0
+    }
+    return TRANSIT_ASPECT_ORBS[aspectKey] ?? 0
+}
+
 private func buildScore(transitKey: String, aspectKey: String, minOrb: Double) -> Double {
     let pw = PLANET_WEIGHTS[transitKey] ?? 1.0
     let aw = ASPECT_WEIGHTS[aspectKey]  ?? 1.0
-    let maxOrb = ASPECT_ORBS[aspectKey] ?? 6.0
+    let maxOrb = transitAspectOrb(transitKey: transitKey, aspectKey: aspectKey)
     let orbFactor = maxOrb > 0 ? max(0, 1 - minOrb / maxOrb) : 0.5
     return (pw * aw * (0.5 + 0.5 * orbFactor) * 10).rounded() / 10
 }
 
-private func intensityFor(aspectKey: String, orb: Double) -> Double {
-    let maxOrb = ASPECT_ORBS[aspectKey] ?? 6.0
+private func intensityFor(transitKey: String, aspectKey: String, orb: Double) -> Double {
+    let maxOrb = transitAspectOrb(transitKey: transitKey, aspectKey: aspectKey)
     guard maxOrb > 0 else { return 0 }
     return min(1, max(0, 1 - orb / maxOrb))
 }
@@ -146,10 +164,20 @@ func computeTransitPeriod(
         speed: 0,
         retro: false
     )
+    if let natalNodes = calcLunarNodesForNatalChart(natalChart) {
+        natalPlanets["NODO_NORTE"] = natalNodes.north
+        natalPlanets["NODO_SUR"] = natalNodes.south
+    }
 
     var natalHouses = Dictionary(uniqueKeysWithValues: natalChart.bodies.map { ($0.key, $0.house) })
     natalHouses["ASC"] = 1
     natalHouses["MC"] = 10
+    if let northNode = natalPlanets["NODO_NORTE"] {
+        natalHouses["NODO_NORTE"] = AstroEngine.planetHouse(deg: northNode.deg, cusps: natalChart.cusps)
+    }
+    if let southNode = natalPlanets["NODO_SUR"] {
+        natalHouses["NODO_SUR"] = AstroEngine.planetHouse(deg: southNode.deg, cusps: natalChart.cusps)
+    }
 
     var events: [String: EventAccum] = [:]
     var lastEventKeyByBase: [String: String] = [:]
@@ -170,21 +198,19 @@ func computeTransitPeriod(
         }
         let jd = swe_julday(Int32(year), Int32(month), Int32(day), 12.0, SE_GREG_CAL)
 
-        let transitPlanets = try AstroEngine.calcPlanets(jd: jd)
-        let aspects = AstroEngine.findAspects(from: natalPlanets, to: transitPlanets)
+        let transitPlanets = try calcTransitPlanets(jd: jd)
+        let aspects = findTransitAspects(from: natalPlanets, to: transitPlanets)
 
         for asp in aspects {
             if excludeMoon && asp.trKey == "LUNA" { continue }
             if asp.trKey == asp.nKey { continue }
-            let transitHouse = transitPlanets[asp.trKey].map {
-                AstroEngine.planetHouse(deg: $0.deg, cusps: natalChart.cusps)
-            }
+            let transitHouse = transitHouseForAspect(asp, transitPlanets: transitPlanets, cusps: natalChart.cusps)
 
             let baseKey = "\(asp.trKey):\(asp.aspKey):\(asp.nKey)"
             let sample = TransitIntensitySample(
                 date: isoFmt.string(from: currentDate),
                 orb: (asp.orb * 100).rounded() / 100,
-                intensity: (intensityFor(aspectKey: asp.aspKey, orb: asp.orb) * 1000).rounded() / 1000
+                intensity: (intensityFor(transitKey: asp.trKey, aspectKey: asp.aspKey, orb: asp.orb) * 1000).rounded() / 1000
             )
 
             if let prevKey = lastEventKeyByBase[baseKey],
@@ -197,7 +223,7 @@ func computeTransitPeriod(
                 if asp.orb < ev.minOrb {
                     ev.minOrb = asp.orb
                     ev.exactDate = currentDate
-                    ev.retrogradeOnExact = transitPlanets[asp.trKey]?.retro ?? false
+                    ev.retrogradeOnExact = retrogradeOnExact(for: asp, transitPlanets: transitPlanets)
                 }
                 events[prevKey] = ev
             } else {
@@ -210,7 +236,7 @@ func computeTransitPeriod(
                     natalKey: asp.nKey,
                     natalLabel: PLANET_NAMES[asp.nKey] ?? asp.nKey.capitalized,
                     aspectKey: asp.aspKey,
-                    aspectLabel: ASPECT_NAMES[asp.aspKey] ?? asp.aspKey.capitalized,
+                    aspectLabel: aspectLabel(for: asp),
                     color: ASPECT_COLORS[asp.aspKey] ?? "#6b6560",
                     natalHouse: natalHouses[asp.nKey],
                     transitHouse: transitHouse,
@@ -218,7 +244,7 @@ func computeTransitPeriod(
                     toDate: currentDate,
                     exactDate: currentDate,
                     minOrb: asp.orb,
-                    retrogradeOnExact: transitPlanets[asp.trKey]?.retro ?? false,
+                    retrogradeOnExact: retrogradeOnExact(for: asp, transitPlanets: transitPlanets),
                     lastDate: currentDate,
                     samples: [sample]
                 )
@@ -268,7 +294,7 @@ func computeTransitPeriod(
             priorityScore: score * personal.multiplier,
             priorityStars: priorityStars(for: .low),
             priorityBand: .low,
-            metricReasons: personal.reasons,
+            metricReasons: metricReasonsForTransit(accum.transitKey, personalReasons: personal.reasons),
             text: text,
             source: source,
             samples: accum.samples.sorted { $0.date < $1.date }
@@ -304,6 +330,163 @@ func computeTransitPeriod(
 }
 
 // MARK: - Aux
+
+private func calcTransitPlanets(jd: Double) throws -> [String: AstroEngine.RawPlanet] {
+    var planets = try AstroEngine.calcPlanets(jd: jd)
+    let nodes = try calcLunarNodes(jd: jd)
+    planets["NODO_NORTE"] = nodes.north
+    planets["NODO_SUR"] = nodes.south
+    return planets
+}
+
+private func calcLunarNodesForNatalChart(_ chart: NatalChart) -> (north: AstroEngine.RawPlanet, south: AstroEngine.RawPlanet)? {
+    guard let jdResult = try? julianDayFromLocal(
+        birthDate: chart.birthDate,
+        birthTime: chart.birthTime,
+        timezoneName: chart.timezone
+    ) else {
+        return nil
+    }
+    return try? calcLunarNodes(jd: jdResult.jd)
+}
+
+private func calcLunarNodes(jd: Double) throws -> (north: AstroEngine.RawPlanet, south: AstroEngine.RawPlanet) {
+    var xx = [Double](repeating: 0, count: 6)
+    var serr = [CChar](repeating: 0, count: 256)
+    let rc = swe_calc_ut(jd, SE_TRUE_NODE, SEFLG_SPEED, &xx, &serr)
+    if rc < 0 {
+        let err = String(cString: serr)
+        throw AstroError.calcFailed("NODO_NORTE", err)
+    }
+    let northLongitude = normalizedDegree(xx[0])
+    let southLongitude = normalizedDegree(northLongitude + 180)
+    let retro = xx[3] < 0
+    return (
+        north: AstroEngine.RawPlanet(
+            key: "NODO_NORTE",
+            label: "Nodo Norte",
+            deg: northLongitude,
+            speed: xx[3],
+            retro: retro
+        ),
+        south: AstroEngine.RawPlanet(
+            key: "NODO_SUR",
+            label: "Nodo Sur",
+            deg: southLongitude,
+            speed: xx[3],
+            retro: retro
+        )
+    )
+}
+
+private func findTransitAspects(
+    from natalPoints: [String: AstroEngine.RawPlanet],
+    to transitPlanets: [String: AstroEngine.RawPlanet]
+) -> [TransitAspectRaw] {
+    var foundByKey: [String: TransitAspectRaw] = [:]
+    for (trKey, trData) in transitPlanets {
+        for (nKey, nData) in natalPoints {
+            if trKey == nKey { continue }
+            let diff = angularDiff(trData.deg, nData.deg)
+            for asp in ASPECT_DEFS {
+                let orb = abs(diff - asp.angle)
+                let maxOrb = transitAspectOrb(transitKey: trKey, aspectKey: asp.key)
+                if maxOrb > 0 && orb <= maxOrb {
+                    let normalized = normalizedNodalAxisAspect(
+                        transitKey: trKey,
+                        aspectKey: asp.key,
+                        aspectLabel: asp.label
+                    )
+                    let raw = TransitAspectRaw(
+                        trKey: normalized.transitKey,
+                        trLabel: normalized.transitLabel ?? (trData.label + (trData.retro ? " ℞" : "")),
+                        nKey: nKey,
+                        nLabel: nData.label,
+                        aspKey: normalized.aspectKey,
+                        aspLabel: normalized.aspectLabel,
+                        orb: orb,
+                        exactDeg: diff
+                    )
+                    let key = "\(raw.trKey):\(raw.aspKey):\(raw.nKey)"
+                    if let existing = foundByKey[key] {
+                        if raw.orb < existing.orb {
+                            foundByKey[key] = raw
+                        }
+                    } else {
+                        foundByKey[key] = raw
+                    }
+                }
+            }
+        }
+    }
+    return foundByKey.values.sorted { $0.orb < $1.orb }
+}
+
+private func normalizedNodalAxisAspect(
+    transitKey: String,
+    aspectKey: String,
+    aspectLabel: String
+) -> (transitKey: String, transitLabel: String?, aspectKey: String, aspectLabel: String) {
+    guard transitKey == "NODO_NORTE" || transitKey == "NODO_SUR" else {
+        return (transitKey, nil, aspectKey, aspectLabel)
+    }
+
+    switch aspectKey {
+    case "CONJUNCION", "OPOSICION":
+        return ("EJE_NODAL", "Eje Nodal", "CONJUNCION", "sobre")
+    case "CUADRADO":
+        return ("EJE_NODAL", "Eje Nodal", "CUADRADO", ASPECT_NAMES["CUADRADO"] ?? aspectLabel)
+    default:
+        return (transitKey, nil, aspectKey, aspectLabel)
+    }
+}
+
+private func transitHouseForAspect(
+    _ aspect: TransitAspectRaw,
+    transitPlanets: [String: AstroEngine.RawPlanet],
+    cusps: [Double]
+) -> Int? {
+    let planet = aspect.trKey == "EJE_NODAL"
+        ? transitPlanets["NODO_NORTE"]
+        : transitPlanets[aspect.trKey]
+    return planet.map { AstroEngine.planetHouse(deg: $0.deg, cusps: cusps) }
+}
+
+private func retrogradeOnExact(
+    for aspect: TransitAspectRaw,
+    transitPlanets: [String: AstroEngine.RawPlanet]
+) -> Bool {
+    let planet = aspect.trKey == "EJE_NODAL"
+        ? transitPlanets["NODO_NORTE"]
+        : transitPlanets[aspect.trKey]
+    return planet?.retro ?? false
+}
+
+private func aspectLabel(for aspect: TransitAspectRaw) -> String {
+    if aspect.trKey == "EJE_NODAL" && aspect.aspKey == "CONJUNCION" {
+        return aspect.aspLabel
+    }
+    return ASPECT_NAMES[aspect.aspKey] ?? aspect.aspLabel
+}
+
+private func metricReasonsForTransit(_ transitKey: String, personalReasons: [String]) -> [String] {
+    if transitKey == "EJE_NODAL" {
+        return uniqueReasons(["Activación del eje nodal"] + personalReasons)
+    }
+    return personalReasons
+}
+
+private func angularDiff(_ a: Double, _ b: Double) -> Double {
+    var diff = abs((a - b + 360).truncatingRemainder(dividingBy: 360))
+    if diff > 180 { diff = 360 - diff }
+    return diff
+}
+
+private func normalizedDegree(_ degree: Double) -> Double {
+    var d = degree.truncatingRemainder(dividingBy: 360)
+    if d < 0 { d += 360 }
+    return d
+}
 
 private func assignPriorityBands(to events: [TransitEvent]) -> [TransitEvent] {
     guard !events.isEmpty else { return [] }
@@ -352,6 +535,17 @@ private func buildPersonalRelevance(
         reasons.append(natalKey == "ASC" ? "Toca Ascendente" : "Toca Medio Cielo")
     }
 
+    let isNode = natalKey == "NODO_NORTE" || natalKey == "NODO_SUR"
+    if isNode {
+        if let natalHouse, [1, 4, 7, 10].contains(natalHouse) {
+            multiplier += 0.35
+            reasons.append("Nodo natal angular")
+        } else {
+            multiplier += 0.20
+            reasons.append("Toca Nodo natal")
+        }
+    }
+
     if natalKey == "SOL" || natalKey == "LUNA" {
         multiplier += 0.40
         reasons.append("Toca Sol/Luna")
@@ -377,18 +571,20 @@ private func buildPersonalRelevance(
     }
 
     if let natalHouse {
-        switch natalHouse {
-        case 1, 4, 7, 10:
-            multiplier += 0.30
-            reasons.append("Planeta natal angular")
-        case 2, 5, 8, 11:
-            multiplier += 0.15
-            reasons.append("Planeta natal sucedente")
-        case 3, 6, 9, 12:
-            multiplier += 0.05
-            reasons.append("Planeta natal cadente")
-        default:
-            break
+        if !isNode {
+            switch natalHouse {
+            case 1, 4, 7, 10:
+                multiplier += 0.30
+                reasons.append("Planeta natal angular")
+            case 2, 5, 8, 11:
+                multiplier += 0.15
+                reasons.append("Planeta natal sucedente")
+            case 3, 6, 9, 12:
+                multiplier += 0.05
+                reasons.append("Planeta natal cadente")
+            default:
+                break
+            }
         }
     }
 
@@ -529,6 +725,7 @@ private let PLANET_NAMES: [String: String] = [
     "VENUS": "Venus", "MARTE": "Marte", "JUPITER": "Jupiter",
     "SATURNO": "Saturno", "URANO": "Urano", "NEPTUNO": "Neptuno", "PLUTON": "Pluton",
     "ASC": "Ascendente", "MC": "Medio Cielo",
+    "EJE_NODAL": "Eje Nodal", "NODO_NORTE": "Nodo Norte", "NODO_SUR": "Nodo Sur",
 ]
 
 private let ASPECT_NAMES: [String: String] = [

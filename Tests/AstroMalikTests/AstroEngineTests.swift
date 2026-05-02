@@ -1,4 +1,5 @@
 import XCTest
+import CSwissEph
 @testable import AstroMalik
 
 // MARK: - Sanity Check
@@ -665,6 +666,172 @@ final class AstroEngineTests: XCTestCase {
         }
     }
 
+    func testTransitConjunctionUsesTransitOrbNotNatalOrb() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let saturnLongitude = try transitLongitudeForTest("SATURNO", on: date)
+        let chart = syntheticTransitChart(
+            bodies: [
+                PlanetBody(
+                    key: "SOL",
+                    label: "Sol",
+                    longitude: normalizedDegreeForTest(saturnLongitude + 4.0),
+                    formatted: "",
+                    house: 6,
+                    retrograde: false
+                ),
+            ]
+        )
+
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: date,
+            toDate: date,
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        XCTAssertFalse(events.contains {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "SOL"
+        }, "Una conjunción con orbe 4° no debe entrar con orbes de tránsito de 3°.")
+    }
+
+    func testTransitAspectWithinOneDegreeStillAppears() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let saturnLongitude = try transitLongitudeForTest("SATURNO", on: date)
+        let chart = syntheticTransitChart(
+            bodies: [
+                PlanetBody(
+                    key: "SOL",
+                    label: "Sol",
+                    longitude: normalizedDegreeForTest(saturnLongitude + 1.0),
+                    formatted: "",
+                    house: 6,
+                    retrograde: false
+                ),
+            ]
+        )
+
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: date,
+            toDate: date,
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        XCTAssertTrue(events.contains {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "SOL"
+        }, "Una conjunción con orbe 1° debe seguir entrando.")
+    }
+
+    func testTransitSquareDoesNotUseSevenDegreeNatalOrb() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let saturnLongitude = try transitLongitudeForTest("SATURNO", on: date)
+        let chart = syntheticTransitChart(
+            bodies: [
+                PlanetBody(
+                    key: "SOL",
+                    label: "Sol",
+                    longitude: normalizedDegreeForTest(saturnLongitude + 94.0),
+                    formatted: "",
+                    house: 6,
+                    retrograde: false
+                ),
+            ]
+        )
+
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: date,
+            toDate: date,
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        XCTAssertFalse(events.contains {
+            $0.transitKey == "SATURNO" && $0.aspectKey == "CUADRADO" && $0.natalKey == "SOL"
+        }, "Una cuadratura con orbe 4° no debe entrar aunque el orbe natal sea 7°.")
+    }
+
+    func testTransitNodalAxisCanFormAspects() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let nodeLongitude = try trueNodeLongitudeForTest(on: date)
+        let chart = syntheticTransitChart(
+            bodies: [
+                PlanetBody(
+                    key: "SOL",
+                    label: "Sol",
+                    longitude: normalizedDegreeForTest(nodeLongitude + 1.0),
+                    formatted: "",
+                    house: 6,
+                    retrograde: false
+                ),
+            ]
+        )
+
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: date,
+            toDate: date,
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        let nodeEvent = try XCTUnwrap(events.first {
+            $0.transitKey == "EJE_NODAL" && $0.aspectKey == "CONJUNCION" && $0.natalKey == "SOL"
+        })
+        XCTAssertEqual(nodeEvent.transitLabel, "Eje Nodal")
+        XCTAssertEqual(nodeEvent.aspectLabel, "sobre")
+        XCTAssertLessThanOrEqual(nodeEvent.minOrb, 1.01)
+        XCTAssertTrue(nodeEvent.metricReasons.contains("Activación del eje nodal"))
+        XCTAssertFalse(events.contains {
+            ($0.transitKey == "NODO_NORTE" || $0.transitKey == "NODO_SUR") && $0.natalKey == "SOL"
+        })
+    }
+
+    func testTransitNodalAxisFusesNorthAndSouthSquares() async throws {
+        let store = try referenceCorpusStore()
+        let date = utcDate(year: 2026, month: 1, day: 1)
+        let nodeLongitude = try trueNodeLongitudeForTest(on: date)
+        let chart = syntheticTransitChart(
+            bodies: [
+                PlanetBody(
+                    key: "LUNA",
+                    label: "Luna",
+                    longitude: normalizedDegreeForTest(nodeLongitude + 91.0),
+                    formatted: "",
+                    house: 6,
+                    retrograde: false
+                ),
+            ]
+        )
+
+        let events = try await computeTransitPeriod(
+            natalChart: chart,
+            fromDate: date,
+            toDate: date,
+            timezone: chart.timezone,
+            corpusStore: store
+        )
+
+        let axisSquares = events.filter {
+            $0.transitKey == "EJE_NODAL" && $0.aspectKey == "CUADRADO" && $0.natalKey == "LUNA"
+        }
+        XCTAssertEqual(axisSquares.count, 1)
+        let axisSquare = try XCTUnwrap(axisSquares.first)
+        XCTAssertEqual(axisSquare.transitLabel, "Eje Nodal")
+        XCTAssertEqual(axisSquare.aspectLabel, "Cuadratura")
+        XCTAssertTrue(axisSquare.metricReasons.contains("Activación del eje nodal"))
+        XCTAssertFalse(axisSquare.metricReasons.contains("Dos tránsitos próximos al mismo punto"))
+        XCTAssertFalse(events.contains {
+            ($0.transitKey == "NODO_NORTE" || $0.transitKey == "NODO_SUR") && $0.aspectKey == "CUADRADO" && $0.natalKey == "LUNA"
+        })
+    }
+
     func testTransitPersonalRelevancePrioritizesSunOverNonAngularUranus() async throws {
         let store = try referenceCorpusStore()
         let date = utcDate(year: 2026, month: 1, day: 1)
@@ -995,6 +1162,28 @@ private func transitLongitudeForTest(_ key: String, on date: Date) throws -> Dou
         day: try XCTUnwrap(comps.day)
     ) + 0.5
     return try XCTUnwrap(AstroEngine.calcPlanets(jd: jd)[key]?.deg)
+}
+
+private func trueNodeLongitudeForTest(on date: Date) throws -> Double {
+    var cal = Calendar(identifier: .gregorian)
+    cal.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
+    let comps = cal.dateComponents([.year, .month, .day], from: date)
+    let jd = sweJuldayForTest(
+        year: try XCTUnwrap(comps.year),
+        month: try XCTUnwrap(comps.month),
+        day: try XCTUnwrap(comps.day)
+    ) + 0.5
+    var xx = [Double](repeating: 0, count: 6)
+    var serr = [CChar](repeating: 0, count: 256)
+    let rc = swe_calc_ut(jd, SE_TRUE_NODE, SEFLG_SPEED, &xx, &serr)
+    XCTAssertGreaterThanOrEqual(rc, 0, String(cString: serr))
+    return normalizedDegreeForTest(xx[0])
+}
+
+private func normalizedDegreeForTest(_ degree: Double) -> Double {
+    var d = degree.truncatingRemainder(dividingBy: 360)
+    if d < 0 { d += 360 }
+    return d
 }
 
 private func syntheticTransitChart(

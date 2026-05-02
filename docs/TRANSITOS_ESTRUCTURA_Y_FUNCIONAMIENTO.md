@@ -72,7 +72,9 @@ El motor agrupa días contiguos siempre que la separación no supere `EVENT_GAP_
 
 ## Aspectos y orbes
 
-Los aspectos se definen en `AstroEngine.swift`:
+Los ángulos de aspecto se definen en `AstroEngine.swift`, pero el módulo de Tránsitos no reutiliza los orbes natales de `ASPECT_DEFS`. Natal y sinastría necesitan orbes más amplios; tránsitos necesita orbes más estrechos para reducir ruido.
+
+Orbes natales de referencia en `ASPECT_DEFS`:
 
 ```text
 Conjunción  0 grados    orbe 8
@@ -80,6 +82,26 @@ Sextil      60 grados   orbe 5
 Cuadratura  90 grados   orbe 7
 Trígono     120 grados  orbe 7
 Oposición   180 grados  orbe 8
+```
+
+Orbes específicos de tránsitos en `TransitEngine.swift`:
+
+```text
+Conjunción  3.0
+Oposición   3.0
+Cuadratura  3.0
+Trígono     2.0
+Sextil      1.5
+```
+
+Para Nodo Norte y Nodo Sur transitantes se usan orbes aún más estrechos:
+
+```text
+Conjunción  2.0
+Oposición   2.0
+Cuadratura  2.0
+Trígono     1.5
+Sextil      1.0
 ```
 
 La cercanía al aspecto exacto se expresa como:
@@ -132,6 +154,8 @@ Neptuno    9
 Urano      8
 Saturno    7
 Júpiter    6
+Nodo Norte 5
+Nodo Sur   5
 Marte      4
 Venus      2
 Mercurio   2
@@ -229,6 +253,8 @@ Regente del Ascendente           +0.35
 Venus o Marte                    +0.25
 Mercurio                         +0.20
 Júpiter o Saturno                +0.15
+Nodo Norte o Nodo Sur natal      +0.20
+Nodo natal angular               +0.35
 Urano, Neptuno o Plutón natal    +0.00 por defecto
 ```
 
@@ -295,6 +321,43 @@ ASC y MC son puntos muy personales:
 - MC: vocación, exposición, carrera, reputación, dirección pública, autoridad.
 
 Tránsitos a ASC/MC deben poder subir la relevancia personal de forma clara.
+
+## Nodos Lunares
+
+Tránsitos calcula Nodo Norte verdadero (`SE_TRUE_NODE`) de forma local dentro de `TransitEngine`, sin ampliar `PLANET_LIST`. Esto evita modificar cartas natales, sinastría o conteos de corpus que dependen de la lista planetaria tradicional.
+
+El motor añade:
+
+```text
+NODO_NORTE:
+    label: Nodo Norte
+    longitud: SE_TRUE_NODE
+
+NODO_SUR:
+    label: Nodo Sur
+    longitud: Nodo Norte + 180 normalizado
+```
+
+Los nodos se incorporan en dos niveles:
+
+- como puntos natales transitables, calculados desde fecha/hora/zona de la carta;
+- como puntos transitantes diarios dentro del periodo.
+
+Cuando Nodo Norte y Nodo Sur describen el mismo contacto al mismo punto natal, el motor los fusiona como `EJE_NODAL`:
+
+```text
+Nodo Norte conjunción punto + Nodo Sur oposición punto -> Eje Nodal sobre punto
+Nodo Norte oposición punto + Nodo Sur conjunción punto -> Eje Nodal sobre punto
+Nodo Norte cuadratura punto + Nodo Sur cuadratura punto -> Eje Nodal Cuadratura punto
+```
+
+Esto evita duplicar eventos y evita que el cálculo de clusters cuente el eje nodal como dos testimonios separados. El motivo compacto puede mostrar:
+
+```text
+Activación del eje nodal
+```
+
+Si el corpus no contiene una interpretación para una clave nodal, la UI conserva el comportamiento normal y muestra que no hay interpretación disponible.
 
 ## Impacto temporal
 
