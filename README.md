@@ -234,14 +234,26 @@ Estas son las mejoras más relevantes consolidadas en las últimas fases del pro
 ## Requisitos
 
 - macOS 14 Sonoma o superior.
-- Xcode 15+ o toolchain Swift 6.0+.
 - Apple Silicon arm64.
+- Swift toolchain disponible en el sistema.
+- Xcode 15+ si quieres entorno IDE completo.
+- Command Line Tools si solo quieres compilar desde terminal.
 - Aproximadamente 50 MB para binario, corpus y efemérides.
 - Joplin Desktop solo si quieres crear notas directas.
 - Foundry Local solo si quieres interpretaciones contextuales locales en Direcciones Primarias u Horaria.
 - OpenRouter solo si quieres usar interpretación contextual externa desde la capa experimental correspondiente.
 
 ## Ejecución
+
+### Instalación para desarrollo
+
+No hace falta ser Apple Developer para compilar y usar AstroMalik en local. La vía más ligera es instalar las herramientas de línea de comandos de Apple:
+
+```bash
+xcode-select --install
+```
+
+Esto instala la toolchain necesaria (`swift`, `clang`, linker y utilidades de build) sin descargar Xcode completo. Xcode sigue siendo útil si quieres inspeccionar el proyecto con IDE, pero no es obligatorio para lanzar el build desde terminal.
 
 Clonar y ejecutar en modo debug:
 
@@ -252,14 +264,29 @@ swift build
 open .build/arm64-apple-macosx/debug/AstroMalik
 ```
 
-Crear app de doble clic:
+Crear una app local de doble clic:
 
 ```bash
 ./scripts/package_app.sh
 open AstroMalik.app
 ```
 
+El script compila en release, crea `AstroMalik.app`, copia recursos, firma ad-hoc y elimina la cuarentena local del bundle generado.
+
 > Nota: ejecutar el target SPM directamente con el botón de Xcode puede abrir un proceso sin ventana. Usa `open` o el `.app` empaquetado. El proyecto incrusta `Info.plist` en el binario para que macOS lo trate como app GUI regular.
+
+### Distribución fuera del Mac del desarrollador
+
+AstroMalik no está notarizada actualmente con Apple Developer ID. Esto no afecta al uso local desde código, pero sí puede afectar a una `.app` descargada desde GitHub, AirDrop, Drive o un `.zip`: macOS puede mostrar el aviso de Gatekeeper indicando que no puede verificar el desarrollador.
+
+Para una build local creada con `./scripts/package_app.sh`, normalmente basta con abrir `AstroMalik.app`. Si recibes una app ya compilada y macOS la bloquea, las opciones habituales son:
+
+```bash
+xattr -dr com.apple.quarantine AstroMalik.app
+open AstroMalik.app
+```
+
+También puede abrirse desde Finder con clic derecho sobre `AstroMalik.app` y luego **Abrir**. Para una distribución pública sin avisos de seguridad, el siguiente paso sería firmar con Developer ID y notarizar la app con Apple.
 
 ## Integraciones opcionales
 
