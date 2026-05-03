@@ -173,6 +173,23 @@ final class CorpusStore {
         return (texto, row["fuente_nombre"]?.string)
     }
 
+    func lookupTransitHouseIngress(transitKey: String, house: Int) -> (String?, String?, String?) {
+        let clave = "\(transitKey)_tr_CASA_\(house)_INGRESO"
+        let sql = """
+            SELECT texto_largo, texto_corto, fuente_nombre, fuente_url
+            FROM interpretaciones
+            WHERE clave = ? AND tipo = 'transito'
+            ORDER BY calidad DESC, LENGTH(texto_largo) DESC LIMIT 1
+        """
+        guard let row = try? db.queryOne(sql, args: [.text(clave)]) else { return (nil, nil, nil) }
+        let tl = row["texto_largo"]?.string ?? ""
+        let tc = row["texto_corto"]?.string ?? ""
+        var texto = (tl.isEmpty ? tc : tl).trimmingCharacters(in: .whitespacesAndNewlines)
+        if texto.isEmpty { return (nil, nil, nil) }
+        if texto.count > 3800 { texto = String(texto.prefix(3797)) + "…" }
+        return (texto, row["fuente_nombre"]?.string, row["fuente_url"]?.string)
+    }
+
     // MARK: - Synastry Lookup
 
     func lookupSynastry(claves: [String]) -> [String: Interpretation] {

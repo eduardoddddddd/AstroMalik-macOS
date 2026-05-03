@@ -47,6 +47,9 @@ struct TransitHouseIngress: Identifiable, Codable, Equatable, Hashable {
     var fromHouse: Int
     var score: Double
     var stars: Int
+    var text: String?
+    var source: String?
+    var sourceURL: String?
 
     init(
         id: UUID = UUID(),
@@ -56,7 +59,10 @@ struct TransitHouseIngress: Identifiable, Codable, Equatable, Hashable {
         date: String,
         fromHouse: Int,
         score: Double,
-        stars: Int
+        stars: Int,
+        text: String? = nil,
+        source: String? = nil,
+        sourceURL: String? = nil
     ) {
         self.id = id
         self.transitKey = transitKey
@@ -66,6 +72,9 @@ struct TransitHouseIngress: Identifiable, Codable, Equatable, Hashable {
         self.fromHouse = fromHouse
         self.score = score
         self.stars = stars
+        self.text = text
+        self.source = source
+        self.sourceURL = sourceURL
     }
 }
 

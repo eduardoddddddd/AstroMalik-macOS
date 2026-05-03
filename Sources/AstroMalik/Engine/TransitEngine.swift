@@ -333,7 +333,8 @@ func detectHouseIngresses(
     natalChart: NatalChart,
     fromDate: Date,
     toDate: Date,
-    excludeMoon _: Bool = true
+    excludeMoon _: Bool = true,
+    corpusStore: CorpusStore? = nil
 ) throws -> [TransitHouseIngress] {
     guard toDate >= fromDate else {
         throw TransitError.invalidRange
@@ -374,6 +375,7 @@ func detectHouseIngresses(
             if let previous = previousHouse[key], previous != house {
                 let weight = PLANET_WEIGHTS[key] ?? 1.0
                 let score = weight * 3.0
+                let interpretation = corpusStore?.lookupTransitHouseIngress(transitKey: key, house: house)
                 ingresses.append(TransitHouseIngress(
                     transitKey: key,
                     transitLabel: PLANET_NAMES[key] ?? key,
@@ -381,7 +383,10 @@ func detectHouseIngresses(
                     date: isoFmt.string(from: currentDate),
                     fromHouse: previous,
                     score: score,
-                    stars: starsForScore(score)
+                    stars: starsForScore(score),
+                    text: interpretation?.0,
+                    source: interpretation?.1,
+                    sourceURL: interpretation?.2
                 ))
             }
             previousHouse[key] = house

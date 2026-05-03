@@ -7,6 +7,7 @@ struct TransitsView: View {
     @ObservedObject var state: TransitWorkspaceState
     @State private var calculationTask: Task<Void, Never>? = nil
     @State private var showHouseIngresses = false
+    @State private var selectedHouseIngress: TransitHouseIngress? = nil
 
     private var filtered: [TransitEvent] {
         let events: [TransitEvent]
@@ -208,26 +209,31 @@ struct TransitsView: View {
     }
 
     private func houseIngressCard(_ ingress: TransitHouseIngress) -> some View {
-        HStack(alignment: .center, spacing: 10) {
-            Image(systemName: "arrow.right.circle")
-                .foregroundColor(Color(hex: "#2563eb"))
-            VStack(alignment: .leading, spacing: 3) {
-                Text("\(ingress.transitLabel) ingresa en Casa \(ingress.house)")
-                    .font(.subheadline.weight(.semibold))
-                Text("Desde Casa \(ingress.fromHouse) · \(ingress.date)")
+        Button {
+            selectedHouseIngress = ingress
+        } label: {
+            HStack(alignment: .center, spacing: 10) {
+                Image(systemName: ingress.text == nil ? "arrow.right.circle" : "text.bubble")
+                    .foregroundColor(Color(hex: "#2563eb"))
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("\(ingress.transitLabel) ingresa en Casa \(ingress.house)")
+                        .font(.subheadline.weight(.semibold))
+                    Text("Desde Casa \(ingress.fromHouse) · \(ingress.date)")
+                        .font(.caption.monospacedDigit())
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+                Text(String(repeating: "★", count: ingress.stars))
                     .font(.caption.monospacedDigit())
-                    .foregroundColor(.secondary)
+                    .foregroundColor(starColor(ingress.stars))
+                    .accessibilityLabel("\(ingress.stars) estrellas")
             }
-            Spacer()
-            Text(String(repeating: "★", count: ingress.stars))
-                .font(.caption.monospacedDigit())
-                .foregroundColor(starColor(ingress.stars))
-                .accessibilityLabel("\(ingress.stars) estrellas")
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(Color.appBackground)
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 8)
-        .background(Color.appBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .buttonStyle(.plain)
     }
 
     private func houseIngressDetail() -> some View {
@@ -248,7 +254,58 @@ struct TransitsView: View {
                 }
             }
         }
+        .sheet(item: $selectedHouseIngress) { ingress in
+            houseIngressInterpretationDetail(ingress)
+        }
         .frame(minWidth: 480, minHeight: 420)
+    }
+
+    private func houseIngressInterpretationDetail(_ ingress: TransitHouseIngress) -> some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    HStack(spacing: 10) {
+                        Image(systemName: "arrow.right.circle.fill")
+                            .foregroundColor(Color(hex: "#2563eb"))
+                        Text("\(ingress.transitLabel) ingresa en Casa \(ingress.house)")
+                            .font(.title3.weight(.medium))
+                    }
+                    HStack(spacing: 20) {
+                        metaLabel("Fecha", Text(ingress.date).font(.caption.monospacedDigit()))
+                        metaLabel("Casa previa", Text("Casa \(ingress.fromHouse)").font(.caption.monospacedDigit()))
+                        metaLabel("Peso", Text("\(String(repeating: "★", count: ingress.stars)) · \(String(format: "%.1f", ingress.score))").font(.caption.monospacedDigit()))
+                    }
+                    Divider()
+                    if let text = ingress.text, !text.isEmpty {
+                        Text(text)
+                            .font(.body)
+                            .lineSpacing(5)
+                        if let source = ingress.source, !source.isEmpty {
+                            if let sourceURL = ingress.sourceURL, let url = URL(string: sourceURL) {
+                                Link("Fuente: \(source)", destination: url)
+                                    .font(.caption)
+                            } else {
+                                Text("Fuente: \(source)")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    } else {
+                        Text("Sin interpretación disponible en el corpus para este ingreso.")
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .padding(24)
+            }
+            .background(Color.appBackground)
+            .navigationTitle("Ingreso por casa")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cerrar") { selectedHouseIngress = nil }
+                }
+            }
+        }
+        .frame(minWidth: 520, minHeight: 420)
     }
 
     // MARK: - Detail Sheet
@@ -430,7 +487,8 @@ struct TransitsView: View {
                     natalChart: chart,
                     fromDate: fromDate,
                     toDate: toDate,
-                    excludeMoon: excludeMoon
+                    excludeMoon: excludeMoon,
+                    corpusStore: store
                 )
                 guard !Task.isCancelled else { return }
                 state.events = events
