@@ -6,6 +6,11 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Añadido
 
+- Nodos lunares visibles en la carta natal como cuerpos calculados (`☊ Nodo Norte` y `☋ Nodo Sur`), sin incorporarlos todavía al cálculo de aspectos natales.
+- Detección de ingresos por casa en Tránsitos para Marte, Júpiter, Saturno, Urano, Neptuno y Plutón.
+- Botón `Ingresos N` en Tránsitos que abre una hoja independiente para consultar ingresos por casa sin alterar el split principal timeline/tabla.
+- 72 interpretaciones de corpus para ingresos por casa (`PLANETA_tr_CASA_N_INGRESO`), con detalle clicable y fuente enlazada.
+- Script reproducible `scripts/seed_house_ingress_interpretations.py` para regenerar las interpretaciones de ingresos por casa.
 - Motor de Horaria nativo en Swift (`HoraryNativeEngine`) con siete planetas tradicionales, casas Regiomontanus, dignidades, recepción, perfección, translación/colección básica y juicio estructurado.
 - Campos estructurados en el juicio horario: veredicto, confianza, motivo principal, factores a favor/en contra, advertencias técnicas y rango temporal simbólico.
 - Vista de resultado horario reorganizada en tarjetas de veredicto, Luna/curso, factores favorables, bloqueos y notas técnicas.
@@ -21,6 +26,8 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Cambiado
 
+- Dignidades esenciales: la triplicidad ahora respeta la secta diurna/nocturna; el cooperante sigue contando como regente válido.
+- Direcciones Primarias propagan la secta real de la carta al describir dignidades esenciales en el contexto interpretativo.
 - Horaria usa Swift nativo por defecto; Python queda como motor legado/fallback forzable con `ASTROMALIK_HORARIA_ENGINE=python`.
 - README y documentación de arquitectura actualizados para reflejar Horaria nativa, Direcciones Primarias, corpus clásico, revoluciones y el flujo real de Joplin.
 - Reorganizada la UI de Direcciones Primarias en header compacto, timeline semántico y panel maestro con tabs.
@@ -33,6 +40,8 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Corregido
 
+- Exilio de planetas con dos domicilios: Mercurio, Venus, Marte, Júpiter y Saturno ya detectan correctamente sus dos signos de exilio.
+- Tránsitos: la nueva funcionalidad de ingresos por casa ya no rompe el layout principal; se consulta desde modal dedicado.
 - La Luna fuera de curso ya no puede producir una perfección directa si el aspecto exacto ocurre después del cambio de signo.
 - Direcciones conversas calculadas con roles invertidos y polo del prómissor, en vez de derivarlas del signo del arco.
 - Clave Brahe basada en el arco de ascensión recta del Sol entre el nacimiento y +24h.
