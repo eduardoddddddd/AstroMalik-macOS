@@ -6,6 +6,7 @@ struct TransitsView: View {
     var natalChart: NatalChart
     @ObservedObject var state: TransitWorkspaceState
     @State private var calculationTask: Task<Void, Never>? = nil
+    @State private var showHouseIngresses = false
 
     private var filtered: [TransitEvent] {
         let events: [TransitEvent]
@@ -40,24 +41,20 @@ struct TransitsView: View {
                     errorView(err)
                 } else if state.events.isEmpty && state.houseIngresses.isEmpty {
                     emptyState
+                } else if state.events.isEmpty {
+                    ingressOnlyState
                 } else {
                     VStack(spacing: 0) {
-                        if !state.events.isEmpty {
-                            TransitTimelineView(
-                                events: timelineEvents,
-                                fromDate: state.fromDate,
-                                toDate: state.toDate
-                            ) { event in
-                                state.selectedEvent = event
-                            }
-                            .frame(minHeight: 220, idealHeight: 300, maxHeight: 420)
-                            Divider()
-                            transitsList
+                        TransitTimelineView(
+                            events: timelineEvents,
+                            fromDate: state.fromDate,
+                            toDate: state.toDate
+                        ) { event in
+                            state.selectedEvent = event
                         }
-                        if !state.houseIngresses.isEmpty {
-                            Divider()
-                            houseIngressSection
-                        }
+                        .frame(minHeight: 220, idealHeight: 300, maxHeight: 420)
+                        Divider()
+                        transitsList
                     }
                 }
             }
@@ -75,6 +72,9 @@ struct TransitsView: View {
         }
         .sheet(item: $state.selectedEvent) { event in
             transitDetail(event)
+        }
+        .sheet(isPresented: $showHouseIngresses) {
+            houseIngressDetail()
         }
     }
 
@@ -108,6 +108,15 @@ struct TransitsView: View {
                 .help("Foco muestra solo los tránsitos prioritarios por combinación de técnica, relevancia personal e impacto temporal.")
             }
             Spacer()
+            if !state.houseIngresses.isEmpty {
+                Button {
+                    showHouseIngresses = true
+                } label: {
+                    Label("Ingresos \(state.houseIngresses.count)", systemImage: "arrow.right.circle")
+                }
+                .buttonStyle(.bordered)
+                .help("Ver ingresos de planetas transitantes por casas natales sin alterar el timeline ni la tabla principal.")
+            }
             if state.needsRecalculation && !state.events.isEmpty {
                 Label("Cambios sin recalcular", systemImage: "exclamationmark.circle")
                     .font(.caption)
@@ -198,33 +207,6 @@ struct TransitsView: View {
         }
     }
 
-    private var houseIngressSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 8) {
-                Image(systemName: "arrow.right.circle.fill")
-                    .foregroundColor(Color(hex: "#2563eb"))
-                Text("Ingresos por casa")
-                    .font(.headline)
-                Text("\(state.houseIngresses.count)")
-                    .font(.caption.monospacedDigit())
-                    .foregroundColor(.secondary)
-            }
-
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 8) {
-                    ForEach(state.houseIngresses) { ingress in
-                        houseIngressCard(ingress)
-                    }
-                }
-                .padding(.bottom, 2)
-            }
-            .frame(maxHeight: 180)
-        }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .background(Color.appPanel.opacity(0.45))
-    }
-
     private func houseIngressCard(_ ingress: TransitHouseIngress) -> some View {
         HStack(alignment: .center, spacing: 10) {
             Image(systemName: "arrow.right.circle")
@@ -246,6 +228,27 @@ struct TransitsView: View {
         .padding(.vertical, 8)
         .background(Color.appBackground)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+    }
+
+    private func houseIngressDetail() -> some View {
+        NavigationStack {
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 10) {
+                    ForEach(state.houseIngresses) { ingress in
+                        houseIngressCard(ingress)
+                    }
+                }
+                .padding(20)
+            }
+            .background(Color.appBackground)
+            .navigationTitle("Ingresos por casa")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cerrar") { showHouseIngresses = false }
+                }
+            }
+        }
+        .frame(minWidth: 480, minHeight: 420)
     }
 
     // MARK: - Detail Sheet
@@ -368,6 +371,25 @@ struct TransitsView: View {
                 .foregroundColor(.secondary)
             Text("Selecciona un periodo y pulsa Calcular")
                 .font(.subheadline).foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var ingressOnlyState: some View {
+        VStack(spacing: 10) {
+            Image(systemName: "arrow.right.circle")
+                .font(.system(size: 40))
+                .foregroundColor(.secondary)
+            Text("No hay aspectos de tránsito en el filtro actual")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            Button {
+                showHouseIngresses = true
+            } label: {
+                Label("Ver \(state.houseIngresses.count) ingresos por casa", systemImage: "arrow.right.circle")
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.appAccentFill)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
