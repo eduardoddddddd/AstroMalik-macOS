@@ -10,6 +10,7 @@ final class TransitWorkspaceState: ObservableObject {
     @Published var error: String? = nil
     @Published var selectedEventID: UUID? = nil
     @Published var selectedEvent: TransitEvent? = nil
+    @Published var houseIngresses: [TransitHouseIngress] = []
     @Published var focusFilter: TransitFocusFilter = .focus
     @Published var needsRecalculation = true
 
@@ -19,6 +20,7 @@ final class TransitWorkspaceState: ObservableObject {
         guard chartID != chart.id else { return }
         chartID = chart.id
         events = []
+        houseIngresses = []
         error = nil
         selectedEventID = nil
         selectedEvent = nil
@@ -26,13 +28,44 @@ final class TransitWorkspaceState: ObservableObject {
     }
 
     func markInputsChanged() {
-        if !events.isEmpty {
+        if !events.isEmpty || !houseIngresses.isEmpty {
             needsRecalculation = true
         }
     }
 
     func markCalculated() {
         needsRecalculation = false
+    }
+}
+
+struct TransitHouseIngress: Identifiable, Codable, Equatable, Hashable {
+    let id: UUID
+    var transitKey: String
+    var transitLabel: String
+    var house: Int
+    var date: String
+    var fromHouse: Int
+    var score: Double
+    var stars: Int
+
+    init(
+        id: UUID = UUID(),
+        transitKey: String,
+        transitLabel: String,
+        house: Int,
+        date: String,
+        fromHouse: Int,
+        score: Double,
+        stars: Int
+    ) {
+        self.id = id
+        self.transitKey = transitKey
+        self.transitLabel = transitLabel
+        self.house = house
+        self.date = date
+        self.fromHouse = fromHouse
+        self.score = score
+        self.stars = stars
     }
 }
 

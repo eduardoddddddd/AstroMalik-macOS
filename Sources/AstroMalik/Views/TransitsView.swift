@@ -38,20 +38,26 @@ struct TransitsView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if let err = state.error {
                     errorView(err)
-                } else if state.events.isEmpty {
+                } else if state.events.isEmpty && state.houseIngresses.isEmpty {
                     emptyState
                 } else {
                     VStack(spacing: 0) {
-                        TransitTimelineView(
-                            events: timelineEvents,
-                            fromDate: state.fromDate,
-                            toDate: state.toDate
-                        ) { event in
-                            state.selectedEvent = event
+                        if !state.events.isEmpty {
+                            TransitTimelineView(
+                                events: timelineEvents,
+                                fromDate: state.fromDate,
+                                toDate: state.toDate
+                            ) { event in
+                                state.selectedEvent = event
+                            }
+                            .frame(minHeight: 220, idealHeight: 300, maxHeight: 420)
+                            Divider()
+                            transitsList
                         }
-                        .frame(minHeight: 220, idealHeight: 300, maxHeight: 420)
-                        Divider()
-                        transitsList
+                        if !state.houseIngresses.isEmpty {
+                            Divider()
+                            houseIngressSection
+                        }
                     }
                 }
             }
@@ -190,6 +196,56 @@ struct TransitsView: View {
                 state.selectedEventID = nil
             }
         }
+    }
+
+    private var houseIngressSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 8) {
+                Image(systemName: "arrow.right.circle.fill")
+                    .foregroundColor(Color(hex: "#2563eb"))
+                Text("Ingresos por casa")
+                    .font(.headline)
+                Text("\(state.houseIngresses.count)")
+                    .font(.caption.monospacedDigit())
+                    .foregroundColor(.secondary)
+            }
+
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 8) {
+                    ForEach(state.houseIngresses) { ingress in
+                        houseIngressCard(ingress)
+                    }
+                }
+                .padding(.bottom, 2)
+            }
+            .frame(maxHeight: 180)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(Color.appPanel.opacity(0.45))
+    }
+
+    private func houseIngressCard(_ ingress: TransitHouseIngress) -> some View {
+        HStack(alignment: .center, spacing: 10) {
+            Image(systemName: "arrow.right.circle")
+                .foregroundColor(Color(hex: "#2563eb"))
+            VStack(alignment: .leading, spacing: 3) {
+                Text("\(ingress.transitLabel) ingresa en Casa \(ingress.house)")
+                    .font(.subheadline.weight(.semibold))
+                Text("Desde Casa \(ingress.fromHouse) · \(ingress.date)")
+                    .font(.caption.monospacedDigit())
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            Text(String(repeating: "★", count: ingress.stars))
+                .font(.caption.monospacedDigit())
+                .foregroundColor(starColor(ingress.stars))
+                .accessibilityLabel("\(ingress.stars) estrellas")
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(Color.appBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 
     // MARK: - Detail Sheet
@@ -348,8 +404,15 @@ struct TransitsView: View {
                     excludeMoon: excludeMoon,
                     corpusStore: store
                 )
+                let houseIngresses = try detectHouseIngresses(
+                    natalChart: chart,
+                    fromDate: fromDate,
+                    toDate: toDate,
+                    excludeMoon: excludeMoon
+                )
                 guard !Task.isCancelled else { return }
                 state.events = events
+                state.houseIngresses = houseIngresses
                 state.markCalculated()
             } catch is CancellationError {
                 if !Task.isCancelled {

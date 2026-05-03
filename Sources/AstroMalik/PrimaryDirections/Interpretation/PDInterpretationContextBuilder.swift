@@ -33,7 +33,8 @@ enum PDInterpretationContextBuilder {
         if let lon = promissorLon {
             essentialDignity = EssentialDignityEngine.description(
                 planet: direction.promissor,
-                longitude: lon
+                longitude: lon,
+                isDiurnal: isDiurnal
             )
         } else {
             essentialDignity = nil
@@ -239,7 +240,8 @@ enum PDInterpretationContextBuilder {
             if let body = chart.bodies.first(where: { $0.key == significator }) {
                 let dignity = EssentialDignityEngine.description(
                     planet: significator,
-                    longitude: body.longitude
+                    longitude: body.longitude,
+                    isDiurnal: isDiurnal
                 )
                 parts.append("\(body.label) en \(body.formatted) Casa \(body.house) (\(dignity))")
                 // Sect

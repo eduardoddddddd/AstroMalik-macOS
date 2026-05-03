@@ -29,6 +29,13 @@ final class EssentialDignityEngineTests: XCTestCase {
         XCTAssertEqual(d.score, -5)
     }
 
+    func testMercurioEnSagitarioEsExilio() {
+        // Mercurio en Sagitario 15° = longitud 255°.
+        // Mercurio tiene dos domicilios (Géminis/Virgo), por tanto dos exilios (Sagitario/Piscis).
+        let ds = EssentialDignityEngine.dignities(planet: "MERCURIO", longitude: 255)
+        XCTAssertTrue(ds.contains(where: { $0.dignity == .detriment && $0.score == -5 }))
+    }
+
     // MARK: - Exaltaciones
 
     func testSolExaltacionAries() {
@@ -91,6 +98,14 @@ final class EssentialDignityEngineTests: XCTestCase {
     func testIsDiurnal() {
         XCTAssertTrue(EssentialDignityEngine.isDiurnal(sunHouse: 10))  // Sol en Casa 10 = diurna
         XCTAssertFalse(EssentialDignityEngine.isDiurnal(sunHouse: 4))  // Sol en Casa 4 = nocturna
+    }
+
+    func testTriplicidadFiltradaPorSecta() {
+        // Sol a 5° Aries: regente diurno de fuego = Sol; regente nocturno = Júpiter.
+        let diurnal = EssentialDignityEngine.dignities(planet: "SOL", longitude: 5, isDiurnal: true)
+        let nocturnal = EssentialDignityEngine.dignities(planet: "SOL", longitude: 5, isDiurnal: false)
+        XCTAssertTrue(diurnal.contains(where: { $0.dignity == .triplicity }))
+        XCTAssertFalse(nocturnal.contains(where: { $0.dignity == .triplicity }))
     }
 
     // MARK: - Recepción Mutua

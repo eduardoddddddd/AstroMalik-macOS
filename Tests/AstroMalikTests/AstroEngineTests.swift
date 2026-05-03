@@ -47,6 +47,17 @@ final class AstroEngineTests: XCTestCase {
         XCTAssertNotNil(saturno, "Saturno no encontrado en la carta")
         XCTAssertEqual(saturno?.house, 4, "Saturno debe estar en Casa 4, está en Casa \(saturno?.house ?? -1)")
 
+        let northNode = chart.bodies.first { $0.key == "NODO_NORTE" }
+        let southNode = chart.bodies.first { $0.key == "NODO_SUR" }
+        XCTAssertNotNil(northNode, "Nodo Norte no encontrado en la carta natal")
+        XCTAssertNotNil(southNode, "Nodo Sur no encontrado en la carta natal")
+        if let northNode, let southNode {
+            let nodeAxis = abs((southNode.longitude - northNode.longitude + 360).truncatingRemainder(dividingBy: 360))
+            XCTAssertEqual(nodeAxis, 180, accuracy: 0.0001, "Nodo Sur debe estar a 180° del Nodo Norte")
+            XCTAssertTrue((1...12).contains(northNode.house))
+            XCTAssertTrue((1...12).contains(southNode.house))
+        }
+
         print("✅ ASC: \(chart.ascendant.formatted)")
         print("✅ MC:  \(chart.mc.formatted)")
         for body in chart.bodies {

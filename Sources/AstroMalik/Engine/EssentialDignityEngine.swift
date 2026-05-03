@@ -34,7 +34,7 @@ enum EssentialDignityEngine {
 
     /// Calcula la dignidad esencial más alta de un planeta en un grado dado.
     /// Retorna el array de dignidades aplicables ordenadas por score.
-    static func dignities(planet: String, longitude: Double) -> [EssentialDignityScore] {
+    static func dignities(planet: String, longitude: Double, isDiurnal: Bool = true) -> [EssentialDignityScore] {
         let sign = signIndex(longitude)
         let degInSign = Int(longitude.truncatingRemainder(dividingBy: 360)
                              .truncatingRemainder(dividingBy: 30))
@@ -46,7 +46,7 @@ enum EssentialDignityEngine {
             results.append(.init(dignity: .domicile, score: 5, ruler: planet))
         }
         // 2. Exilio (-5) — opuesto al domicilio
-        if detrimentSign(of: planet) == sign {
+        if isInDetriment(planet: planet, sign: sign) {
             results.append(.init(dignity: .detriment, score: -5, ruler: nil))
         }
         // 3. Exaltación (+4)
@@ -61,7 +61,7 @@ enum EssentialDignityEngine {
             }
         }
         // 5. Triplicidad (+3)
-        if let triRuler = triplicityRuler(sign: sign, planet: planet) {
+        if let triRuler = triplicityRuler(sign: sign, planet: planet, isDiurnal: isDiurnal) {
             results.append(.init(dignity: .triplicity, score: 3, ruler: triRuler))
         }
         // 6. Término (+2) — Términos Egipcios
@@ -83,14 +83,14 @@ enum EssentialDignityEngine {
     }
 
     /// Dignidad principal (la de mayor score absoluto).
-    static func primaryDignity(planet: String, longitude: Double) -> EssentialDignityScore {
-        dignities(planet: planet, longitude: longitude).first
+    static func primaryDignity(planet: String, longitude: Double, isDiurnal: Bool = true) -> EssentialDignityScore {
+        dignities(planet: planet, longitude: longitude, isDiurnal: isDiurnal).first
             ?? .init(dignity: .peregrine, score: 0, ruler: nil)
     }
 
     /// Descripción textual concisa para incluir en el prompt LLM.
-    static func description(planet: String, longitude: Double) -> String {
-        let d = primaryDignity(planet: planet, longitude: longitude)
+    static func description(planet: String, longitude: Double, isDiurnal: Bool = true) -> String {
+        let d = primaryDignity(planet: planet, longitude: longitude, isDiurnal: isDiurnal)
         return d.dignity.rawValue
     }
 
@@ -157,7 +157,7 @@ enum EssentialDignityEngine {
     }
 
     /// Comprueba exilio para planetas de dos domicilios.
-    private static func isInDetriment(planet: String, sign: Int) -> Bool {
+    static func isInDetriment(planet: String, sign: Int) -> Bool {
         switch planet {
         case "SOL":      return sign == 6
         case "LUNA":     return sign == 9
@@ -190,7 +190,7 @@ enum EssentialDignityEngine {
     // Regente diurno y nocturno para cada triplicidad de fuego/tierra/aire/agua.
     // Retorna el regente si coincide con el planeta dado.
 
-    private static func triplicityRuler(sign: Int, planet: String) -> String? {
+    private static func triplicityRuler(sign: Int, planet: String, isDiurnal: Bool) -> String? {
         // Fuego (Aries, Leo, Sagitario): diurno=Sol, nocturno=Júpiter, cooperante=Saturno
         // Tierra (Tauro, Virgo, Capricornio): diurno=Venus, nocturno=Luna, cooperante=Marte
         // Aire (Géminis, Libra, Acuario): diurno=Saturno, nocturno=Mercurio, cooperante=Júpiter
@@ -203,7 +203,14 @@ enum EssentialDignityEngine {
         case 3, 7, 11:  triplRulers = ["VENUS", "MARTE", "LUNA"]            // Agua
         default: triplRulers = []
         }
-        return triplRulers.contains(planet) ? planet : nil
+        guard !triplRulers.isEmpty else { return nil }
+        let validRulers: [String]
+        if isDiurnal {
+            validRulers = [triplRulers[0], triplRulers[2]]
+        } else {
+            validRulers = [triplRulers[1], triplRulers[2]]
+        }
+        return validRulers.contains(planet) ? planet : nil
     }
 
     // MARK: - Términos Egipcios (Bonatti / Lilly CA p. 104)

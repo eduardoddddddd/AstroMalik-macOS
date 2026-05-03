@@ -110,6 +110,35 @@ final class AstroEngine {
         return result
     }
 
+    static func calcLunarNodes(jd: Double) throws -> (north: RawPlanet, south: RawPlanet) {
+        var xx = [Double](repeating: 0, count: 6)
+        var serr = [CChar](repeating: 0, count: 256)
+        let rc = swe_calc_ut(jd, SE_TRUE_NODE, SEFLG_SPEED, &xx, &serr)
+        if rc < 0 {
+            let err = String(cString: serr)
+            throw AstroError.calcFailed("NODO_NORTE", err)
+        }
+        let northLongitude = normalizedDegree(xx[0])
+        let southLongitude = normalizedDegree(northLongitude + 180)
+        let retro = xx[3] < 0
+        return (
+            north: RawPlanet(
+                key: "NODO_NORTE",
+                label: "☊ Nodo Norte",
+                deg: northLongitude,
+                speed: xx[3],
+                retro: retro
+            ),
+            south: RawPlanet(
+                key: "NODO_SUR",
+                label: "☋ Nodo Sur",
+                deg: southLongitude,
+                speed: xx[3],
+                retro: retro
+            )
+        )
+    }
+
     // MARK: Houses
 
     static func calcHouses(
@@ -280,6 +309,28 @@ final class AstroEngine {
             ))
         }
 
+        if let nodes = try? calcLunarNodes(jd: jd) {
+            let northHouse = planetHouse(deg: nodes.north.deg, cusps: cusps)
+            bodies.append(PlanetBody(
+                key: nodes.north.key,
+                label: nodes.north.label,
+                longitude: nodes.north.deg,
+                formatted: degToSign(nodes.north.deg),
+                house: northHouse,
+                retrograde: nodes.north.retro
+            ))
+
+            let southHouse = planetHouse(deg: nodes.south.deg, cusps: cusps)
+            bodies.append(PlanetBody(
+                key: nodes.south.key,
+                label: nodes.south.label,
+                longitude: nodes.south.deg,
+                formatted: degToSign(nodes.south.deg),
+                house: southHouse,
+                retrograde: nodes.south.retro
+            ))
+        }
+
         return NatalChart(
             name: "",
             birthDate: "", birthTime: "", timezone: "",
@@ -299,6 +350,12 @@ final class AstroEngine {
         var diff = abs((a - b + 360).truncatingRemainder(dividingBy: 360))
         if diff > 180 { diff = 360 - diff }
         return diff
+    }
+
+    private static func normalizedDegree(_ degree: Double) -> Double {
+        var d = degree.truncatingRemainder(dividingBy: 360)
+        if d < 0 { d += 360 }
+        return d
     }
 }
 

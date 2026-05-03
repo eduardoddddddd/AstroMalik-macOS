@@ -329,11 +329,77 @@ func computeTransitPeriod(
     }
 }
 
+func detectHouseIngresses(
+    natalChart: NatalChart,
+    fromDate: Date,
+    toDate: Date,
+    excludeMoon _: Bool = true
+) throws -> [TransitHouseIngress] {
+    guard toDate >= fromDate else {
+        throw TransitError.invalidRange
+    }
+
+    guard let utc = TimeZone(identifier: "UTC") else { throw TransitError.utcUnavailable }
+    var cal = Calendar(identifier: .gregorian)
+    cal.timeZone = utc
+    guard let dayDelta = cal.dateComponents([.day], from: fromDate, to: toDate).day else {
+        throw TransitError.dateCalculationFailed
+    }
+    let totalDays = dayDelta + 1
+    guard totalDays <= 3660 else { throw TransitError.rangeTooBig }
+
+    let isoFmt = ISO8601DateFormatter()
+    isoFmt.formatOptions = [.withFullDate]
+    isoFmt.timeZone = utc
+
+    let outerKeys: Set<String> = ["MARTE", "JUPITER", "SATURNO", "URANO", "NEPTUNO", "PLUTON"]
+    var previousHouse: [String: Int] = [:]
+    var ingresses: [TransitHouseIngress] = []
+
+    for dayIdx in 0..<totalDays {
+        try Task.checkCancellation()
+
+        guard let currentDate = cal.date(byAdding: .day, value: dayIdx, to: fromDate) else {
+            throw TransitError.dateCalculationFailed
+        }
+        let comps = cal.dateComponents([.year, .month, .day], from: currentDate)
+        guard let year = comps.year, let month = comps.month, let day = comps.day else {
+            throw TransitError.dateCalculationFailed
+        }
+        let jd = swe_julday(Int32(year), Int32(month), Int32(day), 12.0, SE_GREG_CAL)
+
+        let planets = try AstroEngine.calcPlanets(jd: jd)
+        for (key, planet) in planets where outerKeys.contains(key) {
+            let house = AstroEngine.planetHouse(deg: planet.deg, cusps: natalChart.cusps)
+            if let previous = previousHouse[key], previous != house {
+                let weight = PLANET_WEIGHTS[key] ?? 1.0
+                let score = weight * 3.0
+                ingresses.append(TransitHouseIngress(
+                    transitKey: key,
+                    transitLabel: PLANET_NAMES[key] ?? key,
+                    house: house,
+                    date: isoFmt.string(from: currentDate),
+                    fromHouse: previous,
+                    score: score,
+                    stars: starsForScore(score)
+                ))
+            }
+            previousHouse[key] = house
+        }
+    }
+
+    return ingresses.sorted {
+        if $0.date != $1.date { return $0.date < $1.date }
+        if $0.score != $1.score { return $0.score > $1.score }
+        return $0.transitKey < $1.transitKey
+    }
+}
+
 // MARK: - Aux
 
 private func calcTransitPlanets(jd: Double) throws -> [String: AstroEngine.RawPlanet] {
     var planets = try AstroEngine.calcPlanets(jd: jd)
-    let nodes = try calcLunarNodes(jd: jd)
+    let nodes = try AstroEngine.calcLunarNodes(jd: jd)
     planets["NODO_NORTE"] = nodes.north
     planets["NODO_SUR"] = nodes.south
     return planets
@@ -347,36 +413,7 @@ private func calcLunarNodesForNatalChart(_ chart: NatalChart) -> (north: AstroEn
     ) else {
         return nil
     }
-    return try? calcLunarNodes(jd: jdResult.jd)
-}
-
-private func calcLunarNodes(jd: Double) throws -> (north: AstroEngine.RawPlanet, south: AstroEngine.RawPlanet) {
-    var xx = [Double](repeating: 0, count: 6)
-    var serr = [CChar](repeating: 0, count: 256)
-    let rc = swe_calc_ut(jd, SE_TRUE_NODE, SEFLG_SPEED, &xx, &serr)
-    if rc < 0 {
-        let err = String(cString: serr)
-        throw AstroError.calcFailed("NODO_NORTE", err)
-    }
-    let northLongitude = normalizedDegree(xx[0])
-    let southLongitude = normalizedDegree(northLongitude + 180)
-    let retro = xx[3] < 0
-    return (
-        north: AstroEngine.RawPlanet(
-            key: "NODO_NORTE",
-            label: "Nodo Norte",
-            deg: northLongitude,
-            speed: xx[3],
-            retro: retro
-        ),
-        south: AstroEngine.RawPlanet(
-            key: "NODO_SUR",
-            label: "Nodo Sur",
-            deg: southLongitude,
-            speed: xx[3],
-            retro: retro
-        )
-    )
+    return try? AstroEngine.calcLunarNodes(jd: jdResult.jd)
 }
 
 private func findTransitAspects(
@@ -480,12 +517,6 @@ private func angularDiff(_ a: Double, _ b: Double) -> Double {
     var diff = abs((a - b + 360).truncatingRemainder(dividingBy: 360))
     if diff > 180 { diff = 360 - diff }
     return diff
-}
-
-private func normalizedDegree(_ degree: Double) -> Double {
-    var d = degree.truncatingRemainder(dividingBy: 360)
-    if d < 0 { d += 360 }
-    return d
 }
 
 private func assignPriorityBands(to events: [TransitEvent]) -> [TransitEvent] {
