@@ -100,6 +100,8 @@ final class AppState: ObservableObject {
             detailRoute = .lunarReturn
         case .transitos:
             detailRoute = .transits
+        case .efemerides:
+            detailRoute = .ephemeris
         case .horaria:
             detailRoute = .horaryHome(.nuevaConsulta)
         case .direccionesPrimarias:

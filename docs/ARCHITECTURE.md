@@ -1,6 +1,6 @@
 # Arquitectura de AstroMalik-macOS
 
-AstroMalik-macOS es una app nativa SwiftUI de ventana única. El objetivo actual es uso pro personal: lectura natal guiada, sinastría, revoluciones solar/lunar, archivo local, tránsitos, direcciones primarias y horaria nativa, sin cuentas ni telemetría.
+AstroMalik-macOS es una app nativa SwiftUI de ventana única. El objetivo actual es uso pro personal: lectura natal guiada, sinastría, revoluciones solar/lunar, archivo local, tránsitos, calendario/efemérides, direcciones primarias y horaria nativa, sin cuentas ni telemetría.
 
 ## Ventana Única
 
@@ -13,6 +13,7 @@ La app usa un solo `WindowGroup` con `NavigationSplitView`. La sidebar decide la
 - Revolución Solar
 - Revolución Lunar
 - Tránsitos
+- Efemérides
 - Direcciones Primarias
 - Horaria
 
@@ -28,7 +29,7 @@ El archivo de cartas admite metadatos locales:
 - etiquetas
 - búsqueda por nombre, fecha, lugar, etiqueta o nota
 
-Joplin se trata como destino de salida de lectura. La lectura natal genera una nota Markdown lista para pegar en Joplin; Sinastría, Revolución Solar, Revolución Lunar y Direcciones Primarias crean notas directas mediante Web Clipper local.
+Joplin se trata como destino de salida de lectura. La lectura natal genera una nota Markdown lista para pegar en Joplin; Sinastría, Revolución Solar, Revolución Lunar, Efemérides y Direcciones Primarias crean notas directas mediante Web Clipper local.
 
 ## Motores Astronómicos
 
@@ -70,6 +71,24 @@ SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>
 `LunarReturnEngine` calcula retornos sucesivos de la Luna a su longitud natal con `swe_mooncross_ut`. Cada evento conserva JD exacto, fecha local/UTC, carta de retorno, Luna de retorno, ASC/MC de retorno y casas natales donde caen los ángulos.
 
 La lectura resume foco lunar por casa, tono del Ascendente, intensidad mensual y estadísticas del periodo. La vista expone métricas técnicas y permite crear una nota Joplin directa del ciclo lunar.
+
+## Efemérides
+
+El módulo de Calendario/Efemérides muestra el cielo general, no el cielo respecto a una carta natal. Vive en `Sources/AstroMalik/Engine/Ephemeris/` y se compone de calculadores puros sobre Swiss Ephemeris:
+
+- `LunationCalculator`: Luna Nueva, Luna Llena, cuartos y fase lunar diaria.
+- `EclipseCalculator`: eclipses solares y lunares globales, tipo y magnitud cuando Swiss Ephemeris la devuelve.
+- `StationCalculator`: estaciones directas/retrógradas por cruce de velocidad eclíptica = 0.
+- `SignIngressCalculator`: ingresos en signo, incluyendo retrocesos por retrogradación; la Luna se incluye solo bajo demanda para evitar ruido.
+- `VoidOfCourseCalculator`: Luna vacía de curso desde el último aspecto ptolemaico hasta el ingreso lunar siguiente.
+- `MundaneAspectCalculator`: aspectos mundanos exactos entre planetas en tránsito, con Luna opcional para vistas diarias futuras.
+- `EphemerisEngine`: orquestador mensual y tabla diaria de efemérides.
+
+`EphemerisEngine.computeMonth(year:month:timezone:)` ejecuta los calculadores secuencialmente. Esta decisión es deliberada: `CSwissEph`/Swiss Ephemeris mantiene estado global y las búsquedas de eclipses no son seguras en concurrencia; paralelizarlas con `async let` provocó un crash `signal 11` en tests.
+
+La tabla diaria usa posiciones a las **00:00 UTC**, convención estándar de efemérides, e incluye 10 planetas más Nodo Norte verdadero. `DailyEphemerisRow` conserva longitud, signo, velocidad, retrogradación y fase lunar.
+
+La UI `EphemerisCalendarView` se integra en la sidebar como “Efemérides”, después de Tránsitos. Ofrece vista calendario mensual, detalle del día seleccionado, vista de tabla clásica y exportación directa a Joplin mediante `EphemerisNoteBuilder`.
 
 ## Tránsitos
 
@@ -142,6 +161,7 @@ La app tiene dos caminos de salida hacia Joplin:
 - sinastría: `SynastryNoteBuilder` genera Markdown y `JoplinClipperService` crea la nota vía Web Clipper
 - revolución solar: `SolarReturnNoteBuilder` genera el informe anual y lo envía por el mismo servicio
 - revolución lunar: `LunarReturnNoteBuilder` genera el informe mensual y lo envía por el mismo servicio
+- efemérides: `EphemerisNoteBuilder` genera el calendario mensual y mini tabla diaria
 - direcciones primarias: `PrimaryDirectionsNoteBuilder` genera notas filtradas o de dirección seleccionada
 
 `JoplinClipperService` usa `URLSession` contra el servidor local de Joplin (`127.0.0.1:41184` por defecto). Host, puerto, token y cuaderno viven en `AppState.joplinSettings` y se editan desde Ajustes. Si el token está vacío, el servicio intenta resolverlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop (`api.token`). Si el cuaderno no existe, se crea antes de crear la nota.
@@ -186,6 +206,7 @@ La suite cubre:
 - `swe_houses_ex2`
 - rangos/cancelación de tránsitos
 - muestras diarias de timeline y pico de intensidad en fecha exacta
+- calculadores de Efemérides: lunaciones, eclipses, estaciones, ingresos, Luna vacía de curso, aspectos mundanos y orquestador mensual
 - timezones conocidos
 - diagnóstico de Horaria legado
 - Horaria nativa, JSON legacy y regresión de Luna fuera de curso

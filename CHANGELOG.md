@@ -6,6 +6,12 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Añadido
 
+- Módulo completo de Calendario/Efemérides accesible desde la sidebar, con vista mensual, detalle diario y tabla clásica de posiciones.
+- Motor `EphemerisEngine` con calculadores de lunaciones, cuartos, eclipses, estaciones planetarias, ingresos en signo, Luna vacía de curso y aspectos mundanos.
+- Efeméride diaria a 00:00 UTC con 10 planetas, Nodo Norte, velocidades, retrogradación y fase lunar.
+- Exportación mensual de Efemérides a Joplin mediante `EphemerisNoteBuilder`, con eventos por tipo y mini tabla diaria.
+- Tests focalizados para el módulo de Efemérides: lunaciones, eclipses, estaciones, ingresos, Luna vacía, aspectos mundanos y orquestador mensual.
+
 - Nodos lunares visibles en la carta natal como cuerpos calculados (`☊ Nodo Norte` y `☋ Nodo Sur`), sin incorporarlos todavía al cálculo de aspectos natales.
 - Detección de ingresos por casa en Tránsitos para Marte, Júpiter, Saturno, Urano, Neptuno y Plutón.
 - Botón `Ingresos N` en Tránsitos que abre una hoja independiente para consultar ingresos por casa sin alterar el split principal timeline/tabla.

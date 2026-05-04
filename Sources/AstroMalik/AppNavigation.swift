@@ -8,6 +8,7 @@ enum NavItem: String, CaseIterable, Identifiable {
     case revolucionSolar = "Revolución Solar"
     case revolucionLunar = "Revolución Lunar"
     case transitos   = "Tránsitos"
+    case efemerides  = "Efemérides"
     case horaria     = "Horaria"
     case direccionesPrimarias = "Direcciones Primarias"
 
@@ -22,6 +23,7 @@ enum NavItem: String, CaseIterable, Identifiable {
         case .revolucionSolar: return "sun.max.circle"
         case .revolucionLunar: return "moon.circle"
         case .transitos:  return "calendar.circle"
+        case .efemerides: return "calendar.day.timeline.leading"
         case .horaria:    return "questionmark.bubble"
         case .direccionesPrimarias: return "arrow.triangle.swap"
         }
@@ -44,6 +46,7 @@ enum DetailRoute: Equatable {
     case lunarReturn
     case savedCharts
     case transits
+    case ephemeris
     case horaryHome(HoraryHomeTab)
     case horaryResult(SavedHoraryQuery, returnTo: HoraryHomeTab)
     case primaryDirections(NatalChart)
@@ -66,6 +69,8 @@ enum DetailRoute: Equatable {
             return "savedCharts"
         case .transits:
             return "transits"
+        case .ephemeris:
+            return "ephemeris"
         case .horaryHome(let tab):
             return "horaryHome-\(tab.id)"
         case .horaryResult(let query, _):

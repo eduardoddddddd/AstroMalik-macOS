@@ -107,6 +107,10 @@ struct ContentView: View {
         case .transits:
             transitosDetail
 
+        case .ephemeris:
+            EphemerisCalendarView()
+                .environmentObject(appState)
+
         case .horaryHome(let tab):
             HoraryHomeView(
                 initialTab: tab,
