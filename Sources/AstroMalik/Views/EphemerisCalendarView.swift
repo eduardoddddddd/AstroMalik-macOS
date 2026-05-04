@@ -3,6 +3,7 @@ import SwiftUI
 private enum EphemerisViewMode: String, CaseIterable, Identifiable {
     case calendar = "Calendario"
     case table = "Efemérides"
+    case summary = "Resumen"
     var id: String { rawValue }
 }
 
@@ -73,7 +74,7 @@ struct EphemerisCalendarView: View {
                 }
             }
             .pickerStyle(.segmented)
-            .frame(width: 240)
+            .frame(width: 330)
 
             Spacer()
 
@@ -105,6 +106,8 @@ struct EphemerisCalendarView: View {
             .padding(16)
         case .table:
             EphemerisTableView(rows: month.dailyRows)
+        case .summary:
+            MonthlySummaryView(ephemeris: month, monthTitle: monthTitle)
         }
     }
 

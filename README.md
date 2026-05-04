@@ -38,7 +38,7 @@ AstroMalik-macOS ya funciona como aplicación astrológica nativa completa para 
 - sinastría con corpus propio;
 - revoluciones solar y lunar;
 - tránsitos con scoring, foco y timeline;
-- calendario astrológico y efemérides mundanas;
+- calendario astrológico, efemérides mundanas y resumen predictivo mensual personalizado;
 - direcciones primarias Regiomontanas;
 - horaria clásica nativa;
 - exportación documental hacia Joplin.
@@ -148,6 +148,7 @@ Documento técnico: [`docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md`](docs/TRANS
 - Luna vacía de curso con último aspecto e ingreso lunar de cierre.
 - Aspectos mundanos exactos entre planetas en tránsito.
 - Tabla clásica de efemérides diaria a 00:00 UTC con 10 planetas, Nodo Norte, velocidades, retrogradación y fase lunar.
+- Pestaña **Resumen** que cruza el mes con una carta natal: lunaciones/eclipses en casas natales, activaciones de planetas natales, estaciones directas sobre la carta, tránsitos principales e ingresos por casa.
 - Exportación mensual directa a Joplin.
 
 Documento técnico: [`docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md`](docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md).
@@ -207,6 +208,7 @@ Documento técnico: [`docs/HORARY_NATIVE.md`](docs/HORARY_NATIVE.md).
 Estas son las mejoras más relevantes consolidadas en las últimas fases del proyecto:
 
 - Calendario/Efemérides mensual con lunaciones, eclipses, estaciones, ingresos, Luna vacía de curso, aspectos mundanos, tabla diaria y exportación Joplin.
+- Resumen predictivo mensual personalizado dentro de Efemérides, con exportación Joplin independiente.
 - Port de Horaria a Swift nativo con Python relegado a modo legado.
 - Juicio horario estructurado con veredicto, confianza, factores y warnings.
 - Corrección de Luna fuera de curso para impedir perfecciones lunares inválidas tras cambio de signo.

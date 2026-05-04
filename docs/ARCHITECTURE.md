@@ -90,6 +90,8 @@ La tabla diaria usa posiciones a las **00:00 UTC**, convención estándar de efe
 
 La UI `EphemerisCalendarView` se integra en la sidebar como “Efemérides”, después de Tránsitos. Ofrece vista calendario mensual, detalle del día seleccionado, vista de tabla clásica y exportación directa a Joplin mediante `EphemerisNoteBuilder`.
 
+La tercera pestaña, **Resumen**, convierte el mes de efemérides en un informe predictivo personalizado para la carta natal activa o una carta guardada. `MonthlySummaryEngine` consume el `EphemerisMonth` ya calculado y lo cruza con la carta natal para ubicar lunaciones y eclipses en casas natales, detectar conjunciones a planetas natales, señalar estaciones planetarias con orbe ≤ 3°, y añadir los principales `TransitEvent`/`TransitHouseIngress` del mismo rango mensual. La vista `MonthlySummaryView` calcula tránsitos bajo demanda al entrar en la pestaña, cachea por mes+carta, permite cambiar carta cuando hay varias guardadas y genera una nota Joplin propia con `MonthlySummaryNoteBuilder`.
+
 ## Tránsitos
 
 `TransitEngine` calcula eventos por rango de fechas y agrupa días contiguos por tránsito/aspecto/punto natal. El loop trabaja con `Date` y calendario UTC; los strings ISO se materializan al crear el resultado final.
@@ -162,6 +164,7 @@ La app tiene dos caminos de salida hacia Joplin:
 - revolución solar: `SolarReturnNoteBuilder` genera el informe anual y lo envía por el mismo servicio
 - revolución lunar: `LunarReturnNoteBuilder` genera el informe mensual y lo envía por el mismo servicio
 - efemérides: `EphemerisNoteBuilder` genera el calendario mensual y mini tabla diaria
+- resumen predictivo mensual: `MonthlySummaryNoteBuilder` genera el informe personalizado de lunaciones, eclipses, estaciones, tránsitos e ingresos por casa
 - direcciones primarias: `PrimaryDirectionsNoteBuilder` genera notas filtradas o de dirección seleccionada
 
 `JoplinClipperService` usa `URLSession` contra el servidor local de Joplin (`127.0.0.1:41184` por defecto). Host, puerto, token y cuaderno viven en `AppState.joplinSettings` y se editan desde Ajustes. Si el token está vacío, el servicio intenta resolverlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop (`api.token`). Si el cuaderno no existe, se crea antes de crear la nota.
@@ -207,6 +210,7 @@ La suite cubre:
 - rangos/cancelación de tránsitos
 - muestras diarias de timeline y pico de intensidad en fecha exacta
 - calculadores de Efemérides: lunaciones, eclipses, estaciones, ingresos, Luna vacía de curso, aspectos mundanos y orquestador mensual
+- resumen predictivo mensual: casas natales de lunaciones, conjunciones a planetas natales, estaciones, clima y filtrado top de tránsitos activos
 - timezones conocidos
 - diagnóstico de Horaria legado
 - Horaria nativa, JSON legacy y regresión de Luna fuera de curso
