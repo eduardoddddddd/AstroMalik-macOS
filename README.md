@@ -1,5 +1,9 @@
 # AstroMalik · macOS
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/eduardoddddddd/AstroMalik-macOS)
+
+
+
 ![Platform](https://img.shields.io/badge/platform-macOS%2014%2B-blue) ![Swift](https://img.shields.io/badge/Swift-6.0-orange) ![SwiftUI](https://img.shields.io/badge/UI-SwiftUI-0A84FF) ![Swiss Ephemeris](https://img.shields.io/badge/ephemeris-Swiss%20Ephemeris-6f42c1) ![SQLite](https://img.shields.io/badge/storage-SQLite-003B57) ![Foundry Local](https://img.shields.io/badge/AI-Foundry%20Local-7A3EE6) ![Local First](https://img.shields.io/badge/privacy-local--first-2ea44f) ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 AstroMalik-macOS es una app nativa de astrología para macOS, escrita en Swift y SwiftUI, pensada para trabajo astrológico personal y profesional en local. Calcula cartas natales, lecturas guiadas, sinastrías, revoluciones solares y lunares, tránsitos, direcciones primarias y consultas de horaria clásica. Guarda cartas y consultas en una base local, usa Swiss Ephemeris embebido y no requiere cuentas ni servicios externos para los cálculos.
