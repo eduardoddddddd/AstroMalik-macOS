@@ -1,16 +1,16 @@
 import Foundation
 
 struct HoraryReportBuilder {
-    static func generate(from query: SavedHoraryQuery) async throws -> Data {
+    static func generate(from query: SavedHoraryQuery, pageSize: PDFPageSize = .a4Portrait) async throws -> Data {
         let data = makeData(from: query)
-        return try await ReportService().generate(request: ReportRequest(templateName: "horary", data: data))
+        return try await ReportService().generate(request: ReportRequest(templateName: "horary", data: data, pageSize: pageSize))
     }
 
-    static func generate(from response: HoraryResponse) async throws -> Data {
+    static func generate(from response: HoraryResponse, pageSize: PDFPageSize = .a4Portrait) async throws -> Data {
         let chart = try decode(HoraryChart.self, from: response.chartJSON)
         let judgement = try decode(HoraryJudgement.self, from: response.judgementJSON)
         let data = makeData(chart: chart, judgement: judgement, calculatedAt: response.calculatedAt)
-        return try await ReportService().generate(request: ReportRequest(templateName: "horary", data: data))
+        return try await ReportService().generate(request: ReportRequest(templateName: "horary", data: data, pageSize: pageSize))
     }
 
     static func makeData(from query: SavedHoraryQuery, generatedAt: Date = Date()) -> HoraryReportData {

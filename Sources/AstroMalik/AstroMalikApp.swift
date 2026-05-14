@@ -121,6 +121,10 @@ final class AppState: ObservableObject {
             } else {
                 detailRoute = .primaryDirections(NatalChart.placeholder)
             }
+        case .misInformes:
+            detailRoute = .myReports
+        case .ajustes:
+            detailRoute = .settings
         }
     }
 

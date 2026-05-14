@@ -83,6 +83,14 @@ struct NatalChartView: View {
                 } label: {
                     Label(noteCopied ? "Nota copiada" : "Copiar nota Joplin", systemImage: noteCopied ? "checkmark.circle" : "doc.on.clipboard")
                 }
+                PDFExportButton(
+                    chartName: chart.name.isEmpty ? "Carta natal" : chart.name,
+                    reportType: "Informe natal",
+                    generate: { pageSize in
+                        try await NatalReportBuilder.generate(from: chart, pageSize: pageSize)
+                    }
+                )
+                .environmentObject(appState)
             }
         }
         .onAppear { startLoadingInterpretaciones() }

@@ -168,6 +168,31 @@ struct PrimaryDirectionsView: View {
                     createFilteredReportNote()
                 }
                 .disabled(vm.filteredDirections.isEmpty || isCreatingSelectedNote || isCreatingReportNote)
+                if let chart = vm.currentChart {
+                    PDFExportButton(
+                        chartName: chart.name.isEmpty ? "Carta natal" : chart.name,
+                        reportType: "Direcciones primarias",
+                        disabled: vm.filteredDirections.isEmpty,
+                        generate: { pageSize in
+                            let settings = PrimaryDirectionsLongReportSettings(
+                                preset: vm.activePreset,
+                                method: vm.settings.method,
+                                key: vm.settings.key,
+                                aspectPlane: vm.settings.aspectPlane,
+                                minimumWeight: vm.filters.minimumWeight,
+                                includeConverse: vm.filters.directionTypes.contains(.converse)
+                            )
+                            let data = PrimaryDirectionsLongReportBuilder.build(
+                                chart: chart,
+                                settings: settings,
+                                directions: vm.filteredDirections,
+                                speculum: vm.fullSpeculum
+                            )
+                            return try await ReportService().generate(request: PrimaryDirectionsLongReportBuilder.makeRequest(data: data).withPageSize(pageSize))
+                        }
+                    )
+                    .environmentObject(appState)
+                }
                 Spacer()
             }
 

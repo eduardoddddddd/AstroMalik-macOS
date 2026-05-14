@@ -278,6 +278,15 @@ struct LunarReturnView: View {
             }
             .buttonStyle(.bordered)
             .disabled(isCreatingNote || selectedEvent == nil)
+            PDFExportButton(
+                chartName: lrDisplayName(reading.natalChart),
+                reportType: "Revolución lunar",
+                generate: { pageSize in
+                    let request = LunarReturnReportBuilder.makeRequest(reading: reading)
+                    return try await ReportService().generate(request: request.withPageSize(pageSize))
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 12)

@@ -1,15 +1,15 @@
 import Foundation
 
 struct ExtendedNatalReportBuilder {
-    static func generate(from chart: NatalChart) async throws -> Data {
+    static func generate(from chart: NatalChart, pageSize: PDFPageSize = .a4Portrait) async throws -> Data {
         let result = try NatalExtendedAnalysis.compute(chart: chart)
         let data = makeData(chart: chart, result: result)
-        return try await ReportService().generate(request: ReportRequest(templateName: "extended_natal", data: data))
+        return try await ReportService().generate(request: ReportRequest(templateName: "extended_natal", data: data, pageSize: pageSize))
     }
 
-    static func generate(from input: ExtendedNatalReportInput) async throws -> Data {
+    static func generate(from input: ExtendedNatalReportInput, pageSize: PDFPageSize = .a4Portrait) async throws -> Data {
         let data = makeData(chart: input.chart, result: input.result)
-        return try await ReportService().generate(request: ReportRequest(templateName: "extended_natal", data: data))
+        return try await ReportService().generate(request: ReportRequest(templateName: "extended_natal", data: data, pageSize: pageSize))
     }
 
     static func makeData(chart: NatalChart, result: NatalExtendedAnalysisResult, generatedAt: Date = Date()) -> ExtendedNatalReportData {

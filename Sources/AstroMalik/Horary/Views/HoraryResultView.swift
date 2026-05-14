@@ -8,6 +8,8 @@ private struct HoraryTextSection: Identifiable {
 }
 
 struct HoraryResultView: View {
+    @EnvironmentObject private var appState: AppState
+
     let query: SavedHoraryQuery
     var onBack: (() -> Void)? = nil
 
@@ -40,6 +42,16 @@ struct HoraryResultView: View {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Volver") { onBack() }
                     }
+                }
+                ToolbarItem(placement: .primaryAction) {
+                    PDFExportButton(
+                        chartName: query.request.question,
+                        reportType: "Informe horario",
+                        generate: { pageSize in
+                            try await HoraryReportBuilder.generate(from: query, pageSize: pageSize)
+                        }
+                    )
+                    .environmentObject(appState)
                 }
             }
         }

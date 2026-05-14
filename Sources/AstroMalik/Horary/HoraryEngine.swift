@@ -273,32 +273,30 @@ enum HoraryEngine {
         stdout: Pipe,
         stderr: Pipe
     ) async throws -> ProcessResult {
-        try await withThrowingTaskGroup(of: ProcessResult.self) { group in
-            group.addTask {
-                process.waitUntilExit()
-                let stdoutData = stdout.fileHandleForReading.readDataToEndOfFile()
-                let stderrData = stderr.fileHandleForReading.readDataToEndOfFile()
-                return ProcessResult(
-                    exitCode: Int(process.terminationStatus),
-                    stdout: String(decoding: stdoutData, as: UTF8.self),
-                    stderr: String(decoding: stderrData, as: UTF8.self)
-                )
-            }
+        let pollInterval: UInt64 = 50_000_000
+        var waited: UInt64 = 0
 
-            group.addTask {
-                try await Task.sleep(nanoseconds: timeoutNanoseconds)
-                if process.isRunning {
-                    process.terminate()
-                }
-                throw HoraryEngineError.timeout
-            }
-
-            defer { group.cancelAll() }
-            guard let result = try await group.next() else {
-                throw HoraryEngineError.invalidOutput("Horaria no devolvió resultado.")
-            }
-            return result
+        while process.isRunning && waited < timeoutNanoseconds {
+            try await Task.sleep(nanoseconds: pollInterval)
+            waited += pollInterval
         }
+
+        if process.isRunning {
+            process.terminate()
+            try? await Task.sleep(nanoseconds: 250_000_000)
+            if process.isRunning {
+                process.interrupt()
+            }
+            throw HoraryEngineError.timeout
+        }
+
+        let stdoutData = stdout.fileHandleForReading.readDataToEndOfFile()
+        let stderrData = stderr.fileHandleForReading.readDataToEndOfFile()
+        return ProcessResult(
+            exitCode: Int(process.terminationStatus),
+            stdout: String(decoding: stdoutData, as: UTF8.self),
+            stderr: String(decoding: stderrData, as: UTF8.self)
+        )
     }
 }
 

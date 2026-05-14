@@ -1,13 +1,13 @@
 import Foundation
 
 struct SynastryReportBuilder {
-    static func generate(from reading: SynastryReading) async throws -> Data {
+    static func generate(from reading: SynastryReading, pageSize: PDFPageSize = .a4Portrait) async throws -> Data {
         let data = makeData(from: reading)
-        return try await ReportService().generate(request: ReportRequest(templateName: "synastry", data: data))
+        return try await ReportService().generate(request: ReportRequest(templateName: "synastry", data: data, pageSize: pageSize))
     }
 
-    static func generate(from input: SynastryReportInput) async throws -> Data {
-        try await generate(from: input.reading)
+    static func generate(from input: SynastryReportInput, pageSize: PDFPageSize = .a4Portrait) async throws -> Data {
+        try await generate(from: input.reading, pageSize: pageSize)
     }
 
     static func makeData(from reading: SynastryReading, generatedAt: Date = Date()) -> SynastryReportData {

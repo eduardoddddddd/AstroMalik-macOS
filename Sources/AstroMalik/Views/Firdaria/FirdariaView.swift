@@ -58,6 +58,16 @@ struct FirdariaView: View {
             .buttonStyle(.borderedProminent)
             .tint(.appAccentFill)
             .disabled(isCreatingNote)
+
+            PDFExportButton(
+                chartName: chart.name.isEmpty ? "Carta natal" : chart.name,
+                reportType: "Firdaria",
+                generate: { pageSize in
+                    let data = FirdariaLongReportBuilder.build(chart: chart, asOf: targetDate)
+                    return try await ReportService().generate(request: FirdariaLongReportBuilder.makeRequest(data: data).withPageSize(pageSize))
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)

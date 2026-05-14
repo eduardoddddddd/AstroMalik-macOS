@@ -42,6 +42,24 @@ final class JoplinClipperService {
         )
     }
 
+    func createNoteWithPDFResource(title: String, body: String, fileURL: URL) async throws {
+        let notebookID = try await findOrCreateNotebook()
+        let resource = try await uploadResource(fileURL: fileURL)
+        let linkedBody: String
+        if body.contains(":/resource") {
+            linkedBody = body.replacingOccurrences(of: ":/resource", with: ":/\(resource.id)")
+        } else {
+            linkedBody = body + "\n\n[\(fileURL.lastPathComponent)](:/\(resource.id))"
+        }
+        let payload = NotePayload(title: title, body: linkedBody, parentID: notebookID)
+        _ = try await request(
+            path: "/notes",
+            method: "POST",
+            body: payload,
+            responseType: JoplinNote.self
+        )
+    }
+
     private func findOrCreateNotebook() async throws -> String {
         let desired = settings.notebook.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !desired.isEmpty else { throw JoplinClipperError.invalidNotebook }
@@ -99,6 +117,64 @@ final class JoplinClipperService {
             throw JoplinClipperError.httpStatus(http.statusCode)
         }
         return try decoder.decode(Response.self, from: data)
+    }
+
+    private func uploadResource(fileURL: URL) async throws -> JoplinResource {
+        guard let url = makeURL(path: "/resources", page: nil) else {
+            throw JoplinClipperError.invalidURL
+        }
+        let boundary = "AstroMalikBoundary-\(UUID().uuidString)"
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.setValue("AstroMalik/1.0 (macOS)", forHTTPHeaderField: "User-Agent")
+
+        let data = try Data(contentsOf: fileURL)
+        let props = ResourceProps(title: fileURL.lastPathComponent, filename: fileURL.lastPathComponent)
+        request.httpBody = try makeMultipartBody(
+            boundary: boundary,
+            props: props,
+            fileName: fileURL.lastPathComponent,
+            mimeType: "application/pdf",
+            fileData: data
+        )
+
+        let (responseData, response) = try await client.data(for: request)
+        guard let http = response as? HTTPURLResponse else {
+            throw JoplinClipperError.invalidResponse
+        }
+        guard 200..<300 ~= http.statusCode else {
+            throw JoplinClipperError.httpStatus(http.statusCode)
+        }
+        return try decoder.decode(JoplinResource.self, from: responseData)
+    }
+
+    private func makeMultipartBody(
+        boundary: String,
+        props: ResourceProps,
+        fileName: String,
+        mimeType: String,
+        fileData: Data
+    ) throws -> Data {
+        var body = Data()
+        func append(_ string: String) {
+            body.append(Data(string.utf8))
+        }
+
+        let propsData = try encoder.encode(props)
+        append("--\(boundary)\r\n")
+        append("Content-Disposition: form-data; name=\"props\"\r\n")
+        append("Content-Type: application/json\r\n\r\n")
+        body.append(propsData)
+        append("\r\n")
+
+        append("--\(boundary)\r\n")
+        append("Content-Disposition: form-data; name=\"data\"; filename=\"\(fileName)\"\r\n")
+        append("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(fileData)
+        append("\r\n")
+        append("--\(boundary)--\r\n")
+        return body
     }
 
     private func makeURL(path: String, page: Int?) -> URL? {
@@ -200,6 +276,10 @@ private struct JoplinNote: Decodable {
     let id: String
 }
 
+private struct JoplinResource: Decodable {
+    let id: String
+}
+
 private struct FolderPayload: Encodable {
     let title: String
 }
@@ -214,4 +294,9 @@ private struct NotePayload: Encodable {
         case body
         case parentID = "parent_id"
     }
+}
+
+private struct ResourceProps: Encodable {
+    let title: String
+    let filename: String
 }

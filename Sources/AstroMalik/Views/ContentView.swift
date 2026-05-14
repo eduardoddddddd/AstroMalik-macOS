@@ -57,6 +57,12 @@ struct ContentView: View {
                             sidebarItem(item)
                         }
                     }
+
+                    Section("Ajustes") {
+                        ForEach([NavItem.misInformes, NavItem.ajustes]) { item in
+                            sidebarItem(item)
+                        }
+                    }
                 }
                 .listStyle(.sidebar)
                 .scrollContentBackground(.hidden)
@@ -169,6 +175,13 @@ struct ContentView: View {
 
         case .primaryDirections(let chart):
             primaryDirectionsDetail(chart: chart)
+
+        case .myReports:
+            MyReportsView()
+
+        case .settings:
+            SettingsView()
+                .environmentObject(appState)
         }
     }
 

@@ -88,6 +88,26 @@ struct SolarArcDirectionsView: View {
                     exportToJoplin(chart: chart)
                 }
                 .disabled(vm.filteredDirections.isEmpty || isExporting)
+                PDFExportButton(
+                    chartName: chart.name.isEmpty ? "Carta natal" : chart.name,
+                    reportType: "Arco solar",
+                    disabled: vm.filteredDirections.isEmpty || vm.isCalculating,
+                    generate: { pageSize in
+                        let currentAge = SolarArcViewModel.currentAge(for: chart)
+                        let targetDate = Calendar.current.date(byAdding: .day, value: Int(currentAge * 365.25), to: Date()) ?? Date()
+                        let engine = SolarArcEngine()
+                        let arc = engine.solarArcAmount(chart: chart, age: currentAge, mode: vm.mode) ?? 0
+                        let data = SolarArcLongReportBuilder.build(
+                            chart: chart,
+                            mode: vm.mode,
+                            targetDate: targetDate,
+                            currentSolarArc: arc,
+                            directions: vm.filteredDirections
+                        )
+                        return try await ReportService().generate(request: SolarArcLongReportBuilder.makeRequest(data: data).withPageSize(pageSize))
+                    }
+                )
+                .environmentObject(appState)
             }
 
             HStack(spacing: 10) {

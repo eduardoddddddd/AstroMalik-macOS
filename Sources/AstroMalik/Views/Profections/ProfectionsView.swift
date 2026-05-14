@@ -86,6 +86,18 @@ struct ProfectionsView: View {
             .buttonStyle(.borderedProminent)
             .tint(.appAccentFill)
             .disabled(result == nil || isLoading || isCreatingNote)
+
+            PDFExportButton(
+                chartName: chart.name.isEmpty ? "Carta natal" : chart.name,
+                reportType: "Profecciones",
+                disabled: result == nil || isLoading,
+                generate: { pageSize in
+                    guard let result else { throw PDFReportExportViewError.missingData("No hay profecciones calculadas.") }
+                    let request = ProfectionsReportBuilder.makeRequest(result: result, natalChart: chart)
+                    return try await ReportService().generate(request: request.withPageSize(pageSize))
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)

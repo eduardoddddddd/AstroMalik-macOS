@@ -67,6 +67,16 @@ struct ZRView: View {
             .buttonStyle(.borderedProminent)
             .tint(.appAccentFill)
             .disabled(isCreatingNote)
+
+            PDFExportButton(
+                chartName: chart.name.isEmpty ? "Carta natal" : chart.name,
+                reportType: "Zodiacal Releasing",
+                generate: { pageSize in
+                    let data = ZodiacalReleasingLongReportBuilder.build(chart: chart, asOf: targetDate)
+                    return try await ReportService().generate(request: ZodiacalReleasingLongReportBuilder.makeRequest(data: data).withPageSize(pageSize))
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)

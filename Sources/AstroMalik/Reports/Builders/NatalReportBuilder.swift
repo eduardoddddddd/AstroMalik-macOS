@@ -1,9 +1,9 @@
 import Foundation
 
 struct NatalReportBuilder {
-    static func generate(from chart: NatalChart) async throws -> Data {
+    static func generate(from chart: NatalChart, pageSize: PDFPageSize = .a4Portrait) async throws -> Data {
         let data = try makeData(from: chart)
-        return try await ReportService().generate(request: ReportRequest(templateName: "natal", data: data))
+        return try await ReportService().generate(request: ReportRequest(templateName: "natal", data: data, pageSize: pageSize))
     }
 
     static func makeData(from chart: NatalChart, generatedAt: Date = Date()) throws -> NatalReportData {

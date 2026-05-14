@@ -108,6 +108,20 @@ struct MonthlySummaryView: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(summary == nil || isCreatingNote)
+
+            PDFExportButton(
+                chartName: selectedChart?.name.isEmpty == false ? selectedChart?.name ?? "Carta natal" : "Carta natal",
+                reportType: "Resumen mensual \(monthTitle)",
+                disabled: summary == nil || selectedChart == nil || isLoading,
+                generate: { pageSize in
+                    guard let summary, let selectedChart else {
+                        throw PDFReportExportViewError.missingData("No hay resumen mensual personalizado calculado.")
+                    }
+                    let request = MonthlySummaryReportBuilder.makeRequest(summary: summary, natalChart: selectedChart)
+                    return try await ReportService().generate(request: request.withPageSize(pageSize))
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)

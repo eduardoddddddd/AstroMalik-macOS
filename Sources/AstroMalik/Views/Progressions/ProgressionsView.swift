@@ -90,6 +90,18 @@ struct ProgressionsView: View {
             .buttonStyle(.borderedProminent)
             .tint(.appAccentFill)
             .disabled(snapshot == nil || isLoading || isCreatingNote)
+
+            PDFExportButton(
+                chartName: chart.name.isEmpty ? "Carta natal" : chart.name,
+                reportType: "Progresiones secundarias",
+                disabled: snapshot == nil || isLoading,
+                generate: { pageSize in
+                    guard let snapshot else { throw PDFReportExportViewError.missingData("No hay progresiones calculadas.") }
+                    let data = ProgressionsLongReportBuilder.build(chart: chart, snapshot: snapshot, yearlyAspects: aspects)
+                    return try await ReportService().generate(request: ProgressionsLongReportBuilder.makeRequest(data: data).withPageSize(pageSize))
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)

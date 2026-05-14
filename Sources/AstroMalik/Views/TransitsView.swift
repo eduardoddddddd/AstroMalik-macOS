@@ -149,6 +149,23 @@ struct TransitsView: View {
             .buttonStyle(.bordered)
             .disabled(isCreatingNote || state.isCalculating || (state.events.isEmpty && state.houseIngresses.isEmpty))
             .help("Crear una nota Joplin con la consulta de tránsitos actual, el filtro visible y los ingresos por casa.")
+
+            PDFExportButton(
+                chartName: natalChart.name.isEmpty ? "Carta natal" : natalChart.name,
+                reportType: "Informe de tránsitos",
+                disabled: state.isCalculating || (state.events.isEmpty && state.houseIngresses.isEmpty),
+                generate: { pageSize in
+                    let request = TransitsReportBuilder.makeRequest(
+                        chart: natalChart,
+                        events: state.events,
+                        houseIngresses: state.houseIngresses,
+                        from: state.fromDate,
+                        to: state.toDate
+                    )
+                    return try await ReportService().generate(request: request.withPageSize(pageSize))
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)

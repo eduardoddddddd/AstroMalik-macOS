@@ -40,6 +40,22 @@ struct NatalExtendedAnalysisView: View {
             }
             .disabled(result == nil || isExporting)
             .buttonStyle(.borderedProminent)
+
+            PDFExportButton(
+                chartName: chart.name.isEmpty ? "Carta natal" : chart.name,
+                reportType: "Análisis natal extendido",
+                disabled: result == nil || isLoading,
+                generate: { pageSize in
+                    if let result {
+                        return try await ExtendedNatalReportBuilder.generate(
+                            from: ExtendedNatalReportInput(chart: chart, result: result),
+                            pageSize: pageSize
+                        )
+                    }
+                    return try await ExtendedNatalReportBuilder.generate(from: chart, pageSize: pageSize)
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(18)
     }

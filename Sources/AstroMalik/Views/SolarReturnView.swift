@@ -235,6 +235,15 @@ struct SolarReturnView: View {
                 else { Label("Crear nota Joplin", systemImage: "note.text.badge.plus") }
             }
             .buttonStyle(.bordered).disabled(isCreatingNote)
+            PDFExportButton(
+                chartName: srDisplayName(reading.natalChart),
+                reportType: "Revolución solar \(reading.year)",
+                generate: { pageSize in
+                    let request = SolarReturnReportBuilder.makeRequest(reading: reading)
+                    return try await ReportService().generate(request: request.withPageSize(pageSize))
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(.horizontal, 18).padding(.vertical, 12)
         .background(Color.appSurface)

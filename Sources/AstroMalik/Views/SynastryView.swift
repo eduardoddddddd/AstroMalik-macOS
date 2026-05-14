@@ -162,6 +162,14 @@ struct SynastryView: View {
             }
             .buttonStyle(.bordered)
             .disabled(isCreatingNote)
+            PDFExportButton(
+                chartName: "\(displayName(reading.chartA)) + \(displayName(reading.chartB))",
+                reportType: "Informe de sinastría",
+                generate: { pageSize in
+                    try await SynastryReportBuilder.generate(from: reading, pageSize: pageSize)
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 11)

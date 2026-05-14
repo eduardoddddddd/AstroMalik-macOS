@@ -89,6 +89,18 @@ struct EphemerisCalendarView: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(monthData == nil || isCreatingNote)
+
+            PDFExportButton(
+                chartName: appState.activeNatalChart?.name.isEmpty == false ? appState.activeNatalChart?.name ?? "Efemérides" : "Efemérides",
+                reportType: "Calendario \(monthTitle)",
+                disabled: monthData == nil || isLoading,
+                generate: { pageSize in
+                    guard let monthData else { throw PDFReportExportViewError.missingData("No hay calendario mensual calculado.") }
+                    let request = CalendarReportBuilder.makeRequest(month: monthData, chartForCover: appState.activeNatalChart)
+                    return try await ReportService().generate(request: request.withPageSize(pageSize))
+                }
+            )
+            .environmentObject(appState)
         }
         .padding(16)
     }

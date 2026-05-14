@@ -1,10 +1,18 @@
 import SwiftUI
+import AppKit
 
 struct SettingsView: View {
     @EnvironmentObject var appState: AppState
+    @ObservedObject private var lastReportStore = PDFReportLastJobStore.shared
+    @AppStorage(PDFReportPreferenceKeys.uploadToJoplin) private var uploadPDFsToJoplin = false
+    @AppStorage(PDFReportPreferenceKeys.openAutomatically) private var openPDFAutomatically = true
+    @AppStorage(PDFReportPreferenceKeys.pageSize) private var pdfPageSizeRaw = PDFReportPagePreference.a4.rawValue
     @State private var pdSettings: PDSettings = PDSettings.load()
     @State private var anthropicAPIKeyInput = ""
     @State private var anthropicKeyMessage: String?
+    @State private var pdfFolderMessage: String?
+    @State private var isRegeneratingPDF = false
+    @State private var pdfRegenerationMessage: String?
 
     var body: some View {
         Form {
@@ -39,6 +47,72 @@ struct SettingsView: View {
                 Text("Predeterminados al abrir Direcciones Primarias. Ajustables por carta desde esa vista.")
                     .font(.caption)
                     .foregroundColor(.secondary)
+            }
+
+            Section("Informes PDF") {
+                VStack(alignment: .leading, spacing: 10) {
+                    statusRow(title: "Carpeta", value: reportsFolderDisplay, tone: .secondary)
+                    HStack(spacing: 10) {
+                        Button("Elegir carpeta…") {
+                            chooseReportsFolder()
+                        }
+                        .buttonStyle(.bordered)
+
+                        Button("Restaurar default") {
+                            UserDefaults.standard.removeObject(forKey: PDFReportPreferenceKeys.defaultFolderBookmark)
+                            pdfFolderMessage = "Carpeta por defecto: \(PDFReportPersistence.defaultReportsFolderURL.path)"
+                        }
+                        .buttonStyle(.borderless)
+                    }
+
+                    Toggle("Subir cada PDF a Joplin como adjunto además de guardarlo en disco", isOn: $uploadPDFsToJoplin)
+                        .toggleStyle(.checkbox)
+                    Toggle("Abrir el PDF en Preview automáticamente al generar", isOn: $openPDFAutomatically)
+                        .toggleStyle(.checkbox)
+
+                    Picker("Tamaño de página", selection: $pdfPageSizeRaw) {
+                        ForEach(PDFReportPagePreference.allCases) { preference in
+                            Text(preference.label).tag(preference.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .frame(width: 220)
+
+                    HStack(spacing: 10) {
+                        Button("Regenerar último informe") {
+                            regenerateLastReport()
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(Color.appAccentFill)
+                        .disabled(lastReportStore.lastJob == nil || isRegeneratingPDF)
+
+                        if isRegeneratingPDF {
+                            ProgressView()
+                                .controlSize(.small)
+                        }
+                    }
+
+                    if let lastJob = lastReportStore.lastJob {
+                        Text("Último builder: \(lastJob.label)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text("Todavía no hay un informe exportado en esta sesión.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+
+                    if let pdfFolderMessage {
+                        Label(pdfFolderMessage, systemImage: pdfFolderMessage.contains("Error") ? "exclamationmark.triangle" : "checkmark.circle.fill")
+                            .font(.caption)
+                            .foregroundStyle(pdfFolderMessage.contains("Error") ? Color.appWarning : Color.appSecondaryAccent)
+                    }
+                    if let pdfRegenerationMessage {
+                        Label(pdfRegenerationMessage, systemImage: pdfRegenerationMessage.contains("Error") ? "exclamationmark.triangle" : "checkmark.circle.fill")
+                            .font(.caption)
+                            .foregroundStyle(pdfRegenerationMessage.contains("Error") ? Color.appWarning : Color.appSecondaryAccent)
+                    }
+                }
             }
 
             Section("Anthropic API") {
@@ -202,6 +276,10 @@ struct SettingsView: View {
         }
     }
 
+    private var reportsFolderDisplay: String {
+        (try? PDFReportPersistence.reportsFolderURL().path) ?? PDFReportPersistence.defaultReportsFolderURL.path
+    }
+
     private var joplinHostBinding: Binding<String> {
         Binding(
             get: { appState.joplinSettings.host },
@@ -245,6 +323,48 @@ struct SettingsView: View {
     private func deleteAnthropicAPIKey() {
         AnthropicClient().deleteAPIKey()
         anthropicKeyMessage = "Key eliminada del Keychain."
+    }
+
+    private func chooseReportsFolder() {
+        let panel = NSOpenPanel()
+        panel.title = "Elegir carpeta para informes PDF"
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.canCreateDirectories = true
+        panel.allowsMultipleSelection = false
+        panel.directoryURL = try? PDFReportPersistence.reportsFolderURL()
+        if panel.runModal() == .OK, let url = panel.url {
+            do {
+                try PDFReportPersistence.storeReportsFolder(url)
+                pdfFolderMessage = "Carpeta guardada: \(url.path)"
+            } catch {
+                pdfFolderMessage = "Error al guardar carpeta: \(error.localizedDescription)"
+            }
+        }
+    }
+
+    private func regenerateLastReport() {
+        guard let lastJob = lastReportStore.lastJob else { return }
+        isRegeneratingPDF = true
+        pdfRegenerationMessage = nil
+        let settings = appState.joplinSettings
+        Task {
+            do {
+                if let result = try await PDFReportExportCoordinator.export(
+                    chartName: lastJob.chartName,
+                    reportType: lastJob.reportType,
+                    joplinSettings: settings,
+                    generate: lastJob.generate
+                ) {
+                    pdfRegenerationMessage = "Último informe regenerado: \(result.url.lastPathComponent)"
+                } else {
+                    pdfRegenerationMessage = "Regeneración cancelada."
+                }
+            } catch {
+                pdfRegenerationMessage = "Error al regenerar: \(error.localizedDescription)"
+            }
+            isRegeneratingPDF = false
+        }
     }
 
     private func statusRow(title: String, value: String, tone: Color) -> some View {

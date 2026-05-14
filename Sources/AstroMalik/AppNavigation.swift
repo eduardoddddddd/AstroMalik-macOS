@@ -16,6 +16,8 @@ enum NavItem: String, CaseIterable, Identifiable {
     case efemerides  = "Efemérides"
     case horaria     = "Horaria"
     case direccionesPrimarias = "Direcciones Primarias"
+    case misInformes = "Mis informes"
+    case ajustes     = "Ajustes"
 
     var id: String { rawValue }
 
@@ -36,6 +38,8 @@ enum NavItem: String, CaseIterable, Identifiable {
         case .efemerides: return "calendar.day.timeline.leading"
         case .horaria:    return "questionmark.bubble"
         case .direccionesPrimarias: return "arrow.triangle.swap"
+        case .misInformes: return "doc.richtext"
+        case .ajustes: return "gearshape"
         }
     }
 }
@@ -65,6 +69,8 @@ enum DetailRoute: Equatable {
     case horaryHome(HoraryHomeTab)
     case horaryResult(SavedHoraryQuery, returnTo: HoraryHomeTab)
     case primaryDirections(NatalChart)
+    case myReports
+    case settings
 
     var viewIdentity: String {
         switch self {
@@ -102,6 +108,10 @@ enum DetailRoute: Equatable {
             return "horaryResult-\(query.id.uuidString)"
         case .primaryDirections(let chart):
             return "primaryDirections-\(chart.id.uuidString)"
+        case .myReports:
+            return "myReports"
+        case .settings:
+            return "settings"
         }
     }
 }
