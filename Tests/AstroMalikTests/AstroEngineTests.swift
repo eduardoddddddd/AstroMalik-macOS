@@ -345,7 +345,7 @@ final class AstroEngineTests: XCTestCase {
         XCTAssertTrue(reading.interpretations.contains { $0.titulo.contains("de revolución") })
         XCTAssertTrue((1...12).contains(reading.natalHouseForSolarAsc))
         XCTAssertTrue((1...12).contains(reading.natalHouseForSolarMC))
-        XCTAssertEqual(reading.solarPlanetsInNatalHouses.count, 10)
+        XCTAssertEqual(reading.solarPlanetsInNatalHouses.count, reading.solarChart.bodies.count)
     }
 
     func testSolarReturnThrowsWhenNatalSunIsMissing() throws {
@@ -488,7 +488,7 @@ final class AstroEngineTests: XCTestCase {
         XCTAssertTrue((1...12).contains(first.moon.house))
         XCTAssertTrue((1...12).contains(first.natalHouseForReturnAsc))
         XCTAssertTrue((1...12).contains(first.natalHouseForReturnMC))
-        XCTAssertEqual(first.returnPlanetsInNatalHouses.count, 10)
+        XCTAssertEqual(first.returnPlanetsInNatalHouses.count, first.returnChart.bodies.count)
         XCTAssertFalse(first.dominantAspects.isEmpty)
         XCTAssertGreaterThan(reading.statistics.maxSpeed, reading.statistics.minSpeed)
     }

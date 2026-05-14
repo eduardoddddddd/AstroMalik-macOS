@@ -8,6 +8,11 @@ enum NavItem: String, CaseIterable, Identifiable {
     case revolucionSolar = "Revolución Solar"
     case revolucionLunar = "Revolución Lunar"
     case transitos   = "Tránsitos"
+    case progresiones = "Progresiones"
+    case profecciones = "Profecciones"
+    case firdaria    = "Firdaria"
+    case zodiacalReleasing = "Zodiacal Releasing"
+    case crossPersonal = "Estado cross"
     case efemerides  = "Efemérides"
     case horaria     = "Horaria"
     case direccionesPrimarias = "Direcciones Primarias"
@@ -23,6 +28,11 @@ enum NavItem: String, CaseIterable, Identifiable {
         case .revolucionSolar: return "sun.max.circle"
         case .revolucionLunar: return "moon.circle"
         case .transitos:  return "calendar.circle"
+        case .progresiones: return "moonphase.waxing.crescent"
+        case .profecciones: return "clock.arrow.circlepath"
+        case .firdaria: return "hourglass.circle"
+        case .zodiacalReleasing: return "arrow.triangle.branch"
+        case .crossPersonal: return "scope"
         case .efemerides: return "calendar.day.timeline.leading"
         case .horaria:    return "questionmark.bubble"
         case .direccionesPrimarias: return "arrow.triangle.swap"
@@ -46,6 +56,11 @@ enum DetailRoute: Equatable {
     case lunarReturn
     case savedCharts
     case transits
+    case progressions
+    case profections
+    case firdaria
+    case zodiacalReleasing
+    case crossPersonal
     case ephemeris
     case horaryHome(HoraryHomeTab)
     case horaryResult(SavedHoraryQuery, returnTo: HoraryHomeTab)
@@ -69,6 +84,16 @@ enum DetailRoute: Equatable {
             return "savedCharts"
         case .transits:
             return "transits"
+        case .progressions:
+            return "progressions"
+        case .profections:
+            return "profections"
+        case .firdaria:
+            return "firdaria"
+        case .zodiacalReleasing:
+            return "zodiacalReleasing"
+        case .crossPersonal:
+            return "crossPersonal"
         case .ephemeris:
             return "ephemeris"
         case .horaryHome(let tab):

@@ -6,6 +6,9 @@ struct TransitsView: View {
     var natalChart: NatalChart
     @ObservedObject var state: TransitWorkspaceState
     @State private var calculationTask: Task<Void, Never>? = nil
+    @State private var noteTask: Task<Void, Never>? = nil
+    @State private var isCreatingNote = false
+    @State private var noteStatus: String? = nil
     @State private var showHouseIngresses = false
     @State private var selectedHouseIngress: TransitHouseIngress? = nil
 
@@ -68,7 +71,9 @@ struct TransitsView: View {
         }
         .onDisappear {
             calculationTask?.cancel()
+            noteTask?.cancel()
             calculationTask = nil
+            noteTask = nil
             state.isCalculating = false
         }
         .sheet(item: $state.selectedEvent) { event in
@@ -109,6 +114,11 @@ struct TransitsView: View {
                 .help("Foco muestra solo los tránsitos prioritarios por combinación de técnica, relevancia personal e impacto temporal.")
             }
             Spacer()
+            if let noteStatus {
+                Text(noteStatus)
+                    .font(.caption)
+                    .foregroundColor(.appSecondaryAccent)
+            }
             if !state.houseIngresses.isEmpty {
                 Button {
                     showHouseIngresses = true
@@ -131,6 +141,14 @@ struct TransitsView: View {
             .buttonStyle(.borderedProminent)
             .tint(.appAccentFill)
             .disabled(state.isCalculating)
+            Button {
+                createJoplinNote()
+            } label: {
+                Label(isCreatingNote ? "Creando…" : "Joplin", systemImage: "square.and.pencil")
+            }
+            .buttonStyle(.bordered)
+            .disabled(isCreatingNote || state.isCalculating || (state.events.isEmpty && state.houseIngresses.isEmpty))
+            .help("Crear una nota Joplin con la consulta de tránsitos actual, el filtro visible y los ingresos por casa.")
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
@@ -466,6 +484,7 @@ struct TransitsView: View {
         calculationTask?.cancel()
         state.isCalculating = true
         state.error = nil
+        noteStatus = nil
 
         let chart = natalChart
         let fromDate = state.fromDate
@@ -503,6 +522,49 @@ struct TransitsView: View {
             }
             if !Task.isCancelled {
                 state.isCalculating = false
+            }
+        }
+    }
+
+    private func createJoplinNote() {
+        noteTask?.cancel()
+        isCreatingNote = true
+        noteStatus = nil
+        state.error = nil
+
+        let settings = appState.joplinSettings
+        let chart = natalChart
+        let fromDate = state.fromDate
+        let toDate = state.toDate
+        let excludeMoon = state.excludeMoon
+        let focusFilter = state.focusFilter
+        let visibleEvents = filtered
+        let allEvents = state.events.sorted(by: transitPrioritySort)
+        let houseIngresses = state.houseIngresses
+        let title = TransitsNoteBuilder.noteTitle(natalChart: chart, fromDate: fromDate, toDate: toDate)
+        let body = TransitsNoteBuilder.markdown(
+            natalChart: chart,
+            fromDate: fromDate,
+            toDate: toDate,
+            excludeMoon: excludeMoon,
+            focusFilter: focusFilter,
+            visibleEvents: visibleEvents,
+            allEvents: allEvents,
+            houseIngresses: houseIngresses
+        )
+
+        noteTask = Task {
+            do {
+                let service = JoplinClipperService(settings: settings)
+                try await service.createNote(title: title, body: body)
+                guard !Task.isCancelled else { return }
+                noteStatus = "Nota creada en Joplin."
+            } catch {
+                guard !Task.isCancelled else { return }
+                state.error = error.localizedDescription
+            }
+            if !Task.isCancelled {
+                isCreatingNote = false
             }
         }
     }

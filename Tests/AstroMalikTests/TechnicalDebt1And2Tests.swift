@@ -142,7 +142,7 @@ final class PDInterpretationContextBuilderTests: XCTestCase {
     // MARK: - Test helpers
 
     private func makeChart(sunHouse: Int = 10, bodies: [PlanetBody]? = nil) -> NatalChart {
-        var chartBodies: [PlanetBody] = bodies ?? [
+        let chartBodies: [PlanetBody] = bodies ?? [
             PlanetBody(key: "SOL", label: "☉ Sol", longitude: 197.5,
                        formatted: "♎ Libra 17°30'", house: sunHouse, retrograde: false),
             PlanetBody(key: "LUNA", label: "☽ Luna", longitude: 60.5,

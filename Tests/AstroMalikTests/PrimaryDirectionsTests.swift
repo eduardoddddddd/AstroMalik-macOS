@@ -63,7 +63,7 @@ final class PrimaryDirectionsTests: XCTestCase {
         let obliquity = 23.44
 
         // MC longitude doesn't matter for this test; what matters is RA = RAMC
-        let (mcRA, mcDecl) = calculator.eclipticToEquatorial(
+        let (_, mcDecl) = calculator.eclipticToEquatorial(
             lon: 200.0, lat: 0, obliquity: obliquity
         )
 
