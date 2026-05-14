@@ -1,0 +1,3 @@
+import AstroMalik
+
+AstroMalikApp.main()

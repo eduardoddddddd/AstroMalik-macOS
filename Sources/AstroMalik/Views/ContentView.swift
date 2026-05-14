@@ -30,11 +30,33 @@ struct ContentView: View {
                 .padding(.top, 20)
                 .padding(.bottom, 14)
 
-                List(NavItem.allCases, selection: $appState.selectedNav) { item in
-                    Label(item.rawValue, systemImage: item.systemImage)
-                        .font(.body.weight(.medium))
-                        .tag(item)
-                        .padding(.vertical, 3)
+                List(selection: $appState.selectedNav) {
+                    Section("Cartas") {
+                        ForEach([NavItem.nuevaCarta, NavItem.cartas, NavItem.lectura]) { item in
+                            sidebarItem(item)
+                        }
+                    }
+
+                    Section("Predictivas") {
+                        ForEach([NavItem.profecciones, NavItem.firdaria, NavItem.zodiacalReleasing, NavItem.crossPersonal]) { item in
+                            sidebarItem(item)
+                        }
+                    }
+
+                    Section("Técnicas") {
+                        ForEach([
+                            NavItem.transitos,
+                            NavItem.progresiones,
+                            NavItem.direccionesPrimarias,
+                            NavItem.revolucionSolar,
+                            NavItem.revolucionLunar,
+                            NavItem.sinastria,
+                            NavItem.efemerides,
+                            NavItem.horaria,
+                        ]) { item in
+                            sidebarItem(item)
+                        }
+                    }
                 }
                 .listStyle(.sidebar)
                 .scrollContentBackground(.hidden)
@@ -107,6 +129,25 @@ struct ContentView: View {
         case .transits:
             transitosDetail
 
+        case .progressions:
+            ProgressionsView(chart: appState.activeNatalChart)
+                .environmentObject(appState)
+
+        case .profections:
+            ProfectionsView(chart: appState.activeNatalChart)
+                .environmentObject(appState)
+
+        case .firdaria:
+            FirdariaView(chart: appState.activeNatalChart ?? appState.userStore.savedCharts.first)
+                .environmentObject(appState)
+
+        case .zodiacalReleasing:
+            ZRView(chart: appState.activeNatalChart ?? appState.userStore.savedCharts.first)
+                .environmentObject(appState)
+
+        case .crossPersonal:
+            crossPersonalDetail
+
         case .ephemeris:
             EphemerisCalendarView()
                 .environmentObject(appState)
@@ -128,6 +169,35 @@ struct ContentView: View {
 
         case .primaryDirections(let chart):
             primaryDirectionsDetail(chart: chart)
+        }
+    }
+
+    private func sidebarItem(_ item: NavItem) -> some View {
+        Label(item.rawValue, systemImage: item.systemImage)
+            .font(.body.weight(.medium))
+            .tag(item)
+            .padding(.vertical, 3)
+    }
+
+    // MARK: - Cross Personal Detail
+
+    @ViewBuilder
+    private var crossPersonalDetail: some View {
+        if let chart = appState.activeNatalChart ?? appState.userStore.savedCharts.first {
+            CrossPersonalView(chart: chart)
+                .environmentObject(appState)
+        } else {
+            VStack(spacing: 12) {
+                Image(systemName: "scope")
+                    .font(.system(size: 48))
+                    .foregroundColor(.secondary)
+                Text("Guarda o abre una carta natal para calcular el estado cross.")
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 360)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.appBackground)
         }
     }
 

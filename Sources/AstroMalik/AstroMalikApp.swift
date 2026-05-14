@@ -1,18 +1,18 @@
 import SwiftUI
 import AppKit
 
-@main
-struct AstroMalikApp: App {
+public struct AstroMalikApp: App {
     @StateObject private var appState = AppState()
 
-    init() {
+    public init() {
         // Forzar que el ejecutable SPM se registre como app GUI regular
         // y gane foco al arrancar, en lugar de quedar como proceso en segundo plano.
         NSApplication.shared.setActivationPolicy(.regular)
         NSApplication.shared.activate(ignoringOtherApps: true)
+        ReportSmoke.runIfRequestedFromEnvironment()
     }
 
-    var body: some Scene {
+    public var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(appState)
@@ -100,6 +100,16 @@ final class AppState: ObservableObject {
             detailRoute = .lunarReturn
         case .transitos:
             detailRoute = .transits
+        case .progresiones:
+            detailRoute = .progressions
+        case .profecciones:
+            detailRoute = .profections
+        case .firdaria:
+            detailRoute = .firdaria
+        case .zodiacalReleasing:
+            detailRoute = .zodiacalReleasing
+        case .crossPersonal:
+            detailRoute = .crossPersonal
         case .efemerides:
             detailRoute = .ephemeris
         case .horaria:
