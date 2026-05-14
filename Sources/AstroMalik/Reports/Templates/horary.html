@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{header.reportTitle}} — {{header.chartName}}</title>
+  <style>
+{{> _glyphs_css}}
+{{> _theme_css}}
+{{> _print_css}}
+.report-card { margin: 0 0 12pt; padding: 10pt 12pt; border: 0.5pt solid var(--neutral-rule); background: rgba(255,255,255,.24); break-inside: avoid; }
+.report-card h3 { margin-top: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+.small-text { font-family: var(--font-ui); font-size: 9pt; color: var(--ink-soft); }
+.bar-row { display: grid; grid-template-columns: 70pt 1fr 36pt; gap: 8pt; align-items: center; margin: 5pt 0; font-family: var(--font-ui); font-size: 9pt; }
+.bar-track { height: 10pt; background: rgba(216,205,180,.55); border-radius: 99px; overflow: hidden; }
+.bar-fill { height: 10pt; background: var(--gold); border-radius: 99px; }
+  </style>
+</head>
+<body>
+  <header class="report-header" aria-label="Cabecera del informe">
+    <div class="report-header__title">{{header.reportTitle}}</div>
+    <div class="report-header__chart">{{header.chartName}}</div>
+  </header>
+  <main class="report-body">
+<section class="cover-page" aria-label="Portada horaria"><div class="cover-content"><div class="cover-kicker">Astrología horaria</div><h1 class="cover-title">{{header.reportTitle}}</h1><div class="cover-chart">{{question}}</div><div class="cover-meta"><div>{{placeAndTime}}</div><div><strong>Generación:</strong> {{generatedDate}}</div></div></div></section>
+{{> _toc}}
+<section class="report-section">
+  <h2>Pregunta</h2>
+  <div class="callout"><p>{{question}}</p><p class="small-text">{{placeAndTime}}</p></div>
+</section>
+<section class="report-section">
+  <h2>Carta horaria</h2>
+  <figure class="chart-figure">{{{chartSVG}}}<figcaption>Rueda SVG horaria con casas tradicionales y cuerpos del engine.</figcaption></figure>
+</section>
+<section class="report-section page-break">
+  <h2>Significadores</h2>
+  {{#each significators}}<div class="report-card"><strong>{{label}}</strong>: {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section">
+  <h2>Dignidades esenciales y accidentales</h2>
+  <table><thead><tr><th>Planeta</th><th>Posición</th><th>Tags</th><th>Total</th></tr></thead><tbody>{{#each dignityRows}}<tr><td>{{planet}}</td><td>{{position}}</td><td>{{dignities}}</td><td>{{score}}</td></tr>{{/each}}</tbody></table>
+</section>
+<section class="report-section page-break">
+  <h2>Veredicto estructurado</h2>
+  {{#each verdictRows}}<div class="report-card"><strong>{{label}}</strong>: {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section">
+  <h2>Factores a favor</h2>
+  {{#each supportingFactors}}<div class="report-card"><strong>{{label}}</strong> {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section">
+  <h2>Factores en contra</h2>
+  {{#each blockingFactors}}<div class="report-card"><strong>{{label}}</strong> {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section page-break">
+  <h2>Notas técnicas</h2>
+  {{#each technicalNotes}}<div class="report-card"><strong>{{label}}</strong>: {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section page-break">
+  <h2>Espéculo completo</h2>
+  <table><thead><tr><th>Glifo</th><th>Cuerpo</th><th>Posición</th><th>Signo</th><th>Casa</th><th>Estado</th></tr></thead><tbody>{{#each speculumRows}}<tr><td class="glyph">{{glyph}}</td><td>{{body}}</td><td>{{position}}</td><td>{{sign}}</td><td>{{house}}</td><td>{{retrograde}}</td></tr>{{/each}}</tbody></table>
+  <h3>Aspectos horarios</h3>
+  <table><thead><tr><th>A</th><th>Aspecto</th><th>B</th><th>Orbe</th><th>Estado</th></tr></thead><tbody>{{#each aspectRows}}<tr><td>{{left}}</td><td>{{aspect}}</td><td>{{right}}</td><td>{{orb}}</td><td>{{corpusKey}} — {{text}}</td></tr>{{/each}}</tbody></table>
+</section>
+  </main>
+  <footer class="report-footer" aria-label="Pie del informe">
+    <div class="report-footer__center">Generado por AstroMalik · {{generatedDate}}</div>
+    <div class="report-footer__page" aria-label="Número de página"></div>
+  </footer>
+</body>
+</html>

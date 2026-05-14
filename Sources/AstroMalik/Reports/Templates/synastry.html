@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{header.reportTitle}} — {{header.chartName}}</title>
+  <style>
+{{> _glyphs_css}}
+{{> _theme_css}}
+{{> _print_css}}
+.report-card { margin: 0 0 12pt; padding: 10pt 12pt; border: 0.5pt solid var(--neutral-rule); background: rgba(255,255,255,.24); break-inside: avoid; }
+.report-card h3 { margin-top: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+.small-text { font-family: var(--font-ui); font-size: 9pt; color: var(--ink-soft); }
+.bar-row { display: grid; grid-template-columns: 70pt 1fr 36pt; gap: 8pt; align-items: center; margin: 5pt 0; font-family: var(--font-ui); font-size: 9pt; }
+.bar-track { height: 10pt; background: rgba(216,205,180,.55); border-radius: 99px; overflow: hidden; }
+.bar-fill { height: 10pt; background: var(--gold); border-radius: 99px; }
+  </style>
+</head>
+<body>
+  <header class="report-header" aria-label="Cabecera del informe">
+    <div class="report-header__title">{{header.reportTitle}}</div>
+    <div class="report-header__chart">{{header.chartName}}</div>
+  </header>
+  <main class="report-body">
+<section class="cover-page" aria-label="Portada">
+  <div class="cover-content"><div class="cover-kicker">Informe relacional profesional</div><h1 class="cover-title">{{header.reportTitle}}</h1><div class="cover-chart">{{chartAName}} + {{chartBName}}</div><div class="cover-meta"><div><strong>Carta A:</strong> {{chartADetails}}</div><div><strong>Carta B:</strong> {{chartBDetails}}</div><div><strong>Generación:</strong> {{generatedDate}}</div></div></div>
+</section>
+{{> _toc}}
+<section class="report-section">
+  <h2>Rueda doble SVG</h2>
+  <figure class="chart-figure">{{{doubleWheelSVG}}}<figcaption>Interior: Carta A. Exterior: Carta B. Líneas: contactos inter-carta.</figcaption></figure>
+</section>
+<section class="report-section page-break">
+  <h2>Aspectos A→B</h2>
+  <table><thead><tr><th>A</th><th>Aspecto</th><th>B</th><th>Orbe</th><th>Clave</th></tr></thead><tbody>{{#each aspectsAToB}}<tr><td>{{left}}</td><td>{{aspect}}</td><td>{{right}}</td><td>{{orb}}</td><td>{{corpusKey}}</td></tr><tr><td colspan="5">{{text}}</td></tr>{{/each}}</tbody></table>
+</section>
+<section class="report-section page-break">
+  <h2>Aspectos B→A</h2>
+  <table><thead><tr><th>B</th><th>Aspecto</th><th>A</th><th>Orbe</th><th>Clave</th></tr></thead><tbody>{{#each aspectsBToA}}<tr><td>{{left}}</td><td>{{aspect}}</td><td>{{right}}</td><td>{{orb}}</td><td>{{corpusKey}}</td></tr><tr><td colspan="5">{{text}}</td></tr>{{/each}}</tbody></table>
+</section>
+<section class="report-section page-break">
+  <h2>Casas mutuas</h2>
+  <div class="two-col"><div><h3>Planetas de B en casas de A</h3>{{#each housesBInA}}<div class="report-card"><strong>{{label}}</strong> — {{value}}<p>{{detail}}</p></div>{{/each}}</div><div><h3>Planetas de A en casas de B</h3>{{#each housesAInB}}<div class="report-card"><strong>{{label}}</strong> — {{value}}<p>{{detail}}</p></div>{{/each}}</div></div>
+</section>
+<section class="report-section page-break">
+  <h2>Lectura comparativa narrativa</h2>
+  {{#each narrative}}<article class="report-card"><h3>{{title}}</h3><p class="small-text">{{subtitle}} · {{source}}</p><p>{{text}}</p></article>{{/each}}
+</section>
+  </main>
+  <footer class="report-footer" aria-label="Pie del informe">
+    <div class="report-footer__center">Generado por AstroMalik · {{generatedDate}}</div>
+    <div class="report-footer__page" aria-label="Número de página"></div>
+  </footer>
+</body>
+</html>

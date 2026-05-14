@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{header.reportTitle}} — {{header.chartName}}</title>
+  <style>
+{{> _glyphs_css}}
+{{> _theme_css}}
+{{> _print_css}}
+.report-card { margin: 0 0 12pt; padding: 10pt 12pt; border: 0.5pt solid var(--neutral-rule); background: rgba(255,255,255,.24); break-inside: avoid; }
+.report-card h3 { margin-top: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+.small-text { font-family: var(--font-ui); font-size: 9pt; color: var(--ink-soft); }
+.bar-row { display: grid; grid-template-columns: 70pt 1fr 36pt; gap: 8pt; align-items: center; margin: 5pt 0; font-family: var(--font-ui); font-size: 9pt; }
+.bar-track { height: 10pt; background: rgba(216,205,180,.55); border-radius: 99px; overflow: hidden; }
+.bar-fill { height: 10pt; background: var(--gold); border-radius: 99px; }
+  </style>
+</head>
+<body>
+  <header class="report-header" aria-label="Cabecera del informe">
+    <div class="report-header__title">{{header.reportTitle}}</div>
+    <div class="report-header__chart">{{header.chartName}}</div>
+  </header>
+  <main class="report-body">
+{{> _cover}}
+{{> _toc}}
+<section class="report-section">
+  <h2>Lotes helenísticos (7)</h2>
+  {{#each lotRows}}<article class="report-card"><h3>{{label}}</h3><p><strong>{{value}}</strong></p><p>{{detail}}</p></article>{{/each}}
+</section>
+<section class="report-section page-break">
+  <h2>Almuten Figuris</h2>
+  <table><thead><tr><th>Planeta / punto</th><th>Valor</th><th>Detalle</th></tr></thead><tbody>{{#each almutenRows}}<tr><td>{{label}}</td><td>{{value}}</td><td>{{detail}}</td></tr>{{/each}}</tbody></table>
+  <h3>Tabla de puntos por punto sensible</h3>
+  <table><thead><tr><th>Punto</th><th>Posición</th><th>Premios</th></tr></thead><tbody>{{#each almutenPointRows}}<tr><td>{{label}}</td><td>{{value}}</td><td>{{detail}}</td></tr>{{/each}}</tbody></table>
+</section>
+<section class="report-section page-break">
+  <h2>Regente de la genitura</h2>
+  {{#each rulerRows}}<div class="report-card"><strong>{{label}}</strong>: {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section">
+  <h2>Configuraciones aspectuales detectadas</h2>
+  {{#each aspectPatternRows}}<div class="report-card"><strong>{{label}}</strong>: {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section page-break">
+  <h2>Distribución elementos/modalidades/hemisferios</h2>
+  {{#each distributionBars}}<div class="bar-row"><div><strong>{{category}}</strong><br>{{name}}</div><div><div class="bar-track"><div class="bar-fill" style="width: {{percent}}%"></div></div><div class="small-text">{{detail}}</div></div><div>{{count}}</div></div>{{/each}}
+</section>
+<section class="report-section page-break">
+  <h2>Recepciones mutuas</h2>
+  {{#each receptionRows}}<div class="report-card"><strong>{{label}}</strong>: {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section">
+  <h2>Antiscia y contraantiscia</h2>
+  {{#each antisciaRows}}<div class="report-card"><strong>{{label}}</strong>: {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section page-break">
+  <h2>Declinaciones paralelas/contraparalelas y OOB</h2>
+  {{#each declinationRows}}<div class="report-card"><strong>{{label}}</strong>: {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+<section class="report-section page-break">
+  <h2>Estrellas fijas sobre puntos sensibles</h2>
+  {{#each fixedStarRows}}<div class="report-card"><strong>{{label}}</strong>: {{value}}<p>{{detail}}</p></div>{{/each}}
+</section>
+  </main>
+  <footer class="report-footer" aria-label="Pie del informe">
+    <div class="report-footer__center">Generado por AstroMalik · {{generatedDate}}</div>
+    <div class="report-footer__page" aria-label="Número de página"></div>
+  </footer>
+</body>
+</html>
