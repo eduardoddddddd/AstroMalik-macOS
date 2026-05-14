@@ -4,6 +4,16 @@ Documento de investigacion e integracion practica de Microsoft Foundry Local en 
 
 Fecha de trabajo inicial: 2026-04-30.
 
+## Relación con Anthropic (1.0)
+
+Desde la versión 1.0 AstroMalik mantiene tres caminos LLM con roles claros:
+
+- **Anthropic Messages API** es el camino principal para el **informe cross-personal**. Es el motor que produce el documento profesional de varias páginas redactado en español sobre el state ya sintetizado. Detalle en [`ANTHROPIC_INTEGRATION.md`](ANTHROPIC_INTEGRATION.md) y [`CROSS_PERSONAL.md`](CROSS_PERSONAL.md). Calidad alta, prompt caching, coste predecible (~$0.05-0.10 por informe completo con Sonnet 4.6).
+- **Foundry Local** (este documento) sigue siendo el camino local para **interpretaciones contextuales** de Direcciones Primarias y Horaria. Sin internet, sin coste por consulta, modelo `qwen2.5-7b` por defecto.
+- **OpenRouter** es la alternativa cloud opcional para interpretaciones de direcciones, cuando no se quiere abrir cuenta directa con Anthropic.
+
+Los tres conviven sin interferirse: cada uno tiene su cliente, su servicio de Keychain y su contrato con la app.
+
 ## Resumen Ejecutivo
 
 Foundry Local es prometedor, pero no hay que tratarlo como magia. La prueba confirma que puede ejecutar modelos locales desde SDK Python en un Mac Apple Silicon, descargar modelos optimizados y responder sin enviar datos a un backend externo. Tambien confirma que la calidad de un modelo pequeno no basta, por si sola, para producir una interpretacion editorial buena en un dominio tecnico.

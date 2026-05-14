@@ -1,185 +1,220 @@
 # Arquitectura de AstroMalik-macOS
 
-AstroMalik-macOS es una app nativa SwiftUI de ventana única. El objetivo actual es uso pro personal: lectura natal guiada, sinastría, revoluciones solar/lunar, archivo local, tránsitos, calendario/efemérides, direcciones primarias y horaria nativa, sin cuentas ni telemetría.
+AstroMalik-macOS es una app nativa SwiftUI de ventana única para uso astrológico personal y profesional, sin cuentas ni telemetría. Desde la versión 1.0 cubre el ciclo completo de la astrología tradicional: análisis natal extendido, predictivas helenísticas y clásicas (profecciones, arco solar, progresiones, firdaria, Zodiacal Releasing, direcciones primarias), motor cross-personal con redacción Anthropic e informes PDF profesionales.
 
-## Ventana Única
+## Empaquetado
+
+Desde 1.0 el `Package.swift` tiene tres targets:
+
+- **`AstroMalik`** — módulo compartido con motores, modelos, vistas y servicios. Es lo que importan tanto la GUI como el CLI.
+- **`AstroMalikApp`** — ejecutable GUI de doble clic; wrapper mínimo sobre `AstroMalik`.
+- **`astromalik-cli`** — ejecutable headless para LaunchAgent y cron; importa `AstroMalik` sin SwiftUI.
+
+Ningún paquete Swift externo. Solo el módulo C `CSwissEph` (Swiss Ephemeris embebido) y SQLite3 del sistema.
+
+## Ventana única
 
 La app usa un solo `WindowGroup` con `NavigationSplitView`. La sidebar decide la sección y el panel derecho contiene el flujo activo:
 
 - Nueva Carta
 - Cartas Guardadas
-- Lectura
+- Lectura · Análisis extendido
 - Sinastría
 - Revolución Solar
 - Revolución Lunar
 - Tránsitos
 - Efemérides
-- Direcciones Primarias
+- **Profecciones**
+- **Progresiones**
+- Direcciones Primarias · Arco Solar
+- **Firdaria**
+- **Zodiacal Releasing**
+- **Cross-personal**
 - Horaria
+- **Mis informes** (PDFs generados)
 
-La arquitectura multi-ventana experimental se retiró. Las cartas y consultas se abren dentro del detalle principal, y el estado vivo queda en `AppState`.
+Las cartas y consultas se abren dentro del detalle principal. El estado vivo queda en `AppState`.
 
-## Estado De Aplicación
+## Estado de aplicación
 
 `AppState` mantiene navegación, tema, configuración de Joplin, carta natal activa y estado persistente de tránsitos. `UserStore` y `HoraryStore` publican datos desde `user.db`.
 
-El archivo de cartas admite metadatos locales:
+El archivo de cartas admite metadatos locales: notas por carta, etiquetas, búsqueda por nombre, fecha, lugar, etiqueta o nota.
 
-- notas por carta
-- etiquetas
-- búsqueda por nombre, fecha, lugar, etiqueta o nota
+Joplin sigue siendo destino documental de salida. Sinastría, Revolución Solar, Revolución Lunar, Efemérides, Direcciones Primarias, Profecciones, Firdaria, ZR y Cross-personal crean notas directas mediante Web Clipper local.
 
-Joplin se trata como destino de salida de lectura. La lectura natal genera una nota Markdown lista para pegar en Joplin; Sinastría, Revolución Solar, Revolución Lunar, Efemérides y Direcciones Primarias crean notas directas mediante Web Clipper local.
+## Motores astronómicos base
 
-## Motores Astronómicos
+`AstroEngine` usa Swiss Ephemeris embebido como target C. Las casas se calculan con `swe_houses_ex2`. La hora local IANA se convierte a JD UT en `JulianDay.swift`. Los errores de fecha/hora/zona se propagan como `LocalizedError`.
 
-`AstroEngine` usa Swiss Ephemeris embebido como target C. Las casas se calculan con `swe_houses_ex2`, capturando código de retorno y mensaje `serr`; esto deja preparada la lectura futura de velocidades de cúspides y ángulos.
+`EssentialDignityEngine` aplica dignidades tradicionales con triplicidad sensible a la secta y cooperante.
 
-La hora local IANA se convierte a JD UT en `JulianDay.swift`. UTC se resuelve sin force unwraps y los errores de fecha/hora/zona se propagan como `LocalizedError`.
+`SectEngine` es el resolutor compartido de secta diurna/nocturna. Calcula luminaria, benéfico, maléfico y contrarios. Lo usan todos los módulos que necesitan asignar benéficos/maléficos: Firdaria, ZR, Almuten Figuris, lotes helenísticos, regente de la geniture y, en revisión, los motores antiguos que duplicaban la regla.
 
 ## Sinastría
 
-La sinastría se implementa sobre cartas guardadas. `AstroEngine.computeSynastryAspects(chartA:chartB:)` calcula los aspectos de los 10 planetas en ambas direcciones, A→B y B→A, usando `ASPECT_DEFS` y la misma diferencia angular que natal/tránsitos.
+`AstroEngine.computeSynastryAspects(chartA:chartB:)` calcula aspectos de los 10 planetas en ambas direcciones. Claves `SYN_<A>_<B>_<ASPECTO>`. Corpus de 420 textos. Vista con dos pickers, rueda doble y filtros.
 
-Cada `SynastryAspect` conserva:
+## Revoluciones
 
-- dirección (`aToB` o `bToA`)
-- planeta origen y planeta destino
-- aspecto, orbe y clave de corpus
-- interpretación opcional
-
-Las claves se generan como:
-
-```text
-SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>
-```
-
-`CorpusStore.lookupSynastry` filtra `tipo = 'sinastria'` y `buildSynastryReading` hidrata los aspectos con textos. El corpus contiene 420 textos de sinastría: 84 pares ordenados por 5 aspectos clásicos. Las ausencias esperadas son planeta consigo mismo y pares entre Urano/Neptuno/Plutón en ambas direcciones.
-
-`SynastryView` muestra dos pickers de cartas guardadas, cálculo manual, resumen de cobertura, lista agrupada por dirección y rueda doble A/B. El toggle “Mostrar sin texto” afecta a la lista y a las líneas dibujadas: los aspectos sin texto aparecen atenuados cuando se muestran.
-
-## Revolución Solar
-
-`SolarReturnEngine` calcula el retorno exacto del Sol con `swe_solcross_ut`. El punto de partida es el 1 de enero UTC del año solicitado; la longitud objetivo es la longitud natal del Sol. El JD exacto no depende del lugar, pero la carta anual sí se levanta con las coordenadas donde la persona estará ese año.
-
-`SolarReturnReading` conserva carta natal, carta anual, JD exacto, fecha/hora local y UTC, casa natal donde caen ASC/MC de revolución, planetas de revolución por casas natales, aspectos dominantes e interpretaciones reutilizadas del corpus natal.
-
-`SolarReturnView` usa una carta guardada, año y buscador de lugar. El resultado ofrece pestañas de rueda solar, superposición natal/solar, lectura técnica y textos. La v1 no persiste revoluciones solares en `user.db`; el archivo profesional del informe se hace creando una nota Joplin directa.
-
-## Revolución Lunar
-
-`LunarReturnEngine` calcula retornos sucesivos de la Luna a su longitud natal con `swe_mooncross_ut`. Cada evento conserva JD exacto, fecha local/UTC, carta de retorno, Luna de retorno, ASC/MC de retorno y casas natales donde caen los ángulos.
-
-La lectura resume foco lunar por casa, tono del Ascendente, intensidad mensual y estadísticas del periodo. La vista expone métricas técnicas y permite crear una nota Joplin directa del ciclo lunar.
-
-## Efemérides
-
-El módulo de Calendario/Efemérides muestra el cielo general, no el cielo respecto a una carta natal. Vive en `Sources/AstroMalik/Engine/Ephemeris/` y se compone de calculadores puros sobre Swiss Ephemeris:
-
-- `LunationCalculator`: Luna Nueva, Luna Llena, cuartos y fase lunar diaria.
-- `EclipseCalculator`: eclipses solares y lunares globales, tipo y magnitud cuando Swiss Ephemeris la devuelve.
-- `StationCalculator`: estaciones directas/retrógradas por cruce de velocidad eclíptica = 0.
-- `SignIngressCalculator`: ingresos en signo, incluyendo retrocesos por retrogradación; la Luna se incluye solo bajo demanda para evitar ruido.
-- `VoidOfCourseCalculator`: Luna vacía de curso desde el último aspecto ptolemaico hasta el ingreso lunar siguiente.
-- `MundaneAspectCalculator`: aspectos mundanos exactos entre planetas en tránsito, con Luna opcional para vistas diarias futuras.
-- `EphemerisEngine`: orquestador mensual y tabla diaria de efemérides.
-
-`EphemerisEngine.computeMonth(year:month:timezone:)` ejecuta los calculadores secuencialmente. Esta decisión es deliberada: `CSwissEph`/Swiss Ephemeris mantiene estado global y las búsquedas de eclipses no son seguras en concurrencia; paralelizarlas con `async let` provocó un crash `signal 11` en tests.
-
-La tabla diaria usa posiciones a las **00:00 UTC**, convención estándar de efemérides, e incluye 10 planetas más Nodo Norte verdadero. `DailyEphemerisRow` conserva longitud, signo, velocidad, retrogradación y fase lunar.
-
-La UI `EphemerisCalendarView` se integra en la sidebar como “Efemérides”, después de Tránsitos. Ofrece vista calendario mensual, detalle del día seleccionado, vista de tabla clásica y exportación directa a Joplin mediante `EphemerisNoteBuilder`.
-
-La tercera pestaña, **Resumen**, convierte el mes de efemérides en un informe predictivo personalizado para la carta natal activa o una carta guardada. `MonthlySummaryEngine` consume el `EphemerisMonth` ya calculado y lo cruza con la carta natal para ubicar lunaciones y eclipses en casas natales, detectar conjunciones a planetas natales, señalar estaciones planetarias con orbe ≤ 3°, y añadir los principales `TransitEvent`/`TransitHouseIngress` del mismo rango mensual. La vista `MonthlySummaryView` calcula tránsitos bajo demanda al entrar en la pestaña, cachea por mes+carta, permite cambiar carta cuando hay varias guardadas y genera una nota Joplin propia con `MonthlySummaryNoteBuilder`.
+`SolarReturnEngine` calcula retorno exacto del Sol con `swe_solcross_ut`. `LunarReturnEngine` calcula retornos sucesivos de la Luna con `swe_mooncross_ut`. Ambos resultan en cartas levantadas para la localidad del usuario en el evento.
 
 ## Tránsitos
 
-`TransitEngine` calcula eventos por rango de fechas y agrupa días contiguos por tránsito/aspecto/punto natal. El loop trabaja con `Date` y calendario UTC; los strings ISO se materializan al crear el resultado final.
+`TransitEngine` calcula eventos por rango de fechas con orbes propios separados de los natales. Nodo Norte, Nodo Sur y Eje Nodal fusionado. Scoring por banda de prioridad (low/medium/high/critical) cruzando puntuación técnica, relevancia personal y impacto temporal. Timeline con muestras diarias. Ingresos por casa abren en modal independiente.
 
-Cada `TransitEvent` conserva el resumen interpretativo del tránsito y una serie `samples` con fecha, orbe e intensidad diaria normalizada (`1 - orb / maxOrb`). El score 1–5 ★ sigue siendo la fuerza global del evento, mientras que las muestras permiten dibujar la curva temporal real hacia el aspecto exacto.
+Documento técnico: [`TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md`](TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md).
 
-La vista de tránsitos:
+## Calendario y efemérides
 
-- muestra una timeline superior (`TransitTimelineView`) con barras diarias por intensidad y color de aspecto
-- mantiene fijo el eje de fechas al hacer scroll vertical por los eventos
-- expande el eje temporal para ocupar todo el ancho disponible cuando el rango cabe en pantalla
-- mantiene la tabla inferior para lectura rápida de evento, estrellas, periodo, orbe y disponibilidad de texto
-- abre el mismo detalle textual al pulsar una fila de la timeline o una fila de tabla
-- conserva resultados al cambiar de sección
-- marca resultados como pendientes de recalcular si cambian fechas, carta o Luna
-- cancela cálculos en curso al abandonar la vista o lanzar otro cálculo
-- muestra errores controlados para rango inválido, rango excesivo o cancelación
+`Ephemeris/` contiene calculadores puros sobre Swiss Ephemeris: lunaciones, eclipses, estaciones, ingresos en signo, Luna vacía de curso, aspectos mundanos. `EphemerisEngine.computeMonth(...)` orquesta. La tabla diaria usa 00:00 UTC con 10 planetas y Nodo Norte verdadero.
+
+`MonthlySummaryEngine` cruza el `EphemerisMonth` con una carta natal para producir el resumen predictivo mensual.
+
+Documento técnico: [`CALENDARIO_EFEMERIDES_ARQUITECTURA.md`](CALENDARIO_EFEMERIDES_ARQUITECTURA.md).
+
+## Profecciones
+
+`ProfectionEngine` aplica profecciones helenísticas **en signos enteros desde el Ascendente**: casa anual `((age mod 12) + 1)`, Lord of the Year igual al regente domicilio del signo profeccionado. Sub-profecciones mensuales (12 partes del año tropical) y diarias (28 días por casa).
+
+Las activaciones del año se calculan reutilizando `TransitEngine`: tránsitos del LotY a planetas natales y tránsitos al LotY natal, ordenados por banda de prioridad y orbe.
+
+## Arco solar
+
+`SolarArcEngine` produce direcciones por arco solar. Modos:
+
+- **Real**: arco = Sol progresado (1 día = 1 año) menos Sol natal.
+- **Naibod**: constante 0°59'08.33"/año.
+
+Las direcciones se calculan sumando el arco a la longitud natal del punto dirigido (10 planetas + ASC + MC + DSC + IC) y detectando aspectos sobre los puntos natales. Sistema de pesos compartido con `PrimaryDirectionCalculator`. Bisección para resolver la edad exacta en modo real.
+
+Se integra como pestaña hermana de Direcciones Primarias.
+
+## Progresiones secundarias
+
+`SecondaryProgressionEngine` aplica el día por año (1 día tras nacimiento = 1 año de vida). Calcula longitudes y declinaciones de los 10 planetas + Nodo Norte verdadero al JD progresado.
+
+MC y ASC progresados en dos modos:
+
+- **Naibod**: RAMC progresado = RAMC natal + (años × 0°59'08.33"). Casas recalculadas con `swe_houses_armc_ex2` para la latitud natal.
+- **Bija**: ángulos avanzan solidariamente con el Sol progresado.
+
+Detecta aspectos progresado → natal y progresado → progresado con bisección al instante exacto. Orbe de 0.5° para Luna progresada por su velocidad, 1° para el resto. Reporta fase lunar progresada (8 fases), ingresos de la Luna progresada por signo y casa, estaciones progresadas en los planetas ±5 años, transiciones de fase lunar próximas.
+
+## Firdaria
+
+`FirdariaEngine` aplica el sistema persa (Abu Maʿshar / Bonatti) con ciclo de 75 años:
+
+- Diurno: Sol 10, Venus 8, Mercurio 13, Luna 9, Saturno 11, Júpiter 12, Marte 7, NN 3, NS 2.
+- Nocturno: Luna 9, Saturno 11, Júpiter 12, Marte 7, Sol 10, Venus 8, Mercurio 13, NN 3, NS 2.
+
+Tras los 75 años el ciclo se reinicia. Cada período mayor no-nodal se subdivide en 7 firdar menores de reparto equitativo (tradición Bonatti); los nodos no tienen sub-períodos. Reusa `SectEngine`.
+
+## Zodiacal Releasing
+
+`ZodiacalReleasingEngine` aplica el ZR de Vettius Valens sobre los lotes de Espíritu y Fortuna calculados por `HellenisticLots` (con inversión día/noche).
+
+Períodos por signo (años para L1; meses para L2 con mes escolar de 30 días): Aries 15, Tauro 8, Géminis 20, Cáncer 25, Leo 19, Virgo 20, Libra 8, Escorpio 15, Sagitario 12, Capricornio 27, Acuario 30, Piscis 12.
+
+Regla doctrinal del **Loosing of the Bond**: cuando un L2 entra en Cáncer o Capricornio y no es el último del L1, al terminarlo el siguiente L2 salta al signo opuesto al inicio del L1 (convención Schmidt). Tras el LB el ciclo continúa zodiacalmente desde el opuesto.
+
+**Peaks**: L2 angulares al signo del L1 (offset módulo 3 = 0).
+
+Vista con capítulos L1 + L2 y eventos destacados (cambios de L1, LB próximos, peaks vigentes).
+
+## Análisis natal extendido
+
+`NatalExtendedAnalysis.compute(chart:)` orquesta nueve subsistemas que viven en `Sources/AstroMalik/Engine/Extended/`:
+
+- **`LotsEngine`** — siete lotes: Fortuna, Espíritu, Eros, Necesidad, Victoria, Audacia, Némesis. Fórmulas helenísticas con inversión día/noche y cálculo de regente del signo del lote.
+- **`AlmutenFigurisEngine`** — almuten figuris (Ibn Ezra) sobre Sol, Luna, ASC, Lote de Fortuna y sicigia prenatal. Sicigia detectada por bisección a la última lunación (nueva o llena) anterior al nacimiento. Bonificaciones Lilly +12 por regente del día (calendario semanal), regente de la hora planetaria (orden caldeo con horas desiguales calculadas con `swe_rise_trans`) y orientalidad (superiores orientales, inferiores occidentales, Luna creciente).
+- **`AspectPatternEngine`** — detección de T-cuadrada, gran trígono (mismo elemento), yod (sextil + dos quincuncios), gran cruz, kite y rectángulo místico. Orbe configurable (default 6°).
+- **`DistributionEngine`** — distribución de planetas por elemento, modalidad, hemisferio y cuadrante. Singletons.
+- **`ReceptionEngine`** — recepciones mutuas: domicilio, exaltación, mixtas.
+- **`AntisciaEngine`** — antiscia y contraantiscia sobre el eje solsticial 0° Cáncer / 0° Capricornio.
+- **`DeclinationEngine`** — declinaciones de los 10 planetas + nodos, paralelos, contraparalelos y planetas fuera de límites (|δ| > 23°26').
+- **`FixedStarsEngine`** — catálogo de estrellas fijas en `fixed_stars.json` con coordenadas J2000, precesión simple aplicada a la fecha natal (50.29"/año). Contactos sobre los 10 planetas, ASC, MC y Lote de Fortuna.
+- **Regente de la geniture** (calculado en el orquestador) — domicilio del signo de la luminaria de secta, con sus dignidades esenciales sobre la luminaria.
+
+## Cross-personal
+
+El sintetizador es la corona del proyecto. Detalle propio en [`CROSS_PERSONAL.md`](CROSS_PERSONAL.md).
+
+Resumen:
+
+- **`CrossPersonalEngine`** — puro, determinista, sin Swiss Ephemeris ni disco. Consume `CrossPersonalInputs` (un struct con resultados pre-calculados de todos los engines) y produce un `CrossPersonalState` con cuatro capas temporales: `annual`, `mediumTerm`, `shortTerm`, `lunar`. Cada capa contiene `signals` con subject primario (planeta, casa, signo, lote o eje), peso y metadatos.
+- **`CrossPersonalAssembler`** — orquestador con efectos: invoca los engines reales, calcula la profección, RS, direcciones, arco solar, progresiones, firdaria, ZR y tránsitos lentos sobre puntos sensibles, y rellena los inputs del engine.
+- **Cola de prioridad** — el engine agrupa signals por subject y aplica scoring: `Σ(weight × layerWeight) × convergenceMultiplier` con bonificaciones para Lord of the Year, luminaria de secta, regente de la geniture y coincidencia con el signo del peak L2 vigente.
+- **Vista** `CrossPersonalView` con selector de capas, top topics, exportación a Joplin y, si la API key Anthropic está configurada, botón de generación de informe redactado.
+
+## Anthropic
+
+Cliente Messages API con prompt caching y resolución de API key vía Keychain o variable de entorno. Detalle propio en [`ANTHROPIC_INTEGRATION.md`](ANTHROPIC_INTEGRATION.md).
+
+`AnthropicClient` es un `actor`. `CrossPersonalNarrativeBuilder` serializa el `CrossPersonalState` a JSON snake_case y lo envía con el prompt en español. Pricing y trazabilidad por llamada para Sonnet 4.6, Opus 4.7 y Haiku 4.5.
 
 ## Direcciones Primarias
 
-El módulo de Direcciones Primarias vive completo en Swift. `PrimaryDirectionCalculator` implementa proyección Regiomontana, direcciones directas y conversas, claves Naibod/Ptolomeo/Brahe, plano zodiacal y modo eclíptico de compatibilidad. `PrimaryDirectionsService` orquesta cálculo, corpus, interpretación contextual y note builder.
+`PrimaryDirectionCalculator` implementa proyección Regiomontana, direcciones directas y conversas, claves Naibod / Ptolomeo / Brahe, plano zodiacal y modo eclíptico de compatibilidad. `PrimaryDirectionsService` orquesta cálculo, corpus, interpretación contextual y note builder.
 
-El UI se organiza en header compacto, timeline semántico, panel maestro con tabs y detalle profesional. El preset Clásico es el default para usuarios nuevos y reduce ruido excluyendo transpersonales; los presets Extendido/Completo permiten ampliar el universo. El detalle incluye hero permanente, texto principal priorizado, alternativas bajo demanda, factores contextuales y espéculo Regiomontano completo.
+Corpus clásico de 165 textos basado en Lilly, *Christian Astrology*, Libro III. Migraciones idempotentes vía `MigrationRunner`.
 
-El corpus clásico de direcciones incluye 165 textos poblados desde Lilly, `Christian Astrology`, Libro III. Las migraciones de corpus y usuario son idempotentes y están separadas por `MigrationRunner`.
+Documento técnico: [`PRIMARY_DIRECTIONS.md`](PRIMARY_DIRECTIONS.md).
 
 ## Horaria
 
-Horaria es nativa en Swift por defecto. `HoraryNativeEngine` usa `CSwissEph` y el mismo contrato `HoraryResponse`/`HoraryChart`/`HoraryJudgement` que ya consumía la UI, pero sin proceso externo.
+Horaria es nativa en Swift por defecto. `HoraryNativeEngine` calcula siete planetas tradicionales, Nodo Norte verdadero, casas Regiomontanus, Partes de Fortuna y Espíritu, hora planetaria, radicalidad, dignidades, vía combusta, Luna fuera de curso, significadores, recepción, perfección directa, translación y colección.
 
-El motor nativo calcula:
+La regla doctrinal crítica es que una perfección lunar solo cuenta si el aspecto exacto ocurre antes de que la Luna salga de signo.
 
-- siete planetas tradicionales y Nodo Norte verdadero
-- casas Regiomontanus
-- Parte de Fortuna y Parte del Espíritu
-- hora planetaria y radicalidad
-- dignidades esenciales y accidentales
-- vía combusta y Luna fuera de curso
-- significadores por casa
-- recepción simple/mutua
-- perfección directa, translación y colección básica
-- veredicto estructurado, confianza, factores a favor/en contra y warnings técnicos
+`HoraryEngine` mantiene el motor Python legado seleccionable por variable de entorno `ASTROMALIK_HORARIA_ENGINE`.
 
-La regla doctrinal crítica es que una perfección lunar solo cuenta si el aspecto exacto ocurre antes de que la Luna salga de signo. Si la Luna está vacía de curso, el motor no acepta una perfección posterior al cambio de signo como “sí” limpio.
+Documento técnico: [`HORARY_NATIVE.md`](HORARY_NATIVE.md).
 
-`HoraryEngine` conserva el motor Python como legado/fallback temporal:
+## Informes PDF
 
-- sin variable: intenta Swift nativo y cae a Python solo si Swift falla inesperadamente
-- `ASTROMALIK_HORARIA_ENGINE=swift`: fuerza Swift y propaga errores
-- `ASTROMALIK_HORARIA_ENGINE=python`: fuerza el paquete `horaria` externo
+Infraestructura HTML+CSS → WKWebView → PDF. Detalle propio en [`PDF_REPORTS.md`](PDF_REPORTS.md).
 
-`ASTROMALIK_PYTHON_PATH` y `ASTROMALIK_HORARIA_PATH` solo son relevantes para el modo legado. La pantalla de diagnóstico de Horaria queda como herramienta de compatibilidad Python, no como requisito del flujo normal.
+- `ReportRenderer` actor con `WKWebView.createPDF` y configuración de página.
+- `TemplateEngine` Mustache-like con dot-access, `each`, `if`, `unless`, `partial` y escape HTML por defecto. Sin dependencias.
+- `ReportTheme` con paleta marfil/tinta/azul noche/dorado, tipografías EB Garamond serif + Inter sans + glifos astrológicos.
+- 14 informes con plantillas en `Resources/Reports/templates/` y builders en `Reports/Builders/`.
+- Renderers SVG en `Reports/Charts/`: rueda natal con lanes anti-solapamiento, rueda doble, timelines de tránsitos / ZR / Firdaria, tabla de efemérides.
+- Informe **cross-personal** combina narrativa Anthropic dividida por encabezado con datos del state como tablas de apoyo.
+- `ReportPersistence` mantiene carpeta configurable y vista "Mis informes" lista los PDFs generados.
 
-## UI De Lectura
+## CLI
 
-`NatalChartView` ofrece tres modos:
+Binario `astromalik-cli` headless. Detalle propio en [`CLI.md`](CLI.md).
 
-- **Rueda**: rueda natal interactiva en SwiftUI con signos, casas, planetas, ASC/MC y aspectos.
-- **Lectura**: lectura guiada con triada Sol/Luna/ASC, regente del Ascendente, casas angulares, aspectos dominantes y síntesis editable.
-- **Textos**: corpus expandible de interpretaciones.
+`Sources/AstroMalikCLI/main.swift` con parser manual de argumentos (sin Swift Argument Parser). Lee carta de `user.db`, ejecuta `CrossPersonalAssembler` + `CrossPersonalEngine` + `CrossPersonalNarrativeBuilder` y vuelca markdown a `stdout`, `file:/ruta.md` o `joplin:Notebook`.
 
-La nota de lectura se genera desde `ReadingNoteBuilder` como Markdown.
+LaunchAgent recipes en `scripts/launchagents/` para programación semanal y mensual.
+
+## UI de lectura
+
+`NatalChartView` ofrece tres modos: rueda interactiva, lectura guiada y textos. La nota se genera desde `ReadingNoteBuilder` como Markdown. Una pestaña adicional desde 1.0 muestra el análisis natal extendido completo.
 
 ## Joplin
 
-La app tiene dos caminos de salida hacia Joplin:
+`JoplinClipperService` usa `URLSession` contra `127.0.0.1:41184`. Host, puerto, token y cuaderno viven en `AppState.joplinSettings`. Si el token está vacío, se resuelve desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop (`api.token`). Si el cuaderno no existe, se crea.
 
-- natal: `ReadingNoteBuilder` genera Markdown para copiar/pegar
-- sinastría: `SynastryNoteBuilder` genera Markdown y `JoplinClipperService` crea la nota vía Web Clipper
-- revolución solar: `SolarReturnNoteBuilder` genera el informe anual y lo envía por el mismo servicio
-- revolución lunar: `LunarReturnNoteBuilder` genera el informe mensual y lo envía por el mismo servicio
-- efemérides: `EphemerisNoteBuilder` genera el calendario mensual y mini tabla diaria
-- resumen predictivo mensual: `MonthlySummaryNoteBuilder` genera el informe personalizado de lunaciones, eclipses, estaciones, tránsitos e ingresos por casa
-- direcciones primarias: `PrimaryDirectionsNoteBuilder` genera notas filtradas o de dirección seleccionada
+Caminos de salida actuales: natal (markdown copy/paste), sinastría, revolución solar, revolución lunar, efemérides, resumen mensual, profecciones, direcciones primarias, arco solar, progresiones, firdaria, ZR, cross-personal y los 14 informes PDF (opcionalmente como adjuntos).
 
-`JoplinClipperService` usa `URLSession` contra el servidor local de Joplin (`127.0.0.1:41184` por defecto). Host, puerto, token y cuaderno viven en `AppState.joplinSettings` y se editan desde Ajustes. Si el token está vacío, el servicio intenta resolverlo desde `ASTROMALIK_JOPLIN_TOKEN` o desde los settings locales de Joplin Desktop (`api.token`). Si el cuaderno no existe, se crea antes de crear la nota.
+## Build y distribución
 
-## Tema
-
-La preferencia de apariencia se mantiene en `UserDefaults` como `Sistema`, `Claro` u `Oscuro`. Además de Ajustes, la sidebar incluye un botón rápido para alternar claro/oscuro sin pasar por el menú de settings.
-
-## Build Y Distribución
-
-El proyecto sigue siendo Swift Package Manager puro. Para desarrollo:
+Swift Package Manager puro. Para desarrollo:
 
 ```bash
 swift build
-open .build/arm64-apple-macosx/debug/AstroMalik
+.build/arm64-apple-macosx/debug/AstroMalikApp
+```
+
+Para el CLI:
+
+```bash
+swift build --product astromalik-cli
+.build/arm64-apple-macosx/debug/astromalik-cli --help
 ```
 
 Para app de doble clic:
@@ -193,24 +228,24 @@ El script compila release, crea el bundle, copia recursos, firma ad-hoc y elimin
 
 ## Validación
 
-La suite cubre:
+La suite cubre los engines de los 10 bloques de 1.0:
 
-- carta natal de referencia
-- ASC y corpus asociado
-- corpus de sinastría, formato de claves y cobertura de 420 textos
-- motor de sinastría en ambas direcciones
-- lookup de sinastría y generación de nota Markdown
-- motor de revolución solar, exactitud del retorno solar y cambio de lugar
-- lectura de revolución solar con corpus natal reutilizado
-- generación de nota Markdown de revolución solar
-- motor de revolución lunar y secuencia ordenada de retornos
-- direcciones primarias Regiomontanus, conversas, presets, corpus y goldens
-- payload de creación de nota Joplin con cliente HTTP mock
-- `swe_houses_ex2`
-- rangos/cancelación de tránsitos
-- muestras diarias de timeline y pico de intensidad en fecha exacta
-- calculadores de Efemérides: lunaciones, eclipses, estaciones, ingresos, Luna vacía de curso, aspectos mundanos y orquestador mensual
-- resumen predictivo mensual: casas natales de lunaciones, conjunciones a planetas natales, estaciones, clima y filtrado top de tránsitos activos
-- timezones conocidos
-- diagnóstico de Horaria legado
-- Horaria nativa, JSON legacy y regresión de Luna fuera de curso
+- carta natal de referencia y `swe_houses_ex2`
+- corpus de sinastría y motor en ambas direcciones
+- revoluciones solar y lunar
+- tránsitos: rangos, cancelación, muestras diarias de intensidad, nodos
+- efemérides mensual y resumen predictivo mensual
+- profecciones: whole sign desde el ASC, activaciones del año
+- arco solar: real y Naibod, bisección de edad exacta
+- progresiones secundarias: aspectos prog→natal y prog→prog, fase lunar progresada, ingresos
+- firdaria: orden y reinicio del ciclo
+- sect: diurnal vs nocturnal
+- zodiacal releasing: L1 + L2, LB, peaks
+- análisis natal extendido: nueve subsistemas con carta de referencia
+- cross-personal: scoring de convergencia, top topics, bonificaciones
+- Anthropic client: prompt caching, pricing, mapeo de errores
+- narrative builder: serialización, secciones por encabezado, modos
+- CLI parser y resolutor de destinos
+- reports infrastructure: template engine, renderer, service, builders, persistence
+
+Sanity check histórico: carta natal de referencia `1976-10-11 20:33 Europe/Madrid`.

@@ -648,10 +648,15 @@ Archivos y módulos especialmente relevantes:
 ## Documentación del proyecto
 
 - [`CHANGELOG.md`](CHANGELOG.md): historial de novedades.
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): arquitectura general.
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): arquitectura general actualizada para 1.0.
+- [`docs/CROSS_PERSONAL.md`](docs/CROSS_PERSONAL.md): motor sintetizador cross-personal, capas, cola de prioridad por convergencia y narrativa.
+- [`docs/PDF_REPORTS.md`](docs/PDF_REPORTS.md): infraestructura PDF, theme, plantillas y los 14 informes.
+- [`docs/ANTHROPIC_INTEGRATION.md`](docs/ANTHROPIC_INTEGRATION.md): cliente Anthropic Messages, prompt caching, resolución de API key y pricing.
+- [`docs/CLI.md`](docs/CLI.md): binario `astromalik-cli`, argumentos, LaunchAgent recipes.
 - [`docs/HORARY_NATIVE.md`](docs/HORARY_NATIVE.md): horaria Swift nativa.
 - [`docs/PRIMARY_DIRECTIONS.md`](docs/PRIMARY_DIRECTIONS.md): direcciones primarias.
 - [`docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md`](docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md): tránsitos, scoring y foco.
+- [`docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md`](docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md): calendario y efemérides.
 - [`docs/FOUNDRY_LOCAL_INTEGRATION.md`](docs/FOUNDRY_LOCAL_INTEGRATION.md): integración Foundry Local.
 - [`docs/corpus-consolidation-pipeline.md`](docs/corpus-consolidation-pipeline.md): pipeline de corpus.
 - [`docs/primary-directions-corpus-curation.md`](docs/primary-directions-corpus-curation.md): curación del corpus clásico.
