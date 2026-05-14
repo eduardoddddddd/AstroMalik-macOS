@@ -2,6 +2,68 @@
 
 Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el versionado sigue [SemVer](https://semver.org/lang/es/).
 
+## \[1.0.0\] — 2026-05-14
+
+Primera release mayor. AstroMalik pasa de prototipo avanzado a app de astrología tradicional completa con motor de informes profesional.
+
+### Añadido — Predictivas helenísticas y clásicas
+
+- **Profecciones anuales** (helenístico): casa anual desde el Ascendente en signos enteros, Lord of the Year, sub-profecciones mensuales y diarias, activaciones del año por tránsitos al LotY. Motor `ProfectionEngine`, vista dedicada y exportación a Joplin.
+- **Arco solar** (real y Naibod): direcciones del Sol progresado a puntos natales, integradas como pestaña hermana de Direcciones Primarias. Reutiliza el sistema de pesos clásico.
+- **Progresiones secundarias** completas: planetas, declinaciones, MC y ASC progresados (Naibod o Bija), aspectos prog→natal y prog→prog con bisección, fase lunar progresada, Luna progresada por casa y signo, estaciones progresadas y cambios destacados ±5 años.
+- **Firdaria persas** (Abu Maʿshar / Bonatti): ciclo de 75 años con períodos mayores y menores, distinción día/noche, vista de timeline y exportación Joplin.
+- **Sect Engine** compartido: secta diurna/nocturna, luminaria, benéficos y maléficos de secta, reusable por todos los módulos.
+- **Zodiacal Releasing** (Valens) sobre los lotes de **Espíritu** y **Fortuna**: niveles L1 (años) y L2 (meses), Loosing of the Bond en Cáncer/Capricornio con salto al signo opuesto del L1 (convención Schmidt), peaks angulares, vista con capítulos y eventos destacados.
+- **Lotes helenísticos**: Fortuna, Espíritu, Eros, Necesidad, Victoria, Audacia y Némesis con fórmulas Paulus Alexandrinus e inversión día/noche.
+
+### Añadido — Análisis natal extendido
+
+- **Almuten Figuris** (Ibn Ezra) sobre Sol, Luna, ASC, Lote de Fortuna y sicigia prenatal, con bonificaciones Lilly +12 (regente del día, hora planetaria caldea con horas desiguales y orientalidad).
+- **Regente de la geniture**: domicilio de la luminaria de secta con sus dignidades esenciales.
+- **Configuraciones aspectuales** detectadas: T-cuadrada, gran trígono, yod, gran cruz, kite y rectángulo místico.
+- **Distribución** por elemento, modalidad, hemisferio y cuadrante con detección de singletons.
+- **Recepciones mutuas** (domicilio, exaltación, mixtas).
+- **Antiscia y contraantiscia** sobre eje solsticial y aspectos antiscia.
+- **Declinaciones**: paralelos, contraparalelos y planetas fuera de límites (OOB).
+- **Estrellas fijas**: catálogo en J2000 con precesión simple sobre planetas, ASC, MC y Lote de Fortuna.
+
+### Añadido — Motor cross-personal
+
+- **CrossPersonalEngine**: sintetizador determinista que consume todos los motores predictivos y el análisis natal extendido, produce un `CrossPersonalState` con cuatro capas temporales (anual, medio plazo, corto plazo, lunar) y una cola de prioridad por convergencia entre capas. Bonificaciones por LotY, luminaria de secta, regente de la geniture y coincidencia con peak ZR.
+- **CrossPersonalAssembler**: orquestador que invoca los engines reales y rellena los inputs del sintetizador.
+- Vista cross-personal con selector de capas, top topics y exportación.
+
+### Añadido — Integración Anthropic
+
+- **AnthropicClient** (actor) para la Messages API con prompt caching efímero, resolución de API key por Keychain (`com.astromalik.anthropic`) y fallback a `ANTHROPIC_API_KEY`.
+- **CrossPersonalNarrativeBuilder**: redacta el informe cross-personal en Markdown con Sonnet 4.6 por defecto o Opus 4.7 opcional. Plantilla del prompt en español con doctrina helenística/tradicional informada.
+- Modos de alcance configurables: completo, anual, mensual, semanal.
+- Trazabilidad por llamada con coste estimado en USD para Sonnet 4.6, Opus 4.7 y Haiku 4.5.
+
+### Añadido — CLI y scheduling
+
+- Binario `astromalik-cli` que ejecuta toda la cadena cross-personal desde línea de comandos: chart por nombre o UUID, scope, modelo, destino (stdout, file, joplin:Notebook).
+- LaunchAgent recipes para Sábado 18:00 (semanal) y día 1 a las 09:00 (mensual).
+
+### Añadido — Informes PDF profesionales
+
+- **Infraestructura PDF** basada en HTML+CSS renderizado por `WKWebView.createPDF`: actor `ReportRenderer`, `TemplateEngine` Mustache-like sin dependencias, `ReportTheme` (EB Garamond serif + Inter sans + paleta marfil/tinta/azul noche/dorado), partials de layout/cover/TOC, CSS imprimible con page breaks controlados.
+- **Renderers SVG vectoriales**: rueda natal con lanes para evitar solapamiento, rueda doble (sinastría y retornos), timelines (tránsitos, ZR, Firdaria) y tabla de efemérides diaria.
+- **14 informes PDF**: natal, sinastría, análisis natal extendido, horaria, tránsitos, revolución solar, revolución lunar, calendario/efemérides, resumen mensual, profecciones, direcciones primarias, arco solar, progresiones, Firdaria, Zodiacal Releasing.
+- **Informe cross-personal PDF**: combina narrativa Anthropic dividida por encabezado con datos estructurados del sintetizador en modo híbrido (con o sin redacción).
+- Convertidor Markdown→HTML interno para incrustar narrativa en las plantillas.
+
+### Cambiado — Empaquetado
+
+- `Package.swift` refactorizado en módulo compartido `AstroMalik` + ejecutable GUI `AstroMalikApp` + ejecutable headless `astromalik-cli`. El CLI no arrastra SwiftUI.
+- `.gitignore` reforzado contra secretos: ignora `.claude/`, `.env*`, `*.secret`, `secrets/`, `**/anthropic*.key`, `**/openrouter*.key` y variantes.
+
+### Doctrinal
+
+- Profecciones implementan **whole sign** desde el Ascendente (helenístico canónico), no cúspides cuadrantes.
+- Zodiacal Releasing aplica Loosing of the Bond solo en L2 (versión spec; LB en L3/L4 quedará para versiones futuras si se demanda).
+- Sect Engine consolidado y reutilizado por todos los motores que lo necesitan; sin duplicación de la regla diurnal/nocturnal.
+
 ## \[Unreleased\]
 
 ### Añadido

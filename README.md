@@ -34,17 +34,25 @@ Esta app es la variante nativa de la familia [AstroMalik](https://github.com/edu
 
 ## Estado actual
 
-AstroMalik-macOS ya funciona como aplicación astrológica nativa completa para Apple Silicon. Los módulos principales viven en Swift y comparten un núcleo común basado en Swiss Ephemeris:
+AstroMalik-macOS funciona como aplicación astrológica nativa **completa** para Apple Silicon. Versión 1.0 cubre el ciclo entero de práctica astrológica tradicional: análisis natal extendido, predictivas helenísticas y clásicas, sintetizador cross-personal con redacción Anthropic e informes PDF profesionales.
 
-- motor natal y rueda interactiva;
-- lectura natal guiada;
+Módulos disponibles:
+
+- motor natal y rueda interactiva, lectura natal guiada y **análisis natal extendido** (almuten figuris, regente de la geniture, lotes, configuraciones aspectuales, antiscia, declinaciones, estrellas fijas);
 - archivo local de cartas;
 - sinastría con corpus propio;
 - revoluciones solar y lunar;
-- tránsitos con scoring, foco y timeline;
-- calendario astrológico, efemérides mundanas y resumen predictivo mensual personalizado;
-- direcciones primarias Regiomontanas;
+- tránsitos con scoring, foco, timeline e ingresos por casa;
+- calendario astrológico, efemérides mundanas y resumen predictivo mensual;
+- **profecciones anuales** helenísticas (whole sign);
+- **direcciones primarias** Regiomontanas y **arco solar**;
+- **progresiones secundarias** (Naibod y Bija);
+- **Firdaria** persas con sect engine compartido;
+- **Zodiacal Releasing** sobre Espíritu y Fortuna;
 - horaria clásica nativa;
+- **informe cross-personal** sintetizador con redacción Anthropic en Markdown;
+- **14 informes PDF profesionales** con plantillas HTML+CSS renderizadas por WebKit;
+- **CLI `astromalik-cli`** para LaunchAgent y cron;
 - exportación documental hacia Joplin.
 
 El cambio arquitectónico más importante de las últimas fases es que **Horaria ya no depende de Python en el flujo normal**. El módulo horario se calcula por defecto con `HoraryNativeEngine`, un motor Swift nativo que usa `CSwissEph`, casas Regiomontanus y reglas tradicionales estrictas. El antiguo paquete Python `horaria` queda únicamente como modo legado/fallback para comparación o diagnóstico.
@@ -207,6 +215,88 @@ La corrección doctrinal más importante es que una perfección lunar solo cuent
 
 Documento técnico: [`docs/HORARY_NATIVE.md`](docs/HORARY_NATIVE.md).
 
+### Profecciones anuales
+
+- Profecciones helenísticas en **signos enteros** desde el Ascendente.
+- Casa del año, signo profeccionado, Lord of the Year (regente domicilio del signo).
+- Activaciones por tránsitos del LotY a planetas natales y por tránsitos al LotY natal.
+- Sub-profecciones mensuales (12 partes del año) y diarias (28 días por casa).
+- Vista dedicada y exportación a Joplin.
+
+### Arco solar
+
+- Direcciones por arco solar **real** (Sol progresado) y **Naibod** (constante 0°59'08.33"/año).
+- Incluye ASC, MC, DSC e IC además de los 10 planetas.
+- Aspectos clásicos con sistema de pesos compartido con Direcciones Primarias.
+- Bisección para resolver la edad exacta en modo real.
+- Integrado como pestaña hermana en la sección de Direcciones Primarias.
+
+### Progresiones secundarias
+
+- Día por año determinista (1 día tras nacimiento = 1 año de vida).
+- Planetas, declinaciones y Nodo Norte progresados.
+- MC y ASC progresados en modo **Naibod** (RAMC + 0°59'08.33"/año) o **Bija** (avance con el Sol progresado).
+- Aspectos progresado → natal y progresado → progresado con bisección al instante exacto.
+- Fase lunar progresada (8 fases), Luna progresada por signo y casa.
+- Cambios destacados ±5 años: ingresos lentos, estaciones progresadas, transiciones de fase.
+
+### Firdaria y Sect
+
+- Sect engine compartido: secta diurna/nocturna, luminaria, benéficos y maléficos de secta.
+- Firdaria persas (Abu Maʿshar / Bonatti) con ciclo de 75 años, ordenes diurno y nocturno.
+- Sub-períodos firdarianos (firdar menor) con reparto equitativo entre los 7 planetas clásicos.
+- Timeline visual y exportación Joplin.
+
+### Zodiacal Releasing
+
+- ZR de Vettius Valens sobre los lotes de **Espíritu** (carrera/acción) y **Fortuna** (cuerpo/fortuna).
+- Niveles L1 (años) y L2 (meses) con períodos según tabla canónica de la Antología Libro IV.
+- **Loosing of the Bond** en L2 sobre Cáncer o Capricornio con salto al signo opuesto del L1 (convención Schmidt).
+- **Peaks** angulares: sub-períodos L2 angulares al signo del L1.
+- Eventos destacados: cambios de L1, LBs próximos, peaks vigentes.
+
+### Análisis natal extendido
+
+Pestaña dentro de la lectura natal con nueve subsistemas:
+
+- **7 lotes helenísticos**: Fortuna, Espíritu, Eros, Necesidad, Victoria, Audacia y Némesis con inversión día/noche.
+- **Almuten Figuris** (Ibn Ezra) sobre Sol, Luna, ASC, Lote de Fortuna y sicigia prenatal, con bonos Lilly +12 por regente del día, hora planetaria caldea con horas desiguales y orientalidad.
+- **Regente de la geniture**.
+- **Configuraciones aspectuales**: T-cuadrada, gran trígono, yod, gran cruz, kite, rectángulo místico.
+- **Distribución** por elemento, modalidad, hemisferio y cuadrante con singletons.
+- **Recepciones mutuas** (domicilio, exaltación, mixtas).
+- **Antiscia y contraantiscia** sobre eje solsticial.
+- **Declinaciones**: paralelos, contraparalelos y planetas fuera de límites (OOB).
+- **Estrellas fijas** con precesión simple desde J2000 sobre planetas, ASC, MC y Lote de Fortuna.
+
+### Informe cross-personal
+
+- Motor **CrossPersonalEngine** que sintetiza todas las técnicas anteriores en un único estado astrológico personal con cuatro capas temporales (anual, medio plazo, corto plazo, lunar).
+- **Cola de prioridad por convergencia**: cuando un planeta o casa aparece en varias capas a la vez, su score sube. Bonificaciones por Lord of the Year, luminaria de secta, regente de la geniture y peak ZR.
+- **CrossPersonalAssembler** orquesta los engines reales y rellena el state.
+- **Redacción Anthropic**: el state se serializa a JSON y se envía a Claude Sonnet 4.6 (por defecto) o Opus 4.7 con el prompt en español. La salida es un informe Markdown estructurado en 8 secciones siguiendo doctrina helenística/tradicional.
+- Resolución de API key vía Keychain (`com.astromalik.anthropic`) o variable `ANTHROPIC_API_KEY`.
+- Modos de alcance: completo, anual, mensual, semanal.
+- Coste estimado por llamada visible (Sonnet ~$0.05-0.10 por informe completo con prompt caching).
+
+### Informes PDF profesionales
+
+- Infraestructura PDF basada en HTML+CSS renderizado por `WKWebView.createPDF`. Sin dependencias externas.
+- **14 informes PDF**: natal, sinastría, análisis natal extendido, horaria, tránsitos, revolución solar, revolución lunar, calendario/efemérides, resumen mensual, profecciones, direcciones primarias, arco solar, progresiones, Firdaria, Zodiacal Releasing y **cross-personal** (corona).
+- **Renderers SVG vectoriales**: rueda natal con lanes para evitar solapamiento, rueda doble (sinastría y retornos), timelines (tránsitos, ZR, Firdaria) y tablas de efemérides.
+- **Plantilla cross-personal híbrida**: si hay narrativa Anthropic la usa como texto principal y muestra los datos del state como tablas de soporte; si no, produce un PDF solo con datos (preview sin coste de API).
+- Tipografía EB Garamond serif para cuerpo + Inter sans para datos. Paleta marfil/tinta/azul noche/dorado. A4 portrait por defecto, landscape para efemérides diarias.
+- Idioma español único.
+
+### CLI `astromalik-cli`
+
+- Binario Swift headless para LaunchAgent o cron.
+- `astromalik-cli --chart "Edu" --scope weekly --model sonnet --output joplin:AstroMalik`
+- Resolución de carta por nombre o UUID desde `user.db`.
+- Destinos de salida: `stdout`, `file:/ruta.md`, `joplin:Notebook`.
+- LaunchAgent recipes para programación semanal (sábado 18:00) y mensual (día 1, 09:00).
+- Códigos de salida estándar para encadenar con scripts.
+
 ## Mejoras recientes
 
 Estas son las mejoras más relevantes consolidadas en las últimas fases del proyecto:
@@ -243,14 +333,17 @@ Estas son las mejoras más relevantes consolidadas en las últimas fases del pro
 | UI | SwiftUI, macOS 14+, `NavigationSplitView` |
 | Lenguaje | Swift 6.0 / Swift Package Manager |
 | Efemérides | Swiss Ephemeris en C, target SPM `CSwissEph` |
-| Motores | Swift nativo para natal, tránsitos, revoluciones, direcciones y horaria |
+| Motores | Swift nativo para natal, análisis extendido, tránsitos, revoluciones, direcciones primarias y arco solar, progresiones secundarias, Firdaria, Zodiacal Releasing, profecciones, horaria y sintetizador cross-personal |
 | Persistencia | SQLite3 del sistema mediante wrapper propio `SQLiteDB` |
 | Corpus | `Sources/AstroMalik/Resources/corpus.db` + migraciones SQL idempotentes |
-| Recursos | `cities_seed.json`, efemérides `.se1`, prompt de direcciones y migraciones |
+| Recursos | `cities_seed.json`, `fixed_stars.json`, efemérides `.se1`, prompt cross-personal, plantillas HTML de informes |
+| PDFs | WebKit (`WKWebView.createPDF`) + plantillas HTML+CSS + SVG vectorial |
 | Joplin | Web Clipper local opcional (`127.0.0.1:41184`) |
+| Anthropic | Cliente Messages API con prompt caching, Keychain `com.astromalik.anthropic` o `ANTHROPIC_API_KEY` |
 | Foundry Local | SDK Python opcional invocado como proceso one-shot |
 | OpenRouter | Cliente opcional para interpretación contextual, con Keychain |
-| Paquete | Swift Package Manager puro, sin paquetes Swift externos |
+| CLI | Binario `astromalik-cli` headless para LaunchAgent y cron |
+| Paquete | Swift Package Manager puro, sin paquetes Swift externos. Módulo compartido `AstroMalik` + ejecutable GUI `AstroMalikApp` + ejecutable headless `astromalik-cli` |
 | Target | macOS 14+, Apple Silicon arm64 |
 
 ## Requisitos
@@ -566,31 +659,44 @@ Archivos y módulos especialmente relevantes:
 
 ## Roadmap
 
-Completado en abril/mayo de 2026:
+Completado en 1.0 (mayo 2026):
 
-- app nativa SwiftUI de ventana única;
+- app nativa SwiftUI con `NavigationSplitView`;
 - natal, lectura guiada y archivo local;
-- tránsitos con timeline, foco, orbes propios y eje nodal;
+- **análisis natal extendido**: 7 lotes, almuten figuris, regente de la geniture, configuraciones aspectuales, distribución, recepciones, antiscia, declinaciones y estrellas fijas;
 - sinastría con rueda doble y corpus específico;
-- revolución solar;
-- revolución lunar;
-- Joplin Web Clipper;
+- revoluciones solar y lunar;
+- tránsitos con scoring, timeline, eje nodal e ingresos por casa;
+- calendario/efemérides y resumen predictivo mensual;
+- **profecciones anuales** helenísticas (whole sign);
 - direcciones primarias Regiomontanas con corpus clásico;
-- interpretación contextual opcional con Foundry Local;
+- **arco solar** real y Naibod;
+- **progresiones secundarias** completas (Naibod y Bija);
+- **Firdaria persas** y **sect engine** compartido;
+- **Zodiacal Releasing** sobre Espíritu y Fortuna con LB y peaks;
 - horaria nativa Swift;
-- empaquetado `.app`.
+- **motor cross-personal** sintetizador con cola de prioridad por convergencia;
+- **redacción Anthropic** del informe cross-personal (Sonnet 4.6 y Opus 4.7);
+- **14 informes PDF** con plantillas HTML+CSS, SVG vectoriales y theme tipográfico profesional;
+- **CLI headless** `astromalik-cli` con LaunchAgent recipes;
+- empaquetado `.app` con módulo compartido y dos ejecutables.
 
-Líneas probables de evolución:
+Líneas posibles para 1.1+:
 
-- export PNG/PDF de cartas e informes;
+- Quirón, Lilith y puntos modernos como cuerpos opcionales;
+- LB de Zodiacal Releasing en L3/L4;
+- tablas firdarianas con duración proporcional como modo alternativo (Bonatti vs helenístico);
+- progresiones terciarias y menores;
+- profecciones mensual y diaria expandidas;
+- astrocartografía y líneas locales;
+- carta compuesta y Davison;
+- electional puntual (selección de momentos);
 - mejora de visualización técnica de Horaria;
 - tabla de aspectos aplicativos/separativos más amplia en Horaria;
-- ampliar corpus clásico verificable;
 - configurar sistemas de casas desde UI;
-- ampliar soporte de nodos, Lilith, Quirón y puntos modernos donde tenga sentido;
-- ingresos de planetas por casa en Tránsitos;
 - quincuncio y aspectos menores configurables;
 - retornos solares/lunares con orbes propios y opciones avanzadas;
+- corpus clásico ampliado para profecciones, ZR y arco solar;
 - notarización opcional con Apple Developer ID;
 - distribución más cómoda para usuarios no técnicos.
 
