@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{header.reportTitle}} — {{header.chartName}}</title>
+  <style>
+{{> _glyphs_css}}
+{{> _theme_css}}
+{{> _print_css}}
+.cp-banner { margin: 0 0 18pt; padding: 12pt 14pt; border-left: 3pt solid var(--gold); background: rgba(199,169,90,.12); font-family: var(--font-ui); }
+.cp-banner__label { font-size: 9pt; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+.cp-banner__value { font-size: 13pt; color: var(--primary); margin-top: 2pt; }
+.cp-signature { display: grid; grid-template-columns: 1fr 1fr; gap: 14pt; margin: 0 0 14pt; }
+.cp-signature__card { padding: 10pt 12pt; border: 0.5pt solid var(--neutral-rule); background: rgba(255,255,255,.18); break-inside: avoid; }
+.cp-signature__label { font-family: var(--font-ui); font-size: 9pt; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+.cp-signature__value { font-size: 11pt; margin-top: 2pt; }
+.cp-narrative { font-size: 11pt; line-height: 1.55; }
+.cp-narrative h2 { color: var(--primary); margin-top: 18pt; }
+.cp-narrative h3 { color: var(--gold); margin-top: 14pt; }
+.cp-narrative p { margin: 6pt 0; }
+.cp-narrative ul { margin: 6pt 0 6pt 18pt; }
+.cp-table-compact { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 9.5pt; }
+.cp-table-compact th { text-align: left; background: rgba(199,169,90,.20); padding: 4pt 6pt; border-bottom: 0.5pt solid var(--gold-soft); }
+.cp-table-compact td { padding: 4pt 6pt; border-bottom: 0.4pt solid var(--neutral-rule); vertical-align: top; }
+.cp-table-compact tr:nth-child(even) td { background: rgba(236,226,204,.30); }
+.cp-no-narrative { padding: 10pt 12pt; border: 0.5pt dashed var(--gold-soft); background: rgba(199,169,90,.06); font-family: var(--font-ui); font-size: 10pt; color: var(--ink-soft); }
+.cp-empty { color: var(--ink-soft); font-style: italic; }
+.cp-topic-row td:nth-child(1) { width: 28pt; font-family: var(--font-ui); font-weight: 600; color: var(--primary); }
+.cp-topic-row td:nth-child(4) { width: 44pt; text-align: right; font-family: var(--font-ui); }
+.cp-topic-row td:nth-child(5) { width: 44pt; text-align: right; font-family: var(--font-ui); color: var(--ink-soft); }
+.cp-list { margin: 6pt 0 8pt 18pt; font-size: 10.5pt; }
+  </style>
+</head>
+<body>
+  <header class="report-header" aria-label="Cabecera del informe">
+    <div class="report-header__title">{{header.reportTitle}}</div>
+    <div class="report-header__chart">{{header.chartName}}</div>
+  </header>
+  <main class="report-body">
+{{> _cover}}
+
+<section class="report-section">
+  <div class="cp-banner">
+    <div class="cp-banner__label">Fecha de referencia</div>
+    <div class="cp-banner__value">{{referenceLabel}}</div>
+    <div class="cp-banner__label" style="margin-top:6pt;">Alcance</div>
+    <div class="cp-banner__value">{{scopeLabel}}</div>
+  </div>
+</section>
+
+{{> _toc}}
+
+{{#if narrative.executiveSummary}}
+<section class="report-section page-break">
+  <h2>Síntesis ejecutiva</h2>
+  <div class="cp-narrative">{{{narrative.executiveSummary}}}</div>
+</section>
+{{/if}}
+
+<section class="report-section page-break">
+  <h2>Firma natal</h2>
+  <div class="cp-signature">
+    <div class="cp-signature__card">
+      <div class="cp-signature__label">Sol</div><div class="cp-signature__value">{{signature.sunLabel}}</div>
+    </div>
+    <div class="cp-signature__card">
+      <div class="cp-signature__label">Luna</div><div class="cp-signature__value">{{signature.moonLabel}}</div>
+    </div>
+    <div class="cp-signature__card">
+      <div class="cp-signature__label">Ascendente</div><div class="cp-signature__value">{{signature.ascLabel}}</div>
+    </div>
+    <div class="cp-signature__card">
+      <div class="cp-signature__label">Medio Cielo</div><div class="cp-signature__value">{{signature.mcLabel}}</div>
+    </div>
+    <div class="cp-signature__card">
+      <div class="cp-signature__label">Secta</div><div class="cp-signature__value">{{signature.sectLabel}}</div>
+    </div>
+    <div class="cp-signature__card">
+      <div class="cp-signature__label">Regente del Ascendente</div><div class="cp-signature__value">{{signature.ascRulerLabel}}</div>
+    </div>
+    <div class="cp-signature__card">
+      <div class="cp-signature__label">Almuten Figuris</div><div class="cp-signature__value">{{signature.almutenLabel}}</div>
+    </div>
+    <div class="cp-signature__card">
+      <div class="cp-signature__label">Regente de la geniture</div><div class="cp-signature__value">{{signature.genitureRulerLabel}}</div>
+    </div>
+  </div>
+
+  <h3>Balance estructural</h3>
+  <p><strong>Elementos:</strong> {{signature.elementBalance}}</p>
+  <p><strong>Modalidades:</strong> {{signature.modalityBalance}}</p>
+
+  <h3>Lotes prominentes</h3>
+  {{#if signature.prominentLots}}<ul class="cp-list">{{#each signature.prominentLots}}<li>{{this}}</li>{{/each}}</ul>{{/if}}
+  {{#unless signature.prominentLots}}<p class="cp-empty">Sin lotes calculados.</p>{{/unless}}
+
+  <h3>Configuraciones aspectuales</h3>
+  {{#if signature.aspectPatterns}}<ul class="cp-list">{{#each signature.aspectPatterns}}<li>{{this}}</li>{{/each}}</ul>{{/if}}
+  {{#unless signature.aspectPatterns}}<p class="cp-empty">No se detectaron configuraciones mayores con los orbes actuales.</p>{{/unless}}
+
+  <h3>Estrellas fijas en puntos sensibles</h3>
+  {{#if signature.fixedStarsTop}}<ul class="cp-list">{{#each signature.fixedStarsTop}}<li>{{this}}</li>{{/each}}</ul>{{/if}}
+  {{#unless signature.fixedStarsTop}}<p class="cp-empty">Sin contactos de estrellas fijas dentro de orbe.</p>{{/unless}}
+
+  {{#if narrative.firmaNatal}}<div class="cp-narrative" style="margin-top:14pt;">{{{narrative.firmaNatal}}}</div>{{/if}}
+</section>
+
+<section class="report-section page-break">
+  <h2>El año en curso</h2>
+  {{#if narrative.yearInProgress}}<div class="cp-narrative">{{{narrative.yearInProgress}}}</div>{{/if}}
+  {{#unless narrative.yearInProgress}}<div class="cp-no-narrative">Esta sección se enriquece cuando se genera la redacción Anthropic.</div>{{/unless}}
+
+  <h3>Señales de la capa anual</h3>
+  {{#if annualSignals}}
+  <table class="cp-table-compact"><thead><tr><th>Fuente</th><th>Asunto</th><th>Resumen</th><th>Fecha exacta</th><th>Peso</th></tr></thead><tbody>
+  {{#each annualSignals}}<tr><td>{{source}}</td><td>{{subject}}</td><td>{{summary}}</td><td>{{exactLabel}}</td><td>{{weight}}</td></tr>{{/each}}
+  </tbody></table>
+  {{/if}}
+  {{#unless annualSignals}}<p class="cp-empty">Sin señales en la capa anual.</p>{{/unless}}
+</section>
+
+<section class="report-section page-break">
+  <h2>Medio plazo (±12 meses)</h2>
+  {{#if narrative.mediumTerm}}<div class="cp-narrative">{{{narrative.mediumTerm}}}</div>{{/if}}
+  {{#unless narrative.mediumTerm}}<div class="cp-no-narrative">Esta sección se enriquece cuando se genera la redacción Anthropic.</div>{{/unless}}
+
+  <h3>Señales de medio plazo</h3>
+  {{#if mediumSignals}}
+  <table class="cp-table-compact"><thead><tr><th>Fuente</th><th>Asunto</th><th>Resumen</th><th>Fecha exacta</th><th>Peso</th></tr></thead><tbody>
+  {{#each mediumSignals}}<tr><td>{{source}}</td><td>{{subject}}</td><td>{{summary}}</td><td>{{exactLabel}}</td><td>{{weight}}</td></tr>{{/each}}
+  </tbody></table>
+  {{/if}}
+  {{#unless mediumSignals}}<p class="cp-empty">Sin señales activas a medio plazo.</p>{{/unless}}
+</section>
+
+<section class="report-section page-break">
+  <h2>Corto plazo (próximos 6 meses)</h2>
+  {{#if narrative.shortTerm}}<div class="cp-narrative">{{{narrative.shortTerm}}}</div>{{/if}}
+  {{#unless narrative.shortTerm}}<div class="cp-no-narrative">Esta sección se enriquece cuando se genera la redacción Anthropic.</div>{{/unless}}
+
+  <h3>Tránsitos lentos activos</h3>
+  {{#if shortSignals}}
+  <table class="cp-table-compact"><thead><tr><th>Fuente</th><th>Punto natal</th><th>Resumen</th><th>Fecha exacta</th><th>Peso</th></tr></thead><tbody>
+  {{#each shortSignals}}<tr><td>{{source}}</td><td>{{subject}}</td><td>{{summary}}</td><td>{{exactLabel}}</td><td>{{weight}}</td></tr>{{/each}}
+  </tbody></table>
+  {{/if}}
+  {{#unless shortSignals}}<p class="cp-empty">Sin tránsitos lentos sobre puntos sensibles en esta ventana.</p>{{/unless}}
+</section>
+
+<section class="report-section page-break">
+  <h2>Capa lunar — lunaciones y eclipses</h2>
+  {{#if narrative.lunarLayer}}<div class="cp-narrative">{{{narrative.lunarLayer}}}</div>{{/if}}
+  {{#unless narrative.lunarLayer}}<div class="cp-no-narrative">Esta sección se enriquece cuando se genera la redacción Anthropic.</div>{{/unless}}
+
+  <h3>Próximas lunaciones y eclipses sobre puntos sensibles</h3>
+  {{#if lunarSignals}}
+  <table class="cp-table-compact"><thead><tr><th>Fuente</th><th>Punto natal</th><th>Resumen</th><th>Fecha exacta</th><th>Peso</th></tr></thead><tbody>
+  {{#each lunarSignals}}<tr><td>{{source}}</td><td>{{subject}}</td><td>{{summary}}</td><td>{{exactLabel}}</td><td>{{weight}}</td></tr>{{/each}}
+  </tbody></table>
+  {{/if}}
+  {{#unless lunarSignals}}<p class="cp-empty">Sin lunaciones o eclipses dentro del orbe sobre puntos sensibles.</p>{{/unless}}
+</section>
+
+<section class="report-section page-break">
+  <h2>Temas convergentes — qué pesa de verdad</h2>
+  {{#if narrative.convergences}}<div class="cp-narrative">{{{narrative.convergences}}}</div>{{/if}}
+  {{#unless narrative.convergences}}<div class="cp-no-narrative">Esta sección se enriquece cuando se genera la redacción Anthropic.</div>{{/unless}}
+
+  <h3>Cola de prioridad</h3>
+  {{#if topics}}
+  <table class="cp-table-compact"><thead><tr><th>#</th><th>Tema</th><th>Asunto</th><th>Score</th><th>Capas</th></tr></thead><tbody>
+  {{#each topics}}<tr class="cp-topic-row"><td>{{rank}}</td><td>{{title}}</td><td>{{subject}}</td><td>{{score}}</td><td>{{layerCount}}</td></tr><tr><td></td><td colspan="4">{{summary}}</td></tr>{{/each}}
+  </tbody></table>
+  {{/if}}
+  {{#unless topics}}<p class="cp-empty">No se detectaron temas convergentes priorizables.</p>{{/unless}}
+</section>
+
+{{#if narrative.closing}}
+<section class="report-section page-break">
+  <h2>Cierre</h2>
+  <div class="cp-narrative">{{{narrative.closing}}}</div>
+</section>
+{{/if}}
+
+<section class="report-section page-break">
+  <h2>Trazabilidad técnica</h2>
+  <table class="cp-table-compact"><thead><tr><th>Métrica</th><th>Valor</th><th>Detalle</th></tr></thead><tbody>
+  {{#each trazabilityRows}}<tr><td>{{label}}</td><td>{{value}}</td><td>{{detail}}</td></tr>{{/each}}
+  </tbody></table>
+</section>
+
+  </main>
+  <footer class="report-footer" aria-label="Pie del informe">
+    <div class="report-footer__center">Generado por AstroMalik · {{generatedDate}}</div>
+    <div class="report-footer__page" aria-label="Número de página"></div>
+  </footer>
+</body>
+</html>
