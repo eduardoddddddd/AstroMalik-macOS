@@ -1,0 +1,21 @@
+<section class="cover-page" aria-label="Portada">
+  <svg class="cover-watermark" viewBox="0 0 600 800" role="presentation" aria-hidden="true">
+    <circle cx="300" cy="390" r="230" fill="none" stroke="currentColor" stroke-width="3" />
+    <circle cx="300" cy="390" r="174" fill="none" stroke="currentColor" stroke-width="1" />
+    <line x1="70" y1="390" x2="530" y2="390" stroke="currentColor" stroke-width="1" />
+    <line x1="300" y1="160" x2="300" y2="620" stroke="currentColor" stroke-width="1" />
+    <text x="300" y="430" text-anchor="middle" font-size="210" font-family="astro-glyphs, Apple Symbols, serif" fill="currentColor">{{cover.ascGlyph}}</text>
+  </svg>
+
+  <div class="cover-content">
+    <div class="cover-kicker">Informe astrológico profesional</div>
+    <h1 class="cover-title">{{header.reportTitle}}</h1>
+    <div class="cover-chart">{{cover.chartName}}</div>
+    <div class="cover-asc"><span class="glyph">{{cover.ascGlyph}}</span> Ascendente en {{cover.ascSign}}</div>
+    <div class="cover-meta">
+      <div><strong>Nacimiento:</strong> {{cover.birthDate}} · {{cover.birthTime}}</div>
+      <div><strong>Lugar:</strong> {{cover.place}}</div>
+      <div><strong>Generación:</strong> {{cover.generatedDate}}</div>
+    </div>
+  </div>
+</section>

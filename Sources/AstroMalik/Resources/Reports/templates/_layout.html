@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{header.reportTitle}} — {{header.chartName}}</title>
+  <!-- DEFER: las fuentes EB Garamond/Inter/astro-glyphs se embeberán en base64 desde {{> _font_face_data}} en una sesión posterior; por ahora se usan fallbacks de sistema. -->
+  <style>
+{{> _glyphs_css}}
+{{> _theme_css}}
+{{> _print_css}}
+  </style>
+</head>
+<body>
+  <header class="report-header" aria-label="Cabecera del informe">
+    <div class="report-header__title">{{header.reportTitle}}</div>
+    <div class="report-header__chart">{{header.chartName}}</div>
+  </header>
+
+  <main class="report-body">
+{{#if cover}}
+{{> _cover}}
+{{/if}}
+{{#if includeTOC}}
+{{> _toc}}
+{{/if}}
+{{{body}}}
+  </main>
+
+  <footer class="report-footer" aria-label="Pie del informe">
+    <div class="report-footer__center">Generado por AstroMalik · {{generatedDate}}</div>
+    <div class="report-footer__page" aria-label="Número de página"></div>
+  </footer>
+</body>
+</html>

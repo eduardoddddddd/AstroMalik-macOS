@@ -1,0 +1,47 @@
+@page {
+  size: A4 portrait;
+  margin: var(--page-margin-top) var(--page-margin-right) var(--page-margin-bottom) var(--page-margin-left);
+  @bottom-right { content: counter(page); }
+}
+
+@page:first {
+  @bottom-right { content: ""; }
+}
+
+@media print {
+  html,
+  body {
+    background: white;
+  }
+
+  h1,
+  h2 {
+    page-break-after: avoid;
+    break-after: avoid-page;
+  }
+
+  h3,
+  figure,
+  blockquote {
+    page-break-inside: avoid;
+    break-inside: avoid-page;
+  }
+
+  table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  thead { display: table-header-group; }
+  tfoot { display: table-footer-group; }
+
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .no-break {
+    page-break-inside: avoid;
+    break-inside: avoid-page;
+  }
+}

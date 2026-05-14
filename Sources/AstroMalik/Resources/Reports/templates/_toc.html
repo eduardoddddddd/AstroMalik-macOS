@@ -1,0 +1,44 @@
+<section class="toc" aria-label="Tabla de contenidos">
+  <h2>Tabla de contenidos</h2>
+  <ol id="report-toc" class="toc-list"></ol>
+  <script>
+  (function () {
+    function slug(text, index) {
+      return 'sec-' + index + '-' + text.toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+
+    function buildTOC() {
+      var list = document.getElementById('report-toc');
+      if (!list) return;
+      list.innerHTML = '';
+      var headings = Array.prototype.slice.call(document.querySelectorAll('.report-body h2, .report-body h3'))
+        .filter(function (heading) { return !heading.closest('.toc') && !heading.closest('.cover-page'); });
+
+      headings.forEach(function (heading, index) {
+        if (!heading.id) heading.id = slug(heading.textContent || 'seccion', index + 1);
+        heading.classList.add('numbered');
+        var item = document.createElement('li');
+        item.setAttribute('data-level', heading.tagName === 'H3' ? '3' : '2');
+        var marker = document.createElement('span');
+        marker.className = 'toc-marker';
+        marker.textContent = heading.tagName === 'H3' ? '§' : '§';
+        var link = document.createElement('a');
+        link.href = '#' + heading.id;
+        link.textContent = heading.textContent || '';
+        item.appendChild(marker);
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC, { once: true });
+    } else {
+      buildTOC();
+    }
+  }());
+  </script>
+</section>
