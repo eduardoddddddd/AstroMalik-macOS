@@ -16,3 +16,24 @@ corpus_sources/staging/
 corpus_sources/reports/*
 !corpus_sources/reports/
 !corpus_sources/reports/pd_corpus_population_report.md
+
+# Worktrees de Claude Code y artefactos de sesión
+.claude/
+
+# Secretos y credenciales — defensa en profundidad
+.env
+.env.*
+*.env
+*.secret
+*.secrets
+secrets/
+**/anthropic*.key
+**/anthropic*.txt
+**/anthropic*.json
+**/openrouter*.key
+**/anthropic_api_key*
+**/ANTHROPIC_API_KEY*
+**/.anthropic
+**/.openrouter
+config.local.*
+local.config.*
