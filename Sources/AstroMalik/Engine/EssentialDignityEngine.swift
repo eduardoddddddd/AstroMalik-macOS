@@ -26,6 +26,12 @@ struct EssentialDignityScore: Sendable {
     let ruler: String?      // Planeta que confiere la dignidad (triplicidad/término/faz)
 }
 
+struct EssentialDignityRulership: Sendable, Equatable {
+    let planet: String
+    let dignity: EssentialDignity
+    let points: Int
+}
+
 // MARK: - Engine
 
 enum EssentialDignityEngine {
@@ -36,8 +42,7 @@ enum EssentialDignityEngine {
     /// Retorna el array de dignidades aplicables ordenadas por score.
     static func dignities(planet: String, longitude: Double, isDiurnal: Bool = true) -> [EssentialDignityScore] {
         let sign = signIndex(longitude)
-        let degInSign = Int(longitude.truncatingRemainder(dividingBy: 360)
-                             .truncatingRemainder(dividingBy: 30))
+        let degInSign = degreeInSign(longitude)
 
         var results: [EssentialDignityScore] = []
 
@@ -119,6 +124,58 @@ enum EssentialDignityEngine {
         return domicileRuler(of: sign)
     }
 
+    /// Señores que poseen dignidad esencial en un grado zodiacal.
+    /// Útil para almutén: domicilio 5, exaltación 4, triplicidad 3,
+    /// término 2 y faz 1. En triplicidad seguimos la misma elección
+    /// que `dignities`: regente diurno/nocturno según secta + participante.
+    static func dignityRulers(at longitude: Double, isDiurnal: Bool = true) -> [EssentialDignityRulership] {
+        let sign = signIndex(longitude)
+        let degree = degreeInSign(longitude)
+        var rows: [EssentialDignityRulership] = [
+            .init(planet: domicileRuler(of: sign), dignity: .domicile, points: 5),
+        ]
+
+        if let exalted = exaltationRuler(of: sign) {
+            rows.append(.init(planet: exalted, dignity: .exaltation, points: 4))
+        }
+
+        for ruler in triplicityRulers(sign: sign, isDiurnal: isDiurnal) {
+            rows.append(.init(planet: ruler, dignity: .triplicity, points: 3))
+        }
+
+        if let term = egyptianTermRuler(sign: sign, degreeInSign: degree) {
+            rows.append(.init(planet: term, dignity: .term, points: 2))
+        }
+
+        if let face = faceRuler(sign: sign, degreeInSign: degree) {
+            rows.append(.init(planet: face, dignity: .face, points: 1))
+        }
+
+        return rows
+    }
+
+    static func termRuler(at longitude: Double) -> String? {
+        egyptianTermRuler(sign: signIndex(longitude), degreeInSign: degreeInSign(longitude))
+    }
+
+    static func decanFaceRuler(at longitude: Double) -> String? {
+        faceRuler(sign: signIndex(longitude), degreeInSign: degreeInSign(longitude))
+    }
+
+    static func exaltationRuler(of sign: Int) -> String? {
+        for planet in ["SOL", "LUNA", "MERCURIO", "VENUS", "MARTE", "JUPITER", "SATURNO"] {
+            if let exaltation = exaltation(of: planet), exaltation.sign == sign {
+                return planet
+            }
+        }
+        return nil
+    }
+
+    static func isInExaltationOf(guestLongitude: Double, hostPlanet: String) -> Bool {
+        guard let exaltation = exaltation(of: hostPlanet) else { return false }
+        return signIndex(guestLongitude) == exaltation.sign
+    }
+
     // MARK: - Domicilios (Ptolomeo, Tetrabiblos I.17)
     // Signos: 0=Aries, 1=Tauro, 2=Géminis, 3=Cáncer, 4=Leo, 5=Virgo,
     //         6=Libra, 7=Escorpio, 8=Sagitario, 9=Capricornio, 10=Acuario, 11=Piscis
@@ -191,6 +248,10 @@ enum EssentialDignityEngine {
     // Retorna el regente si coincide con el planeta dado.
 
     private static func triplicityRuler(sign: Int, planet: String, isDiurnal: Bool) -> String? {
+        triplicityRulers(sign: sign, isDiurnal: isDiurnal).contains(planet) ? planet : nil
+    }
+
+    static func triplicityRulers(sign: Int, isDiurnal: Bool) -> [String] {
         // Fuego (Aries, Leo, Sagitario): diurno=Sol, nocturno=Júpiter, cooperante=Saturno
         // Tierra (Tauro, Virgo, Capricornio): diurno=Venus, nocturno=Luna, cooperante=Marte
         // Aire (Géminis, Libra, Acuario): diurno=Saturno, nocturno=Mercurio, cooperante=Júpiter
@@ -203,14 +264,13 @@ enum EssentialDignityEngine {
         case 3, 7, 11:  triplRulers = ["VENUS", "MARTE", "LUNA"]            // Agua
         default: triplRulers = []
         }
-        guard !triplRulers.isEmpty else { return nil }
-        let validRulers: [String]
-        if isDiurnal {
-            validRulers = [triplRulers[0], triplRulers[2]]
-        } else {
-            validRulers = [triplRulers[1], triplRulers[2]]
+        guard !triplRulers.isEmpty else { return [] }
+        let validRulers = isDiurnal
+            ? [triplRulers[0], triplRulers[2]]
+            : [triplRulers[1], triplRulers[2]]
+        return validRulers.reduce(into: [String]()) { result, ruler in
+            if !result.contains(ruler) { result.append(ruler) }
         }
-        return validRulers.contains(planet) ? planet : nil
     }
 
     // MARK: - Términos Egipcios (Bonatti / Lilly CA p. 104)
@@ -266,7 +326,15 @@ enum EssentialDignityEngine {
     // MARK: - Helpers
 
     static func signIndex(_ longitude: Double) -> Int {
-        Int(longitude.truncatingRemainder(dividingBy: 360) / 30)
+        var normalized = longitude.truncatingRemainder(dividingBy: 360)
+        if normalized < 0 { normalized += 360 }
+        return Int(normalized / 30)
+    }
+
+    static func degreeInSign(_ longitude: Double) -> Int {
+        var normalized = longitude.truncatingRemainder(dividingBy: 360)
+        if normalized < 0 { normalized += 360 }
+        return Int(normalized.truncatingRemainder(dividingBy: 30))
     }
 
     static func signName(_ index: Int) -> String {

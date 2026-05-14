@@ -1,0 +1,23 @@
+[
+  { "key": "ALDEBARAN", "name": "Aldebarán", "longitudeJ2000": 69.7833, "latitudeJ2000": -5.47, "magnitude": 0.86, "nature": "Marte" },
+  { "key": "REGULUS", "name": "Regulus", "longitudeJ2000": 149.8333, "latitudeJ2000": 0.46, "magnitude": 1.36, "nature": "Marte/Júpiter" },
+  { "key": "SPICA", "name": "Spica", "longitudeJ2000": 203.8333, "latitudeJ2000": -0.53, "magnitude": 0.98, "nature": "Venus/Marte" },
+  { "key": "ANTARES", "name": "Antares", "longitudeJ2000": 249.7667, "latitudeJ2000": -4.57, "magnitude": 1.06, "nature": "Marte/Júpiter" },
+  { "key": "ALGOL", "name": "Algol", "longitudeJ2000": 56.1667, "latitudeJ2000": 22.42, "magnitude": 2.10, "nature": "Saturno/Júpiter" },
+  { "key": "SIRIUS", "name": "Sirius", "longitudeJ2000": 104.0833, "latitudeJ2000": -39.60, "magnitude": -1.46, "nature": "Júpiter/Marte" },
+  { "key": "FOMALHAUT", "name": "Fomalhaut", "longitudeJ2000": 333.8667, "latitudeJ2000": -21.13, "magnitude": 1.16, "nature": "Venus/Mercurio" },
+  { "key": "VEGA", "name": "Vega", "longitudeJ2000": 285.3167, "latitudeJ2000": 61.73, "magnitude": 0.03, "nature": "Venus/Mercurio" },
+  { "key": "ARCTURUS", "name": "Arcturus", "longitudeJ2000": 204.2333, "latitudeJ2000": 30.77, "magnitude": -0.05, "nature": "Marte/Júpiter" },
+  { "key": "PROCYON", "name": "Procyon", "longitudeJ2000": 115.8000, "latitudeJ2000": -16.02, "magnitude": 0.38, "nature": "Mercurio/Marte" },
+  { "key": "CAPELLA", "name": "Capella", "longitudeJ2000": 81.8667, "latitudeJ2000": 22.87, "magnitude": 0.08, "nature": "Marte/Mercurio" },
+  { "key": "RIGEL", "name": "Rigel", "longitudeJ2000": 76.8333, "latitudeJ2000": -31.12, "magnitude": 0.13, "nature": "Júpiter/Saturno" },
+  { "key": "BETELGEUSE", "name": "Betelgeuse", "longitudeJ2000": 88.7500, "latitudeJ2000": -16.03, "magnitude": 0.50, "nature": "Marte/Mercurio" },
+  { "key": "MARKAB", "name": "Markab", "longitudeJ2000": 353.5000, "latitudeJ2000": 19.42, "magnitude": 2.48, "nature": "Marte/Mercurio" },
+  { "key": "SCHEAT", "name": "Scheat", "longitudeJ2000": 359.3667, "latitudeJ2000": 31.13, "magnitude": 2.42, "nature": "Marte/Mercurio" },
+  { "key": "VINDEMIATRIX", "name": "Vindemiatrix", "longitudeJ2000": 189.9333, "latitudeJ2000": 16.20, "magnitude": 2.83, "nature": "Saturno/Mercurio" },
+  { "key": "ALGORAB", "name": "Algorab", "longitudeJ2000": 193.4500, "latitudeJ2000": -16.52, "magnitude": 2.94, "nature": "Marte/Saturno" },
+  { "key": "ZOSMA", "name": "Zosma", "longitudeJ2000": 161.3167, "latitudeJ2000": 14.20, "magnitude": 2.56, "nature": "Saturno/Venus" },
+  { "key": "ALPHECCA", "name": "Alphecca", "longitudeJ2000": 222.3000, "latitudeJ2000": 44.30, "magnitude": 2.23, "nature": "Venus/Mercurio" },
+  { "key": "TOLIMAN", "name": "Toliman", "longitudeJ2000": 239.4833, "latitudeJ2000": -42.58, "magnitude": -0.01, "nature": "Venus/Júpiter" },
+  { "key": "MIRFAK", "name": "Mirfak", "longitudeJ2000": 62.0833, "latitudeJ2000": 30.12, "magnitude": 1.79, "nature": "Júpiter/Saturno" }
+]

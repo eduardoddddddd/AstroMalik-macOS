@@ -4,6 +4,7 @@ import AppKit
 enum NatalDetailMode: String, CaseIterable, Identifiable {
     case wheel = "Rueda"
     case reading = "Lectura"
+    case extended = "Análisis extendido"
     case texts = "Textos"
 
     var id: String { rawValue }
@@ -126,7 +127,7 @@ struct NatalChartView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(width: 250)
+                .frame(width: 420)
                 compactMetric("ASC", chart.ascendant.formatted)
                 compactMetric("MC", chart.mc.formatted)
             }
@@ -212,7 +213,7 @@ struct NatalChartView: View {
 
     private var detailPanel: some View {
         Group {
-            if isLoadingInterp {
+            if isLoadingInterp && (detailMode == .reading || detailMode == .texts) {
                 ProgressView("Cargando interpretaciones…")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
@@ -226,6 +227,9 @@ struct NatalChartView: View {
                         synthesis: $synthesis,
                         selectedFocusKey: $selectedFocusKey
                     )
+                case .extended:
+                    NatalExtendedAnalysisView(chart: chart)
+                        .environmentObject(appState)
                 case .texts:
                     InterpretacionesView(interpretaciones: interpretaciones)
                 }
