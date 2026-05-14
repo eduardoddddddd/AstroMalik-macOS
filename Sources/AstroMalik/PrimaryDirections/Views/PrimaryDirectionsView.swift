@@ -1,9 +1,17 @@
 import SwiftUI
 
+private enum PrimaryDirectionsTechniqueTab: String, CaseIterable, Identifiable {
+    case regiomontanas = "Regiomontanas"
+    case solarArc = "Arco Solar"
+
+    var id: String { rawValue }
+}
+
 struct PrimaryDirectionsView: View {
     @EnvironmentObject private var appState: AppState
     @ObservedObject var vm: PrimaryDirectionsViewModel
 
+    @State private var techniqueTab: PrimaryDirectionsTechniqueTab = .regiomontanas
     @State private var showFilters = false
     @State private var showSettings = false
     @State private var isCreatingSelectedNote = false
@@ -26,6 +34,37 @@ struct PrimaryDirectionsView: View {
     }
 
     var body: some View {
+        VStack(spacing: 0) {
+            techniquePicker
+            Group {
+                switch techniqueTab {
+                case .regiomontanas:
+                    regiomontanasBody
+                case .solarArc:
+                    SolarArcDirectionsView(chart: vm.currentChart)
+                }
+            }
+        }
+    }
+
+    private var techniquePicker: some View {
+        HStack {
+            Picker("Técnica", selection: $techniqueTab) {
+                ForEach(PrimaryDirectionsTechniqueTab.allCases) { tab in
+                    Text(tab.rawValue).tag(tab)
+                }
+            }
+            .pickerStyle(.segmented)
+            .frame(width: 320)
+            Spacer()
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(Color.appPanel)
+        .overlay(alignment: .bottom) { Divider() }
+    }
+
+    private var regiomontanasBody: some View {
         Group {
             if vm.isCalculating {
                 loadingView
