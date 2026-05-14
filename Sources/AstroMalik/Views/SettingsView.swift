@@ -3,6 +3,8 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var appState: AppState
     @State private var pdSettings: PDSettings = PDSettings.load()
+    @State private var anthropicAPIKeyInput = ""
+    @State private var anthropicKeyMessage: String?
 
     var body: some View {
         Form {
@@ -37,6 +39,51 @@ struct SettingsView: View {
                 Text("Predeterminados al abrir Direcciones Primarias. Ajustables por carta desde esa vista.")
                     .font(.caption)
                     .foregroundColor(.secondary)
+            }
+
+            Section("Anthropic API") {
+                VStack(alignment: .leading, spacing: 10) {
+                    statusRow(
+                        title: "Estado",
+                        value: anthropicCredentialStatus,
+                        tone: anthropicCredentialSource == nil ? .secondary : Color.appSecondaryAccent
+                    )
+
+                    if let tail = AnthropicClient().maskedKeyTail() {
+                        statusRow(title: "Key", value: "•••• \(tail)", tone: .secondary)
+                    }
+
+                    SecureField("Nueva API key", text: $anthropicAPIKeyInput)
+                        .textFieldStyle(.roundedBorder)
+
+                    HStack(spacing: 10) {
+                        Button("Guardar en Keychain") {
+                            saveAnthropicAPIKey()
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(Color.appAccentFill)
+                        .disabled(anthropicAPIKeyInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+
+                        Button("Eliminar key del Keychain") {
+                            deleteAnthropicAPIKey()
+                        }
+                        .buttonStyle(.bordered)
+                        .disabled(AnthropicClient().credentialSource() != .keychain)
+                    }
+
+                    if let anthropicKeyMessage {
+                        Label(
+                            anthropicKeyMessage,
+                            systemImage: anthropicKeyMessage.contains("Error") ? "exclamationmark.triangle" : "checkmark.circle.fill"
+                        )
+                        .font(.caption)
+                        .foregroundStyle(anthropicKeyMessage.contains("Error") ? Color.appWarning : Color.appSecondaryAccent)
+                    }
+
+                    Text("Fallback: variable de entorno ANTHROPIC_API_KEY")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
             }
 
             Section("OpenRouter") {
@@ -140,6 +187,21 @@ struct SettingsView: View {
         }
     }
 
+    private var anthropicCredentialSource: AnthropicCredentialSource? {
+        AnthropicClient().credentialSource()
+    }
+
+    private var anthropicCredentialStatus: String {
+        switch anthropicCredentialSource {
+        case .keychain:
+            return "Keychain"
+        case .environment:
+            return "Variable de entorno"
+        case .none:
+            return "Sin configurar"
+        }
+    }
+
     private var joplinHostBinding: Binding<String> {
         Binding(
             get: { appState.joplinSettings.host },
@@ -166,6 +228,23 @@ struct SettingsView: View {
             get: { appState.joplinSettings.notebook },
             set: { appState.joplinSettings.notebook = $0 }
         )
+    }
+
+    private func saveAnthropicAPIKey() {
+        let key = anthropicAPIKeyInput.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !key.isEmpty else { return }
+        do {
+            try AnthropicClient().saveAPIKey(key)
+            anthropicAPIKeyInput = ""
+            anthropicKeyMessage = "API key guardada en Keychain."
+        } catch {
+            anthropicKeyMessage = "Error al guardar API key: \(error.localizedDescription)"
+        }
+    }
+
+    private func deleteAnthropicAPIKey() {
+        AnthropicClient().deleteAPIKey()
+        anthropicKeyMessage = "Key eliminada del Keychain."
     }
 
     private func statusRow(title: String, value: String, tone: Color) -> some View {

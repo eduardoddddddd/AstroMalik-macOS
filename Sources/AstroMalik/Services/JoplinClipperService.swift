@@ -10,7 +10,7 @@ struct JoplinClipperSettings: Codable, Equatable {
         host: "127.0.0.1",
         port: 41184,
         token: "",
-        notebook: "AstroMalik"
+        notebook: "codex"
     )
 }
 
