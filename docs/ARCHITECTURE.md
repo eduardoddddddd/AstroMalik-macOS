@@ -14,24 +14,16 @@ Ningún paquete Swift externo. Solo el módulo C `CSwissEph` (Swiss Ephemeris em
 
 ## Ventana única
 
-La app usa un solo `WindowGroup` con `NavigationSplitView`. La sidebar decide la sección y el panel derecho contiene el flujo activo:
+La app usa un solo `WindowGroup` con `NavigationSplitView`. La sidebar está organizada por flujo de trabajo del astrólogo en seis secciones; el panel derecho contiene el flujo activo:
 
-- Nueva Carta
-- Cartas Guardadas
-- Lectura · Análisis extendido
-- Sinastría
-- Revolución Solar
-- Revolución Lunar
-- Tránsitos
-- Efemérides
-- **Profecciones**
-- **Progresiones**
-- Direcciones Primarias · Arco Solar
-- **Firdaria**
-- **Zodiacal Releasing**
-- **Cross-personal**
-- Horaria
-- **Mis informes** (PDFs generados)
+- **Carta Natal** — Nueva Carta · Cartas Guardadas · Lectura
+- **Predictivas** — Tránsitos · Progresiones · Direcciones Primarias (· Arco Solar) · Profecciones · Firdaria · Zodiacal Releasing
+- **Retornos** — Revolución Solar · Revolución Lunar
+- **Síntesis** — Panorama Predictivo *(síntesis cross-personal; resaltada como culminación)*
+- **Sinastría y Horaria** — Sinastría · Horaria
+- **Herramientas** — Efemérides · Informes (PDFs generados) · Ajustes
+
+`NavItem` separa identidad estable (`rawValue`) de texto visible (`label`), por lo que renombrar etiquetas no afecta la navegación. El orden y la agrupación se definen en las `Section` de `ContentView`; el enrutado real (`DetailRoute`) y `showDefaultDetail` son independientes de cómo se presenta el sidebar.
 
 Las cartas y consultas se abren dentro del detalle principal. El estado vivo queda en `AppState`.
 

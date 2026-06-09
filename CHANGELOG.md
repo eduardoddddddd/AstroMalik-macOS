@@ -96,6 +96,10 @@ Primera release mayor. AstroMalik pasa de prototipo avanzado a app de astrologí
 
 ### Cambiado
 
+- Sidebar reorganizado por flujo de trabajo del astrólogo: de 4 secciones planas (Cartas / Predictivas / Técnicas / Ajustes) a 6 secciones conceptuales — **Carta Natal**, **Predictivas**, **Retornos**, **Síntesis**, **Sinastría y Horaria** y **Herramientas**. La funcionalidad no cambia; solo la agrupación y el orden de presentación.
+- `NavItem` separa ahora identidad estable (`rawValue`) de texto visible (nueva propiedad `label`), de modo que renombrar etiquetas del sidebar no afecta la lógica de navegación.
+- Renombrados de etiquetas: «Estado cross» → **«Panorama Predictivo»** y «Mis informes» → **«Informes»**.
+- Cabeceras de sección del sidebar en mayúsculas pequeñas con tracking y color de acento; la fila de Síntesis (Panorama Predictivo) se resalta en el acento secundario como culminación de las predictivas.
 - Dignidades esenciales: la triplicidad ahora respeta la secta diurna/nocturna; el cooperante sigue contando como regente válido.
 - Direcciones Primarias propagan la secta real de la carta al describir dignidades esenciales en el contexto interpretativo.
 - Horaria usa Swift nativo por defecto; Python queda como motor legado/fallback forzable con `ASTROMALIK_HORARIA_ENGINE=python`.

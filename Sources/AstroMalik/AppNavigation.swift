@@ -1,25 +1,41 @@
 import Foundation
 
 enum NavItem: String, CaseIterable, Identifiable {
+    // Carta Natal
     case nuevaCarta  = "Nueva Carta"
     case cartas      = "Cartas Guardadas"
     case lectura     = "Lectura"
-    case sinastria   = "Sinastría"
-    case revolucionSolar = "Revolución Solar"
-    case revolucionLunar = "Revolución Lunar"
+    // Predictivas
     case transitos   = "Tránsitos"
     case progresiones = "Progresiones"
+    case direccionesPrimarias = "Direcciones Primarias"
     case profecciones = "Profecciones"
     case firdaria    = "Firdaria"
     case zodiacalReleasing = "Zodiacal Releasing"
+    // Retornos
+    case revolucionSolar = "Revolución Solar"
+    case revolucionLunar = "Revolución Lunar"
+    // Síntesis
     case crossPersonal = "Estado cross"
-    case efemerides  = "Efemérides"
+    // Sinastría y Horaria
+    case sinastria   = "Sinastría"
     case horaria     = "Horaria"
-    case direccionesPrimarias = "Direcciones Primarias"
+    // Herramientas
+    case efemerides  = "Efemérides"
     case misInformes = "Mis informes"
     case ajustes     = "Ajustes"
 
     var id: String { rawValue }
+
+    /// Texto visible en el sidebar. Separado de `rawValue` para poder
+    /// renombrar etiquetas sin afectar la identidad estable del caso.
+    var label: String {
+        switch self {
+        case .crossPersonal: return "Panorama Predictivo"
+        case .misInformes:   return "Informes"
+        default:             return rawValue
+        }
+    }
 
     var systemImage: String {
         switch self {

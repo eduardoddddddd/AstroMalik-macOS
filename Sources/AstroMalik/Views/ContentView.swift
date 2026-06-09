@@ -31,37 +31,59 @@ struct ContentView: View {
                 .padding(.bottom, 14)
 
                 List(selection: $appState.selectedNav) {
-                    Section("Cartas") {
+                    Section {
                         ForEach([NavItem.nuevaCarta, NavItem.cartas, NavItem.lectura]) { item in
                             sidebarItem(item)
                         }
+                    } header: {
+                        sidebarSectionHeader("Carta Natal")
                     }
 
-                    Section("Predictivas") {
-                        ForEach([NavItem.profecciones, NavItem.firdaria, NavItem.zodiacalReleasing, NavItem.crossPersonal]) { item in
-                            sidebarItem(item)
-                        }
-                    }
-
-                    Section("Técnicas") {
+                    Section {
                         ForEach([
                             NavItem.transitos,
                             NavItem.progresiones,
                             NavItem.direccionesPrimarias,
-                            NavItem.revolucionSolar,
-                            NavItem.revolucionLunar,
-                            NavItem.sinastria,
-                            NavItem.efemerides,
-                            NavItem.horaria,
+                            NavItem.profecciones,
+                            NavItem.firdaria,
+                            NavItem.zodiacalReleasing,
                         ]) { item in
                             sidebarItem(item)
                         }
+                    } header: {
+                        sidebarSectionHeader("Predictivas")
                     }
 
-                    Section("Ajustes") {
-                        ForEach([NavItem.misInformes, NavItem.ajustes]) { item in
+                    Section {
+                        ForEach([NavItem.revolucionSolar, NavItem.revolucionLunar]) { item in
                             sidebarItem(item)
                         }
+                    } header: {
+                        sidebarSectionHeader("Retornos")
+                    }
+
+                    Section {
+                        ForEach([NavItem.crossPersonal]) { item in
+                            sidebarItem(item, highlighted: true)
+                        }
+                    } header: {
+                        sidebarSectionHeader("Síntesis")
+                    }
+
+                    Section {
+                        ForEach([NavItem.sinastria, NavItem.horaria]) { item in
+                            sidebarItem(item)
+                        }
+                    } header: {
+                        sidebarSectionHeader("Sinastría y Horaria")
+                    }
+
+                    Section {
+                        ForEach([NavItem.efemerides, NavItem.misInformes, NavItem.ajustes]) { item in
+                            sidebarItem(item)
+                        }
+                    } header: {
+                        sidebarSectionHeader("Herramientas")
                     }
                 }
                 .listStyle(.sidebar)
@@ -185,11 +207,20 @@ struct ContentView: View {
         }
     }
 
-    private func sidebarItem(_ item: NavItem) -> some View {
-        Label(item.rawValue, systemImage: item.systemImage)
+    private func sidebarItem(_ item: NavItem, highlighted: Bool = false) -> some View {
+        Label(item.label, systemImage: item.systemImage)
             .font(.body.weight(.medium))
+            .foregroundStyle(highlighted ? Color.appSecondaryAccent : Color.appPrimaryText)
             .tag(item)
             .padding(.vertical, 3)
+    }
+
+    private func sidebarSectionHeader(_ title: String) -> some View {
+        Text(title.uppercased())
+            .font(.caption2.weight(.semibold))
+            .tracking(0.8)
+            .foregroundStyle(Color.appSecondaryAccent)
+            .padding(.top, 4)
     }
 
     // MARK: - Cross Personal Detail

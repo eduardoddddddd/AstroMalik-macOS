@@ -301,6 +301,7 @@ Pestaña dentro de la lectura natal con nueve subsistemas:
 
 Estas son las mejoras más relevantes consolidadas en las últimas fases del proyecto:
 
+- Sidebar reorganizado por flujo de trabajo en 6 secciones (Carta Natal · Predictivas · Retornos · Síntesis · Sinastría y Horaria · Herramientas), con cabeceras sobrias y la síntesis cross-personal («Panorama Predictivo») destacada como culminación.
 - Calendario/Efemérides mensual con lunaciones, eclipses, estaciones, ingresos, Luna vacía de curso, aspectos mundanos, tabla diaria y exportación Joplin.
 - Resumen predictivo mensual personalizado dentro de Efemérides, con exportación Joplin independiente.
 - Port de Horaria a Swift nativo con Python relegado a modo legado.
