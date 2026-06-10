@@ -50,6 +50,7 @@ final class AppState: ObservableObject {
 
     let corpusStore: CorpusStore
     let userStore = UserStore()
+    let readingNotesStore = ReadingNotesStore()
     let horaryStore = HoraryStore()
     let placesService = PlacesService()
     /// Servicio de cálculo de Direcciones Primarias (Sendable, reutilizable).

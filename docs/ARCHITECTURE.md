@@ -185,7 +185,7 @@ LaunchAgent recipes en `scripts/launchagents/` para programación semanal y mens
 
 ## UI de lectura
 
-`NatalChartView` ofrece tres modos: rueda interactiva, lectura guiada y textos. La nota se genera desde `ReadingNoteBuilder` como Markdown. Una pestaña adicional desde 1.0 muestra el análisis natal extendido completo.
+`NatalChartView` ofrece tres modos: rueda interactiva, Lectura natal como documento continuo y Análisis extendido. La lectura se compone con `NatalReadingComposer` desde la carta, el corpus y opcionalmente `NatalExtendedAnalysisResult`; `ReadingRelevance` rankea aspectos/dominantes y `ChartDistribution` cubre temperamento, secta, hemisferios y stelliums. `NatalReadingView` integra índice lateral, densidad Esencial/Completa, buscador de corpus y síntesis autosalvada en `ReadingNotesStore` dentro de `user.db`. `ReadingNoteBuilder` serializa el mismo `NatalReading` a Markdown para Joplin.
 
 ## Joplin
 

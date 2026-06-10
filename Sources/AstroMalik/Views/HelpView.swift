@@ -17,7 +17,7 @@ struct HelpView: View {
                 """)
 
                 section("Lectura", """
-                La sección Lectura abre la carta activa con rueda interactiva, lectura guiada, regente del Ascendente, aspectos dominantes y síntesis editable.
+                La sección Lectura abre la carta activa con rueda interactiva, documento natal continuo por capítulos, buscador de corpus y síntesis editable persistida por carta.
                 """)
 
                 section("Sinastría", """

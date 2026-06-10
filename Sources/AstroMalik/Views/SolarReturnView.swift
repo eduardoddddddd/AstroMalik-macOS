@@ -212,7 +212,7 @@ struct SolarReturnView: View {
                         .frame(minHeight: 520).padding(18)
                 }
             case .texts:
-                InterpretacionesView(interpretaciones: reading.interpretations)
+                SolarReturnInterpretationsView(interpretaciones: reading.interpretations)
             }
         }
     }
@@ -682,5 +682,129 @@ private func srDisplayName(_ chart: NatalChart) -> String {
 private extension PlanetBody {
     var symbol: String {
         label.split(separator: " ").first.map(String.init) ?? label
+    }
+}
+
+private struct SolarReturnInterpretationsView: View {
+    var interpretaciones: [Interpretation]
+
+    @State private var selectedFilter: SolarReturnInterpretationFilter = .all
+    @State private var searchText = ""
+
+    private var filtered: [Interpretation] {
+        let byType: [Interpretation]
+        if let type = selectedFilter.tipo {
+            byType = interpretaciones.filter { $0.tipo == type }
+        } else {
+            byType = interpretaciones
+        }
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return byType }
+        return byType.filter { interp in
+            [interp.titulo, interp.texto, interp.fuente, interp.clave]
+                .joined(separator: "\n")
+                .range(of: query, options: [.caseInsensitive, .diacriticInsensitive]) != nil
+        }
+    }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            filterBar
+            Divider()
+            if filtered.isEmpty {
+                VStack(spacing: 8) {
+                    Image(systemName: "text.book.closed")
+                        .font(.system(size: 36))
+                        .foregroundColor(.secondary)
+                    Text("Sin interpretaciones disponibles")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 14) {
+                        ForEach(filtered) { interp in
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(interp.titulo)
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundColor(.appPrimaryText)
+                                Text(interp.texto)
+                                    .font(.callout)
+                                    .foregroundColor(.appPrimaryText.opacity(0.88))
+                                    .lineSpacing(4)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                if !interp.fuente.isEmpty {
+                                    Text("— \(interp.fuente)")
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                            .appCard(padding: 14)
+                        }
+                    }
+                    .padding(18)
+                }
+            }
+        }
+        .background(Color.appBackground)
+    }
+
+    private var filterBar: some View {
+        HStack(spacing: 12) {
+            Picker("Tipo", selection: $selectedFilter) {
+                ForEach(SolarReturnInterpretationFilter.allCases) { filter in
+                    Text(filter.label).tag(filter)
+                }
+            }
+            .pickerStyle(.segmented)
+            .frame(maxWidth: 560)
+
+            HStack(spacing: 8) {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.secondary)
+                TextField("Buscar", text: $searchText)
+                    .textFieldStyle(.plain)
+                if !searchText.isEmpty {
+                    Button { searchText = "" } label: { Image(systemName: "xmark.circle.fill") }
+                        .buttonStyle(.plain)
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding(8)
+            .background(Color.appInputBackground)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 8, style: .continuous).stroke(Color.appBorder.opacity(0.7), lineWidth: 1))
+        }
+        .padding(.horizontal, 18)
+        .padding(.vertical, 12)
+        .background(Color.appPanel)
+    }
+}
+
+private enum SolarReturnInterpretationFilter: String, CaseIterable, Identifiable {
+    case all
+    case planetaSigno
+    case planetaCasa
+    case aspectos
+
+    var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .all: return "Todas"
+        case .planetaSigno: return "Signos"
+        case .planetaCasa: return "Casas"
+        case .aspectos: return "Aspectos"
+        }
+    }
+
+    var tipo: InterpretationType? {
+        switch self {
+        case .all: return nil
+        case .planetaSigno: return .natalPlanetaSigno
+        case .planetaCasa: return .natalPlanetaCasa
+        case .aspectos: return .aspectoNatal
+        }
     }
 }

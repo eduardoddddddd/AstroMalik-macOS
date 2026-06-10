@@ -5,7 +5,6 @@ enum NatalDetailMode: String, CaseIterable, Identifiable {
     case wheel = "Rueda"
     case reading = "Lectura"
     case extended = "Análisis extendido"
-    case texts = "Textos"
 
     var id: String { rawValue }
 }
@@ -21,7 +20,6 @@ struct NatalChartView: View {
     @State private var isLoadingInterp = false
     @State private var detailMode: NatalDetailMode
     @State private var selectedFocusKey: String? = "ASC"
-    @State private var synthesis = ""
 
     @State private var saveSuccess = false
     @State private var noteCopied = false
@@ -135,7 +133,7 @@ struct NatalChartView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(width: 420)
+                .frame(width: 330)
                 compactMetric("ASC", chart.ascendant.formatted)
                 compactMetric("MC", chart.mc.formatted)
             }
@@ -221,7 +219,7 @@ struct NatalChartView: View {
 
     private var detailPanel: some View {
         Group {
-            if isLoadingInterp && (detailMode == .reading || detailMode == .texts) {
+            if isLoadingInterp && detailMode == .reading {
                 ProgressView("Cargando interpretaciones…")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
@@ -229,17 +227,15 @@ struct NatalChartView: View {
                 case .wheel:
                     wheelPanel
                 case .reading:
-                    GuidedReadingView(
+                    NatalReadingView(
                         chart: chart,
                         interpretaciones: interpretaciones,
-                        synthesis: $synthesis,
-                        selectedFocusKey: $selectedFocusKey
+                        selectedFocusKey: $selectedFocusKey,
+                        notesStore: appState.readingNotesStore
                     )
                 case .extended:
                     NatalExtendedAnalysisView(chart: chart)
                         .environmentObject(appState)
-                case .texts:
-                    InterpretacionesView(interpretaciones: interpretaciones)
                 }
             }
         }
@@ -355,7 +351,10 @@ struct NatalChartView: View {
     }
 
     private func copyJoplinNote() {
-        let note = ReadingNoteBuilder.markdown(chart: chart, interpretations: interpretaciones, synthesis: synthesis)
+        let reading = NatalReadingComposer.compose(.init(chart: chart, interpretations: interpretaciones, density: .complete))
+        let synthesis = appState.readingNotesStore.note(for: chart.id.uuidString)?.synthesis
+            ?? reading.synthesisDraft.map { "• \($0)" }.joined(separator: "\n")
+        let note = ReadingNoteBuilder.markdown(chart: chart, reading: reading, synthesis: synthesis)
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(note, forType: .string)
         noteCopied = true
