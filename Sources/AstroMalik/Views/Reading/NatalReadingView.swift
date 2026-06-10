@@ -6,7 +6,7 @@ struct NatalReadingView: View {
     @Binding var selectedFocusKey: String?
     @ObservedObject var notesStore: ReadingNotesStore
 
-    @State private var density: ReadingDensity = .essential
+    @State private var density: ReadingDensity = .complete
     @State private var extended: NatalExtendedAnalysisResult?
     @State private var extendedError: String?
     @State private var isLoadingExtended = false
@@ -37,39 +37,32 @@ struct NatalReadingView: View {
     }
 
     var body: some View {
-        HStack(spacing: 0) {
-            ScrollViewReader { proxy in
-                ReadingTOCView(chapters: visibleReading.chapters, selectedChapter: $selectedChapter) { chapter in
-                    withAnimation(.easeInOut(duration: 0.22)) {
-                        proxy.scrollTo(chapter, anchor: .top)
-                    }
-                }
-
+        ScrollViewReader { proxy in
+            VStack(spacing: 0) {
+                topBar(proxy: proxy)
                 Divider()
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        articleHero
 
-                VStack(spacing: 0) {
-                    header
-                    Divider()
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 0) {
-                            if visibleReading.chapters.isEmpty {
-                                emptySearch
-                            } else {
-                                ForEach(visibleReading.chapters) { chapter in
-                                    ReadingChapterView(chapter: chapter, searchQuery: searchText) { key in
-                                        selectedFocusKey = key
-                                    }
-                                    .id(chapter.id)
+                        if visibleReading.chapters.isEmpty {
+                            emptySearch
+                        } else {
+                            ForEach(visibleReading.chapters) { chapter in
+                                ReadingChapterView(chapter: chapter, searchQuery: searchText) { key in
+                                    selectedFocusKey = key
                                 }
+                                .id(chapter.id)
                             }
-                            synthesisEditor
-                                .id(ReadingChapterKind.synthesis)
                         }
-                        .frame(maxWidth: 720, alignment: .leading)
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal, 28)
-                        .padding(.bottom, 40)
+
+                        synthesisEditor
+                            .id(ReadingChapterKind.synthesis)
                     }
+                    .frame(maxWidth: 980, alignment: .leading)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 34)
+                    .padding(.bottom, 56)
                 }
             }
         }
@@ -87,18 +80,18 @@ struct NatalReadingView: View {
         }
     }
 
-    private var header: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .center, spacing: 12) {
+    private func topBar(proxy: ScrollViewProxy) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .center, spacing: 14) {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text("Lectura natal")
-                        .font(.title3.weight(.semibold))
+                    Text("Lectura natal completa")
+                        .font(.title2.weight(.semibold))
                         .foregroundColor(.appPrimaryText)
-                    Text("Documento continuo generado desde corpus, carta y relevancia doctrinal.")
-                        .font(.caption)
+                    Text("Texto del corpus visible, ordenado por método de lectura. Sin desplegables.")
+                        .font(.callout)
                         .foregroundColor(.secondary)
                 }
-                Spacer()
+                Spacer(minLength: 16)
                 Picker("Densidad", selection: $density) {
                     Text("Esencial").tag(ReadingDensity.essential)
                     Text("Completa").tag(ReadingDensity.complete)
@@ -107,43 +100,143 @@ struct NatalReadingView: View {
                 .frame(width: 220)
             }
 
-            HStack(spacing: 10) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.secondary)
-                TextField("Buscar en el corpus de la lectura", text: $searchText)
-                    .textFieldStyle(.plain)
-                if !searchText.isEmpty {
+            HStack(spacing: 12) {
+                searchField
+                corpusStatus
+            }
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(visibleReading.chapters) { chapter in
+                        Button {
+                            selectedChapter = chapter.id
+                            withAnimation(.easeInOut(duration: 0.22)) {
+                                proxy.scrollTo(chapter.id, anchor: .top)
+                            }
+                        } label: {
+                            Text(chapter.title)
+                                .font(.caption.weight(.semibold))
+                                .foregroundColor(selectedChapter == chapter.id ? .appAccentForeground : .appPrimaryText)
+                                .padding(.horizontal, 11)
+                                .padding(.vertical, 7)
+                                .background(selectedChapter == chapter.id ? Color.appAccentFill : Color.appChipBackground)
+                                .clipShape(Capsule())
+                        }
+                        .buttonStyle(.plain)
+                    }
                     Button {
-                        searchText = ""
+                        selectedChapter = .synthesis
+                        withAnimation(.easeInOut(duration: 0.22)) {
+                            proxy.scrollTo(ReadingChapterKind.synthesis, anchor: .top)
+                        }
                     } label: {
-                        Image(systemName: "xmark.circle.fill")
+                        Text("Síntesis")
+                            .font(.caption.weight(.semibold))
+                            .foregroundColor(selectedChapter == .synthesis ? .appAccentForeground : .appPrimaryText)
+                            .padding(.horizontal, 11)
+                            .padding(.vertical, 7)
+                            .background(selectedChapter == .synthesis ? Color.appAccentFill : Color.appChipBackground)
+                            .clipShape(Capsule())
                     }
                     .buttonStyle(.plain)
-                    .foregroundColor(.secondary)
                 }
-                Spacer()
-                if isLoadingExtended {
-                    ProgressView().controlSize(.small)
-                    Text("Enriqueciendo con análisis extendido…")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                } else if extended != nil {
-                    Label("Extendido aplicado", systemImage: "checkmark.seal")
-                        .font(.caption)
-                        .foregroundColor(.appSecondaryAccent)
-                } else if extendedError != nil {
-                    Label("Sin extendido", systemImage: "exclamationmark.triangle")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                .padding(.vertical, 2)
+            }
+        }
+        .padding(.horizontal, 22)
+        .padding(.vertical, 16)
+        .background(Color.appPanel)
+    }
+
+    private var searchField: some View {
+        HStack(spacing: 9) {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(.secondary)
+            TextField("Buscar una frase en la lectura", text: $searchText)
+                .textFieldStyle(.plain)
+            if !searchText.isEmpty {
+                Button { searchText = "" } label: {
+                    Image(systemName: "xmark.circle.fill")
+                }
+                .buttonStyle(.plain)
+                .foregroundColor(.secondary)
+            }
+        }
+        .padding(.horizontal, 11)
+        .padding(.vertical, 9)
+        .background(Color.appInputBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.appBorder.opacity(0.7), lineWidth: 1))
+    }
+
+    private var corpusStatus: some View {
+        HStack(spacing: 8) {
+            Label("\(interpretaciones.count) textos", systemImage: interpretaciones.isEmpty ? "exclamationmark.triangle" : "text.book.closed")
+                .foregroundColor(interpretaciones.isEmpty ? .appWarning : .secondary)
+            if isLoadingExtended {
+                ProgressView().controlSize(.small)
+                Text("extendido…")
+                    .foregroundColor(.secondary)
+            } else if extended != nil {
+                Image(systemName: "checkmark.seal")
+                    .foregroundColor(.appSecondaryAccent)
+            } else if extendedError != nil {
+                Image(systemName: "seal")
+                    .foregroundColor(.secondary)
+            }
+        }
+        .font(.caption)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 8)
+        .background(Color.appSurface)
+        .clipShape(Capsule())
+    }
+
+    private var articleHero: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(chart.name.isEmpty ? "Carta natal" : chart.name)
+                .font(.system(size: 34, weight: .semibold))
+                .foregroundColor(.appPrimaryText)
+                .fixedSize(horizontal: false, vertical: true)
+            HStack(spacing: 16) {
+                if !chart.placeName.isEmpty {
+                    Label(chart.placeName, systemImage: "mappin")
+                }
+                Label("\(chart.birthDate) · \(chart.birthTime)", systemImage: "calendar")
+                Label(chart.timezone, systemImage: "globe")
+            }
+            .font(.callout)
+            .foregroundColor(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
+
+            ReadingFlowLayout(spacing: 8) {
+                heroChip("ASC", chart.ascendant.formatted)
+                heroChip("MC", chart.mc.formatted)
+                if let sun = chart.bodies.first(where: { $0.key == "SOL" }) {
+                    heroChip("Sol", "\(sun.formatted) · Casa \(sun.house)")
+                }
+                if let moon = chart.bodies.first(where: { $0.key == "LUNA" }) {
+                    heroChip("Luna", "\(moon.formatted) · Casa \(moon.house)")
                 }
             }
-            .padding(9)
-            .background(Color.appInputBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 9, style: .continuous).stroke(Color.appBorder.opacity(0.7), lineWidth: 1))
         }
-        .padding(18)
-        .background(Color.appPanel)
+        .padding(.top, 28)
+        .padding(.bottom, 4)
+    }
+
+    private func heroChip(_ label: String, _ value: String) -> some View {
+        HStack(spacing: 6) {
+            Text(label)
+                .font(.caption.weight(.bold))
+                .foregroundColor(.secondary)
+            Text(value)
+                .font(.caption.monospacedDigit())
+                .foregroundColor(.appPrimaryText)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 7)
+        .background(Color.appChipBackground)
+        .clipShape(Capsule())
     }
 
     private var emptySearch: some View {
@@ -151,10 +244,10 @@ struct NatalReadingView: View {
             Image(systemName: "text.magnifyingglass")
                 .font(.system(size: 34))
                 .foregroundColor(.secondary)
-            Text("Sin coincidencias en bloques de corpus")
+            Text("Sin coincidencias en el texto de la lectura")
                 .font(.headline)
                 .foregroundColor(.appPrimaryText)
-            Text("Prueba con otro término o limpia la búsqueda.")
+            Text("Limpia la búsqueda para volver al documento completo.")
                 .font(.callout)
                 .foregroundColor(.secondary)
         }
@@ -163,36 +256,38 @@ struct NatalReadingView: View {
     }
 
     private var synthesisEditor: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
             Text("Síntesis")
                 .readingChapterTitle()
-            Text("El borrador automático aporta hechos duros; la síntesis final queda persistida por carta.")
+            Text("Espacio de cierre del astrólogo. Se guarda automáticamente para esta carta.")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
             if !reading.synthesisDraft.isEmpty {
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 7) {
                     Text("Borrador automático")
-                        .font(.caption.weight(.semibold))
-                        .foregroundColor(.secondary)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(.appPrimaryText)
                     ForEach(reading.synthesisDraft, id: \.self) { item in
                         Text("• \(item)")
                             .font(.callout)
+                            .lineSpacing(3)
                             .foregroundColor(.appPrimaryText)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 }
-                .appCard(padding: 12)
+                .padding(.vertical, 10)
             }
 
             TextEditor(text: $synthesis)
-                .font(.body)
-                .lineSpacing(5)
-                .frame(minHeight: 180)
+                .font(.title3)
+                .lineSpacing(7)
+                .frame(minHeight: 300)
+                .padding(14)
                 .scrollContentBackground(.hidden)
                 .background(Color.appInputBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.appBorder, lineWidth: 1))
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(Color.appBorder.opacity(0.8), lineWidth: 1))
                 .onChange(of: synthesis) { _, _ in scheduleAutosave() }
         }
     }

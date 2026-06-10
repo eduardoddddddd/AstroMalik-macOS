@@ -42,13 +42,18 @@ struct NatalChartView: View {
             chartHeader
             Divider()
             GeometryReader { proxy in
-                let positionsWidth = min(max(proxy.size.width * 0.36, 340), 460)
-                HStack(spacing: 0) {
-                    positionsPanel
-                        .frame(width: positionsWidth)
-                    Divider()
+                if detailMode == .reading {
                     detailPanel
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    let positionsWidth = min(max(proxy.size.width * 0.36, 340), 460)
+                    HStack(spacing: 0) {
+                        positionsPanel
+                            .frame(width: positionsWidth)
+                        Divider()
+                        detailPanel
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
                 }
             }
         }
