@@ -33,6 +33,14 @@ final class FirdariaEngine {
         return makeTimeline(chart: chart, sect: sect, birth: birth, cycleIndex: 0)
     }
 
+    func firdariaTimeline(chart: Chart, at date: Date) -> FirdariaTimeline {
+        let sect = SectEngine.sect(of: chart)
+        let calendar = calendar(for: chart)
+        let birth = (try? birthDate(for: chart, calendar: calendar)) ?? chart.createdAt
+        let cycleIndex = cycleIndex(for: date, birth: birth, calendar: calendar)
+        return makeTimeline(chart: chart, sect: sect, birth: birth, cycleIndex: cycleIndex)
+    }
+
     func currentFirdaria(chart: Chart, at date: Date) -> (major: FirdariaPeriod, minor: FirdariaPeriod?) {
         let sect = SectEngine.sect(of: chart)
         let calendar = calendar(for: chart)

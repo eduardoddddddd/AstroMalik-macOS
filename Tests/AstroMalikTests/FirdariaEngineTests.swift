@@ -65,6 +65,18 @@ final class FirdariaEngineTests: XCTestCase {
         XCTAssertEqual(current.major.startDate, firdariaLocalDate(year: 2051, month: 10, day: 11, hour: 20, minute: 33, timezoneName: "Europe/Madrid"))
     }
 
+    func testTimelineAtDateReturnsMatchingCycle() throws {
+        let chart = try firdariaReferenceChart()
+        let engine = FirdariaEngine()
+        let after75 = firdariaLocalDate(year: 2051, month: 10, day: 12, hour: 12, timezoneName: "Europe/Madrid")
+
+        let timeline = engine.firdariaTimeline(chart: chart, at: after75)
+
+        XCTAssertEqual(timeline.cycleIndex, 1)
+        XCTAssertEqual(timeline.majorPeriods.first?.ruler, .luna)
+        XCTAssertEqual(timeline.cycleStartDate, firdariaLocalDate(year: 2051, month: 10, day: 11, hour: 20, minute: 33, timezoneName: "Europe/Madrid"))
+    }
+
     func testUpcomingMinorChangesReturnsFiveDates() throws {
         let chart = try firdariaReferenceChart()
         let engine = FirdariaEngine()
