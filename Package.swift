@@ -70,7 +70,7 @@ let package = Package(
         ),
         .testTarget(
             name: "AstroMalikCLITests",
-            dependencies: ["astromalik-cli"],
+            dependencies: ["astromalik-cli", "AstroMalik"],
             path: "Tests/AstroMalikCLITests"
         ),
     ]

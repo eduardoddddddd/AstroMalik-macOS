@@ -10,7 +10,7 @@
 ![Local First](https://img.shields.io/badge/privacy-local--first-2ea44f)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-AstroMalik macOS es una aplicación nativa de astrología tradicional para macOS. Calcula cartas natales, lecturas, sinastrías, retornos, tránsitos, técnicas predictivas clásicas/helenísticas, horaria e informes documentales desde una app SwiftUI local-first.
+AstroMalik macOS es una aplicación nativa de astrología tradicional para macOS con CLI local-first. Calcula cartas natales, lecturas, sinastrías, retornos, tránsitos, técnicas predictivas clásicas/helenísticas, horaria e informes documentales desde una app SwiftUI y desde `astromalik-cli`, sin depender de LLMs externos para el cálculo base.
 
 El objetivo no es ser un panel de datos sueltos: la app intenta convertir cálculo astrológico, corpus interpretativo y documentación personal en un flujo de trabajo de astrólogo: calcular, leer, comparar, predecir, sintetizar y archivar.
 
@@ -20,7 +20,8 @@ El objetivo no es ser un panel de datos sueltos: la app intenta convertir cálcu
 - **Cálculo determinista**: Swiss Ephemeris embebido y motores Swift propios.
 - **Corpus visible**: los textos interpretativos no son decoración; se integran en las vistas de lectura.
 - **Doctrina explícita**: regencias, secta, dignidades, profecciones, ZR, horaria y direcciones se documentan en código y docs.
-- **Exportación documental**: Joplin y PDF son salidas, no requisitos para calcular.
+- **Exportación documental**: Joplin, Markdown, JSON y PDF son salidas, no requisitos para calcular.
+- **CLI para agentes**: `astromalik-cli` expone datos calculados localmente para terminal, scripts y LLMs externos.
 - **Sin dependencias externas de runtime** para el cálculo base.
 
 Los datos de usuario no se guardan en el repositorio. La base local está en:
@@ -154,9 +155,39 @@ El módulo cross-personal orquesta motores predictivos reales y produce una sín
 - corto plazo;
 - lunar.
 
-Puede generar narrativa con Anthropic si el usuario configura API key. El cálculo determinista no depende de esa integración.
+El cálculo determinista no depende de Anthropic ni OpenRouter. La narrativa IA es opcional y explícita; en el CLI requiere `--narrative anthropic --allow-network`.
 
 Documento: [`docs/CROSS_PERSONAL.md`](docs/CROSS_PERSONAL.md).
+
+### CLI local-first
+
+`astromalik-cli` es una interfaz local, determinista y pensada para agentes externos. Por defecto usa:
+
+```bash
+--format json --output stdout --narrative none --no-network
+```
+
+Subcomandos principales:
+
+```bash
+astromalik-cli charts list
+astromalik-cli chart show --chart "Edu" --format json
+astromalik-cli natal --chart "Edu" --format markdown
+astromalik-cli transits --chart "Edu" --from 2026-06-15 --to 2026-06-21 --format json
+astromalik-cli monthly --chart "Edu" --month 2026-06 --format markdown
+astromalik-cli weekly --chart "Edu" --from 2026-06-15 --format json
+astromalik-cli cross-personal --chart "Edu" --date 2026-06-13 --scope weekly --format markdown --narrative none
+```
+
+Técnicas adicionales disponibles desde CLI: profecciones, Firdaria, Zodiacal Releasing, progresiones, revolución solar/lunar, direcciones primarias y arco solar.
+
+Si se intenta usar Anthropic sin permiso explícito, falla antes de crear el cliente:
+
+```text
+La narrativa Anthropic requiere --allow-network y --narrative anthropic explícitos.
+```
+
+Documento: [`docs/CLI.md`](docs/CLI.md).
 
 ### Informes PDF
 
@@ -170,12 +201,6 @@ La app incluye infraestructura de informes profesionales:
 
 Documentación: [`docs/PDF_REPORTS.md`](docs/PDF_REPORTS.md).
 
-### CLI
-
-`astromalik-cli` permite ejecutar flujos cross-personal desde terminal, scripts o LaunchAgent.
-
-Documento: [`docs/CLI.md`](docs/CLI.md).
-
 ## Stack técnico
 
 - Swift 6 / SwiftPM.
@@ -184,7 +209,7 @@ Documento: [`docs/CLI.md`](docs/CLI.md).
 - SQLite3 del sistema mediante wrapper propio.
 - WebKit para render PDF.
 - Sin dependencias externas de Swift Package Manager.
-- Integraciones opcionales: Joplin Web Clipper, Anthropic, OpenRouter/Foundry Local en módulos concretos.
+- Integraciones opcionales y explícitas: Joplin Web Clipper, Anthropic, OpenRouter/Foundry Local en módulos concretos.
 
 ## Requisitos
 
@@ -289,7 +314,7 @@ La app puede crear notas usando el Web Clipper local de Joplin. Host, puerto, to
 
 ### Anthropic
 
-El módulo cross-personal puede redactar narrativa con Anthropic. La clave se resuelve desde Keychain o `ANTHROPIC_API_KEY`.
+El módulo cross-personal puede redactar narrativa con Anthropic solo cuando el usuario lo solicita explícitamente. En CLI requiere `--narrative anthropic --allow-network`; la clave se resuelve desde Keychain o `ANTHROPIC_API_KEY`.
 
 ### OpenRouter / Foundry Local
 
@@ -299,12 +324,13 @@ Algunos módulos de interpretación contextual pueden usar OpenRouter o Foundry 
 
 La suite cubre motores astronómicos, predictivas, horaria, lectura natal, persistencia, PDF, CLI e integraciones mockeadas.
 
-Última validación local relevante tras el refactor de Lectura:
+Última validación local relevante tras el refactor del CLI local-first:
 
 ```text
-344 tests ejecutados
+349 tests ejecutados
 1 skipped
 0 failures
+AstroMalik.app/Contents/MacOS/AstroMalik: 2026-06-13 13:18:07 CEST
 ```
 
 ## Licencia

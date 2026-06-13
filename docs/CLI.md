@@ -1,241 +1,136 @@
-# CLI `astromalik-cli`
+# AstroMalik CLI
 
-Desde 1.0 el proyecto incluye un binario headless `astromalik-cli` que ejecuta la cadena cross-personal completa desde línea de comandos. Es el reemplazo natural de scripts Python externos que generaban tránsitos semanales en Joplin: ahora el cálculo lo hace la app real con Swiss Ephemeris y el motor cross-personal.
+`astromalik-cli` es la interfaz local, determinista y automatizable de AstroMalik. Está pensada para terminal, scripts, cron/LaunchAgent y agentes LLM externos como Codex, Claude o GPT.
 
-## Para qué sirve
+## Filosofía
 
-Tres casos de uso principales:
+Por defecto el CLI **no llama a ningún LLM ni a ninguna API externa**:
 
-1. **Tarea programada vía LaunchAgent o cron** — informe semanal/mensual automático.
-2. **Integración con otros sistemas** — pipear el Markdown a otra herramienta o servicio.
-3. **Reproducibilidad** — generar el mismo informe desde un script con argumentos fijos.
+- `--format json`
+- `--output stdout`
+- `--narrative none`
+- `--no-network`
+- `source: "local"`
+- `networkUsed: false`
 
-## Build
+Esto permite pedir datos astrológicos reales calculados con los motores locales de AstroMalik sin coste, sin Anthropic y sin OpenRouter. Las APIs LLM son opcionales y deben activarse explícitamente.
 
-El binario es un target SPM independiente:
+## Comandos principales
 
 ```bash
-cd /Users/eduardoariasbravo/Developer/AstroMalik-macOS
-swift build --product astromalik-cli --configuration release
-ls .build/release/astromalik-cli
+astromalik-cli charts list
+astromalik-cli chart show --chart "Edu" --format json
+astromalik-cli natal --chart "Edu" --format markdown
+astromalik-cli transits --chart "Edu" --from 2026-06-15 --to 2026-06-21 --format json
+astromalik-cli monthly --chart "Edu" --month 2026-06 --format markdown
+astromalik-cli weekly --chart "Edu" --from 2026-06-15 --format json
+astromalik-cli cross-personal --chart "Edu" --date 2026-06-13 --scope weekly --format markdown --narrative none
 ```
 
-El ejecutable empaquetado se distribuye en `AstroMalik.app/Contents/MacOS/astromalik-cli` cuando se usa `./scripts/package_app.sh` (si el script lo incluye), o se referencia directamente desde `.build/release/` para LaunchAgent.
+El modo antiguo sin subcomando se mantiene como alias de `cross-personal`:
 
-## Argumentos
+```bash
+astromalik-cli --chart "Edu" --date 2026-06-13 --scope weekly
+```
+
+## Técnicas adicionales
+
+También existen subcomandos locales para técnicas predictivas ya presentes en el motor:
+
+```bash
+astromalik-cli profections --chart "Edu" --date 2026-06-13
+astromalik-cli firdaria --chart "Edu" --date 2026-06-13
+astromalik-cli zodiacal-releasing --chart "Edu" --date 2026-06-13
+astromalik-cli progressions --chart "Edu" --date 2026-06-13
+astromalik-cli solar-return --chart "Edu" --date 2026-06-13
+astromalik-cli lunar-return --chart "Edu" --date 2026-06-13
+astromalik-cli primary-directions --chart "Edu" --date 2026-06-13
+astromalik-cli solar-arc --chart "Edu" --date 2026-06-13
+```
+
+## Flags globales
+
+| Flag | Default | Descripción |
+|---|---:|---|
+| `--format json\|markdown` | `json` | JSON estable para agentes o Markdown legible. |
+| `--output stdout\|file:/ruta\|joplin:Cuaderno` | `stdout` | Destino de salida. Joplin requiere red local explícita. |
+| `--user-db /ruta/user.db` | App Support | Base de datos de cartas guardadas. |
+| `--corpus-db /ruta/corpus.db` | App Support/bundle | Corpus local de interpretaciones. |
+| `--verbose` | off | Logs a stderr. |
+| `--no-network` | on | Impide Anthropic/OpenRouter/Joplin. |
+| `--allow-network` | off | Permite red solo para opciones explícitas. |
+| `--narrative none\|local\|anthropic\|openrouter` | `none` | Narrativa LLM desactivada por defecto. Alias: `--llm`. |
+| `--scope complete\|annual\|monthly\|weekly` | `complete` | Alcance de `cross-personal`. |
+| `--model sonnet\|opus` | `sonnet` | Modelo Anthropic cuando se pide explícitamente. |
+
+## Seguridad de red
+
+`--no-network` es el comportamiento por defecto. Si se intenta pedir Anthropic sin permiso explícito, el CLI falla antes de crear el cliente:
+
+```bash
+astromalik-cli cross-personal --chart "Edu" --narrative anthropic
+```
+
+Mensaje esperado:
 
 ```text
-astromalik-cli \
-  --chart <nombre|UUID>      (obligatorio)
-  --date <YYYY-MM-DD>        (opcional, default: hoy local)
-  --scope <complete|annual|monthly|weekly>   (default: complete)
-  --model <sonnet|opus>      (default: sonnet)
-  --output <destino>         (default: stdout)
-  --notebook <nombre>        (opcional, alias de joplin:Nombre)
-  --user-db <ruta>           (opcional, default: user.db estándar)
-  --corpus-db <ruta>         (opcional, default: corpus del bundle)
-  --verbose                  (opcional, logs detallados a stderr)
-  --help                     (muestra ayuda y sale 0)
+La narrativa Anthropic requiere --allow-network y --narrative anthropic explícitos.
 ```
 
-### `--chart`
-
-Resolución por nombre exacto primero (case-sensitive), luego por UUID. Si la carta no existe en `user.db` el CLI sale con código **2** y mensaje a stderr.
-
-### `--date`
-
-Fecha de referencia para el cálculo cross-personal. Formato ISO `YYYY-MM-DD`. Default: hoy en la zona horaria local del Mac.
-
-### `--scope`
-
-Determina el alcance narrativo solicitado a Anthropic (no cambia los cálculos del state):
-
-- `complete` — informe completo.
-- `annual` — foco anual.
-- `monthly` — foco mensual.
-- `weekly` — foco semanal.
-
-### `--model`
-
-Mapea a las dos configuraciones por defecto de `AnthropicClient`:
-
-- `sonnet` → `AnthropicClient.Config.default` (Sonnet 4.6, 4096 max tokens).
-- `opus` → `AnthropicClient.Config.opusLong` (Opus 4.7, 8000 max tokens).
-
-### `--output`
-
-Tres formatos:
-
-- `stdout` — escribe el Markdown del informe a stdout (sin apéndice de trazabilidad). Útil para pipear a otra herramienta.
-- `file:/ruta/al/fichero.md` — escribe Markdown + apéndice de trazabilidad al path. Crea directorios padre si no existen.
-- `joplin:NombreDeCuaderno` — crea una nota Joplin en el cuaderno indicado vía `JoplinClipperService`. Si el cuaderno no existe, se crea antes.
-
-`--notebook NombreDeCuaderno` es alias conveniente de `--output joplin:NombreDeCuaderno`.
-
-## Códigos de salida
-
-| Código | Significado |
-|---:|---|
-| 0 | Éxito |
-| 1 | Error genérico |
-| 2 | Carta no encontrada |
-| 3 | Error de Anthropic (auth, ratelimit, network) |
-| 4 | Error de Joplin |
-| 5 | Error de I/O (paths, permisos) |
-| 64 | EX_USAGE (argumentos inválidos) |
-
-Convenientes para encadenar en scripts con `if`/`||`/`&&`.
-
-## Credenciales
-
-El CLI reutiliza la resolución de credenciales del módulo `AstroMalik`:
-
-- **Anthropic API key**: Keychain (`com.astromalik.anthropic`) → `ANTHROPIC_API_KEY`. Si falta → exit 3.
-- **Joplin token**: Keychain → `ASTROMALIK_JOPLIN_TOKEN` → settings locales de Joplin Desktop. Si falta y `--output` es joplin → exit 4.
-
-Para preparar el entorno en una sesión nueva del shell:
+Para usar IA con coste debe indicarse de forma explícita:
 
 ```bash
-export ANTHROPIC_API_KEY="$(security find-generic-password -s com.astromalik.anthropic -w 2>/dev/null)"
+astromalik-cli cross-personal --chart "Edu" --date 2026-06-13 --scope weekly --narrative anthropic --allow-network
 ```
 
-Si la línea está en `~/.zshrc`, las sesiones la heredan automáticamente. Los LaunchAgents heredan el entorno del lanzamiento del agente, no del shell, así que es preferible **dejar la API key en Keychain** y que el CLI la lea desde ahí.
+OpenRouter queda igualmente protegido por `--allow-network`; si se solicita sin permiso, falla antes de cualquier red.
 
-## Logs
+## Salida JSON
 
-Por defecto, dos líneas a stderr:
+La salida JSON está diseñada para ser estable y útil para agentes. Incluye:
 
-```text
-astromalik-cli: starting chart=Eduardo scope=weekly model=sonnet
-astromalik-cli: done duration=3.2s tokens=15234/4892 cost=$0.0612
-```
+- `metadata`: carta, id, fecha de generación, zona horaria, comando, scope y rango de fechas.
+- `chart`: resumen de la carta consultada.
+- `technicalData`: datos calculados por los motores locales.
+- `events`: eventos ordenados por fecha/prioridad.
+- `interpretations`: textos locales del corpus o plantillas deterministas cuando existen.
+- `warnings`: avisos de cobertura o narrativa desactivada.
+- `source`: normalmente `"local"`.
+- `networkUsed`: `false` por defecto.
 
-Con `--verbose`, traza completa de cada paso:
-
-```text
-astromalik-cli: resolve chart "Eduardo" -> 9F3E... (Edu rectificada)
-astromalik-cli: assemble cross-personal inputs
-astromalik-cli: profections age=49 house=2 LotY=MERCURIO
-astromalik-cli: firdaria major=SATURNO minor=JUPITER
-astromalik-cli: zr spirit L1=Libra L2=Acuario peak=true
-astromalik-cli: build engine state -> 47 signals, 12 topics
-astromalik-cli: anthropic send model=claude-sonnet-4-6 tokens-in=15234
-astromalik-cli: anthropic response tokens-out=4892 cache-read=8000 cost=$0.0612
-astromalik-cli: write joplin notebook=AstroMalik
-astromalik-cli: done duration=3.2s
-```
-
-Ningún log incluye la API key, ni siquiera enmascarada.
-
-## LaunchAgent recipes
-
-`scripts/launchagents/` contiene dos plists listos:
-
-### Semanal — Sábado 18:00
-
-`com.astromalik.cli.weekly.plist`:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key><string>com.astromalik.cli.weekly</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/Applications/AstroMalik.app/Contents/MacOS/astromalik-cli</string>
-        <string>--chart</string><string>Eduardo</string>
-        <string>--scope</string><string>weekly</string>
-        <string>--model</string><string>sonnet</string>
-        <string>--output</string><string>joplin:AstroMalik</string>
-    </array>
-    <key>StartCalendarInterval</key>
-    <dict>
-        <key>Weekday</key><integer>6</integer>
-        <key>Hour</key><integer>18</integer>
-        <key>Minute</key><integer>0</integer>
-    </dict>
-    <key>StandardOutPath</key><string>/Users/USERNAME/Library/Logs/AstroMalik/cli.out</string>
-    <key>StandardErrorPath</key><string>/Users/USERNAME/Library/Logs/AstroMalik/cli.err</string>
-</dict>
-</plist>
-```
-
-### Mensual — Día 1 a las 09:00
-
-`com.astromalik.cli.monthly.plist`: igual estructura con `--scope monthly` y `Day=1, Hour=9`.
-
-### Cargar
+Ejemplo para agentes:
 
 ```bash
-mkdir -p ~/Library/Logs/AstroMalik
-cp scripts/launchagents/com.astromalik.cli.weekly.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.astromalik.cli.weekly.plist
+astromalik-cli transits --chart "Edu" --from 2026-06-15 --to 2026-06-21 --format json
 ```
 
-Para descargar:
+El agente puede consumir `events`, `technicalData.transits`, `technicalData.houseIngresses` e `interpretations` sin llamar a ningún LLM externo.
+
+## Salida Markdown
+
+La salida Markdown es legible directamente y no depende de un LLM externo:
 
 ```bash
-launchctl unload ~/Library/LaunchAgents/com.astromalik.cli.weekly.plist
+astromalik-cli natal --chart "Edu" --format markdown
+astromalik-cli monthly --chart "Edu" --month 2026-06 --format markdown
+astromalik-cli cross-personal --chart "Edu" --date 2026-06-13 --scope weekly --format markdown --narrative none
 ```
 
-Para ejecutar manualmente (run-now):
+Usa textos del corpus local y plantillas deterministas. No busca ser literaria: prioriza información astrológica estructurada, auditable y consultable.
+
+## Ejemplos seguros recomendados
 
 ```bash
-launchctl start com.astromalik.cli.weekly
+astromalik-cli charts list
+astromalik-cli natal --chart "Edu" --format markdown
+astromalik-cli transits --chart "Edu" --from 2026-06-15 --to 2026-06-21 --format json
+astromalik-cli cross-personal --chart "Edu" --date 2026-06-13 --scope weekly --format markdown --narrative none
 ```
 
-## Ejemplos de uso
-
-Informe semanal por defecto a Joplin:
+## Ejemplo explícito con IA y coste
 
 ```bash
-astromalik-cli --chart "Eduardo" --scope weekly --output joplin:AstroMalik
+astromalik-cli cross-personal --chart "Edu" --date 2026-06-13 --scope weekly --narrative anthropic --allow-network
 ```
 
-Informe mensual a archivo Markdown:
-
-```bash
-astromalik-cli --chart "Eduardo" --scope monthly \
-  --output file:~/Documents/AstroMalik/informes/2026-05.md
-```
-
-Informe anual con Opus al cumpleaños:
-
-```bash
-astromalik-cli --chart "Eduardo" --scope annual --model opus \
-  --date 2026-10-11 --output joplin:AstroMalik
-```
-
-Pipear a otra herramienta:
-
-```bash
-astromalik-cli --chart "Eduardo" --scope weekly --output stdout \
-  | pandoc -f markdown -o informe.pdf
-```
-
-Verbose para diagnóstico:
-
-```bash
-astromalik-cli --chart "Eduardo" --verbose --output stdout > /dev/null
-```
-
-## Tests
-
-`Tests/AstroMalikCLITests/AstroMalikCLITests.swift` cubre el parser:
-
-- todos los flags se rellenan correctamente.
-- sin `--chart` → EX_USAGE.
-- `--scope foo` → EX_USAGE.
-- `--output stdout` / `file:...` / `joplin:...` mapean al enum interno.
-
-Tests end-to-end del flujo completo no se incluyen porque requieren API real; se validan manualmente.
-
-## Roadmap
-
-- **1.0**: parser, resolución de cartas por nombre/UUID, scopes, modelos, tres destinos, LaunchAgent recipes, tests del parser.
-- **1.1+ posible**:
-  - flag `--pdf` para generar también el informe PDF junto al Markdown.
-  - flag `--batch` para múltiples cartas en una sola invocación con cache compartido del prompt.
-  - flag `--dry-run` que evalúa el state sin llamar a Anthropic (estimación de coste).
-  - integración con `notify` para alertar de errores recurrentes en la tarea programada.
+Usa esta forma solo cuando quieras pagar una narrativa externa. Sin `--allow-network`, el comando falla de forma segura.

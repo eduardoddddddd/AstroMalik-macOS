@@ -2,7 +2,31 @@
 
 Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el versionado sigue [SemVer](https://semver.org/lang/es/).
 
-## [Unreleased] — 2026-06-10
+## [Unreleased] — 2026-06-13
+
+### Añadido — CLI local-first para agentes y scripts
+
+- `astromalik-cli` pasa a ser una interfaz local, determinista y usable por terminal, scripts y agentes LLM externos sin llamadas externas por defecto.
+- Defaults seguros: `--format json`, `--output stdout`, `--narrative none`, `--no-network`.
+- Nuevos subcomandos principales: `charts list`, `chart show`, `natal`, `transits`, `monthly`, `weekly` y `cross-personal`.
+- Subcomandos predictivos adicionales: `profections`, `firdaria`, `zodiacal-releasing`, `progressions`, `solar-return`, `lunar-return`, `primary-directions` y `solar-arc`.
+- Salida JSON estable para agentes con `metadata`, `technicalData`, `events`, `interpretations`, `warnings`, `source` y `networkUsed`.
+- Salida Markdown determinista y legible directamente, basada en corpus local y plantillas.
+- Compatibilidad con el comando antiguo sin subcomando como alias de `cross-personal`.
+- Flags globales antes o después del subcomando, incluyendo `--format`, `--output`, `--user-db`, `--corpus-db`, `--verbose`, `--no-network`, `--allow-network` y `--narrative`/`--llm`.
+
+### Seguridad — CLI sin red por defecto
+
+- `AnthropicClient` ya no se instancia de forma obligatoria en el flujo cross-personal.
+- La narrativa Anthropic solo se permite con `--narrative anthropic --allow-network` explícitos.
+- OpenRouter queda igualmente protegido por `--allow-network` y no puede ejecutarse accidentalmente.
+- La salida Joplin requiere `--allow-network` porque usa el Web Clipper local.
+- Mensaje de fallo seguro para Anthropic sin permiso: “La narrativa Anthropic requiere --allow-network y --narrative anthropic explícitos.”
+
+### Documentación — CLI
+
+- `docs/CLI.md` actualizado con filosofía local-first, ejemplos seguros para terminal/agentes y ejemplo explícito de IA con coste.
+- README actualizado para reflejar el CLI como superficie principal local-first además de la app SwiftUI.
 
 ### Añadido — Lectura natal como documento
 
@@ -49,9 +73,10 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Validación
 
-- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test` — 344 tests, 1 skipped, 0 failures.
-- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_app.sh` ejecutado tras cambios UI.
-- `AstroMalik.app/Contents/MacOS/AstroMalik` verificado con timestamp actualizado: 2026-06-10 11:08:54.
+- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test` — 349 tests, 1 skipped, 0 failures.
+- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift build` ejecutado correctamente.
+- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_app.sh` ejecutado tras cambios de código/CLI.
+- `AstroMalik.app/Contents/MacOS/AstroMalik` verificado con timestamp actualizado: 2026-06-13 13:18:07 CEST.
 
 ## [1.0.0] — 2026-05-14
 
