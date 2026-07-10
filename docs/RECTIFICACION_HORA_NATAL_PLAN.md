@@ -19,7 +19,7 @@ Este mismo documento se utilizará como **especificación, roadmap y registro de
 |---|---|---|
 | Fase 0 — Fundamentos deterministas | ✅ Completada | Hora con segundos, modelos base y tests |
 | Fase 1 — MVP determinista | ✅ Completada | Ranking explicable de horas candidatas sin LLM |
-| Fase 2 — Narrativa LLM opcional | ⬜ Pendiente | Comparación redactada con red y proveedor explícitos |
+| Fase 2 — Narrativa LLM opcional | ✅ Completada | Comparación redactada con red y proveedor explícitos |
 | Fase 3 — Persistencia e informes | ⬜ Pendiente | Sesiones recuperables, PDF y Joplin manual |
 | Fase 4 — Refinamiento profesional | ⬜ Pendiente | Clusters, lotes, time lords y configuración avanzada |
 
@@ -74,12 +74,12 @@ Una tarea o fase solo puede marcarse como completada si:
 
 #### Fase 2 — Narrativa LLM opcional
 
-- [ ] `R2.1` Definir contrato común de proveedor sin bloquear las fases deterministas.
-- [ ] `R2.2` Crear payload compacto y versionado desde `RectificationAnalysisResult`.
-- [ ] `R2.3` Crear prompt con prohibición explícita de inventar cálculos.
-- [ ] `R2.4` Añadir redacción Anthropic/OpenRouter solo bajo acción explícita.
-- [ ] `R2.5` Mostrar proveedor, modelo, tokens, coste estimado y errores.
-- [ ] `R2.6` Cubrir el flujo con clientes mock y snapshots estructurales.
+- [x] `R2.1` Definir contrato común de proveedor sin bloquear las fases deterministas.
+- [x] `R2.2` Crear payload compacto y versionado desde `RectificationAnalysisResult`.
+- [x] `R2.3` Crear prompt con prohibición explícita de inventar cálculos.
+- [x] `R2.4` Añadir redacción Anthropic/OpenRouter solo bajo acción explícita.
+- [x] `R2.5` Mostrar proveedor, modelo, tokens, coste estimado y errores.
+- [x] `R2.6` Cubrir el flujo con clientes mock y snapshots estructurales.
 
 #### Fase 3 — Persistencia e informes
 
@@ -104,6 +104,7 @@ Una tarea o fase solo puede marcarse como completada si:
 | 2026-07-10 | Plan | ✅ | Documento adoptado como tracker único; se separa el MVP determinista de la capa LLM opcional. |
 | 2026-07-10 | R0.1–R0.6 | ✅ | Parser horario centralizado; 11 consumidores migrados; modelos y validación versionados; 364 tests, 1 skipped, 0 failures. |
 | 2026-07-10 | R1.1–R1.10 | ✅ | Motor coarse/fine, cuatro scorers, consolidación anti-volumen, clusters, ViewModel, UI y guardado con procedencia. Validación: 371 tests, 1 skipped, 0 failures; app 23:09:13 CEST. |
+| 2026-07-10 | R2.1–R2.6 | ✅ | Servicio LLM común, payload v1 compacto, prompt anti-invención, Anthropic/OpenRouter explícitos y trazabilidad. Validación: 373 tests, 1 skipped, 0 failures; app 23:43:40 CEST. |
 
 ### 0.6. Riesgos que deben revisarse en cada fase
 

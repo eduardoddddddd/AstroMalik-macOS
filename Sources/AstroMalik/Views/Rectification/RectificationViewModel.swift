@@ -10,6 +10,9 @@ final class RectificationViewModel: ObservableObject {
     @Published private(set) var progress = 0.0
     @Published var errorMessage: String?
     @Published var saveMessage: String?
+    @Published var llmProvider: LLMProvider = .anthropic
+    @Published private(set) var narrative: RectificationNarrative?
+    @Published private(set) var isGeneratingNarrative = false
 
     private var analysisTask: Task<Void, Never>?
     private let engine: RectificationEngine
@@ -32,6 +35,7 @@ final class RectificationViewModel: ObservableObject {
             searchRange: RectificationSearchRange(centerTime: chart.birthTime)
         )
         result = nil
+        narrative = nil
         errorMessage = nil
     }
 
@@ -65,6 +69,7 @@ final class RectificationViewModel: ObservableObject {
         progress = 0
         errorMessage = nil
         saveMessage = nil
+        narrative = nil
         analysisTask = Task {
             do {
                 let result = try await engine.analyze(session: session, config: config) { [weak self] value in
@@ -83,6 +88,22 @@ final class RectificationViewModel: ObservableObject {
 
     func cancel() {
         analysisTask?.cancel()
+    }
+
+    func generateNarrative() {
+        guard let result, let session else { return }
+        isGeneratingNarrative = true
+        errorMessage = nil
+        Task {
+            do {
+                narrative = try await RectificationNarrativeBuilder().build(
+                    result: result, session: session, provider: llmProvider
+                )
+            } catch {
+                errorMessage = "Narrativa IA: \(error.localizedDescription)"
+            }
+            isGeneratingNarrative = false
+        }
     }
 
     func saveTopCandidate(in store: UserStore) {
@@ -116,4 +137,3 @@ final class RectificationViewModel: ObservableObject {
         }
     }
 }
-

@@ -33,6 +33,8 @@ Las cartas y consultas se abren dentro del detalle principal. El estado vivo que
 
 `RectificationViewModel` aporta progreso, cancelación y guardado seguro. La carta rectificada se crea con UUID nuevo y metadatos de procedencia; la carta original nunca se sobrescribe. La narrativa LLM no forma parte del cálculo y queda como capa opcional posterior.
 
+La capa opcional usa `UnifiedLLMService` con adaptadores Anthropic/OpenRouter. `RectificationNarrativeBuilder` serializa únicamente un payload v1 compacto (eventos, top candidatas, scores y evidencias; nunca la carta completa) y aplica `rectification_prompt.md`, que prohíbe recalcular o inventar datos. La llamada solo se produce al pulsar la acción explícita de IA después de disponer del resultado determinista.
+
 ## Estado de aplicación
 
 `AppState` mantiene navegación, tema, configuración de Joplin, carta natal activa y estado persistente de tránsitos. `UserStore` y `HoraryStore` publican datos desde `user.db`.

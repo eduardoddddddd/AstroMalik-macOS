@@ -86,6 +86,8 @@ Documentación específica: [`docs/LECTURA_NATAL_REFACTOR_ARQUITECTURA.md`](docs
 - Reglas simbólicas por tipo de evento, evidencia auditable y consolidación que evita premiar el volumen bruto de contactos.
 - Ranking de candidatas, clusters, advertencias de empate/cambio de secta y confianza explícita.
 - Guardado de la candidata elegida como carta nueva con procedencia, sin sobrescribir la original.
+- Comparación narrativa opcional mediante Anthropic u OpenRouter, siempre iniciada explícitamente después del cálculo local.
+- Trazabilidad de proveedor, modelo, tokens y coste estimado cuando está disponible.
 
 La rectificación propone hipótesis astrológicas y no sustituye documentación oficial. El seguimiento técnico vive en [`docs/RECTIFICACION_HORA_NATAL_PLAN.md`](docs/RECTIFICACION_HORA_NATAL_PLAN.md).
 

@@ -31,6 +31,7 @@ let package = Package(
                 .copy("Resources/fixed_stars.json"),
                 .copy("Resources/ephe"),
                 .copy("Resources/cross_personal_prompt.md"),
+                .copy("Resources/rectification_prompt.md"),
                 .copy("Resources/Reports"),
                 .copy("Reports/Templates"),
             ],

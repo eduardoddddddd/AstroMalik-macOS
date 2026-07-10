@@ -198,6 +198,10 @@ actor OpenRouterClient {
     ///   - userPrompt: Datos específicos de la dirección a interpretar.
     /// - Returns: Texto de respuesta del LLM (JSON estructurado esperado).
     func complete(systemPrompt: String, userPrompt: String) async throws -> String {
+        try await completeDetailed(systemPrompt: systemPrompt, userPrompt: userPrompt).text
+    }
+
+    func completeDetailed(systemPrompt: String, userPrompt: String) async throws -> OpenRouterCompletionResult {
         let apiKey = try resolveAPIKey()
 
         let requestBody = ChatCompletionRequest(
@@ -242,7 +246,12 @@ actor OpenRouterClient {
         guard let content = completion.choices.first?.message.content else {
             throw OpenRouterError.emptyResponse
         }
-        return content
+        return OpenRouterCompletionResult(
+            text: content,
+            model: completion.model ?? config.model,
+            inputTokens: completion.usage?.promptTokens ?? 0,
+            outputTokens: completion.usage?.completionTokens ?? 0
+        )
     }
 
     // MARK: - Private Keychain helper
@@ -304,6 +313,8 @@ private struct ChatCompletionRequest: Encodable {
 
 private struct ChatCompletionResponse: Decodable {
     let choices: [Choice]
+    let model: String?
+    let usage: Usage?
 
     struct Choice: Decodable {
         let message: Message
@@ -311,6 +322,21 @@ private struct ChatCompletionResponse: Decodable {
     struct Message: Decodable {
         let content: String
     }
+    struct Usage: Decodable {
+        let promptTokens: Int
+        let completionTokens: Int
+        enum CodingKeys: String, CodingKey {
+            case promptTokens = "prompt_tokens"
+            case completionTokens = "completion_tokens"
+        }
+    }
+}
+
+struct OpenRouterCompletionResult: Equatable, Sendable {
+    let text: String
+    let model: String
+    let inputTokens: Int
+    let outputTokens: Int
 }
 
 private struct KeyValidationEnvelope: Decodable {

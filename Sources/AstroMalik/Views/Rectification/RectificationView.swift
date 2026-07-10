@@ -32,6 +32,7 @@ struct RectificationView: View {
                 eventsCard
                 analysisControls
                 if let result = viewModel.result { resultCard(result) }
+                if let narrative = viewModel.narrative { narrativeCard(narrative) }
             }
             .padding(24)
             .frame(maxWidth: 1100, alignment: .leading)
@@ -175,9 +176,38 @@ struct RectificationView: View {
                         }
                     }
                 }
+                Divider()
+                HStack {
+                    Picker("Proveedor", selection: $viewModel.llmProvider) {
+                        ForEach(LLMProvider.allCases) { Text($0.label).tag($0) }
+                    }.frame(width: 220)
+                    Button("Generar comparación con IA", systemImage: "sparkles") { viewModel.generateNarrative() }
+                        .disabled(viewModel.isGeneratingNarrative)
+                    if viewModel.isGeneratingNarrative { ProgressView().controlSize(.small) }
+                    Text("Acción opcional con red y posible coste.").font(.caption).foregroundStyle(.secondary)
+                }
             }
             .padding(8)
         }
+    }
+
+    private func narrativeCard(_ narrative: RectificationNarrative) -> some View {
+        GroupBox("Comparación narrativa opcional") {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(narrative.markdown).textSelection(.enabled)
+                Divider()
+                Text(narrativeTrace(narrative))
+                    .font(.caption).foregroundStyle(.secondary)
+            }.padding(8)
+        }
+    }
+
+    private func narrativeTrace(_ narrative: RectificationNarrative) -> String {
+        var trace = "\(narrative.provider.label) · \(narrative.model) · \(narrative.inputTokens) entrada / \(narrative.outputTokens) salida"
+        if let cost = narrative.estimatedCostUSD {
+            trace += " · $\(String(format: "%.4f", cost)) USD"
+        }
+        return trace
     }
 
     private var sessionBinding: Binding<RectificationSession>? {

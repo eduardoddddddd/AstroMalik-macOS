@@ -14,6 +14,8 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Modelos Codable versionados, validación del dataset y evidencias técnicas reproducibles.
 - Guardado de la candidata principal como carta nueva etiquetada, sin modificar la carta original.
 - Tests específicos para segundos, DST, límites, scoring, consolidación y dos cartas de referencia independientes.
+- Capa narrativa opcional con contrato común Anthropic/OpenRouter, payload compacto versionado y prompt que prohíbe inventar cálculos.
+- Selector explícito de proveedor y trazabilidad de modelo, tokens y coste disponible.
 
 ### Añadido — CLI local-first para agentes y scripts
 
