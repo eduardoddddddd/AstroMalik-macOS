@@ -151,9 +151,11 @@ extension SolarArcDirection {
     }
 
     var arcFormatted: String {
-        let degrees = Int(abs(solarArc))
-        let minutes = Int((abs(solarArc) - Double(degrees)) * 60)
-        let seconds = Int(((abs(solarArc) - Double(degrees)) * 60 - Double(minutes)) * 60)
+        let absoluteArc = abs(solarArc)
+        let degrees = Int(absoluteArc)
+        let totalMinutes = (absoluteArc - Double(degrees)) * 60
+        let minutes = Int(totalMinutes)
+        let seconds = Int((totalMinutes - Double(minutes)) * 60)
         return "\(degrees)°\(String(format: "%02d", minutes))'\(String(format: "%02d", seconds))\""
     }
 }

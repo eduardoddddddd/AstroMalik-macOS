@@ -332,7 +332,7 @@ struct PrimaryDirectionDetailView: View {
     private var alternativeSources: [MainTextSource] {
         let primaryID = primaryTextSource.id
         return [curatedSource, contextualSource, localSource]
-            .compactMap(\.self)
+            .compactMap { $0 }
             .filter { $0.id != primaryID }
     }
 

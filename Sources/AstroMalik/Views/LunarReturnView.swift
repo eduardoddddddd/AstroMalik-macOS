@@ -1,4 +1,5 @@
 import SwiftUI
+import Darwin
 
 private enum LunarReturnMode: String, CaseIterable, Identifiable {
     case calendar = "Calendario"
@@ -846,10 +847,9 @@ private struct LunarReturnOverlayWheelView: View {
 
     private func point(for longitude: Double, center: CGPoint, radius: CGFloat) -> CGPoint {
         let radians = (longitude - 90) * .pi / 180
-        return CGPoint(
-            x: center.x + cos(radians) * radius,
-            y: center.y + sin(radians) * radius
-        )
+        let cosine = CGFloat(Darwin.cos(Double(radians)))
+        let sine = CGFloat(Darwin.sin(Double(radians)))
+        return CGPoint(x: center.x + cosine * radius, y: center.y + sine * radius)
     }
 
     private func symbol(for label: String) -> String {

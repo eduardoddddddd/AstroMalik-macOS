@@ -8,7 +8,7 @@
 ![Swiss Ephemeris](https://img.shields.io/badge/ephemeris-Swiss%20Ephemeris-6f42c1)
 ![SQLite](https://img.shields.io/badge/storage-SQLite-003B57)
 ![Local First](https://img.shields.io/badge/privacy-local--first-2ea44f)
-![Release](https://img.shields.io/badge/release-1.1.1-blue)
+![Release](https://img.shields.io/badge/release-1.1.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 AstroMalik macOS es una aplicación nativa de astrología tradicional para macOS con CLI local-first. Calcula cartas natales, lecturas, sinastrías, retornos, tránsitos, técnicas predictivas clásicas/helenísticas, horaria e informes documentales desde una app SwiftUI y desde `astromalik-cli`, sin depender de LLMs externos para el cálculo base.
@@ -33,7 +33,7 @@ Los datos de usuario no se guardan en el repositorio. La base local está en:
 
 ## Estado actual y versión 1.1
 
-La app está en la serie 1.x y es usable como herramienta astrológica de escritorio con módulos natales, predictivos, relacionales y documentales. La versión **1.1.1** conserva el flujo completo de **Rectificación de hora natal** y añade distribución universal nativa para Apple Silicon e Intel.
+La app está en la serie 1.x y es usable como herramienta astrológica de escritorio con módulos natales, predictivos, relacionales y documentales. La versión **1.1.2** conserva el flujo completo de **Rectificación de hora natal** y añade distribución universal nativa para Apple Silicon e Intel.
 
 ### Descargar e instalar sin conocimientos técnicos
 

@@ -6,6 +6,14 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 Sin cambios documentados todavía.
 
+## [1.1.2] — 2026-07-11
+
+### Corregido
+
+- Compatibilidad de compilación entre la versión local de Xcode y el toolchain del runner `macos-14` de GitHub Actions.
+- Expresiones numéricas simplificadas y trigonometría tipada explícitamente, sin cambios en los cálculos resultantes.
+- Generación automática de la GitHub Release universal verificada desde el propio tag.
+
 ## [1.1.1] — 2026-07-11
 
 ### Añadido — distribución universal de macOS

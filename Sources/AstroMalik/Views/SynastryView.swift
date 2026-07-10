@@ -1,4 +1,5 @@
 import SwiftUI
+import Darwin
 
 struct SynastryView: View {
     @EnvironmentObject var appState: AppState
@@ -529,10 +530,9 @@ private struct SynastryWheelView: View {
 
     private func point(for longitude: Double, center: CGPoint, radius: CGFloat) -> CGPoint {
         let radians = (longitude - 90) * .pi / 180
-        return CGPoint(
-            x: center.x + cos(radians) * radius,
-            y: center.y + sin(radians) * radius
-        )
+        let cosine = CGFloat(Darwin.cos(Double(radians)))
+        let sine = CGFloat(Darwin.sin(Double(radians)))
+        return CGPoint(x: center.x + cosine * radius, y: center.y + sine * radius)
     }
 
     private func color(for aspectKey: String) -> Color {
