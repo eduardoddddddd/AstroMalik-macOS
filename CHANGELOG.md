@@ -16,6 +16,11 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Tests específicos para segundos, DST, límites, scoring, consolidación y dos cartas de referencia independientes.
 - Capa narrativa opcional con contrato común Anthropic/OpenRouter, payload compacto versionado y prompt que prohíbe inventar cálculos.
 - Selector explícito de proveedor y trazabilidad de modelo, tokens y coste disponible.
+- Persistencia SQLite de sesiones de rectificación, resultados cacheados e historial deduplicado de análisis.
+- Reapertura, edición, recálculo y eliminación de sesiones desde el historial de Rectificación.
+- Importación y exportación JSON mediante un archivo versionado.
+- Informe técnico PDF con candidatas, evidencia, advertencias y trazabilidad narrativa.
+- Nota Joplin de rectificación creada únicamente por acción explícita.
 
 ### Añadido — CLI local-first para agentes y scripts
 

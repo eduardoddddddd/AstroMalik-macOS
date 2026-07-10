@@ -35,6 +35,8 @@ Las cartas y consultas se abren dentro del detalle principal. El estado vivo que
 
 La capa opcional usa `UnifiedLLMService` con adaptadores Anthropic/OpenRouter. `RectificationNarrativeBuilder` serializa únicamente un payload v1 compacto (eventos, top candidatas, scores y evidencias; nunca la carta completa) y aplica `rectification_prompt.md`, que prohíbe recalcular o inventar datos. La llamada solo se produce al pulsar la acción explícita de IA después de disponer del resultado determinista.
 
+`RectificationSessionStore` persiste en `user.db` el contrato completo de sesión, el último resultado y la narrativa opcional. Cada recálculo distinto genera una versión inmutable; los guardados repetidos del mismo resultado se deduplican. El archivo JSON usa un sobre versionado para intercambio y recuperación. `RectificationReportBuilder` crea el HTML autocontenido que WebKit convierte a PDF, mientras `RectificationNoteBuilder` genera Markdown para Joplin; ambas salidas conservan candidatas, evidencias, advertencias y trazabilidad LLM. Joplin solo se invoca desde una acción explícita de la vista.
+
 ## Estado de aplicación
 
 `AppState` mantiene navegación, tema, configuración de Joplin, carta natal activa y estado persistente de tránsitos. `UserStore` y `HoraryStore` publican datos desde `user.db`.

@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 
 struct RectificationView: View {
     @EnvironmentObject private var appState: AppState
@@ -28,6 +29,7 @@ struct RectificationView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 header
+                sessionActions
                 chartAndRangeCard
                 eventsCard
                 analysisControls
@@ -36,6 +38,29 @@ struct RectificationView: View {
             }
             .padding(24)
             .frame(maxWidth: 1100, alignment: .leading)
+        }
+    }
+
+    private var sessionActions: some View {
+        HStack {
+            Button("Guardar sesión", systemImage: "square.and.arrow.down") { viewModel.saveSession() }
+                .disabled(viewModel.session == nil)
+            Menu("Historial") {
+                if viewModel.savedSessions.isEmpty { Text("Sin sesiones guardadas") }
+                ForEach(viewModel.savedSessions) { saved in
+                    Menu("\(saved.name) · \(saved.updatedAt.formatted(date: .abbreviated, time: .shortened)) · v\(saved.versionCount)") {
+                        Button("Abrir") { viewModel.loadSession(id: saved.id) }
+                        Button("Eliminar", role: .destructive) { viewModel.deleteSession(id: saved.id) }
+                    }
+                }
+            }
+            Button("Exportar JSON") { exportJSON() }.disabled(viewModel.session == nil)
+            Button("Importar JSON") { importJSON() }
+            if viewModel.result != nil {
+                Button("Exportar PDF", systemImage: "doc.richtext") { exportPDF() }
+                Button("Crear nota Joplin", systemImage: "note.text.badge.plus") { createJoplinNote() }
+            }
+            Spacer()
         }
     }
 
@@ -253,6 +278,49 @@ struct RectificationView: View {
         case .medium: return "media"
         case .low: return "baja"
         case .inconclusive: return "inconclusa"
+        }
+    }
+
+    private func exportJSON() {
+        do {
+            let data = try viewModel.exportArchiveData()
+            let panel = NSSavePanel(); panel.allowedContentTypes = [.json]
+            panel.nameFieldStringValue = "rectificacion-\(viewModel.session?.name ?? "sesion").json"
+            if panel.runModal() == .OK, let url = panel.url { try data.write(to: url, options: .atomic) }
+        } catch { viewModel.errorMessage = "Exportación JSON: \(error.localizedDescription)" }
+    }
+
+    private func importJSON() {
+        let panel = NSOpenPanel(); panel.allowedContentTypes = [.json]; panel.allowsMultipleSelection = false
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        do { try viewModel.importArchiveData(Data(contentsOf: url)) }
+        catch { viewModel.errorMessage = "Importación JSON: \(error.localizedDescription)" }
+    }
+
+    private func exportPDF() {
+        guard let session = viewModel.session, let result = viewModel.result else { return }
+        Task {
+            do {
+                _ = try await PDFReportExportCoordinator.export(
+                    chartName: session.name, reportType: "rectificacion",
+                    joplinSettings: appState.joplinSettings
+                ) { pageSize in
+                    try await RectificationReportBuilder.generate(session: session, result: result, narrative: viewModel.narrative, pageSize: pageSize)
+                }
+            } catch { viewModel.errorMessage = "PDF: \(error.localizedDescription)" }
+        }
+    }
+
+    private func createJoplinNote() {
+        guard let session = viewModel.session, let result = viewModel.result else { return }
+        Task {
+            do {
+                try await JoplinClipperService(settings: appState.joplinSettings).createNote(
+                    title: "Rectificación — \(session.name)",
+                    body: RectificationNoteBuilder.markdown(session: session, result: result, narrative: viewModel.narrative)
+                )
+                viewModel.saveMessage = "Nota creada en Joplin."
+            } catch { viewModel.errorMessage = "Joplin: \(error.localizedDescription)" }
         }
     }
 }

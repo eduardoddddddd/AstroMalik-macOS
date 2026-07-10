@@ -13,12 +13,16 @@ final class RectificationViewModel: ObservableObject {
     @Published var llmProvider: LLMProvider = .anthropic
     @Published private(set) var narrative: RectificationNarrative?
     @Published private(set) var isGeneratingNarrative = false
+    @Published private(set) var savedSessions: [SavedRectificationSession] = []
 
     private var analysisTask: Task<Void, Never>?
     private let engine: RectificationEngine
+    private let sessionStore: RectificationSessionStore?
 
-    init(engine: RectificationEngine = RectificationEngine()) {
+    init(engine: RectificationEngine = RectificationEngine(), sessionStore: RectificationSessionStore? = try? RectificationSessionStore()) {
         self.engine = engine
+        self.sessionStore = sessionStore
+        refreshSavedSessions()
     }
 
     func load(chart: NatalChart) {
@@ -77,6 +81,7 @@ final class RectificationViewModel: ObservableObject {
                 }
                 try Task.checkCancellation()
                 self.result = result
+                self.persistCurrent()
             } catch is CancellationError {
                 self.errorMessage = "Análisis cancelado."
             } catch {
@@ -99,11 +104,58 @@ final class RectificationViewModel: ObservableObject {
                 narrative = try await RectificationNarrativeBuilder().build(
                     result: result, session: session, provider: llmProvider
                 )
+                persistCurrent()
             } catch {
                 errorMessage = "Narrativa IA: \(error.localizedDescription)"
             }
             isGeneratingNarrative = false
         }
+    }
+
+    func saveSession() {
+        persistCurrent()
+        saveMessage = "Sesión guardada."
+    }
+
+    func loadSession(id: UUID) {
+        do {
+            guard let archive = try sessionStore?.load(id: id) else { return }
+            session = archive.session
+            result = archive.result
+            narrative = archive.narrative
+            errorMessage = nil
+            saveMessage = "Sesión reabierta."
+        } catch { errorMessage = "No se pudo abrir la sesión: \(error.localizedDescription)" }
+    }
+
+    func deleteSession(id: UUID) {
+        do { try sessionStore?.delete(id: id); refreshSavedSessions() }
+        catch { errorMessage = "No se pudo eliminar la sesión: \(error.localizedDescription)" }
+    }
+
+    func exportArchiveData() throws -> Data {
+        guard let session else { throw CocoaError(.fileNoSuchFile) }
+        persistCurrent()
+        guard let data = try sessionStore?.exportArchive(id: session.id) else { throw CocoaError(.fileWriteUnknown) }
+        return data
+    }
+
+    func importArchiveData(_ data: Data) throws {
+        guard let archive = try sessionStore?.importArchive(data) else { throw CocoaError(.fileReadUnknown) }
+        session = archive.session; result = archive.result; narrative = archive.narrative
+        refreshSavedSessions()
+    }
+
+    private func persistCurrent() {
+        guard let session else { return }
+        do {
+            _ = try sessionStore?.save(session: session, result: result, narrative: narrative)
+            refreshSavedSessions()
+        } catch { errorMessage = "No se pudo guardar la sesión: \(error.localizedDescription)" }
+    }
+
+    private func refreshSavedSessions() {
+        savedSessions = (try? sessionStore?.list()) ?? []
     }
 
     func saveTopCandidate(in store: UserStore) {

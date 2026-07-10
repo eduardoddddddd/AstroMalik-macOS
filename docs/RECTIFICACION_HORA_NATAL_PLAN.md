@@ -20,7 +20,7 @@ Este mismo documento se utilizará como **especificación, roadmap y registro de
 | Fase 0 — Fundamentos deterministas | ✅ Completada | Hora con segundos, modelos base y tests |
 | Fase 1 — MVP determinista | ✅ Completada | Ranking explicable de horas candidatas sin LLM |
 | Fase 2 — Narrativa LLM opcional | ✅ Completada | Comparación redactada con red y proveedor explícitos |
-| Fase 3 — Persistencia e informes | ⬜ Pendiente | Sesiones recuperables, PDF y Joplin manual |
+| Fase 3 — Persistencia e informes | ✅ Completada | Sesiones recuperables, PDF y Joplin manual |
 | Fase 4 — Refinamiento profesional | ⬜ Pendiente | Clusters, lotes, time lords y configuración avanzada |
 
 Estados permitidos: `⬜ Pendiente`, `🟦 En curso`, `🟨 Bloqueada`, `✅ Completada`.
@@ -83,11 +83,11 @@ Una tarea o fase solo puede marcarse como completada si:
 
 #### Fase 3 — Persistencia e informes
 
-- [ ] `R3.1` Añadir migraciones SQLite para sesiones, eventos y resultados cacheados.
-- [ ] `R3.2` Reabrir, editar, recalcular y versionar sesiones.
-- [ ] `R3.3` Crear informe PDF técnico con candidatas, evidencia y advertencias.
-- [ ] `R3.4` Crear nota Joplin únicamente mediante acción explícita.
-- [ ] `R3.5` Añadir exportación/importación JSON versionada.
+- [x] `R3.1` Añadir migraciones SQLite para sesiones, eventos y resultados cacheados.
+- [x] `R3.2` Reabrir, editar, recalcular y versionar sesiones.
+- [x] `R3.3` Crear informe PDF técnico con candidatas, evidencia y advertencias.
+- [x] `R3.4` Crear nota Joplin únicamente mediante acción explícita.
+- [x] `R3.5` Añadir exportación/importación JSON versionada.
 
 #### Fase 4 — Refinamiento profesional
 
@@ -105,6 +105,7 @@ Una tarea o fase solo puede marcarse como completada si:
 | 2026-07-10 | R0.1–R0.6 | ✅ | Parser horario centralizado; 11 consumidores migrados; modelos y validación versionados; 364 tests, 1 skipped, 0 failures. |
 | 2026-07-10 | R1.1–R1.10 | ✅ | Motor coarse/fine, cuatro scorers, consolidación anti-volumen, clusters, ViewModel, UI y guardado con procedencia. Validación: 371 tests, 1 skipped, 0 failures; app 23:09:13 CEST. |
 | 2026-07-10 | R2.1–R2.6 | ✅ | Servicio LLM común, payload v1 compacto, prompt anti-invención, Anthropic/OpenRouter explícitos y trazabilidad. Validación: 373 tests, 1 skipped, 0 failures; app 23:43:40 CEST. |
+| 2026-07-11 | R3.1–R3.5 | ✅ | Migración 007, store SQLite con historial deduplicado, reapertura/edición/recálculo, JSON v1, PDF técnico y Joplin explícito. Validación: 378 tests, 1 skipped, 0 failures; app 00:19:46 CEST. |
 
 ### 0.6. Riesgos que deben revisarse en cada fase
 

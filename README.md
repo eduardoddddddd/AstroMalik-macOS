@@ -88,6 +88,9 @@ Documentación específica: [`docs/LECTURA_NATAL_REFACTOR_ARQUITECTURA.md`](docs
 - Guardado de la candidata elegida como carta nueva con procedencia, sin sobrescribir la original.
 - Comparación narrativa opcional mediante Anthropic u OpenRouter, siempre iniciada explícitamente después del cálculo local.
 - Trazabilidad de proveedor, modelo, tokens y coste estimado cuando está disponible.
+- Sesiones persistentes en SQLite con reapertura, edición, recálculo e historial de versiones sin duplicados.
+- Importación/exportación JSON versionada e informe técnico PDF autocontenido.
+- Creación de nota Joplin únicamente mediante el botón explícito del usuario.
 
 La rectificación propone hipótesis astrológicas y no sustituye documentación oficial. El seguimiento técnico vive en [`docs/RECTIFICACION_HORA_NATAL_PLAN.md`](docs/RECTIFICACION_HORA_NATAL_PLAN.md).
 

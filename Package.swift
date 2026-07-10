@@ -32,6 +32,7 @@ let package = Package(
                 .copy("Resources/ephe"),
                 .copy("Resources/cross_personal_prompt.md"),
                 .copy("Resources/rectification_prompt.md"),
+                .copy("Resources/migrations"),
                 .copy("Resources/Reports"),
                 .copy("Reports/Templates"),
             ],
