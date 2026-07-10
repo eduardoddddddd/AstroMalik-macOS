@@ -290,10 +290,10 @@ final class AstroEngine {
     // MARK: Natal Chart
 
     static func computeNatalChart(
-        jd: Double, lat: Double, lon: Double
+        jd: Double, lat: Double, lon: Double, houseSystem: Character = "P"
     ) throws -> NatalChart {
         let rawPlanets = try calcPlanets(jd: jd)
-        let (cusps, asc, mc) = try calcHouses(jd: jd, lat: lat, lon: lon, system: "P")
+        let (cusps, asc, mc) = try calcHouses(jd: jd, lat: lat, lon: lon, system: houseSystem)
 
         var bodies: [PlanetBody] = []
         for planet in PLANET_LIST {

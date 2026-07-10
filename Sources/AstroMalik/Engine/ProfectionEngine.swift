@@ -250,18 +250,15 @@ final class ProfectionEngine {
     }
 
     private func birthComponents(for chart: NatalChart) throws -> DateComponents {
-        let dateParts = chart.birthDate.split(separator: "-").compactMap { Int($0) }
-        let timeParts = chart.birthTime.split(separator: ":").compactMap { Int($0) }
-        guard dateParts.count == 3, timeParts.count >= 2 else { throw ProfectionError.invalidBirthData }
-
-        return DateComponents(
-            timeZone: TimeZone(identifier: chart.timezone) ?? TimeZone(secondsFromGMT: 0),
-            year: dateParts[0],
-            month: dateParts[1],
-            day: dateParts[2],
-            hour: timeParts[0],
-            minute: timeParts[1],
-            second: 0
+        let calendar = calendar(for: chart)
+        guard let birthDate = try? localDateFromBirthData(
+            birthDate: chart.birthDate,
+            birthTime: chart.birthTime,
+            timezoneName: chart.timezone
+        ) else { throw ProfectionError.invalidBirthData }
+        return calendar.dateComponents(
+            [.year, .month, .day, .hour, .minute, .second],
+            from: birthDate
         )
     }
 

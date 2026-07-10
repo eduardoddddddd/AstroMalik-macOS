@@ -32,7 +32,7 @@ struct ContentView: View {
 
                 List(selection: $appState.selectedNav) {
                     Section {
-                        ForEach([NavItem.nuevaCarta, NavItem.cartas, NavItem.lectura]) { item in
+                        ForEach([NavItem.nuevaCarta, NavItem.cartas, NavItem.lectura, NavItem.rectificacion]) { item in
                             sidebarItem(item)
                         }
                     } header: {
@@ -135,6 +135,10 @@ struct ContentView: View {
 
         case .reading:
             readingDetail
+
+        case .rectification:
+            RectificationView()
+                .environmentObject(appState)
 
         case .synastry:
             SynastryView()

@@ -451,16 +451,15 @@ private extension CrossPersonalAssembler {
     }
 
     static func birthComponents(chart: NatalChart) -> DateComponents {
-        let dateParts = chart.birthDate.split(separator: "-").compactMap { Int($0) }
-        let timeParts = chart.birthTime.split(separator: ":").compactMap { Int($0) }
-        return DateComponents(
-            timeZone: TimeZone(identifier: chart.timezone) ?? TimeZone(secondsFromGMT: 0),
-            year: dateParts.count == 3 ? dateParts[0] : nil,
-            month: dateParts.count == 3 ? dateParts[1] : nil,
-            day: dateParts.count == 3 ? dateParts[2] : nil,
-            hour: timeParts.count >= 2 ? timeParts[0] : 0,
-            minute: timeParts.count >= 2 ? timeParts[1] : 0,
-            second: timeParts.count >= 3 ? timeParts[2] : 0
+        let calendar = calendar(for: chart)
+        guard let birthDate = try? localDateFromBirthData(
+            birthDate: chart.birthDate,
+            birthTime: chart.birthTime,
+            timezoneName: chart.timezone
+        ) else { return DateComponents(timeZone: calendar.timeZone) }
+        return calendar.dateComponents(
+            [.year, .month, .day, .hour, .minute, .second],
+            from: birthDate
         )
     }
 

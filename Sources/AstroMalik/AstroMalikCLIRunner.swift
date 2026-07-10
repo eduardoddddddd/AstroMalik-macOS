@@ -1148,12 +1148,11 @@ private extension AstroMalikCLIRunner {
     }
 
     static func birthDate(for chart: NatalChart) -> Date? {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(identifier: chart.timezone) ?? .gmt
-        let dateParts = chart.birthDate.split(separator: "-").compactMap { Int($0) }
-        let timeParts = chart.birthTime.split(separator: ":").compactMap { Int($0) }
-        guard dateParts.count == 3, timeParts.count >= 2 else { return nil }
-        return calendar.date(from: DateComponents(timeZone: calendar.timeZone, year: dateParts[0], month: dateParts[1], day: dateParts[2], hour: timeParts[0], minute: timeParts[1]))
+        try? localDateFromBirthData(
+            birthDate: chart.birthDate,
+            birthTime: chart.birthTime,
+            timezoneName: chart.timezone
+        )
     }
 }
 

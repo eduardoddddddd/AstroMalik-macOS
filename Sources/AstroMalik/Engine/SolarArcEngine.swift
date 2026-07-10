@@ -168,21 +168,11 @@ final class SolarArcEngine: Sendable {
             ?? (try? AstroEngine.calcPlanets(jd: jdResult.jd)["SOL"]?.deg) ?? nil
         guard let natalSun else { return nil }
 
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(identifier: chart.timezone) ?? .current
-        let dateParts = chart.birthDate.split(separator: "-").compactMap { Int($0) }
-        let timeParts = chart.birthTime.split(separator: ":").compactMap { Int($0) }
-        var comps = DateComponents()
-        if dateParts.count == 3 {
-            comps.year = dateParts[0]
-            comps.month = dateParts[1]
-            comps.day = dateParts[2]
-        }
-        if timeParts.count >= 2 {
-            comps.hour = timeParts[0]
-            comps.minute = timeParts[1]
-        }
-        guard let birthDate = calendar.date(from: comps) else { return nil }
+        guard let birthDate = try? localDateFromBirthData(
+            birthDate: chart.birthDate,
+            birthTime: chart.birthTime,
+            timezoneName: chart.timezone
+        ) else { return nil }
         return (jdResult.jd, birthDate, normalizedDegree(natalSun))
     }
 

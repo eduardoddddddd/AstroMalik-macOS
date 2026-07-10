@@ -6,7 +6,7 @@ struct NatalChart: Identifiable, Codable, Equatable {
     let id: UUID
     var name: String
     var birthDate: String          // YYYY-MM-DD
-    var birthTime: String          // HH:MM
+    var birthTime: String          // HH:mm o HH:mm:ss
     var timezone: String           // IANA (ej. "Europe/Madrid")
     var latitude: Double
     var longitude: Double

@@ -175,16 +175,11 @@ final class AlmutenFigurisEngine {
     }
 
     private func localBirthDate(chart: Chart) -> Date? {
-        let parts = chart.birthDate.split(separator: "-").compactMap { Int($0) }
-        let time = chart.birthTime.split(separator: ":").compactMap { Int($0) }
-        guard parts.count == 3, time.count >= 2 else { return nil }
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(identifier: chart.timezone) ?? .gmt
-        return calendar.date(from: DateComponents(
-            timeZone: calendar.timeZone,
-            year: parts[0], month: parts[1], day: parts[2],
-            hour: time[0], minute: time[1]
-        ))
+        try? localDateFromBirthData(
+            birthDate: chart.birthDate,
+            birthTime: chart.birthTime,
+            timezoneName: chart.timezone
+        )
     }
 
     private func orientalityBonuses(chart: Chart) -> [AlmutenBonus] {

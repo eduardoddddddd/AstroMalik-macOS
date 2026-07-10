@@ -20,6 +20,95 @@ enum JulianDayError: LocalizedError {
     }
 }
 
+/// Componentes horarios validados y compartidos por todos los motores.
+/// Mantiene compatibilidad con cartas históricas `HH:mm` y permite que la
+/// rectificación trabaje con `HH:mm:ss` sin que cada módulo vuelva a parsear.
+struct LocalTimeComponents: Equatable, Sendable {
+    let hour: Int
+    let minute: Int
+    let second: Int
+
+    var totalSeconds: Int { hour * 3_600 + minute * 60 + second }
+
+    func formatted(includeSeconds: Bool? = nil) -> String {
+        let shouldIncludeSeconds = includeSeconds ?? (second != 0)
+        if shouldIncludeSeconds {
+            return String(format: "%02d:%02d:%02d", hour, minute, second)
+        }
+        return String(format: "%02d:%02d", hour, minute)
+    }
+}
+
+/// Parsea exclusivamente `HH:mm` o `HH:mm:ss`.
+func parseLocalTime(_ value: String) throws -> LocalTimeComponents {
+    let rawParts = value.split(separator: ":", omittingEmptySubsequences: false)
+    guard rawParts.count == 2 || rawParts.count == 3,
+          rawParts.allSatisfy({ !$0.isEmpty }),
+          rawParts.allSatisfy({ $0.allSatisfy(\.isNumber) }),
+          let hour = Int(rawParts[0]),
+          let minute = Int(rawParts[1]) else {
+        throw JulianDayError.invalidTime(value)
+    }
+    let second = rawParts.count == 3 ? Int(rawParts[2]) : 0
+    guard let second,
+          (0...23).contains(hour),
+          (0...59).contains(minute),
+          (0...59).contains(second) else {
+        throw JulianDayError.invalidTime(value)
+    }
+    return LocalTimeComponents(hour: hour, minute: minute, second: second)
+}
+
+/// Construye una fecha local estricta. A diferencia de `Calendar.date(from:)`
+/// usado directamente, rechaza fechas u horas que el calendario normalizaría
+/// silenciosamente (por ejemplo 31 de febrero o una hora inexistente por DST).
+func localDateFromBirthData(
+    birthDate: String,
+    birthTime: String,
+    timezoneName: String
+) throws -> Date {
+    guard let timezone = TimeZone(identifier: timezoneName) else {
+        throw JulianDayError.invalidTimezone(timezoneName)
+    }
+
+    let rawDateParts = birthDate.split(separator: "-", omittingEmptySubsequences: false)
+    guard rawDateParts.count == 3,
+          rawDateParts.allSatisfy({ !$0.isEmpty }),
+          rawDateParts.allSatisfy({ $0.allSatisfy(\.isNumber) }),
+          let year = Int(rawDateParts[0]),
+          let month = Int(rawDateParts[1]),
+          let day = Int(rawDateParts[2]) else {
+        throw JulianDayError.invalidDate(birthDate)
+    }
+    let time = try parseLocalTime(birthTime)
+
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = timezone
+    let requested = DateComponents(
+        timeZone: timezone,
+        year: year,
+        month: month,
+        day: day,
+        hour: time.hour,
+        minute: time.minute,
+        second: time.second
+    )
+    guard let date = calendar.date(from: requested) else {
+        throw JulianDayError.invalidDate("\(birthDate) \(birthTime) \(timezoneName)")
+    }
+
+    let resolved = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+    guard resolved.year == year,
+          resolved.month == month,
+          resolved.day == day,
+          resolved.hour == time.hour,
+          resolved.minute == time.minute,
+          resolved.second == time.second else {
+        throw JulianDayError.invalidDate("\(birthDate) \(birthTime) \(timezoneName)")
+    }
+    return date
+}
+
 struct JulianDayResult {
     let jd: Double
     let timezoneIANA: String
@@ -39,25 +128,19 @@ func julianDayFromLocal(
     guard let tz = TimeZone(identifier: timezoneName) else {
         throw JulianDayError.invalidTimezone(timezoneName)
     }
+    let localDate = try localDateFromBirthData(
+        birthDate: birthDate,
+        birthTime: birthTime,
+        timezoneName: timezoneName
+    )
 
-    let dateParts = birthDate.split(separator: "-").compactMap { Int($0) }
-    guard dateParts.count == 3 else { throw JulianDayError.invalidDate(birthDate) }
-    let (year, month, day) = (dateParts[0], dateParts[1], dateParts[2])
-
-    let timeParts = birthTime.split(separator: ":").compactMap { Int($0) }
-    guard timeParts.count >= 2 else { throw JulianDayError.invalidTime(birthTime) }
-    let (hh, mm) = (timeParts[0], timeParts[1])
-    guard (0...23).contains(hh), (0...59).contains(mm) else {
-        throw JulianDayError.invalidTime(birthTime)
-    }
-
-    var cal = Calendar(identifier: .gregorian)
-    cal.timeZone = tz
-    var comps = DateComponents()
-    comps.year = year; comps.month = month; comps.day = day
-    comps.hour = hh; comps.minute = mm; comps.second = 0
-    guard let localDate = cal.date(from: comps) else {
-        throw JulianDayError.invalidDate("\(birthDate) \(birthTime) \(timezoneName)")
+    var localCalendar = Calendar(identifier: .gregorian)
+    localCalendar.timeZone = tz
+    let localComponents = localCalendar.dateComponents([.year, .month, .day], from: localDate)
+    guard let year = localComponents.year,
+          let month = localComponents.month,
+          let day = localComponents.day else {
+        throw JulianDayError.invalidDate(birthDate)
     }
 
     let utcCal = Calendar(identifier: .gregorian)

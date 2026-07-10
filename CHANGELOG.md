@@ -4,6 +4,17 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ## [Unreleased] — 2026-06-13
 
+### Añadido — Rectificación natal determinista (Fases 0 y 1)
+
+- Nuevo módulo **Rectificación** en Carta Natal, basado en cartas guardadas y cronologías vitales.
+- Soporte común `HH:mm` / `HH:mm:ss` con conversión local estricta y compatibilidad con cartas existentes.
+- Generador de candidatas coarse/fine, modo de día completo sensible a DST y cancelación cooperativa.
+- Scorers iniciales de arco solar, tránsitos a ángulos, direcciones primarias y progresiones secundarias.
+- Reglas simbólicas centralizadas por evento, ranking normalizado, clusters y advertencias de resultados inconclusos.
+- Modelos Codable versionados, validación del dataset y evidencias técnicas reproducibles.
+- Guardado de la candidata principal como carta nueva etiquetada, sin modificar la carta original.
+- Tests específicos para segundos, DST, límites, scoring, consolidación y dos cartas de referencia independientes.
+
 ### Añadido — CLI local-first para agentes y scripts
 
 - `astromalik-cli` pasa a ser una interfaz local, determinista y usable por terminal, scripts y agentes LLM externos sin llamadas externas por defecto.

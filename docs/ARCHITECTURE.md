@@ -16,7 +16,7 @@ Ningún paquete Swift externo. Solo el módulo C `CSwissEph` (Swiss Ephemeris em
 
 La app usa un solo `WindowGroup` con `NavigationSplitView`. La sidebar está organizada por flujo de trabajo del astrólogo en seis secciones; el panel derecho contiene el flujo activo:
 
-- **Carta Natal** — Nueva Carta · Cartas Guardadas · Lectura
+- **Carta Natal** — Nueva Carta · Cartas Guardadas · Lectura · Rectificación
 - **Predictivas** — Tránsitos · Progresiones · Direcciones Primarias (· Arco Solar) · Profecciones · Firdaria · Zodiacal Releasing
 - **Retornos** — Revolución Solar · Revolución Lunar
 - **Síntesis** — Panorama Predictivo *(síntesis cross-personal; resaltada como culminación)*
@@ -26,6 +26,12 @@ La app usa un solo `WindowGroup` con `NavigationSplitView`. La sidebar está org
 `NavItem` separa identidad estable (`rawValue`) de texto visible (`label`), por lo que renombrar etiquetas no afecta la navegación. El orden y la agrupación se definen en las `Section` de `ContentView`; el enrutado real (`DetailRoute`) y `showDefaultDetail` son independientes de cómo se presenta el sidebar.
 
 Las cartas y consultas se abren dentro del detalle principal. El estado vivo queda en `AppState`.
+
+## Rectificación natal
+
+`RectificationEngine` ejecuta un flujo local-first en dos pasadas. `RectificationCandidateGenerator` explora primero el rango con paso grueso, selecciona centros distintos y refina únicamente esas zonas respetando los límites civiles y DST. Los scorers de arco solar, tránsitos angulares, direcciones primarias y progresiones producen `RectificationEvidence`; el motor conserva la evidencia más fuerte por evento/técnica, añade bonificación limitada por confirmación y evita que una candidata gane solo por acumular contactos genéricos.
+
+`RectificationViewModel` aporta progreso, cancelación y guardado seguro. La carta rectificada se crea con UUID nuevo y metadatos de procedencia; la carta original nunca se sobrescribe. La narrativa LLM no forma parte del cálculo y queda como capa opcional posterior.
 
 ## Estado de aplicación
 

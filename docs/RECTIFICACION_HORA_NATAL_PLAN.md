@@ -3,8 +3,117 @@
 **Proyecto:** AstroMalik macOS  
 **Documento:** Plan técnico, astrológico y de producto para implementar rectificación de hora natal / Ascendente  
 **Fecha:** 2026-06-10  
-**Estado:** Propuesta lista para implementación  
+**Estado:** En ejecución — documento maestro y fuente de verdad
+
 **Alcance:** Motor de rectificación asistida + UI + persistencia + integración LLM Anthropic/OpenRouter + ajustes unificados de IA
+
+---
+
+## 0. Control de ejecución
+
+Este mismo documento se utilizará como **especificación, roadmap y registro de avance**. No se mantendrá un segundo plan paralelo. El código, los tests y los commits siguen siendo la prueba real de cada entrega; este bloque registra el estado y las decisiones para evitar que la implementación se desvíe del diseño.
+
+### 0.1. Estado global
+
+| Fase | Estado | Resultado verificable |
+|---|---|---|
+| Fase 0 — Fundamentos deterministas | ✅ Completada | Hora con segundos, modelos base y tests |
+| Fase 1 — MVP determinista | ✅ Completada | Ranking explicable de horas candidatas sin LLM |
+| Fase 2 — Narrativa LLM opcional | ⬜ Pendiente | Comparación redactada con red y proveedor explícitos |
+| Fase 3 — Persistencia e informes | ⬜ Pendiente | Sesiones recuperables, PDF y Joplin manual |
+| Fase 4 — Refinamiento profesional | ⬜ Pendiente | Clusters, lotes, time lords y configuración avanzada |
+
+Estados permitidos: `⬜ Pendiente`, `🟦 En curso`, `🟨 Bloqueada`, `✅ Completada`.
+
+### 0.2. Decisiones cerradas para el MVP
+
+1. Nombre visible: **Rectificación**.
+2. El MVP es **determinista y local-first**; no necesita proveedor LLM para calcular ni ordenar candidatas.
+3. Resolución inicial de la UI: **un minuto**. El backend aceptará segundos para no cerrar la evolución posterior.
+4. El LLM será una capa opcional de redacción/comparación en Fase 2 y nunca recalculará astronomía.
+5. Las llamadas de red exigirán acción explícita del usuario, coherente con la política local-first del CLI.
+6. Joplin y PDF se añadirán cuando el contrato del resultado determinista sea estable.
+7. La candidata elegida se guardará como una carta nueva; nunca sobrescribirá silenciosamente la carta original.
+8. No se calibrarán pesos con un único caso real. Los defaults se conservarán como configuración versionada y auditable.
+
+### 0.3. Definition of Done global
+
+Una tarea o fase solo puede marcarse como completada si:
+
+- el código compila sin warnings nuevos relevantes;
+- los tests nuevos y la suite existente pasan;
+- los errores y cancelaciones dejan la UI en estado coherente;
+- los resultados incluyen configuración, advertencias y evidencia reproducible;
+- se actualizan este tracker y la documentación pública afectada;
+- después de cambios Swift/UI se ejecuta `scripts/package_app.sh`;
+- se verifica el timestamp de `AstroMalik.app/Contents/MacOS/AstroMalik`.
+
+### 0.4. Checklist ejecutable por fases
+
+#### Fase 0 — Fundamentos deterministas
+
+- [x] `R0.1` Auditar todos los parseos de `birthTime` y definir compatibilidad `HH:mm` / `HH:mm:ss`.
+- [x] `R0.2` Añadir segundos a `julianDayFromLocal` sin romper datos existentes.
+- [x] `R0.3` Añadir tests de zona horaria, cambio de día y segundos.
+- [x] `R0.4` Crear modelos base de sesión, evento, candidata, evidencia, configuración y resultado.
+- [x] `R0.5` Definir errores de dominio y validación de rango/eventos.
+- [x] `R0.6` Documentar contratos Codable y compatibilidad de persistencia.
+
+#### Fase 1 — MVP determinista
+
+- [x] `R1.1` Implementar generador coarse/fine con límites y cancelación.
+- [x] `R1.2` Implementar reglas simbólicas centralizadas y versionadas.
+- [x] `R1.3` Implementar scorers de arco solar y tránsitos a ángulos.
+- [x] `R1.4` Añadir direcciones primarias y progresiones secundarias.
+- [x] `R1.5` Consolidar, normalizar y explicar scores sin premiar volumen bruto.
+- [x] `R1.6` Detectar clusters, empates, mesetas y resultados inconclusos.
+- [x] `R1.7` Crear ViewModel con progreso, cancelación y errores.
+- [x] `R1.8` Crear UI mínima y navegación.
+- [x] `R1.9` Guardar candidata como carta nueva con procedencia de rectificación.
+- [x] `R1.10` Validar con fixtures sintéticos y dos cartas de referencia independientes. La calibración biográfica real queda en R4.5 para evitar ajustar pesos con casos insuficientes.
+
+#### Fase 2 — Narrativa LLM opcional
+
+- [ ] `R2.1` Definir contrato común de proveedor sin bloquear las fases deterministas.
+- [ ] `R2.2` Crear payload compacto y versionado desde `RectificationAnalysisResult`.
+- [ ] `R2.3` Crear prompt con prohibición explícita de inventar cálculos.
+- [ ] `R2.4` Añadir redacción Anthropic/OpenRouter solo bajo acción explícita.
+- [ ] `R2.5` Mostrar proveedor, modelo, tokens, coste estimado y errores.
+- [ ] `R2.6` Cubrir el flujo con clientes mock y snapshots estructurales.
+
+#### Fase 3 — Persistencia e informes
+
+- [ ] `R3.1` Añadir migraciones SQLite para sesiones, eventos y resultados cacheados.
+- [ ] `R3.2` Reabrir, editar, recalcular y versionar sesiones.
+- [ ] `R3.3` Crear informe PDF técnico con candidatas, evidencia y advertencias.
+- [ ] `R3.4` Crear nota Joplin únicamente mediante acción explícita.
+- [ ] `R3.5` Añadir exportación/importación JSON versionada.
+
+#### Fase 4 — Refinamiento profesional
+
+- [ ] `R4.1` Integrar profecciones, Firdaria, ZR, lotes y revolución solar como confirmación.
+- [ ] `R4.2` Añadir cuestionario preliminar de signo Ascendente.
+- [ ] `R4.3` Añadir comparación de candidatas y gráfico de distribución.
+- [ ] `R4.4` Añadir configuración avanzada de pesos, orbes y escuela doctrinal.
+- [ ] `R4.5` Ejecutar análisis anti-overfitting y calibración con corpus de casos.
+
+### 0.5. Registro de implementación
+
+| Fecha | IDs | Estado | Evidencia / notas |
+|---|---|---|---|
+| 2026-07-10 | Plan | ✅ | Documento adoptado como tracker único; se separa el MVP determinista de la capa LLM opcional. |
+| 2026-07-10 | R0.1–R0.6 | ✅ | Parser horario centralizado; 11 consumidores migrados; modelos y validación versionados; 364 tests, 1 skipped, 0 failures. |
+| 2026-07-10 | R1.1–R1.10 | ✅ | Motor coarse/fine, cuatro scorers, consolidación anti-volumen, clusters, ViewModel, UI y guardado con procedencia. Validación: 371 tests, 1 skipped, 0 failures; app 23:09:13 CEST. |
+
+### 0.6. Riesgos que deben revisarse en cada fase
+
+- Rendimiento al recalcular cientos de cartas y técnicas.
+- Cancelación cooperativa de tareas largas.
+- Inconsistencias entre parseadores de `birthTime` repartidos por varios motores.
+- Sobreajuste por demasiadas técnicas, factores u orbes amplios.
+- Resultados falsamente precisos cuando los eventos son pocos o aproximados.
+- Cambios de secta, signo Ascendente o sistema de casas dentro del rango.
+- Compatibilidad de sesiones persistidas cuando evolucionen pesos y reglas.
 
 ---
 
@@ -572,33 +681,6 @@ Cuando el rango horario cruza la línea del horizonte (amanecer o atardecer), el
    - Períodos de Firdaria (secuencia diurna ≠ nocturna).
    - Valoración de planetas por condición.
 
-#### Modo "hora desconocida" (rango completo 24h)
-
-Cuando `includeFullDayFallback = true`:
-
-1. **Primer pass por signo:** Step de 15 minutos (96 cartas en 24h). Objetivo: detectar qué signos ascendentes producen mejor score.
-2. **Segundo pass fino por signo:** Solo en los rangos de los 2-3 signos ASC top. Step de 2 minutos (~60 cartas por signo candidato).
-3. **Tercer pass de precisión:** Solo sobre clusters prometedores del paso 2. Step de 1 minuto o 30 segundos.
-
-Este modo es imprescindible porque muchos consultantes reales **no tienen ninguna hora** (nacidos en países sin registro fiable, por ejemplo).
-
-El modo debe mostrar un aviso claro:
-
-> Sin hora de referencia, la rectificación es significativamente más difícil. Se recomienda aportar al menos 10-12 eventos vitales con fechas exactas para obtener resultados razonables.
-
-#### Detección de cruce de secta
-
-Cuando el rango horario cruza la línea del horizonte (amanecer o atardecer), el generador debe:
-
-1. Calcular hora de amanecer/atardecer para la fecha y coordenadas.
-2. Marcar las candidatas que cambian de secta (diurna ↔ nocturna).
-3. Incluir `sectCrossingDetected = true` en el resultado.
-4. Advertir al astrólogo, porque el cruce de secta afecta:
-   - Beneficio/maléfico de secta.
-   - Fórmulas de Lotes (Fortuna/Espíritu intercambian sus fórmulas).
-   - Períodos de Firdaria (secuencia diurna ≠ nocturna).
-   - Valoración de planetas por condición.
-
 ### 7.4. Scorers por técnica
 
 Nuevos archivos posibles:
@@ -919,7 +1001,7 @@ Si la hora cambia drásticamente (cambio de signo ASC), el Almuten Figuris puede
 
 No requiere scoring numérico: se incluye en el payload al LLM para evaluación cualitativa. ¿El Almuten propuesto es coherente con la personalidad y trayectoria vital del nativo?
 
-El motor `AlmutenFiguris` ya existe en `/Sources/AstroMalik/Engine/Extended/AlmutenFiguris.swift`.
+El motor `AlmutenFigurisEngine` ya existe en `/Sources/AstroMalik/Engine/Extended/AlmutenFigurisEngine.swift`.
 
 ---
 
@@ -1542,7 +1624,7 @@ CREATE INDEX idx_rect_results_session ON rectification_results(session_id);
 
 ### 15.1. `birthTime`
 
-Actualizar documentación:
+Contrato implementado:
 
 ```swift
 var birthTime: String // HH:mm o HH:mm:ss
@@ -1550,22 +1632,14 @@ var birthTime: String // HH:mm o HH:mm:ss
 
 ### 15.2. `julianDayFromLocal`
 
-Actualmente:
+Implementado en Fase 0:
 
-```swift
-let timeParts = birthTime.split(separator: ":").compactMap { Int($0) }
-let (hh, mm) = (timeParts[0], timeParts[1])
-comps.second = 0
-```
-
-Propuesta:
-
-```swift
-let ss = timeParts.count >= 3 ? timeParts[2] : 0
-comps.second = ss
-```
-
-Validar `0...59` para segundos.
+- `parseLocalTime(_:)` es el único parser horario compartido y acepta exclusivamente `HH:mm` o `HH:mm:ss`.
+- `localDateFromBirthData(...)` construye fechas locales estrictas y rechaza normalizaciones silenciosas, incluidas fechas imposibles y horas inexistentes por salto DST.
+- Las cartas existentes con `HH:mm` mantienen exactamente el mismo Julian Day que `HH:mm:00`.
+- Los 11 parseos manuales detectados en motores, CLI y vistas predictivas fueron migrados al helper compartido.
+- Los modelos de rectificación declaran `schemaVersion = 1`. Como todavía no existen sesiones persistidas anteriores, no hay migración legacy; una versión no compatible falla explícitamente antes del análisis.
+- `RectificationSession`, `RectificationConfig` y `RectificationAnalysisResult` son `Codable`; configuración y sesión tienen tests de round-trip JSON.
 
 ### 15.3. UI
 
@@ -1603,22 +1677,21 @@ Opciones de implementación:
 
 ## 16. Roadmap de implementación
 
-### Fase 0 — Preparación técnica
+### Fase 0 — Fundamentos deterministas
 
-Objetivo: dejar base común para IA y precisión horaria.
+Objetivo: dejar contratos de dominio y precisión horaria compatibles con el proyecto actual.
 
 Tareas:
 
-1. Añadir soporte `HH:mm:ss` en `JulianDay.swift`.
-2. Añadir tests de Julian Day con segundos.
-3. Crear tipos `LLMProvider`, `LLMRequest`, `LLMResponse`.
-4. Crear `UnifiedLLMService`.
-5. Adaptar Anthropic y OpenRouter a interfaz común.
-6. Reorganizar Ajustes en sección “IA / Modelos”.
+1. Auditar los parseos de `birthTime` existentes.
+2. Añadir soporte `HH:mm:ss` en `JulianDay.swift` sin romper `HH:mm`.
+3. Añadir tests de Julian Day con segundos y cambios de día/zona.
+4. Crear modelos base y errores de dominio de rectificación.
+5. Definir contratos Codable y configuración versionada.
 
 Resultado:
 
-- Cualquier módulo puede llamar a IA sin saber proveedor.
+- La rectificación puede trabajar con rangos y candidatas precisas sin depender de red ni LLM.
 
 ### Fase 1 — MVP rectificación determinista
 
@@ -1650,14 +1723,16 @@ Objetivo: análisis interpretativo.
 
 Tareas:
 
-1. Crear `rectification_prompt.md`.
-2. Crear `RectificationNarrativeBuilder`.
-3. Serializar resultado a JSON compacto.
-4. Llamar `UnifiedLLMService`.
-5. Mostrar Markdown en UI.
-6. Guardar/copy/exportar resultado.
-7. Manejo de errores, coste y tokens.
-8. Tests con cliente mock.
+1. Crear tipos `LLMProvider`, `LLMRequest`, `LLMResponse` o adaptar los contratos existentes sin duplicarlos.
+2. Crear `UnifiedLLMService` solo si la auditoría confirma que aporta valor frente a adaptadores pequeños.
+3. Adaptar Anthropic y OpenRouter a una interfaz común.
+4. Crear `rectification_prompt.md`.
+5. Crear `RectificationNarrativeBuilder`.
+6. Serializar resultado a JSON compacto y versionado.
+7. Mostrar Markdown en UI.
+8. Guardar/copiar/exportar resultado.
+9. Manejar errores, proveedor, modelo, coste y tokens.
+10. Añadir tests con cliente mock.
 
 Resultado:
 
@@ -1749,7 +1824,7 @@ La estimación depende de cuánto se implemente por sesión y cuánta depuració
 
 | Fase | Tokens aproximados conmigo | Comentario |
 |---|---:|---|
-| Fase 0 — LLM unificado + segundos | 60k–120k | Refactor moderado, tests, ajustes |
+| Fase 0 — Fundamentos deterministas | 40k–80k | Precisión horaria, modelos, validación y tests |
 | Fase 1 — motor MVP | 140k–260k | Mayor parte técnica y tests |
 | Fase 2 — LLM rectificación | 70k–140k | Prompt, builder, UI, mocks |
 | Fase 3 — persistencia/PDF/Joplin | 100k–220k | Integración amplia |
@@ -1959,7 +2034,7 @@ Resultado: hipótesis fuerte, quizá a pocos minutos.
 1. Nombre final en UI: recomendaría **Rectificación**.
 2. MVP con minuto, no segundos, aunque preparar backend para segundos.
 3. Incluir LLM en Fase 2, no en el primer commit.
-4. Unificar IA antes de meter más llamadas nuevas.
+4. No bloquear el MVP determinista por la unificación de IA; resolver el contrato común al iniciar la Fase 2.
 5. Usar Anthropic directo para informes largos y OpenRouter para análisis corto/configurable.
 6. No persistir notas Joplin automáticamente.
 7. Crear PDF solo cuando el análisis ya sea estable.
@@ -2034,4 +2109,3 @@ Estimación final:
 - **MVP útil:** 6–8 sesiones, 7k–13k LOC totales, 270k–520k tokens de trabajo Codex.
 - **Versión profesional completa:** 12–16 sesiones, 11k–21.5k LOC totales, 530k–1.09M tokens de trabajo Codex.
 - **Complejidad general:** alta, pero muy viable porque AstroMalik ya tiene la infraestructura predictiva y de IA.
-

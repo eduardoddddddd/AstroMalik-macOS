@@ -36,19 +36,11 @@ struct PDDetailContainer: View {
             timezoneName: chart.timezone
         ) else { return }
 
-        // Reconstruct a Date from the chart fields for birthDate parameter
-        var cal = Calendar(identifier: .gregorian)
-        cal.timeZone = TimeZone(identifier: chart.timezone) ?? .current
-        let parts = chart.birthDate.split(separator: "-").compactMap { Int($0) }
-        let timeParts = chart.birthTime.split(separator: ":").compactMap { Int($0) }
-        var comps = DateComponents()
-        if parts.count == 3 {
-            comps.year = parts[0]; comps.month = parts[1]; comps.day = parts[2]
-        }
-        if timeParts.count >= 2 {
-            comps.hour = timeParts[0]; comps.minute = timeParts[1]
-        }
-        let birthDate = cal.date(from: comps) ?? Date()
+        guard let birthDate = try? localDateFromBirthData(
+            birthDate: chart.birthDate,
+            birthTime: chart.birthTime,
+            timezoneName: chart.timezone
+        ) else { return }
 
         vm.loadDirections(chart: chart, jd: jdResult.jd, birthDate: birthDate)
     }

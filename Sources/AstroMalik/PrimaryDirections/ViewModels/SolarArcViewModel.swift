@@ -99,21 +99,11 @@ final class SolarArcViewModel: ObservableObject {
     }
 
     nonisolated static func currentAge(for chart: NatalChart, now: Date = Date()) -> Double {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(identifier: chart.timezone) ?? .current
-        let dateParts = chart.birthDate.split(separator: "-").compactMap { Int($0) }
-        let timeParts = chart.birthTime.split(separator: ":").compactMap { Int($0) }
-        var comps = DateComponents()
-        if dateParts.count == 3 {
-            comps.year = dateParts[0]
-            comps.month = dateParts[1]
-            comps.day = dateParts[2]
-        }
-        if timeParts.count >= 2 {
-            comps.hour = timeParts[0]
-            comps.minute = timeParts[1]
-        }
-        guard let birth = calendar.date(from: comps) else { return 49 }
+        guard let birth = try? localDateFromBirthData(
+            birthDate: chart.birthDate,
+            birthTime: chart.birthTime,
+            timezoneName: chart.timezone
+        ) else { return 49 }
         return max(0, now.timeIntervalSince(birth) / (365.25 * 24 * 3600))
     }
 }

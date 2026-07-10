@@ -78,6 +78,17 @@ Documentación específica: [`docs/LECTURA_NATAL_REFACTOR_ARQUITECTURA.md`](docs
 - Búsqueda por texto, etiqueta y metadatos.
 - Reutilización de cartas en lectura, sinastría, retornos, tránsitos y predictivas.
 
+### Rectificación de hora natal
+
+- Flujo asistido basado en una carta guardada y una cronología de eventos vitales.
+- Búsqueda coarse/fine dentro de un rango horario o durante el día completo.
+- Scoring determinista con arco solar, tránsitos a ángulos, direcciones primarias y progresiones secundarias.
+- Reglas simbólicas por tipo de evento, evidencia auditable y consolidación que evita premiar el volumen bruto de contactos.
+- Ranking de candidatas, clusters, advertencias de empate/cambio de secta y confianza explícita.
+- Guardado de la candidata elegida como carta nueva con procedencia, sin sobrescribir la original.
+
+La rectificación propone hipótesis astrológicas y no sustituye documentación oficial. El seguimiento técnico vive en [`docs/RECTIFICACION_HORA_NATAL_PLAN.md`](docs/RECTIFICACION_HORA_NATAL_PLAN.md).
+
 ### Sinastría
 
 - Comparación de dos cartas guardadas.

@@ -5,6 +5,7 @@ enum NavItem: String, CaseIterable, Identifiable {
     case nuevaCarta  = "Nueva Carta"
     case cartas      = "Cartas Guardadas"
     case lectura     = "Lectura"
+    case rectificacion = "Rectificación"
     // Predictivas
     case transitos   = "Tránsitos"
     case progresiones = "Progresiones"
@@ -42,6 +43,7 @@ enum NavItem: String, CaseIterable, Identifiable {
         case .nuevaCarta: return "star.circle"
         case .cartas:     return "tray.full"
         case .lectura:    return "book.pages"
+        case .rectificacion: return "clock.badge.questionmark"
         case .sinastria:  return "person.2.circle"
         case .revolucionSolar: return "sun.max.circle"
         case .revolucionLunar: return "moon.circle"
@@ -71,6 +73,7 @@ enum DetailRoute: Equatable {
     case birthForm
     case natalResult(NatalChart, returnTo: NavItem)
     case reading
+    case rectification
     case synastry
     case solarReturn
     case lunarReturn
@@ -96,6 +99,8 @@ enum DetailRoute: Equatable {
             return "natalResult-\(chart.id.uuidString)"
         case .reading:
             return "reading"
+        case .rectification:
+            return "rectification"
         case .synastry:
             return "synastry"
         case .solarReturn:

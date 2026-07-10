@@ -135,22 +135,15 @@ final class SecondaryProgressionEngine {
     }
 
     private func birthDate(for chart: Chart) throws -> Date {
-        let dateParts = chart.birthDate.split(separator: "-").compactMap { Int($0) }
-        let timeParts = chart.birthTime.split(separator: ":").compactMap { Int($0) }
-        guard dateParts.count == 3, timeParts.count >= 2 else { throw SecondaryProgressionError.invalidBirthData }
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(identifier: chart.timezone) ?? TimeZone(secondsFromGMT: 0) ?? .gmt
-        let components = DateComponents(
-            timeZone: calendar.timeZone,
-            year: dateParts[0],
-            month: dateParts[1],
-            day: dateParts[2],
-            hour: timeParts[0],
-            minute: timeParts[1],
-            second: timeParts.count > 2 ? timeParts[2] : 0
-        )
-        guard let date = calendar.date(from: components) else { throw SecondaryProgressionError.invalidBirthData }
-        return date
+        do {
+            return try localDateFromBirthData(
+                birthDate: chart.birthDate,
+                birthTime: chart.birthTime,
+                timezoneName: chart.timezone
+            )
+        } catch {
+            throw SecondaryProgressionError.invalidBirthData
+        }
     }
 
     private func ageYears(chart: Chart, at date: Date) throws -> Double {

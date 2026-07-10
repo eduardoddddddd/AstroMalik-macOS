@@ -93,6 +93,8 @@ final class AppState: ObservableObject {
             detailRoute = .savedCharts
         case .lectura:
             detailRoute = .reading
+        case .rectificacion:
+            detailRoute = .rectification
         case .sinastria:
             detailRoute = .synastry
         case .revolucionSolar:

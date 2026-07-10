@@ -157,20 +157,15 @@ final class FirdariaEngine {
     }
 
     private func birthDate(for chart: Chart, calendar: Calendar) throws -> Date {
-        let dateParts = chart.birthDate.split(separator: "-").compactMap { Int($0) }
-        let timeParts = chart.birthTime.split(separator: ":").compactMap { Int($0) }
-        guard dateParts.count == 3, timeParts.count >= 2 else { throw FirdariaError.invalidBirthData }
-        let components = DateComponents(
-            timeZone: calendar.timeZone,
-            year: dateParts[0],
-            month: dateParts[1],
-            day: dateParts[2],
-            hour: timeParts[0],
-            minute: timeParts[1],
-            second: timeParts.count >= 3 ? timeParts[2] : 0
-        )
-        guard let date = calendar.date(from: components) else { throw FirdariaError.invalidBirthData }
-        return date
+        do {
+            return try localDateFromBirthData(
+                birthDate: chart.birthDate,
+                birthTime: chart.birthTime,
+                timezoneName: calendar.timeZone.identifier
+            )
+        } catch {
+            throw FirdariaError.invalidBirthData
+        }
     }
 
     private func calendar(for chart: Chart) -> Calendar {
