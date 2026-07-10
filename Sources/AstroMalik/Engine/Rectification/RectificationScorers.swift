@@ -38,7 +38,18 @@ enum RectificationScoringSupport {
             * RectificationSymbolismRules.multiplier(for: fit)
             * min(1, max(0, techniqueQuality))
             * min(1.5, weight) / 1.5
-        return (score * 100).rounded() / 100
+            * schoolMultiplier(for: technique, school: config.resolvedSchool)
+        return (min(100, score) * 100).rounded() / 100
+    }
+
+    static func schoolMultiplier(for technique: RectificationTechnique, school: RectificationSchool) -> Double {
+        switch school {
+        case .balanced: return 1
+        case .traditional:
+            return [.primaryDirections, .profections, .firdaria, .zodiacalReleasing, .lots, .solarReturn].contains(technique) ? 1.12 : 0.90
+        case .modern:
+            return [.solarArc, .secondaryProgressions, .transitsToAngles, .ascendantSignQuestionnaire].contains(technique) ? 1.10 : 0.92
+        }
     }
 
     static func eventWindowDays(_ event: RectificationEvent) -> Double {
@@ -119,11 +130,12 @@ struct TransitAngleRectificationScorer: RectificationTechniqueScorer {
     func evidence(candidate: RectificationCandidate, session: RectificationSession, config: RectificationConfig) throws -> [RectificationEvidence] {
         var result: [RectificationEvidence] = []
         let angles = [("ASC", "Ascendente", candidate.ascendantLongitude), ("MC", "Medio Cielo", candidate.mcLongitude)]
+        let activeTransitKeys = config.useModernPlanets ? transitKeys : transitKeys.subtracting(["URANO", "NEPTUNO", "PLUTON"])
         for event in session.events {
             try Task.checkCancellation()
             let jd = event.dateStart.timeIntervalSince1970 / RectificationScoringSupport.secondsPerDay + 2_440_587.5
             let planets = try AstroEngine.calcPlanets(jd: jd)
-            for key in transitKeys {
+            for key in activeTransitKeys {
                 guard let planet = planets[key] else { continue }
                 for angle in angles {
                     let (aspect, orb) = RectificationScoringSupport.closestAspect(source: planet.deg, target: angle.2)

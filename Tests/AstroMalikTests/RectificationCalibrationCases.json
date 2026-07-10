@@ -1,0 +1,26 @@
+[
+  {
+    "id": "diverse-balanced",
+    "rawScore": 60,
+    "eventScores": [10, 10, 10, 10, 10, 10],
+    "techniqueScores": [20, 20, 20],
+    "enabledTechniqueCount": 4,
+    "expectedPenalty": "none"
+  },
+  {
+    "id": "single-event-single-technique",
+    "rawScore": 60,
+    "eventScores": [55, 5],
+    "techniqueScores": [55, 5],
+    "enabledTechniqueCount": 4,
+    "expectedPenalty": "positive"
+  },
+  {
+    "id": "excessive-complexity",
+    "rawScore": 60,
+    "eventScores": [10, 10, 10, 10, 10, 10],
+    "techniqueScores": [10, 10, 10, 10, 10, 10],
+    "enabledTechniqueCount": 10,
+    "expectedPenalty": "positive"
+  }
+]

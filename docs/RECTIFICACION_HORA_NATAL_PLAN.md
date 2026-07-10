@@ -21,7 +21,7 @@ Este mismo documento se utilizará como **especificación, roadmap y registro de
 | Fase 1 — MVP determinista | ✅ Completada | Ranking explicable de horas candidatas sin LLM |
 | Fase 2 — Narrativa LLM opcional | ✅ Completada | Comparación redactada con red y proveedor explícitos |
 | Fase 3 — Persistencia e informes | ✅ Completada | Sesiones recuperables, PDF y Joplin manual |
-| Fase 4 — Refinamiento profesional | ⬜ Pendiente | Clusters, lotes, time lords y configuración avanzada |
+| Fase 4 — Refinamiento profesional | ✅ Completada | Cuestionario, confirmaciones, comparación y control anti-overfitting |
 
 Estados permitidos: `⬜ Pendiente`, `🟦 En curso`, `🟨 Bloqueada`, `✅ Completada`.
 
@@ -91,11 +91,11 @@ Una tarea o fase solo puede marcarse como completada si:
 
 #### Fase 4 — Refinamiento profesional
 
-- [ ] `R4.1` Integrar profecciones, Firdaria, ZR, lotes y revolución solar como confirmación.
-- [ ] `R4.2` Añadir cuestionario preliminar de signo Ascendente.
-- [ ] `R4.3` Añadir comparación de candidatas y gráfico de distribución.
-- [ ] `R4.4` Añadir configuración avanzada de pesos, orbes y escuela doctrinal.
-- [ ] `R4.5` Ejecutar análisis anti-overfitting y calibración con corpus de casos.
+- [x] `R4.1` Integrar profecciones, Firdaria, ZR, lotes y revolución solar como confirmación.
+- [x] `R4.2` Añadir cuestionario preliminar de signo Ascendente.
+- [x] `R4.3` Añadir comparación de candidatas y gráfico de distribución.
+- [x] `R4.4` Añadir configuración avanzada de pesos, orbes y escuela doctrinal.
+- [x] `R4.5` Ejecutar análisis anti-overfitting y calibración con corpus de casos sintéticos reproducibles, sin ajustar pesos a una única biografía.
 
 ### 0.5. Registro de implementación
 
@@ -106,6 +106,7 @@ Una tarea o fase solo puede marcarse como completada si:
 | 2026-07-10 | R1.1–R1.10 | ✅ | Motor coarse/fine, cuatro scorers, consolidación anti-volumen, clusters, ViewModel, UI y guardado con procedencia. Validación: 371 tests, 1 skipped, 0 failures; app 23:09:13 CEST. |
 | 2026-07-10 | R2.1–R2.6 | ✅ | Servicio LLM común, payload v1 compacto, prompt anti-invención, Anthropic/OpenRouter explícitos y trazabilidad. Validación: 373 tests, 1 skipped, 0 failures; app 23:43:40 CEST. |
 | 2026-07-11 | R3.1–R3.5 | ✅ | Migración 007, store SQLite con historial deduplicado, reapertura/edición/recálculo, JSON v1, PDF técnico y Joplin explícito. Validación: 378 tests, 1 skipped, 0 failures; app 00:19:46 CEST. |
+| 2026-07-11 | R4.1–R4.5 | ✅ | Cuestionario y signo preliminar; profecciones/Firdaria/ZR/lotes/RS confirmatorios; comparación y clusters; escuelas/pesos; penalización auditable y corpus sintético anti-overfitting. Validación: 386 tests, 1 skipped, 0 failures; app 00:38:17 CEST. |
 
 ### 0.6. Riesgos que deben revisarse en cada fase
 

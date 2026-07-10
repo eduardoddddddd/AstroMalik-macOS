@@ -5,6 +5,8 @@ struct RectificationView: View {
     @EnvironmentObject private var appState: AppState
     @StateObject private var viewModel = RectificationViewModel()
     @State private var selectedChartID: UUID?
+    @State private var comparisonAID: UUID?
+    @State private var comparisonBID: UUID?
 
     private var charts: [NatalChart] { appState.userStore.savedCharts }
 
@@ -31,7 +33,9 @@ struct RectificationView: View {
                 header
                 sessionActions
                 chartAndRangeCard
+                questionnaireCard
                 eventsCard
+                advancedConfigurationCard
                 analysisControls
                 if let result = viewModel.result { resultCard(result) }
                 if let narrative = viewModel.narrative { narrativeCard(narrative) }
@@ -141,6 +145,77 @@ struct RectificationView: View {
         }
     }
 
+    private var questionnaireCard: some View {
+        GroupBox("Cuestionario preliminar de Ascendente") {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Señal orientativa de baja ponderación; no sustituye los eventos fechados.")
+                    .font(.caption).foregroundStyle(.secondary)
+                ForEach(AscendantQuestionnaireCatalog.questions) { question in
+                    HStack {
+                        Text(question.prompt).frame(maxWidth: .infinity, alignment: .leading)
+                        Picker("Respuesta", selection: questionnaireAnswerBinding(question.id)) {
+                            Text("Sin responder").tag("")
+                            ForEach(question.options) { Text($0.label).tag($0.id) }
+                        }
+                        .labelsHidden().frame(width: 260)
+                    }
+                }
+                if let questionnaire = viewModel.session?.ascendantQuestionnaire,
+                   let sign = questionnaire.preliminarySignLabel {
+                    Label("Hipótesis preliminar: Ascendente en \(sign) · \(Int(questionnaire.completion * 100)) % completado", systemImage: "sparkle.magnifyingglass")
+                        .font(.subheadline.weight(.medium))
+                }
+            }.padding(8)
+        }
+    }
+
+    private var advancedConfigurationCard: some View {
+        GroupBox("Configuración profesional") {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Picker("Escuela", selection: schoolBinding) {
+                        ForEach(RectificationSchool.allCases) { Text($0.label).tag($0) }
+                    }.frame(width: 240)
+                    Picker("Casas", selection: $viewModel.config.houseSystem) {
+                        ForEach(RectificationHouseSystem.allCases) { Text($0.rawValue.capitalized).tag($0) }
+                    }.frame(width: 220)
+                    Stepper("Ventana cluster: \(viewModel.config.clusterWindowMinutes) min", value: $viewModel.config.clusterWindowMinutes, in: 2...30)
+                    Toggle("Penalizar sobreajuste", isOn: $viewModel.config.penalizeWeakContacts)
+                }
+                HStack {
+                    Text("Multiplicador de orbe")
+                    Slider(value: $viewModel.config.orbMultiplier, in: 0.25...2, step: 0.05)
+                    Text(String(format: "%.2f×", viewModel.config.orbMultiplier)).monospacedDigit().frame(width: 55)
+                    Toggle("Planetas modernos", isOn: $viewModel.config.useModernPlanets)
+                }
+                Text("Técnicas habilitadas").font(.subheadline.weight(.semibold))
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 190), alignment: .leading)], alignment: .leading, spacing: 6) {
+                    ForEach(RectificationTechnique.allCases) { technique in
+                        Toggle(technique.label, isOn: techniqueEnabledBinding(technique))
+                    }
+                }
+                DisclosureGroup("Pesos y sensibilidad anti-overfitting") {
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Text("Fuerza de penalización")
+                            Slider(value: overfittingStrengthBinding, in: 0...1, step: 0.05)
+                            Text(String(format: "%.2f", viewModel.config.resolvedOverfittingPenaltyStrength)).monospacedDigit()
+                        }
+                        ForEach(RectificationTechnique.allCases.filter { viewModel.config.enabledTechniques.contains($0) }) { technique in
+                            HStack {
+                                Text(technique.label).frame(width: 210, alignment: .leading)
+                                Slider(value: techniqueWeightBinding(technique), in: 0...1.5, step: 0.05)
+                                Text(String(format: "%.2f", viewModel.config.techniqueWeights[technique] ?? 1)).frame(width: 42).monospacedDigit()
+                            }
+                        }
+                    }.padding(.top, 8)
+                }
+                Text("Cuantas más técnicas se habilitan, mayor es la penalización por concentración y complejidad. Los señores del tiempo actúan como confirmación.")
+                    .font(.caption).foregroundStyle(.secondary)
+            }.padding(8)
+        }
+    }
+
     private var analysisControls: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
@@ -177,6 +252,31 @@ struct RectificationView: View {
                 }
                 if !result.warnings.isEmpty {
                     ForEach(result.warnings, id: \.self) { Label($0, systemImage: "exclamationmark.triangle") .font(.caption).foregroundStyle(.secondary) }
+                }
+                if !result.clusters.isEmpty {
+                    DisclosureGroup("Distribución y clusters") {
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(Array(result.clusters.prefix(8).enumerated()), id: \.element.id) { index, cluster in
+                                HStack {
+                                    Text("#\(index + 1) · \(cluster.timeRange)").frame(width: 190, alignment: .leading)
+                                    GeometryReader { proxy in
+                                        RoundedRectangle(cornerRadius: 3)
+                                            .fill(Color.appSecondaryAccent.opacity(0.75))
+                                            .frame(width: proxy.size.width * min(1, cluster.averageScore / max(1, result.clusters.first?.averageScore ?? 1)))
+                                    }.frame(height: 10)
+                                    Text(String(format: "%.1f", cluster.averageScore)).monospacedDigit().frame(width: 45)
+                                    Text(cluster.ascendantSign).frame(width: 85, alignment: .leading)
+                                }
+                            }
+                        }.padding(.vertical, 6)
+                    }
+                }
+                if result.candidates.count >= 2 {
+                    candidateComparison(result)
+                }
+                if let diagnostics = result.topCandidate?.overfittingDiagnostics {
+                    Label("Score bruto \(String(format: "%.1f", diagnostics.rawScore)); ajuste anti-overfitting −\(String(format: "%.1f", diagnostics.penalty)); evento dominante \(Int(diagnostics.dominantEventShare * 100)) %; técnica dominante \(Int(diagnostics.dominantTechniqueShare * 100)) %.", systemImage: "scale.3d")
+                        .font(.caption).foregroundStyle(.secondary)
                 }
                 ForEach(Array(result.candidates.prefix(8).enumerated()), id: \.element.id) { index, candidate in
                     HStack {
@@ -238,6 +338,76 @@ struct RectificationView: View {
     private var sessionBinding: Binding<RectificationSession>? {
         guard viewModel.session != nil else { return nil }
         return Binding(get: { viewModel.session! }, set: { viewModel.session = $0 })
+    }
+
+    private func candidateComparison(_ result: RectificationAnalysisResult) -> some View {
+        let firstID = comparisonAID ?? result.candidates.first?.id
+        let secondID = comparisonBID ?? result.candidates.dropFirst().first?.id
+        let first = result.candidates.first { $0.id == firstID }
+        let second = result.candidates.first { $0.id == secondID }
+        return DisclosureGroup("Comparación lado a lado") {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    candidatePicker("Candidata A", selection: $comparisonAID, candidates: result.candidates, fallback: firstID)
+                    candidatePicker("Candidata B", selection: $comparisonBID, candidates: result.candidates, fallback: secondID)
+                }
+                if let first, let second {
+                    HStack(alignment: .top, spacing: 16) {
+                        comparisonColumn(first).frame(maxWidth: .infinity)
+                        Divider()
+                        comparisonColumn(second).frame(maxWidth: .infinity)
+                    }
+                }
+            }.padding(.vertical, 6)
+        }
+    }
+
+    private func candidatePicker(_ label: String, selection: Binding<UUID?>, candidates: [RectificationCandidate], fallback: UUID?) -> some View {
+        Picker(label, selection: Binding(get: { selection.wrappedValue ?? fallback }, set: { selection.wrappedValue = $0 })) {
+            ForEach(candidates.prefix(12)) { Text("\($0.birthTime) · \(String(format: "%.1f", $0.totalScore))").tag(Optional($0.id)) }
+        }
+    }
+
+    private func comparisonColumn(_ candidate: RectificationCandidate) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(candidate.birthTime).font(.headline.monospacedDigit())
+            Text("ASC \(candidate.ascendantFormatted) · MC \(candidate.mcFormatted)")
+            Text("Score \(String(format: "%.1f", candidate.totalScore)) · \(candidate.confidenceBand.rawValue)")
+            ForEach(candidate.techniqueScores.sorted { $0.value > $1.value }.prefix(6), id: \.key) {
+                Text("\($0.key.label): \(String(format: "%.1f", $0.value))").font(.caption)
+            }
+        }
+    }
+
+    private func questionnaireAnswerBinding(_ questionID: String) -> Binding<String> {
+        Binding(get: { viewModel.session?.ascendantQuestionnaire?.answers[questionID] ?? "" }, set: { value in
+            guard var session = viewModel.session else { return }
+            var questionnaire = session.ascendantQuestionnaire ?? AscendantQuestionnaire()
+            if value.isEmpty { questionnaire.answers.removeValue(forKey: questionID) }
+            else { questionnaire.answers[questionID] = value }
+            session.ascendantQuestionnaire = questionnaire
+            session.updatedAt = Date()
+            viewModel.session = session
+        })
+    }
+
+    private var schoolBinding: Binding<RectificationSchool> {
+        Binding(get: { viewModel.config.resolvedSchool }, set: { viewModel.config.applySchoolPreset($0) })
+    }
+
+    private var overfittingStrengthBinding: Binding<Double> {
+        Binding(get: { viewModel.config.resolvedOverfittingPenaltyStrength }, set: { viewModel.config.overfittingPenaltyStrength = $0 })
+    }
+
+    private func techniqueEnabledBinding(_ technique: RectificationTechnique) -> Binding<Bool> {
+        Binding(get: { viewModel.config.enabledTechniques.contains(technique) }, set: { enabled in
+            if enabled { viewModel.config.enabledTechniques.insert(technique) }
+            else { viewModel.config.enabledTechniques.remove(technique) }
+        })
+    }
+
+    private func techniqueWeightBinding(_ technique: RectificationTechnique) -> Binding<Double> {
+        Binding(get: { viewModel.config.techniqueWeights[technique] ?? 1 }, set: { viewModel.config.techniqueWeights[technique] = $0 })
     }
 
     private var datasetQuality: some View {

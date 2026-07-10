@@ -2,9 +2,21 @@
 
 Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el versionado sigue [SemVer](https://semver.org/lang/es/).
 
-## [Unreleased] — 2026-06-13
+## [Unreleased]
 
-### Añadido — Rectificación natal determinista (Fases 0 y 1)
+Sin cambios documentados todavía.
+
+## [1.1.0] — 2026-07-11
+
+Release menor centrada en la rectificación natal asistida, el CLI local-first y la lectura natal documental.
+
+### Convención de publicación
+
+- Tag recomendado: **`v1.1.0`**.
+- No usar `1.1`: omite el componente de parche y es menos consistente con SemVer y con el tag previo `v1.0.0`.
+- El tag debe crearse únicamente sobre el commit final validado; esta actualización del changelog no crea el tag.
+
+### Añadido — Rectificación natal asistida (Fases 0–4)
 
 - Nuevo módulo **Rectificación** en Carta Natal, basado en cartas guardadas y cronologías vitales.
 - Soporte común `HH:mm` / `HH:mm:ss` con conversión local estricta y compatibilidad con cartas existentes.
@@ -21,6 +33,12 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Importación y exportación JSON mediante un archivo versionado.
 - Informe técnico PDF con candidatas, evidencia, advertencias y trazabilidad narrativa.
 - Nota Joplin de rectificación creada únicamente por acción explícita.
+- Cuestionario preliminar de Ascendente con cinco preguntas, porcentaje de completitud e hipótesis de signo de baja ponderación.
+- Confirmaciones deterministas adicionales por profecciones, Firdaria, Zodiacal Releasing, lotes sensibles a hora y revolución solar.
+- Comparación lado a lado de candidatas y distribución visual de clusters horarios.
+- Presets de escuela **Tradicional**, **Equilibrada** y **Moderna**, con selección de técnicas y ajuste individual de pesos.
+- Configuración de sistema de casas, orbes, planetas modernos, ventana de cluster, penalización de sobreajuste y sensibilidad de la auditoría.
+- Diagnóstico anti-overfitting con score bruto, score ajustado, penalización y concentración por evento/técnica.
 
 ### Añadido — CLI local-first para agentes y scripts
 
@@ -91,10 +109,9 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ### Validación
 
-- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test` — 349 tests, 1 skipped, 0 failures.
-- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift build` ejecutado correctamente.
-- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_app.sh` ejecutado tras cambios de código/CLI.
-- `AstroMalik.app/Contents/MacOS/AstroMalik` verificado con timestamp actualizado: 2026-06-13 13:18:07 CEST.
+- Validación final de Rectificación: `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test` — 386 tests, 1 skipped, 0 failures.
+- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_app.sh` ejecutado después de los cambios de código/UI.
+- `AstroMalik.app/Contents/MacOS/AstroMalik` verificado con timestamp actualizado: 2026-07-11 00:38:17 CEST.
 
 ## [1.0.0] — 2026-05-14
 

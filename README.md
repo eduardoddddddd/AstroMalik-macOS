@@ -8,6 +8,7 @@
 ![Swiss Ephemeris](https://img.shields.io/badge/ephemeris-Swiss%20Ephemeris-6f42c1)
 ![SQLite](https://img.shields.io/badge/storage-SQLite-003B57)
 ![Local First](https://img.shields.io/badge/privacy-local--first-2ea44f)
+![Release](https://img.shields.io/badge/release-1.1.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 AstroMalik macOS es una aplicación nativa de astrología tradicional para macOS con CLI local-first. Calcula cartas natales, lecturas, sinastrías, retornos, tránsitos, técnicas predictivas clásicas/helenísticas, horaria e informes documentales desde una app SwiftUI y desde `astromalik-cli`, sin depender de LLMs externos para el cálculo base.
@@ -30,9 +31,19 @@ Los datos de usuario no se guardan en el repositorio. La base local está en:
 ~/Library/Application Support/AstroMalik/user.db
 ```
 
-## Estado actual
+## Estado actual y versión 1.1
 
-La app está en fase 1.x: usable como herramienta astrológica de escritorio con módulos natales, predictivos, relacionales y documentales. La navegación se organiza por flujo de trabajo:
+La app está en la serie 1.x y es usable como herramienta astrológica de escritorio con módulos natales, predictivos, relacionales y documentales. La versión **1.1.0** incorpora como novedad principal el flujo completo de **Rectificación de hora natal**. Sus cinco fases están implementadas: fundamentos, motor determinista, narrativa opcional, persistencia/exportaciones y refinamiento profesional.
+
+| Fase | Alcance | Estado |
+|---|---|---|
+| 0 | Precisión `HH:mm:ss`, contratos y validación | Completada |
+| 1 | Motor determinista, eventos, ranking y guardado seguro | Completada |
+| 2 | Comparación narrativa IA opcional y trazable | Completada |
+| 3 | Historial SQLite, JSON, PDF y Joplin | Completada |
+| 4 | Cuestionario, confirmaciones, comparación, overfitting, escuelas y pesos | Completada |
+
+La navegación se organiza por flujo de trabajo:
 
 - **Carta Natal**: nueva carta, cartas guardadas y lectura.
 - **Predictivas**: tránsitos, progresiones, direcciones primarias, profecciones, Firdaria y Zodiacal Releasing.
@@ -80,19 +91,37 @@ Documentación específica: [`docs/LECTURA_NATAL_REFACTOR_ARQUITECTURA.md`](docs
 
 ### Rectificación de hora natal
 
-- Flujo asistido basado en una carta guardada y una cronología de eventos vitales.
+- Flujo asistido basado en una **carta guardada** y una cronología de eventos vitales fechados.
 - Búsqueda coarse/fine dentro de un rango horario o durante el día completo.
 - Scoring determinista con arco solar, tránsitos a ángulos, direcciones primarias y progresiones secundarias.
 - Reglas simbólicas por tipo de evento, evidencia auditable y consolidación que evita premiar el volumen bruto de contactos.
 - Ranking de candidatas, clusters, advertencias de empate/cambio de secta y confianza explícita.
+- Cuestionario orientativo de Ascendente con hipótesis preliminar de signo y ponderación baja.
+- Confirmaciones profesionales por profecciones, Firdaria, Zodiacal Releasing, lotes sensibles a hora y revolución solar.
+- Distribución visual de clusters y comparación lado a lado de candidatas con desglose por técnica.
+- Presets de escuela Tradicional, Equilibrada y Moderna, técnicas habilitables, pesos, ventana de cluster y sensibilidad anti-overfitting.
+- Auditoría de score bruto/ajustado y penalización por concentración excesiva en un evento, una técnica o una configuración demasiado compleja.
 - Guardado de la candidata elegida como carta nueva con procedencia, sin sobrescribir la original.
 - Comparación narrativa opcional mediante Anthropic u OpenRouter, siempre iniciada explícitamente después del cálculo local.
 - Trazabilidad de proveedor, modelo, tokens y coste estimado cuando está disponible.
 - Sesiones persistentes en SQLite con reapertura, edición, recálculo e historial de versiones sin duplicados.
 - Importación/exportación JSON versionada e informe técnico PDF autocontenido.
 - Creación de nota Joplin únicamente mediante el botón explícito del usuario.
+- Configuración profesional de escuela, casas, orbes, planetas, técnicas y pesos, con auditoría anti-overfitting.
 
-La rectificación propone hipótesis astrológicas y no sustituye documentación oficial. El seguimiento técnico vive en [`docs/RECTIFICACION_HORA_NATAL_PLAN.md`](docs/RECTIFICACION_HORA_NATAL_PLAN.md).
+La rectificación propone **hipótesis comparativas**, no una hora certificada. Una puntuación alta expresa mejor ajuste dentro del conjunto, rango, técnicas y eventos introducidos; no equivale a certeza histórica ni sustituye documentación oficial.
+
+#### Inicio rápido
+
+1. Guarda primero una carta natal con la mejor hora aproximada disponible.
+2. Abre **Carta Natal → Rectificación** y selecciona esa carta.
+3. Define la hora central, el margen anterior/posterior y los pasos grueso/fino.
+4. Añade como mínimo tres eventos útiles; seis o más eventos diversos y bien fechados suelen discriminar mejor.
+5. Pulsa **Analizar candidatas** y revisa ranking, clusters, advertencias y evidencias, no solo el primer score.
+6. Si lo deseas, genera una comparación con IA; requiere acción explícita, red y puede tener coste.
+7. Guarda la sesión o expórtala a JSON/PDF/Joplin. La candidata elegida se guarda como carta nueva y nunca sobrescribe la original.
+
+Guía de uso: [`docs/RECTIFICACION_GUI_DE_USO.md`](docs/RECTIFICACION_GUI_DE_USO.md). Seguimiento técnico: [`docs/RECTIFICACION_HORA_NATAL_PLAN.md`](docs/RECTIFICACION_HORA_NATAL_PLAN.md).
 
 ### Sinastría
 
@@ -321,6 +350,8 @@ scripts/                   Empaquetado, smoke tests y utilidades
 - [`docs/PDF_REPORTS.md`](docs/PDF_REPORTS.md) — informes PDF.
 - [`docs/CROSS_PERSONAL.md`](docs/CROSS_PERSONAL.md) — panorama predictivo.
 - [`docs/CLI.md`](docs/CLI.md) — uso del CLI.
+- [`docs/RECTIFICACION_GUI_DE_USO.md`](docs/RECTIFICACION_GUI_DE_USO.md) — guía práctica de Rectificación natal.
+- [`docs/RECTIFICACION_HORA_NATAL_PLAN.md`](docs/RECTIFICACION_HORA_NATAL_PLAN.md) — arquitectura, decisiones y roadmap de Rectificación.
 
 ## Integraciones opcionales
 
@@ -340,13 +371,13 @@ Algunos módulos de interpretación contextual pueden usar OpenRouter o Foundry 
 
 La suite cubre motores astronómicos, predictivas, horaria, lectura natal, persistencia, PDF, CLI e integraciones mockeadas.
 
-Última validación local relevante tras el refactor del CLI local-first:
+Última validación local completada para la Fase 3 de Rectificación:
 
 ```text
-349 tests ejecutados
+386 tests ejecutados
 1 skipped
 0 failures
-AstroMalik.app/Contents/MacOS/AstroMalik: 2026-06-13 13:18:07 CEST
+AstroMalik.app/Contents/MacOS/AstroMalik: 2026-07-11 00:38:17 CEST
 ```
 
 ## Licencia

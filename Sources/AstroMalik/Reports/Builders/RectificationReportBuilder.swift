@@ -22,6 +22,15 @@ enum RectificationReportBuilder {
             "<tr><td>\(escape($0.technique.label))</td><td>\(escape($0.factor))</td><td>\(String(format: "%.1f", $0.score))</td><td>\(escape($0.explanation))</td></tr>"
         }.joined() ?? ""
         let warnings = result.warnings.map { "<li>\(escape($0))</li>" }.joined()
+        let clusters = result.clusters.prefix(10).map {
+            "<tr><td>\(escape($0.timeRange))</td><td>\(escape($0.ascendantSign))</td><td>\(String(format: "%.1f", $0.averageScore))</td><td>\($0.candidateIDs.count)</td></tr>"
+        }.joined()
+        let diagnostics = result.topCandidate?.overfittingDiagnostics.map {
+            "<p>Score bruto \(String(format: "%.1f", $0.rawScore)); penalización \(String(format: "%.1f", $0.penalty)); evento dominante \(Int($0.dominantEventShare * 100)) %; técnica dominante \(Int($0.dominantTechniqueShare * 100)) %.</p>"
+        } ?? ""
+        let questionnaire = session.ascendantQuestionnaire?.preliminarySignLabel.map {
+            "<p>Hipótesis preliminar del cuestionario: <strong>Ascendente en \(escape($0))</strong>. Señal orientativa de baja ponderación.</p>"
+        } ?? ""
         let narrativeHTML = narrative.map { "<section><h2>Comparación narrativa opcional</h2><pre>\(escape($0.markdown))</pre><p>\(escape($0.provider.label)) · \(escape($0.model)) · \($0.inputTokens)/\($0.outputTokens) tokens</p></section>" } ?? ""
         return """
         <!doctype html><html lang="es"><head><meta charset="utf-8"><style>
@@ -29,8 +38,11 @@ enum RectificationReportBuilder {
         </style></head><body>
         <h1>Rectificación natal — \(escape(session.name))</h1>
         <p class="notice">Hipótesis astrológica. No sustituye documentación oficial ni la decisión del astrólogo.</p>
-        <p class="meta">Hora declarada: \(escape(session.reportedBirthTime)) · \(escape(session.birthDate)) · \(escape(session.placeName)) · Confianza: \(escape(result.overallConfidence.rawValue))</p>
+        <p class="meta">Hora declarada: \(escape(session.reportedBirthTime)) · \(escape(session.birthDate)) · \(escape(session.placeName)) · Confianza: \(escape(result.overallConfidence.rawValue)) · Escuela: \(escape(result.configUsed.resolvedSchool.label))</p>
+        \(questionnaire)
         <h2>Candidatas principales</h2><table><thead><tr><th>#</th><th>Hora</th><th>ASC</th><th>MC</th><th>Score</th></tr></thead><tbody>\(candidates)</tbody></table>
+        <h2>Clusters horarios</h2><table><thead><tr><th>Rango</th><th>ASC</th><th>Media</th><th>Candidatas</th></tr></thead><tbody>\(clusters)</tbody></table>
+        <h2>Control anti-overfitting</h2>\(diagnostics)
         <h2>Advertencias</h2><ul>\(warnings)</ul>
         <h2>Evidencias de la candidata principal</h2><table><thead><tr><th>Técnica</th><th>Factor</th><th>Score</th><th>Explicación</th></tr></thead><tbody>\(evidence)</tbody></table>
         \(narrativeHTML)
@@ -53,6 +65,7 @@ enum RectificationNoteBuilder {
             "> Hipótesis astrológica. No sustituye documentación oficial.", "",
             "- Hora declarada: `\(session.reportedBirthTime)`",
             "- Confianza: **\(result.overallConfidence.rawValue)**", "",
+            "- Escuela: **\(result.configUsed.resolvedSchool.label)**",
             "## Candidatas",
         ]
         for (index, candidate) in result.candidates.prefix(10).enumerated() {
@@ -63,6 +76,15 @@ enum RectificationNoteBuilder {
             lines.append("- **\(evidence.technique.label)** — \(evidence.factor) (\(String(format: "%.1f", evidence.score)))")
         }
         if !result.warnings.isEmpty { lines += ["", "## Advertencias"] + result.warnings.map { "- \($0)" } }
+        if !result.clusters.isEmpty {
+            lines += ["", "## Clusters horarios"] + result.clusters.prefix(10).map { "- `\($0.timeRange)` — \($0.ascendantSign), media \(String(format: "%.1f", $0.averageScore)), \($0.candidateIDs.count) candidatas" }
+        }
+        if let diagnostics = result.topCandidate?.overfittingDiagnostics {
+            lines += ["", "## Control anti-overfitting", "- Score bruto: \(String(format: "%.1f", diagnostics.rawScore))", "- Penalización: \(String(format: "%.1f", diagnostics.penalty))", "- Evento dominante: \(Int(diagnostics.dominantEventShare * 100)) %", "- Técnica dominante: \(Int(diagnostics.dominantTechniqueShare * 100)) %"]
+        }
+        if let sign = session.ascendantQuestionnaire?.preliminarySignLabel {
+            lines += ["", "## Cuestionario preliminar", "- Hipótesis orientativa: **Ascendente en \(sign)**"]
+        }
         if let narrative { lines += ["", "## Comparación narrativa opcional", "", narrative.markdown, "", "_\(narrative.provider.label) · \(narrative.model) · \(narrative.inputTokens)/\(narrative.outputTokens) tokens_"] }
         return lines.joined(separator: "\n")
     }

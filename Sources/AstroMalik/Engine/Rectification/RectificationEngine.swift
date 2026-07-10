@@ -37,6 +37,12 @@ final class RectificationEngine: Sendable {
             TransitAngleRectificationScorer(),
             ProgressionRectificationScorer(),
             PrimaryDirectionRectificationScorer(),
+            AscendantQuestionnaireScorer(),
+            ProfectionRectificationScorer(),
+            FirdariaRectificationScorer(),
+            ZodiacalReleasingRectificationScorer(),
+            LotsRectificationScorer(),
+            SolarReturnRectificationScorer(),
         ].filter { config.enabledTechniques.contains($0.technique) }
         var candidates = try await score(
             fine,
@@ -114,8 +120,19 @@ final class RectificationEngine: Sendable {
             candidate.evidence = consolidated.evidence
             candidate.eventScores = consolidated.eventScores
             candidate.techniqueScores = consolidated.techniqueScores
-            candidate.totalScore = consolidated.totalScore
-            candidate.confidenceBand = band(for: consolidated.totalScore)
+            let diagnostics = RectificationOverfittingAnalyzer.diagnostics(
+                rawScore: consolidated.totalScore,
+                eventScores: consolidated.eventScores,
+                techniqueScores: consolidated.techniqueScores,
+                enabledTechniqueCount: scorers.count,
+                config: config
+            )
+            candidate.totalScore = diagnostics.adjustedScore
+            candidate.overfittingDiagnostics = diagnostics
+            candidate.confidenceBand = band(for: diagnostics.adjustedScore)
+            if diagnostics.penalty >= 2 {
+                warnings.append("Penalización anti-overfitting: -\(String(format: "%.1f", diagnostics.penalty)) puntos.")
+            }
             candidate.warnings = warnings
             output.append(candidate)
             let fraction = Double(index + 1) / Double(max(1, candidates.count))
@@ -159,6 +176,7 @@ final class RectificationEngine: Sendable {
         }
         return selected.isEmpty ? Array(candidates.prefix(limit)) : selected
     }
+
 
     private func buildClusters(candidates: [RectificationCandidate], windowMinutes: Int) -> [CandidateCluster] {
         let relevant = candidates.filter { $0.totalScore >= (candidates.first?.totalScore ?? 0) * 0.65 }

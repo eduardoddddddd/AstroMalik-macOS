@@ -7,6 +7,7 @@ enum RectificationValidationError: LocalizedError, Equatable {
     case invalidBirthData(String)
     case invalidCoordinates
     case invalidSearchRange(String)
+    case invalidQuestionnaire(String)
     case insufficientEvents(required: Int, actual: Int)
     case invalidEvent(id: UUID, reason: String)
     case invalidConfig(String)
@@ -25,6 +26,8 @@ enum RectificationValidationError: LocalizedError, Equatable {
             return "Las coordenadas deben estar entre ±90° de latitud y ±180° de longitud."
         case .invalidSearchRange(let reason):
             return "El rango de búsqueda no es válido: \(reason)"
+        case .invalidQuestionnaire(let reason):
+            return "El cuestionario de Ascendente no es válido: \(reason)"
         case .insufficientEvents(let required, let actual):
             return "Se necesitan al menos \(required) eventos; se recibieron \(actual)."
         case .invalidEvent(_, let reason):
@@ -59,6 +62,7 @@ extension RectificationSession {
             throw RectificationValidationError.invalidBirthData(error.localizedDescription)
         }
         try searchRange.validate()
+        try ascendantQuestionnaire?.validate()
 
         let qualifyingEvents = events.filter { $0.precision.qualifiesForMinimumDataset }
         guard qualifyingEvents.count >= config.minimumEventsForAnalysis else {
@@ -142,9 +146,25 @@ extension RectificationConfig {
         guard (1...180).contains(clusterWindowMinutes) else {
             throw RectificationValidationError.invalidConfig("la ventana de cluster debe estar entre 1 y 180 minutos")
         }
+        guard overfittingPenaltyStrength.map({ (0...1).contains($0) }) ?? true else {
+            throw RectificationValidationError.invalidConfig("la penalización anti-overfitting debe estar entre 0 y 1")
+        }
         for technique in enabledTechniques {
             guard let weight = techniqueWeights[technique], weight > 0 else {
                 throw RectificationValidationError.invalidConfig("falta un peso positivo para \(technique.rawValue)")
+            }
+        }
+    }
+}
+
+extension AscendantQuestionnaire {
+    func validate() throws {
+        for (questionID, optionID) in answers {
+            guard let question = AscendantQuestionnaireCatalog.questions.first(where: { $0.id == questionID }) else {
+                throw RectificationValidationError.invalidQuestionnaire("pregunta desconocida: \(questionID)")
+            }
+            guard question.options.contains(where: { $0.id == optionID }) else {
+                throw RectificationValidationError.invalidQuestionnaire("respuesta desconocida para \(questionID)")
             }
         }
     }

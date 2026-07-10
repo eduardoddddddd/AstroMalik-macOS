@@ -17,6 +17,7 @@ struct RectificationSession: Identifiable, Codable, Equatable {
     var placeName: String
     var searchRange: RectificationSearchRange
     var events: [RectificationEvent]
+    var ascendantQuestionnaire: AscendantQuestionnaire?
     var notes: String
     var createdAt: Date
     var updatedAt: Date
@@ -34,6 +35,7 @@ struct RectificationSession: Identifiable, Codable, Equatable {
         placeName: String,
         searchRange: RectificationSearchRange,
         events: [RectificationEvent] = [],
+        ascendantQuestionnaire: AscendantQuestionnaire? = nil,
         notes: String = "",
         createdAt: Date = Date(),
         updatedAt: Date = Date()
@@ -50,6 +52,7 @@ struct RectificationSession: Identifiable, Codable, Equatable {
         self.placeName = placeName
         self.searchRange = searchRange
         self.events = events
+        self.ascendantQuestionnaire = ascendantQuestionnaire
         self.notes = notes
         self.createdAt = createdAt
         self.updatedAt = updatedAt
@@ -296,9 +299,11 @@ struct RectificationConfig: Codable, Equatable {
     var penalizeWeakContacts: Bool
     var clusterWindowMinutes: Int
     var evaluateMultipleHouseSystems: Bool
+    var school: RectificationSchool?
+    var overfittingPenaltyStrength: Double?
 
     static let `default` = RectificationConfig(
-        enabledTechniques: [.solarArc, .primaryDirections, .secondaryProgressions, .transitsToAngles],
+        enabledTechniques: [.solarArc, .primaryDirections, .secondaryProgressions, .transitsToAngles, .ascendantSignQuestionnaire, .profections, .firdaria, .lots],
         houseSystem: .placidus,
         useModernPlanets: true,
         orbMultiplier: 1,
@@ -310,13 +315,16 @@ struct RectificationConfig: Codable, Equatable {
             .transitsToAngles: 0.75,
             .profections: 0.70,
             .zodiacalReleasing: 0.65,
+            .lots: 0.60,
             .firdaria: 0.55,
             .ascendantSignQuestionnaire: 0.50,
         ],
         minimumEventsForAnalysis: 3,
         penalizeWeakContacts: true,
         clusterWindowMinutes: 10,
-        evaluateMultipleHouseSystems: false
+        evaluateMultipleHouseSystems: false,
+        school: .balanced,
+        overfittingPenaltyStrength: 0.35
     )
 
     init(
@@ -329,7 +337,9 @@ struct RectificationConfig: Codable, Equatable {
         minimumEventsForAnalysis: Int,
         penalizeWeakContacts: Bool,
         clusterWindowMinutes: Int,
-        evaluateMultipleHouseSystems: Bool
+        evaluateMultipleHouseSystems: Bool,
+        school: RectificationSchool? = .balanced,
+        overfittingPenaltyStrength: Double? = 0.35
     ) {
         self.schemaVersion = schemaVersion
         self.enabledTechniques = enabledTechniques
@@ -341,7 +351,12 @@ struct RectificationConfig: Codable, Equatable {
         self.penalizeWeakContacts = penalizeWeakContacts
         self.clusterWindowMinutes = clusterWindowMinutes
         self.evaluateMultipleHouseSystems = evaluateMultipleHouseSystems
+        self.school = school
+        self.overfittingPenaltyStrength = overfittingPenaltyStrength
     }
+
+    var resolvedSchool: RectificationSchool { school ?? .balanced }
+    var resolvedOverfittingPenaltyStrength: Double { min(1, max(0, overfittingPenaltyStrength ?? 0.35)) }
 }
 
 // MARK: - Results
@@ -360,6 +375,7 @@ struct RectificationCandidate: Identifiable, Codable, Equatable {
     var eventScores: [UUID: Double]
     var evidence: [RectificationEvidence]
     var warnings: [String]
+    var overfittingDiagnostics: RectificationOverfittingDiagnostics? = nil
 }
 
 struct RectificationEvidence: Identifiable, Codable, Equatable {
@@ -416,4 +432,5 @@ struct RectificationAnalysisResult: Codable, Equatable {
     var analysisDate: Date
     var configUsed: RectificationConfig
     var computeTimeSeconds: Double
+    var overfittingDiagnostics: RectificationOverfittingDiagnostics? = nil
 }

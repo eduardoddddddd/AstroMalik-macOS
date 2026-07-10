@@ -68,6 +68,7 @@ let package = Package(
             exclude: ["PRIMARY_DIRECTIONS_TESTS.md"],
             resources: [
                 .process("PrimaryDirectionsGolden.json"),
+                .process("RectificationCalibrationCases.json"),
             ]
         ),
         .testTarget(

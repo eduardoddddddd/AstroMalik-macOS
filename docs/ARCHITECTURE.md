@@ -37,6 +37,8 @@ La capa opcional usa `UnifiedLLMService` con adaptadores Anthropic/OpenRouter. `
 
 `RectificationSessionStore` persiste en `user.db` el contrato completo de sesión, el último resultado y la narrativa opcional. Cada recálculo distinto genera una versión inmutable; los guardados repetidos del mismo resultado se deduplican. El archivo JSON usa un sobre versionado para intercambio y recuperación. `RectificationReportBuilder` crea el HTML autocontenido que WebKit convierte a PDF, mientras `RectificationNoteBuilder` genera Markdown para Joplin; ambas salidas conservan candidatas, evidencias, advertencias y trazabilidad LLM. Joplin solo se invoca desde una acción explícita de la vista.
 
+El refinamiento profesional mantiene separadas las señales principales y las confirmatorias. `RectificationProfessionalScorers` incorpora cuestionario preliminar, profecciones, Firdaria, Zodiacal Releasing, lotes y revolución solar con pesos limitados. `RectificationSchool` aplica presets tradicional, equilibrado o moderno sin cambiar los cálculos astronómicos. `RectificationOverfittingAnalyzer` reduce scores dominados por un único evento/técnica o por complejidad excesiva y conserva score bruto, ajuste y concentraciones para auditoría. La UI representa clusters, compara dos candidatas y permite editar técnicas, pesos y sensibilidad.
+
 ## Estado de aplicación
 
 `AppState` mantiene navegación, tema, configuración de Joplin, carta natal activa y estado persistente de tránsitos. `UserStore` y `HoraryStore` publican datos desde `user.db`.
