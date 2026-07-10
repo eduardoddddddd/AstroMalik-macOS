@@ -8,6 +8,7 @@
 xcuserdata/
 DerivedData/
 AstroMalik.app/
+dist/
 user.db
 user.db-*
 corpus_sources/raw/

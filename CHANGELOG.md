@@ -6,6 +6,32 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 Sin cambios documentados todavía.
 
+## [1.1.1] — 2026-07-11
+
+### Añadido — distribución universal de macOS
+
+- Aplicación universal con ejecutables nativos `arm64` y `x86_64` en un solo `.app`.
+- CLI universal para Apple Silicon e Intel.
+- Empaquetador independiente `scripts/package_universal_app.sh`; no modifica el `AstroMalik.app` ARM existente.
+- Verificador automático de arquitecturas, `Info.plist`, recursos y firma ad-hoc.
+- ZIP de distribución y checksum SHA-256 generados en `dist/`.
+- Workflow de GitHub Actions que construye artefactos descargables y, al recibir un tag, crea la GitHub Release con ZIP y checksums.
+- Guía de instalación para usuarios no técnicos y documentación técnica del build universal.
+
+### Distribución sin cuenta de pago de Apple
+
+- Se mantiene firma ad-hoc gratuita, sin Developer ID ni notarización.
+- La documentación explica la primera apertura mediante las opciones oficiales **Abrir** o **Abrir igualmente**.
+- No se recomienda desactivar Gatekeeper globalmente ni ejecutar comandos con `sudo`.
+
+### Validación
+
+- Suite completa: 386 tests, 1 omitido, 0 fallos.
+- App y CLI verificados con slices `x86_64 arm64`.
+- ZIP descomprimido y firma ad-hoc verificada después del empaquetado.
+- CLI ejecutado nativamente en ARM64 y como Intel mediante Rosetta.
+- El empaquetador ARM original continúa generando un binario `arm64` independiente.
+
 ## [1.1.0] — 2026-07-11
 
 Release menor centrada en la rectificación natal asistida, el CLI local-first y la lectura natal documental.

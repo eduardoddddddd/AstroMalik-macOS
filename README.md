@@ -8,7 +8,7 @@
 ![Swiss Ephemeris](https://img.shields.io/badge/ephemeris-Swiss%20Ephemeris-6f42c1)
 ![SQLite](https://img.shields.io/badge/storage-SQLite-003B57)
 ![Local First](https://img.shields.io/badge/privacy-local--first-2ea44f)
-![Release](https://img.shields.io/badge/release-1.1.0-blue)
+![Release](https://img.shields.io/badge/release-1.1.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 AstroMalik macOS es una aplicación nativa de astrología tradicional para macOS con CLI local-first. Calcula cartas natales, lecturas, sinastrías, retornos, tránsitos, técnicas predictivas clásicas/helenísticas, horaria e informes documentales desde una app SwiftUI y desde `astromalik-cli`, sin depender de LLMs externos para el cálculo base.
@@ -33,7 +33,18 @@ Los datos de usuario no se guardan en el repositorio. La base local está en:
 
 ## Estado actual y versión 1.1
 
-La app está en la serie 1.x y es usable como herramienta astrológica de escritorio con módulos natales, predictivos, relacionales y documentales. La versión **1.1.0** incorpora como novedad principal el flujo completo de **Rectificación de hora natal**. Sus cinco fases están implementadas: fundamentos, motor determinista, narrativa opcional, persistencia/exportaciones y refinamiento profesional.
+La app está en la serie 1.x y es usable como herramienta astrológica de escritorio con módulos natales, predictivos, relacionales y documentales. La versión **1.1.1** conserva el flujo completo de **Rectificación de hora natal** y añade distribución universal nativa para Apple Silicon e Intel.
+
+### Descargar e instalar sin conocimientos técnicos
+
+El archivo `AstroMalik-macOS-universal.zip` contiene una sola aplicación válida para los dos tipos de Mac:
+
+- **Apple Silicon:** M1, M2, M3, M4 y posteriores.
+- **Intel:** Macs Intel capaces de ejecutar macOS 14 Sonoma o superior.
+
+No hace falta elegir arquitectura ni instalar Rosetta. Esta distribución no está notarizada porque el proyecto no paga el programa anual de Apple. macOS puede pedir una autorización adicional en la primera apertura; no significa por sí solo que la aplicación esté dañada. La guía explica el procedimiento seguro, sin desactivar globalmente las protecciones del Mac:
+
+**[Guía de instalación para cualquier usuario](docs/INSTALACION_MACOS.md)**
 
 | Fase | Alcance | Estado |
 |---|---|---|
@@ -259,9 +270,9 @@ Documentación: [`docs/PDF_REPORTS.md`](docs/PDF_REPORTS.md).
 ## Requisitos
 
 - macOS 14 o superior.
-- Xcode instalado para compilar/testear.
-- Apple Silicon recomendado.
+- La aplicación universal funciona de forma nativa en Apple Silicon e Intel.
 - Joplin Desktop solo si se quiere exportar notas vía Web Clipper.
+- Xcode solo es necesario para desarrolladores que quieran compilar o ejecutar tests; no hace falta para usar la app descargada.
 
 ## Desarrollo
 
@@ -289,6 +300,14 @@ Empaquetar la app macOS:
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_app.sh
 open AstroMalik.app
 ```
+
+Crear el paquete universal sin modificar la app ARM existente:
+
+```bash
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_universal_app.sh
+```
+
+Los artefactos se escriben en `dist/`: aplicación universal, CLI universal, ZIP y checksum SHA-256. Detalles técnicos en [`docs/UNIVERSAL_BUILD.md`](docs/UNIVERSAL_BUILD.md).
 
 Después de cambios de código o UI, este repo espera regenerar `AstroMalik.app` y comprobar el timestamp de:
 
@@ -352,6 +371,8 @@ scripts/                   Empaquetado, smoke tests y utilidades
 - [`docs/CLI.md`](docs/CLI.md) — uso del CLI.
 - [`docs/RECTIFICACION_GUI_DE_USO.md`](docs/RECTIFICACION_GUI_DE_USO.md) — guía práctica de Rectificación natal.
 - [`docs/RECTIFICACION_HORA_NATAL_PLAN.md`](docs/RECTIFICACION_HORA_NATAL_PLAN.md) — arquitectura, decisiones y roadmap de Rectificación.
+- [`docs/INSTALACION_MACOS.md`](docs/INSTALACION_MACOS.md) — instalación universal explicada sin tecnicismos.
+- [`docs/UNIVERSAL_BUILD.md`](docs/UNIVERSAL_BUILD.md) — compilación ARM64 + Intel, firma ad-hoc y automatización.
 
 ## Integraciones opcionales
 
@@ -371,13 +392,16 @@ Algunos módulos de interpretación contextual pueden usar OpenRouter o Foundry 
 
 La suite cubre motores astronómicos, predictivas, horaria, lectura natal, persistencia, PDF, CLI e integraciones mockeadas.
 
-Última validación local completada para la Fase 3 de Rectificación:
+Última validación local de la versión universal:
 
 ```text
 386 tests ejecutados
 1 skipped
 0 failures
-AstroMalik.app/Contents/MacOS/AstroMalik: 2026-07-11 00:38:17 CEST
+AstroMalik.app/Contents/MacOS/AstroMalik: 2026-07-11 00:58:59 CEST
+App universal: x86_64 + arm64
+CLI universal: x86_64 + arm64
+Smoke del CLI Intel mediante Rosetta: OK
 ```
 
 ## Licencia

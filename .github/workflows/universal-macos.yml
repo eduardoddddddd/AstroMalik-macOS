@@ -1,0 +1,53 @@
+name: Build universal macOS app
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  universal:
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build ARM64 and Intel application
+        run: scripts/package_universal_app.sh
+
+      - name: Verify architectures and ad-hoc signature
+        run: scripts/verify_universal_app.sh
+
+      - name: Upload universal artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: AstroMalik-macOS-universal-${{ github.sha }}
+          path: |
+            dist/AstroMalik-macOS-universal.zip
+            dist/AstroMalik-macOS-universal.zip.sha256
+            dist/astromalik-cli-macOS-universal.zip
+            dist/astromalik-cli-macOS-universal.zip.sha256
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish assets in GitHub Release for tags
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          assets=(
+            dist/AstroMalik-macOS-universal.zip
+            dist/AstroMalik-macOS-universal.zip.sha256
+            dist/astromalik-cli-macOS-universal.zip
+            dist/astromalik-cli-macOS-universal.zip.sha256
+          )
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "${assets[@]}" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "${assets[@]}" \
+              --title "AstroMalik $GITHUB_REF_NAME" --generate-notes
+          fi
