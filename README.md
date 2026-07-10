@@ -1,413 +1,269 @@
-# AstroMalik macOS
+# AstroMalik para macOS
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/eduardoddddddd/AstroMalik-macOS)
+**Astrología tradicional, predictiva y documental en una aplicación privada para Mac.**
 
-![Platform](https://img.shields.io/badge/platform-macOS%2014%2B-blue)
-![Swift](https://img.shields.io/badge/Swift-6-orange)
-![SwiftUI](https://img.shields.io/badge/UI-SwiftUI-0A84FF)
-![Swiss Ephemeris](https://img.shields.io/badge/ephemeris-Swiss%20Ephemeris-6f42c1)
-![SQLite](https://img.shields.io/badge/storage-SQLite-003B57)
-![Local First](https://img.shields.io/badge/privacy-local--first-2ea44f)
-![Release](https://img.shields.io/badge/release-1.1.2-blue)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
+[![Última versión](https://img.shields.io/badge/versión-1.1.2-blue)](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.2)
+![macOS](https://img.shields.io/badge/macOS-14%2B-111111)
+![Apple Silicon + Intel](https://img.shields.io/badge/Mac-Apple%20Silicon%20%2B%20Intel-6f42c1)
+![Privacidad](https://img.shields.io/badge/privacidad-local--first-2ea44f)
+![Licencia](https://img.shields.io/badge/licencia-MIT-lightgrey)
 
-AstroMalik macOS es una aplicación nativa de astrología tradicional para macOS con CLI local-first. Calcula cartas natales, lecturas, sinastrías, retornos, tránsitos, técnicas predictivas clásicas/helenísticas, horaria e informes documentales desde una app SwiftUI y desde `astromalik-cli`, sin depender de LLMs externos para el cálculo base.
+AstroMalik reúne carta natal, lectura, rectificación de hora, técnicas predictivas, sinastría, horaria, efemérides e informes en un único espacio de trabajo. Los cálculos principales se realizan en el propio Mac y no necesitan una cuenta ni un servicio de inteligencia artificial.
 
-El objetivo no es ser un panel de datos sueltos: la app intenta convertir cálculo astrológico, corpus interpretativo y documentación personal en un flujo de trabajo de astrólogo: calcular, leer, comparar, predecir, sintetizar y archivar.
+---
 
-## Principios del proyecto
+## Descargar e instalar
 
-- **Local-first**: cartas, notas y consultas viven en el Mac del usuario.
-- **Cálculo determinista**: Swiss Ephemeris embebido y motores Swift propios.
-- **Corpus visible**: los textos interpretativos no son decoración; se integran en las vistas de lectura.
-- **Doctrina explícita**: regencias, secta, dignidades, profecciones, ZR, horaria y direcciones se documentan en código y docs.
-- **Exportación documental**: Joplin, Markdown, JSON y PDF son salidas, no requisitos para calcular.
-- **CLI para agentes**: `astromalik-cli` expone datos calculados localmente para terminal, scripts y LLMs externos.
-- **Sin dependencias externas de runtime** para el cálculo base.
+### 1. Descarga la aplicación
 
-Los datos de usuario no se guardan en el repositorio. La base local está en:
+**[⬇ Descargar AstroMalik 1.1.2 para macOS](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/download/v1.1.2/AstroMalik-macOS-universal.zip)**
 
-```text
-~/Library/Application Support/AstroMalik/user.db
-```
+No necesitas saber usar GitHub. El enlace anterior descarga directamente un archivo ZIP. Al abrirlo aparecerá `AstroMalik.app`; arrástralo a la carpeta **Aplicaciones**.
 
-## Estado actual y versión 1.1
+También puedes consultar la [página de la versión 1.1.2](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.2), donde están el checksum y la versión de terminal.
 
-La app está en la serie 1.x y es usable como herramienta astrológica de escritorio con módulos natales, predictivos, relacionales y documentales. La versión **1.1.2** conserva el flujo completo de **Rectificación de hora natal** y añade distribución universal nativa para Apple Silicon e Intel.
+### 2. Comprueba que tu Mac sea compatible
 
-### Descargar e instalar sin conocimientos técnicos
+La misma descarga funciona de forma nativa en:
 
-El archivo `AstroMalik-macOS-universal.zip` contiene una sola aplicación válida para los dos tipos de Mac:
+- Macs con chip Apple: M1, M2, M3, M4 y posteriores.
+- Macs con procesador Intel que puedan ejecutar macOS 14 Sonoma o superior.
 
-- **Apple Silicon:** M1, M2, M3, M4 y posteriores.
-- **Intel:** Macs Intel capaces de ejecutar macOS 14 Sonoma o superior.
+No tienes que elegir una versión ni instalar Rosetta. Para consultar tu sistema abre ** → Acerca de este Mac**.
 
-No hace falta elegir arquitectura ni instalar Rosetta. Esta distribución no está notarizada porque el proyecto no paga el programa anual de Apple. macOS puede pedir una autorización adicional en la primera apertura; no significa por sí solo que la aplicación esté dañada. La guía explica el procedimiento seguro, sin desactivar globalmente las protecciones del Mac:
+### 3. Autoriza la primera apertura
 
-**[Guía de instalación para cualquier usuario](docs/INSTALACION_MACOS.md)**
+AstroMalik no está notarizado por Apple porque este proyecto no utiliza la suscripción anual de pago del programa de desarrolladores. Por ese motivo macOS puede bloquear la primera apertura aunque el archivo sea correcto.
 
-| Fase | Alcance | Estado |
-|---|---|---|
-| 0 | Precisión `HH:mm:ss`, contratos y validación | Completada |
-| 1 | Motor determinista, eventos, ranking y guardado seguro | Completada |
-| 2 | Comparación narrativa IA opcional y trazable | Completada |
-| 3 | Historial SQLite, JSON, PDF y Joplin | Completada |
-| 4 | Cuestionario, confirmaciones, comparación, overfitting, escuelas y pesos | Completada |
+La solución habitual es:
 
-La navegación se organiza por flujo de trabajo:
+1. Abre **Aplicaciones**.
+2. Haz clic derecho —o Control-clic— sobre AstroMalik.
+3. Selecciona **Abrir** y confirma de nuevo.
 
-- **Carta Natal**: nueva carta, cartas guardadas y lectura.
-- **Predictivas**: tránsitos, progresiones, direcciones primarias, profecciones, Firdaria y Zodiacal Releasing.
-- **Retornos**: revolución solar y revolución lunar.
-- **Síntesis**: panorama predictivo cross-personal.
-- **Sinastría y Horaria**: comparación de cartas y consulta horaria clásica.
-- **Herramientas**: efemérides, informes, ajustes.
+Si nunca has instalado una aplicación fuera de la App Store, sigue la guía ilustrada paso a paso:
 
-## Funcionalidades principales
+### **[Guía de instalación para principiantes](docs/INSTALACION_MACOS.md)**
+
+La guía explica la advertencia de macOS, **Abrir igualmente**, cómo comprobar la descarga y qué hacer si aparece el mensaje “aplicación dañada”. No recomienda desactivar la seguridad general del Mac.
+
+---
+
+## Qué es AstroMalik
+
+AstroMalik está pensado como un escritorio de trabajo astrológico: permite calcular, leer, comparar, investigar periodos, guardar conclusiones y crear documentos sin saltar entre muchas herramientas.
+
+Sus principios son:
+
+- **Privacidad local:** cartas, sesiones y notas se guardan en tu Mac.
+- **Cálculo reproducible:** Swiss Ephemeris y motores propios realizan los cálculos astronómicos y astrológicos.
+- **IA opcional:** Anthropic u OpenRouter solo intervienen cuando el usuario lo solicita expresamente.
+- **Resultados explicables:** las técnicas muestran factores, fechas, orbes, scores, advertencias y procedencia.
+- **Archivo profesional:** las cartas y análisis pueden conservarse y exportarse a PDF, JSON, Markdown o Joplin.
+
+AstroMalik no pretende sustituir documentación oficial, criterio profesional ni investigación biográfica. En especial, la rectificación propone hipótesis comparativas: no certifica una hora de nacimiento.
+
+## Qué puedes hacer
 
 ### Carta natal y lectura
 
-- Cálculo natal con Swiss Ephemeris.
-- Rueda natal interactiva en SwiftUI.
-- Posiciones planetarias, casas, ASC/MC y aspectos.
-- Corpus natal para planeta-signo, planeta-casa y aspectos.
-- **Lectura natal documental**: documento continuo por capítulos, no acordeón ni panel de botones.
-- Capítulos de lectura: retrato inmediato, tríada, regente del Ascendente, dominantes, aspectos estructurales, casas y síntesis.
-- Densidad `Esencial` / `Completa`.
-- Buscador dentro del texto de la lectura.
-- Síntesis editable persistida por carta.
-- Nota Markdown para Joplin serializada desde el mismo documento de lectura.
-
-Documentación específica: [`docs/LECTURA_NATAL_REFACTOR_ARQUITECTURA.md`](docs/LECTURA_NATAL_REFACTOR_ARQUITECTURA.md).
-
-### Análisis natal extendido
-
-- Lotes helenísticos.
-- Almuten Figuris.
-- Regente de la genitura.
-- Configuraciones aspectuales.
-- Distribución elemental/modal/hemisférica.
-- Recepciones mutuas.
-- Antiscia y contraantiscia.
-- Declinaciones y fuera de límites.
-- Estrellas fijas.
-
-### Archivo local de cartas
-
-- Persistencia SQLite local.
-- Cartas guardadas con nombre, fecha, hora, zona, coordenadas y lugar.
-- Notas y etiquetas por carta.
-- Búsqueda por texto, etiqueta y metadatos.
-- Reutilización de cartas en lectura, sinastría, retornos, tránsitos y predictivas.
-
-### Rectificación de hora natal
-
-- Flujo asistido basado en una **carta guardada** y una cronología de eventos vitales fechados.
-- Búsqueda coarse/fine dentro de un rango horario o durante el día completo.
-- Scoring determinista con arco solar, tránsitos a ángulos, direcciones primarias y progresiones secundarias.
-- Reglas simbólicas por tipo de evento, evidencia auditable y consolidación que evita premiar el volumen bruto de contactos.
-- Ranking de candidatas, clusters, advertencias de empate/cambio de secta y confianza explícita.
-- Cuestionario orientativo de Ascendente con hipótesis preliminar de signo y ponderación baja.
-- Confirmaciones profesionales por profecciones, Firdaria, Zodiacal Releasing, lotes sensibles a hora y revolución solar.
-- Distribución visual de clusters y comparación lado a lado de candidatas con desglose por técnica.
-- Presets de escuela Tradicional, Equilibrada y Moderna, técnicas habilitables, pesos, ventana de cluster y sensibilidad anti-overfitting.
-- Auditoría de score bruto/ajustado y penalización por concentración excesiva en un evento, una técnica o una configuración demasiado compleja.
-- Guardado de la candidata elegida como carta nueva con procedencia, sin sobrescribir la original.
-- Comparación narrativa opcional mediante Anthropic u OpenRouter, siempre iniciada explícitamente después del cálculo local.
-- Trazabilidad de proveedor, modelo, tokens y coste estimado cuando está disponible.
-- Sesiones persistentes en SQLite con reapertura, edición, recálculo e historial de versiones sin duplicados.
-- Importación/exportación JSON versionada e informe técnico PDF autocontenido.
-- Creación de nota Joplin únicamente mediante el botón explícito del usuario.
-- Configuración profesional de escuela, casas, orbes, planetas, técnicas y pesos, con auditoría anti-overfitting.
-
-La rectificación propone **hipótesis comparativas**, no una hora certificada. Una puntuación alta expresa mejor ajuste dentro del conjunto, rango, técnicas y eventos introducidos; no equivale a certeza histórica ni sustituye documentación oficial.
-
-#### Inicio rápido
-
-1. Guarda primero una carta natal con la mejor hora aproximada disponible.
-2. Abre **Carta Natal → Rectificación** y selecciona esa carta.
-3. Define la hora central, el margen anterior/posterior y los pasos grueso/fino.
-4. Añade como mínimo tres eventos útiles; seis o más eventos diversos y bien fechados suelen discriminar mejor.
-5. Pulsa **Analizar candidatas** y revisa ranking, clusters, advertencias y evidencias, no solo el primer score.
-6. Si lo deseas, genera una comparación con IA; requiere acción explícita, red y puede tener coste.
-7. Guarda la sesión o expórtala a JSON/PDF/Joplin. La candidata elegida se guarda como carta nueva y nunca sobrescribe la original.
-
-Guía de uso: [`docs/RECTIFICACION_GUI_DE_USO.md`](docs/RECTIFICACION_GUI_DE_USO.md). Seguimiento técnico: [`docs/RECTIFICACION_HORA_NATAL_PLAN.md`](docs/RECTIFICACION_HORA_NATAL_PLAN.md).
-
-### Sinastría
-
-- Comparación de dos cartas guardadas.
-- Aspectos A→B y B→A.
-- Rueda doble.
-- Corpus específico de sinastría.
-- Salida documental a Joplin.
-
-### Retornos
-
-- Revolución solar con retorno exacto del Sol.
-- Carta anual para lugar elegido.
-- Superposición natal/solar.
-- Revolución lunar con secuencia de retornos dentro de un periodo.
-- Métricas técnicas y exportación documental.
+- Calcular cartas con fecha, hora, zona, coordenadas y distintos sistemas de casas.
+- Consultar rueda, posiciones, casas, Ascendente, Medio Cielo y aspectos.
+- Leer una interpretación continua organizada por capítulos.
+- Analizar dominantes, elementos, modalidades, hemisferios, recepciones, antiscia, declinaciones y estrellas fijas.
+- Calcular lotes helenísticos, Almuten Figuris y regente de la genitura.
+- Guardar cartas, notas, etiquetas y síntesis personales.
 
-### Tránsitos
+### Técnicas predictivas
 
-- Eventos por rango de fechas.
-- Orbes específicos de tránsito.
-- Nodo Norte y Nodo Sur como puntos transitantes/natales.
-- Fusión del eje nodal para evitar duplicados.
-- Scoring técnico, relevancia personal e impacto temporal.
-- Timeline visual y detalle por evento.
-- Ingresos por casa.
+- Tránsitos con timeline, prioridades e ingresos por casa.
+- Progresiones secundarias.
+- Direcciones primarias Regiomontanas.
+- Arco solar real y Naibod.
+- Profecciones y Lord of the Year.
+- Firdaria.
+- Zodiacal Releasing desde Fortuna y Espíritu.
+- Revolución solar y revolución lunar.
+- Panorama predictivo que combina varias escalas temporales.
 
-Documento técnico: [`docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md`](docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md).
+### Relaciones, preguntas y calendario
 
-### Calendario y efemérides
+- Sinastría con rueda doble, aspectos en ambas direcciones y corpus específico.
+- Horaria clásica con dignidades, radicalidad, significadores, recepción y perfección.
+- Calendario mensual con lunaciones, eclipses, estaciones, ingresos y Luna vacía de curso.
+- Efemérides diarias y resúmenes mensuales personalizados.
 
-- Calendario astrológico mensual.
-- Lunaciones, eclipses, estaciones, ingresos en signo, Luna vacía de curso y aspectos mundanos.
-- Efeméride diaria a 00:00 UTC.
-- Resumen mensual personalizado por carta natal.
-- Exportación a Joplin.
+### Documentos y archivo
 
-Documento técnico: [`docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md`](docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md).
+- Informes PDF con ruedas, tablas y timelines vectoriales.
+- Exportación de notas a Joplin mediante una acción explícita.
+- Sesiones y resultados persistentes en SQLite.
+- Intercambio reproducible mediante JSON versionado.
+- Historial local de cartas, consultas e informes.
 
-### Predictivas tradicionales
+---
 
-- **Direcciones primarias** Regiomontanas: directas/conversas, planos zodiacal/eclíptico, claves Naibod/Ptolomeo/Brahe, Pars Fortunae opcional, corpus clásico y filtros profesionales.
-- **Arco solar**: real y Naibod.
-- **Progresiones secundarias**: día por año, MC/ASC progresados, fase lunar progresada, aspectos y cambios destacados.
-- **Profecciones**: whole sign desde Ascendente, Lord of the Year y sub-profecciones.
-- **Firdaria**: ciclos mayores y menores con secta.
-- **Zodiacal Releasing**: Espíritu/Fortuna, L1/L2, Loosing of the Bond y peaks.
+## Rectificación de hora natal
 
-Documentación:
+La rectificación es una de las funciones centrales de AstroMalik. Compara distintas horas posibles con eventos reales de la vida y conserva la evidencia que favorece o debilita cada candidata.
 
-- [`docs/PRIMARY_DIRECTIONS.md`](docs/PRIMARY_DIRECTIONS.md)
-- [`docs/primary-directions-corpus-curation.md`](docs/primary-directions-corpus-curation.md)
+El flujo incluye:
 
-### Horaria clásica
+1. selección de una carta base y un rango horario;
+2. cronología de eventos fechados con precisión e importancia;
+3. búsqueda gruesa y refinamiento fino de candidatas;
+4. direcciones primarias, arco solar, progresiones y tránsitos angulares;
+5. confirmaciones por profecciones, Firdaria, Zodiacal Releasing, lotes y revolución solar;
+6. ranking, clusters, comparación lado a lado y control anti-overfitting;
+7. guardado de la hora elegida como una carta nueva, sin sobrescribir la original;
+8. historial, JSON, PDF, Joplin y comparación narrativa opcional.
 
-Horaria usa por defecto motor Swift nativo (`HoraryNativeEngine`) con:
+Una puntuación no es una probabilidad ni una prueba documental. Conviene revisar clusters, cobertura, advertencias y diversidad de técnicas antes de elegir una hora.
 
-- siete planetas tradicionales;
-- casas Regiomontanus;
-- dignidades esenciales y accidentales;
-- hora planetaria y radicalidad;
-- Parte de Fortuna y Parte del Espíritu;
-- Luna vía combusta y fuera de curso;
-- significadores por casa;
-- recepción, perfección, translación y colección básica;
-- veredicto estructurado.
+**[Abrir la guía completa de Rectificación](docs/RECTIFICACION_GUI_DE_USO.md)**
 
-Documento técnico: [`docs/HORARY_NATIVE.md`](docs/HORARY_NATIVE.md).
+## Primer recorrido recomendado
 
-### Panorama predictivo cross-personal
+Si acabas de instalar la aplicación:
 
-El módulo cross-personal orquesta motores predictivos reales y produce una síntesis por capas:
+1. Crea una carta desde **Carta Natal → Nueva Carta**.
+2. Guárdala para poder reutilizarla.
+3. Abre **Lectura** para recorrer la interpretación natal.
+4. Consulta **Tránsitos** o **Panorama Predictivo** para una fecha concreta.
+5. Usa **Rectificación** solo si la hora natal es incierta y dispones de eventos biográficos fechados.
+6. Genera un PDF o una nota Joplin cuando quieras conservar o compartir el análisis.
 
-- anual;
-- medio plazo;
-- corto plazo;
-- lunar.
+## Privacidad, datos e inteligencia artificial
 
-El cálculo determinista no depende de Anthropic ni OpenRouter. La narrativa IA es opcional y explícita; en el CLI requiere `--narrative anthropic --allow-network`.
+### Dónde se guardan los datos
 
-Documento: [`docs/CROSS_PERSONAL.md`](docs/CROSS_PERSONAL.md).
-
-### CLI local-first
-
-`astromalik-cli` es una interfaz local, determinista y pensada para agentes externos. Por defecto usa:
-
-```bash
---format json --output stdout --narrative none --no-network
-```
-
-Subcomandos principales:
-
-```bash
-astromalik-cli charts list
-astromalik-cli chart show --chart "Edu" --format json
-astromalik-cli natal --chart "Edu" --format markdown
-astromalik-cli transits --chart "Edu" --from 2026-06-15 --to 2026-06-21 --format json
-astromalik-cli monthly --chart "Edu" --month 2026-06 --format markdown
-astromalik-cli weekly --chart "Edu" --from 2026-06-15 --format json
-astromalik-cli cross-personal --chart "Edu" --date 2026-06-13 --scope weekly --format markdown --narrative none
-```
-
-Técnicas adicionales disponibles desde CLI: profecciones, Firdaria, Zodiacal Releasing, progresiones, revolución solar/lunar, direcciones primarias y arco solar.
-
-Si se intenta usar Anthropic sin permiso explícito, falla antes de crear el cliente:
-
-```text
-La narrativa Anthropic requiere --allow-network y --narrative anthropic explícitos.
-```
-
-Documento: [`docs/CLI.md`](docs/CLI.md).
-
-### Informes PDF
-
-La app incluye infraestructura de informes profesionales:
-
-- plantillas HTML/CSS;
-- renderizado PDF con WebKit;
-- rueda natal y rueda doble en SVG;
-- timelines y tablas vectoriales;
-- exportación opcional como adjunto a Joplin.
-
-Documentación: [`docs/PDF_REPORTS.md`](docs/PDF_REPORTS.md).
-
-## Stack técnico
-
-- Swift 6 / SwiftPM.
-- SwiftUI para macOS 14+.
-- Target C `CSwissEph` con Swiss Ephemeris embebido.
-- SQLite3 del sistema mediante wrapper propio.
-- WebKit para render PDF.
-- Sin dependencias externas de Swift Package Manager.
-- Integraciones opcionales y explícitas: Joplin Web Clipper, Anthropic, OpenRouter/Foundry Local en módulos concretos.
-
-## Requisitos
-
-- macOS 14 o superior.
-- La aplicación universal funciona de forma nativa en Apple Silicon e Intel.
-- Joplin Desktop solo si se quiere exportar notas vía Web Clipper.
-- Xcode solo es necesario para desarrolladores que quieran compilar o ejecutar tests; no hace falta para usar la app descargada.
-
-## Desarrollo
-
-Compilar en debug:
-
-```bash
-swift build
-```
-
-Ejecutar la app SPM:
-
-```bash
-.build/arm64-apple-macosx/debug/AstroMalik
-```
-
-Ejecutar tests:
-
-```bash
-DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test
-```
-
-Empaquetar la app macOS:
-
-```bash
-DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_app.sh
-open AstroMalik.app
-```
-
-Crear el paquete universal sin modificar la app ARM existente:
-
-```bash
-DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_universal_app.sh
-```
-
-Los artefactos se escriben en `dist/`: aplicación universal, CLI universal, ZIP y checksum SHA-256. Detalles técnicos en [`docs/UNIVERSAL_BUILD.md`](docs/UNIVERSAL_BUILD.md).
-
-Después de cambios de código o UI, este repo espera regenerar `AstroMalik.app` y comprobar el timestamp de:
-
-```text
-AstroMalik.app/Contents/MacOS/AstroMalik
-```
-
-## Recursos y persistencia
-
-Recursos embebidos en el bundle:
-
-```text
-Sources/AstroMalik/Resources/corpus.db
-Sources/AstroMalik/Resources/cities_seed.json
-Sources/AstroMalik/Resources/fixed_stars.json
-Sources/AstroMalik/Resources/ephe/
-Sources/AstroMalik/Resources/Reports/
-Sources/AstroMalik/Reports/Templates/
-```
-
-Persistencia local del usuario:
+Las cartas y sesiones del usuario se almacenan localmente en:
 
 ```text
 ~/Library/Application Support/AstroMalik/user.db
 ```
 
-Ahí viven cartas guardadas, metadatos, cachés persistentes y notas de lectura.
+Actualizar o sustituir `AstroMalik.app` no elimina esa base de datos. Aun así, es recomendable incluirla en tus copias de seguridad.
 
-## Estructura del repositorio
+### Qué funciona sin internet
+
+El cálculo natal, la rectificación determinista, las predictivas, la horaria, el calendario y la mayor parte de las interpretaciones funcionan localmente.
+
+### Funciones opcionales con conexión
+
+- **Anthropic y OpenRouter:** narrativa generativa solicitada expresamente.
+- **Joplin Web Clipper:** creación de notas en una instalación local de Joplin.
+- **Búsqueda de lugares:** puede consultar servicios externos cuando los datos locales no bastan.
+
+Las funciones de IA no recalculan posiciones astronómicas ni sustituyen los resultados técnicos.
+
+---
+
+## Guías para usuarios
+
+| Necesito… | Documento |
+|---|---|
+| Instalar la aplicación y resolver el aviso de macOS | [Instalación para principiantes](docs/INSTALACION_MACOS.md) |
+| Aprender a rectificar una hora natal | [Guía de Rectificación](docs/RECTIFICACION_GUI_DE_USO.md) |
+| Entender los informes PDF | [Informes PDF](docs/PDF_REPORTS.md) |
+| Consultar el uso del CLI | [CLI local-first](docs/CLI.md) |
+
+El resto de esta página está orientado a desarrolladores y personas que quieran conocer la implementación interna.
+
+---
+
+## Información técnica
+
+### Arquitectura
+
+- Swift 6 y SwiftUI para macOS 14 o superior.
+- Swift Package Manager sin dependencias Swift externas.
+- Swiss Ephemeris incluido como target C `CSwissEph`.
+- SQLite3 del sistema mediante un wrapper propio.
+- WebKit para generar informes PDF.
+- Aplicación GUI y CLI construidos sobre el mismo módulo `AstroMalik`.
+- Distribución universal con slices `arm64` y `x86_64`.
+
+### Compilar y ejecutar tests
+
+Requisitos de desarrollo: Xcode completo y macOS 14 o superior. Los usuarios que descargan la aplicación no necesitan instalar Xcode.
+
+```bash
+# Compilación de desarrollo
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift build
+
+# Suite completa
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test
+
+# App nativa para la máquina actual
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_app.sh
+
+# App y CLI universales ARM64 + Intel
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer scripts/package_universal_app.sh
+```
+
+El empaquetador nativo escribe `AstroMalik.app` en la raíz. El universal no lo modifica: escribe app, CLI, ZIP y checksums en `dist/`.
+
+Más información: [build universal, firma ad-hoc y GitHub Actions](docs/UNIVERSAL_BUILD.md).
+
+### CLI local-first
+
+`astromalik-cli` ofrece resultados para terminal, automatizaciones y agentes externos. Sus valores por defecto no usan red ni generan coste:
+
+```text
+--format json --output stdout --narrative none --no-network
+```
+
+Ejemplos:
+
+```bash
+astromalik-cli charts list
+astromalik-cli natal --chart "Edu" --format markdown
+astromalik-cli transits --chart "Edu" --from 2026-07-01 --to 2026-07-31
+astromalik-cli cross-personal --chart "Edu" --date 2026-07-11 --narrative none
+```
+
+Anthropic u OpenRouter requieren permiso explícito mediante los flags de red documentados en [docs/CLI.md](docs/CLI.md).
+
+### Estructura del repositorio
 
 ```text
 Sources/
-  AstroMalik/              Módulo principal compartido
-    Engine/                Motores astrológicos
-    Engine/Reading/        Composer de lectura natal
-    Models/                Modelos de dominio
-    Persistence/           Stores persistentes
-    Reports/               Infraestructura y builders PDF
-    Resources/             Corpus, efemérides y recursos empaquetados
-    Store/                 SQLite, corpus y usuario
-    Views/                 UI SwiftUI
-  AstroMalikApp/           Ejecutable GUI
-  AstroMalikCLI/           Ejecutable headless
-Tests/
-  AstroMalikTests/         Tests de motores, UI lógica, informes y stores
-  AstroMalikCLITests/      Tests del CLI
-docs/                      Documentación técnica y planes
-scripts/                   Empaquetado, smoke tests y utilidades
+  AstroMalik/       Motores, modelos, persistencia, informes, recursos y vistas
+  AstroMalikApp/    Punto de entrada de la aplicación
+  AstroMalikCLI/    Punto de entrada del CLI
+  CSwissEph/        Swiss Ephemeris en C
+Tests/              Suite de motores, stores, informes, CLI y rectificación
+Resources/          Migraciones y recursos auxiliares
+docs/               Guías de uso, arquitectura y planes técnicos
+scripts/            Empaquetado y utilidades
 ```
 
-## Documentación principal
+### Documentación técnica por área
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — mapa técnico general.
-- [`docs/LECTURA_NATAL_REFACTOR_ARQUITECTURA.md`](docs/LECTURA_NATAL_REFACTOR_ARQUITECTURA.md) — refactor de Lectura natal.
-- [`docs/PRIMARY_DIRECTIONS.md`](docs/PRIMARY_DIRECTIONS.md) — direcciones primarias.
-- [`docs/HORARY_NATIVE.md`](docs/HORARY_NATIVE.md) — horaria nativa.
-- [`docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md`](docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md) — tránsitos.
-- [`docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md`](docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md) — calendario y efemérides.
-- [`docs/PDF_REPORTS.md`](docs/PDF_REPORTS.md) — informes PDF.
-- [`docs/CROSS_PERSONAL.md`](docs/CROSS_PERSONAL.md) — panorama predictivo.
-- [`docs/CLI.md`](docs/CLI.md) — uso del CLI.
-- [`docs/RECTIFICACION_GUI_DE_USO.md`](docs/RECTIFICACION_GUI_DE_USO.md) — guía práctica de Rectificación natal.
-- [`docs/RECTIFICACION_HORA_NATAL_PLAN.md`](docs/RECTIFICACION_HORA_NATAL_PLAN.md) — arquitectura, decisiones y roadmap de Rectificación.
-- [`docs/INSTALACION_MACOS.md`](docs/INSTALACION_MACOS.md) — instalación universal explicada sin tecnicismos.
-- [`docs/UNIVERSAL_BUILD.md`](docs/UNIVERSAL_BUILD.md) — compilación ARM64 + Intel, firma ad-hoc y automatización.
+| Área | Documento |
+|---|---|
+| Arquitectura general | [ARCHITECTURE.md](docs/ARCHITECTURE.md) |
+| Lectura natal | [LECTURA_NATAL_REFACTOR_ARQUITECTURA.md](docs/LECTURA_NATAL_REFACTOR_ARQUITECTURA.md) |
+| Rectificación: diseño y roadmap | [RECTIFICACION_HORA_NATAL_PLAN.md](docs/RECTIFICACION_HORA_NATAL_PLAN.md) |
+| Direcciones primarias | [PRIMARY_DIRECTIONS.md](docs/PRIMARY_DIRECTIONS.md) |
+| Horaria nativa | [HORARY_NATIVE.md](docs/HORARY_NATIVE.md) |
+| Tránsitos | [TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md](docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md) |
+| Calendario y efemérides | [CALENDARIO_EFEMERIDES_ARQUITECTURA.md](docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md) |
+| Panorama predictivo | [CROSS_PERSONAL.md](docs/CROSS_PERSONAL.md) |
+| Informes PDF | [PDF_REPORTS.md](docs/PDF_REPORTS.md) |
+| Build universal | [UNIVERSAL_BUILD.md](docs/UNIVERSAL_BUILD.md) |
 
-## Integraciones opcionales
+## Estado del proyecto
 
-### Joplin
+- Última versión estable: **1.1.2**.
+- Aplicación y CLI universales: **ARM64 + Intel**.
+- Deployment target: **macOS 14**.
+- Validación: **386 tests, 1 omitido, 0 fallos**.
+- Automatización: GitHub Actions genera artefactos universales y los adjunta a cada release etiquetada.
 
-La app puede crear notas usando el Web Clipper local de Joplin. Host, puerto, token y cuaderno se configuran en Ajustes. Si el token no está configurado, se intenta resolver desde `ASTROMALIK_JOPLIN_TOKEN` o desde la configuración local de Joplin Desktop.
+Consulta los cambios de cada versión en [CHANGELOG.md](CHANGELOG.md).
 
-### Anthropic
+## Licencia y autoría
 
-El módulo cross-personal puede redactar narrativa con Anthropic solo cuando el usuario lo solicita explícitamente. En CLI requiere `--narrative anthropic --allow-network`; la clave se resuelve desde Keychain o `ANTHROPIC_API_KEY`.
-
-### OpenRouter / Foundry Local
-
-Algunos módulos de interpretación contextual pueden usar OpenRouter o Foundry Local como capa generativa opcional. No sustituyen el cálculo determinista.
-
-## Tests
-
-La suite cubre motores astronómicos, predictivas, horaria, lectura natal, persistencia, PDF, CLI e integraciones mockeadas.
-
-Última validación local de la versión universal:
-
-```text
-386 tests ejecutados
-1 skipped
-0 failures
-AstroMalik.app/Contents/MacOS/AstroMalik: 2026-07-11 00:58:59 CEST
-App universal: x86_64 + arm64
-CLI universal: x86_64 + arm64
-Smoke del CLI Intel mediante Rosetta: OK
-```
-
-## Licencia
-
-MIT, según la configuración del repositorio.
-
-## Autor
-
-Proyecto personal de Eduardo Arias Bravo / AstroMalik.
+AstroMalik se distribuye bajo licencia MIT. Proyecto personal de **Eduardo Arias Bravo / AstroMalik**.
