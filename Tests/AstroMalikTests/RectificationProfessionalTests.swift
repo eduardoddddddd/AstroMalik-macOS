@@ -38,6 +38,34 @@ final class RectificationProfessionalTests: XCTestCase {
         XCTAssertGreaterThan(config.techniqueWeights[.solarArc]!, config.techniqueWeights[.firdaria]!)
     }
 
+    func testEventReliabilityReducesEvidenceIndependentlyFromDatePrecision() {
+        let date = Date(timeIntervalSince1970: 1_000_000)
+        let certain = RectificationEvent(
+            type: .careerStart, title: "Documentado", dateStart: date,
+            precision: .exactDay, importance: 5, confidence: .certain
+        )
+        let thirdParty = RectificationEvent(
+            type: .careerStart, title: "Terceros", dateStart: date,
+            precision: .exactDay, importance: 5, confidence: .thirdParty
+        )
+        let certainScore = RectificationScoringSupport.evidenceScore(
+            event: certain, technique: .solarArc, config: .default,
+            fit: .strong, closeness: 1
+        )
+        let thirdPartyScore = RectificationScoringSupport.evidenceScore(
+            event: thirdParty, technique: .solarArc, config: .default,
+            fit: .strong, closeness: 1
+        )
+        XCTAssertEqual(thirdPartyScore / certainScore, 0.55, accuracy: 0.01)
+    }
+
+    func testScoringPolicyKeepsPublishedHeuristicsCentralized() {
+        XCTAssertEqual(RectificationScoringPolicy.highCandidateScore, 55)
+        XCTAssertEqual(RectificationScoringPolicy.mediumCandidateScore, 30)
+        XCTAssertEqual(RectificationScoringPolicy.confirmationWeight(at: 0), 0.20)
+        XCTAssertEqual(RectificationScoringPolicy.confirmationWeight(at: 1), 0.10)
+    }
+
     func testAntiOverfittingCalibrationCorpusPenalizesConcentrationAndComplexity() {
         let url = Bundle.module.url(forResource: "RectificationCalibrationCases", withExtension: "json")!
         let cases = try! JSONDecoder().decode([CalibrationCase].self, from: Data(contentsOf: url))

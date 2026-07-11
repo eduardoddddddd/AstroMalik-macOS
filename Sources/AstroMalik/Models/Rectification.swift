@@ -228,6 +228,26 @@ enum RectificationEventConfidence: String, Codable, CaseIterable, Identifiable {
     case thirdParty
 
     var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .certain: return "Cierta / documentada"
+        case .probable: return "Probable"
+        case .uncertain: return "Incierta"
+        case .thirdParty: return "Informada por terceros"
+        }
+    }
+
+    /// Reliability is deliberately independent from date precision: an exact
+    /// date reported by a third party is not equivalent to an exact document.
+    var scoreMultiplier: Double {
+        switch self {
+        case .certain: return 1.00
+        case .probable: return 0.85
+        case .uncertain: return 0.65
+        case .thirdParty: return 0.55
+        }
+    }
 }
 
 // MARK: - Configuration
@@ -273,6 +293,17 @@ enum RectificationHouseSystem: String, Codable, CaseIterable, Identifiable {
     case porphyry
 
     var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .placidus: return "Placidus"
+        case .wholeSign: return "Signos completos"
+        case .equal: return "Casas iguales"
+        case .regiomontanus: return "Regiomontanus"
+        case .campanus: return "Campanus"
+        case .porphyry: return "Porfirio"
+        }
+    }
 
     var swissEphemerisCode: Character {
         switch self {
@@ -417,6 +448,15 @@ struct CandidateCluster: Identifiable, Codable, Equatable {
     var ascendantSign: String
 }
 
+struct RectificationHouseSystemEvaluation: Codable, Equatable, Identifiable {
+    var houseSystem: RectificationHouseSystem
+    var topBirthTime: String
+    var topScore: Double
+    var confidence: RectificationConfidenceBand
+
+    var id: RectificationHouseSystem { houseSystem }
+}
+
 struct RectificationAnalysisResult: Codable, Equatable {
     static let currentSchemaVersion = 1
 
@@ -432,5 +472,11 @@ struct RectificationAnalysisResult: Codable, Equatable {
     var analysisDate: Date
     var configUsed: RectificationConfig
     var computeTimeSeconds: Double
-    var overfittingDiagnostics: RectificationOverfittingDiagnostics? = nil
+    /// Optional keeps schema-v1 archives readable while exposing the opt-in
+    /// comparison introduced after the original rectification release.
+    var houseSystemEvaluations: [RectificationHouseSystemEvaluation]? = nil
+
+    var resolvedHouseSystemEvaluations: [RectificationHouseSystemEvaluation] {
+        houseSystemEvaluations ?? []
+    }
 }

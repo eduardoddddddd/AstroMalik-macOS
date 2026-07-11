@@ -12,12 +12,84 @@ final class RectificationEngine: Sendable {
     ) async throws -> RectificationAnalysisResult {
         try session.validate(config: config)
         let started = Date()
+        let ephemerisCache = config.enabledTechniques.contains(.transitsToAngles)
+            ? try RectificationEphemerisCache.prepare(for: session)
+            : RectificationEphemerisCache(transitsByEvent: [:])
+        let systems = config.evaluateMultipleHouseSystems
+            ? RectificationHouseSystem.allCases
+            : [config.houseSystem]
+
+        var results: [RectificationAnalysisResult] = []
+        var systemFailures: [String] = []
+        results.reserveCapacity(systems.count)
+        for (index, system) in systems.enumerated() {
+            try Task.checkCancellation()
+            var systemConfig = config
+            systemConfig.houseSystem = system
+            systemConfig.evaluateMultipleHouseSystems = false
+            let lower = Double(index) / Double(systems.count)
+            let upper = Double(index + 1) / Double(systems.count)
+            let mappedProgress: ProgressHandler = { value in
+                await progress?(lower + value * (upper - lower))
+            }
+            do {
+                results.append(try await analyzeSingle(
+                    session: session,
+                    config: systemConfig,
+                    ephemerisCache: ephemerisCache,
+                    progress: mappedProgress
+                ))
+            } catch is CancellationError {
+                throw CancellationError()
+            } catch {
+                guard config.evaluateMultipleHouseSystems else { throw error }
+                systemFailures.append("\(system.label): \(error.localizedDescription)")
+                await progress?(upper)
+            }
+        }
+
+        guard var best = results.max(by: {
+            ($0.topCandidate?.totalScore ?? 0) < ($1.topCandidate?.totalScore ?? 0)
+        }) else {
+            throw RectificationCandidateGeneratorError.noCandidates
+        }
+        let winningHouseSystem = best.configUsed.houseSystem
+        if config.evaluateMultipleHouseSystems {
+            best.houseSystemEvaluations = results.map {
+                RectificationHouseSystemEvaluation(
+                    houseSystem: $0.configUsed.houseSystem,
+                    topBirthTime: $0.topCandidate?.birthTime ?? "—",
+                    topScore: $0.topCandidate?.totalScore ?? 0,
+                    confidence: $0.overallConfidence
+                )
+            }.sorted { $0.topScore > $1.topScore }
+            best.warnings.append(houseSystemConsensusWarning(for: best.houseSystemEvaluations ?? []))
+            if !systemFailures.isEmpty {
+                best.warnings.append("Sistemas no evaluables: \(systemFailures.joined(separator: "; ")).")
+            }
+        }
+        var effectiveConfig = config
+        effectiveConfig.houseSystem = winningHouseSystem
+        best.configUsed = effectiveConfig
+        best.computeTimeSeconds = Date().timeIntervalSince(started)
+        await progress?(1)
+        return best
+    }
+
+    private func analyzeSingle(
+        session: RectificationSession,
+        config: RectificationConfig,
+        ephemerisCache: RectificationEphemerisCache,
+        progress: ProgressHandler?
+    ) async throws -> RectificationAnalysisResult {
+        let started = Date()
         await progress?(0.01)
 
         let coarse = try await generator.coarseCandidates(session: session, config: config)
+        let transitScorer = TransitAngleRectificationScorer(cache: ephemerisCache)
         let coarseScorers: [any RectificationTechniqueScorer] = [
             SolarArcRectificationScorer(),
-            TransitAngleRectificationScorer(),
+            transitScorer,
         ].filter { config.enabledTechniques.contains($0.technique) }
         let scoredCoarse = try await score(
             coarse,
@@ -34,7 +106,7 @@ final class RectificationEngine: Sendable {
 
         let allScorers: [any RectificationTechniqueScorer] = [
             SolarArcRectificationScorer(),
-            TransitAngleRectificationScorer(),
+            transitScorer,
             ProgressionRectificationScorer(),
             PrimaryDirectionRectificationScorer(),
             AscendantQuestionnaireScorer(),
@@ -75,7 +147,6 @@ final class RectificationEngine: Sendable {
         if sects.count > 1 {
             warnings.append("El rango cruza un cambio de secta diurna/nocturna.")
         }
-        await progress?(1)
         return RectificationAnalysisResult(
             schemaVersion: RectificationAnalysisResult.currentSchemaVersion,
             sessionID: session.id,
@@ -153,7 +224,7 @@ final class RectificationEngine: Sendable {
             let scores = strongest.filter { $0.eventID == event.id }.map(\.score).sorted(by: >)
             guard let first = scores.first else { eventScores[event.id] = 0; continue }
             let confirmation = scores.dropFirst().enumerated().reduce(0.0) { partial, item in
-                partial + item.element * (item.offset == 0 ? 0.20 : 0.10)
+                partial + item.element * RectificationScoringPolicy.confirmationWeight(at: item.offset)
             }
             eventScores[event.id] = min(100, first + confirmation)
         }
@@ -204,22 +275,47 @@ final class RectificationEngine: Sendable {
     }
 
     private func confidenceBand(candidates: [RectificationCandidate], eventCount: Int) -> RectificationConfidenceBand {
-        guard let top = candidates.first, eventCount >= 3 else { return .inconclusive }
+        guard let top = candidates.first,
+              eventCount >= RectificationScoringPolicy.minimumConfidenceEventCount else { return .inconclusive }
         let gap = top.totalScore - (candidates.dropFirst().first?.totalScore ?? 0)
-        if top.totalScore >= 55, gap >= 8, eventCount >= 6 { return .high }
-        if top.totalScore >= 30, gap >= 3 { return .medium }
+        if top.totalScore >= RectificationScoringPolicy.highCandidateScore,
+           gap >= RectificationScoringPolicy.highMinimumGap,
+           eventCount >= RectificationScoringPolicy.highMinimumEventCount { return .high }
+        if top.totalScore >= RectificationScoringPolicy.mediumCandidateScore,
+           gap >= RectificationScoringPolicy.mediumMinimumGap { return .medium }
         if top.totalScore > 0 { return .low }
         return .inconclusive
     }
 
     private func band(for score: Double) -> RectificationConfidenceBand {
-        if score >= 55 { return .high }
-        if score >= 30 { return .medium }
+        if score >= RectificationScoringPolicy.highCandidateScore { return .high }
+        if score >= RectificationScoringPolicy.mediumCandidateScore { return .medium }
         if score > 0 { return .low }
         return .inconclusive
     }
 
     private func timeSeconds(_ time: String) -> Int {
         (try? parseLocalTime(time).totalSeconds) ?? 0
+    }
+
+    private func houseSystemConsensusWarning(
+        for evaluations: [RectificationHouseSystemEvaluation]
+    ) -> String {
+        guard let winner = evaluations.first else {
+            return "No se pudo comparar la estabilidad entre sistemas de casas."
+        }
+        let validTimes = evaluations.compactMap { try? parseLocalTime($0.topBirthTime).totalSeconds }.sorted()
+        let spread: Int
+        if validTimes.count < 2 {
+            spread = 0
+        } else {
+            let internalGaps = zip(validTimes, validTimes.dropFirst()).map { $1 - $0 }
+            let wrapGap = 86_400 - (validTimes.last ?? 0) + (validTimes.first ?? 0)
+            spread = 86_400 - max(internalGaps.max() ?? 0, wrapGap)
+        }
+        if spread <= 5 * 60 {
+            return "Los sistemas de casas convergen en una ventana de \(max(0, spread / 60)) min; gana \(winner.houseSystem.label)."
+        }
+        return "Los sistemas de casas no convergen: dispersión de \(spread / 60) min; gana \(winner.houseSystem.label). Revise la comparación antes de fijar la hora."
     }
 }

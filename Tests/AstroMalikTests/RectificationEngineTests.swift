@@ -108,6 +108,39 @@ final class RectificationEngineTests: XCTestCase {
         XCTAssertTrue(second.computeTimeSeconds >= 0)
     }
 
+    func testMultipleHouseSystemsProducesAuditableComparisonAndWinner() async throws {
+        let session = makeSession(
+            birthDate: "1976-10-11", birthTime: "20:33:00", timezone: "Europe/Madrid",
+            latitude: 40.4168, longitude: -3.7038, minutes: 5
+        )
+        var config = quickConfig()
+        config.evaluateMultipleHouseSystems = true
+        let result = try await RectificationEngine().analyze(session: session, config: config)
+        let evaluations = try XCTUnwrap(result.houseSystemEvaluations)
+        XCTAssertEqual(Set(evaluations.map(\.houseSystem.rawValue)), Set(RectificationHouseSystem.allCases.map(\.rawValue)))
+        XCTAssertEqual(evaluations, evaluations.sorted { $0.topScore > $1.topScore })
+        XCTAssertEqual(result.configUsed.houseSystem, evaluations.first?.houseSystem)
+        XCTAssertEqual(result.topCandidate?.chart.houseSystem, evaluations.first?.houseSystem.rawValue)
+    }
+
+    func testCachedTransitEphemeridesPreserveScoringOutput() async throws {
+        let session = makeSession(
+            birthDate: "1976-10-11", birthTime: "20:33:00", timezone: "Europe/Madrid",
+            latitude: 40.4168, longitude: -3.7038, minutes: 5
+        )
+        let config = quickConfig()
+        let candidate = try await RectificationCandidateGenerator()
+            .coarseCandidates(session: session, config: config).first!
+        let cache = try RectificationEphemerisCache.prepare(for: session)
+        let cached = try TransitAngleRectificationScorer(cache: cache)
+            .evidence(candidate: candidate, session: session, config: config)
+        let uncached = try TransitAngleRectificationScorer()
+            .evidence(candidate: candidate, session: session, config: config)
+        XCTAssertEqual(cached.map(\.factor), uncached.map(\.factor))
+        XCTAssertEqual(cached.map(\.score), uncached.map(\.score))
+        XCTAssertEqual(cached.map(\.orbDegrees), uncached.map(\.orbDegrees))
+    }
+
     func testPrimaryDirectionsAndProgressionsScorersReturnAuditableEvidence() async throws {
         let session = makeSession(
             birthDate: "1976-10-11", birthTime: "20:33:00", timezone: "Europe/Madrid",

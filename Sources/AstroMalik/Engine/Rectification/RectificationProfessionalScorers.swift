@@ -136,23 +136,33 @@ struct SolarReturnRectificationScorer: RectificationTechniqueScorer {
 
     func evidence(candidate: RectificationCandidate, session: RectificationSession, config: RectificationConfig) throws -> [RectificationEvidence] {
         var output: [RectificationEvidence] = []
-        for event in session.events {
-            let year = Calendar(identifier: .gregorian).component(.year, from: event.dateStart)
+        let eventsByYear = Dictionary(grouping: session.events) {
+            Calendar(identifier: .gregorian).component(.year, from: $0.dateStart)
+        }
+        for (year, events) in eventsByYear {
+            try Task.checkCancellation()
             let jd = try SolarReturnEngine.solarReturnJD(natalChart: candidate.chart, year: year)
-            let solar = try AstroEngine.computeNatalChart(jd: jd, lat: candidate.chart.latitude, lon: candidate.chart.longitude)
-            let pairs = [("ASC", solar.ascendant.longitude, candidate.ascendantLongitude), ("MC", solar.mc.longitude, candidate.mcLongitude)]
+            let houses = try AstroEngine.calcHouses(
+                jd: jd,
+                lat: candidate.chart.latitude,
+                lon: candidate.chart.longitude,
+                system: config.houseSystem.swissEphemerisCode
+            )
+            let pairs = [("ASC", houses.asc, candidate.ascendantLongitude), ("MC", houses.mc, candidate.mcLongitude)]
             guard let match = pairs.map({ ($0.0, RectificationScoringSupport.closestAspect(source: $0.1, target: $0.2)) }).min(by: { $0.1.1 < $1.1.1 }), match.1.1 <= 4 * config.orbMultiplier else { continue }
-            let rule = RectificationSymbolismRules.rule(for: event.type)
-            let fit: RectificationSymbolicFit = (match.0 == "ASC" && rule.houses.contains(1)) || (match.0 == "MC" && rule.houses.contains(10)) ? .strong : .moderate
-            output.append(RectificationEvidence(
-                id: UUID(), eventID: event.id, technique: technique,
-                factor: "Ángulo de revolución solar \(match.1.0.label) \(match.0)",
-                exactDate: nil, eventDate: event.dateStart, deltaDays: nil, orbDegrees: match.1.1,
-                symbolicFit: fit,
-                score: RectificationScoringSupport.evidenceScore(event: event, technique: technique, config: config, fit: fit, closeness: 1 - match.1.1 / max(0.01, 4 * config.orbMultiplier), techniqueQuality: 0.65),
-                explanation: "La revolución del año repite un ángulo natal de la candidata.",
-                debugData: ["year": String(year), "angle": match.0, "aspect": match.1.0.rawValue]
-            ))
+            for event in events {
+                let rule = RectificationSymbolismRules.rule(for: event.type)
+                let fit: RectificationSymbolicFit = (match.0 == "ASC" && rule.houses.contains(1)) || (match.0 == "MC" && rule.houses.contains(10)) ? .strong : .moderate
+                output.append(RectificationEvidence(
+                    id: UUID(), eventID: event.id, technique: technique,
+                    factor: "Ángulo de revolución solar \(match.1.0.label) \(match.0)",
+                    exactDate: nil, eventDate: event.dateStart, deltaDays: nil, orbDegrees: match.1.1,
+                    symbolicFit: fit,
+                    score: RectificationScoringSupport.evidenceScore(event: event, technique: technique, config: config, fit: fit, closeness: 1 - match.1.1 / max(0.01, 4 * config.orbMultiplier), techniqueQuality: 0.65),
+                    explanation: "La revolución del año repite un ángulo natal de la candidata.",
+                    debugData: ["year": String(year), "angle": match.0, "aspect": match.1.0.rawValue]
+                ))
+            }
         }
         return output
     }

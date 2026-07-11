@@ -104,9 +104,10 @@ Pulsa **Añadir evento** y completa cada fila:
 - **Tipo**: categoría simbólica del evento.
 - **Fecha**: fecha inicial conocida o estimada.
 - **Precisión**: día exacto, semana, mes, trimestre, año o rango.
+- **Fiabilidad**: cierta/documentada, probable, incierta o informada por terceros.
 - **Importancia**: escala de 1 a 5.
 
-La precisión modifica el peso: día, semana y mes son más discriminantes que trimestre o año. Los eventos aproximados por trimestre o año pueden aportar contexto, pero no cuentan para satisfacer por sí solos el mínimo operativo. Un evento debe ser posterior al nacimiento, no futuro y tener un título.
+La precisión y la fiabilidad son dimensiones independientes. Una fecha exacta comunicada por terceros conserva su precisión temporal, pero pesa menos que un documento cierto. Los multiplicadores de fiabilidad son 1,00 para cierta, 0,85 para probable, 0,65 para incierta y 0,55 para terceros. Los eventos aproximados por trimestre o año pueden aportar contexto, pero no cuentan para satisfacer por sí solos el mínimo operativo. Un evento debe ser posterior al nacimiento, no futuro y tener un título.
 
 Buenas prácticas:
 
@@ -132,6 +133,7 @@ En **Configuración profesional** se puede controlar:
 
 - **Escuela**: Tradicional, Equilibrada o Moderna.
 - **Casas**: sistema de casas usado para recalcular cada candidata.
+- **Comparar todos los sistemas de casas**: ejecuta el análisis con Placidus, Signos completos, Iguales, Regiomontanus, Campanus y Porfirio; conserva como resultado principal el sistema con mejor candidata y muestra convergencia o dispersión horaria.
 - **Multiplicador de orbe**: estrecha o amplía de forma explícita los orbes técnicos.
 - **Planetas modernos**: permite excluir Urano, Neptuno y Plutón de los tránsitos angulares.
 - **Ventana cluster**: separación temporal usada para agrupar candidatas cercanas.
@@ -153,6 +155,8 @@ Pulsa **Analizar candidatas**. La barra indica el progreso y **Cancelar** detien
 
 El motor realiza una pasada gruesa, selecciona las zonas más prometedoras y las refina. Todo el cálculo base es local y no llama a Anthropic ni OpenRouter.
 
+La pantalla está organizada en cinco pasos internos —**Datos, Cuestionario, Eventos, Configuración y Resultado**— para poder revisar o reabrir una sesión sin recorrer un formulario monolítico. En ventanas estrechas, los controles de eventos y configuración se reorganizan verticalmente.
+
 ### Paso 8 — Revisar el resultado
 
 No guardes inmediatamente la primera fila. Revisa, en este orden:
@@ -164,6 +168,8 @@ No guardes inmediatamente la primera fila. Revisa, en este orden:
 5. evidencias de la candidata principal;
 6. coherencia entre varias técnicas;
 7. posibles cambios de Ascendente, MC o secta dentro del rango.
+
+Abre **Cobertura por evento** para ver el número y nombre de las técnicas que sostienen cada hecho. Si se activó la comparación multisistema, revisa también **Comparación de sistemas de casas** antes de guardar la candidata.
 
 ### Paso 9 — Guardar la candidata
 
@@ -253,7 +259,19 @@ Para la candidata principal, AstroMalik muestra:
 
 La penalización aumenta cuando una parte desproporcionada del resultado procede de un solo evento o técnica, y también controla la complejidad al habilitar muchas técnicas. Su fuerza se regula entre 0 y 1. Desactivarla puede ser útil para auditoría comparativa, pero no convierte el score bruto en una medida más objetiva.
 
-### 6.7. Advertencias
+### 6.7. Política heurística de scoring
+
+Los umbrales son una política interna auditable, no probabilidades empíricas:
+
+- banda alta de candidata a partir de 55 puntos;
+- banda media a partir de 30 puntos;
+- confianza global alta exige además 6 eventos y una ventaja mínima de 8 puntos;
+- confianza global media exige una ventaja mínima de 3 puntos;
+- la primera técnica adicional que confirma un evento aporta el 20 % de su evidencia y las siguientes el 10 % cada una, con límite total de 100 por evento.
+
+Estos valores están centralizados en `RectificationScoringPolicy`. Son valores conservadores de sistema experto pendientes de calibración sobre un corpus mayor; por eso no se presentan como controles libres en la interfaz.
+
+### 6.8. Advertencias
 
 Presta especial atención a:
 

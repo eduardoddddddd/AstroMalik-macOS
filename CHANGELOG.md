@@ -4,7 +4,20 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ## [Unreleased]
 
-Sin cambios documentados todavía.
+### Mejorado — rectificación profesional
+
+- Caché de efemérides de tránsito por evento y cálculo angular ligero de revoluciones solares, deduplicado por año.
+- Comparación opcional y auditable entre los seis sistemas de casas, con sistema ganador y aviso de convergencia o dispersión horaria.
+- Fiabilidad del evento incorporada al score y editable como cierta, probable, incierta o informada por terceros.
+- Flujo SwiftUI en cinco pasos, formularios adaptables y componentes separados para evitar filas rotas en ventanas estrechas.
+- Cobertura por evento y comparación de sistemas visibles en UI, PDF y notas Joplin.
+- Política heurística de score centralizada y documentada; eliminado el diagnóstico duplicado que nunca se rellenaba en el resultado.
+- Configuración restaurada correctamente al reabrir o importar una sesión.
+- Pruebas de caché, fiabilidad, política y evaluación multisistema.
+
+### Validación
+
+- Suite completa: 390 tests, 1 omitido, 0 fallos.
 
 ## [1.1.2] — 2026-07-11
 

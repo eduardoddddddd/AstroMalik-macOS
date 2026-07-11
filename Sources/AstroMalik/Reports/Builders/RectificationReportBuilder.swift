@@ -31,6 +31,17 @@ enum RectificationReportBuilder {
         let questionnaire = session.ascendantQuestionnaire?.preliminarySignLabel.map {
             "<p>Hipótesis preliminar del cuestionario: <strong>Ascendente en \(escape($0))</strong>. Señal orientativa de baja ponderación.</p>"
         } ?? ""
+        let coverage = session.events.map { event in
+            let techniques = Array(Set(result.topCandidate?.evidence.filter { $0.eventID == event.id }.map(\.technique) ?? []))
+                .sorted { $0.label < $1.label }
+            return "<tr><td>\(escape(event.title))</td><td>\(escape(event.confidence.label))</td><td>\(result.eventCoverage[event.id, default: 0])</td><td>\(escape(techniques.map(\.label).joined(separator: ", ")))</td></tr>"
+        }.joined()
+        let houseSystems = result.resolvedHouseSystemEvaluations.map {
+            "<tr><td>\(escape($0.houseSystem.label))</td><td>\(escape($0.topBirthTime))</td><td>\(String(format: "%.1f", $0.topScore))</td><td>\(escape($0.confidence.rawValue))</td></tr>"
+        }.joined()
+        let houseSystemSection = houseSystems.isEmpty ? "" : """
+        <h2>Comparación de sistemas de casas</h2><table><thead><tr><th>Sistema</th><th>Hora</th><th>Score</th><th>Confianza</th></tr></thead><tbody>\(houseSystems)</tbody></table>
+        """
         let narrativeHTML = narrative.map { "<section><h2>Comparación narrativa opcional</h2><pre>\(escape($0.markdown))</pre><p>\(escape($0.provider.label)) · \(escape($0.model)) · \($0.inputTokens)/\($0.outputTokens) tokens</p></section>" } ?? ""
         return """
         <!doctype html><html lang="es"><head><meta charset="utf-8"><style>
@@ -43,6 +54,8 @@ enum RectificationReportBuilder {
         <h2>Candidatas principales</h2><table><thead><tr><th>#</th><th>Hora</th><th>ASC</th><th>MC</th><th>Score</th></tr></thead><tbody>\(candidates)</tbody></table>
         <h2>Clusters horarios</h2><table><thead><tr><th>Rango</th><th>ASC</th><th>Media</th><th>Candidatas</th></tr></thead><tbody>\(clusters)</tbody></table>
         <h2>Control anti-overfitting</h2>\(diagnostics)
+        <h2>Cobertura por evento</h2><table><thead><tr><th>Evento</th><th>Fiabilidad</th><th>Técnicas</th><th>Detalle</th></tr></thead><tbody>\(coverage)</tbody></table>
+        \(houseSystemSection)
         <h2>Advertencias</h2><ul>\(warnings)</ul>
         <h2>Evidencias de la candidata principal</h2><table><thead><tr><th>Técnica</th><th>Factor</th><th>Score</th><th>Explicación</th></tr></thead><tbody>\(evidence)</tbody></table>
         \(narrativeHTML)
@@ -81,6 +94,19 @@ enum RectificationNoteBuilder {
         }
         if let diagnostics = result.topCandidate?.overfittingDiagnostics {
             lines += ["", "## Control anti-overfitting", "- Score bruto: \(String(format: "%.1f", diagnostics.rawScore))", "- Penalización: \(String(format: "%.1f", diagnostics.penalty))", "- Evento dominante: \(Int(diagnostics.dominantEventShare * 100)) %", "- Técnica dominante: \(Int(diagnostics.dominantTechniqueShare * 100)) %"]
+        }
+        lines += ["", "## Cobertura por evento"]
+        for event in session.events {
+            let techniques = Array(Set(result.topCandidate?.evidence.filter { $0.eventID == event.id }.map(\.technique) ?? []))
+                .sorted { $0.label < $1.label }
+            let detail = techniques.isEmpty ? "sin cobertura" : techniques.map(\.label).joined(separator: ", ")
+            lines.append("- **\(event.title)** — \(event.confidence.label), \(result.eventCoverage[event.id, default: 0]) técnicas: \(detail)")
+        }
+        if !result.resolvedHouseSystemEvaluations.isEmpty {
+            lines += ["", "## Comparación de sistemas de casas"]
+            lines += result.resolvedHouseSystemEvaluations.map {
+                "- **\($0.houseSystem.label)** — `\($0.topBirthTime)`, score \(String(format: "%.1f", $0.topScore)), confianza \($0.confidence.rawValue)"
+            }
         }
         if let sign = session.ascendantQuestionnaire?.preliminarySignLabel {
             lines += ["", "## Cuestionario preliminar", "- Hipótesis orientativa: **Ascendente en \(sign)**"]

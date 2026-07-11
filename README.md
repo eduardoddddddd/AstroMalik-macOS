@@ -110,13 +110,15 @@ La rectificación es una de las funciones centrales de AstroMalik. Compara disti
 El flujo incluye:
 
 1. selección de una carta base y un rango horario;
-2. cronología de eventos fechados con precisión e importancia;
+2. cronología de eventos fechados con precisión, fiabilidad e importancia;
 3. búsqueda gruesa y refinamiento fino de candidatas;
 4. direcciones primarias, arco solar, progresiones y tránsitos angulares;
 5. confirmaciones por profecciones, Firdaria, Zodiacal Releasing, lotes y revolución solar;
-6. ranking, clusters, comparación lado a lado y control anti-overfitting;
+6. ranking, clusters, cobertura por evento, comparación lado a lado y control anti-overfitting;
 7. guardado de la hora elegida como una carta nueva, sin sobrescribir la original;
 8. historial, JSON, PDF, Joplin y comparación narrativa opcional.
+
+La interfaz guía el trabajo en cinco pasos adaptables. Opcionalmente puede ejecutar y comparar Placidus, Signos completos, Casas iguales, Regiomontanus, Campanus y Porfirio para comprobar si la hora propuesta es estable entre sistemas.
 
 Una puntuación no es una probabilidad ni una prueba documental. Conviene revisar clusters, cobertura, advertencias y diversidad de técnicas antes de elegir una hora.
 

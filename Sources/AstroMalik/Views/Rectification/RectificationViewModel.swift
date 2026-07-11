@@ -122,6 +122,7 @@ final class RectificationViewModel: ObservableObject {
             guard let archive = try sessionStore?.load(id: id) else { return }
             session = archive.session
             result = archive.result
+            if let archivedConfig = archive.result?.configUsed { config = archivedConfig }
             narrative = archive.narrative
             errorMessage = nil
             saveMessage = "Sesión reabierta."
@@ -143,6 +144,7 @@ final class RectificationViewModel: ObservableObject {
     func importArchiveData(_ data: Data) throws {
         guard let archive = try sessionStore?.importArchive(data) else { throw CocoaError(.fileReadUnknown) }
         session = archive.session; result = archive.result; narrative = archive.narrative
+        if let archivedConfig = archive.result?.configUsed { config = archivedConfig }
         refreshSavedSessions()
     }
 

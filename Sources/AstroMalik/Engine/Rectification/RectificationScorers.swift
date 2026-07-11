@@ -34,6 +34,7 @@ enum RectificationScoringSupport {
         let score = 100
             * importance
             * event.precision.scoreMultiplier
+            * event.confidence.scoreMultiplier
             * min(1, max(0, closeness))
             * RectificationSymbolismRules.multiplier(for: fit)
             * min(1, max(0, techniqueQuality))
@@ -126,6 +127,11 @@ struct SolarArcRectificationScorer: RectificationTechniqueScorer {
 struct TransitAngleRectificationScorer: RectificationTechniqueScorer {
     let technique: RectificationTechnique = .transitsToAngles
     private let transitKeys = Set(["JUPITER", "SATURNO", "URANO", "NEPTUNO", "PLUTON", "MARTE"])
+    private let transitsByEvent: [UUID: [String: RectificationTransitBody]]
+
+    init(cache: RectificationEphemerisCache? = nil) {
+        transitsByEvent = cache?.transitsByEvent ?? [:]
+    }
 
     func evidence(candidate: RectificationCandidate, session: RectificationSession, config: RectificationConfig) throws -> [RectificationEvidence] {
         var result: [RectificationEvidence] = []
@@ -133,12 +139,19 @@ struct TransitAngleRectificationScorer: RectificationTechniqueScorer {
         let activeTransitKeys = config.useModernPlanets ? transitKeys : transitKeys.subtracting(["URANO", "NEPTUNO", "PLUTON"])
         for event in session.events {
             try Task.checkCancellation()
-            let jd = event.dateStart.timeIntervalSince1970 / RectificationScoringSupport.secondsPerDay + 2_440_587.5
-            let planets = try AstroEngine.calcPlanets(jd: jd)
+            let planets: [String: RectificationTransitBody]
+            if let cached = transitsByEvent[event.id] {
+                planets = cached
+            } else {
+                let jd = event.dateStart.timeIntervalSince1970 / RectificationScoringSupport.secondsPerDay + 2_440_587.5
+                planets = try AstroEngine.calcPlanets(jd: jd).mapValues {
+                    RectificationTransitBody(label: $0.label, longitude: $0.deg)
+                }
+            }
             for key in activeTransitKeys {
                 guard let planet = planets[key] else { continue }
                 for angle in angles {
-                    let (aspect, orb) = RectificationScoringSupport.closestAspect(source: planet.deg, target: angle.2)
+                    let (aspect, orb) = RectificationScoringSupport.closestAspect(source: planet.longitude, target: angle.2)
                     let maxOrb = (key == "MARTE" ? 1.0 : 1.5) * config.orbMultiplier
                     guard orb <= maxOrb else { continue }
                     let fit = RectificationSymbolismRules.symbolicFit(event: event, sourceKey: key, targetKey: angle.0)
