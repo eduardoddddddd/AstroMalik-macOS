@@ -4,6 +4,10 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ## [Unreleased]
 
+Sin cambios documentados todavía.
+
+## [1.1.3] — 2026-07-11
+
 ### Mejorado — rectificación profesional
 
 - Caché de efemérides de tránsito por evento y cálculo angular ligero de revoluciones solares, deduplicado por año.

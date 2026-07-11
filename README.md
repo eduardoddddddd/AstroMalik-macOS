@@ -2,7 +2,7 @@
 
 **Astrología tradicional, predictiva y documental en una aplicación privada para Mac.**
 
-[![Última versión](https://img.shields.io/badge/versión-1.1.2-blue)](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.2)
+[![Última versión](https://img.shields.io/badge/versión-1.1.3-blue)](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.3)
 ![macOS](https://img.shields.io/badge/macOS-14%2B-111111)
 ![Apple Silicon + Intel](https://img.shields.io/badge/Mac-Apple%20Silicon%20%2B%20Intel-6f42c1)
 ![Privacidad](https://img.shields.io/badge/privacidad-local--first-2ea44f)
@@ -16,11 +16,11 @@ AstroMalik reúne carta natal, lectura, rectificación de hora, técnicas predic
 
 ### 1. Descarga la aplicación
 
-**[⬇ Descargar AstroMalik 1.1.2 para macOS](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/download/v1.1.2/AstroMalik-macOS-universal.zip)**
+**[⬇ Descargar AstroMalik 1.1.3 para macOS](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/download/v1.1.3/AstroMalik-macOS-universal.zip)**
 
 No necesitas saber usar GitHub. El enlace anterior descarga directamente un archivo ZIP. Al abrirlo aparecerá `AstroMalik.app`; arrástralo a la carpeta **Aplicaciones**.
 
-También puedes consultar la [página de la versión 1.1.2](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.2), donde están el checksum y la versión de terminal.
+También puedes consultar la [página de la versión 1.1.3](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.3), donde están el checksum y la versión de terminal.
 
 ### 2. Comprueba que tu Mac sea compatible
 
@@ -258,10 +258,10 @@ scripts/            Empaquetado y utilidades
 
 ## Estado del proyecto
 
-- Última versión estable: **1.1.2**.
+- Última versión estable: **1.1.3**.
 - Aplicación y CLI universales: **ARM64 + Intel**.
 - Deployment target: **macOS 14**.
-- Validación: **386 tests, 1 omitido, 0 fallos**.
+- Validación: **390 tests, 1 omitido, 0 fallos**.
 - Automatización: GitHub Actions genera artefactos universales y los adjunta a cada release etiquetada.
 
 Consulta los cambios de cada versión en [CHANGELOG.md](CHANGELOG.md).
