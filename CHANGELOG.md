@@ -31,9 +31,8 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Agrupados los aspectos recíprocos A→B y B→A en un único contacto geométrico,
   evitando que una misma línea entre cartas aparezca como dos tarjetas
   independientes.
-- Cada contacto conserva sus dos perspectivas direccionales y muestra ambos
-  textos largos completos de entrada, sin `DisclosureGroup`, pestañas ni
-  controles «Leer más».
+- Cada contacto muestra su lectura plegada con un control «Leer más» para el
+  desarrollo completo.
 - Sustituidos en tiempo de presentación todos los marcadores internos por los
   nombres reales de las cartas, incluidos «persona A/B», tokens autónomos como
   «de A» o «B puede» y notaciones como «A→B». Si una carta no tiene nombre, se
@@ -66,8 +65,8 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 #### Validación
 
-- Verificadas 500 claves únicas, textos largos de 1.919–2.397 caracteres,
-  idioma español, calidad 5 y ausencia de vocabulario temporal prohibido.
+- Verificadas 500 claves únicas, idioma español, calidad 5 y ausencia de
+  vocabulario temporal prohibido.
 - Migración ejecutada dos veces sobre una copia temporal: 500 filas finales y
   `PRAGMA integrity_check = ok`.
 - `scripts/corpus_pipeline.py smoke-test`, generación reproducible, firma de la
@@ -75,10 +74,76 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 - Test exhaustivo sobre las 500 entradas, `texto_corto` y `texto_largo` en
   ambas direcciones: **2.000 presentaciones** con los dos nombres reales y
   ningún marcador A/B residual.
-- Suite completa tras integrar corpus y nueva lectura: **396 pruebas, 1
+- Suite completa tras integrar corpus y nueva lectura: **404 pruebas, 1
   omitida y 0 fallos**.
 - Metodología, fuentes, derechos, arquitectura y límites documentados en
   `docs/synastry-corpus-v2.md`.
+
+### Corregido — auditoría del módulo de sinastría
+
+#### Concordancia de género
+
+- Corregidos **200 de los 500 textos** (40%): estaban redactados sobre el
+  sustantivo «persona», femenino en castellano, de modo que al sustituirlo por
+  un nombre propio masculino la concordancia se rompía («Carlos necesita ser
+  reconocida», «una parte de sí misma»). Afectaba a Sol, Mercurio, Venus y
+  Saturno como planeta receptor, más el perfil del sextil.
+- El generador rechaza ahora cualquier adjetivo o participio que concuerde en
+  género con el rol de A o de B.
+
+#### Balance de armonía y fricción
+
+- El balance medía la tabla de orbes, no la pareja. La ventana angular armónica
+  (24°) es más ancha que la de fricción (22°), lo que producía una base de
+  0.522 con umbrales 0.62/0.38 descentrados: «predomina la facilidad» aparecía
+  el doble de veces que «predomina la fricción» (19,2% frente a 9,4%).
+- El peso de cada contacto pasa a ser importancia × exactitud ÷ anchura angular
+  del aspecto, de modo que todos los tipos de aspecto aporten lo mismo en
+  promedio. Antes una cuadratura a 7,9° pesaba igual que un trígono a 0,1°.
+- Las conjunciones dejan de excluirse del balance y se reparten por valencia
+  según los planetas implicados.
+- El punto neutro se calcula al arranque sobre la parrilla completa de puntos
+  y los umbrales son simétricos a su alrededor. Veredictos resultantes: 22,0%
+  facilidad, 20,0% fricción, 58,0% mixto.
+- Las reciprocidades se limitan a pares con carga relacional; antes aceptaban
+  cualquier par, incluido Neptuno–Plutón, y aparecían en el 98,5% de las
+  sinastrías. Ahora en el 60,3%.
+- El tema central pondera relieve además de exactitud: involucra una luminaria
+  o un ángulo en el 100% de los casos, frente al 46,8% anterior.
+
+#### Ángulos y casas
+
+- Ascendente y Medio cielo entran en la comparación; antes solo se recorrían
+  los diez planetas y los contactos a los ángulos eran invisibles. Se excluye
+  ángulo contra ángulo.
+- Orbes ponderados por par: ángulos 5°, luminarias 8°, personal–personal 6° y
+  lento–lento 4°, en lugar de 5–8° planos que generaban ruido generacional.
+- Los contactos angulares, ausentes del corpus, reciben texto generado que
+  identifica la oposición al Ascendente como conjunción al Descendente y
+  advierte de su dependencia de la hora exacta de nacimiento.
+- Las casas mutuas, que solo aparecían en el PDF, se muestran en pantalla.
+
+#### Jerarquía planetaria
+
+- El agente y el receptor se reparten por velocidad en lugar de asumir que A
+  actúa y B recibe: en un Luna–Saturno estructura la persona Saturno, sea A o
+  B. La plantilla invertía la dinámica clásica en la mitad de las entradas.
+- Corregidas doce referencias A/B incrustadas en los perfiles de planeta y de
+  aspecto que quedaban al revés al intercambiar los papeles.
+- La recepción se modula por aspecto; antes era idéntica en trígono y en
+  cuadratura.
+- Como consecuencia, las dos lecturas direccionales de planetas distintos
+  describen la misma dinámica y se solapan al 99%, así que se muestra una sola.
+  Los contactos de un planeta consigo mismo conservan ambas, que son un espejo
+  real.
+
+#### Limpieza
+
+- Retirados el conmutador «Mostrar sin texto», el contador de aspectos sin
+  texto y el distintivo de número de lecturas: con el corpus completo y la
+  geometría simétrica sus valores eran constantes.
+- `SynastryPointClass` unifica la clasificación de puntos, duplicada hasta
+  ahora en tres lugares con criterios divergentes.
 
 ## [1.1.3] — 2026-07-11
 
