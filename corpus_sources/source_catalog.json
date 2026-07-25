@@ -2,6 +2,58 @@
   "version": 1,
   "sources": [
     {
+      "id": "ptolemy_tetrabiblos_ashmand_gutenberg",
+      "author": "Claudius Ptolemy / J. M. Ashmand",
+      "title": "Tetrabiblos or Quadripartite",
+      "year": 1822,
+      "module_scope": ["synastry", "natal", "general_doctrine"],
+      "url": "https://www.gutenberg.org/cache/epub/70850/pg70850.txt",
+      "landing_url": "https://www.gutenberg.org/ebooks/70850",
+      "format": "txt",
+      "rights_status": "public_domain",
+      "license_note": "Ancient work and 1822 English translation; Project Gutenberg marks the ebook public domain in the USA. Used for doctrine in Book IV, chapters V and VII, not copied into production text.",
+      "priority": 1
+    },
+    {
+      "id": "sepharial_astrology_gutenberg",
+      "author": "Sepharial",
+      "title": "Astrology: How to Make and Read Your Own Horoscope",
+      "year": 1920,
+      "module_scope": ["synastry", "natal", "general_doctrine"],
+      "url": "https://www.gutenberg.org/cache/epub/46963/pg46963.txt",
+      "landing_url": "https://www.gutenberg.org/ebooks/46963",
+      "format": "txt",
+      "rights_status": "public_domain",
+      "license_note": "Author died in 1929; Project Gutenberg marks the ebook public domain in the USA. Used for historical chart-comparison doctrine and planetary significations.",
+      "priority": 1
+    },
+    {
+      "id": "heindel_message_stars_chapter_6_wikisource",
+      "author": "Max Heindel / Augusta Foss Heindel",
+      "title": "The Message of the Stars, Chapter VI: The Intrinsic Nature of the Planets",
+      "year": 1918,
+      "module_scope": ["synastry", "natal", "general_doctrine"],
+      "url": "https://en.wikisource.org/wiki/The_Message_of_the_Stars/Chapter_6",
+      "landing_url": "https://en.wikisource.org/wiki/The_Message_of_the_Stars",
+      "format": "html",
+      "rights_status": "public_domain",
+      "license_note": "Wikisource marks the work public domain worldwide. Used for the method of combining intrinsic planetary natures without treating a planet as automatically good or evil.",
+      "priority": 1
+    },
+    {
+      "id": "alan_leo_how_to_judge_nativity_1912",
+      "author": "Alan Leo",
+      "title": "How to Judge a Nativity",
+      "year": 1912,
+      "module_scope": ["synastry", "natal", "general_doctrine"],
+      "url": "https://bibliotecaparticular.casafernandopessoa.pt/1-94/2/1-94_master/1-94_PDF/1-94_0001_1-121_t24-C-R0072.pdf",
+      "landing_url": "https://bibliotecaparticular.casafernandopessoa.pt/1-94",
+      "format": "pdf",
+      "rights_status": "public_domain",
+      "license_note": "Alan Leo died in 1917; the 1912 work is public domain in the EU. Used as supporting doctrine for synthesis and contextual reading, not as copied production prose.",
+      "priority": 2
+    },
+    {
       "id": "lilly_christian_astrology_1659_commons",
       "author": "William Lilly",
       "title": "Christian Astrology",

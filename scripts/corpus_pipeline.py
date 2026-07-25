@@ -48,6 +48,17 @@ PD_SEED_SQL = ROOT / "Resources" / "migrations" / "001_primary_direction_meaning
 
 
 SEARCH_TERMS = {
+    "synastry": [
+        "both nativities",
+        "friendship",
+        "enmity",
+        "compare their horoscopes",
+        "comparison of the horoscopes",
+        "intrinsic nature of the planets",
+        "marriage",
+        "sympathy",
+        "antipathy",
+    ],
     "primary_directions": [
         "direction",
         "directions",
@@ -124,6 +135,8 @@ def download_sources(force: bool = False) -> list[SourceResult]:
 
     for source in load_catalog()["sources"]:
         destination = output_path_for(source)
+        if destination.exists() and destination.stat().st_size == 0:
+            destination.unlink()
         if destination.exists() and not force:
             results.append(
                 SourceResult(
@@ -161,7 +174,10 @@ def download_url(url: str, destination: Path, headers: dict[str, str]) -> None:
     request = urllib.request.Request(url, headers=headers)
     try:
         with urllib.request.urlopen(request, timeout=90) as response:
-            destination.write_bytes(response.read())
+            payload = response.read()
+            if not payload:
+                raise OSError(f"download returned an empty body: {url}")
+            destination.write_bytes(payload)
         return
     except urllib.error.URLError as urllib_error:
         if not command_exists("curl"):
@@ -183,10 +199,13 @@ def download_url(url: str, destination: Path, headers: dict[str, str]) -> None:
         ],
         timeout=300,
     )
-    if result.returncode != 0:
+    if result.returncode != 0 or not destination.exists() or destination.stat().st_size == 0:
         if destination.exists():
             destination.unlink()
-        raise OSError(result.stderr.strip() or f"curl failed with {result.returncode}")
+        detail = result.stderr.strip() or f"curl failed with {result.returncode}"
+        if result.returncode == 0:
+            detail = f"download returned an empty body: {url}"
+        raise OSError(detail)
 
 
 def command_exists(name: str) -> bool:
@@ -244,6 +263,11 @@ def extract_sources() -> list[SourceResult]:
             if fmt == "html":
                 text = strip_html(raw_path.read_text(encoding="utf-8", errors="ignore"))
                 text_path.write_text(text, encoding="utf-8")
+            elif fmt == "txt":
+                text_path.write_text(
+                    normalize_text(raw_path.read_text(encoding="utf-8", errors="ignore")),
+                    encoding="utf-8",
+                )
             elif fmt == "pdf" and command_exists("pdftotext"):
                 result = run_command(["pdftotext", "-layout", str(raw_path), str(text_path)], timeout=300)
                 if result.returncode != 0:
@@ -472,12 +496,21 @@ def iter_text_sources() -> Iterable[tuple[str, str, str]]:
         yield path.stem, path.stem, path.read_text(encoding="utf-8", errors="ignore")
 
 
-def find_candidates_for_terms(module: str, terms: list[str], limit: int = 80) -> list[dict[str, str]]:
+def find_candidates_for_terms(
+    module: str,
+    terms: list[str],
+    limit: int = 80,
+    per_source_limit: int | None = None,
+    allowed_source_ids: set[str] | None = None,
+) -> list[dict[str, str]]:
     candidates: list[dict[str, str]] = []
     term_regex = re.compile("|".join(re.escape(term) for term in terms), re.IGNORECASE)
     page_regex = re.compile(r"(?:page|pagina|p[áa]gina|PÁGINA)\s+([0-9]+)", re.IGNORECASE)
 
     for source_id, source_name, text in iter_text_sources():
+        if allowed_source_ids is not None and source_id not in allowed_source_ids:
+            continue
+        source_candidates = 0
         for match in term_regex.finditer(text):
             start = max(0, match.start() - 360)
             end = min(len(text), match.end() + 520)
@@ -499,8 +532,11 @@ def find_candidates_for_terms(module: str, terms: list[str], limit: int = 80) ->
                     "notes": f"Matched term: {match.group(0)}",
                 }
             )
+            source_candidates += 1
             if len(candidates) >= limit:
                 return candidates
+            if per_source_limit is not None and source_candidates >= per_source_limit:
+                break
     return candidates
 
 
@@ -543,8 +579,23 @@ def build_staging() -> None:
         )
 
     entries = harvest_horaria_yaml()
+    catalog_sources = load_catalog()["sources"]
     for module, terms in SEARCH_TERMS.items():
-        entries.extend(find_candidates_for_terms(module, terms))
+        allowed_source_ids = None
+        if module == "synastry":
+            allowed_source_ids = {
+                source["id"]
+                for source in catalog_sources
+                if module in source.get("module_scope", [])
+            }
+        entries.extend(
+            find_candidates_for_terms(
+                module,
+                terms,
+                per_source_limit=12 if module == "synastry" else None,
+                allowed_source_ids=allowed_source_ids,
+            )
+        )
 
     for entry in entries:
         conn.execute(

@@ -439,6 +439,7 @@ final class MigrationRunnerTests: XCTestCase {
         XCTAssertTrue(MigrationRunner.isCorpusMigration("001_primary_direction_meanings.sql"))
         XCTAssertTrue(MigrationRunner.isCorpusMigration("003_primary_direction_ecliptic_meanings.sql"))
         XCTAssertTrue(MigrationRunner.isCorpusMigration("006_populate_pd_classical_corpus.sql"))
+        XCTAssertTrue(MigrationRunner.isCorpusMigration("008_synastry_corpus_v2.sql"))
         XCTAssertFalse(MigrationRunner.isCorpusMigration("002_primary_directions_interpretations.sql"))
     }
 }

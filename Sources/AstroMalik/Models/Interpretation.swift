@@ -6,6 +6,7 @@ struct Interpretation: Identifiable, Codable, Equatable {
     var tipo: InterpretationType
     var titulo: String
     var texto: String
+    var textoCorto: String? = nil
     var fuente: String
     var orden: Int
 }

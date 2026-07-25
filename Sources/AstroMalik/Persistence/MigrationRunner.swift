@@ -8,6 +8,7 @@ import Foundation
 //   001_*.sql → corpus.db (primero se copia a writable si es solo lectura en bundle)
 //   003_primary_direction_ecliptic_meanings.sql → corpus.db
 //   006_*.sql → corpus.db (curación clásica de Direcciones Primarias)
+//   008_*.sql → corpus.db (sustitución curada del corpus de sinastría)
 //   002_*.sql → user.db  (lectura-escritura directo)
 //   N*_*.sql  → user.db  (por defecto para migraciones futuras)
 //
@@ -140,7 +141,8 @@ final class MigrationRunner {
     static func isCorpusMigration(_ name: String) -> Bool {
         name.hasPrefix("001_") ||
         name == "003_primary_direction_ecliptic_meanings.sql" ||
-        name.hasPrefix("006_")
+        name.hasPrefix("006_") ||
+        name.hasPrefix("008_")
     }
 
     /// Aplica una migración si no ha sido aplicada ya.

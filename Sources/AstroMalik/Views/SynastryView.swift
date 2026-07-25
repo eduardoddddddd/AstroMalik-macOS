@@ -63,7 +63,7 @@ struct SynastryView: View {
     private var controls: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .bottom, spacing: 14) {
-                chartPicker(title: "Persona A", selection: $chartAID)
+                chartPicker(fallbackTitle: "Primera carta", selection: $chartAID)
                 Button {
                     swap(&chartAID, &chartBID)
                     reading = nil
@@ -73,7 +73,7 @@ struct SynastryView: View {
                 }
                 .buttonStyle(.bordered)
                 .help("Intercambiar cartas")
-                chartPicker(title: "Persona B", selection: $chartBID)
+                chartPicker(fallbackTitle: "Segunda carta", selection: $chartBID)
                 Spacer()
                 Toggle("Mostrar sin texto", isOn: $showAspectsWithoutText)
                     .toggleStyle(.checkbox)
@@ -103,14 +103,17 @@ struct SynastryView: View {
         .background(Color.appPanel)
     }
 
-    private func chartPicker(title: String, selection: Binding<UUID?>) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text(title)
+    private func chartPicker(fallbackTitle: String, selection: Binding<UUID?>) -> some View {
+        let selectedName = selection.wrappedValue
+            .flatMap { id in charts.first(where: { $0.id == id }) }
+            .map { SynastryNaming.displayName(for: $0) }
+        return VStack(alignment: .leading, spacing: 5) {
+            Text(selectedName ?? fallbackTitle)
                 .font(.caption.weight(.semibold))
                 .foregroundColor(.secondary)
-            Picker(title, selection: selection) {
+            Picker(fallbackTitle, selection: selection) {
                 ForEach(charts) { chart in
-                    Text(chart.name.isEmpty ? chart.birthDate : chart.name)
+                    Text(SynastryNaming.displayName(for: chart))
                         .tag(Optional(chart.id))
                 }
             }
@@ -122,17 +125,11 @@ struct SynastryView: View {
     private func results(_ reading: SynastryReading) -> some View {
         VStack(spacing: 0) {
             summaryBar(reading)
-            SynastryWheelView(
-                reading: reading,
-                aspects: visibleAspects(reading)
-            )
-            .frame(minHeight: 300, idealHeight: 340, maxHeight: 380)
-            .padding(18)
-            Divider()
             ScrollView {
-                LazyVStack(alignment: .leading, spacing: 14) {
-                    section(reading, direction: .aToB)
-                    section(reading, direction: .bToA)
+                LazyVStack(alignment: .leading, spacing: 22) {
+                    overview(reading)
+                    highlightedSection(reading)
+                    remainingSections(reading)
                 }
                 .padding(18)
             }
@@ -164,7 +161,7 @@ struct SynastryView: View {
             .buttonStyle(.bordered)
             .disabled(isCreatingNote)
             PDFExportButton(
-                chartName: "\(displayName(reading.chartA)) + \(displayName(reading.chartB))",
+                chartName: "\(nameA(reading)) + \(nameB(reading))",
                 reportType: "Informe de sinastría",
                 generate: { pageSize in
                     try await SynastryReportBuilder.generate(from: reading, pageSize: pageSize)
@@ -177,46 +174,129 @@ struct SynastryView: View {
         .background(Color.appSurface)
     }
 
-    private func section(_ reading: SynastryReading, direction: SynastryDirection) -> some View {
-        let items = displayedAspects(reading, direction: direction)
+    private func overview(_ reading: SynastryReading) -> some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(alignment: .top, spacing: 18) {
+                synthesisCard(reading)
+                    .frame(maxWidth: .infinity, alignment: .top)
+                wheel(reading)
+                    .frame(width: 360, height: 300)
+            }
+            VStack(spacing: 18) {
+                synthesisCard(reading)
+                wheel(reading)
+                    .frame(height: 320)
+            }
+        }
+    }
+
+    private func synthesisCard(_ reading: SynastryReading) -> some View {
+        SynastrySynthesisCard(
+            contacts: visibleContacts(reading),
+            chartAName: nameA(reading),
+            chartBName: nameB(reading)
+        )
+    }
+
+    private func wheel(_ reading: SynastryReading) -> some View {
+        SynastryWheelView(
+            reading: reading,
+            aspects: visibleContacts(reading).compactMap(\.representativeAspect),
+            chartAName: nameA(reading),
+            chartBName: nameB(reading)
+        )
+    }
+
+    private func highlightedSection(_ reading: SynastryReading) -> some View {
+        let contacts = highlightedContacts(reading)
         return VStack(alignment: .leading, spacing: 10) {
-            Text(sectionTitle(reading, direction: direction))
-                .appSectionHeader()
-            if items.isEmpty {
-                Text("No hay aspectos con texto en esta dirección.")
+            HStack(alignment: .firstTextBaseline) {
+                Text("Contactos destacados")
+                    .appSectionHeader()
+                Spacer()
+                Text("\(contacts.count)")
+                    .font(.caption.monospacedDigit().weight(.semibold))
+                    .foregroundColor(.secondary)
+            }
+            Text("Luminarias y funciones personales con orbe de hasta 3°.")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            if contacts.isEmpty {
+                Text("No hay contactos personales dentro de este umbral; el tema central sigue señalado en la síntesis.")
                     .font(.callout)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .appCard()
             } else {
-                ForEach(items) { aspect in
-                    SynastryAspectRow(aspect: aspect)
+                ForEach(contacts) { contact in
+                    SynastryContactCard(
+                        contact: contact,
+                        chartAName: nameA(reading),
+                        chartBName: nameB(reading),
+                        prominent: true
+                    )
                 }
             }
         }
     }
 
-    private func displayedAspects(_ reading: SynastryReading, direction: SynastryDirection) -> [SynastryAspect] {
-        visibleAspects(reading)
-            .filter { $0.direction == direction }
-    }
+    @ViewBuilder
+    private func remainingSections(_ reading: SynastryReading) -> some View {
+        let highlightedIDs = Set(highlightedContacts(reading).map(\.id))
+        let remaining = visibleContacts(reading).filter { !highlightedIDs.contains($0.id) }
+        let personal = remaining.filter { $0.interpretivePriority <= 1 }
+        let personalSlow = remaining.filter { $0.interpretivePriority == 2 }
+        let generational = remaining.filter(\.isPrimarilyGenerational)
 
-    private func visibleAspects(_ reading: SynastryReading) -> [SynastryAspect] {
-        reading.aspects
-            .filter { showAspectsWithoutText || $0.hasText }
-            .sorted {
-                if $0.hasText != $1.hasText { return $0.hasText && !$1.hasText }
-                return $0.orb < $1.orb
-            }
-    }
-
-    private func sectionTitle(_ reading: SynastryReading, direction: SynastryDirection) -> String {
-        switch direction {
-        case .aToB:
-            return "\(displayName(reading.chartA)) sobre \(displayName(reading.chartB))"
-        case .bToA:
-            return "\(displayName(reading.chartB)) sobre \(displayName(reading.chartA))"
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Resto de contactos")
+                .appSectionHeader()
+            Text("Todas las interpretaciones están visibles; los grupos solo conservan el orden editorial.")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            SynastryContactSection(
+                title: "Otros contactos personales y sociales",
+                contacts: personal,
+                chartAName: nameA(reading),
+                chartBName: nameB(reading)
+            )
+            SynastryContactSection(
+                title: "Contactos personal–lento",
+                contacts: personalSlow,
+                chartAName: nameA(reading),
+                chartBName: nameB(reading)
+            )
+            SynastryContactSection(
+                title: "Contactos generacionales",
+                contacts: generational,
+                chartAName: nameA(reading),
+                chartBName: nameB(reading),
+                subtitle: "\(generational.count) contactos generacionales"
+            )
         }
+    }
+
+    private func visibleContacts(_ reading: SynastryReading) -> [SynastryContact] {
+        reading.contacts
+            .filter { showAspectsWithoutText || $0.hasText }
+            .sorted(by: SynastryContact.editorialOrder)
+    }
+
+    private func highlightedContacts(_ reading: SynastryReading) -> [SynastryContact] {
+        let personalKeys: Set<String> = ["SOL", "LUNA", "MERCURIO", "VENUS", "MARTE"]
+        return visibleContacts(reading).filter {
+            $0.orb <= 3
+                && (personalKeys.contains($0.chartAPlanetKey)
+                    || personalKeys.contains($0.chartBPlanetKey))
+        }
+    }
+
+    private func nameA(_ reading: SynastryReading) -> String {
+        SynastryNaming.displayName(for: reading.chartA)
+    }
+
+    private func nameB(_ reading: SynastryReading) -> String {
+        SynastryNaming.displayName(for: reading.chartB)
     }
 
     private var readyState: some View {
@@ -293,7 +373,7 @@ struct SynastryView: View {
             do {
                 let service = JoplinClipperService(settings: settings)
                 try await service.createNote(
-                    title: "Sinastría - \(displayName(reading.chartA)) y \(displayName(reading.chartB))",
+                    title: "Sinastría - \(nameA(reading)) y \(nameB(reading))",
                     body: SynastryNoteBuilder.markdown(reading: reading)
                 )
                 guard !Task.isCancelled else { return }
@@ -307,80 +387,285 @@ struct SynastryView: View {
     }
 }
 
-private struct SynastryAspectRow: View {
-    let aspect: SynastryAspect
-    @State private var expanded = false
+private struct SynastrySynthesisCard: View {
+    let contacts: [SynastryContact]
+    let chartAName: String
+    let chartBName: String
+
+    private var synthesis: SynastrySynthesis {
+        SynastrySynthesis.build(from: contacts.filter(\.hasText))
+    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Button {
-                expanded.toggle()
-            } label: {
-                HStack(alignment: .top, spacing: 12) {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(title)
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundColor(.appPrimaryText)
-                            .multilineTextAlignment(.leading)
-                        HStack(spacing: 8) {
-                            Text("Orbe \(String(format: "%.2f°", aspect.orb))")
-                            Text(aspect.corpusClave)
-                        }
-                        .font(.caption.monospacedDigit())
-                        .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                    Image(systemName: expanded ? "chevron.up" : "chevron.down")
+        VStack(alignment: .leading, spacing: 15) {
+            HStack {
+                Label("Síntesis de \(chartAName) y \(chartBName)", systemImage: "sparkles")
+                    .font(.headline)
+                    .foregroundColor(.appPrimaryText)
+                Spacer()
+                Text("\(contacts.count) contactos únicos")
+                    .font(.caption.monospacedDigit())
+                    .foregroundColor(.secondary)
+            }
+
+            Text(synthesis.balanceText)
+                .font(.callout)
+                .foregroundColor(.appPrimaryText.opacity(0.9))
+                .lineSpacing(3)
+
+            HStack(spacing: 9) {
+                scoreBadge(
+                    "Armonía \(score(synthesis.harmonyScore))",
+                    color: Color(hex: "#15803d")
+                )
+                scoreBadge(
+                    "Fricción \(score(synthesis.frictionScore))",
+                    color: Color(hex: "#dc2626")
+                )
+                if synthesis.conjunctionScore > 0 {
+                    scoreBadge(
+                        "Integración \(score(synthesis.conjunctionScore))",
+                        color: Color(hex: "#d97706")
+                    )
+                }
+            }
+
+            Divider()
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Tema central")
+                    .font(.caption.weight(.semibold))
+                    .foregroundColor(.secondary)
+                if let central = synthesis.centralContact {
+                    Text(contactTitle(central))
+                        .font(.subheadline.weight(.semibold))
+                    Text("Es el contacto personal más exacto, con orbe \(String(format: "%.2f°", central.orb)). Funciona como punto de entrada, no como conclusión total.")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                        .padding(.top, 3)
+                } else {
+                    Text("No hay un contacto personal disponible para destacar.")
+                        .font(.callout)
+                        .foregroundColor(.secondary)
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-                .contentShape(Rectangle())
             }
-            .buttonStyle(.plain)
 
-            if expanded {
-                VStack(alignment: .leading, spacing: 8) {
-                    if let interpretation = aspect.interpretation {
-                        Text(interpretation.texto)
-                            .font(.callout)
-                            .foregroundColor(.appPrimaryText.opacity(0.88))
-                            .lineSpacing(4)
-                        if !interpretation.fuente.isEmpty {
-                            Text(interpretation.fuente)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                    } else {
-                        Text("Sin interpretación disponible en el corpus.")
-                            .font(.callout)
-                            .foregroundColor(.secondary)
-                    }
+            if !synthesis.doubleWhammies.isEmpty {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Reciprocidades")
+                        .font(.caption.weight(.semibold))
+                        .foregroundColor(.secondary)
+                    Text(doubleWhammyText)
+                        .font(.callout)
+                        .foregroundColor(.appPrimaryText.opacity(0.88))
                 }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 14)
-                .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
-        .background(Color.appPanel)
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .stroke(expanded ? Color.appAccentFill.opacity(0.45) : Color.appBorder.opacity(0.75), lineWidth: 1)
+        .padding(18)
+        .background(
+            LinearGradient(
+                colors: [Color.appPanel, Color.appAccentFill.opacity(0.07)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         )
-        .animation(.easeInOut(duration: 0.18), value: expanded)
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(Color.appAccentFill.opacity(0.32), lineWidth: 1)
+        )
+    }
+
+    private var doubleWhammyText: String {
+        let labels = synthesis.doubleWhammies.prefix(4).map(\.label)
+        let suffix = synthesis.doubleWhammies.count > 4 ? " y otras" : ""
+        return "Se repiten en ambos sentidos \(labels.joined(separator: ", "))\(suffix). Estas correspondencias refuerzan el tema compartido sin determinar cómo se vivirá."
+    }
+
+    private func contactTitle(_ contact: SynastryContact) -> String {
+        "\(contact.chartAPlanetLabel) de \(chartAName) \(contact.aspectLabel) \(contact.chartBPlanetLabel) de \(chartBName)"
+    }
+
+    private func score(_ value: Double) -> String {
+        String(format: "%.1f", value)
+    }
+
+    private func scoreBadge(_ text: String, color: Color) -> some View {
+        Text(text)
+            .font(.caption.monospacedDigit().weight(.semibold))
+            .foregroundColor(color)
+            .padding(.horizontal, 9)
+            .padding(.vertical, 5)
+            .background(color.opacity(0.1))
+            .clipShape(Capsule())
+    }
+}
+
+private struct SynastryContactSection: View {
+    let title: String
+    let contacts: [SynastryContact]
+    let chartAName: String
+    let chartBName: String
+    var subtitle: String?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(title)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(.appPrimaryText)
+                    Text(subtitle ?? "\(contacts.count) contactos")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+            }
+
+            LazyVStack(spacing: 10) {
+                if contacts.isEmpty {
+                    Text("No hay contactos en este grupo.")
+                        .font(.callout)
+                        .foregroundColor(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 8)
+                } else {
+                    ForEach(contacts) { contact in
+                        SynastryContactCard(
+                            contact: contact,
+                            chartAName: chartAName,
+                            chartBName: chartBName
+                        )
+                    }
+                }
+            }
+        }
+        .padding(14)
+        .background(Color.appPanel)
+        .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 9, style: .continuous)
+                .stroke(Color.appBorder.opacity(0.8), lineWidth: 1)
+        )
+    }
+}
+
+private struct SynastryContactCard: View {
+    let contact: SynastryContact
+    let chartAName: String
+    let chartBName: String
+    var prominent = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundColor(.appPrimaryText)
+                    .multilineTextAlignment(.leading)
+                HStack(spacing: 8) {
+                    Text("Orbe \(String(format: "%.2f°", contact.orb))")
+                    Text("\(availableDirections.count) \(availableDirections.count == 1 ? "lectura" : "lecturas")")
+                    if contact.isPrimarilyGenerational {
+                        Text("Generacional")
+                            .foregroundColor(.secondary.opacity(0.8))
+                    }
+                }
+                .font(.caption.monospacedDigit())
+                .foregroundColor(.secondary)
+            }
+
+            ForEach(Array(availableDirections.enumerated()), id: \.element) { index, direction in
+                if index > 0 {
+                    Divider()
+                }
+                SynastryLensText(
+                    direction: direction,
+                    aspect: contact.aspect(for: direction),
+                    chartAName: chartAName,
+                    chartBName: chartBName
+                )
+            }
+        }
+        .padding(16)
+        .background(Color.appPanel)
+        .clipShape(RoundedRectangle(cornerRadius: prominent ? 10 : 8, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: prominent ? 10 : 8, style: .continuous)
+                .stroke(
+                    prominent
+                        ? Color.appAccentFill.opacity(0.5)
+                        : Color.appBorder.opacity(0.75),
+                    lineWidth: prominent ? 1.2 : 1
+                )
+        )
     }
 
     private var title: String {
-        "\(aspect.sourcePlanetLabel) de \(aspect.direction.sourceInitial) \(aspect.aspectLabel) \(aspect.targetPlanetLabel) de \(aspect.direction.targetInitial)"
+        "\(contact.chartAPlanetLabel) de \(chartAName) \(contact.aspectLabel) \(contact.chartBPlanetLabel) de \(chartBName)"
+    }
+
+    private var availableDirections: [SynastryDirection] {
+        SynastryDirection.allCases.filter { contact.aspect(for: $0) != nil }
+    }
+}
+
+private struct SynastryLensText: View {
+    let direction: SynastryDirection
+    let aspect: SynastryAspect?
+    let chartAName: String
+    let chartBName: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(lensLabel)
+                .font(.caption.weight(.semibold))
+                .foregroundColor(.appAccentFill)
+
+            if let interpretation = aspect?.interpretation {
+                Text(presentedText(interpretation))
+                    .font(.callout)
+                    .foregroundColor(.appPrimaryText.opacity(0.9))
+                    .lineSpacing(4)
+                    .textSelection(.enabled)
+                if !interpretation.fuente.isEmpty {
+                    Text(interpretation.fuente)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            } else {
+                Text("Sin interpretación disponible en el corpus para esta dirección.")
+                    .font(.callout)
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+
+    private var lensLabel: String {
+        let source = direction.sourceName(chartAName: chartAName, chartBName: chartBName)
+        let target = direction.targetName(chartAName: chartAName, chartBName: chartBName)
+        return "Cómo lo vive \(source) → \(target)"
+    }
+
+    private func presentedText(_ interpretation: Interpretation) -> String {
+        let longText = interpretation.texto
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let shortText = interpretation.textoCorto?
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let text = longText.isEmpty ? shortText : longText
+        return SynastryNaming.presentedText(
+            text,
+            direction: direction,
+            chartAName: chartAName,
+            chartBName: chartBName
+        )
     }
 }
 
 private struct SynastryWheelView: View {
     let reading: SynastryReading
     let aspects: [SynastryAspect]
+    let chartAName: String
+    let chartBName: String
 
     var body: some View {
         GeometryReader { proxy in
@@ -419,7 +704,7 @@ private struct SynastryWheelView: View {
                 ForEach(reading.chartA.bodies) { body in
                     wheelLabel(
                         text: body.symbol,
-                        marker: "A",
+                        marker: initials(chartAName),
                         color: .appAccentFill,
                         position: point(for: body.longitude, center: center, radius: outerRadius + 2)
                     )
@@ -428,19 +713,21 @@ private struct SynastryWheelView: View {
                 ForEach(reading.chartB.bodies) { body in
                     wheelLabel(
                         text: body.symbol,
-                        marker: "B",
+                        marker: initials(chartBName),
                         color: .appSecondaryAccent,
                         position: point(for: body.longitude, center: center, radius: innerRadius)
                     )
                 }
 
                 VStack(spacing: 4) {
-                    Text("A")
+                    Text(chartAName)
                         .foregroundColor(.appAccentFill)
-                    Text("B")
+                    Text(chartBName)
                         .foregroundColor(.appSecondaryAccent)
                 }
                 .font(.caption.weight(.bold))
+                .lineLimit(1)
+                .frame(maxWidth: 120)
                 .padding(7)
                 .background(Color.appPanel)
                 .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
@@ -467,11 +754,12 @@ private struct SynastryWheelView: View {
                         .stroke(color.opacity(0.8), lineWidth: 1)
                 )
             Text(marker)
-                .font(.system(size: 7, weight: .bold))
+                .font(.system(size: 6, weight: .bold))
                 .foregroundColor(.appAccentForeground)
-                .frame(width: 11, height: 11)
+                .frame(minWidth: 13, minHeight: 11)
+                .padding(.horizontal, 2)
                 .background(color)
-                .clipShape(Circle())
+                .clipShape(Capsule())
                 .offset(x: 4, y: -4)
         }
         .position(position)
@@ -510,22 +798,32 @@ private struct SynastryWheelView: View {
         let chartBMap = Dictionary(uniqueKeysWithValues: reading.chartB.bodies.map { ($0.key, $0) })
 
         for aspect in aspects {
-            let sourceMap = aspect.direction == .aToB ? chartAMap : chartBMap
-            let targetMap = aspect.direction == .aToB ? chartBMap : chartAMap
-            guard let source = sourceMap[aspect.sourcePlanetKey],
-                  let target = targetMap[aspect.targetPlanetKey]
+            let chartAKey = aspect.direction == .aToB
+                ? aspect.sourcePlanetKey
+                : aspect.targetPlanetKey
+            let chartBKey = aspect.direction == .aToB
+                ? aspect.targetPlanetKey
+                : aspect.sourcePlanetKey
+            guard let chartABody = chartAMap[chartAKey],
+                  let chartBBody = chartBMap[chartBKey]
             else {
                 continue
             }
             var path = Path()
-            path.move(to: point(for: source.longitude, center: center, radius: outerRadius))
-            path.addLine(to: point(for: target.longitude, center: center, radius: innerRadius))
+            path.move(to: point(for: chartABody.longitude, center: center, radius: outerRadius))
+            path.addLine(to: point(for: chartBBody.longitude, center: center, radius: innerRadius))
             context.stroke(
                 path,
                 with: .color(color(for: aspect.aspectKey).opacity(aspect.hasText ? 0.58 : 0.22)),
                 lineWidth: aspect.hasText ? 1.15 : 0.8
             )
         }
+    }
+
+    private func initials(_ name: String) -> String {
+        let parts = name.split(separator: " ")
+        let letters = parts.prefix(2).compactMap(\.first)
+        return letters.isEmpty ? "•" : String(letters)
     }
 
     private func point(for longitude: Double, center: CGPoint, radius: CGFloat) -> CGPoint {
@@ -549,41 +847,69 @@ private struct SynastryWheelView: View {
 
 enum SynastryNoteBuilder {
     static func markdown(reading: SynastryReading) -> String {
+        let chartAName = SynastryNaming.displayName(for: reading.chartA)
+        let chartBName = SynastryNaming.displayName(for: reading.chartB)
+        let contacts = reading.contactsWithText
+        let synthesis = SynastrySynthesis.build(from: contacts)
         var lines: [String] = [
-            "# Sinastría - \(displayName(reading.chartA)) y \(displayName(reading.chartB))",
+            "# Sinastría - \(chartAName) y \(chartBName)",
             "",
             "## Cartas",
-            "- Persona A: \(displayName(reading.chartA)) · \(reading.chartA.birthDate) \(reading.chartA.birthTime) · \(reading.chartA.placeName)",
-            "- Persona B: \(displayName(reading.chartB)) · \(reading.chartB.birthDate) \(reading.chartB.birthTime) · \(reading.chartB.placeName)",
+            "- \(chartAName): \(reading.chartA.birthDate) \(reading.chartA.birthTime) · \(reading.chartA.placeName)",
+            "- \(chartBName): \(reading.chartB.birthDate) \(reading.chartB.birthTime) · \(reading.chartB.placeName)",
             "- Cobertura: \(reading.coverageSummary)",
-            "- Sin texto: \(reading.missingTextCount)",
+            "- Lentes direccionales sin texto: \(reading.missingTextCount)",
+            "",
+            "## Síntesis",
+            "",
+            synthesis.balanceText,
             "",
         ]
 
-        for direction in SynastryDirection.allCases {
-            let title: String
-            switch direction {
-            case .aToB:
-                title = "\(displayName(reading.chartA)) sobre \(displayName(reading.chartB))"
-            case .bToA:
-                title = "\(displayName(reading.chartB)) sobre \(displayName(reading.chartA))"
-            }
-            lines += ["## \(title)", ""]
-            let aspects = reading.aspects
-                .filter { $0.direction == direction && $0.hasText }
-                .sorted { $0.orb < $1.orb }
-            if aspects.isEmpty {
-                lines.append("_Sin textos disponibles._")
-                lines.append("")
-                continue
-            }
-            for aspect in aspects {
+        if let central = synthesis.centralContact {
+            lines += [
+                "### Tema central",
+                "\(contactTitle(central, chartAName: chartAName, chartBName: chartBName)) (orbe \(String(format: "%.2f°", central.orb))).",
+                "",
+            ]
+        }
+        if !synthesis.doubleWhammies.isEmpty {
+            lines += [
+                "### Reciprocidades",
+                synthesis.doubleWhammies.map(\.label).joined(separator: ", "),
+                "",
+            ]
+        }
+
+        lines += ["## Contactos", ""]
+        for contact in contacts {
+            lines += [
+                "### \(contactTitle(contact, chartAName: chartAName, chartBName: chartBName))",
+                "- Orbe: \(String(format: "%.2f°", contact.orb))",
+                "",
+            ]
+            for direction in SynastryDirection.allCases {
+                guard let aspect = contact.aspect(for: direction),
+                      let interpretation = aspect.interpretation else { continue }
+                let source = direction.sourceName(
+                    chartAName: chartAName,
+                    chartBName: chartBName
+                )
+                let target = direction.targetName(
+                    chartAName: chartAName,
+                    chartBName: chartBName
+                )
+                let text = SynastryNaming.presentedText(
+                    interpretation.texto,
+                    direction: direction,
+                    chartAName: chartAName,
+                    chartBName: chartBName
+                )
                 lines += [
-                    "### \(aspect.sourcePlanetLabel) de \(aspect.direction.sourceInitial) \(aspect.aspectLabel) \(aspect.targetPlanetLabel) de \(aspect.direction.targetInitial)",
-                    "- Orbe: \(String(format: "%.2f°", aspect.orb))",
+                    "#### Cómo lo vive \(source) → \(target)",
                     "- Clave: `\(aspect.corpusClave)`",
                     "",
-                    aspect.interpretation?.texto ?? "",
+                    text,
                     "",
                 ]
             }
@@ -591,10 +917,14 @@ enum SynastryNoteBuilder {
 
         return lines.joined(separator: "\n")
     }
-}
 
-private func displayName(_ chart: NatalChart) -> String {
-    chart.name.isEmpty ? chart.birthDate : chart.name
+    private static func contactTitle(
+        _ contact: SynastryContact,
+        chartAName: String,
+        chartBName: String
+    ) -> String {
+        "\(contact.chartAPlanetLabel) de \(chartAName) \(contact.aspectLabel) \(contact.chartBPlanetLabel) de \(chartBName)"
+    }
 }
 
 private extension PlanetBody {

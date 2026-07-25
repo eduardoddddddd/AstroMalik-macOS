@@ -144,12 +144,12 @@ final class AstroEngineTests: XCTestCase {
     func testSynastryCorpusCoverage() throws {
         let db = try referenceCorpusDB()
         let rows = try db.query("""
-            SELECT clave, texto_largo
+            SELECT clave, texto_largo, fuente_nombre, idioma_origen, calidad
             FROM interpretaciones
             WHERE tipo = 'sinastria'
         """)
 
-        XCTAssertEqual(rows.count, 420)
+        XCTAssertEqual(rows.count, 500)
         var pairs: [String: Set<String>] = [:]
         for row in rows {
             guard let clave = row["clave"]?.string else {
@@ -157,17 +157,28 @@ final class AstroEngineTests: XCTestCase {
                 continue
             }
             XCTAssertTrue(clave.hasPrefix("SYN_"))
-            XCTAssertFalse((row["texto_largo"]?.string ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            let text = (row["texto_largo"]?.string ?? "")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            XCTAssertGreaterThanOrEqual(text.count, 1_350)
+            XCTAssertTrue(text.contains("persona A"))
+            XCTAssertTrue(text.contains("persona B"))
+            XCTAssertFalse(text.localizedCaseInsensitiveContains("este momento"))
+            XCTAssertFalse(text.localizedCaseInsensitiveContains("ahora"))
+            XCTAssertEqual(
+                row["fuente_nombre"]?.string,
+                "AstroMalik — síntesis editorial de sinastría v2"
+            )
+            XCTAssertEqual(row["idioma_origen"]?.string, "es")
+            XCTAssertEqual(row["calidad"]?.int, 5)
 
             let parts = clave.split(separator: "_").map(String.init)
             XCTAssertEqual(parts.count, 4)
             guard parts.count == 4 else { continue }
             let pair = "\(parts[1])_\(parts[2])"
             pairs[pair, default: []].insert(parts[3])
-            XCTAssertNotEqual(parts[1], parts[2])
         }
 
-        XCTAssertEqual(pairs.count, 84)
+        XCTAssertEqual(pairs.count, 100)
         for aspects in pairs.values {
             XCTAssertEqual(aspects, Set(["CONJUNCION", "SEXTIL", "CUADRADO", "TRIGONO", "OPOSICION"]))
         }
@@ -191,6 +202,153 @@ final class AstroEngineTests: XCTestCase {
         XCTAssertTrue(aspects.allSatisfy { $0.corpusClave == "SYN_\($0.sourcePlanetKey)_\($0.targetPlanetKey)_\($0.aspectKey)" })
     }
 
+    func testSynastryEditorialPriorityDefersPurelyGenerationalContacts() {
+        func aspect(_ source: String, _ target: String) -> SynastryAspect {
+            SynastryAspect(
+                direction: .aToB,
+                sourcePlanetKey: source,
+                sourcePlanetLabel: source,
+                targetPlanetKey: target,
+                targetPlanetLabel: target,
+                aspectKey: "CONJUNCION",
+                aspectLabel: "Conjunción",
+                orb: 0.1,
+                corpusClave: "SYN_\(source)_\(target)_CONJUNCION",
+                interpretation: nil
+            )
+        }
+
+        let luminary = aspect("SOL", "PLUTON")
+        let interpersonal = aspect("MERCURIO", "SATURNO")
+        let personalToOuter = aspect("VENUS", "URANO")
+        let generational = aspect("URANO", "NEPTUNO")
+
+        XCTAssertEqual(luminary.interpretivePriority, 0)
+        XCTAssertEqual(interpersonal.interpretivePriority, 1)
+        XCTAssertEqual(personalToOuter.interpretivePriority, 2)
+        XCTAssertEqual(generational.interpretivePriority, 3)
+        XCTAssertFalse(personalToOuter.isPrimarilyGenerational)
+        XCTAssertTrue(generational.isPrimarilyGenerational)
+    }
+
+    func testSynastryPresentationUsesRealNamesInBothDirections() {
+        let corpusText = "El Sol de A llega a B. La persona A escucha a la persona B; A propone, B responde y la dirección A→B se vuelve explícita."
+
+        let aToB = SynastryNaming.presentedText(
+            corpusText,
+            direction: .aToB,
+            chartAName: "Lucía",
+            chartBName: "Mateo"
+        )
+        XCTAssertEqual(
+            aToB,
+            "El Sol de Lucía llega a Mateo. Lucía escucha a Mateo; Lucía propone, Mateo responde y la dirección Lucía→Mateo se vuelve explícita."
+        )
+        assertSynastryTextHasNoGenericChartMarkers(aToB)
+
+        let bToA = SynastryNaming.presentedText(
+            corpusText,
+            direction: .bToA,
+            chartAName: "Lucía",
+            chartBName: "Mateo"
+        )
+        XCTAssertEqual(
+            bToA,
+            "El Sol de Mateo llega a Lucía. Mateo escucha a Lucía; Mateo propone, Lucía responde y la dirección Mateo→Lucía se vuelve explícita."
+        )
+        assertSynastryTextHasNoGenericChartMarkers(bToA)
+    }
+
+    func testEverySynastryCorpusTextEmbedsNamesWithoutResidualABMarkers() throws {
+        let db = try referenceCorpusDB()
+        let rows = try db.query("""
+            SELECT clave, texto_corto, texto_largo
+            FROM interpretaciones
+            WHERE tipo = 'sinastria'
+        """)
+
+        for row in rows {
+            let key = row["clave"]?.string ?? "sin-clave"
+            for column in ["texto_corto", "texto_largo"] {
+                let raw = row[column]?.string ?? ""
+                XCTAssertFalse(raw.isEmpty, "\(key) no tiene \(column)")
+                for direction in SynastryDirection.allCases {
+                    let presented = SynastryNaming.presentedText(
+                        raw,
+                        direction: direction,
+                        chartAName: "Lucía",
+                        chartBName: "Mateo"
+                    )
+                    assertSynastryTextHasNoGenericChartMarkers(
+                        presented,
+                        context: "\(key) \(column) \(direction.rawValue)"
+                    )
+                    XCTAssertTrue(
+                        presented.contains("Lucía") && presented.contains("Mateo"),
+                        "\(key) \(column) \(direction.rawValue) no contiene ambos nombres"
+                    )
+                }
+            }
+        }
+    }
+
+    func testSynastryDisplayNameFallsBackToBirthDate() throws {
+        var chart = try referenceChart()
+        chart.name = "  \n "
+
+        XCTAssertEqual(
+            SynastryNaming.displayName(for: chart),
+            chart.birthDate
+        )
+    }
+
+    func testSynastryContactsPairReciprocalAspectsOnce() {
+        let aToB = synastryAspectForTest(
+            direction: .aToB,
+            source: "SOL",
+            target: "LUNA",
+            aspect: "TRIGONO",
+            orb: 0.42
+        )
+        let bToA = synastryAspectForTest(
+            direction: .bToA,
+            source: "LUNA",
+            target: "SOL",
+            aspect: "TRIGONO",
+            orb: 0.42
+        )
+
+        let contacts = SynastryContact.grouped([aToB, bToA])
+
+        XCTAssertEqual(contacts.count, 1)
+        XCTAssertEqual(contacts[0].chartAPlanetKey, "SOL")
+        XCTAssertEqual(contacts[0].chartBPlanetKey, "LUNA")
+        XCTAssertEqual(contacts[0].aToB, aToB)
+        XCTAssertEqual(contacts[0].bToA, bToA)
+        XCTAssertEqual(contacts[0].orb, 0.42)
+    }
+
+    func testSynastrySynthesisDetectsDoubleWhammies() {
+        let aspects = [
+            synastryAspectForTest(direction: .aToB, source: "VENUS", target: "MARTE", aspect: "TRIGONO", orb: 0.5),
+            synastryAspectForTest(direction: .bToA, source: "MARTE", target: "VENUS", aspect: "TRIGONO", orb: 0.5),
+            synastryAspectForTest(direction: .aToB, source: "MARTE", target: "VENUS", aspect: "CUADRADO", orb: 1.1),
+            synastryAspectForTest(direction: .bToA, source: "VENUS", target: "MARTE", aspect: "CUADRADO", orb: 1.1),
+        ]
+
+        let synthesis = SynastrySynthesis.build(from: SynastryContact.grouped(aspects))
+
+        XCTAssertEqual(synthesis.doubleWhammies.count, 1)
+        XCTAssertEqual(
+            Set([
+                synthesis.doubleWhammies[0].firstPlanetKey,
+                synthesis.doubleWhammies[0].secondPlanetKey,
+            ]),
+            Set(["VENUS", "MARTE"])
+        )
+        XCTAssertEqual(synthesis.doubleWhammies[0].contacts.count, 2)
+    }
+
     func testSynastryLookupAndReadingAllowsMissingTexts() throws {
         let store = try referenceCorpusStore()
         let lookup = store.lookupSynastry(claves: [
@@ -198,7 +356,10 @@ final class AstroEngineTests: XCTestCase {
             "SYN_SOL_SOL_CONJUNCION",
         ])
         XCTAssertNotNil(lookup["SYN_JUPITER_LUNA_CONJUNCION"])
-        XCTAssertNil(lookup["SYN_SOL_SOL_CONJUNCION"])
+        XCTAssertNotNil(lookup["SYN_SOL_SOL_CONJUNCION"])
+        XCTAssertFalse(
+            lookup["SYN_JUPITER_LUNA_CONJUNCION"]?.textoCorto?.isEmpty ?? true
+        )
 
         let chartA = try referenceChart()
         var chartB = try referenceChart(
@@ -215,15 +376,15 @@ final class AstroEngineTests: XCTestCase {
 
     func testSynastryNoteBuilderIncludesCoverageAndDirections() throws {
         var chartA = try referenceChart()
-        chartA.name = "Persona A"
+        chartA.name = "Lucía"
         var chartB = try referenceChart(
             birthDate: "1988-04-20",
             birthTime: "09:15",
             lat: 48.8566,
             lon: 2.3522
         )
-        chartB.name = "Persona B"
-        let aspect = SynastryAspect(
+        chartB.name = "Mateo"
+        let aToB = SynastryAspect(
             direction: .aToB,
             sourcePlanetKey: "JUPITER",
             sourcePlanetLabel: "♃ Júpiter",
@@ -237,18 +398,43 @@ final class AstroEngineTests: XCTestCase {
                 clave: "SYN_JUPITER_LUNA_CONJUNCION",
                 tipo: .sinastria,
                 titulo: "",
-                texto: "Texto de prueba.",
+                texto: "La persona A escucha a la persona B.",
+                textoCorto: "La persona A escucha.",
                 fuente: "Test",
                 orden: 0
             )
         )
-        let reading = SynastryReading(chartA: chartA, chartB: chartB, aspects: [aspect])
+        let bToA = SynastryAspect(
+            direction: .bToA,
+            sourcePlanetKey: "LUNA",
+            sourcePlanetLabel: "☽ Luna",
+            targetPlanetKey: "JUPITER",
+            targetPlanetLabel: "♃ Júpiter",
+            aspectKey: "CONJUNCION",
+            aspectLabel: "☌ Conjunción",
+            orb: 0.42,
+            corpusClave: "SYN_LUNA_JUPITER_CONJUNCION",
+            interpretation: Interpretation(
+                clave: "SYN_LUNA_JUPITER_CONJUNCION",
+                tipo: .sinastria,
+                titulo: "",
+                texto: "La persona A comprende a la persona B.",
+                textoCorto: "La persona A comprende.",
+                fuente: "Test",
+                orden: 0
+            )
+        )
+        let reading = SynastryReading(chartA: chartA, chartB: chartB, aspects: [aToB, bToA])
         let markdown = SynastryNoteBuilder.markdown(reading: reading)
 
-        XCTAssertTrue(markdown.contains("# Sinastría - Persona A y Persona B"))
-        XCTAssertTrue(markdown.contains("Cobertura: 1 textos de 1 aspectos"))
-        XCTAssertTrue(markdown.contains("Persona A sobre Persona B"))
-        XCTAssertTrue(markdown.contains("Texto de prueba."))
+        XCTAssertTrue(markdown.contains("# Sinastría - Lucía y Mateo"))
+        XCTAssertTrue(markdown.contains("Cobertura: 1 contactos interpretados de 1"))
+        XCTAssertTrue(markdown.contains("Cómo lo vive Lucía → Mateo"))
+        XCTAssertTrue(markdown.contains("Cómo lo vive Mateo → Lucía"))
+        XCTAssertTrue(markdown.contains("Lucía escucha a Mateo."))
+        XCTAssertTrue(markdown.contains("Mateo comprende a Lucía."))
+        XCTAssertFalse(markdown.contains("persona A"))
+        XCTAssertFalse(markdown.contains("persona B"))
     }
 
     func testJoplinClipperCreatesNotebookAndNotePayload() async throws {
@@ -1113,6 +1299,65 @@ final class AstroEngineTests: XCTestCase {
         let diagnostics = await HoraryEngine.diagnostics()
         XCTAssertFalse(diagnostics.checkedSources.isEmpty)
     }
+}
+
+private func assertSynastryTextHasNoGenericChartMarkers(
+    _ text: String,
+    context: String = "",
+    file: StaticString = #filePath,
+    line: UInt = #line
+) {
+    let standaloneMarkerPattern = #"(?<![\p{L}\p{N}_])[AB](?![\p{L}\p{N}_])"#
+    XCTAssertNil(
+        text.range(of: standaloneMarkerPattern, options: .regularExpression),
+        "Queda una referencia A/B sin sustituir \(context): \(text)",
+        file: file,
+        line: line
+    )
+    XCTAssertFalse(
+        text.range(
+            of: #"(?i)\bpersona\s+[AB]\b"#,
+            options: .regularExpression
+        ) != nil,
+        "Queda una referencia persona A/B sin sustituir \(context): \(text)",
+        file: file,
+        line: line
+    )
+}
+
+private func synastryAspectForTest(
+    direction: SynastryDirection,
+    source: String,
+    target: String,
+    aspect: String,
+    orb: Double
+) -> SynastryAspect {
+    let planetLabels = [
+        "SOL": "☉ Sol",
+        "LUNA": "☽ Luna",
+        "MERCURIO": "☿ Mercurio",
+        "VENUS": "♀ Venus",
+        "MARTE": "♂ Marte",
+    ]
+    let aspectLabels = [
+        "CONJUNCION": "☌ Conjunción",
+        "SEXTIL": "⚹ Sextil",
+        "CUADRADO": "□ Cuadratura",
+        "TRIGONO": "△ Trígono",
+        "OPOSICION": "☍ Oposición",
+    ]
+    return SynastryAspect(
+        direction: direction,
+        sourcePlanetKey: source,
+        sourcePlanetLabel: planetLabels[source] ?? source.capitalized,
+        targetPlanetKey: target,
+        targetPlanetLabel: planetLabels[target] ?? target.capitalized,
+        aspectKey: aspect,
+        aspectLabel: aspectLabels[aspect] ?? aspect.capitalized,
+        orb: orb,
+        corpusClave: "SYN_\(source)_\(target)_\(aspect)",
+        interpretation: nil
+    )
 }
 
 private func referenceChart(

@@ -4,7 +4,81 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ## [Unreleased]
 
-Sin cambios documentados todavía.
+### Mejorado — corpus de sinastría
+
+#### Contenido y criterio editorial
+
+- Auditados los 420 registros anteriores: procedían únicamente de Grupo Venus,
+  usaban la tabla `tracompu` y contenían lenguaje temporal propio de tránsitos a
+  carta compuesta, no de una comparación natal estable.
+- Sustituidos por **500 textos originales en castellano**: 10 planetas emisores
+  × 10 planetas receptores × conjunción, sextil, cuadratura, trígono y
+  oposición.
+- Añadidos los 80 significados que faltaban, incluidos los contactos de un
+  planeta consigo mismo y todas las combinaciones direccionales entre planetas
+  lentos.
+- Cada entrada integra mecanismo relacional, potencial, sombra y una práctica
+  constructiva para ambas personas, sin predicciones de matrimonio, ruptura,
+  fidelidad, patologías ni acontecimientos fechados.
+- Los marcadores direccionales internos distinguen quién aporta la función y
+  quién la recibe; la capa de presentación los sustituye siempre por los
+  nombres reales de las personas.
+- Incorporada una prioridad editorial que sitúa luminarias y contactos
+  interpersonales antes que los aspectos puramente generacionales.
+
+#### Experiencia de lectura
+
+- Agrupados los aspectos recíprocos A→B y B→A en un único contacto geométrico,
+  evitando que una misma línea entre cartas aparezca como dos tarjetas
+  independientes.
+- Cada contacto conserva sus dos perspectivas direccionales y muestra ambos
+  textos largos completos de entrada, sin `DisclosureGroup`, pestañas ni
+  controles «Leer más».
+- Sustituidos en tiempo de presentación todos los marcadores internos por los
+  nombres reales de las cartas, incluidos «persona A/B», tokens autónomos como
+  «de A» o «B puede» y notaciones como «A→B». Si una carta no tiene nombre, se
+  utiliza su fecha de nacimiento.
+- Añadida una síntesis inicial con balance ponderado de armonía, fricción e
+  integración, contacto personal más exacto como tema central y detección de
+  *double whammies*.
+- Reorganizada la pantalla en síntesis, contactos destacados y grupos
+  editoriales siempre visibles; la rueda dibuja una sola línea por contacto y
+  sus identificadores proceden de los nombres reales.
+- Actualizadas las notas Joplin y la capa Swift del PDF para aplicar los mismos
+  nombres y direcciones.
+
+#### Fuentes, trazabilidad y reproducibilidad
+
+- Catalogadas fuentes doctrinales históricas y reutilizables de Ptolomeo,
+  Sepharial, Max y Augusta Foss Heindel y Alan Leo. Se usan como fundamento, no
+  como prosa copiada o traducida literalmente.
+- Plutón queda documentado como capa editorial moderna de AstroMalik, sin
+  atribuir sus significados a autores que no conocieron el planeta.
+- Añadido `scripts/build_synastry_corpus.py`, que genera y valida de forma
+  determinista las 500 claves y puede promoverlas a la base de producción.
+- Añadida la migración idempotente `008_synastry_corpus_v2.sql`; reemplaza las
+  filas obsoletas y cualquier versión anterior de la síntesis v2, pero conserva
+  fuentes independientes.
+- Endurecido `scripts/corpus_pipeline.py` con extracción TXT, selección de
+  fuentes por módulo, límites por obra y rechazo de respuestas o cachés vacías.
+- Compactación SQLite posterior a la promoción: el corpus pasó de 8.511.488 a
+  6.053.888 bytes sin perder registros.
+
+#### Validación
+
+- Verificadas 500 claves únicas, textos largos de 1.919–2.397 caracteres,
+  idioma español, calidad 5 y ausencia de vocabulario temporal prohibido.
+- Migración ejecutada dos veces sobre una copia temporal: 500 filas finales y
+  `PRAGMA integrity_check = ok`.
+- `scripts/corpus_pipeline.py smoke-test`, generación reproducible, firma de la
+  aplicación y corpus empaquetado verificados.
+- Test exhaustivo sobre las 500 entradas, `texto_corto` y `texto_largo` en
+  ambas direcciones: **2.000 presentaciones** con los dos nombres reales y
+  ningún marcador A/B residual.
+- Suite completa tras integrar corpus y nueva lectura: **396 pruebas, 1
+  omitida y 0 fallos**.
+- Metodología, fuentes, derechos, arquitectura y límites documentados en
+  `docs/synastry-corpus-v2.md`.
 
 ## [1.1.3] — 2026-07-11
 

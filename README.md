@@ -88,7 +88,10 @@ AstroMalik no pretende sustituir documentación oficial, criterio profesional ni
 
 ### Relaciones, preguntas y calendario
 
-- Sinastría con rueda doble, aspectos en ambas direcciones y corpus específico.
+- Sinastría con rueda doble, **500 interpretaciones específicas** y contactos
+  recíprocos agrupados una sola vez. La lectura usa los nombres reales de las
+  cartas, presenta una síntesis ponderada y muestra siempre completas las dos
+  perspectivas de cada contacto, sin paneles ni textos ocultos.
 - Horaria clásica con dignidades, radicalidad, significadores, recepción y perfección.
 - Calendario mensual con lunaciones, eclipses, estaciones, ingresos y Luna vacía de curso.
 - Efemérides diarias y resúmenes mensuales personalizados.

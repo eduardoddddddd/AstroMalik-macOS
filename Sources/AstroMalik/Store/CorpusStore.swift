@@ -218,6 +218,7 @@ final class CorpusStore {
                 tipo: .sinastria,
                 titulo: "",
                 texto: texto,
+                textoCorto: tc.trimmingCharacters(in: .whitespacesAndNewlines),
                 fuente: row["fuente_nombre"]?.string ?? "",
                 orden: 0
             )
