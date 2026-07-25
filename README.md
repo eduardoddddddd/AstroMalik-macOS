@@ -2,7 +2,7 @@
 
 **Astrología tradicional, predictiva y documental en una aplicación privada para Mac.**
 
-[![Última versión](https://img.shields.io/badge/versión-1.1.3-blue)](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.3)
+[![Última versión](https://img.shields.io/badge/versión-1.1.4-blue)](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.4)
 ![macOS](https://img.shields.io/badge/macOS-14%2B-111111)
 ![Apple Silicon + Intel](https://img.shields.io/badge/Mac-Apple%20Silicon%20%2B%20Intel-6f42c1)
 ![Privacidad](https://img.shields.io/badge/privacidad-local--first-2ea44f)
@@ -10,17 +10,22 @@
 
 AstroMalik reúne carta natal, lectura, rectificación de hora, técnicas predictivas, sinastría, horaria, efemérides e informes en un único espacio de trabajo. Los cálculos principales se realizan en el propio Mac y no necesitan una cuenta ni un servicio de inteligencia artificial.
 
+> **Novedad de la versión 1.1.4:** la sinastría ha recibido una renovación
+> profunda de contenido, cálculo y presentación. Incluye un corpus completo de
+> 500 interpretaciones, nombres reales, contactos únicos, ángulos, casas
+> mutuas, jerarquía planetaria y una síntesis relacional recalibrada.
+
 ---
 
 ## Descargar e instalar
 
 ### 1. Descarga la aplicación
 
-**[⬇ Descargar AstroMalik 1.1.3 para macOS](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/download/v1.1.3/AstroMalik-macOS-universal.zip)**
+**[⬇ Descargar AstroMalik 1.1.4 para macOS](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/download/v1.1.4/AstroMalik-macOS-universal.zip)**
 
 No necesitas saber usar GitHub. El enlace anterior descarga directamente un archivo ZIP. Al abrirlo aparecerá `AstroMalik.app`; arrástralo a la carpeta **Aplicaciones**.
 
-También puedes consultar la [página de la versión 1.1.3](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.3), donde están el checksum y la versión de terminal.
+También puedes consultar la [página de la versión 1.1.4](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.4), donde están el checksum y la versión de terminal.
 
 ### 2. Comprueba que tu Mac sea compatible
 
@@ -88,10 +93,9 @@ AstroMalik no pretende sustituir documentación oficial, criterio profesional ni
 
 ### Relaciones, preguntas y calendario
 
-- Sinastría con rueda doble, **500 interpretaciones específicas** y contactos
-  recíprocos agrupados una sola vez. La lectura usa los nombres reales de las
-  cartas, presenta una síntesis ponderada y muestra siempre completas las dos
-  perspectivas de cada contacto, sin paneles ni textos ocultos.
+- Sinastría profundamente revisada: **500 interpretaciones específicas**,
+  contactos recíprocos sin duplicación, nombres reales, ASC y MC, casas mutuas,
+  orbes por jerarquía planetaria y balance de armonía/fricción recalibrado.
 - Horaria clásica con dignidades, radicalidad, significadores, recepción y perfección.
 - Calendario mensual con lunaciones, eclipses, estaciones, ingresos y Luna vacía de curso.
 - Efemérides diarias y resúmenes mensuales personalizados.
@@ -256,15 +260,16 @@ scripts/            Empaquetado y utilidades
 | Tránsitos | [TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md](docs/TRANSITOS_ESTRUCTURA_Y_FUNCIONAMIENTO.md) |
 | Calendario y efemérides | [CALENDARIO_EFEMERIDES_ARQUITECTURA.md](docs/CALENDARIO_EFEMERIDES_ARQUITECTURA.md) |
 | Panorama predictivo | [CROSS_PERSONAL.md](docs/CROSS_PERSONAL.md) |
+| Sinastría | [synastry-corpus-v2.md](docs/synastry-corpus-v2.md) |
 | Informes PDF | [PDF_REPORTS.md](docs/PDF_REPORTS.md) |
 | Build universal | [UNIVERSAL_BUILD.md](docs/UNIVERSAL_BUILD.md) |
 
 ## Estado del proyecto
 
-- Última versión estable: **1.1.3**.
+- Última versión estable: **1.1.4**.
 - Aplicación y CLI universales: **ARM64 + Intel**.
 - Deployment target: **macOS 14**.
-- Validación: **390 tests, 1 omitido, 0 fallos**.
+- Validación: **404 tests, 1 omitido, 0 fallos**.
 - Automatización: GitHub Actions genera artefactos universales y los adjunta a cada release etiquetada.
 
 Consulta los cambios de cada versión en [CHANGELOG.md](CHANGELOG.md).

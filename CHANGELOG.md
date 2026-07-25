@@ -4,6 +4,12 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ## [Unreleased]
 
+## [1.1.4] — 2026-07-25
+
+Release centrada en una **renovación profunda de la sinastría**: corpus,
+cálculo geométrico, jerarquía planetaria, síntesis, concordancia editorial,
+interfaz y exportaciones.
+
 ### Mejorado — corpus de sinastría
 
 #### Contenido y criterio editorial
