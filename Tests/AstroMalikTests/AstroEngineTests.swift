@@ -461,13 +461,12 @@ final class AstroEngineTests: XCTestCase {
         )
 
         // En dirección bToA el emisor es la carta B.
-        XCTAssertTrue(copy.long.contains("Carlos"))
-        XCTAssertTrue(copy.long.contains("Eduardo"))
+        XCTAssertTrue(copy.text.contains("Carlos"))
+        XCTAssertTrue(copy.text.contains("Eduardo"))
         // Una oposición al Ascendente es una conjunción al Descendente.
-        XCTAssertTrue(copy.long.contains("Descendente"))
-        XCTAssertTrue(copy.long.contains("hora exacta de nacimiento"))
-        XCTAssertTrue(copy.hasLongerText)
-        assertSynastryTextHasNoGenericChartMarkers(copy.long, context: "en el texto angular generado")
+        XCTAssertTrue(copy.text.contains("Descendente"))
+        XCTAssertTrue(copy.text.contains("hora exacta de nacimiento"))
+        assertSynastryTextHasNoGenericChartMarkers(copy.text, context: "en el texto angular generado")
     }
 
     func testSynastryLookupAndReadingAllowsMissingTexts() throws {
