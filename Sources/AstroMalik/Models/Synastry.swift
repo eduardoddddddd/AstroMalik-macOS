@@ -707,12 +707,13 @@ enum SynastryAngleNarrative {
 /// Texto ya resuelto para una lente direccional: viene del corpus o, si el
 /// contacto toca un ángulo, de `SynastryAngleNarrative`. En ambos casos los
 /// roles genéricos aparecen ya sustituidos por los nombres de las cartas.
+///
+/// Siempre es el desarrollo completo. La lectura de sinastría se muestra
+/// entera, sin resúmenes ni controles para desplegar: el texto está para
+/// leerlo, no para pedirlo con un clic.
 struct SynastryLensCopy: Equatable {
-    var short: String
-    var long: String
+    var text: String
     var source: String
-
-    var hasLongerText: Bool { long.count > short.count }
 
     static func make(
         for aspect: SynastryAspect,
@@ -733,18 +734,16 @@ struct SynastryLensCopy: Equatable {
                 .trimmingCharacters(in: .whitespacesAndNewlines)
             let short = interpretation.textoCorto?
                 .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            guard !long.isEmpty || !short.isEmpty else { return nil }
-            let present = { (text: String) in
-                SynastryNaming.presentedText(
+            // `texto_corto` solo sirve de reserva si faltara el desarrollo.
+            let text = long.isEmpty ? short : long
+            guard !text.isEmpty else { return nil }
+            return SynastryLensCopy(
+                text: SynastryNaming.presentedText(
                     text,
                     direction: aspect.direction,
                     chartAName: chartAName,
                     chartBName: chartBName
-                )
-            }
-            return SynastryLensCopy(
-                short: present(short.isEmpty ? long : short),
-                long: present(long.isEmpty ? short : long),
+                ),
                 source: interpretation.fuente
             )
         }
@@ -754,14 +753,7 @@ struct SynastryLensCopy: Equatable {
             sourceName: sourceName,
             targetName: targetName
         ) else { return nil }
-        let firstParagraph = generated
-            .components(separatedBy: "\n\n")
-            .first ?? generated
-        return SynastryLensCopy(
-            short: firstParagraph,
-            long: generated,
-            source: "Síntesis AstroMalik"
-        )
+        return SynastryLensCopy(text: generated, source: "Síntesis AstroMalik")
     }
 }
 

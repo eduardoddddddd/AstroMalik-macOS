@@ -37,8 +37,8 @@ interfaz y exportaciones.
 - Agrupados los aspectos recíprocos A→B y B→A en un único contacto geométrico,
   evitando que una misma línea entre cartas aparezca como dos tarjetas
   independientes.
-- Cada contacto muestra su lectura plegada con un control «Leer más» para el
-  desarrollo completo.
+- Cada contacto muestra su texto completo de entrada, sin `DisclosureGroup`,
+  pestañas ni controles «Leer más».
 - Sustituidos en tiempo de presentación todos los marcadores internos por los
   nombres reales de las cartas, incluidos «persona A/B», tokens autónomos como
   «de A» o «B puede» y notaciones como «A→B». Si una carta no tiene nombre, se
@@ -148,6 +148,9 @@ interfaz y exportaciones.
 - Retirados el conmutador «Mostrar sin texto», el contador de aspectos sin
   texto y el distintivo de número de lecturas: con el corpus completo y la
   geometría simétrica sus valores eran constantes.
+- Las lecturas de sinastría se muestran íntegras. No hay resúmenes plegados ni
+  controles para desplegar: el texto está para leerlo, no para pedirlo con un
+  clic.
 - `SynastryPointClass` unifica la clasificación de puntos, duplicada hasta
   ahora en tres lugares con criterios divergentes.
 

@@ -598,7 +598,6 @@ private struct SynastryContactCard: View {
     let chartAName: String
     let chartBName: String
     var prominent = false
-    @State private var expanded = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -627,27 +626,10 @@ private struct SynastryContactCard: View {
                     aspect: contact.aspect(for: direction),
                     chartAName: chartAName,
                     chartBName: chartBName,
-                    expanded: expanded,
                     showsDirectionalHeader: availableDirections.count > 1
                 )
             }
-
-            if hasLongerText {
-                Button {
-                    expanded.toggle()
-                } label: {
-                    Label(
-                        expanded ? "Leer menos" : "Leer más",
-                        systemImage: expanded ? "chevron.up" : "chevron.down"
-                    )
-                    .font(.caption.weight(.semibold))
-                    .foregroundColor(.appAccentFill)
-                    .contentShape(Rectangle())
-                }
-                .buttonStyle(.plain)
-            }
         }
-        .animation(.easeInOut(duration: 0.18), value: expanded)
         .padding(16)
         .background(Color.appPanel)
         .clipShape(RoundedRectangle(cornerRadius: prominent ? 10 : 8, style: .continuous))
@@ -669,19 +651,6 @@ private struct SynastryContactCard: View {
     private var availableDirections: [SynastryDirection] {
         contact.distinctDirections
     }
-
-    /// Solo ofrece «Leer más» si alguna lente tiene texto largo que aportar
-    /// sobre el resumen que ya se muestra plegado.
-    private var hasLongerText: Bool {
-        availableDirections.contains { direction in
-            guard let aspect = contact.aspect(for: direction) else { return false }
-            return SynastryLensCopy.make(
-                for: aspect,
-                chartAName: chartAName,
-                chartBName: chartBName
-            )?.hasLongerText ?? false
-        }
-    }
 }
 
 private struct SynastryLensText: View {
@@ -689,7 +658,6 @@ private struct SynastryLensText: View {
     let aspect: SynastryAspect?
     let chartAName: String
     let chartBName: String
-    let expanded: Bool
     var showsDirectionalHeader = true
 
     var body: some View {
@@ -701,7 +669,7 @@ private struct SynastryLensText: View {
             }
 
             if let copy {
-                Text(expanded ? copy.long : copy.short)
+                Text(copy.text)
                     .font(.callout)
                     .foregroundColor(.appPrimaryText.opacity(0.9))
                     .lineSpacing(4)
@@ -725,7 +693,6 @@ private struct SynastryLensText: View {
         return "Cómo lo vive \(source) → \(target)"
     }
 
-    /// Plegado se muestra el resumen; desplegado, el desarrollo completo.
     private var copy: SynastryLensCopy? {
         guard let aspect else { return nil }
         return SynastryLensCopy.make(
@@ -989,7 +956,7 @@ enum SynastryNoteBuilder {
                         : "#### Lectura",
                     "- Clave: `\(aspect.corpusClave)`",
                     "",
-                    copy.long,
+                    copy.text,
                     "",
                 ]
             }
