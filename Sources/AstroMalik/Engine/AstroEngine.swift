@@ -232,9 +232,35 @@ final class AstroEngine {
         return found.sorted { $0.orb < $1.orb }
     }
 
+    /// Puntos que entran en la comparación: los diez planetas más Ascendente y
+    /// Medio cielo. Los ángulos son de los contactos más significativos de una
+    /// sinastría y quedaban fuera al recorrer solo `PLANET_LIST`.
+    static func synastryPoints(_ chart: NatalChart) -> [String: PlanetBody] {
+        var points = Dictionary(uniqueKeysWithValues: chart.bodies.map { ($0.key, $0) })
+        points["ASC"] = PlanetBody(
+            key: "ASC",
+            label: "ASC Ascendente",
+            longitude: chart.ascendant.longitude,
+            formatted: chart.ascendant.formatted,
+            house: 1,
+            retrograde: false
+        )
+        points["MC"] = PlanetBody(
+            key: "MC",
+            label: "MC Medio cielo",
+            longitude: chart.mc.longitude,
+            formatted: chart.mc.formatted,
+            house: 10,
+            retrograde: false
+        )
+        return points
+    }
+
+    static let SYNASTRY_POINT_KEYS: [String] = PLANET_LIST.map { $0.key } + ["ASC", "MC"]
+
     static func computeSynastryAspects(chartA: NatalChart, chartB: NatalChart) -> [SynastryAspect] {
-        let planetsA = Dictionary(uniqueKeysWithValues: chartA.bodies.map { ($0.key, $0) })
-        let planetsB = Dictionary(uniqueKeysWithValues: chartB.bodies.map { ($0.key, $0) })
+        let planetsA = synastryPoints(chartA)
+        let planetsB = synastryPoints(chartB)
         let aToB = computeSynastryAspects(
             source: planetsA,
             target: planetsB,
@@ -258,16 +284,27 @@ final class AstroEngine {
         target: [String: PlanetBody],
         direction: SynastryDirection
     ) -> [SynastryAspect] {
-        let keys = PLANET_LIST.map { $0.key }
+        let keys = SYNASTRY_POINT_KEYS
         var found: [SynastryAspect] = []
         for sourceKey in keys {
             guard let sourcePlanet = source[sourceKey] else { continue }
             for targetKey in keys {
                 guard let targetPlanet = target[targetKey] else { continue }
+                // Un ángulo contra el otro ángulo de la misma pareja no aporta
+                // lectura relacional: sería comparar dos artefactos de la hora.
+                if SynastryPointClass.isAngle(sourceKey),
+                   SynastryPointClass.isAngle(targetKey) {
+                    continue
+                }
                 let diff = angularDiff(sourcePlanet.longitude, targetPlanet.longitude)
                 for aspect in ASPECT_DEFS {
                     let orb = abs(diff - aspect.angle)
-                    if orb <= aspect.orb {
+                    let limit = SynastryPointClass.orbLimit(
+                        baseOrb: aspect.orb,
+                        sourceKey,
+                        targetKey
+                    )
+                    if orb <= limit {
                         found.append(SynastryAspect(
                             direction: direction,
                             sourcePlanetKey: sourceKey,

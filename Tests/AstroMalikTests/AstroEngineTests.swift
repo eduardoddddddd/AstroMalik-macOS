@@ -349,6 +349,127 @@ final class AstroEngineTests: XCTestCase {
         XCTAssertEqual(synthesis.doubleWhammies[0].contacts.count, 2)
     }
 
+    func testSynastryIgnoresDoubleWhammiesOutsideRelationalPairs() {
+        // Neptuno–Plutón recíproco es común a toda una generación: no describe
+        // a la pareja y no debe presentarse como una correspondencia suya.
+        let aspects = [
+            synastryAspectForTest(direction: .aToB, source: "NEPTUNO", target: "PLUTON", aspect: "SEXTIL", orb: 0.4),
+            synastryAspectForTest(direction: .bToA, source: "PLUTON", target: "NEPTUNO", aspect: "SEXTIL", orb: 0.4),
+        ]
+
+        let synthesis = SynastrySynthesis.build(from: SynastryContact.grouped(aspects))
+
+        XCTAssertTrue(synthesis.doubleWhammies.isEmpty)
+    }
+
+    func testSynastryCentralContactPrefersLuminariesOverTighterMinorContact() {
+        // Un Mercurio–Neptuno exactísimo no debe desplazar a un Sol–Luna:
+        // la exactitud pesa, pero la importancia de los puntos también.
+        let aspects = [
+            synastryAspectForTest(direction: .aToB, source: "MERCURIO", target: "NEPTUNO", aspect: "TRIGONO", orb: 0.05),
+            synastryAspectForTest(direction: .aToB, source: "SOL", target: "LUNA", aspect: "TRIGONO", orb: 1.8),
+        ]
+
+        let synthesis = SynastrySynthesis.build(from: SynastryContact.grouped(aspects))
+
+        XCTAssertEqual(synthesis.centralContact?.chartAPlanetKey, "SOL")
+        XCTAssertEqual(synthesis.centralContact?.chartBPlanetKey, "LUNA")
+    }
+
+    func testSynastryBalanceIsSymmetricAroundItsNeutralPoint() {
+        // El punto neutro compensa que la ventana angular armónica sea más ancha
+        // que la de fricción. Sin él, cualquier comparación parecía más fácil de
+        // lo que es.
+        let neutral = SynastrySynthesis.neutralHarmonyShare
+        XCTAssertEqual(neutral, 0.486, accuracy: 0.02)
+
+        func synthesis(_ aspects: [SynastryAspect]) -> SynastrySynthesis {
+            SynastrySynthesis.build(from: SynastryContact.grouped(aspects))
+        }
+
+        let harmonious = synthesis([
+            synastryAspectForTest(direction: .aToB, source: "SOL", target: "LUNA", aspect: "TRIGONO", orb: 0.2),
+            synastryAspectForTest(direction: .aToB, source: "VENUS", target: "LUNA", aspect: "SEXTIL", orb: 0.2),
+        ])
+        let frictional = synthesis([
+            synastryAspectForTest(direction: .aToB, source: "SOL", target: "LUNA", aspect: "CUADRADO", orb: 0.2),
+            synastryAspectForTest(direction: .aToB, source: "VENUS", target: "LUNA", aspect: "OPOSICION", orb: 0.2),
+        ])
+
+        XCTAssertGreaterThan(harmonious.harmonyShare ?? 0, neutral)
+        XCTAssertLessThan(frictional.harmonyShare ?? 1, neutral)
+        XCTAssertTrue(harmonious.balanceText.contains("facilidad"))
+        XCTAssertTrue(frictional.balanceText.contains("fricción"))
+    }
+
+    func testSynastryExactAspectOutweighsWideOneOfSamePair() {
+        let exact = SynastryContact.grouped([
+            synastryAspectForTest(direction: .aToB, source: "SOL", target: "LUNA", aspect: "TRIGONO", orb: 0.1),
+        ])[0]
+        let wide = SynastryContact.grouped([
+            synastryAspectForTest(direction: .aToB, source: "SOL", target: "LUNA", aspect: "TRIGONO", orb: 6.5),
+        ])[0]
+
+        XCTAssertGreaterThan(
+            SynastrySynthesis.contributionWeight(for: exact),
+            SynastrySynthesis.contributionWeight(for: wide) * 3
+        )
+    }
+
+    func testSynastryEngineIncludesAngleContactsWithTightOrbs() throws {
+        let chartA = try referenceChart()
+        let chartB = try referenceChart(birthDate: "1981-03-04", birthTime: "07:15")
+
+        let aspects = AstroEngine.computeSynastryAspects(chartA: chartA, chartB: chartB)
+
+        XCTAssertTrue(
+            aspects.contains { $0.involvesAngle },
+            "La comparación debe incluir contactos al Ascendente o al Medio cielo"
+        )
+        // Ángulo contra ángulo de la misma pareja no aporta lectura relacional.
+        XCTAssertFalse(aspects.contains {
+            SynastryPointClass.isAngle($0.sourcePlanetKey)
+                && SynastryPointClass.isAngle($0.targetPlanetKey)
+        })
+        for aspect in aspects {
+            let limit = SynastryPointClass.orbLimit(
+                baseOrb: 8,
+                aspect.sourcePlanetKey,
+                aspect.targetPlanetKey
+            )
+            XCTAssertLessThanOrEqual(aspect.orb, limit, "Orbe fuera del límite: \(aspect.corpusClave)")
+        }
+    }
+
+    func testSynastrySlowPairsUseNarrowerOrbThanLuminaries() {
+        XCTAssertEqual(SynastryPointClass.orbLimit(baseOrb: 8, "URANO", "NEPTUNO"), 4)
+        XCTAssertEqual(SynastryPointClass.orbLimit(baseOrb: 8, "SOL", "PLUTON"), 8)
+        XCTAssertEqual(SynastryPointClass.orbLimit(baseOrb: 8, "VENUS", "ASC"), 5)
+    }
+
+    func testSynastryAngleContactsGetGeneratedNarrativeWithRealNames() throws {
+        let aspect = synastryAspectForTest(
+            direction: .bToA,
+            source: "VENUS",
+            target: "ASC",
+            aspect: "OPOSICION",
+            orb: 1.2
+        )
+
+        let copy = try XCTUnwrap(
+            SynastryLensCopy.make(for: aspect, chartAName: "Eduardo", chartBName: "Carlos")
+        )
+
+        // En dirección bToA el emisor es la carta B.
+        XCTAssertTrue(copy.long.contains("Carlos"))
+        XCTAssertTrue(copy.long.contains("Eduardo"))
+        // Una oposición al Ascendente es una conjunción al Descendente.
+        XCTAssertTrue(copy.long.contains("Descendente"))
+        XCTAssertTrue(copy.long.contains("hora exacta de nacimiento"))
+        XCTAssertTrue(copy.hasLongerText)
+        assertSynastryTextHasNoGenericChartMarkers(copy.long, context: "en el texto angular generado")
+    }
+
     func testSynastryLookupAndReadingAllowsMissingTexts() throws {
         let store = try referenceCorpusStore()
         let lookup = store.lookupSynastry(claves: [
@@ -429,12 +550,52 @@ final class AstroEngineTests: XCTestCase {
 
         XCTAssertTrue(markdown.contains("# Sinastría - Lucía y Mateo"))
         XCTAssertTrue(markdown.contains("Cobertura: 1 contactos interpretados de 1"))
-        XCTAssertTrue(markdown.contains("Cómo lo vive Lucía → Mateo"))
-        XCTAssertTrue(markdown.contains("Cómo lo vive Mateo → Lucía"))
+        // Júpiter y Luna son planetas distintos: manda el más lento y ambas
+        // direcciones describirían la misma dinámica, así que se emite una sola
+        // lectura, sin encabezado direccional.
+        XCTAssertTrue(markdown.contains("#### Lectura"))
+        XCTAssertFalse(markdown.contains("Cómo lo vive"))
         XCTAssertTrue(markdown.contains("Lucía escucha a Mateo."))
-        XCTAssertTrue(markdown.contains("Mateo comprende a Lucía."))
         XCTAssertFalse(markdown.contains("persona A"))
         XCTAssertFalse(markdown.contains("persona B"))
+    }
+
+    func testSynastrySamePlanetContactKeepsBothMirrorReadings() throws {
+        // Un planeta consigo mismo sí produce dos lecturas: cada persona ocupa
+        // por turno el papel activo.
+        let chartA = try referenceChart()
+        let chartB = try referenceChart(birthDate: "1981-03-04", birthTime: "07:15")
+
+        func mirrorAspect(_ direction: SynastryDirection) -> SynastryAspect {
+            var aspect = synastryAspectForTest(
+                direction: direction,
+                source: "SOL",
+                target: "SOL",
+                aspect: "TRIGONO",
+                orb: 0.6
+            )
+            aspect.interpretation = Interpretation(
+                clave: aspect.corpusClave,
+                tipo: .sinastria,
+                titulo: "",
+                texto: "La persona A orienta a la persona B.",
+                textoCorto: "La persona A orienta.",
+                fuente: "Test",
+                orden: 0
+            )
+            return aspect
+        }
+
+        let contact = SynastryContact.grouped([mirrorAspect(.aToB), mirrorAspect(.bToA)])[0]
+        XCTAssertEqual(contact.distinctDirections.count, 2)
+
+        let reading = SynastryReading(
+            chartA: chartA,
+            chartB: chartB,
+            aspects: [mirrorAspect(.aToB), mirrorAspect(.bToA)]
+        )
+        let markdown = SynastryNoteBuilder.markdown(reading: reading)
+        XCTAssertTrue(markdown.contains("Cómo lo vive"))
     }
 
     func testJoplinClipperCreatesNotebookAndNotePayload() async throws {

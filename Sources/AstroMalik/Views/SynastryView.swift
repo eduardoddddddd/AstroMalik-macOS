@@ -7,7 +7,6 @@ struct SynastryView: View {
     @State private var chartAID: UUID?
     @State private var chartBID: UUID?
     @State private var reading: SynastryReading?
-    @State private var showAspectsWithoutText = false
     @State private var isCalculating = false
     @State private var isCreatingNote = false
     @State private var statusMessage: String?
@@ -75,8 +74,6 @@ struct SynastryView: View {
                 .help("Intercambiar cartas")
                 chartPicker(fallbackTitle: "Segunda carta", selection: $chartBID)
                 Spacer()
-                Toggle("Mostrar sin texto", isOn: $showAspectsWithoutText)
-                    .toggleStyle(.checkbox)
                 Button {
                     calculate()
                 } label: {
@@ -129,6 +126,7 @@ struct SynastryView: View {
                 LazyVStack(alignment: .leading, spacing: 22) {
                     overview(reading)
                     highlightedSection(reading)
+                    houseOverlaySection(reading)
                     remainingSections(reading)
                 }
                 .padding(18)
@@ -140,13 +138,6 @@ struct SynastryView: View {
         HStack(spacing: 14) {
             Label(reading.coverageSummary, systemImage: "text.book.closed")
                 .font(.subheadline.weight(.medium))
-            if reading.missingTextCount > 0 {
-                Text(showAspectsWithoutText
-                     ? "\(reading.missingTextCount) aspectos sin texto visibles"
-                     : "\(reading.missingTextCount) aspectos sin texto ocultos")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
             Spacer()
             Button {
                 createJoplinNote(reading)
@@ -240,6 +231,58 @@ struct SynastryView: View {
         }
     }
 
+    /// Superposición por casas: en qué área de la vida del otro aterriza cada
+    /// planeta. Tras los aspectos es la técnica más usada en sinastría, y solo
+    /// estaba disponible en el PDF.
+    private func houseOverlaySection(_ reading: SynastryReading) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Casas mutuas")
+                .appSectionHeader()
+            Text("Dónde aterriza cada persona en la vida de la otra. La casa indica el área de experiencia que se activa en la convivencia.")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            ViewThatFits(in: .horizontal) {
+                HStack(alignment: .top, spacing: 14) {
+                    houseOverlayColumn(source: reading.chartA, target: reading.chartB)
+                    houseOverlayColumn(source: reading.chartB, target: reading.chartA)
+                }
+                VStack(spacing: 14) {
+                    houseOverlayColumn(source: reading.chartA, target: reading.chartB)
+                    houseOverlayColumn(source: reading.chartB, target: reading.chartA)
+                }
+            }
+        }
+    }
+
+    private func houseOverlayColumn(source: NatalChart, target: NatalChart) -> some View {
+        let sourceName = SynastryNaming.displayName(for: source)
+        let targetName = SynastryNaming.displayName(for: target)
+        return VStack(alignment: .leading, spacing: 8) {
+            Text("\(sourceName) en las casas de \(targetName)")
+                .font(.subheadline.weight(.semibold))
+                .foregroundColor(.appPrimaryText)
+            ForEach(source.bodies) { body in
+                HStack(spacing: 10) {
+                    Text(body.label)
+                        .font(.callout)
+                        .foregroundColor(.appPrimaryText.opacity(0.9))
+                    Spacer()
+                    Text("Casa \(AstroEngine.planetHouse(deg: body.longitude, cusps: target.cusps))")
+                        .font(.caption.monospacedDigit().weight(.medium))
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(14)
+        .background(Color.appPanel)
+        .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 9, style: .continuous)
+                .stroke(Color.appBorder.opacity(0.8), lineWidth: 1)
+        )
+    }
+
     @ViewBuilder
     private func remainingSections(_ reading: SynastryReading) -> some View {
         let highlightedIDs = Set(highlightedContacts(reading).map(\.id))
@@ -276,18 +319,19 @@ struct SynastryView: View {
         }
     }
 
+    /// Los contactos sin texto de corpus se muestran igualmente: la geometría es
+    /// válida aunque falte la interpretación, y ocultarlos dejaría la pantalla
+    /// vacía si el corpus no estuviera disponible.
     private func visibleContacts(_ reading: SynastryReading) -> [SynastryContact] {
-        reading.contacts
-            .filter { showAspectsWithoutText || $0.hasText }
-            .sorted(by: SynastryContact.editorialOrder)
+        reading.contacts.sorted(by: SynastryContact.editorialOrder)
     }
 
     private func highlightedContacts(_ reading: SynastryReading) -> [SynastryContact] {
-        let personalKeys: Set<String> = ["SOL", "LUNA", "MERCURIO", "VENUS", "MARTE"]
-        return visibleContacts(reading).filter {
-            $0.orb <= 3
-                && (personalKeys.contains($0.chartAPlanetKey)
-                    || personalKeys.contains($0.chartBPlanetKey))
+        visibleContacts(reading).filter {
+            let keys = [$0.chartAPlanetKey, $0.chartBPlanetKey]
+            return $0.orb <= 3
+                && (keys.contains(where: SynastryPointClass.personal.contains)
+                    || keys.contains(where: SynastryPointClass.isAngle))
         }
     }
 
@@ -554,6 +598,7 @@ private struct SynastryContactCard: View {
     let chartAName: String
     let chartBName: String
     var prominent = false
+    @State private var expanded = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -564,7 +609,6 @@ private struct SynastryContactCard: View {
                     .multilineTextAlignment(.leading)
                 HStack(spacing: 8) {
                     Text("Orbe \(String(format: "%.2f°", contact.orb))")
-                    Text("\(availableDirections.count) \(availableDirections.count == 1 ? "lectura" : "lecturas")")
                     if contact.isPrimarilyGenerational {
                         Text("Generacional")
                             .foregroundColor(.secondary.opacity(0.8))
@@ -582,10 +626,28 @@ private struct SynastryContactCard: View {
                     direction: direction,
                     aspect: contact.aspect(for: direction),
                     chartAName: chartAName,
-                    chartBName: chartBName
+                    chartBName: chartBName,
+                    expanded: expanded,
+                    showsDirectionalHeader: availableDirections.count > 1
                 )
             }
+
+            if hasLongerText {
+                Button {
+                    expanded.toggle()
+                } label: {
+                    Label(
+                        expanded ? "Leer menos" : "Leer más",
+                        systemImage: expanded ? "chevron.up" : "chevron.down"
+                    )
+                    .font(.caption.weight(.semibold))
+                    .foregroundColor(.appAccentFill)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+            }
         }
+        .animation(.easeInOut(duration: 0.18), value: expanded)
         .padding(16)
         .background(Color.appPanel)
         .clipShape(RoundedRectangle(cornerRadius: prominent ? 10 : 8, style: .continuous))
@@ -605,7 +667,20 @@ private struct SynastryContactCard: View {
     }
 
     private var availableDirections: [SynastryDirection] {
-        SynastryDirection.allCases.filter { contact.aspect(for: $0) != nil }
+        contact.distinctDirections
+    }
+
+    /// Solo ofrece «Leer más» si alguna lente tiene texto largo que aportar
+    /// sobre el resumen que ya se muestra plegado.
+    private var hasLongerText: Bool {
+        availableDirections.contains { direction in
+            guard let aspect = contact.aspect(for: direction) else { return false }
+            return SynastryLensCopy.make(
+                for: aspect,
+                chartAName: chartAName,
+                chartBName: chartBName
+            )?.hasLongerText ?? false
+        }
     }
 }
 
@@ -614,21 +689,25 @@ private struct SynastryLensText: View {
     let aspect: SynastryAspect?
     let chartAName: String
     let chartBName: String
+    let expanded: Bool
+    var showsDirectionalHeader = true
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(lensLabel)
-                .font(.caption.weight(.semibold))
-                .foregroundColor(.appAccentFill)
+            if showsDirectionalHeader {
+                Text(lensLabel)
+                    .font(.caption.weight(.semibold))
+                    .foregroundColor(.appAccentFill)
+            }
 
-            if let interpretation = aspect?.interpretation {
-                Text(presentedText(interpretation))
+            if let copy {
+                Text(expanded ? copy.long : copy.short)
                     .font(.callout)
                     .foregroundColor(.appPrimaryText.opacity(0.9))
                     .lineSpacing(4)
                     .textSelection(.enabled)
-                if !interpretation.fuente.isEmpty {
-                    Text(interpretation.fuente)
+                if !copy.source.isEmpty {
+                    Text(copy.source)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -646,15 +725,11 @@ private struct SynastryLensText: View {
         return "Cómo lo vive \(source) → \(target)"
     }
 
-    private func presentedText(_ interpretation: Interpretation) -> String {
-        let longText = interpretation.texto
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        let shortText = interpretation.textoCorto?
-            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        let text = longText.isEmpty ? shortText : longText
-        return SynastryNaming.presentedText(
-            text,
-            direction: direction,
+    /// Plegado se muestra el resumen; desplegado, el desarrollo completo.
+    private var copy: SynastryLensCopy? {
+        guard let aspect else { return nil }
+        return SynastryLensCopy.make(
+            for: aspect,
             chartAName: chartAName,
             chartBName: chartBName
         )
@@ -794,8 +869,10 @@ private struct SynastryWheelView: View {
         outerRadius: CGFloat,
         innerRadius: CGFloat
     ) {
-        let chartAMap = Dictionary(uniqueKeysWithValues: reading.chartA.bodies.map { ($0.key, $0) })
-        let chartBMap = Dictionary(uniqueKeysWithValues: reading.chartB.bodies.map { ($0.key, $0) })
+        // Incluye ASC y MC: sin ellos las líneas de los contactos angulares
+        // no llegarían a dibujarse.
+        let chartAMap = AstroEngine.synastryPoints(reading.chartA)
+        let chartBMap = AstroEngine.synastryPoints(reading.chartB)
 
         for aspect in aspects {
             let chartAKey = aspect.direction == .aToB
@@ -888,9 +965,14 @@ enum SynastryNoteBuilder {
                 "- Orbe: \(String(format: "%.2f°", contact.orb))",
                 "",
             ]
-            for direction in SynastryDirection.allCases {
+            let directions = contact.distinctDirections
+            for direction in directions {
                 guard let aspect = contact.aspect(for: direction),
-                      let interpretation = aspect.interpretation else { continue }
+                      let copy = SynastryLensCopy.make(
+                          for: aspect,
+                          chartAName: chartAName,
+                          chartBName: chartBName
+                      ) else { continue }
                 let source = direction.sourceName(
                     chartAName: chartAName,
                     chartBName: chartBName
@@ -899,17 +981,15 @@ enum SynastryNoteBuilder {
                     chartAName: chartAName,
                     chartBName: chartBName
                 )
-                let text = SynastryNaming.presentedText(
-                    interpretation.texto,
-                    direction: direction,
-                    chartAName: chartAName,
-                    chartBName: chartBName
-                )
+                // El encabezado direccional solo aporta cuando hay dos lecturas
+                // en espejo; con una sola describiría de más.
                 lines += [
-                    "#### Cómo lo vive \(source) → \(target)",
+                    directions.count > 1
+                        ? "#### Cómo lo vive \(source) → \(target)"
+                        : "#### Lectura",
                     "- Clave: `\(aspect.corpusClave)`",
                     "",
-                    text,
+                    copy.long,
                     "",
                 ]
             }

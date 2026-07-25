@@ -38,3 +38,7 @@ secrets/
 **/.openrouter
 config.local.*
 local.config.*
+
+# Python bytecode de los scripts de corpus
+__pycache__/
+*.pyc

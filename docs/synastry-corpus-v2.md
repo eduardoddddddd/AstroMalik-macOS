@@ -143,8 +143,18 @@ que no conocieron el planeta.
 
 Cada clave `SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>` se redacta con estas reglas:
 
-1. **A actúa; B recibe y responde.** La geometría es recíproca, pero la
-   experiencia no se redacta como intercambiable.
+1. **Manda el planeta más lento, esté en la carta que esté.** La geometría es
+   recíproca, pero la experiencia no: en un Luna–Saturno es la persona Saturno
+   quien estructura, sea A o B. La clave sigue siendo `A → B`, pero los papeles
+   de agente y receptor se reparten por velocidad
+   (Luna < Mercurio < Venus < Sol < Marte < Júpiter < Saturno < Urano <
+   Neptuno < Plutón). Redactar siempre «A actúa, B recibe» invertía la dinámica
+   clásica en la mitad de las entradas.
+
+   Consecuencia para la interfaz: entre planetas distintos las dos direcciones
+   describen la misma dinámica y se solapan al 99%, así que solo se muestra una
+   lectura. Los contactos de un planeta consigo mismo sí conservan las dos, que
+   son un espejo real.
 2. **El aspecto modula; no sentencia.**
    - conjunción: concentración y superposición;
    - sextil: oportunidad que requiere iniciativa;
@@ -161,6 +171,10 @@ Cada clave `SYN_<PLANETA_A>_<PLANETA_B>_<ASPECTO>` se redacta con estas reglas:
    para B.
 7. **Se contextualiza la relevancia.** Un contacto generacional no desplaza a
    luminarias, planetas personales, ángulos, casas u orbes.
+8. **Se redacta en epiceno.** La aplicación sustituye «la persona A/B» por el
+   nombre real de cada carta, así que ningún adjetivo ni participio puede
+   concordar en género con el rol: «resulta apreciada» se convertiría en
+   «Carlos resulta apreciada». Se usan formas neutras («recibe aprecio»).
 
 ### Estructura de cada interpretación
 
@@ -265,6 +279,8 @@ El generador rechaza el corpus si:
 - no aparecen los roles «persona A» y «persona B»;
 - reaparece lenguaje temporal impropio (`ahora`, `hoy`, `este momento`,
   `temporalmente`);
+- algún adjetivo o participio concuerda en género con el rol de A o de B;
+- queda un marcador `{AGENT}` o `{RECEIVER}` sin sustituir;
 - dos claves producen el mismo texto largo;
 - la base de producción no queda con 500 filas españolas de calidad 5.
 
