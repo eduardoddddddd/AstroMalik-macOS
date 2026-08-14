@@ -2,6 +2,8 @@
 
 **Astrología tradicional, predictiva y documental en una aplicación privada para Mac.**
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/eduardoddddddd/AstroMalik-macOS)
+
 [![Última versión](https://img.shields.io/badge/versión-1.1.4-blue)](https://github.com/eduardoddddddd/AstroMalik-macOS/releases/tag/v1.1.4)
 ![macOS](https://img.shields.io/badge/macOS-14%2B-111111)
 ![Apple Silicon + Intel](https://img.shields.io/badge/Mac-Apple%20Silicon%20%2B%20Intel-6f42c1)
