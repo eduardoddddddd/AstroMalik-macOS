@@ -79,7 +79,7 @@ struct ContentView: View {
                     }
 
                     Section {
-                        ForEach([NavItem.efemerides, NavItem.misInformes, NavItem.ajustes]) { item in
+                        ForEach([NavItem.astrocartografia, NavItem.efemerides, NavItem.misInformes, NavItem.ajustes]) { item in
                             sidebarItem(item)
                         }
                     } header: {
@@ -179,6 +179,10 @@ struct ContentView: View {
 
         case .crossPersonal:
             crossPersonalDetail
+
+        case .astrocartography:
+            AstrocartographyView()
+                .environmentObject(appState)
 
         case .ephemeris:
             EphemerisCalendarView()

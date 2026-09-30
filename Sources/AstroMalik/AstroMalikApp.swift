@@ -113,6 +113,8 @@ final class AppState: ObservableObject {
             detailRoute = .zodiacalReleasing
         case .crossPersonal:
             detailRoute = .crossPersonal
+        case .astrocartografia:
+            detailRoute = .astrocartography
         case .efemerides:
             detailRoute = .ephemeris
         case .horaria:

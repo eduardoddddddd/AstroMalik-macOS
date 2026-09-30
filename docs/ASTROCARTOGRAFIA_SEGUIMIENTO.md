@@ -1,19 +1,20 @@
 # Astrocartografía — seguimiento y relevo entre LLM
 
-Actualizado: **30/09/2026**, zona Europe/Madrid. Fase 0 en commit `6a48a77` (base previa `26f6d92`), fase 1 y corrección de tangencia en `74959a2`. **F2.1–F2.4 validadas y preparadas para el commit que incorpora esta actualización, por petición del usuario.** F3.1–F3.4 autorizadas para ejecución mediante un nuevo subagente. La app no se ha reempaquetado después de F1.1.
+Actualizado: **30/09/2026**, zona Europe/Madrid. Fase 0 en `6a48a77`, F1 y corrección de tangencia en `74959a2`, **fase 2 committeada en `af49af5`**. F3 implementada por Astra High y completada/validada por el coordinador tras corte de uso; ver evidencia abajo. Cambios F3 sin commit.
 
 **Este es el documento que hay que actualizar al terminar cada paquete.**
 Plan y criterios completos: [ASTROCARTOGRAFIA_PLAN_MULTILLM.md](ASTROCARTOGRAFIA_PLAN_MULTILLM.md).
 
 ## 1. Estado de entrega
 
-**Fase 2 implementada y validada. El usuario ha autorizado la fase 3 completa mediante subagente; ejecución a continuación del commit de F2.** La app empaquetada sigue siendo la de las 20:01:40, anterior a los meridianos y a las curvas. La confirmación sobre levantar la pausa de empaquetado se ha solicitado por separado; mantenerla hasta respuesta.
+**F3 recuperada y MVP validado localmente: 454 tests (1 omitido, 0 fallos), app regenerada, firma/timestamp correctos y smoke visual completado. G3 aceptado en este Mac; ejecución real en macOS 14 pendiente.** El usuario confirmó explícitamente **«Regenerar al finalizar»** para F3: la pausa queda levantada para esta entrega. F2 quedó committeada en `af49af5`; F3 comenzó sobre árbol limpio.
 
-- Existe motor de líneas mundanas, muestreo adaptativo con cota geográfica, adaptador visual de antimeridiano/clipping y servicio de caché/cancelación. **No hay mapa ni integración UI.**
-- HEAD comprobado al comenzar F2: `74959a2`, árbol limpio. Corrige la información antigua de este seguimiento: **F1 sí estaba ya committeada**. Solo F2 y esta actualización quedan sin commit. No se hizo commit, push, tag ni release. El usuario pidió no regenerar la app hasta que lo pida.
+- Existe motor, geometría adaptativa, caché/cancelación y ahora código de mapa MapKit, filtros, selección y navegación. La aceptación visual local se realizó mediante el smoke indicado abajo.
+- HEAD actual `af49af5` incluye F2; solo F3 y su documentación quedan sin commit. No hubo push, tag ni release.
 - F2 se ejecutó mediante un subagente autorizado Astra High, sin otros chats ni worktrees y sin delegación adicional. Otro LLM puede continuar tras leer este documento y comprobar `git status`.
 - No se ha modificado el C vendorizado, el corpus, la base de datos del usuario ni el servidor.
 - Validación local, sin Thread Sanitizer. El coordinador revisó el código F2; eso no constituye otra teoría de efemérides. La comparación Python es independiente del binding Swift, **no de los algoritmos Swiss**.
+- Astra F3 se interrumpió con mensaje de límite de uso antes de probar/empaquetar. Sus archivos quedaron guardados y el coordinador retomó sin rehacerlos. La interrupción no es una entrega completa ni implica pérdida del commit F2.
 
 ## 2. Checklist maestro
 
@@ -43,11 +44,11 @@ Plan y criterios completos: [ASTROCARTOGRAFIA_PLAN_MULTILLM.md](ASTROCARTOGRAFIA
 
 ### Fase 3 — MVP visual
 
-- [ ] **F3.1** Spike y elección de control MapKit.
-- [ ] **F3.2** Mapa, estilos, leyenda y filtros.
-- [ ] **F3.3** Selección y accesibilidad.
-- [ ] **F3.4** Integración en navegación y empaquetado MVP.
-- [ ] **G3** MVP aceptado.
+- [x] **F3.1** Spike y elección de control MapKit (validado localmente; macOS 14 real pendiente).
+- [x] **F3.2** Mapa, estilos, leyenda y filtros.
+- [x] **F3.3** Selección y accesibilidad.
+- [x] **F3.4** Integración en navegación y empaquetado MVP.
+- [x] **G3** MVP aceptado localmente; no constituye validación de distribución ni macOS 14 real.
 
 ### Fase 4 — lugares/relocalización
 
@@ -244,6 +245,20 @@ Concurrencia: gates/semáforos deterministas, no sleeps. Calculadores deliberad
 
 ## 4. Validación efectivamente ejecutada
 
+### F3 — recuperación y cierre local
+
+- Implementación guardada: `UI/AstroMapView.swift`, `AstrocartographyView.swift`, `AstrocartographyViewModel.swift`, `Representation/AstroMercatorGeometry.swift`; ruta nueva en navegación/estado/ContentView. No fase 4 ni corpus/servidor.
+- Control elegido: `MKMapView` con `NSViewRepresentable`, mapa 2D sin rotación/pitch y renderer `CGPath` explícito para no depender de simplificación de polilíneas. Un overlay por línea lógica; lista alternativa accesible, estilos distintos por ángulo y nombres por cuerpo.
+- Cota adicional Mercator: inversa φ(y)=atan(sinh(y)), |φ''|≤1/2; cota de arista completa RΔy²/16 más holgura. Subdivisión visual con 0.1 km de presupuesto; petición de núcleo con 0.9 km. No es precisión de píxeles, efemérides ni fecha natal.
+- Coordenadas manuales/click solo seleccionan lugar. Sin distancias/relocalización/persistencia. El mapa no consulta ubicación del usuario; cálculo/lista offline y advertencia de posible conexión para Apple Maps.
+- Revisión del coordinador tras interrupción: 9 tests F3 seleccionados pasan. 26.060 aristas × 33 puntos usando inversa MapKit: máximo 0.0972030635365671 km (presupuesto 0.1 km).
+- Suite completa ejecutada por coordinador: **454 tests, 1 omitido, 0 fallos**, 34.111 s; guard Swiss y diff check correctos. Log interno `/tmp/astromalik-f3-recovery-full.log`.
+- `scripts/package_app.sh` terminó correctamente; ejecutable **2026-09-30 21:34:48 +0200**, firma `codesign --verify --deep --strict` válida; CLI release `.build/release/astromalik-cli --help` correcta (no está dentro de Contents/MacOS).
+- Smoke visual real CUA: reinicio de la app antigua y navegación **Herramientas → Astrocartografía**; estado sin carta, selección de carta guardada, 40/40 líneas visibles, filtros Ninguno → 0 y Todos → 40, teclado flecha selecciona Sol DSC con datos y resaltado, coordenadas manuales 0/0 con pin, centrar y quitar, retorno a mundo. No se guardaron cartas ni lugares.
+- Apple Maps mostró un fallo transitorio de carga aun con algunas teselas visibles; cálculo/lista siguieron operativos y el aviso desapareció después de cargar. No se garantiza mapa base offline.
+- El usuario no veía el apartado porque aún ejecutaba la versión antigua: empaquetar no reinicia el proceso abierto. Se dejó abierta la nueva app con mapa de la carta elegida.
+- Límite de validación: macOS actual 26.3 arm64; deployment target 14 compila, pero **no se ha ejecutado en un Mac físico con macOS 14**. Tampoco TSan, auditoría completa de accesibilidad/contraste ni release publicado.
+
 Entorno: Mac arm64; Swift 6.3.1, lenguaje del paquete Swift tools 5.9. `xcode-select` apunta a CommandLineTools sin XCTest. **No se cambió la selección global**: se usó Xcode por proceso.
 
 ```bash
@@ -286,24 +301,23 @@ Primera pasada de F2 mostró dos expectativas estructurales obsoletas de F1 (tre
 
 ## 5. Siguiente acción concreta para cualquier LLM
 
-1. Leer `AGENTS.md`, este seguimiento y el plan; revisar `git status` y los cambios F2 sin descartar trabajo pendiente. Base real: `74959a2`.
-2. Ejecutar guard y tests con `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer`.
-3. **F3.1–F3.4 autorizadas por el usuario.** Comenzar por spike/elección de control MapKit y validación de la interpolación/proyección que dibujará. No dar por válida en píxeles una cota geográfica lat/lon.
-4. Usar `AstrocartographyCalculationService` para trabajo fuera del hilo principal y latest-wins; construir correctamente la revisión del proveedor y observar sus estados. No cachear por UUID de carta.
-5. Usar el resultado núcleo para análisis y el adaptador visual para dibujar; nunca alimentar distancias F4 con curvas recortadas. No regenerar fixtures independientes con salida del motor.
-6. El empaquetado sigue en pausa hasta petición explícita. No commit, push ni release sin autorización. Actualizar evidencia/bitácora de cualquier siguiente paquete.
+1. Leer `AGENTS.md`, este seguimiento y el plan; comprobar `git status`. Base real **`af49af5`**, F2 committeada; F3 completada en worktree sin commit. No descartar cambios.
+2. Fases 0–3 implementadas y MVP verificado localmente. Siguiente funcionalidad **F4.1–F4.4**, solo cuando el usuario la autorice; no iniciada en esta entrega.
+3. Para F4 distancias, usar curvas del núcleo sin clipping, nunca el mapa ni hit testing de pantalla. Declarar métrica/error. Relocalización conserva instante natal original.
+4. Validación real de MapKit en macOS 14 pendiente; anotar evidencia sin confundir deployment target con ejecución real.
+5. Usuario levantó la pausa de empaquetado para completar F3. Tras futuros cambios de código/UI aplica `scripts/package_app.sh` según AGENTS.md y verifica timestamp; si la app está abierta, reiniciar para probar el binario nuevo, evitando datos sin guardar.
+6. Sin push/tag/release; no commit de F3 sin autorización. Guard/tests con `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer`; conservar fixtures/corpus/servidor y actualizar bitácora.
 
 ### Prompt para continuar
 
 ```text
-Continúa AstroMalik-macOS desde docs/ASTROCARTOGRAFIA_SEGUIMIENTO.md.
-HEAD 74959a2 contiene F1; F2.1–F2.4 están en el worktree sin commit.
-Revisa esos cambios y ejecuta guard/tests. Implementa únicamente el paquete
-que autorice el usuario (siguiente: F3.1). Conserva contrato v1 y fixtures.
-La cota F2 es geográfica lat/lon, no un error de píxeles/Mercator: valida la
-semántica del renderer. No modifiques corpus/servidor ni hagas commit/push.
-No ejecutes scripts/package_app.sh ni abras la app salvo petición explícita.
-Registra lo completado, evidencia real, límites y siguiente acción aquí.
+Continúa AstroMalik-macOS leyendo docs/ASTROCARTOGRAFIA_SEGUIMIENTO.md y el plan.
+HEAD af49af5 contiene F2; F3 completa y validada localmente queda sin commit.
+Comprueba el worktree y conserva su contenido. Implementa únicamente el alcance
+que autorice el usuario (siguiente: fase4). Distancias sobre núcleo completo,
+no curvas visuales; relocalización conserva JD natal. No modifiques corpus/servidor
+ni hagas commit/push/release sin orden. Tras código/UI regenera app, verifica
+firma/timestamp y prueba el proceso nuevo. Registra evidencia y límites aquí.
 ```
 
 ## 6. Bitácora
@@ -314,6 +328,8 @@ Registra lo completado, evidencia real, límites y siguiente acción aquí.
 | 30/09/2026 | F1.1 | Adaptador ecuatorial, diagnóstico de fallback y `swe_version` en la fachada. 422 tests / 1 omitido / 0 fallos; binario 20:01:40 CEST. Sin commit | F1.2 |
 | 30/09/2026 | F1.2–F1.4 | Meridianos, raíces ASC/DSC, tangencias y circumpolaridad. Residuo de meridiano 0; seno de altitud ≤ 1.97e-15. 427 tests / 1 omitido / 0 fallos. App no regenerada, por petición | F2.1 |
 | 30/09/2026 | F1.3 corrección | La proximidad de `cos` a ±1 ya no fusiona dos raíces válidas. Caso 44.9999999988° / 45° conserva ±179.9994756°. App no regenerada. F1 cerrada en commit `74959a2` | F2.1 |
-| 30/09/2026 | F2.1–F2.4 | Cota geométrica completa, dominio sin huecos, seam/clipping separado, actor latest-wins y caché LRU. 445 tests / 1 omitido / 0 fallos; objetivo 1 km medido ≤0.281597 km; benchmark debug M3 p50 1.309 ms/p95 1.364 ms, 5936 vértices. Sin commit ni empaquetado | F3.1 solo bajo autorización |
+| 30/09/2026 | F2.1–F2.4 | Cota geométrica completa, dominio sin huecos, seam/clipping separado, actor latest-wins y caché LRU. 445 tests / 1 omitido / 0 fallos; objetivo 1 km medido ≤0.281597 km; benchmark debug M3 p50 1.309 ms/p95 1.364 ms, 5936 vértices. Posteriormente commit local `af49af5`, sin push; sin empaquetado en F2 | F3 |
+
+| 30/09/2026 | F3.1–F3.4 / G3 local | MKMapView/CGPath explícito, presupuesto 0.9 + 0.1 km, filtros/selección/lista/navegación. Recuperado tras corte Astra; 454 tests / 1 omitido / 0 fallos, paquete/firma, binario 21:34:48 CEST y smoke real completados. Sin commit; macOS14 real pendiente | F4 solo bajo autorización |
 
 Al continuar: añadir fila con paquetes, comandos/resultados reales, límites y siguiente acción; no borrar decisiones previas sin explicar la sustitución.
