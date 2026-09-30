@@ -157,7 +157,7 @@ func julianDayFromLocal(
     let utMonth = Int32(utcComps.month ?? month)
     let utDay   = Int32(utcComps.day ?? day)
 
-    let jd = swe_julday(utYear, utMonth, utDay, utHour, SE_GREG_CAL)
+    let jd = SwissEphemerisAccess.swe_julday(utYear, utMonth, utDay, utHour, SE_GREG_CAL)
 
     let isoFormatter = ISO8601DateFormatter()
     isoFormatter.timeZone = tz

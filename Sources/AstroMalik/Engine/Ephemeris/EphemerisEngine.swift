@@ -57,10 +57,10 @@ enum EphemerisEngine {
     }
 
     static func jdRangeForMonth(year: Int, month: Int) -> (Double, Double) {
-        let startJD = swe_julday(Int32(year), Int32(month), 1, 0, SE_GREG_CAL)
+        let startJD = SwissEphemerisAccess.swe_julday(Int32(year), Int32(month), 1, 0, SE_GREG_CAL)
         let nextMonth = month == 12 ? 1 : month + 1
         let nextYear = month == 12 ? year + 1 : year
-        let endJD = swe_julday(Int32(nextYear), Int32(nextMonth), 1, 0, SE_GREG_CAL)
+        let endJD = SwissEphemerisAccess.swe_julday(Int32(nextYear), Int32(nextMonth), 1, 0, SE_GREG_CAL)
         return (startJD, endJD)
     }
 

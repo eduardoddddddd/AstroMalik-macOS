@@ -166,7 +166,7 @@ enum LunarReturnEngine {
 
     static func moonReturnJD(targetLongitude: Double, startJD: Double) throws -> Double {
         var serr = [CChar](repeating: 0, count: 256)
-        let jd = swe_mooncross_ut(targetLongitude, startJD, SEFLG_SPEED, &serr)
+        let jd = SwissEphemerisAccess.swe_mooncross_ut(targetLongitude, startJD, SEFLG_SPEED, &serr)
         guard jd > startJD else {
             let message = String(cString: serr).trimmingCharacters(in: .whitespacesAndNewlines)
             if message.isEmpty {
@@ -187,7 +187,7 @@ enum LunarReturnEngine {
     ) throws -> LunarReturnMoonData {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, SE_MOON, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, SE_MOON, SEFLG_SPEED, &xx, &serr)
         guard rc >= 0 else {
             let message = String(cString: serr).trimmingCharacters(in: .whitespacesAndNewlines)
             throw LunarReturnError.calculationFailed(message.isEmpty ? "No se pudo leer la Luna del retorno." : message)

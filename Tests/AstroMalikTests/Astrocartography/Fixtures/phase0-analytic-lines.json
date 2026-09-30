@@ -1,0 +1,13 @@
+{
+  "provenance": "Analytic spherical identities, not Swiss positions or output of an AstroMalik astrocartography engine. Degrees; east-positive. Created in phase 0 before engine implementation.",
+  "cases": [
+    {"name":"equator-zero","ra":0,"declination":0,"gst":0,"latitude":0,"mc":0,"ic":-180,"asc":-90,"dsc":90,"status":"crossing"},
+    {"name":"equator-offset","ra":45,"declination":30,"gst":15,"latitude":0,"mc":30,"ic":-150,"asc":-60,"dsc":120,"status":"crossing"},
+    {"name":"southern-wrap","ra":350,"declination":0,"gst":10,"latitude":-45,"mc":-20,"ic":160,"asc":-110,"dsc":70,"status":"crossing"},
+    {"name":"northern-inclined","ra":0,"declination":30,"gst":0,"latitude":30,"mc":0,"ic":-180,"asc":-109.47122063449069,"dsc":109.47122063449069,"status":"crossing"},
+    {"name":"northern-tangent","ra":0,"declination":30,"gst":0,"latitude":60,"mc":0,"ic":-180,"asc":-180,"dsc":-180,"status":"tangent"},
+    {"name":"northern-no-crossing","ra":0,"declination":30,"gst":0,"latitude":61,"mc":0,"ic":-180,"asc":null,"dsc":null,"status":"noCrossing"},
+    {"name":"southern-no-crossing","ra":0,"declination":30,"gst":0,"latitude":-61,"mc":0,"ic":-180,"asc":null,"dsc":null,"status":"noCrossing"},
+    {"name":"polar-degenerate","ra":0,"declination":0,"gst":0,"latitude":90,"mc":0,"ic":-180,"asc":null,"dsc":null,"status":"nonUniquePolarHorizon"}
+  ]
+}

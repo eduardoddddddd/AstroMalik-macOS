@@ -1,0 +1,381 @@
+{
+  "baseline": "26f6d92",
+  "note": "Pre-migration lexical inventory; line numbers refer to baseline, not stable anchors. Pure calls also routed for an enforceable single boundary.",
+  "files": [
+    {
+      "file": "Sources/AstroMalik/Horary/HoraryNativeEngine.swift",
+      "calls": [
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 165
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 674
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/JulianDay.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 160
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/SecondaryProgressionEngine.swift",
+      "calls": [
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 193
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 199
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 219
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 227
+        },
+        {
+          "function": "swe_sidtime",
+          "line_before_migration": 241
+        },
+        {
+          "function": "swe_houses_armc_ex2",
+          "line_before_migration": 262
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 283
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/TransitEngine.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 199
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 370
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/SolarArcEngine.swift",
+      "calls": [
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 212
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/LunarReturnEngine.swift",
+      "calls": [
+        {
+          "function": "swe_mooncross_ut",
+          "line_before_migration": 169
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 190
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/SolarReturnEngine.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 166
+        },
+        {
+          "function": "swe_solcross_ut",
+          "line_before_migration": 168
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 176
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/AstroEngine.swift",
+      "calls": [
+        {
+          "function": "swe_set_ephe_path",
+          "line_before_migration": 58
+        },
+        {
+          "function": "swe_set_ephe_path",
+          "line_before_migration": 60
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 96
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 116
+        },
+        {
+          "function": "swe_houses_ex2",
+          "line_before_migration": 153
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/Ephemeris/EclipseCalculator.swift",
+      "calls": [
+        {
+          "function": "swe_sol_eclipse_when_glob",
+          "line_before_migration": 36
+        },
+        {
+          "function": "swe_lun_eclipse_when",
+          "line_before_migration": 77
+        },
+        {
+          "function": "swe_sol_eclipse_how",
+          "line_before_migration": 160
+        },
+        {
+          "function": "swe_lun_eclipse_how",
+          "line_before_migration": 162
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/Ephemeris/EphemerisUtilities.swift",
+      "calls": [
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 93
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/Ephemeris/EphemerisEngine.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 60
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 63
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/Extended/DeclinationEngine.swift",
+      "calls": [
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 56
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/Extended/AlmutenFigurisEngine.swift",
+      "calls": [
+        {
+          "function": "swe_rise_trans",
+          "line_before_migration": 230
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/Engine/Extended/ExtendedAstroSupport.swift",
+      "calls": [
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 145
+        }
+      ]
+    },
+    {
+      "file": "Sources/AstroMalik/PrimaryDirections/Calculation/PrimaryDirectionCalculator.swift",
+      "calls": [
+        {
+          "function": "swe_cotrans",
+          "line_before_migration": 497
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 508
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 517
+        },
+        {
+          "function": "swe_sidtime0",
+          "line_before_migration": 520
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 541
+        },
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 813
+        }
+      ]
+    },
+    {
+      "file": "Tests/AstroMalikTests/SecondaryProgressionEngineTests.swift",
+      "calls": [
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 26
+        }
+      ]
+    },
+    {
+      "file": "Tests/AstroMalikTests/AstroEngineTests.swift",
+      "calls": [
+        {
+          "function": "swe_calc_ut",
+          "line_before_migration": 1594
+        }
+      ]
+    },
+    {
+      "file": "Tests/AstroMalikTests/EphemerisTests/VoidOfCourseCalculatorTests.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 12
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 13
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 27
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 28
+        }
+      ]
+    },
+    {
+      "file": "Tests/AstroMalikTests/EphemerisTests/StationCalculatorTests.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 54
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 55
+        }
+      ]
+    },
+    {
+      "file": "Tests/AstroMalikTests/EphemerisTests/MundaneAspectCalculatorTests.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 12
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 13
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 22
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 23
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 32
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 33
+        }
+      ]
+    },
+    {
+      "file": "Tests/AstroMalikTests/EphemerisTests/SignIngressCalculatorTests.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 12
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 13
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 33
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 34
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 43
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 43
+        }
+      ]
+    },
+    {
+      "file": "Tests/AstroMalikTests/EphemerisTests/EclipseCalculatorTests.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 55
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 56
+        }
+      ]
+    },
+    {
+      "file": "Tests/AstroMalikTests/EphemerisTests/LunationCalculatorTests.swift",
+      "calls": [
+        {
+          "function": "swe_julday",
+          "line_before_migration": 68
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 69
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 93
+        },
+        {
+          "function": "swe_julday",
+          "line_before_migration": 96
+        }
+      ]
+    }
+  ]
+}

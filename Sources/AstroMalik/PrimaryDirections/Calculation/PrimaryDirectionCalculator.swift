@@ -494,7 +494,7 @@ final class PrimaryDirectionCalculator: Sendable {
         xin[0] = lon
         xin[1] = lat
         xin[2] = 1.0
-        swe_cotrans(&xin, &xout, -obliquity)
+        SwissEphemerisAccess.swe_cotrans(&xin, &xout, -obliquity)
         return (xout[0], xout[1])
     }
 
@@ -505,7 +505,7 @@ final class PrimaryDirectionCalculator: Sendable {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
         // SE_ECL_NUT returns nutation and obliquity
-        swe_calc_ut(jd, SE_ECL_NUT, 0, &xx, &serr)
+        SwissEphemerisAccess.swe_calc_ut(jd, SE_ECL_NUT, 0, &xx, &serr)
         return xx[0]  // true obliquity
     }
 
@@ -514,10 +514,10 @@ final class PrimaryDirectionCalculator: Sendable {
         // RAMC = Sidereal Time * 15 at the given geographic longitude
         var nut = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        swe_calc_ut(jd, SE_ECL_NUT, 0, &nut, &serr)
+        SwissEphemerisAccess.swe_calc_ut(jd, SE_ECL_NUT, 0, &nut, &serr)
         let eps = nut[0]   // oblicuidad verdadera
         let dpsi = nut[2]  // nutación en longitud
-        let siderealTime = swe_sidtime0(jd, eps, dpsi) // hours at Greenwich
+        let siderealTime = SwissEphemerisAccess.swe_sidtime0(jd, eps, dpsi) // hours at Greenwich
         let ramc = RegiomontanusSpeculum.normalize(siderealTime * 15.0 + lon)
         return ramc
     }
@@ -538,7 +538,7 @@ final class PrimaryDirectionCalculator: Sendable {
             var xx = [Double](repeating: 0, count: 6)
             var serr = [CChar](repeating: 0, count: 256)
             let flags: Int32 = SEFLG_SPEED
-            let rc = swe_calc_ut(jd, planet.id, flags, &xx, &serr)
+            let rc = SwissEphemerisAccess.swe_calc_ut(jd, planet.id, flags, &xx, &serr)
             guard rc >= 0 else { continue }
 
             let lon = xx[0]
@@ -810,7 +810,7 @@ final class PrimaryDirectionCalculator: Sendable {
     private func solarPosition(jd: Double, obliquity: Double) -> (ra: Double, declination: Double)? {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, SE_SUN, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, SE_SUN, SEFLG_SPEED, &xx, &serr)
         guard rc >= 0 else { return nil }
         let converted = eclipticToEquatorial(lon: xx[0], lat: xx[1], obliquity: obliquity)
         return (converted.ra, converted.decl)

@@ -51,8 +51,8 @@ final class StationCalculatorTests: XCTestCase {
     }
 
     private func jdRange(year: Int32) -> (Double, Double) {
-        let start = swe_julday(year, 1, 1, 0, SE_GREG_CAL)
-        let end = swe_julday(year + 1, 1, 1, 0, SE_GREG_CAL)
+        let start = SwissEphemerisAccess.swe_julday(year, 1, 1, 0, SE_GREG_CAL)
+        let end = SwissEphemerisAccess.swe_julday(year + 1, 1, 1, 0, SE_GREG_CAL)
         return (start, end)
     }
 

@@ -227,7 +227,7 @@ final class AlmutenFigurisEngine {
         var tret = 0.0
         var serr = [CChar](repeating: 0, count: 256)
         var star = [CChar](repeating: 0, count: 1)
-        let rc = swe_rise_trans(jd, SE_SUN, &star, 0, type, &geopos, 0, 0, &tret, &serr)
+        let rc = SwissEphemerisAccess.swe_rise_trans(jd, SE_SUN, &star, 0, type, &geopos, 0, 0, &tret, &serr)
         return rc >= 0 ? tret : nil
     }
 

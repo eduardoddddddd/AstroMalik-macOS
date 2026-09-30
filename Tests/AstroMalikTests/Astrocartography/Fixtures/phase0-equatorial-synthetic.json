@@ -1,0 +1,20 @@
+{
+  "request": {
+    "instant": {"julianDay": 2451545.0, "timeScale": "utcApproximatedAsUT1"},
+    "bodies": ["SOL", "LUNA"],
+    "geometryToleranceKm": 1.0,
+    "convention": "geocentric-apparent-of-date-geometric-center-v1",
+    "contractVersion": 1
+  },
+  "greenwichSiderealDegrees": 0.0,
+  "positions": [
+    {"body": "SOL", "rightAscensionDegrees": 0.0, "declinationDegrees": 0.0, "returnedFlags": 0},
+    {"body": "LUNA", "rightAscensionDegrees": 45.0, "declinationDegrees": 30.0, "returnedFlags": 0}
+  ],
+  "provenance": {
+    "source": "syntheticFixture",
+    "libraryVersion": "not-used",
+    "algorithmVersion": "contract-fixture-v1",
+    "diagnostics": [{"code": "synthetic", "severity": "warning", "message": "Datos ficticios para contratos/UI. No son posiciones reales de J2000."}]
+  }
+}

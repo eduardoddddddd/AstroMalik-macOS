@@ -142,7 +142,7 @@ enum ExtendedAstro {
     static func swissLongitude(jd: Double, planetID: Int32, label: String) throws -> Double {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
         guard rc >= 0 else { throw NatalExtendedError.swissCalculation(label, String(cString: serr)) }
         return normalized(xx[0])
     }

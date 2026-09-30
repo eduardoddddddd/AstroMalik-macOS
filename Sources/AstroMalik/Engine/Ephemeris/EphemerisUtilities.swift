@@ -90,7 +90,7 @@ enum EphemerisUtilities {
     static func planetPosition(jd: Double, planetID: Int32, bodyName: String) throws -> (longitude: Double, speed: Double) {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
         if rc < 0 {
             throw EphemerisError.calculationFailed(bodyName, String(cString: serr))
         }

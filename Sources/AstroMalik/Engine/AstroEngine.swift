@@ -55,9 +55,9 @@ final class AstroEngine {
     // Configurar ruta de efemérides (llamar al inicio de la app)
     static func configure(ephePath: String? = nil) {
         if let path = ephePath {
-            swe_set_ephe_path(UnsafeMutablePointer<CChar>(mutating: (path as NSString).utf8String))
+            SwissEphemerisAccess.swe_set_ephe_path(UnsafeMutablePointer<CChar>(mutating: (path as NSString).utf8String))
         } else {
-            swe_set_ephe_path(nil)
+            SwissEphemerisAccess.swe_set_ephe_path(nil)
         }
     }
 
@@ -93,7 +93,7 @@ final class AstroEngine {
         for planet in PLANET_LIST {
             var xx = [Double](repeating: 0, count: 6)
             var serr = [CChar](repeating: 0, count: 256)
-            let rc = swe_calc_ut(jd, planet.id, SEFLG_SPEED, &xx, &serr)
+            let rc = SwissEphemerisAccess.swe_calc_ut(jd, planet.id, SEFLG_SPEED, &xx, &serr)
             if rc < 0 {
                 let err = String(cString: serr)
                 throw AstroError.calcFailed(planet.key, err)
@@ -113,7 +113,7 @@ final class AstroEngine {
     static func calcLunarNodes(jd: Double) throws -> (north: RawPlanet, south: RawPlanet) {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, SE_TRUE_NODE, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, SE_TRUE_NODE, SEFLG_SPEED, &xx, &serr)
         if rc < 0 {
             let err = String(cString: serr)
             throw AstroError.calcFailed("NODO_NORTE", err)
@@ -150,7 +150,7 @@ final class AstroEngine {
         var ascmcSpeeds = [Double](repeating: 0, count: 10)
         var serr = [CChar](repeating: 0, count: 256)
         let hsys   = Int32(system.asciiValue ?? 80)       // 'P' = 80
-        let rc = swe_houses_ex2(jd, 0, lat, lon, hsys, &cusps, &ascmc, &cuspSpeeds, &ascmcSpeeds, &serr)
+        let rc = SwissEphemerisAccess.swe_houses_ex2(jd, 0, lat, lon, hsys, &cusps, &ascmc, &cuspSpeeds, &ascmcSpeeds, &serr)
         guard rc >= 0 else {
             let message = String(cString: serr).trimmingCharacters(in: .whitespacesAndNewlines)
             throw AstroError.housesUnavailable(message.isEmpty ? "Swiss Ephemeris no devolvió casas." : message)

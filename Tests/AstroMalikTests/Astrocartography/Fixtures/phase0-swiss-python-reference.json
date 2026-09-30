@@ -1,0 +1,294 @@
+{
+  "source": "pyswisseph independent binding, same Swiss algorithms",
+  "swissVersion": "2.10.03",
+  "bindingVersion": 20230604,
+  "requestedFlags": 2050,
+  "convention": "geocentric-apparent-of-date-geometric-center-v1",
+  "timeScale": "utcApproximatedAsUT1",
+  "ephemerisResource": "Sources/AstroMalik/Resources/ephe",
+  "fallbackPolicy": "Record actual returned flags and explicit per-case fallbackBodies; F1 must emit warnings, not silently claim Swiss file precision.",
+  "cases": [
+    {
+      "gregorianUTApprox": "1800-01-01 00:00:00",
+      "julianDay": 2378496.5,
+      "greenwichSiderealDegrees": 100.39861427489318,
+      "positions": [
+        {
+          "body": "SOL",
+          "rightAscensionDegrees": 281.34635324665254,
+          "declinationDegrees": -23.05697386986053,
+          "returnedFlags": 2052
+        },
+        {
+          "body": "LUNA",
+          "rightAscensionDegrees": 350.8365415798458,
+          "declinationDegrees": -7.914126906917809,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "MERCURIO",
+          "rightAscensionDegrees": 268.2373338978026,
+          "declinationDegrees": -20.23677956434356,
+          "returnedFlags": 2052
+        },
+        {
+          "body": "VENUS",
+          "rightAscensionDegrees": 232.08388323246345,
+          "declinationDegrees": -15.531013506405886,
+          "returnedFlags": 2052
+        },
+        {
+          "body": "MARTE",
+          "rightAscensionDegrees": 242.3776550661316,
+          "declinationDegrees": -20.914400226679764,
+          "returnedFlags": 2052
+        },
+        {
+          "body": "JUPITER",
+          "rightAscensionDegrees": 84.0505410060674,
+          "declinationDegrees": 23.05093877795096,
+          "returnedFlags": 2052
+        },
+        {
+          "body": "SATURNO",
+          "rightAscensionDegrees": 131.4180905356368,
+          "declinationDegrees": 18.720208207284827,
+          "returnedFlags": 2052
+        },
+        {
+          "body": "URANO",
+          "rightAscensionDegrees": 177.6699481482333,
+          "declinationDegrees": 1.8493674567608795,
+          "returnedFlags": 2052
+        },
+        {
+          "body": "NEPTUNO",
+          "rightAscensionDegrees": 224.6665916129673,
+          "declinationDegrees": -15.149817069094796,
+          "returnedFlags": 2052
+        },
+        {
+          "body": "PLUTON",
+          "rightAscensionDegrees": 338.07112329906676,
+          "declinationDegrees": -22.258301042560202,
+          "returnedFlags": 2052
+        }
+      ],
+      "fallbackBodies": [
+        "SOL",
+        "MERCURIO",
+        "VENUS",
+        "MARTE",
+        "JUPITER",
+        "SATURNO",
+        "URANO",
+        "NEPTUNO",
+        "PLUTON"
+      ]
+    },
+    {
+      "gregorianUTApprox": "2000-01-01 12:00:00",
+      "julianDay": 2451545.0,
+      "greenwichSiderealDegrees": 280.457072438026,
+      "positions": [
+        {
+          "body": "SOL",
+          "rightAscensionDegrees": 281.27838557918403,
+          "declinationDegrees": -23.032430404162497,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "LUNA",
+          "rightAscensionDegrees": 222.45216823437195,
+          "declinationDegrees": -10.900638519440536,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "MERCURIO",
+          "rightAscensionDegrees": 272.07464530119034,
+          "declinationDegrees": -24.418901343595653,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "VENUS",
+          "rightAscensionDegrees": 239.8927692149366,
+          "declinationDegrees": -18.448918093301753,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "MARTE",
+          "rightAscensionDegrees": 330.5168111557865,
+          "declinationDegrees": -13.182482397372453,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "JUPITER",
+          "rightAscensionDegrees": 23.86785599538662,
+          "declinationDegrees": 8.59426382115272,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "SATURNO",
+          "rightAscensionDegrees": 38.76541452857804,
+          "declinationDegrees": 12.614764339571089,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "URANO",
+          "rightAscensionDegrees": 317.47483174212067,
+          "declinationDegrees": -17.020328323499736,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "NEPTUNO",
+          "rightAscensionDegrees": 305.4328455996294,
+          "declinationDegrees": -19.213240496630153,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "PLUTON",
+          "rightAscensionDegrees": 251.41918155593066,
+          "declinationDegrees": -11.394295254651004,
+          "returnedFlags": 2050
+        }
+      ],
+      "fallbackBodies": []
+    },
+    {
+      "gregorianUTApprox": "2026-03-20 12:00:00",
+      "julianDay": 2461120.0,
+      "greenwichSiderealDegrees": 358.035750194046,
+      "positions": [
+        {
+          "body": "SOL",
+          "rightAscensionDegrees": 359.8948546626052,
+          "declinationDegrees": -0.04548954460022189,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "LUNA",
+          "rightAscensionDegrees": 16.105335642729067,
+          "declinationDegrees": 10.503916881890488,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "MERCURIO",
+          "rightAscensionDegrees": 339.72455581512526,
+          "declinationDegrees": -7.397714100291965,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "VENUS",
+          "rightAscensionDegrees": 16.41663350074471,
+          "declinationDegrees": 6.038768484265659,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "MARTE",
+          "rightAscensionDegrees": 345.76927976310805,
+          "declinationDegrees": -7.24971037873775,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "JUPITER",
+          "rightAscensionDegrees": 106.57127748339644,
+          "declinationDegrees": 22.92929821939818,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "SATURNO",
+          "rightAscensionDegrees": 4.61742057025968,
+          "declinationDegrees": -0.31453843803507653,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "URANO",
+          "rightAscensionDegrees": 56.09518129652116,
+          "declinationDegrees": 19.611327697136563,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "NEPTUNO",
+          "rightAscensionDegrees": 2.142531912403024,
+          "declinationDegrees": -0.49479540168828917,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "PLUTON",
+          "rightAscensionDegrees": 308.3768861694241,
+          "declinationDegrees": -22.809048987995528,
+          "returnedFlags": 2050
+        }
+      ],
+      "fallbackBodies": []
+    },
+    {
+      "gregorianUTApprox": "2999-12-31 12:00:00",
+      "julianDay": 2816787.0,
+      "greenwichSiderealDegrees": 280.3426022191901,
+      "positions": [
+        {
+          "body": "SOL",
+          "rightAscensionDegrees": 280.5437522545638,
+          "declinationDegrees": -22.9551029930318,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "LUNA",
+          "rightAscensionDegrees": 309.2691801492641,
+          "declinationDegrees": -13.236359580015025,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "MERCURIO",
+          "rightAscensionDegrees": 270.6533282739488,
+          "declinationDegrees": -23.725818348287234,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "VENUS",
+          "rightAscensionDegrees": 315.92422519279495,
+          "declinationDegrees": -18.644969958275162,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "MARTE",
+          "rightAscensionDegrees": 252.6190102082744,
+          "declinationDegrees": -22.370397068027405,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "JUPITER",
+          "rightAscensionDegrees": 172.23773523817707,
+          "declinationDegrees": 4.459105936352961,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "SATURNO",
+          "rightAscensionDegrees": 32.76867176400702,
+          "declinationDegrees": 10.419484715500774,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "URANO",
+          "rightAscensionDegrees": 299.53494375752825,
+          "declinationDegrees": -21.028032708958598,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "NEPTUNO",
+          "rightAscensionDegrees": 341.905885754127,
+          "declinationDegrees": -8.200867351141019,
+          "returnedFlags": 2050
+        },
+        {
+          "body": "PLUTON",
+          "rightAscensionDegrees": 281.63936265764124,
+          "declinationDegrees": -16.34192240828044,
+          "returnedFlags": 2050
+        }
+      ],
+      "fallbackBodies": []
+    }
+  ]
+}
