@@ -47,6 +47,12 @@ final class SwissEphemerisAccessTests: XCTestCase {
         XCTAssertTrue(baseline.allSatisfy { $0.count == 9 && $0.allSatisfy(\.isFinite) })
     }
 
+    func testLibraryVersionIsReportedThroughFacade() {
+        var buffer = [CChar](repeating: 0, count: 64)
+        _ = SwissEphemerisAccess.swe_version(&buffer)
+        XCTAssertEqual(String(cString: buffer), "2.10.03")
+    }
+
     func testContractDateBoundsMatchGregorianConversion() {
         XCTAssertEqual(SwissEphemerisAccess.swe_julday(1800, 1, 1, 0, SE_GREG_CAL), 2_378_496.5)
         XCTAssertEqual(SwissEphemerisAccess.swe_julday(3000, 1, 1, 0, SE_GREG_CAL), 2_816_787.5)

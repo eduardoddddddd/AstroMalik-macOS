@@ -1,8 +1,7 @@
 import XCTest
 @testable import AstroMalik
 
-/// Validates the reference artifact itself, NOT the still-unimplemented engine.
-/// F1 must additionally consume these cases against its actual production output.
+/// Validates the reference artifact itself. Production roots are checked in MundaneAngleAnalyticTests.
 final class AstrocartographyAnalyticFixtureTests: XCTestCase {
     func testReferenceCasesSatisfyIndependentHorizontalIdentities() throws {
         let url = try XCTUnwrap(Bundle.module.url(forResource: "phase0-analytic-lines", withExtension: "json"))
