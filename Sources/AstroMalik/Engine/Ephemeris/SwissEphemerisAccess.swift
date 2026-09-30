@@ -18,6 +18,10 @@ enum SwissEphemerisAccess {
         transaction { CSwissEph.swe_set_ephe_path(path) }
     }
 
+    static func swe_version(_ version: UnsafeMutablePointer<CChar>?) -> UnsafeMutablePointer<CChar>? {
+        transaction { CSwissEph.swe_version(version) }
+    }
+
     @discardableResult
     static func swe_calc_ut(_ jd: Double, _ body: Int32, _ flags: Int32,
                             _ values: UnsafeMutablePointer<Double>?, _ error: UnsafeMutablePointer<CChar>?) -> Int32 {
