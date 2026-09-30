@@ -73,7 +73,7 @@ struct SwissAstrocartographyEphemeris: AstrocartographyEphemerisProviding {
         )
     }
 
-    private static func libraryVersion() throws -> String {
+    static func libraryVersion() throws -> String {
         var buffer = [CChar](repeating: 0, count: 64)
         _ = SwissEphemerisAccess.swe_version(&buffer)
         let version = String(cString: buffer).trimmingCharacters(in: .whitespacesAndNewlines)

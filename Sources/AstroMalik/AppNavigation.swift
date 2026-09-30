@@ -22,6 +22,7 @@ enum NavItem: String, CaseIterable, Identifiable {
     case sinastria   = "Sinastría"
     case horaria     = "Horaria"
     // Herramientas
+    case astrocartografia = "Astrocartografía"
     case efemerides  = "Efemérides"
     case misInformes = "Mis informes"
     case ajustes     = "Ajustes"
@@ -53,6 +54,7 @@ enum NavItem: String, CaseIterable, Identifiable {
         case .firdaria: return "hourglass.circle"
         case .zodiacalReleasing: return "arrow.triangle.branch"
         case .crossPersonal: return "scope"
+        case .astrocartografia: return "globe.europe.africa"
         case .efemerides: return "calendar.day.timeline.leading"
         case .horaria:    return "questionmark.bubble"
         case .direccionesPrimarias: return "arrow.triangle.swap"
@@ -85,6 +87,7 @@ enum DetailRoute: Equatable {
     case zodiacalReleasing
     case crossPersonal
     case ephemeris
+    case astrocartography
     case horaryHome(HoraryHomeTab)
     case horaryResult(SavedHoraryQuery, returnTo: HoraryHomeTab)
     case primaryDirections(NatalChart)
@@ -121,6 +124,8 @@ enum DetailRoute: Equatable {
             return "zodiacalReleasing"
         case .crossPersonal:
             return "crossPersonal"
+        case .astrocartography:
+            return "astrocartography"
         case .ephemeris:
             return "ephemeris"
         case .horaryHome(let tab):
