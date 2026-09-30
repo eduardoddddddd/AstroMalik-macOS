@@ -16,6 +16,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check serialized Swiss Ephemeris access
+        run: python3 scripts/check_swiss_access.py
+
       - name: Build ARM64 and Intel application
         run: scripts/package_universal_app.sh
 

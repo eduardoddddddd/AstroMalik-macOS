@@ -9,8 +9,8 @@ final class SignIngressCalculatorTests: XCTestCase {
     }
 
     func testSunIngressesCancerAroundJuneSolstice2026() async throws {
-        let start = swe_julday(2026, 6, 15, 0, SE_GREG_CAL)
-        let end = swe_julday(2026, 6, 25, 0, SE_GREG_CAL)
+        let start = SwissEphemerisAccess.swe_julday(2026, 6, 15, 0, SE_GREG_CAL)
+        let end = SwissEphemerisAccess.swe_julday(2026, 6, 25, 0, SE_GREG_CAL)
         let events = try await SignIngressCalculator.findIngresses(from: start, to: end, timezone: "UTC")
         let sunCancer = try XCTUnwrap(events.first { $0.planetKeyA == "SOL" && $0.signKey == "CANCER" })
 
@@ -30,8 +30,8 @@ final class SignIngressCalculatorTests: XCTestCase {
     }
 
     func testIncludeMoonAddsFrequentLunarIngresses() async throws {
-        let start = swe_julday(2026, 6, 1, 0, SE_GREG_CAL)
-        let end = swe_julday(2026, 6, 8, 0, SE_GREG_CAL)
+        let start = SwissEphemerisAccess.swe_julday(2026, 6, 1, 0, SE_GREG_CAL)
+        let end = SwissEphemerisAccess.swe_julday(2026, 6, 8, 0, SE_GREG_CAL)
         let withoutMoon = try await SignIngressCalculator.findIngresses(from: start, to: end, timezone: "UTC", includeMoon: false)
         let withMoon = try await SignIngressCalculator.findIngresses(from: start, to: end, timezone: "UTC", includeMoon: true)
 
@@ -40,7 +40,7 @@ final class SignIngressCalculatorTests: XCTestCase {
     }
 
     private func jdRange(year: Int32) -> (Double, Double) {
-        (swe_julday(year, 1, 1, 0, SE_GREG_CAL), swe_julday(year + 1, 1, 1, 0, SE_GREG_CAL))
+        (SwissEphemerisAccess.swe_julday(year, 1, 1, 0, SE_GREG_CAL), SwissEphemerisAccess.swe_julday(year + 1, 1, 1, 0, SE_GREG_CAL))
     }
 
     private func ephemerisPath() -> String? {

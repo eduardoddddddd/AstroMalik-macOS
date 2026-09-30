@@ -33,7 +33,7 @@ enum EclipseCalculator {
             try Task.checkCancellation()
             var tret = [Double](repeating: 0, count: 10)
             var serr = [CChar](repeating: 0, count: 256)
-            let flags = swe_sol_eclipse_when_glob(
+            let flags = SwissEphemerisAccess.swe_sol_eclipse_when_glob(
                 searchJD,
                 SEFLG_SWIEPH,
                 allSolarTypes,
@@ -74,7 +74,7 @@ enum EclipseCalculator {
             try Task.checkCancellation()
             var tret = [Double](repeating: 0, count: 10)
             var serr = [CChar](repeating: 0, count: 256)
-            let flags = swe_lun_eclipse_when(
+            let flags = SwissEphemerisAccess.swe_lun_eclipse_when(
                 searchJD,
                 SEFLG_SWIEPH,
                 allLunarTypes,
@@ -157,9 +157,9 @@ enum EclipseCalculator {
         var serr = [CChar](repeating: 0, count: 256)
         let rc: Int32
         if kind == .solarEclipse {
-            rc = swe_sol_eclipse_how(jd, SEFLG_SWIEPH, &geopos, &attr, &serr)
+            rc = SwissEphemerisAccess.swe_sol_eclipse_how(jd, SEFLG_SWIEPH, &geopos, &attr, &serr)
         } else {
-            rc = swe_lun_eclipse_how(jd, SEFLG_SWIEPH, &geopos, &attr, &serr)
+            rc = SwissEphemerisAccess.swe_lun_eclipse_how(jd, SEFLG_SWIEPH, &geopos, &attr, &serr)
         }
         guard rc >= 0 else { return nil }
         return EphemerisUtilities.rounded(attr[0], places: 4)

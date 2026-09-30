@@ -9,8 +9,8 @@ final class VoidOfCourseCalculatorTests: XCTestCase {
     }
 
     func testVoidPeriodsForWeekHaveReasonableDurations() async throws {
-        let start = swe_julday(2026, 6, 1, 0, SE_GREG_CAL)
-        let end = swe_julday(2026, 6, 8, 0, SE_GREG_CAL)
+        let start = SwissEphemerisAccess.swe_julday(2026, 6, 1, 0, SE_GREG_CAL)
+        let end = SwissEphemerisAccess.swe_julday(2026, 6, 8, 0, SE_GREG_CAL)
         let events = try await VoidOfCourseCalculator.findVoidPeriods(from: start, to: end, timezone: "UTC")
         let starts = events.filter { $0.kind == .voidOfCourse }
         let ends = events.filter { $0.kind == .voidOfCourseEnd }
@@ -24,8 +24,8 @@ final class VoidOfCourseCalculatorTests: XCTestCase {
     }
 
     func testVoidEndsAreLunarIngressEvents() async throws {
-        let start = swe_julday(2026, 6, 1, 0, SE_GREG_CAL)
-        let end = swe_julday(2026, 6, 8, 0, SE_GREG_CAL)
+        let start = SwissEphemerisAccess.swe_julday(2026, 6, 1, 0, SE_GREG_CAL)
+        let end = SwissEphemerisAccess.swe_julday(2026, 6, 8, 0, SE_GREG_CAL)
         let events = try await VoidOfCourseCalculator.findVoidPeriods(from: start, to: end, timezone: "UTC")
         let ends = events.filter { $0.kind == .voidOfCourseEnd }
 

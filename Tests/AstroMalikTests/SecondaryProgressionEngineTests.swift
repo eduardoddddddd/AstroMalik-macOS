@@ -23,7 +23,7 @@ final class SecondaryProgressionEngineTests: XCTestCase {
 
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(natalJD + 49.0, SE_MOON, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(natalJD + 49.0, SE_MOON, SEFLG_SPEED, &xx, &serr)
         XCTAssertGreaterThanOrEqual(rc, 0, String(cString: serr))
         XCTAssertEqual(moon.longitude, normalized(xx[0]), accuracy: 0.02)
         XCTAssertEqual(snapshot.progressedJulianDay, natalJD + 49.0, accuracy: 0.002)

@@ -163,9 +163,9 @@ enum SolarReturnEngine {
             throw SolarReturnError.missingNatalSun
         }
 
-        let startJD = swe_julday(Int32(year), 1, 1, 0, SE_GREG_CAL)
+        let startJD = SwissEphemerisAccess.swe_julday(Int32(year), 1, 1, 0, SE_GREG_CAL)
         var serr = [CChar](repeating: 0, count: 256)
-        let jd = swe_solcross_ut(natalSun.longitude, startJD, SEFLG_SPEED, &serr)
+        let jd = SwissEphemerisAccess.swe_solcross_ut(natalSun.longitude, startJD, SEFLG_SPEED, &serr)
         guard jd > startJD else {
             let message = String(cString: serr).trimmingCharacters(in: .whitespacesAndNewlines)
             if message.isEmpty {
@@ -173,7 +173,7 @@ enum SolarReturnEngine {
             }
             throw SolarReturnError.calculationFailed(message)
         }
-        let endJD = swe_julday(Int32(year + 1), 1, 1, 0, SE_GREG_CAL)
+        let endJD = SwissEphemerisAccess.swe_julday(Int32(year + 1), 1, 1, 0, SE_GREG_CAL)
         guard jd < endJD else {
             throw SolarReturnError.invalidReturnJD
         }

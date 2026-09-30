@@ -190,13 +190,13 @@ final class SecondaryProgressionEngine {
     private func planetPosition(jd: Double, planetID: Int32, key: String, label: String) throws -> RawProgressedPoint {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
         guard rc >= 0 else {
             throw SecondaryProgressionError.calculationFailed(String(cString: serr))
         }
         var eq = [Double](repeating: 0, count: 6)
         var eqSerr = [CChar](repeating: 0, count: 256)
-        let eqRC = swe_calc_ut(jd, planetID, SEFLG_SPEED | SEFLG_EQUATORIAL, &eq, &eqSerr)
+        let eqRC = SwissEphemerisAccess.swe_calc_ut(jd, planetID, SEFLG_SPEED | SEFLG_EQUATORIAL, &eq, &eqSerr)
         guard eqRC >= 0 else {
             throw SecondaryProgressionError.calculationFailed(String(cString: eqSerr))
         }
@@ -216,7 +216,7 @@ final class SecondaryProgressionEngine {
     private func eclipticLongitude(jd: Double, planetID: Int32) throws -> Double {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
         guard rc >= 0 else { throw SecondaryProgressionError.calculationFailed(String(cString: serr)) }
         return normalized(xx[0])
     }
@@ -224,7 +224,7 @@ final class SecondaryProgressionEngine {
     private func eclipticSpeed(jd: Double, planetID: Int32) throws -> Double {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, planetID, SEFLG_SPEED, &xx, &serr)
         guard rc >= 0 else { throw SecondaryProgressionError.calculationFailed(String(cString: serr)) }
         return xx[3]
     }
@@ -238,7 +238,7 @@ final class SecondaryProgressionEngine {
     ) throws -> (cusps: [Double], asc: Double, mc: Double) {
         switch mode {
         case .naibod:
-            let natalRAMC = normalized(swe_sidtime(natalJD) * 15.0 + chart.longitude)
+            let natalRAMC = normalized(SwissEphemerisAccess.swe_sidtime(natalJD) * 15.0 + chart.longitude)
             let progressedRAMC = normalized(natalRAMC + ageYears * Self.naibodArcPerYear)
             let eps = try trueObliquity(jd: progressedJD)
             return try housesForARMC(armc: progressedRAMC, latitude: chart.latitude, obliquity: eps, system: houseSystemCode(chart.houseSystem))
@@ -259,7 +259,7 @@ final class SecondaryProgressionEngine {
         var cuspSpeeds = [Double](repeating: 0, count: 13)
         var ascmcSpeeds = [Double](repeating: 0, count: 10)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_houses_armc_ex2(
+        let rc = SwissEphemerisAccess.swe_houses_armc_ex2(
             armc,
             latitude,
             obliquity,
@@ -280,7 +280,7 @@ final class SecondaryProgressionEngine {
     private func trueObliquity(jd: Double) throws -> Double {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, SE_ECL_NUT, 0, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, SE_ECL_NUT, 0, &xx, &serr)
         guard rc >= 0 else { throw SecondaryProgressionError.calculationFailed(String(cString: serr)) }
         return xx[0]
     }

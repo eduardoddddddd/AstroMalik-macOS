@@ -209,7 +209,7 @@ final class SolarArcEngine: Sendable {
     private func sunLongitude(jd: Double) -> Double? {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
-        let rc = swe_calc_ut(jd, SE_SUN, SEFLG_SPEED, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, SE_SUN, SEFLG_SPEED, &xx, &serr)
         guard rc >= 0 else { return nil }
         return normalizedDegree(xx[0])
     }

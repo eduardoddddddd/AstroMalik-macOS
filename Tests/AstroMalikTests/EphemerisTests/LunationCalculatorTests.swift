@@ -65,8 +65,8 @@ final class LunationCalculatorTests: XCTestCase {
 
     func testLunarPhaseLabelsNearKnownJune2026Lunations() throws {
         // Valores aproximados UTC dentro de las ventanas de lunación calculadas por Swiss Ephemeris/Moshier.
-        let newMoonJD = swe_julday(2026, 6, 15, 2.0, SE_GREG_CAL)
-        let fullMoonJD = swe_julday(2026, 6, 29, 12.0, SE_GREG_CAL)
+        let newMoonJD = SwissEphemerisAccess.swe_julday(2026, 6, 15, 2.0, SE_GREG_CAL)
+        let fullMoonJD = SwissEphemerisAccess.swe_julday(2026, 6, 29, 12.0, SE_GREG_CAL)
 
         let newPhase = try LunationCalculator.lunarPhase(at: newMoonJD)
         let fullPhase = try LunationCalculator.lunarPhase(at: fullMoonJD)
@@ -90,10 +90,10 @@ final class LunationCalculatorTests: XCTestCase {
     }
 
     private func jdRange(year: Int32, month: Int32) -> (Double, Double) {
-        let start = swe_julday(year, month, 1, 0, SE_GREG_CAL)
+        let start = SwissEphemerisAccess.swe_julday(year, month, 1, 0, SE_GREG_CAL)
         let nextMonth = month == 12 ? 1 : month + 1
         let nextYear = month == 12 ? year + 1 : year
-        let end = swe_julday(nextYear, nextMonth, 1, 0, SE_GREG_CAL)
+        let end = SwissEphemerisAccess.swe_julday(nextYear, nextMonth, 1, 0, SE_GREG_CAL)
         return (start, end)
     }
 }

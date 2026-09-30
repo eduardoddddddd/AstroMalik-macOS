@@ -196,7 +196,7 @@ func computeTransitPeriod(
         guard let year = comps.year, let month = comps.month, let day = comps.day else {
             throw TransitError.dateCalculationFailed
         }
-        let jd = swe_julday(Int32(year), Int32(month), Int32(day), 12.0, SE_GREG_CAL)
+        let jd = SwissEphemerisAccess.swe_julday(Int32(year), Int32(month), Int32(day), 12.0, SE_GREG_CAL)
 
         let transitPlanets = try calcTransitPlanets(jd: jd)
         let aspects = findTransitAspects(from: natalPlanets, to: transitPlanets)
@@ -367,7 +367,7 @@ func detectHouseIngresses(
         guard let year = comps.year, let month = comps.month, let day = comps.day else {
             throw TransitError.dateCalculationFailed
         }
-        let jd = swe_julday(Int32(year), Int32(month), Int32(day), 12.0, SE_GREG_CAL)
+        let jd = SwissEphemerisAccess.swe_julday(Int32(year), Int32(month), Int32(day), 12.0, SE_GREG_CAL)
 
         let planets = try AstroEngine.calcPlanets(jd: jd)
         for (key, planet) in planets where outerKeys.contains(key) {

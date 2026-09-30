@@ -1591,7 +1591,7 @@ private func trueNodeLongitudeForTest(on date: Date) throws -> Double {
     ) + 0.5
     var xx = [Double](repeating: 0, count: 6)
     var serr = [CChar](repeating: 0, count: 256)
-    let rc = swe_calc_ut(jd, SE_TRUE_NODE, SEFLG_SPEED, &xx, &serr)
+    let rc = SwissEphemerisAccess.swe_calc_ut(jd, SE_TRUE_NODE, SEFLG_SPEED, &xx, &serr)
     XCTAssertGreaterThanOrEqual(rc, 0, String(cString: serr))
     return normalizedDegreeForTest(xx[0])
 }

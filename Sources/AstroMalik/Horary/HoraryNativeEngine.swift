@@ -162,7 +162,7 @@ enum HoraryNativeEngine {
         for (name, id) in traditionalPlanets + [("Nodo Norte", SE_TRUE_NODE)] {
             var xx = [Double](repeating: 0, count: 6)
             var serr = [CChar](repeating: 0, count: 256)
-            let rc = swe_calc_ut(jd, id, SEFLG_SWIEPH | SEFLG_SPEED, &xx, &serr)
+            let rc = SwissEphemerisAccess.swe_calc_ut(jd, id, SEFLG_SWIEPH | SEFLG_SPEED, &xx, &serr)
             guard rc >= 0 else {
                 throw AstroError.calcFailed(name, String(cString: serr))
             }
@@ -671,7 +671,7 @@ enum HoraryNativeEngine {
         guard let utc = TimeZone(identifier: "UTC") else { throw JulianDayError.utcUnavailable }
         let comps = Calendar(identifier: .gregorian).dateComponents(in: utc, from: localDate)
         let hour = Double(comps.hour ?? 0) + Double(comps.minute ?? 0) / 60 + Double(comps.second ?? 0) / 3600
-        return swe_julday(Int32(comps.year ?? 2000), Int32(comps.month ?? 1), Int32(comps.day ?? 1), hour, SE_GREG_CAL)
+        return SwissEphemerisAccess.swe_julday(Int32(comps.year ?? 2000), Int32(comps.month ?? 1), Int32(comps.day ?? 1), hour, SE_GREG_CAL)
     }
 
     private static func planetaryHourRuler(for date: Date, latitude: Double, longitude: Double, timezone: String) -> String {

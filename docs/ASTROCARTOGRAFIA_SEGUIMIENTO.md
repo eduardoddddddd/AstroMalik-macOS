@@ -1,0 +1,198 @@
+# Astrocartografía — seguimiento y relevo entre LLM
+
+Actualizado: **30/09/2026**, zona Europe/Madrid. Base Git: `26f6d92`.
+
+**Este es el documento que hay que actualizar al terminar cada paquete.**
+Plan y criterios completos: [ASTROCARTOGRAFIA_PLAN_MULTILLM.md](ASTROCARTOGRAFIA_PLAN_MULTILLM.md).
+
+## 1. Estado de entrega
+
+**Fase 0 implementada y validada localmente. Siguiente paquete: F1.1.**
+
+- Existe infraestructura y contratos; **todavía no existe motor de líneas ni mapa astrocartográfico**.
+- No se ha hecho commit, push, tag ni release. Los cambios están en el worktree local, incluida la documentación del plan.
+- No se han creado agentes, otras sesiones ni worktrees. Otro LLM puede continuar en este repositorio tras leer este documento y comprobar `git status`.
+- No se ha modificado el C vendorizado, el corpus, la base de datos del usuario ni el servidor.
+- Validación local, no revisión independiente de otro LLM ni Thread Sanitizer. La comparación Python es independiente del binding Swift, **no de los algoritmos Swiss**.
+
+## 2. Checklist maestro
+
+### Fase 0 — completada
+
+- [x] **F0.1** Auditoría de llamadas Swiss, estado global, tiempo y límites.
+- [x] **F0.2** Contratos Foundation compilables, errores tipados y fixture/mock.
+- [x] **F0.3** Plan de validación, ocho casos analíticos y referencia Python de 40 posiciones reales.
+- [x] **F0.4** Frontera común con exclusión, migración de llamadas, guard CI y regresiones.
+- [x] **G0** Base lista para implementar F1; límites y advertencias documentados abajo.
+
+### Fase 1 — núcleo astronómico
+
+- [ ] **F1.1** Adaptador ecuatorial real y snapshot de diez cuerpos.
+- [ ] **F1.2** Meridianos MC/IC.
+- [ ] **F1.3** ASC/DSC, tangencias y circumpolaridad.
+- [ ] **F1.4** Validación independiente del motor y propiedades numéricas.
+- [ ] **G1** Cálculo validado sin mapa.
+
+### Fase 2 — geometría
+
+- [ ] **F2.1** Muestreo adaptativo y precisión.
+- [ ] **F2.2** Antimeridiano y clipping de representación.
+- [ ] **F2.3** Caché, cancelación y protección frente a resultados obsoletos.
+- [ ] **F2.4** Tests de discontinuidades y rendimiento.
+- [ ] **G2** Geometría lista para dibujar.
+
+### Fase 3 — MVP visual
+
+- [ ] **F3.1** Spike y elección de control MapKit.
+- [ ] **F3.2** Mapa, estilos, leyenda y filtros.
+- [ ] **F3.3** Selección y accesibilidad.
+- [ ] **F3.4** Integración en navegación y empaquetado MVP.
+- [ ] **G3** MVP aceptado.
+
+### Fase 4 — lugares/relocalización
+
+- [ ] **F4.1** Distancia mínima a curvas.
+- [ ] **F4.2** Motor de carta relocada.
+- [ ] **F4.3** Búsqueda y comparación de lugares.
+- [ ] **F4.4** Persistencia y migración.
+- [ ] **G4** Lugares y cartas relocadas aceptados.
+
+### Fase 5 — interpretación
+
+- [ ] **F5.1** Esquema/guía editorial.
+- [ ] **F5.2** Cuarenta textos originales y revisión.
+- [ ] **F5.3** Repositorio de lecturas y conexión con lugares.
+- [ ] **F5.4** Vista de lectura completa.
+- [ ] **G5** Versión funcional completa.
+
+### Fase 6 — exportaciones
+
+- [ ] **F6.1** Datos, builder y plantilla PDF.
+- [ ] **F6.2** Imagen del mapa y fallback.
+- [ ] **F6.3** Exportación voluntaria a Joplin.
+- [ ] **F6.4** CLI y JSON versionado.
+- [ ] **G6** Exportaciones aceptadas.
+
+### Fase 7 — entrega
+
+- [ ] **F7.1** Regresiones finales y rendimiento.
+- [ ] **F7.2** Ayuda, README y CHANGELOG.
+- [ ] **F7.3** Empaquetado y verificación de distribución.
+- [ ] **G7** Candidata entregable; publicación requiere autorización.
+
+## 3. Qué se ha implementado en esta sesión
+
+### F0.1 — auditoría
+
+Inventario léxico previo a migración: [astrocartography-swiss-call-inventory.json](astrocartography-swiss-call-inventory.json). Contiene 65 ocurrencias en 23 archivos Swift: 39 en 15 archivos de producción y 26 en ocho archivos de tests. Las líneas son las de la base; no usarlas como anclas tras editar.
+
+Quince funciones cubiertas: `calc_ut`, `set_ephe_path`, `julday`, `sidtime`, `sidtime0`, `cotrans`, `houses_ex2`, `houses_armc_ex2`, `solcross_ut`, `mooncross_ut`, `sol_eclipse_when_glob`, `lun_eclipse_when`, `sol_eclipse_how`, `lun_eclipse_how`, `rise_trans`, con prefijo `swe_`.
+
+Hallazgos:
+
+1. `Sources/CSwissEph/include/sweodef.h` desactiva TLS bajo Apple; `sweph.c` contiene `swed` y cachés globales. La exclusión debe ser por proceso, no por módulo o instancia.
+2. Ya hay consumidores en `Task.detached` (efemérides, natal extendida, retornos y direcciones). No esperar a tener el nuevo mapa para proteger llamadas.
+3. App y CLI configuran la ruta con `AstroEngine.configure` al inicializar; tienen procesos distintos. No necesitan lock entre procesos, sí entre hilos de cada proceso.
+4. `JulianDay.swift` conserva segundos y rechaza huecos DST y fechas normalizadas. **No ofrece desambiguación explícita de horas repetidas al acabar DST**. No se ha cambiado esa política global.
+5. La conversión actual usa componentes UTC con `swe_julday`, sin aplicar DUT1. El contrato lo llama `utcApproximatedAsUT1`, no UT1 exacto.
+6. `PlacesService` estima zonas por regiones y offsets. El destino no puede reinterpretar el instante natal ni presentarse como zona histórica exacta.
+7. Los archivos de efemérides son `_18` y `_24`. El rango de entrada v1 se limita a 1800–2999; eso **no garantiza ausencia de fallback por cuerpo**.
+
+### F0.2 — contrato v1
+
+Archivo: `Sources/AstroMalik/Astrocartography/Models/AstrocartographyContracts.swift`.
+
+Implementados `AstroNatalInstant`, `AstrocartographyRequest`, `GeoCoordinate`, cuerpos/ángulos, posición ecuatorial, snapshot, procedencia, diagnóstico, identidad de línea, segmentos, resultado y protocolos `AstrocartographyEphemerisProviding` / `AstrocartographyCalculating`. El proveedor `StaticAstrocartographyEphemeris` permite empezar UI/tests sin inventar un motor real.
+
+Decisiones adoptadas para el núcleo v1:
+
+- Foundation, sin tipos MapKit/SwiftUI ni dependencias de corpus o red.
+- Diez cuerpos en orden `PLANET_LIST`; petición no vacía y sin duplicados.
+- Longitud terrestre este positiva, intervalo canónico `[-180, 180)`; +180 se normaliza a -180. El adaptador visual deberá representar los bordes de ±180 adecuadamente sin cambiar esta convención de dominio.
+- RA en `[0,360)` y declinación/latitud en `[-90,90]`, grados; valores finitos.
+- Instante inmutable, JD de 1800-01-01 incluido a 3000-01-01 excluido.
+- Convención `geocentric-apparent-of-date-geometric-center-v1`: coordenadas aparentes geocéntricas de fecha, horizonte geométrico del centro; no añadir flags J2000, topocéntricos, refracción o semidiámetro.
+- Tolerancia geométrica positiva en km, por defecto 1. Es objetivo de discretización, no promesa de exactitud astronómica ni intensidad simbólica.
+- Validación también al decodificar JSON de entradas y snapshots. Snapshot exige exactamente un registro por cuerpo solicitado y se ordena canónicamente.
+- Identidad estable cuerpo+ángulo+convención. Los flags guardados son los **devueltos**, no solo los solicitados.
+
+**Congelación:** núcleo v1 aceptado para F1–F3. Los DTO `LocationAnalysis`, `RelocatedChartResult` y `AstrocartographyReading` son formas preliminares compilables; su validación de negocio y extensión se cierran en F4/F5. Los segmentos/resultados todavía no garantizan precisión, orden o completitud: esos invariantes los debe imponer y probar el motor F1/F2.
+
+### F0.3 — fixtures y referencias
+
+Ubicación: `Tests/AstroMalikTests/Astrocartography/Fixtures/`, registrada como recurso de tests en `Package.swift`.
+
+- `phase0-equatorial-synthetic.json`: datos ficticios, con procedencia y advertencia explícitas. Su JD no significa que sus RA/declinaciones sean reales.
+- `phase0-analytic-lines.json`: ocho casos, creados antes del motor: ecuador, desplazamiento, hemisferio sur/wrap, curva inclinada, tangencia, circumpolaridad norte/sur y degeneración polar. Las pruebas verifican las identidades horizontales, **no un motor que aún no existe**.
+- `phase0-swiss-python-reference.json`: diez cuerpos × cuatro fechas; tiempo sidéreo, RA, declinación, flags reales y fallback por cuerpo. Procedencia: pyswisseph instalado, Swiss 2.10.03, misma versión del C vendorizado, por vía Python independiente del futuro adaptador Swift.
+
+**Límite descubierto:** el Sol en JD 2378496.5 (1800-01-01) retorna Moshier aunque el fichero `_18` exista. La referencia conserva este caso en `fallbackBodies`. F1.1 deberá emitir diagnóstico visible de fallback; no recortar el caso ni cambiar flags esperados para esconderlo.
+
+Generador reproducible: `scripts/generate_astrocartography_references.py`. Usa pyswisseph ya instalado; no instala nada ni necesita red. Si otro equipo no dispone del binding, puede ejecutar tests con el fixture versionado sin regenerarlo. No sustituir esa referencia por la salida del propio motor.
+
+### F0.4 — exclusión Swiss
+
+Archivo: `Sources/AstroMalik/Engine/Ephemeris/SwissEphemerisAccess.swift`.
+
+- Una fachada estática y un `NSRecursiveLock` único por proceso.
+- Cada llamada existente entra por la fachada; se conservan argumentos, punteros, flags, códigos de retorno y algoritmos.
+- `transaction` es síncrona, reentrante y libera con `defer` también cuando se lanza error.
+- Una configuración temporal más cálculos relacionados debe ejecutarse dentro de **una transacción**. Un snapshot nuevo debe abarcar sus efemérides y tiempo sidéreo, no envolver solo cada cuerpo por separado.
+- **Prohibido `await`, red, UI o geometría pesada dentro del lock**. La fachada no crea tareas ni actores. No protege código que se salte la fachada.
+- No se ha hecho un refactor de las API de motores a async ni cambiado el C vendorizado.
+
+Guard: `scripts/check_swiss_access.py`, aplicado a Sources+Tests y añadido al workflow universal de GitHub. Es un control léxico conservador, **no prueba AST de seguridad ni detector de referencias indirectas/alias**. Si se necesita una función Swiss nueva, añadirla a esta fachada y sus tests; no crear un segundo lock.
+
+Alternativas descartadas: actor solo del módulo (deja otros motores fuera), actor global (requiere migración async amplia), habilitar TLS en C (cambia código vendorizado/configuración por hilo). La fachada mantiene API síncrona con coste de serialización; las llamadas C largas pueden bloquear otros cálculos. Medir latencia en F2/F7.
+
+## 4. Validación efectivamente ejecutada
+
+Entorno: Mac arm64; Swift 6.3.1, lenguaje del paquete Swift tools 5.9. `xcode-select` apunta a CommandLineTools sin XCTest. **No se cambió la selección global**: se usó Xcode por proceso.
+
+```bash
+python3 scripts/check_swiss_access.py
+python3 scripts/generate_astrocartography_references.py
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer bash scripts/package_app.sh
+```
+
+Resultados de tests: **418 ejecutados, 1 omitido, 0 fallos**; suite completa, GUI/reportes y CLI incluidos. Las nuevas pruebas comprueban contratos/JSON, ocho identidades analíticas, 40 posiciones por referencia Python, reentrada, liberación tras error, exclusión de 100 secciones y 120 cálculos concurrentes frente a baseline serial.
+
+El test de referencia Python utiliza las efemérides locales y sus flags reales. El test concurrente usa llamadas estilo natal/casas y ecuatoriales dentro de transacciones, con entrada sintética; no es benchmark ni prueba exhaustiva de todas las secuencias posibles.
+
+**Empaquetado confirmado:** `scripts/package_app.sh` terminó correctamente; binario `AstroMalik.app/Contents/MacOS/AstroMalik` con timestamp **2026-09-30 19:48:17 +0200**. `codesign --verify --deep --strict AstroMalik.app` pasó, y el ejecutable release de `astromalik-cli --help` respondió correctamente. No se ha publicado una nueva versión.
+
+El generador Python se ejecutó dos veces: el SHA-256 del fixture fue idéntico (`ff2800c807fc85309a518fe0c87532e32fa995d1e946bfe73185717a74d63875`). Guard sin llamadas crudas fuera de la fachada y tres sanity checks del detector pasados. `git diff --check` sin errores.
+
+No se ejecutó TSan, un benchmark formal ni revisión externa por otro LLM. No se probó manualmente un mapa porque no existe aún.
+
+## 5. Siguiente acción concreta para cualquier LLM
+
+1. Leer `AGENTS.md`, este seguimiento y el plan; revisar `git status` sin descartar cambios pendientes.
+2. Ejecutar guard y tests con el `DEVELOPER_DIR` indicado.
+3. Implementar **F1.1**, creando un proveedor real en `Astrocartography/Calculation/` que cumpla `AstrocartographyEphemerisProviding`.
+4. Usar `SwissEphemerisAccess.transaction` para un snapshot completo; configurar/reutilizar ruta de app de manera explícita, solicitar `SEFLG_SWIEPH | SEFLG_EQUATORIAL` y capturar flags reales por cuerpo. Calcular `swe_sidtime(jd) * 15` con convenciones coherentes.
+5. Comparar con las referencias existentes; registrar versión de librería, source y advertencias. No inventar procedencia ni usar el mock en producción.
+6. Tratar la petición como un instante ya establecido. Si añade conversión desde `NatalChart`, documentar/controlar horas DST ambiguas; no cambiar globalmente `JulianDay.swift` sin tarea y tests específicos.
+7. Después F1.2/F1.3, y solo tras G1 avanzar a geometría real. U puede adelantar F3.1 con mocks, pero no afirmar que un mapa valida el cálculo.
+8. Actualizar casillas, evidencia y bitácora; ejecutar tests + `scripts/package_app.sh`; verificar timestamp. No hacer push/release sin autorización.
+
+### Prompt para continuar
+
+```text
+Continúa la astrocartografía de AstroMalik-macOS desde
+docs/ASTROCARTOGRAFIA_SEGUIMIENTO.md. Fase 0 está implementada localmente,
+sin commit; primero revisa los cambios y valida la base. Implementa F1.1,
+respetando el contrato núcleo v1 y la fachada Swiss común. No sobrescribas
+fixtures independientes ni modifiques UI, corpus o servidor. Registra aquí
+lo que completes y lo pendiente para que otro LLM pueda seguir. Tras código,
+ejecuta tests, scripts/package_app.sh y verifica timestamp de la app.
+```
+
+## 6. Bitácora
+
+| Fecha | Paquetes | Evidencia / salida | Siguiente |
+|---|---|---|---|
+| 30/09/2026 | F0.1–F0.4 | Contratos, fachada, inventario, fixtures, guard, 418 tests / 1 omitido / 0 fallos; paquete y firma verificados, binario 19:48:17 CEST | F1.1 |
+
+Al continuar: añadir fila con paquetes, comandos/resultados reales, límites y siguiente acción; no borrar decisiones previas sin explicar la sustitución.

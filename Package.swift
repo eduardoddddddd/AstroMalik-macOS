@@ -69,6 +69,7 @@ let package = Package(
             resources: [
                 .process("PrimaryDirectionsGolden.json"),
                 .process("RectificationCalibrationCases.json"),
+                .process("Astrocartography/Fixtures"),
             ]
         ),
         .testTarget(

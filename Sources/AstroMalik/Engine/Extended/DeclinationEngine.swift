@@ -53,7 +53,7 @@ final class DeclinationEngine {
         var xx = [Double](repeating: 0, count: 6)
         var serr = [CChar](repeating: 0, count: 256)
         let flags = SEFLG_SPEED | SEFLG_EQUATORIAL
-        let rc = swe_calc_ut(jd, planetID, flags, &xx, &serr)
+        let rc = SwissEphemerisAccess.swe_calc_ut(jd, planetID, flags, &xx, &serr)
         guard rc >= 0 else { throw NatalExtendedError.swissCalculation(key, String(cString: serr)) }
         return xx[1]
     }
