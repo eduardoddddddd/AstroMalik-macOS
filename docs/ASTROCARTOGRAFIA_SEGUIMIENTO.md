@@ -1,19 +1,19 @@
 # Astrocartografía — seguimiento y relevo entre LLM
 
-Actualizado: **30/09/2026**, zona Europe/Madrid. Fase 0 en commit `6a48a77` (base previa `26f6d92`). F1.1–F1.4 están en el worktree, sin commit. La app no se ha reempaquetado después de F1.1.
+Actualizado: **30/09/2026**, zona Europe/Madrid. Fase 0 en commit `6a48a77` (base previa `26f6d92`), fase 1 y corrección de tangencia en `74959a2`. **F2.1–F2.4 validadas y preparadas para el commit que incorpora esta actualización, por petición del usuario.** F3.1–F3.4 autorizadas para ejecución mediante un nuevo subagente. La app no se ha reempaquetado después de F1.1.
 
 **Este es el documento que hay que actualizar al terminar cada paquete.**
 Plan y criterios completos: [ASTROCARTOGRAFIA_PLAN_MULTILLM.md](ASTROCARTOGRAFIA_PLAN_MULTILLM.md).
 
 ## 1. Estado de entrega
 
-**Fase 1 implementada y validada en tests locales. Siguiente paquete: F2.1.** La app empaquetada sigue siendo la de las 20:01:40, anterior a los meridianos y a las curvas.
+**Fase 2 implementada y validada. El usuario ha autorizado la fase 3 completa mediante subagente; ejecución a continuación del commit de F2.** La app empaquetada sigue siendo la de las 20:01:40, anterior a los meridianos y a las curvas. La confirmación sobre levantar la pausa de empaquetado se ha solicitado por separado; mantenerla hasta respuesta.
 
-- Existe motor de líneas mundanas (MC/IC y raíces ASC/DSC). **No hay muestreo adaptativo ni mapa.**
-- La fase 0 está en el commit local `6a48a77`. La fase 1 y este seguimiento siguen sin commit. No hay push, tag ni release. El usuario pidió no regenerar la app hasta que lo pida.
-- No se han creado agentes, otras sesiones ni worktrees. Otro LLM puede continuar en este repositorio tras leer este documento y comprobar `git status`.
+- Existe motor de líneas mundanas, muestreo adaptativo con cota geográfica, adaptador visual de antimeridiano/clipping y servicio de caché/cancelación. **No hay mapa ni integración UI.**
+- HEAD comprobado al comenzar F2: `74959a2`, árbol limpio. Corrige la información antigua de este seguimiento: **F1 sí estaba ya committeada**. Solo F2 y esta actualización quedan sin commit. No se hizo commit, push, tag ni release. El usuario pidió no regenerar la app hasta que lo pida.
+- F2 se ejecutó mediante un subagente autorizado Astra High, sin otros chats ni worktrees y sin delegación adicional. Otro LLM puede continuar tras leer este documento y comprobar `git status`.
 - No se ha modificado el C vendorizado, el corpus, la base de datos del usuario ni el servidor.
-- Validación local, no revisión independiente de otro LLM ni Thread Sanitizer. La comparación Python es independiente del binding Swift, **no de los algoritmos Swiss**.
+- Validación local, sin Thread Sanitizer. El coordinador revisó el código F2; eso no constituye otra teoría de efemérides. La comparación Python es independiente del binding Swift, **no de los algoritmos Swiss**.
 
 ## 2. Checklist maestro
 
@@ -35,11 +35,11 @@ Plan y criterios completos: [ASTROCARTOGRAFIA_PLAN_MULTILLM.md](ASTROCARTOGRAFIA
 
 ### Fase 2 — geometría
 
-- [ ] **F2.1** Muestreo adaptativo y precisión.
-- [ ] **F2.2** Antimeridiano y clipping de representación.
-- [ ] **F2.3** Caché, cancelación y protección frente a resultados obsoletos.
-- [ ] **F2.4** Tests de discontinuidades y rendimiento.
-- [ ] **G2** Geometría lista para dibujar.
+- [x] **F2.1** Muestreo adaptativo y precisión geográfica acotada.
+- [x] **F2.2** Antimeridiano y clipping de representación, sin MapKit/UI.
+- [x] **F2.3** Caché, cancelación y protección frente a resultados obsoletos.
+- [x] **F2.4** Tests de discontinuidades, error de bordes completos y rendimiento.
+- [x] **G2** Geometría geográfica y segmentos visuales disponibles; F3 debe respetar la semántica de interpolación o validar su proyección. No es aceptación de MapKit/píxeles ni de la app empaquetada.
 
 ### Fase 3 — MVP visual
 
@@ -80,7 +80,7 @@ Plan y criterios completos: [ASTROCARTOGRAFIA_PLAN_MULTILLM.md](ASTROCARTOGRAFIA
 - [ ] **F7.3** Empaquetado y verificación de distribución.
 - [ ] **G7** Candidata entregable; publicación requiere autorización.
 
-## 3. Qué se ha implementado en esta sesión
+## 3. Implementación acumulada por paquetes
 
 ### F0.1 — auditoría
 
@@ -179,6 +179,69 @@ Archivos: `MundaneAngles.swift` y `AstrocartographyEngine.swift`, en `Astrocarto
 
 En esa pasada hubo 6022 raíces de cruce, 80 tangencias y 36 latitudes de control sin cruce. Los ocho casos analíticos de fase 0 coinciden a 1e-9° o mejor, incluidos tangencia, ausencia de cruce y horizonte polar no único. No apareció discrepancia que exigir cambiar una tolerancia. El residuo es redondeo trigonométrico, no una diferencia entre efemérides.
 
+### F2.1 — geometría adaptativa y cota de error
+
+Archivos: `Calculation/AdaptiveAstroGeometry.swift` y `Calculation/AstrocartographyEngine.swift`.
+
+**No se cambió el esquema ni los protocolos del contrato v1.** Se sustituyó la rejilla provisional de F1; también se actualizaron dos expectativas estructurales de sus tests (MC/IC ahora tienen cinco puntos hasta los polos, y los segmentos de dominio son continuos al atravesar ±180). Las pruebas de raíces, signos, tangencias y fixtures independientes permanecen intactas.
+
+- Horizonte parametrizado como círculo máximo, con base ortonormal `a = (−sin δ, 0, cos δ)`, `b = (0, 1, 0)`, `r(t) = a sin t ± b cos t`, `t ∈ [−π/2, π/2]`, rotado por `α − θ`. El signo positivo es DSC y el negativo ASC. Esto elimina la singularidad de usar latitud como parámetro cerca de la tangencia.
+- Se usa `atan2` para latitud/hora, sin `acos` cerca de ±1. Extremos de tangencia exactos, ecuador incluido y la misma subdivisión para ambas ramas. MC/IC cubren −90° a +90° en meridianos exactos; no afirman visibilidad.
+- Para `|δ| <= 1e−9°`, los polos son abiertos/no únicos según la convención F1: se dejan los extremos a `4e−9°` de parámetro del extremo, omitiendo menos de **0.5 mm de arco** por extremo, con diagnóstico explícito. No se inventa una raíz en el polo. Para `|δ| >= 90° − 1e−9°`, el horizonte no único conserva ramas vacías y diagnóstico.
+- Una arista geográfica significa **interpolación lineal de latitud y longitud localmente desenrollada**, no una cuerda entre longitudes canónicas a través del mapa. Esfera de radio **6371.0088 km**, no elipsoide.
+
+**Cota en toda la arista:** sea `q(s)` el vector unitario de esa interpolación geográfica, y `r(s)` el arco geodésico a velocidad constante entre sus extremos, `s ∈ [0,1]`. En radianes, `||q''|| <= (|Δφ| + |Δλ|)²` y `||r''|| = A²`, siendo `A` la longitud angular del arco. El resto de interpolación lineal respecto a la cuerda cartesiana común está acotado por `sup ||f''|| / 8`, por lo que:
+
+```text
+E = ((|Δφ| + |Δλ|)² + A²) / 8
+cotaKm = 2 R asin(min(1, E/2)) + 1e−7 km
+```
+
+Al emparejar todos los valores de `s`, es una cota bidireccional de distancia, no un criterio basado solo en el punto medio. El muestreador biseca hasta que la cota no supera la tolerancia solicitada; limita también cada arco a 45° para no entregar aristas antipodales ambiguas. La holgura de **0.1 mm** cubre redondeos convencionales; no se implementó aritmética de intervalos para certificar cada operación de coma flotante.
+
+Límites explícitos: tolerancia de ejecución mínima **1 mm** (`0.000001 km`), profundidad 52 y hasta 262145 vértices por rama. Si se alcanza un límite sin satisfacer la cota, lanza `AstroGeometryError`, **sin relajar el objetivo ni devolver un resultado degradado**. El contrato sigue aceptando cualquier tolerancia positiva; el motor declara su límite numérico en tiempo de ejecución. No se confunde esta cota con exactitud de efemérides, UT1, posición observada o píxeles.
+
+### F2.2 — dominio completo y adaptación visual
+
+Archivo: `Representation/AstroVisualGeometry.swift`.
+
+- **Los segmentos del núcleo conservan la curva completa a través del antimeridiano**, con coordenadas canónicas `[-180,180)`. El corte provisional de F1 descartaba el borde que atravesaba ±180; se retiró para no dejar huecos en análisis geográficos futuros. Esto cumple el comentario del contrato v1: sus segmentos no son polilíneas recortadas por MapKit.
+- DTO de representación separado `AstroVisualCoordinate` con **−180 y +180 inclusivos**; el núcleo no cambia la normalización de +180 a −180.
+- Cada borde existente se desenrolla localmente, recorta al intervalo de latitud solicitado y parte en el antimeridiano. Ambos lados comparten la misma latitud interpolada y usan bordes opuestos ±180: no hay cuerda falsa ni hueco. Los puntos insertados son interpolaciones de la polilínea acotada, no nuevas raíces astronómicas exactas.
+- Dominio visual configurable; valor por defecto ±85.0511287798066°. No elige control MapKit ni proyecta a píxeles. No extiende curvas que terminan antes del límite, no conecta segmentos de entrada distintos aunque coincidan sus extremos, descarta degenerados y rechaza aristas de 180° ambiguas.
+- **La cota anterior corresponde a interpolación geográfica, no a una recta de Mercator.** F3.1 debe conservar dicha semántica o añadir/verificar el presupuesto de error de su proyección/renderer. El recorte visual nunca sustituye el resultado completo para F4.
+
+### F2.3 — servicio de cálculo, caché y cancelación
+
+Archivo: `Services/AstrocartographyCalculationService.swift`. Se añadieron comprobaciones cooperativas en el motor y antes/dentro de la transacción del proveedor Swiss; no se modificó la fachada ni el C.
+
+- Actor aislado por consumidor con estados `idle`, `calculating`, `ready`, `cancelled`, `failed`. Cálculo síncrono pesado dentro de `Task.detached`, no en el actor llamante ni en MainActor. La sección Swiss produce el snapshot y termina **antes** de la geometría.
+- Cada petición invalida la generación previa mediante UUID y cancela su tarea. Una respuesta antigua nunca cambia el estado ni se inserta en caché, aunque el calculador ignore la cancelación. Cancelación explícita, cancelación del caller e invalidación de caché contempladas. Una llamada síncrona Swiss ya en marcha o esperando su lock **no se aborta a mitad**; se comprueba cancelación al entrar/salir y entre cuerpos.
+- Clave por JD, escala temporal, cuerpos canónicos, tolerancia, convención, versión del contrato, versión del algoritmo y revisión explícita de efemérides/proveedor. No se usa UUID de carta ni se redondea el instante. Editar cualquier dato relevante selecciona otra clave.
+- Calculador y revisión de proveedor son inmutables por instancia. Quien integre F3 debe usar una revisión que identifique biblioteca, datos/ruta y opciones; **una ruta sola no detecta archivos cambiados**. Si cambian recursos/configuración, reemplazar el servicio o llamar a `invalidateCache()`, que también descarta cálculo en curso.
+- Caché LRU en memoria, sin persistencia, acotada por entradas (8 por defecto) y vértices (200000). No almacena errores, resultados con snapshot incorrecto, cancelados ni obsoletos; resultados individuales que exceden el presupuesto no se cachean. Estadísticas comprobables de hits/misses/evictions.
+
+### F2.4 — evidencia geométrica, discontinuidades, carreras y rendimiento
+
+Tres archivos nuevos de tests, **17 pruebas** en total: 4 en `AdaptiveAstroGeometryTests`, 6 en `AstroVisualGeometryTests`, 7 en `AstrocartographyCalculationServiceTests`.
+
+**Referencia geométrica independiente del muestreador:** slerp cartesiano entre extremos verificados mediante la identidad horizontal. Se midieron **98580 aristas × 33 puntos** (3253140 puntos), incluyendo cuartos/octavos además del punto medio, en 14 declinaciones entre −89.999° y +89.999°, cero, valores de ±1e−6° y justo junto a la tolerancia polar. También se comprueba que cada rama cubre π radianes salvo la exclusión polar declarada, sin huecos.
+
+| Tolerancia solicitada | Máxima separación geográfica medida |
+|---|---:|
+| 10 km | 3.3481300116 km |
+| 1 km | 0.2815963371 km |
+| 0.1 km | 0.0299831101 km |
+| 0.01 km | 0.0034308975 km |
+
+La cota conservadora por arista también debe ser ≤ objetivo. Estas mediciones no son una nueva comparación de efemérides ni sustituyen fixtures F0. Los tests de F1 siguen comparando con sus referencias, con residuo de seno de altitud máximo **1.82146e−15** en la nueva geometría.
+
+Discontinuidades: cruces este/oeste de ±180 con bordes emparejados, vértice exacto sobre el corte, meridiano −180, clipping simultáneo con seam, extremos tangentes, polos abiertos, entrada vacía/no única, segmentos separados que comparten punto y rechazo de arista ambigua. Barrido adicional: 7 orígenes × 7 declinaciones × 2 ramas × 3 dominios visuales, comprobando que no haya NaN, cuerdas mundiales, vértices duplicados ni fragmentación inesperada.
+
+Concurrencia: gates/semáforos deterministas, no sleeps. Calculadores deliberadamente no cooperativos, respuesta antigua posterior a una nueva, **20 cambios rápidos**, cancelación del caller/servicio, invalidación durante cálculo, fallos y snapshot incorrecto. También se comprueba que el motor real respeta cancelación tras un proveedor que no coopera y que LRU/variaciones de datos/presupuesto de vértices se aplican.
+
+**Benchmark local de motor + snapshot Swiss + geometría**, sin mapa/red, sin caché del servicio: Apple M3, macOS 26.3 (25D125), Swift 6.3.1, build **debug**, diez cuerpos, JD 2451545, tolerancia 1 km, un calentamiento y **31 muestras**. En la suite completa: **p50 1.309 ms, p95 1.364 ms, 5936 vértices**. El percentil usa índices 15 y 29 de la serie ordenada. El objetivo orientativo <1 s se cumple en este equipo/configuración; no extrapolar a otros Macs ni a la futura UI. No se ejecutó benchmark de distribución/release ni TSan.
+
 ## 4. Validación efectivamente ejecutada
 
 Entorno: Mac arm64; Swift 6.3.1, lenguaje del paquete Swift tools 5.9. `xcode-select` apunta a CommandLineTools sin XCTest. **No se cambió la selección global**: se usó Xcode por proceso.
@@ -204,29 +267,43 @@ El test de referencia Python utiliza las efemérides locales y sus flags reales.
 
 El generador Python se ejecutó dos veces: el SHA-256 del fixture fue idéntico (`ff2800c807fc85309a518fe0c87532e32fa995d1e946bfe73185717a74d63875`). Guard sin llamadas crudas fuera de la fachada y tres sanity checks del detector pasados. `git diff --check` sin errores.
 
-No se ejecutó TSan, un benchmark formal ni revisión externa por otro LLM. No se probó manualmente un mapa porque no existe aún.
+**Validación F2 (30/09/2026):**
+
+```bash
+python3 scripts/check_swiss_access.py
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test --filter 'AdaptiveAstroGeometryTests|AstroVisualGeometryTests|AstrocartographyEngineTests'
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test --filter AstrocartographyCalculationServiceTests
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test
+git diff --check
+stat -f '%Sm' -t '%Y-%m-%d %H:%M:%S %z' AstroMalik.app/Contents/MacOS/AstroMalik
+```
+
+Primera pasada de F2 mostró dos expectativas estructurales obsoletas de F1 (tres puntos MC y segmentos ya cortados); se actualizaron sin tocar oráculos astronómicos. Después: suite completa **445 ejecutados, 1 omitido, 0 fallos**, 32.002 s en la repetición final (primera completa: 33.464 s, también sin fallos). Guard Swiss y `git diff --check` correctos. Fixtures y contratos v1 sin cambios. Los logs internos están en `/tmp/astromalik-f2-*.log`; la evidencia durable relevante queda en este documento.
+
+**Revisión posterior del coordinador:** leídos sampler/cota, adaptador visual, servicio y tests; sin bloqueos detectados. Ejecución propia con filtro `AdaptiveAstroGeometryTests|AstroVisualGeometryTests|AstrocartographyCalculationServiceTests|MundaneAngleAnalyticTests`: **20 tests, 0 fallos**, 2.939 s. Reprodujo máximo 0.281596337 km para objetivo 1 km; guard y diff check correctos. Se verificó de nuevo el timestamp del binario sin regenerarlo. Esta revisión no sustituye TSan ni validación del renderer de F3.
+
+**No se ejecutó `scripts/package_app.sh` ni se abrió la app**, por la pausa pedida. Timestamp comprobado del binario empaquetado: **2026-09-30 20:01:40 +0200**, sin cambios; no contiene F1.2–F2. No se ejecutó TSan ni se probó manualmente un mapa porque no existe aún.
 
 ## 5. Siguiente acción concreta para cualquier LLM
 
-1. Leer `AGENTS.md`, este seguimiento y el plan; revisar `git status` sin descartar cambios pendientes.
-2. Ejecutar guard y tests con el `DEVELOPER_DIR` indicado.
-3. Implementar **F2.1**: muestreo adaptativo de las curvas ya calculadas, con error geométrico acotado y refinamiento cerca de las tangencias. No sustituir la rejilla de 1° de F1 como si ya cumpliera el objetivo de 1 km.
-4. No regenerar `phase0-analytic-lines.json` ni la referencia Python con la salida del motor. No meter todavía el mapa ni afirmar que un dibujo valida el cálculo.
-5. El empaquetado de la app queda en pausa hasta que el usuario lo pida. Los tests sí deben ejecutarse con `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer`.
-6. Actualizar casillas, evidencia y bitácora. No hacer push/release sin autorización.
+1. Leer `AGENTS.md`, este seguimiento y el plan; revisar `git status` y los cambios F2 sin descartar trabajo pendiente. Base real: `74959a2`.
+2. Ejecutar guard y tests con `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer`.
+3. **F3.1–F3.4 autorizadas por el usuario.** Comenzar por spike/elección de control MapKit y validación de la interpolación/proyección que dibujará. No dar por válida en píxeles una cota geográfica lat/lon.
+4. Usar `AstrocartographyCalculationService` para trabajo fuera del hilo principal y latest-wins; construir correctamente la revisión del proveedor y observar sus estados. No cachear por UUID de carta.
+5. Usar el resultado núcleo para análisis y el adaptador visual para dibujar; nunca alimentar distancias F4 con curvas recortadas. No regenerar fixtures independientes con salida del motor.
+6. El empaquetado sigue en pausa hasta petición explícita. No commit, push ni release sin autorización. Actualizar evidencia/bitácora de cualquier siguiente paquete.
 
 ### Prompt para continuar
 
 ```text
-Continúa la astrocartografía de AstroMalik-macOS desde
-docs/ASTROCARTOGRAFIA_SEGUIMIENTO.md.
-Fase 0 está en el commit 6a48a77. La fase 1 está en el worktree sin commit
-y la app no se ha reempaquetado. Revisa esos cambios. Implementa F2.1,
-sin tratar la rejilla de 1° como geometría final. No sobrescribas
-fixtures independientes ni modifiques UI, corpus o servidor. No ejecutes
-scripts/package_app.sh salvo petición explícita. Registra aquí
-lo que completes y lo pendiente para que otro LLM pueda seguir. Tras código,
-ejecuta los tests. No empaquetes la app hasta que el usuario lo pida.
+Continúa AstroMalik-macOS desde docs/ASTROCARTOGRAFIA_SEGUIMIENTO.md.
+HEAD 74959a2 contiene F1; F2.1–F2.4 están en el worktree sin commit.
+Revisa esos cambios y ejecuta guard/tests. Implementa únicamente el paquete
+que autorice el usuario (siguiente: F3.1). Conserva contrato v1 y fixtures.
+La cota F2 es geográfica lat/lon, no un error de píxeles/Mercator: valida la
+semántica del renderer. No modifiques corpus/servidor ni hagas commit/push.
+No ejecutes scripts/package_app.sh ni abras la app salvo petición explícita.
+Registra lo completado, evidencia real, límites y siguiente acción aquí.
 ```
 
 ## 6. Bitácora
@@ -236,6 +313,7 @@ ejecuta los tests. No empaquetes la app hasta que el usuario lo pida.
 | 30/09/2026 | F0.1–F0.4 | Contratos, fachada, inventario, fixtures, guard, 418 tests / 1 omitido / 0 fallos; paquete y firma verificados, binario 19:48:17 CEST. Commit local `6a48a77`, sin push | F1.1 |
 | 30/09/2026 | F1.1 | Adaptador ecuatorial, diagnóstico de fallback y `swe_version` en la fachada. 422 tests / 1 omitido / 0 fallos; binario 20:01:40 CEST. Sin commit | F1.2 |
 | 30/09/2026 | F1.2–F1.4 | Meridianos, raíces ASC/DSC, tangencias y circumpolaridad. Residuo de meridiano 0; seno de altitud ≤ 1.97e-15. 427 tests / 1 omitido / 0 fallos. App no regenerada, por petición | F2.1 |
-| 30/09/2026 | F1.3 corrección | La proximidad de `cos` a ±1 ya no fusiona dos raíces válidas. Caso 44.9999999988° / 45° conserva ±179.9994756°. App no regenerada | F2.1 |
+| 30/09/2026 | F1.3 corrección | La proximidad de `cos` a ±1 ya no fusiona dos raíces válidas. Caso 44.9999999988° / 45° conserva ±179.9994756°. App no regenerada. F1 cerrada en commit `74959a2` | F2.1 |
+| 30/09/2026 | F2.1–F2.4 | Cota geométrica completa, dominio sin huecos, seam/clipping separado, actor latest-wins y caché LRU. 445 tests / 1 omitido / 0 fallos; objetivo 1 km medido ≤0.281597 km; benchmark debug M3 p50 1.309 ms/p95 1.364 ms, 5936 vértices. Sin commit ni empaquetado | F3.1 solo bajo autorización |
 
 Al continuar: añadir fila con paquetes, comandos/resultados reales, límites y siguiente acción; no borrar decisiones previas sin explicar la sustitución.

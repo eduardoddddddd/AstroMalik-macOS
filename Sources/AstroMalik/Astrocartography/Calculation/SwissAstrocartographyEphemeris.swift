@@ -13,10 +13,12 @@ struct SwissAstrocartographyEphemeris: AstrocartographyEphemerisProviding {
     let ephemerisDirectory: String
 
     func snapshot(for request: AstrocartographyRequest) throws -> EquatorialSnapshot {
+        try Task.checkCancellation()
         guard !ephemerisDirectory.isEmpty else {
             throw AstrocartographyError.ephemerisFailure("Falta la ruta explícita de efemérides Swiss.")
         }
         return try SwissEphemerisAccess.transaction {
+            try Task.checkCancellation()
             AstroEngine.configure(ephePath: ephemerisDirectory)
             let julianDay = request.instant.julianDay
             let sidereal = Self.normalizedCircle(SwissEphemerisAccess.swe_sidtime(julianDay) * 15)
@@ -24,6 +26,7 @@ struct SwissAstrocartographyEphemeris: AstrocartographyEphemerisProviding {
             var diagnostics: [AstroDiagnostic] = []
             positions.reserveCapacity(request.bodies.count)
             for body in request.bodies {
+                try Task.checkCancellation()
                 let calculated = try Self.position(body: body, julianDay: julianDay)
                 if calculated.returnedFlags & SEFLG_SWIEPH == 0 {
                     diagnostics.append(AstroDiagnostic(

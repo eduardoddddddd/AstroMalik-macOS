@@ -14,7 +14,7 @@ final class AstrocartographyEngineTests: XCTestCase {
 
         let sunMC = try XCTUnwrap(result.lines.first { $0.id.body == .sun && $0.id.angle == .mc })
         let longitudes = sunMC.segments.flatMap(\.coordinates).map(\.longitude)
-        XCTAssertEqual(longitudes, [0, 0, 0])
+        XCTAssertEqual(longitudes, [0, 0, 0, 0, 0])
         let latitudes = sunMC.segments.flatMap(\.coordinates).map(\.latitude)
         XCTAssertTrue(latitudes.contains { $0 < 0 })
         XCTAssertTrue(latitudes.contains { $0 > 0 })
@@ -40,7 +40,9 @@ final class AstrocartographyEngineTests: XCTestCase {
             }
             for segment in line.segments {
                 for pair in segment.coordinates.adjacentPairs() {
-                    XCTAssertLessThanOrEqual(abs(pair.0.longitude - pair.1.longitude), 180)
+                    // F2 domain follows the shortest local longitude branch;
+                    // splitting the display seam belongs to AstroVisualGeometry.
+                    XCTAssertLessThan(abs(canonical(pair.0.longitude - pair.1.longitude)), 180)
                 }
             }
         }
