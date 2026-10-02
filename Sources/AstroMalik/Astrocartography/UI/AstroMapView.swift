@@ -90,13 +90,20 @@ final class AstroMapRenderer: MKOverlayPathRenderer {
         }
         self.path = path
     }
-    func style(selected: Bool) {
+    /// `emphasized`: nil = no emphasis mode; true = near the selected place; false = dimmed.
+    /// Dimming changes only width/alpha, never the geometry or the dash pattern, so
+    /// the angle remains identifiable without relying on colour or opacity.
+    func style(selected: Bool, emphasized: Bool? = nil) {
         guard let line = (overlay as? AstroMapOverlay)?.line else { return }
         strokeColor = line.id.body.mapColor
-        lineWidth = selected ? 5 : 2
+        switch (selected, emphasized) {
+        case (true, _): lineWidth = 5; alpha = 1
+        case (false, true?): lineWidth = 3.5; alpha = 1
+        case (false, false?): lineWidth = 1.5; alpha = 0.25
+        case (false, nil): lineWidth = 2; alpha = 0.85
+        }
         lineDashPattern = line.id.angle.dash.map { NSNumber(value: Double($0)) }
         lineCap = .round; lineJoin = .round
-        alpha = selected ? 1 : 0.85
         setNeedsDisplay()
     }
 }
@@ -106,6 +113,8 @@ struct AstroMapView: NSViewRepresentable {
     let revision: String
     @Binding var selectedLine: AstroLineID?
     @Binding var selectedPlace: GeoCoordinate?
+    /// Lines to emphasize; nil disables emphasis (all lines drawn normally).
+    var emphasizedLines: Set<AstroLineID>? = nil
     let cameraCommand: UUID
     let focusPlace: Bool
     let onMapError: (String?) -> Void
@@ -155,7 +164,8 @@ struct AstroMapView: NSViewRepresentable {
                 overlays[line.id] = overlay; view.addOverlay(overlay, level: .aboveLabels)
             }
             for (id, overlay) in overlays {
-                (view.renderer(for: overlay) as? AstroMapRenderer)?.style(selected: id == parent.selectedLine)
+                (view.renderer(for: overlay) as? AstroMapRenderer)?.style(
+                    selected: id == parent.selectedLine, emphasized: parent.emphasizedLines.map { $0.contains(id) })
             }
             if let place = parent.selectedPlace {
                 let annotation = pin ?? MKPointAnnotation()
@@ -174,7 +184,9 @@ struct AstroMapView: NSViewRepresentable {
         }
         func mapView(_ mapView: MKMapView, rendererFor overlay: any MKOverlay) -> MKOverlayRenderer {
             let renderer = AstroMapRenderer(overlay: overlay)
-            renderer.style(selected: (overlay as? AstroMapOverlay)?.line.id == parent.selectedLine)
+            let id = (overlay as? AstroMapOverlay)?.line.id
+            renderer.style(selected: id == parent.selectedLine,
+                           emphasized: id.flatMap { id in parent.emphasizedLines.map { $0.contains(id) } })
             return renderer
         }
         func mapViewDidFailLoadingMap(_ mapView: MKMapView, withError error: any Error) {

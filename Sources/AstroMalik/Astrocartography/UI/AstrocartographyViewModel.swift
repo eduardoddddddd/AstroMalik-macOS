@@ -71,6 +71,11 @@ final class AstrocartographyViewModel: ObservableObject {
     private var editingSavedPlaceID: UUID?
     @Published var bodies = Set(AstroBody.allCases)
     @Published var angles = Set(AstroAngle.allCases)
+    /// Presentation filter on top of bodies/angles. Never alters analyses, saved
+    /// intents or the global summary.
+    @Published var theme: AstroTheme?
+    /// Dim every line except those within the regional threshold of the place.
+    @Published var emphasizeNearby = true
     typealias LocationFactory = @Sendable () async throws -> AstroLocationCalculationService
     typealias Search = @Sendable (String, Bool) async throws -> AstroPlaceSearchResult
     private let locationFactory: LocationFactory
@@ -105,17 +110,55 @@ final class AstrocartographyViewModel: ObservableObject {
     func placeReadings(onlyVisible: Bool, includeDistant: Bool = false) -> AstroPlaceReadingSet? {
         guard placeState == .ready, let analysis = placeCalculation?.analysis else { return nil }
         return AstroPlaceReadingBuilder.build(analysis: analysis, policy: proximityPolicy, catalog: readingCatalog,
-                                              bodies: bodies, angles: angles, onlyVisible: onlyVisible,
+                                              bodies: bodies, angles: angles, theme: theme, onlyVisible: onlyVisible,
                                               includeDistant: includeDistant)
     }
 
     func placeReadings(for comparison: AstroPlaceComparison) -> AstroPlaceReadingSet {
         AstroPlaceReadingBuilder.build(analysis: comparison.calculation.analysis, policy: proximityPolicy,
-                                       catalog: readingCatalog, bodies: bodies, angles: angles)
+                                       catalog: readingCatalog, bodies: bodies, angles: angles, theme: theme)
+    }
+
+    func isVisible(_ id: AstroLineID) -> Bool {
+        bodies.contains(id.body) && angles.contains(id.angle) && (theme?.contains(id) ?? true)
     }
 
     var visibleLines: [AstroVisualLine] {
-        presentation?.lines.filter { bodies.contains($0.id.body) && angles.contains($0.id.angle) } ?? []
+        presentation?.lines.filter { isVisible($0.id) } ?? []
+    }
+
+    /// Lines to emphasize on the map: visible ones within the regional threshold of
+    /// the analysed place. Nil (no dimming) when disabled, no place, or none nearby.
+    var emphasizedLines: Set<AstroLineID>? {
+        guard emphasizeNearby, placeState == .ready, let analysis = placeCalculation?.analysis else { return nil }
+        let near = Set(analysis.proximities.filter { proximityPolicy.band(for: $0.distanceKm) != .distant && isVisible($0.lineID) }.map(\.lineID))
+        return near.isEmpty ? nil : near
+    }
+
+    func visibleProximities(of analysis: LocationAnalysis) -> [AstroLineProximity] {
+        analysis.proximities.filter { isVisible($0.lineID) }
+    }
+
+    /// Readable summary of the selected place; global, independent of filters.
+    var placeSummary: AstroPlaceSummary? {
+        guard placeState == .ready, let analysis = placeCalculation?.analysis else { return nil }
+        return AstroPlaceSummaryBuilder.build(placeName: selectedPlaceName, analysis: analysis,
+                                              policy: proximityPolicy, catalog: readingCatalog)
+    }
+
+    /// Compared places plus saved ones whose stored result is still valid.
+    var rankablePlaces: [AstroRankablePlace] {
+        var places = comparisons.map {
+            AstroRankablePlace(id: "c:\($0.place.coordinate.latitude),\($0.place.coordinate.longitude)",
+                               name: $0.place.name, analysis: $0.calculation.analysis)
+        }
+        let taken = comparisons.map { $0.place.coordinate }
+        for saved in savedPlaces where !saved.requiresRecalculation && !taken.contains(saved.intent.place.coordinate) {
+            if let analysis = saved.calculation?.analysis {
+                places.append(AstroRankablePlace(id: "s:\(saved.id)", name: saved.intent.place.name, analysis: analysis))
+            }
+        }
+        return places
     }
 
     func reconcileSelection() {
@@ -183,7 +226,7 @@ final class AstrocartographyViewModel: ObservableObject {
     }
     var visibleProximities: [AstroLineProximity] {
         guard let analysis = placeCalculation?.analysis else { return [] }
-        return AstroLocationAnalyzer.filtered(analysis, bodies: bodies, angles: angles)
+        return visibleProximities(of: analysis)
     }
     func select(_ place: AstroPlace) {
         if selectedPlace == place.coordinate, selectedPlaceTimeZone != place.timeZone { invalidatePlace() }

@@ -76,7 +76,9 @@ struct AstroPlaceReadingsView: View {
                 }
             }
             if set.omittedDistantCount > 0 {
-                Text("\(set.omittedDistantCount) líneas más lejanas que el umbral regional no se listan; siguen en las distancias globales.")
+                Text(set.omittedDistantCount == 1
+                     ? "1 línea más lejana que el umbral regional no se lista; sigue en las distancias globales."
+                     : "\(set.omittedDistantCount) líneas más lejanas que el umbral regional no se listan; siguen en las distancias globales.")
                     .font(.caption).foregroundStyle(.secondary)
             }
         }

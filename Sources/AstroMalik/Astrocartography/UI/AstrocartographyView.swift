@@ -11,6 +11,10 @@ struct AstrocartographyView: View {
     @State private var coordinateError: String?
     @State private var mapError: String?
     @State private var showFilters = true
+    @State private var panel: AstroPanelSection = .mapa
+    @State private var showPanel = true
+    @State private var rankingTheme: AstroTheme = .career
+    @AppStorage("astrocartography.guideSeen") private var guideSeen = false
     @State private var searchQuery = ""
     @State private var onlineSearch = false
     @State private var searchCommand: UUID?
@@ -50,7 +54,9 @@ struct AstrocartographyView: View {
                 if let presentation = model.presentation {
                     HSplitView {
                         map(presentation).frame(minWidth: 340, maxWidth: .infinity, maxHeight: .infinity)
-                        controls(presentation).frame(minWidth: 290, idealWidth: 330, maxWidth: 400)
+                        if showPanel {
+                            controls(presentation).frame(minWidth: 320, idealWidth: 350, maxWidth: 440)
+                        }
                     }
                 }
             }
@@ -73,6 +79,9 @@ struct AstrocartographyView: View {
         .onDisappear { model.cancel() }
         .onChange(of: model.bodies) { _, _ in model.reconcileSelection() }
         .onChange(of: model.angles) { _, _ in model.reconcileSelection() }
+        .onChange(of: model.theme) { _, _ in model.reconcileSelection() }
+        .onAppear { if !guideSeen { panel = .guia } }
+        .onChange(of: panel) { _, section in if section != .guia { guideSeen = true } }
         .onChange(of: model.proximityPolicy) { _, value in
             nearThreshold = String(value.nearKm); regionalThreshold = String(value.regionalKm)
         }
@@ -80,6 +89,7 @@ struct AstrocartographyView: View {
             if let value {
                 latitude = String(format: "%.6f", value.latitude)
                 longitude = String(format: "%.6f", value.longitude)
+                panel = .lugar
             }
         }
     }
@@ -110,11 +120,16 @@ struct AstrocartographyView: View {
             HStack {
                 Button("Ver mundo") { focusPlace = false; cameraCommand = UUID() }
                 Button("Centrar lugar") { focusPlace = true; cameraCommand = UUID() }.disabled(model.selectedPlace == nil)
+                Toggle("Resaltar cercanas", isOn: $model.emphasizeNearby).toggleStyle(.checkbox)
+                    .help("Con un lugar analizado, atenúa las líneas a más de 300 km (umbral regional) y destaca las cercanas.")
                 Spacer()
                 Text("\(model.visibleLines.count) / 40 líneas").font(.caption.monospacedDigit())
+                Button(showPanel ? "Ampliar mapa" : "Mostrar panel") { showPanel.toggle() }
+                    .help("Oculta o muestra el panel lateral para ver el mapa más grande.")
             }
             AstroMapView(lines: model.visibleLines, revision: presentation.revision,
                 selectedLine: $model.selectedLine, selectedPlace: $model.selectedPlace,
+                emphasizedLines: model.emphasizedLines,
                 cameraCommand: cameraCommand, focusPlace: focusPlace, onMapError: { mapError = $0 })
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay(alignment: .topLeading) {
@@ -129,74 +144,156 @@ struct AstrocartographyView: View {
         }
     }
 
+    private var tabBadges: [AstroPanelSection: String] {
+        var badges: [AstroPanelSection: String] = [:]
+        if !model.comparisons.isEmpty { badges[.comparar] = "\(model.comparisons.count)" }
+        return badges
+    }
+
     private func controls(_ presentation: AstroMapPresentation) -> some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 14) {
-                DisclosureGroup("Filtros y leyenda", isExpanded: $showFilters) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack {
-                            Button("Todos") { model.bodies = Set(AstroBody.allCases); model.angles = Set(AstroAngle.allCases) }
-                            Button("Ninguno") { model.bodies = []; model.angles = [] }
-                        }
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading) {
-                            ForEach(AstroBody.allCases, id: \.self) { body in
-                                Toggle(isOn: membership(body, in: $model.bodies)) {
-                                    Text(body.mapLabel).foregroundStyle(Color(nsColor: body.mapColor))
-                                }.toggleStyle(.checkbox)
-                            }
-                        }
-                        ForEach(AstroAngle.allCases, id: \.self) { angle in
-                            Toggle(isOn: membership(angle, in: $model.angles)) {
-                                HStack {
-                                    Path { p in p.move(to: .zero); p.addLine(to: CGPoint(x: 30, y: 0)) }
-                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: angle.dash))
-                                        .frame(width: 30, height: 3).accessibilityHidden(true)
-                                    Text(angle.mapLabel).font(.caption)
-                                }
+        VStack(alignment: .leading, spacing: 10) {
+            AstroPanelTabBar(selection: $panel, badges: tabBadges)
+                .accessibilityElement(children: .contain)
+                .accessibilityLabel("Sección del panel de astrocartografía")
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    switch panel {
+                    case .guia:
+                        AstroGuideView(chartName: appState.activeNatalChart.map { $0.name.isEmpty ? "Carta · \($0.birthDate)" : $0.name },
+                                       visibleLineCount: model.visibleLines.count, comparisonCount: model.comparisons.count,
+                                       savedCount: model.savedPlaces.count, policy: model.proximityPolicy) { panel = $0 }
+                    case .mapa: mapPanel(presentation)
+                    case .lugar: placePanel
+                    case .relocada: relocatedPanel
+                    case .comparar: comparisonPanel
+                    case .datos: dataPanel(presentation)
+                    }
+                }.padding(.horizontal, 8)
+            }
+        }
+    }
+
+    private func mapPanel(_ presentation: AstroMapPresentation) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            themeFilter
+            DisclosureGroup("Filtros y leyenda", isExpanded: $showFilters) {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Button("Todos") { model.bodies = Set(AstroBody.allCases); model.angles = Set(AstroAngle.allCases) }
+                        Button("Ninguno") { model.bodies = []; model.angles = [] }
+                    }
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading) {
+                        ForEach(AstroBody.allCases, id: \.self) { body in
+                            Toggle(isOn: membership(body, in: $model.bodies)) {
+                                Text(body.mapLabel).foregroundStyle(Color(nsColor: body.mapColor))
                             }.toggleStyle(.checkbox)
                         }
-                    }.padding(.top, 8)
-                }
-                Divider()
-                Text("Líneas · selección por teclado").font(.headline)
-                Text("Tabulador para entrar; flechas para recorrer. La selección se resalta en el mapa.")
-                    .font(.caption).foregroundStyle(.secondary)
-                List(selection: $model.selectedLine) {
-                    ForEach(model.visibleLines, id: \.id) { line in
-                        HStack {
-                            Text("\(line.id.body.mapLabel) · \(line.id.angle.rawValue)")
-                            Spacer()
-                            if line.segments.isEmpty { Text("Sin trazo").font(.caption) }
-                            if model.selectedLine == line.id { Image(systemName: "checkmark.circle.fill").accessibilityLabel("Seleccionada") }
-                        }.tag(line.id)
                     }
-                }.frame(height: 190).accessibilityLabel("Lista alternativa de líneas de astrocartografía")
-                lineDetail(presentation)
-                Divider()
-                placeSearch
-                Text("Lugar seleccionado").font(.headline)
-                TextField("Nombre del lugar", text: $model.selectedPlaceName).accessibilityLabel("Nombre del lugar seleccionado")
-                TextField("Latitud −90…90", text: $latitude).accessibilityLabel("Latitud del lugar")
-                TextField("Longitud −180…180", text: $longitude).accessibilityLabel("Longitud del lugar")
-                HStack {
-                    Button("Seleccionar lugar") { selectPlace() }
-                    Button("Quitar") { model.selectedPlace = nil; latitude = ""; longitude = ""; coordinateError = nil }
-                }
-                if let coordinateError { Text(coordinateError).font(.caption).foregroundStyle(.red) }
-                if let place = model.selectedPlace {
-                    Text(String(format: "φ %.6f° · λ %.6f° E", place.latitude, place.longitude)).font(.caption.monospaced())
-                    if abs(place.latitude) > AstroMercatorGeometry.latitudeLimit {
-                        Text("Este lugar queda fuera del dominio visual ±85.051129°. Sus coordenadas se conservan; el mapa se centra en el borde.").font(.caption)
+                    ForEach(AstroAngle.allCases, id: \.self) { angle in
+                        Toggle(isOn: membership(angle, in: $model.angles)) {
+                            HStack {
+                                Path { p in p.move(to: .zero); p.addLine(to: CGPoint(x: 30, y: 0)) }
+                                    .stroke(style: StrokeStyle(lineWidth: 2, dash: angle.dash))
+                                    .frame(width: 30, height: 3).accessibilityHidden(true)
+                                Text(angle.mapLabel).font(.caption)
+                            }
+                        }.toggleStyle(.checkbox)
                     }
+                }.padding(.top, 8)
+            }
+            Divider()
+            Text("Líneas · selección por teclado").font(.headline)
+            Text("Tabulador para entrar; flechas para recorrer. La selección se resalta en el mapa.")
+                .font(.caption).foregroundStyle(.secondary)
+            List(selection: $model.selectedLine) {
+                ForEach(model.visibleLines, id: \.id) { line in
+                    HStack {
+                        Text("\(line.id.body.mapLabel) · \(line.id.angle.rawValue)")
+                        Spacer()
+                        if line.segments.isEmpty { Text("Sin trazo").font(.caption) }
+                        if model.selectedLine == line.id { Image(systemName: "checkmark.circle.fill").accessibilityLabel("Seleccionada") }
+                    }.tag(line.id)
                 }
-                Text("El destino nunca reinterpreta la hora natal. Catálogo, mapa y coordenadas sin zona verificada usan UTC para presentación.")
-                    .font(.caption).foregroundStyle(.secondary)
-                placeResults
-                comparisonResults
-                savedPlaceControls
+            }.frame(height: 190).accessibilityLabel("Lista alternativa de líneas de astrocartografía")
+            lineDetail(presentation)
+        }
+    }
+
+    private var themeFilter: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Tema").font(.headline)
+            Picker("Tema", selection: $model.theme) {
+                Text("Todos los temas").tag(Optional<AstroTheme>.none)
+                ForEach(AstroTheme.allCases) { Text($0.title).tag(Optional($0)) }
+            }.labelsHidden().accessibilityLabel("Filtrar líneas por tema")
+            Text(model.theme?.explanation ?? "Elige un tema para ver solo las líneas que la tradición asocia con esa área. Se combina con los filtros de abajo.")
+                .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private var placePanel: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            if model.placeState == .ready, let summary = model.placeSummary {
+                AstroPlaceSummaryCard(summary: summary, activeTheme: model.theme,
+                                      onSelectLine: { model.selectedLine = $0 }, onSelectTheme: { model.theme = $0 })
                 Divider()
-                diagnostics(presentation)
-            }.padding(.horizontal, 8)
+            }
+            placeSearch
+            Divider()
+            Text("Lugar seleccionado").font(.headline)
+            TextField("Nombre del lugar", text: $model.selectedPlaceName).accessibilityLabel("Nombre del lugar seleccionado")
+            TextField("Latitud −90…90", text: $latitude).accessibilityLabel("Latitud del lugar")
+            TextField("Longitud −180…180", text: $longitude).accessibilityLabel("Longitud del lugar")
+            HStack {
+                Button("Seleccionar lugar") { selectPlace() }
+                Button("Quitar") { model.selectedPlace = nil; latitude = ""; longitude = ""; coordinateError = nil }
+            }
+            if let coordinateError { Text(coordinateError).font(.caption).foregroundStyle(.red) }
+            if let place = model.selectedPlace {
+                Text(String(format: "φ %.6f° · λ %.6f° E", place.latitude, place.longitude)).font(.caption.monospaced())
+                if abs(place.latitude) > AstroMercatorGeometry.latitudeLimit {
+                    Text("Este lugar queda fuera del dominio visual ±85.051129°. Sus coordenadas se conservan; el mapa se centra en el borde.").font(.caption)
+                }
+            } else {
+                Text("Busca una ciudad, escribe coordenadas o pulsa un punto del mapa para ver qué líneas pasan cerca.")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+            Text("El destino nunca reinterpreta la hora natal. Catálogo, mapa y coordenadas sin zona verificada usan UTC para presentación.")
+                .font(.caption).foregroundStyle(.secondary)
+            placeStatus
+            if model.placeState == .ready, let calculation = model.placeCalculation { placeReadingPanel(calculation) }
+            savedPlaceControls
+        }
+    }
+
+    private var relocatedPanel: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            if model.selectedPlace == nil {
+                Text("Selecciona un lugar en la pestaña Lugar para ver su carta relocada.").font(.caption).foregroundStyle(.secondary)
+            }
+            placeStatus
+            if model.placeState == .ready, let calculation = model.placeCalculation { relocatedDetails(calculation) }
+        }
+    }
+
+    private var comparisonPanel: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            if model.comparisons.isEmpty {
+                Text("Aún no hay lugares en la comparación. Selecciona un lugar en la pestaña Lugar y pulsa «Añadir a comparación» (máximo 6).")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+            Divider()
+            AstroThemeRankingView(theme: $rankingTheme,
+                entries: AstroPlaceRanking.rank(places: model.rankablePlaces, theme: rankingTheme, policy: model.proximityPolicy),
+                policy: model.proximityPolicy)
+            comparisonResults
+        }
+    }
+
+    private func dataPanel(_ presentation: AstroMapPresentation) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            if model.placeState == .ready, let calculation = model.placeCalculation { placeDistances(calculation); Divider() }
+            diagnostics(presentation)
         }
     }
 
@@ -224,44 +321,49 @@ struct AstrocartographyView: View {
             }
         }
     }
-    @ViewBuilder private var placeResults: some View {
+    @ViewBuilder private var placeStatus: some View {
         switch model.placeState {
         case .working: ProgressView("Distancias y casas relocadas…")
         case .failed(let message): Text(message).font(.caption).foregroundStyle(.red)
         case .cancelled: Text("Análisis del lugar cancelado.").font(.caption)
-        case .ready:
-            if let calculation = model.placeCalculation {
-                Divider()
-                Text("Distancias geográficas").font(.headline)
-                Toggle("Solo líneas visibles (filtros)", isOn: $visibleDistancesOnly).toggleStyle(.checkbox)
-                Text("Global: \(calculation.analysis.proximities.count) líneas definidas; visibles: \(model.visibleProximities.count). Las líneas ocultas siguen contando en global; ramas sin solución única no tienen distancia.")
-                    .font(.caption)
-                if let global = calculation.analysis.proximities.first {
-                    Text(String(format: "Más cercana global: %@ %@ · %.3f km", global.lineID.body.mapLabel, global.lineID.angle.rawValue, global.distanceKm)).font(.caption.bold())
-                }
-                let distances = visibleDistancesOnly ? model.visibleProximities : calculation.analysis.proximities
-                ForEach(distances, id: \.lineID) { proximity in proximityRow(proximity) }
-                Text("Esfera R=6371.0088 km. Mínimo continuo sobre curvas completas, no píxeles ni trazado recortado; cota ±tolerancia núcleo + 1 mm frente a interpolación lat/lon. No exactitud natal/efemérides.")
-                    .font(.caption).foregroundStyle(.secondary)
-                HStack {
-                    TextField("Cerca km", text: $nearThreshold).accessibilityLabel("Umbral cercano en kilómetros")
-                    TextField("Regional km", text: $regionalThreshold).accessibilityLabel("Umbral regional en kilómetros")
-                    Button("Aplicar") { applyProximityPolicy() }
-                }
-                Text(String(format: "Cerca ≤%.0f km; regional ≤%.0f km. Parámetros de producto, no intensidad científica. * indica que la cota cruza un umbral.",
-                            model.proximityPolicy.nearKm, model.proximityPolicy.regionalKm)).font(.caption)
-                if let readings = model.placeReadings(onlyVisible: visibleDistancesOnly) {
-                    Divider()
-                    AstroPlaceReadingsView(set: readings, placeName: model.selectedPlaceName) { model.selectedLine = $0 }
-                }
-                relocatedDetails(calculation)
-                Button("Añadir a comparación (máximo 6)") { model.addComparison() }
-            }
-        case .empty: EmptyView()
+        case .ready, .empty: EmptyView()
         }
     }
+
+    /// Reading first: thresholds, nearby lines with their text, then add-to-comparison.
+    @ViewBuilder private func placeReadingPanel(_ calculation: AstroLocationCalculation) -> some View {
+        Divider()
+        Toggle("Solo líneas visibles (filtros)", isOn: $visibleDistancesOnly).toggleStyle(.checkbox)
+        HStack {
+            TextField("Cerca km", text: $nearThreshold).accessibilityLabel("Umbral cercano en kilómetros")
+            TextField("Regional km", text: $regionalThreshold).accessibilityLabel("Umbral regional en kilómetros")
+            Button("Aplicar") { applyProximityPolicy() }
+        }
+        Text(String(format: "Cerca ≤%.0f km; regional ≤%.0f km. Parámetros de producto, no intensidad científica. * indica que la cota cruza un umbral.",
+                    model.proximityPolicy.nearKm, model.proximityPolicy.regionalKm)).font(.caption)
+        if let readings = model.placeReadings(onlyVisible: visibleDistancesOnly) {
+            Divider()
+            AstroPlaceReadingsView(set: readings, placeName: model.selectedPlaceName) { model.selectedLine = $0 }
+        }
+        Button("Añadir a comparación (máximo 6)") { model.addComparison() }
+    }
+
+    /// Full technical distance list (all 40 lines, hidden ones included).
+    @ViewBuilder private func placeDistances(_ calculation: AstroLocationCalculation) -> some View {
+        Text("Distancias geográficas · \(model.selectedPlaceName)").font(.headline)
+        Toggle("Solo líneas visibles (filtros)", isOn: $visibleDistancesOnly).toggleStyle(.checkbox)
+        Text("Global: \(calculation.analysis.proximities.count) líneas definidas; visibles: \(model.visibleProximities.count). Las líneas ocultas siguen contando en global; ramas sin solución única no tienen distancia.")
+            .font(.caption)
+        if let global = calculation.analysis.proximities.first {
+            Text(String(format: "Más cercana global: %@ %@ · %.3f km", global.lineID.body.mapLabel, global.lineID.angle.rawValue, global.distanceKm)).font(.caption.bold())
+        }
+        let distances = visibleDistancesOnly ? model.visibleProximities : calculation.analysis.proximities
+        ForEach(distances, id: \.lineID) { proximity in proximityRow(proximity) }
+        Text("Esfera R=6371.0088 km. Mínimo continuo sobre curvas completas, no píxeles ni trazado recortado; cota ±tolerancia núcleo + 1 mm frente a interpolación lat/lon. No exactitud natal/efemérides.")
+            .font(.caption).foregroundStyle(.secondary)
+    }
     private func proximityRow(_ proximity: AstroLineProximity) -> some View {
-        let visible = model.bodies.contains(proximity.lineID.body) && model.angles.contains(proximity.lineID.angle)
+        let visible = model.isVisible(proximity.lineID)
         return Button { model.selectedLine = proximity.lineID } label: {
             VStack(alignment: .leading, spacing: 2) {
                 Text(String(format: "%@ %@ · %.3f ± %.6f km · %@%@%@", proximity.lineID.body.mapLabel,
@@ -273,7 +375,6 @@ struct AstrocartographyView: View {
         }.buttonStyle(.borderless).font(.caption)
     }
     @ViewBuilder private func relocatedDetails(_ calculation: AstroLocationCalculation) -> some View {
-        Divider()
         Text("Carta relocada · natal intacta").font(.headline)
         if let relocated = calculation.relocation {
             let chart = relocated.chart
@@ -298,7 +399,6 @@ struct AstrocartographyView: View {
     }
     @ViewBuilder private var comparisonResults: some View {
         if !model.comparisons.isEmpty {
-            Divider()
             Text("Comparación de lugares · mismo instante natal").font(.headline)
             ForEach(model.comparisons) { comparison in
                 VStack(alignment: .leading, spacing: 4) {
@@ -308,7 +408,7 @@ struct AstrocartographyView: View {
                     if let nearest = comparison.calculation.analysis.proximities.first {
                         Text(String(format: "Global: %@ %@ · %.3f km", nearest.lineID.body.mapLabel, nearest.lineID.angle.rawValue, nearest.distanceKm)).font(.caption)
                     }
-                    if let nearest = AstroLocationAnalyzer.filtered(comparison.calculation.analysis, bodies: model.bodies, angles: model.angles).first {
+                    if let nearest = model.visibleProximities(of: comparison.calculation.analysis).first {
                         Text(String(format: "Visible: %@ %@ · %.3f km", nearest.lineID.body.mapLabel, nearest.lineID.angle.rawValue, nearest.distanceKm)).font(.caption)
                     } else { Text("Sin líneas visibles; global no cambia.").font(.caption) }
                     comparisonLines(model.placeReadings(for: comparison))
@@ -316,7 +416,7 @@ struct AstrocartographyView: View {
                         Text(String(format: "ASC %.6f° · MC %.6f°", relocation.chart.ascendantDegrees, relocation.chart.mcDegrees)).font(.caption.monospaced())
                     } else { Text(comparison.calculation.relocationError ?? "Sin casas disponibles").font(.caption) }
                     HStack {
-                        Button("Consultar todos los datos") { model.select(comparison.place) }
+                        Button("Consultar todos los datos") { model.select(comparison.place); panel = .lugar }
                         Button("Quitar de comparación") { model.removeComparison(comparison.id) }
                     }
                 }
@@ -348,7 +448,7 @@ struct AstrocartographyView: View {
                 Text(saved.intent.place.name).font(.subheadline)
                 Text(saved.requiresRecalculation ? "Natal/revisión cambió o resultado no disponible: recalcular al recuperar." : "Resultado compatible; al recuperar se verifica y recalcula por caché.").font(.caption)
                 HStack {
-                    Button("Recuperar") { model.recover(saved) }
+                    Button("Recuperar") { model.recover(saved); panel = .lugar }
                     Button("Eliminar lugar") { model.deleteSavedPlace(saved, from: appState.userStore) }
                 }
             }

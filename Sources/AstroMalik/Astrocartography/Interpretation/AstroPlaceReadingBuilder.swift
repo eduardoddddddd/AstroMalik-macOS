@@ -30,6 +30,7 @@ enum AstroPlaceReadingBuilder {
     static func build(analysis: LocationAnalysis, policy: AstroProximityPolicy, catalog: AstroReadingCatalog,
                       bodies: Set<AstroBody> = Set(AstroBody.allCases),
                       angles: Set<AstroAngle> = Set(AstroAngle.allCases),
+                      theme: AstroTheme? = nil,
                       onlyVisible: Bool = false, includeDistant: Bool = false) -> AstroPlaceReadingSet {
         let everyLine = analysis.proximities.map(\.lineID)
         var omitted = 0
@@ -37,6 +38,7 @@ enum AstroPlaceReadingBuilder {
         for proximity in analysis.proximities { // already ordered by distance, then stable key
             let band = policy.band(for: proximity.distanceKm)
             let visible = bodies.contains(proximity.lineID.body) && angles.contains(proximity.lineID.angle)
+                && (theme?.contains(proximity.lineID) ?? true)
             if onlyVisible && !visible { continue }
             if band == .distant && !includeDistant { omitted += 1; continue }
             items.append(AstroPlaceReadingItem(proximity: proximity, band: band,
