@@ -75,6 +75,8 @@ final class AstrocartographyViewModel: ObservableObject {
     typealias Search = @Sendable (String, Bool) async throws -> AstroPlaceSearchResult
     private let locationFactory: LocationFactory
     private let placeSearch: Search
+    /// Offline editorial text (F5). A failed load is shown as per-line fallback.
+    let readingCatalog: AstroReadingCatalog
     private var locationService: AstroLocationCalculationService?
     private var placeGeneration = UUID()
     private var placeWork: Task<AstroLocationCalculation, Error>?
@@ -87,8 +89,29 @@ final class AstrocartographyViewModel: ObservableObject {
 
     init(factory: @escaping ServiceFactory = { try await AstrocartographyViewModel.makeService() },
          locationFactory: @escaping LocationFactory = { try await AstrocartographyViewModel.makeLocationService() },
-         placeSearch: @escaping Search = { query, online in try await AstroPlaceSearchService().search(query: query, online: online) }) {
+         placeSearch: @escaping Search = { query, online in try await AstroPlaceSearchService().search(query: query, online: online) },
+         readingCatalog: AstroReadingCatalog = .bundled()) {
         self.factory = factory; self.locationFactory = locationFactory; self.placeSearch = placeSearch
+        self.readingCatalog = readingCatalog
+    }
+
+    /// Reading of the selected line; independent of any place or distance.
+    var selectedLineReading: AstroReadingLookup? {
+        selectedLine.map { readingCatalog.lookup($0) }
+    }
+
+    /// Readings for lines near the selected place. Derived on demand from the
+    /// stored analysis: no recomputation of distances, relocation or curves.
+    func placeReadings(onlyVisible: Bool, includeDistant: Bool = false) -> AstroPlaceReadingSet? {
+        guard placeState == .ready, let analysis = placeCalculation?.analysis else { return nil }
+        return AstroPlaceReadingBuilder.build(analysis: analysis, policy: proximityPolicy, catalog: readingCatalog,
+                                              bodies: bodies, angles: angles, onlyVisible: onlyVisible,
+                                              includeDistant: includeDistant)
+    }
+
+    func placeReadings(for comparison: AstroPlaceComparison) -> AstroPlaceReadingSet {
+        AstroPlaceReadingBuilder.build(analysis: comparison.calculation.analysis, policy: proximityPolicy,
+                                       catalog: readingCatalog, bodies: bodies, angles: angles)
     }
 
     var visibleLines: [AstroVisualLine] {

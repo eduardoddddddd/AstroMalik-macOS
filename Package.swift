@@ -30,6 +30,7 @@ let package = Package(
                 .copy("Resources/cities_seed.json"),
                 .copy("Resources/fixed_stars.json"),
                 .copy("Resources/ephe"),
+                .copy("Resources/Astrocartography"),
                 .copy("Resources/cross_personal_prompt.md"),
                 .copy("Resources/rectification_prompt.md"),
                 .copy("Resources/migrations"),

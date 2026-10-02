@@ -250,6 +250,10 @@ struct AstrocartographyView: View {
                 }
                 Text(String(format: "Cerca ≤%.0f km; regional ≤%.0f km. Parámetros de producto, no intensidad científica. * indica que la cota cruza un umbral.",
                             model.proximityPolicy.nearKm, model.proximityPolicy.regionalKm)).font(.caption)
+                if let readings = model.placeReadings(onlyVisible: visibleDistancesOnly) {
+                    Divider()
+                    AstroPlaceReadingsView(set: readings, placeName: model.selectedPlaceName) { model.selectedLine = $0 }
+                }
                 relocatedDetails(calculation)
                 Button("Añadir a comparación (máximo 6)") { model.addComparison() }
             }
@@ -307,6 +311,7 @@ struct AstrocartographyView: View {
                     if let nearest = AstroLocationAnalyzer.filtered(comparison.calculation.analysis, bodies: model.bodies, angles: model.angles).first {
                         Text(String(format: "Visible: %@ %@ · %.3f km", nearest.lineID.body.mapLabel, nearest.lineID.angle.rawValue, nearest.distanceKm)).font(.caption)
                     } else { Text("Sin líneas visibles; global no cambia.").font(.caption) }
+                    comparisonLines(model.placeReadings(for: comparison))
                     if let relocation = comparison.calculation.relocation {
                         Text(String(format: "ASC %.6f° · MC %.6f°", relocation.chart.ascendantDegrees, relocation.chart.mcDegrees)).font(.caption.monospaced())
                     } else { Text(comparison.calculation.relocationError ?? "Sin casas disponibles").font(.caption) }
@@ -317,6 +322,18 @@ struct AstrocartographyView: View {
                 }
             }
             Text("La comparación en memoria se vacía al cambiar/editar carta. Guarda cada lugar si quieres recuperarlo.").font(.caption)
+        }
+    }
+    /// Compact side-by-side view: which lines are near each place and what each
+    /// one is about. The full text of any of them opens via "Consultar todos los datos".
+    @ViewBuilder private func comparisonLines(_ set: AstroPlaceReadingSet) -> some View {
+        if set.items.isEmpty {
+            Text(String(format: "Sin líneas a ≤%.0f km (regional).", set.policy.regionalKm)).font(.caption)
+        } else {
+            ForEach(set.items) { item in
+                let title = item.lookup.entry?.title ?? "\(item.proximity.lineID.body.mapLabel) \(item.proximity.lineID.angle.rawValue) · sin lectura"
+                Text(String(format: "%@ · %.0f km · %@", item.band.rawValue, item.proximity.distanceKm, title)).font(.caption)
+            }
         }
     }
     private var savedPlaceControls: some View {
@@ -358,6 +375,7 @@ struct AstrocartographyView: View {
             ForEach(Array(line.diagnostics.enumerated()), id: \.offset) { _, diagnostic in
                 Text(diagnostic.message).font(.caption)
             }
+            if let lookup = model.selectedLineReading { AstroReadingLookupView(lookup: lookup) }
         } else { Text("Selecciona una línea en el mapa o la lista para ver sus datos y límites.").font(.caption).foregroundStyle(.secondary) }
     }
 

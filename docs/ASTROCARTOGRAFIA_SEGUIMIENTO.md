@@ -1,6 +1,6 @@
 # Astrocartografía — seguimiento y relevo entre LLM
 
-Actualizado: **30/09/2026**, zona Europe/Madrid. Fase 0 en `6a48a77`, F1 y corrección de tangencia en `74959a2`, **fase 2 committeada en `af49af5`**. F3 implementada por Astra High y completada/validada por el coordinador tras corte de uso; ver evidencia abajo. F3 committeada en **`bea4969`**; F4.1–F4.4 implementadas y validadas por subagente **gpt-6.1-sol/high**, único autor del worktree; entrega consolidada en commit local F4 por orden del usuario (ver `git log`).
+Actualizado: **02/10/2026** (F5 en árbol de trabajo, sin commit; ver «Cierre F5» al final), zona Europe/Madrid. Estado previo a 30/09/2026: Fase 0 en `6a48a77`, F1 y corrección de tangencia en `74959a2`, **fase 2 committeada en `af49af5`**. F3 implementada por Astra High y completada/validada por el coordinador tras corte de uso; ver evidencia abajo. F3 committeada en **`bea4969`**; F4.1–F4.4 implementadas y validadas por subagente **gpt-6.1-sol/high**, único autor del worktree; entrega consolidada en commit local F4 por orden del usuario (ver `git log`).
 
 **Este es el documento que hay que actualizar al terminar cada paquete.**
 Plan y criterios completos: [ASTROCARTOGRAFIA_PLAN_MULTILLM.md](ASTROCARTOGRAFIA_PLAN_MULTILLM.md).
@@ -60,11 +60,11 @@ Plan y criterios completos: [ASTROCARTOGRAFIA_PLAN_MULTILLM.md](ASTROCARTOGRAFIA
 
 ### Fase 5 — interpretación
 
-- [ ] **F5.1** Esquema/guía editorial.
-- [ ] **F5.2** Cuarenta textos originales y revisión.
-- [ ] **F5.3** Repositorio de lecturas y conexión con lugares.
-- [ ] **F5.4** Vista de lectura completa.
-- [ ] **G5** Versión funcional completa.
+- [x] **F5.1** Esquema/guía editorial ([ASTROCARTOGRAFIA_GUIA_EDITORIAL.md](ASTROCARTOGRAFIA_GUIA_EDITORIAL.md)).
+- [x] **F5.2** Cuarenta textos originales: redactados 40/40, validados automáticamente y **revisados por el usuario el 02/10/2026** (`reviewStatus = revisado-por-el-usuario-2026-10-02`). Atribución a Jim Lewis/Ptolomeo sin verificar con fuente primaria.
+- [x] **F5.3** Repositorio de lecturas y conexión con lugares.
+- [x] **F5.4** Vista de lectura completa.
+- [x] **G5** Versión funcional completa — aceptada tras la revisión editorial del usuario (02/10/2026). Smoke visual propio en proceso nuevo no ejecutado por el asistente.
 
 ### Fase 6 — exportaciones
 
@@ -302,7 +302,7 @@ Primera pasada de F2 mostró dos expectativas estructurales obsoletas de F1 (tre
 ## 5. Siguiente acción concreta para cualquier LLM
 
 1. Leer `AGENTS.md`, este seguimiento y el plan; comprobar `git status`. F3 base **`bea4969`** y F4 consolidada en commit local; verificar HEAD mediante `git log -1`. No descartar cambios de otros agentes.
-2. F0–F4 implementadas/validadas por pruebas locales. Siguiente **F5 interpretación y F6 exportaciones**, que el usuario lanzará con **Claude**. No iniciarlas sin su orden; rediseño UI general reservado al usuario.
+2. F0–F4 implementadas/validadas por pruebas locales. **F5 implementada el 02/10/2026 por orden del usuario (ver «Cierre F5»)**; falta revisión humana editorial. F6 exportaciones no iniciada: no empezar sin su orden; rediseño UI general reservado al usuario.
 3. El paquete F4 tiene ejecutable **30/09/2026 22:35:02 +0200**, firma verificada. La app abierta sigue siendo el proceso anterior: empaquetar **no reinicia**. Para smoke nuevo, comprobar primero que no hay datos sin guardar ni actividad del usuario y coordinar reinicio seguro; no cerrar a ciegas.
 4. F5/F6 deben reutilizar `AstroLocationCalculation`/`curveSnapshot` (flags/procedencia reales), análisis global completo y selección de filtros separada; relocación nunca cambia JD ni cuerpos geocéntricos natales. Guardados no son permiso para exportar automáticamente ni usar LLM/red.
 5. macOS 14 físico, TSan, auditoría accesibilidad completa y búsqueda online real pendientes. Compilar target 14 en macOS 26.3 no prueba ejecución macOS 14.
@@ -402,3 +402,45 @@ stat -f '%Sm' -t '%Y-%m-%d %H:%M:%S %z' AstroMalik.app/Contents/MacOS/AstroMalik
 ### Consolidación F4 — 30/09/2026
 
 Usuario autoriza commit. Coordinador confirma agente finalizado, logs de suite/paquete, guard Swiss y diff check, firma válida y timestamp final 22:35:02 CEST; CLI release help correcta. Commit local F4 sobre `bea4969`, sin push/tag/release. Pendientes: smoke manual F4 en proceso nuevo, F5 interpretación, F6 exportaciones y F7 endurecimiento/documentación/distribución. Rediseño general UI pospuesto por el usuario; F5/F6 las lanzará con Claude.
+
+### Revisión previa a F5 — 02/10/2026
+
+Revisión de lectura de F0–F4 (contratos, `AstroLocationAnalyzer`, `AstroRelocationEngine`, servicio de lugares, view-model y vista), más la suite completa de partida. Sin bloqueos para F5. Observaciones, ninguna corregida porque no afectan a F5:
+
+- `AstroLocationAnalyzer` lanza `antipodalDistanceEdge` si una arista llega a 180°; F2 limita los arcos a 45°, así que solo es una defensa. Coherente.
+- Las casas de cada cuerpo relocado se asignan por longitud eclíptica (documentado desde F4.2). Es correcto como casa, pero **no** equivale a que el planeta esté angular en el destino; las lecturas F5 parten de la línea mundana, no de esa casa, y no mezclan ambos criterios.
+- `docs/ASTROCARTOGRAFIA_PLAN_MULTILLM.md` tenía el encabezado y la «siguiente acción» desfasados (decían fase 0 / F2.1). Actualizados.
+- Pendientes ya conocidos y sin cambio: smoke manual de F4 en proceso nuevo, macOS 14 físico, TSan, auditoría completa de accesibilidad, búsqueda online real.
+
+### Cierre F5 — 02/10/2026
+
+Orden del usuario: revisar F0–F4 y comenzar F5. Árbol de partida limpio sobre `78b0a0c` (F4). **Sin commit/push/tag/release.** Corpus (`corpus.db`), C vendorizado y servidor intactos; datos reales del usuario no tocados en pruebas.
+
+**F5.1 — guía y esquema.** [ASTROCARTOGRAFIA_GUIA_EDITORIAL.md](ASTROCARTOGRAFIA_GUIA_EDITORIAL.md): 40 claves `CUERPO:ÁNGULO`, cuatro capas (qué activa, potencial, sombra, cómo trabajarlo), marco por ángulo, lenguaje prohibido, política de fuentes/derechos y checklist del revisor.
+
+**F5.2 — textos.** `Resources/Astrocartography/readings_v1.json`, generado de forma determinista por `scripts/build_astrocartography_readings.py` (falla si algo incumple la guía). 40/40 lecturas, 715–963 caracteres (media 792). Umbral mínimo **650**: se fijó sobre lo redactado, no se rellenó texto para cumplir uno mayor (un primer umbral de 900 se descartó). **Redactadas por IA; no ha habido revisión humana.** `reviewStatus = borrador-redactado-por-ia-pendiente-de-revision-humana`, vigilado por test. La atribución a Jim Lewis y los capítulos de Ptolomeo quedan por verificar con fuente primaria.
+
+**F5.3 — repositorio y conexión con lugares.** `Interpretation/AstrocartographyReadingLibrary.swift` (carga, validación estricta, `AstroReadingCatalog` con degradación visible) y `AstroPlaceReadingBuilder.swift` (puro, determinista, sin recalcular distancias ni relocación). Líneas dentro del umbral regional ordenadas por distancia, con banda y lectura **separadas**; las lejanas se cuentan; cobertura sobre todas las líneas definidas en el lugar, también ocultas. Si falta texto: aviso visible por línea y cobertura incompleta con claves. Contrato v1 `AstrocartographyReading` intacto (`library.reading(for:)` lo proyecta para F6). `Package.swift` copia `Resources/Astrocartography`.
+
+**F5.4 — vista.** `UI/AstroReadingViews.swift`: texto completo siempre visible, sin controles de expandir (política del proyecto). Integrado en `AstrocartographyView`: lectura de la línea seleccionada (con o sin lugar), bloque «Lectura de <lugar>» con distancia y texto en sub-bloques distintos, y resumen por lugar en la comparación. Cambios en `AstrocartographyViewModel`: `readingCatalog` inyectable, `selectedLineReading`, `placeReadings(...)`. Sin rediseño general de UI.
+
+**Pruebas.** 10 tests nuevos (`AstrocartographyReadingTests`): 40 claves únicas y sin capas copiadas, títulos con nombres reales, política editorial = generador, rechazo de lenguaje prohibido/duplicados/claves cruzadas/textos cortos/sin fuentes/esquema/JSON roto, proyección al DTO, orden/bandas/frontera/filtros/cobertura global, fallback visible, y flujo real offline con Madrid (40/40 con lectura, filtros, línea seleccionada, comparación, catálogo degradado).
+
+```bash
+python3 scripts/build_astrocartography_readings.py
+python3 scripts/check_swiss_access.py
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer bash scripts/package_app.sh
+```
+
+Resultados reales: guard Swiss OK; suite completa **492 ejecutados, 1 omitido, 0 fallos** (35.2 s; antes 482); `git diff --check` limpio; paquete correcto, ejecutable **2026-10-02 20:52:41 +0200**, `codesign --verify --deep --strict` válido, `readings_v1.json` presente en el bundle, CLI release `--help` correcta.
+
+**Límites honestos.** (1) G5 **no** cerrada: falta revisión humana editorial. (2) Smoke visual de la nueva vista no ejecutado: la app abierta sigue siendo el proceso anterior y no se reinicia a ciegas. (3) Las lecturas no son parte de lo guardado en lugares ni se exportan (F6). (4) Las reglas automáticas detectan fallos obvios, no sustituyen la lectura humana. (5) Macos 14 físico, TSan y accesibilidad completa siguen pendientes.
+
+| Fecha | Paquetes | Evidencia / salida | Siguiente |
+|---|---|---|---|
+| 02/10/2026 | F5.1–F5.4 (sin G5) | Guía, 40 lecturas JSON, repositorio+builder, vista integrada. 492 tests / 1 omitido / 0 fallos; paquete y firma OK, binario 20:52:41 CEST. Sin commit | Revisión humana de textos, smoke en proceso nuevo, commit si se autoriza; F6 bajo orden |
+
+### Aceptación editorial y commit F5 — 02/10/2026
+
+El usuario revisó las 40 lecturas («muy bien») y autorizó el commit. `reviewStatus` pasa a `revisado-por-el-usuario-2026-10-02`; recurso regenerado, test actualizado. Sin push/tag/release. Siguiente: F6 (exportaciones) y F7; el usuario plantea además **rediseñar la interfaz de astrocartografía** (ver conversación).

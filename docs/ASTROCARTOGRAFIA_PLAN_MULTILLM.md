@@ -1,7 +1,7 @@
 # Astrocartografía: plan por fases y paquetes multi-LLM
 
 Fecha: 30 de septiembre de 2026. Base inspeccionada: `26f6d92`.
-Estado: **fase 0 implementada localmente; resto pendiente, sin autorización de publicación**.
+Estado (actualizado 02/10/2026): **fases 0–4 implementadas y committeadas localmente; fase 5 implementada en el árbol de trabajo (ver seguimiento); fases 6–7 pendientes; sin autorización de publicación**. Guía editorial de F5: [ASTROCARTOGRAFIA_GUIA_EDITORIAL.md](ASTROCARTOGRAFIA_GUIA_EDITORIAL.md).
 Seguimiento vivo y punto de relevo: [ASTROCARTOGRAFIA_SEGUIMIENTO.md](ASTROCARTOGRAFIA_SEGUIMIENTO.md).
 
 ## 1. Objetivo y estrategia de entrega
@@ -335,4 +335,4 @@ No convertir estos puntos automáticamente a días o dólares. Calibrar F0 y una
 - [Swiss Ephemeris — interfaz oficial](https://www.astro.com/swisseph/swephprg.htm): referencia para flags, coordenadas ecuatoriales, tiempo sidéreo y casas. Registrar las opciones exactas de cada fixture; no comparar valores calculados con convenciones diferentes.
 - [Apple — MKMapView](https://developer.apple.com/documentation/mapkit/mkmapview) y [Apple — MapPolyline](https://developer.apple.com/documentation/mapkit/mappolyline): referencia oficial para mapa y overlays; F3.1 verifica capacidades con el SDK local y despliegue macOS 14 antes de fijar la integración.
 
-**Siguiente acción recomendada:** continuar con F2.1 desde el seguimiento vivo. La fase 1 está implementada en el worktree, sin commit y sin reempaquetar la app. No hay muestreo adaptativo ni mapa.
+**Siguiente acción recomendada:** revisión humana editorial de las 40 lecturas (puerta G5), smoke manual de F4/F5 en un proceso nuevo y después F6. Punto de relevo vivo: seguimiento.

@@ -1,0 +1,307 @@
+#!/usr/bin/env python3
+"""Genera Sources/AstroMalik/Resources/Astrocartography/readings_v1.json.
+
+Texto editorial original de AstroMalik (F5.2). 40 claves = 10 cuerpos x 4 angulos.
+Cuatro capas por lectura: mecanismo, potencial, sombra y practica.
+
+Uso:  python3 scripts/build_astrocartography_readings.py
+Es determinista: dos ejecuciones producen el mismo fichero byte a byte.
+La validacion editorial automatica (longitud, lenguaje prohibido, cobertura) se
+repite en Swift (AstrocartographyReadingRepository) y en sus tests.
+"""
+import json
+import pathlib
+import re
+import sys
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+OUT = ROOT / "Sources/AstroMalik/Resources/Astrocartography/readings_v1.json"
+
+EDITORIAL_VERSION = "astrocartography-readings-v1"
+BODIES = ["SOL", "LUNA", "MERCURIO", "VENUS", "MARTE", "JUPITER", "SATURNO", "URANO", "NEPTUNO", "PLUTON"]
+ANGLES = ["ASC", "DSC", "MC", "IC"]
+
+SOURCES = [
+    "AstroMalik, redaccion editorial original v1 (no copia ni traduce textos de terceros).",
+    "Naturaleza de los planetas: Ptolomeo, Tetrabiblos I (dominio publico), solo como fuente de principios.",
+    "Angulos del horizonte y del meridiano: tradicion de casas angulares; el metodo de lineas angulares sobre "
+    "el mapa se atribuye a Jim Lewis (decada de 1970). Solo se usa la idea, no su prosa.",
+]
+
+# Frases y raices que no deben aparecer: determinismo, fatalismo, lenguaje temporal
+# de transito y promesas de resultado. Se comprueban sobre cada capa.
+FORBIDDEN = [
+    r"\bahora\b", r"\bhoy\b", r"\beste momento\b", r"\bactualmente\b", r"\bsiempre\b", r"\bnunca\b",
+    r"\bdestino\b", r"\bgarantiz", r"\binevitabl", r"\bmaldici", r"\bcondena", r"\bsufrir[aá]s\b",
+    r"\bocurrir[aá]\b", r"\bseguro que\b",
+]
+MIN_CHARS = 650
+
+R = []
+
+
+def r(body, angle, title, mechanism, potential, shadow, practice):
+    R.append({
+        "key": f"{body}:{angle}", "body": body, "angle": angle, "title": title,
+        "mechanism": mechanism, "potential": potential, "shadow": shadow, "practice": practice,
+    })
+
+
+# ---------------------------------------------------------------- SOL
+r("SOL", "ASC", "Sol en el Ascendente: presencia visible",
+  "Donde el Sol asciende, la identidad tiende a ocupar el primer plano. El lugar suele asociarse con una sensación de claridad personal: uno se presenta con más nitidez, se le percibe con más facilidad y se vuelve más evidente qué quiere y quién es.",
+  "Puede favorecer la vitalidad, la iniciativa propia y el liderazgo natural cuando la persona actúa con coherencia. Es un entorno donde atreverse a mostrarse, empezar proyectos con la propia firma o recuperar confianza suele resultar más accesible.",
+  "El mismo foco puede inflar el ego, volver sensible al reconocimiento o llevar a competir por la atención. Si la identidad natal es frágil, la exposición constante puede cansar o generar dependencia de la mirada ajena.",
+  "Conviene usar el lugar para definir con precisión qué se quiere ser, sin convertir cada decisión en una prueba de valía. Su efecto depende del estado del Sol natal, de sus aspectos y de la etapa vital; es una invitación simbólica, no una promesa.")
+r("SOL", "DSC", "Sol en el Descendente: identidad a través del otro",
+  "En la línea descendente el Sol se pone en el horizonte: la luz de la identidad se proyecta hacia fuera y suele encontrarse en los demás. Es un lugar donde las relaciones importantes, los socios y los interlocutores clave adquieren protagonismo y reflejan lo que uno es.",
+  "Puede favorecer alianzas con personas de peso, socios que reconocen el valor propio, mentores o parejas que aportan brillo y confianza. Aprender a cooperar sin disolverse es una de las lecciones que el lugar suele plantear.",
+  "Existe el riesgo de delegar la autoestima en el otro, de atraer figuras dominantes o de competir con la pareja y los socios por el mismo espacio de reconocimiento. También puede aparecer la tendencia a esperar que alguien confirme quién se es.",
+  "Ayuda elegir con cuidado a quién se concede autoridad y mantener actividades propias que sostengan la identidad fuera de los vínculos. Las circunstancias concretas dependen de la carta completa y de las decisiones personales.")
+r("SOL", "MC", "Sol en el Medio Cielo: vocación y reconocimiento",
+  "Cuando el Sol culmina, el propósito vital se orienta hacia la vida pública. En este lugar la carrera, la responsabilidad visible y la reputación tienden a ocupar el centro, y se hace más fácil sentir que el trabajo expresa algo propio.",
+  "Suele asociarse con ambición legítima, autoridad, visibilidad profesional y capacidad de dirigir. Puede ser un buen entorno para asumir un papel de responsabilidad, construir una trayectoria reconocible o ser tomado en serio.",
+  "La identificación excesiva con el cargo o el éxito puede dejar poco espacio para la vida privada. La exposición pública también multiplica la crítica, y el orgullo herido puede condicionar decisiones profesionales.",
+  "Merece la pena preguntar si el reconocimiento buscado es el que de verdad se desea. El resultado depende de la posición natal del Sol, de la casa que ocupa y de la madurez con que se ejerza la autoridad.")
+r("SOL", "IC", "Sol en el Fondo del Cielo: raíz e identidad íntima",
+  "Con el Sol en la anticulminación, la luz se vuelve hacia dentro: el lugar invita a preguntarse por el origen, la familia, la casa y los cimientos de la propia identidad. Lo importante suele ocurrir en el ámbito privado más que en el escenario público.",
+  "Puede favorecer un sentido sólido de pertenencia, el trabajo con la historia familiar, establecer un hogar propio y encontrar una base desde la que actuar con seguridad. Algunas personas sienten aquí que por fin están en casa.",
+  "También puede intensificar el peso de la herencia familiar, del padre o de las expectativas del linaje, o llevar a un repliegue excesivo. La vida exterior puede quedar en segundo plano si no se cuida.",
+  "Es útil cuidar la vivienda, los rituales y las relaciones de raíz sin que reemplacen la proyección hacia el mundo. Su significado concreto varía según el conjunto de la carta y no condiciona por sí mismo ningún acontecimiento.")
+
+# ---------------------------------------------------------------- LUNA
+r("LUNA", "ASC", "Luna en el Ascendente: sensibilidad a flor de piel",
+  "Donde la Luna asciende, la vida emocional se vuelve visible y el ambiente se percibe de forma muy directa. Es un lugar donde el cuerpo y el ánimo responden con rapidez a lo que ocurre alrededor, y donde la necesidad de sentirse a gusto pesa en la manera de presentarse.",
+  "Puede favorecer la empatía, la intuición, el cuidado de los demás y una presencia acogedora que genera confianza. Para quienes buscan reconectar con sus necesidades, suele ser un entorno que invita a escucharlas.",
+  "La sensibilidad aumentada puede traducirse en cambios de humor, susceptibilidad o dificultad para poner distancia. El entorno influye mucho en el estado emocional, de modo que un barrio o un clima poco adecuados se notan pronto.",
+  "Establecer rutinas estables de descanso, alimentación y contacto con personas de confianza ayuda a que esa receptividad sea un recurso. El efecto depende de la Luna natal, de su signo y de sus aspectos.")
+r("LUNA", "DSC", "Luna en el Descendente: vínculos que nutren y que atan",
+  "Con la Luna en el horizonte occidental, la seguridad emocional se busca y se encuentra en los demás. Las relaciones cercanas, la convivencia y las figuras de cuidado adquieren un peso especial en el modo de vivir el lugar.",
+  "Puede favorecer relaciones cálidas, compañeros que acogen, vínculos con una cualidad familiar y capacidad de crear comunidad. Suele ser un lugar para aprender a pedir y a ofrecer cuidado de forma recíproca.",
+  "Se corre el riesgo de depender emocionalmente de otra persona, de reproducir patrones de la infancia en la pareja o de vivir pendiente del ánimo ajeno. Las relaciones pueden fluctuar con las propias emociones.",
+  "Conviene distinguir entre cuidar y rescatar, y sostener fuentes de apoyo variadas para no cargar sobre una sola persona toda la necesidad afectiva. Todo ello se matiza con el resto de la carta.")
+r("LUNA", "MC", "Luna en el Medio Cielo: vida pública sensible",
+  "Cuando la Luna culmina, lo emocional entra en el espacio público. La imagen profesional se vincula con el cuidado, la gente, la cotidianidad y los cambios de ánimo colectivos, y la reputación puede depender de cómo se conecta con el público.",
+  "Suele asociarse con trabajos que atienden a personas o a necesidades básicas —educación, salud, alimentación, hospitalidad, comunicación popular— y con una visibilidad que se apoya en la cercanía. La capacidad de percibir lo que otros necesitan es un activo profesional.",
+  "La carrera puede resultar inestable, ligada a ciclos, a la opinión pública o al estado de ánimo. Cuesta separar el trabajo de la vida emocional, y los límites entre lo personal y lo público pueden desdibujarse.",
+  "Ayuda profesionalizar el cuidado, con horarios y límites claros. Su alcance real depende de la Luna natal y de la fase en que se encuentre quien la recibe.")
+r("LUNA", "IC", "Luna en el Fondo del Cielo: hogar y pertenencia",
+  "La Luna en su punto más bajo está en su propio terreno simbólico: la casa, la familia, la memoria y la sensación de refugio. Es una de las ubicaciones que más se asocian con el arraigo emocional y con el deseo de formar un nido.",
+  "Puede facilitar sentirse en casa, crear un hogar acogedor, reconciliarse con la historia familiar o reencontrarse con la familia y el lugar de origen. Suele ser favorable para la vida doméstica y para la nostalgia constructiva.",
+  "El apego puede volverse repliegue: dificultad para salir, dependencia de la familia, melancolía o excesiva identificación con el pasado. Las emociones antiguas tienden a aflorar con más fuerza.",
+  "Conviene hacer del hogar una base y no una trinchera: cultivar el espacio propio y mantener vínculos hacia fuera. Los efectos se modulan por la carta natal completa.")
+
+# ---------------------------------------------------------------- MERCURIO
+r("MERCURIO", "ASC", "Mercurio en el Ascendente: mente despierta y curiosa",
+  "Con Mercurio en el horizonte oriental, la mente se pone en primer plano. La persona suele hablar, preguntar, observar y moverse con más agilidad, y su manera de presentarse se asocia con la palabra, la ironía o la inteligencia.",
+  "Es un entorno propicio para estudiar, escribir, enseñar, negociar, aprender idiomas, hacer contactos y moverse entre ambientes distintos. La adaptabilidad y la rapidez mental pueden convertirse en una ventaja práctica.",
+  "Puede aparecer dispersión, exceso de estímulos, nerviosismo, hablar sin reflexionar o dificultad para desconectar la cabeza. La ligereza se confunde a veces con falta de profundidad.",
+  "Ayudan las rutinas de lectura, escritura y descanso mental. Cómo se vive depende de la posición natal de Mercurio y de su estado; no es un resultado prefijado.")
+r("MERCURIO", "DSC", "Mercurio en el Descendente: diálogo, contratos y socios",
+  "Aquí Mercurio se pone en la zona de los otros: la comunicación pasa a ser el vehículo de las relaciones. Conversaciones, acuerdos, tratos, correspondencia y el intercambio de ideas con socios y pareja se vuelven asuntos centrales.",
+  "Puede favorecer colaboraciones intelectuales, negociaciones, asesorías, trabajo con clientes y vínculos basados en la conversación. Suele atraer a personas ingeniosas, jóvenes o con intereses afines.",
+  "Los malentendidos, la ambigüedad en acuerdos, las discusiones o los vínculos demasiado cerebrales pueden ser un riesgo. Se tiende a analizar la relación en vez de vivirla, o a ocultar lo que se siente tras la palabra.",
+  "Conviene dejar por escrito lo pactado y expresar lo emocional de forma directa. El peso del Mercurio natal y de su relación con otros planetas matiza todo lo anterior.")
+r("MERCURIO", "MC", "Mercurio en el Medio Cielo: reputación por la palabra",
+  "Con Mercurio culminando, la carrera se orienta a la información, la comunicación y el intercambio. La trayectoria pública suele construirse a partir de lo que se sabe, se dice, se escribe o se mediatiza.",
+  "Se asocia con profesiones de escritura, docencia, medios, comercio, tecnología, consultoría o gestión de información, y con una carrera diversificada y flexible. Puede aportar buena reputación por la claridad y la versatilidad.",
+  "Existe el riesgo de dispersarse entre muchos proyectos, de que la imagen profesional resulte cambiante o de perder credibilidad por exceso de palabras. La sobrecarga de tareas es frecuente.",
+  "Ayuda elegir un hilo conductor y construir un portafolio visible. Su alcance real depende de la carta natal y no asegura ningún cargo ni éxito en particular.")
+r("MERCURIO", "IC", "Mercurio en el Fondo del Cielo: pensar desde casa",
+  "En el punto bajo del cielo, Mercurio lleva la mente al ámbito doméstico y a la raíz: la casa se llena de libros, conversaciones, trabajo desde casa y preguntas sobre el origen. Es un lugar donde pensar la propia historia resulta más natural.",
+  "Puede favorecer el estudio sostenido, la escritura íntima, la investigación genealógica, el teletrabajo y las relaciones familiares basadas en el diálogo. A veces facilita entender mejor a la propia familia.",
+  "Puede aparecer rumiación, nerviosismo en el hogar, mudanzas frecuentes o un entorno doméstico ruidoso e inestable. El pensamiento puede mantener despierta la mente en horas de descanso.",
+  "Ayuda reservar un espacio de silencio y separar el lugar de trabajo del de descanso. Su alcance depende de Mercurio natal y de otros factores de la carta.")
+
+# ---------------------------------------------------------------- VENUS
+r("VENUS", "ASC", "Venus en el Ascendente: encanto y amabilidad",
+  "Con Venus en el horizonte oriental, la presencia personal se suaviza y se embellece. El lugar suele asociarse con facilidad para agradar, ser bien recibido y disfrutar de la propia imagen y del entorno.",
+  "Puede favorecer las relaciones amables, el gusto estético, el bienestar físico, la sociabilidad y las actividades creativas o artísticas. Muchas personas describen una sensación de comodidad y buena acogida.",
+  "La búsqueda de armonía puede convertirse en complacencia, pereza, evitación del conflicto o dependencia de la aprobación. El exceso de placer o de comodidad puede frenar el esfuerzo necesario.",
+  "Conviene cultivar el encanto sin renunciar a la firmeza. El efecto concreto depende de la Venus natal, de su signo y de las condiciones de la carta.")
+r("VENUS", "DSC", "Venus en el Descendente: vínculos y pareja",
+  "La línea descendente de Venus es la que más se vincula tradicionalmente con el amor y la asociación. Los otros aparecen como fuente de afecto, placer y valor; la relación de pareja y las alianzas armónicas se ponen en primer plano.",
+  "Puede favorecer encuentros afectivos, relaciones de pareja, socios agradables, diplomacia, mediación y negocios relacionados con la belleza o el arte. Suele ser un entorno donde resulta más fácil dar y recibir cariño.",
+  "Se corre el riesgo de idealizar a los demás, de buscar a alguien que complete lo que falta o de sostener relaciones por comodidad. Las expectativas poco realistas pueden dar lugar a decepciones.",
+  "Ayuda observar qué se espera de los vínculos y expresarlo con claridad. El resultado depende de la carta natal completa y de las decisiones personales.")
+r("VENUS", "MC", "Venus en el Medio Cielo: reputación agradable",
+  "Con Venus culminando, el gusto, la sociabilidad y el valor estético entran en la vida pública. La imagen profesional se asocia con el trato amable, la estética, el diseño, los acuerdos y la capacidad de gustar.",
+  "Es una posición vinculada con carreras en arte, moda, diseño, diplomacia, hostelería, bienestar, finanzas y relaciones públicas, y con una reputación que se apoya en la cordialidad. Puede abrir puertas por afinidad personal.",
+  "Existe el riesgo de depender de la apariencia o de los favores, de evitar decisiones difíciles para no incomodar o de que los asuntos personales interfieran en la carrera. El éxito puede quedarse en la superficie.",
+  "Ayuda combinar el encanto con competencia demostrable. Su efecto depende de la Venus natal y de cómo se integre con el resto de la carta.")
+r("VENUS", "IC", "Venus en el Fondo del Cielo: hogar bello y afectivo",
+  "Con Venus en el punto más bajo, la belleza y el afecto se refugian en el hogar. Se asocia con ambientes domésticos agradables, relaciones familiares cálidas y un deseo de rodearse de lo que da placer y calma.",
+  "Puede favorecer una vivienda armoniosa, una vida doméstica compartida, la reconciliación con la familia y el disfrute de lo cotidiano. Suele ser un buen lugar para decorar, cocinar, convivir y sentirse en paz.",
+  "La comodidad puede volverse inercia; el hogar, un refugio que aísla del mundo. También puede haber apego a la familia, gastos excesivos en lo doméstico o evitación de los conflictos del hogar.",
+  "Conviene abrir la casa a los demás y mantener una vida activa fuera de ella. Los efectos varían con la carta natal y con las circunstancias personales.")
+
+# ---------------------------------------------------------------- MARTE
+r("MARTE", "ASC", "Marte en el Ascendente: energía y arranque",
+  "Donde Marte asciende, la acción se pone en primer plano. El cuerpo se siente más activo, la impaciencia crece y la persona se proyecta de forma directa, competitiva o decidida.",
+  "Puede favorecer la iniciativa, el valor, el deporte, el emprendimiento y la capacidad de defender lo propio. Para quien necesita salir de la inercia, suele ser un lugar que activa y empuja a decidir.",
+  "Aumenta el riesgo de irritabilidad, discusiones, accidentes por precipitación, agotamiento o conductas bruscas. La energía sin canalizar tiende a buscar descarga en el conflicto.",
+  "Ayudan el ejercicio físico regular, los objetivos claros y pausas antes de reaccionar. La intensidad real depende del Marte natal, de su signo y de sus aspectos; no implica que vayan a suceder hechos concretos.")
+r("MARTE", "DSC", "Marte en el Descendente: rivalidad y roce con los otros",
+  "Con Marte en el horizonte occidental, el conflicto y el deseo se proyectan en las relaciones. Es frecuente encontrar personas asertivas, competitivas o provocadoras que ponen a prueba los límites propios.",
+  "Puede ser útil para aprender a negociar, a poner límites, a afrontar la confrontación abierta y a elegir aliados valientes. En el plano afectivo, la atracción y la pasión pueden ser intensas.",
+  "Se asocia con discusiones en pareja, disputas con socios, litigios o relaciones marcadas por el pulso de poder. A veces la agresividad propia se percibe solo cuando aparece en el otro.",
+  "Conviene practicar la franqueza temprana, evitar acumulaciones de resentimiento y buscar formas de competir que no destruyan el vínculo. El efecto depende de la carta natal completa.")
+r("MARTE", "MC", "Marte en el Medio Cielo: ambición y empuje profesional",
+  "Con Marte culminando, la carrera se vive como un campo de acción y competencia. El deseo de lograr, ganar posición y actuar con autonomía tiende a organizar las metas públicas.",
+  "Suele asociarse con liderazgo operativo, emprendimiento, profesiones físicas o de riesgo, medicina, ingeniería, deporte y toda tarea que exija decisión. Puede dar energía para abrirse camino.",
+  "Existe el riesgo de choques con la autoridad, de competir en exceso, de quemarse por trabajo o de ser percibido como agresivo. La impaciencia puede dañar la reputación.",
+  "Ayuda canalizar la ambición en proyectos con plazos y reglas, y descansar de forma deliberada. La magnitud real depende de Marte natal y no asegura ningún resultado profesional.")
+r("MARTE", "IC", "Marte en el Fondo del Cielo: tensión en la raíz",
+  "Con Marte en la parte baja del cielo, la energía combativa se dirige al hogar y a la intimidad. Se asocia con una vida doméstica más agitada, con discusiones familiares y con rabia o tensión antiguas que buscan salida.",
+  "Puede dar impulso para reformar la casa, independizarse, defender el propio espacio o enfrentarse a conflictos familiares que llevaban tiempo pendientes. La energía física en el entorno privado puede ser considerable.",
+  "Se corre el riesgo de tensiones convivenciales, de un hogar poco apacible, de accidentes domésticos o de recrear dinámicas de enfrentamiento heredadas. El descanso puede resultar difícil.",
+  "Ayudan los espacios para el movimiento físico, los acuerdos claros de convivencia y la mediación en conflictos familiares. Sus efectos varían con la carta natal.")
+
+# ---------------------------------------------------------------- JUPITER
+r("JUPITER", "ASC", "Júpiter en el Ascendente: confianza y amplitud",
+  "Con Júpiter en el horizonte oriental, la presencia personal se amplía. El lugar se asocia con optimismo, generosidad, buen humor y una sensación de que la vida ofrece más posibilidades de las que se veían.",
+  "Puede favorecer la confianza, la salud percibida, la hospitalidad, el aprendizaje, los viajes y la aparición de oportunidades a través del trato con la gente. Es una línea de la que se suele hablar como acogedora.",
+  "El exceso es el riesgo típico: gastar de más, prometer demasiado, comer o beber en demasía o confundir el entusiasmo con un plan. La confianza puede convertirse en descuido de los detalles.",
+  "Ayuda ponerle forma práctica al optimismo: presupuestos, metas medibles y moderación. El alcance depende de la posición natal de Júpiter y de la propia disposición.")
+r("JUPITER", "DSC", "Júpiter en el Descendente: alianzas generosas",
+  "Con Júpiter en el horizonte occidental, la expansión llega a través de los otros: socios, parejas, mentores, clientes o comunidades. Las relaciones tienden a vivirse con generosidad, confianza y sentido de crecimiento mutuo.",
+  "Puede favorecer asociaciones fructíferas, matrimonios o alianzas estables, consejeros sabios, contactos internacionales y negocios de colaboración. Suele facilitar que los demás confíen y apoyen.",
+  "La tendencia a idealizar o a esperar demasiado de los demás puede producir decepciones. También pueden aparecer compromisos excesivos, socios poco fiables a quienes se tolera todo o conflictos por promesas no cumplidas.",
+  "Conviene verificar los acuerdos y compartir expectativas con realismo. Todo depende del Júpiter natal y del conjunto de la carta; no equivale a un resultado asegurado.")
+r("JUPITER", "MC", "Júpiter en el Medio Cielo: crecimiento y proyección",
+  "Con Júpiter culminando, la vida pública se expande. La carrera tiende a asociarse con prestigio, ampliación de horizontes, enseñanza, derecho, comercio, edición, viajes o servicio a una comunidad.",
+  "Suele describirse como una línea favorable a la reputación, el reconocimiento, la autoridad moral y la aparición de oportunidades profesionales. Puede abrir puertas a puestos de responsabilidad y a actividades con sentido amplio.",
+  "La confianza excesiva, el crecimiento descontrolado y la tentación de prometer más de lo posible pueden minar la credibilidad. También existe el riesgo de dar por hecho el éxito.",
+  "Ayuda crecer por etapas y rodearse de personas que ayuden a evaluar con realismo. Su resultado depende de Júpiter natal y de las acciones concretas de cada persona.")
+r("JUPITER", "IC", "Júpiter en el Fondo del Cielo: arraigo generoso",
+  "Con Júpiter en el punto bajo, la abundancia se asocia al hogar y a la raíz. El lugar se relaciona con viviendas amplias, familias generosas, sensación de seguridad y búsqueda de un sentido interior de pertenencia.",
+  "Puede favorecer la adquisición de vivienda, la vida familiar rica, el vínculo con la tierra, las tradiciones y la tranquilidad en la edad madura. A veces conecta con un sentimiento de fe o de confianza profunda.",
+  "Puede asociarse con gastos excesivos en el hogar, con una complacencia que frena la ambición o con la dificultad de salir del propio círculo. Las expectativas familiares pueden ser generosas pero pesadas.",
+  "Conviene planificar bien los compromisos inmobiliarios y compartir la abundancia sin hacer de ella una obligación. La carta natal completa matiza el significado.")
+
+# ---------------------------------------------------------------- SATURNO
+r("SATURNO", "ASC", "Saturno en el Ascendente: seriedad y autodisciplina",
+  "Con Saturno en el horizonte oriental, la presencia personal se vuelve más seria, contenida y consciente de sus límites. Es un lugar donde se tiende a sentir el peso de la responsabilidad y a observarse con ojo crítico.",
+  "Puede favorecer la madurez, la disciplina, la constancia, la capacidad de construir con paciencia y un respeto ganado por la fiabilidad. Para quien busca estructura, puede ser un entorno formativo.",
+  "Pueden aparecer timidez, frialdad aparente, autoexigencia, sensación de ser juzgado o cansancio. El estado de ánimo tiende a la gravedad, y la cautela puede transformarse en miedo.",
+  "Ayudan las metas a largo plazo, los descansos planificados y la compañía de personas que aporten calidez. El efecto depende de Saturno natal y de la actitud con que se lo afronte.")
+r("SATURNO", "DSC", "Saturno en el Descendente: compromisos serios",
+  "Con Saturno en el horizonte occidental, las relaciones se vinculan con la responsabilidad, la durabilidad y la prueba. Los otros aparecen como figuras serias, mayores, exigentes o frías, y los compromisos pesan más.",
+  "Puede favorecer vínculos duraderos, alianzas basadas en la lealtad, contratos sólidos y una mirada realista sobre las relaciones. Se asocia con relaciones que maduran con el tiempo.",
+  "Existe el riesgo de soledad, de relaciones frías o desiguales, de sentir que se carga con el otro o de retrasos en el compromiso. La desconfianza puede levantar barreras.",
+  "Conviene hablar de los acuerdos con claridad y revisar si se escoge pareja o socio por obligación o por deseo. Todo se matiza con el conjunto de la carta.")
+r("SATURNO", "MC", "Saturno en el Medio Cielo: ascenso paso a paso",
+  "Con Saturno culminando, la vida pública se asocia con la responsabilidad y la autoridad ganadas con esfuerzo. La carrera suele pedir constancia y compromiso, y la reputación se construye lentamente.",
+  "Puede favorecer profesiones de estructura —dirección, administración, derecho, ingeniería, investigación—, la consolidación de logros duraderos y el respeto por la competencia demostrada.",
+  "Pueden aparecer exceso de trabajo, frustración por avances lentos, ambición dura, soledad en el puesto o presión de figuras de autoridad. El miedo al fracaso puede ser protagonista.",
+  "Ayuda planificar a largo plazo, delegar y reconocer los logros intermedios. Su efecto depende de Saturno natal; no asegura ni impide un cargo concreto.")
+r("SATURNO", "IC", "Saturno en el Fondo del Cielo: cimientos exigentes",
+  "Con Saturno en el punto bajo, la raíz, la familia y el hogar se vinculan con el deber, el límite y la estructura. Es un lugar donde se suele revisar la herencia familiar y asumir responsabilidades domésticas.",
+  "Puede favorecer construir una base sólida, cuidar de la familia, adquirir una vivienda con esfuerzo y trabajar patrones antiguos. Con el tiempo, suele ofrecer una seguridad auténtica.",
+  "Puede asociarse con un ambiente doméstico frío o austero, con soledad, con cargas familiares o con una sensación de falta de apoyo. Las emociones pueden sentirse contenidas.",
+  "Ayudan los rituales sencillos, el cuidado del espacio y la búsqueda de apoyo emocional. El alcance depende de Saturno natal y de la historia de cada persona.")
+
+# ---------------------------------------------------------------- URANO
+r("URANO", "ASC", "Urano en el Ascendente: originalidad y cambio",
+  "Con Urano en el horizonte oriental, la identidad se vive como algo singular y en movimiento. El lugar se asocia con ganas de libertad, rebeldía, experimentación y una imagen que sorprende.",
+  "Puede favorecer la autenticidad, la innovación, el pensamiento independiente y la ruptura con moldes que ya no sirven. Es un entorno que suele atraer a personas poco convencionales.",
+  "Pueden aparecer nerviosismo, inestabilidad, impulsos bruscos, dificultad para comprometerse o sensación de no pertenecer. La necesidad de libertad puede chocar con el entorno.",
+  "Ayudan las rutinas mínimas que den estabilidad al cuerpo y al ánimo, y canalizar la originalidad en proyectos concretos. Todo depende de Urano natal y de la historia de cada persona.")
+r("URANO", "DSC", "Urano en el Descendente: relaciones fuera de lo común",
+  "Con Urano en el horizonte occidental, los encuentros llegan con sorpresa y diferencia. Las relaciones tienden a ser poco convencionales, a iniciarse o terminar de forma súbita o a pedir mucha libertad.",
+  "Puede favorecer amistades estimulantes, colaboraciones innovadoras, parejas que respetan la independencia y encuentros con personas originales. Aporta frescura a la vida de relación.",
+  "Existe el riesgo de inestabilidad afectiva, de rupturas repentinas, de desapego o de relaciones donde nadie se compromete del todo. A veces la libertad propia se defiende a costa de la cercanía.",
+  "Conviene pactar de forma explícita el grado de compromiso y de autonomía. Su efecto se matiza con la carta natal y con las decisiones personales.")
+r("URANO", "MC", "Urano en el Medio Cielo: carrera no convencional",
+  "Con Urano culminando, la vida pública se orienta a lo nuevo, lo alternativo o lo tecnológico. La trayectoria profesional puede ser poco lineal, con giros y reinvenciones.",
+  "Se asocia con innovación, tecnología, ciencia, trabajo independiente, activismo y profesiones que rompen con la tradición. Puede ofrecer reconocimiento por la originalidad.",
+  "La inestabilidad laboral, los cambios bruscos de rumbo, los conflictos con la autoridad o la dificultad de sostener una línea larga pueden ser frecuentes. A veces se confunde la libertad con la falta de compromiso.",
+  "Ayuda mantener una base estable mientras se experimenta y construir una red de colaboradores. La intensidad depende de Urano natal y no implica ningún suceso concreto.")
+r("URANO", "IC", "Urano en el Fondo del Cielo: raíces inestables o liberadas",
+  "Con Urano en el punto bajo, el hogar y la raíz se relacionan con el cambio, la ruptura y la libertad. Se asocia con mudanzas, hogares atípicos y con una relación poco convencional con la familia.",
+  "Puede favorecer liberarse de ataduras familiares, crear un hogar distinto, vivir de forma independiente y renovar la relación con las raíces. Para algunas personas supone una liberación.",
+  "Pueden aparecer sensación de desarraigo, tensiones repentinas en la familia, hogares provisionales o dificultad para sentirse seguro en un solo lugar. La inquietud puede alterar el descanso.",
+  "Ayuda crear pequeños anclajes —rutinas, objetos, personas— que den continuidad en medio del cambio. El efecto real depende de la carta natal completa.")
+
+# ---------------------------------------------------------------- NEPTUNO
+r("NEPTUNO", "ASC", "Neptuno en el Ascendente: sensibilidad difusa e inspirada",
+  "Con Neptuno en el horizonte oriental, los límites de la identidad se vuelven porosos. La presencia personal puede percibirse suave, evasiva o misteriosa, y el lugar se asocia con la sensibilidad y la imaginación.",
+  "Puede favorecer la inspiración artística, la compasión, la espiritualidad, la intuición y el trabajo con la imagen, la música o la imaginación. Para algunas personas, es un entorno de gran belleza interior.",
+  "La confusión sobre quién se es, la fatiga, la dificultad para poner límites, la evasión o la vulnerabilidad a influencias ajenas pueden ser riesgos. El juicio práctico se nubla con facilidad.",
+  "Ayudan las rutinas claras, el contacto con la naturaleza y la verificación de los hechos antes de decidir. El efecto concreto depende de Neptuno natal y de los demás factores de la carta.")
+r("NEPTUNO", "DSC", "Neptuno en el Descendente: idealización y entrega",
+  "Con Neptuno en el horizonte occidental, los vínculos se envuelven de idealización, compasión y vaguedad. Los otros pueden aparecer como inspiradores, salvadores, víctimas o figuras difíciles de ver con claridad.",
+  "Puede favorecer relaciones de profunda empatía, colaboraciones creativas o espirituales, vocación de servicio y una capacidad para entender el sufrimiento ajeno. Suele ser un lugar de encuentros que tocan lo sutil.",
+  "Existe el riesgo de engaño, de autoengaño, de relaciones confusas o poco claras, de rescatar a quien no quiere ser rescatado o de entregarse más de lo razonable. Los acuerdos mal definidos son un punto débil.",
+  "Conviene aclarar lo pactado, contrastar con terceros y mantener distancia emocional prudente. Su efecto depende de la carta natal y de la madurez de cada vínculo.")
+r("NEPTUNO", "MC", "Neptuno en el Medio Cielo: vocación difusa y artística",
+  "Con Neptuno culminando, la vida pública se tiñe de ideal, imagen e inspiración. La vocación puede sentirse como un llamado, pero sus contornos son borrosos y la reputación depende de lo que se proyecta.",
+  "Se asocia con las artes, el cine, la música, la espiritualidad, la salud, el servicio social y toda profesión que trabaje con símbolos, imágenes o cuidado. Puede dar carisma y sentido a la tarea.",
+  "Puede aparecer falta de dirección, expectativas poco realistas, ambigüedad en roles profesionales, engaños o una imagen pública confusa. Cuesta concretar objetivos y ponerles plazo.",
+  "Ayuda definir pasos medibles, documentar acuerdos y apoyarse en personas prácticas. El alcance depende de Neptuno natal; no asegura ningún reconocimiento ni lo impide.")
+r("NEPTUNO", "IC", "Neptuno en el Fondo del Cielo: hogar y mundo interior",
+  "Con Neptuno en el punto bajo, la raíz y la vida privada se vuelven permeables. El hogar puede sentirse como un santuario o como un lugar impreciso, y el mundo interior se activa con sueños, recuerdos e intuiciones.",
+  "Puede favorecer la vida contemplativa, la creatividad en casa, la espiritualidad cotidiana, la sensibilidad ante la historia familiar y la sensación de pertenecer a algo mayor. Resulta fértil para el trabajo interior.",
+  "Pueden aparecer secretos familiares, desorden doméstico, problemas de humedad o de salud, confusión sobre el origen o tendencia a evadirse. La claridad sobre la propia base es difícil de sostener.",
+  "Ayudan el orden material, los límites con el entorno y la meditación o la escritura para dar forma a lo que se percibe. Sus efectos se modulan por la carta natal.")
+
+# ---------------------------------------------------------------- PLUTON
+r("PLUTON", "ASC", "Plutón en el Ascendente: intensidad y transformación",
+  "Con Plutón en el horizonte oriental, la identidad se experimenta con intensidad. El lugar se asocia con un magnetismo difícil de ignorar y con procesos de cambio profundo, a veces incómodos, en la manera de ser y de presentarse.",
+  "Puede favorecer la regeneración personal, la fuerza de voluntad, la capacidad de superar crisis, el trabajo psicológico y la sensación de poder interior. Para quien busca reinventarse, puede ser un entorno catalizador.",
+  "Aparecen el riesgo de obsesión, control, desconfianza, luchas de poder o la sensación de que el entorno es intenso o amenazante. Se puede atraer o proyectar dinámicas de dominio.",
+  "Ayuda acompañar el cambio con apoyo terapéutico o de confianza, y usar la fuerza en procesos constructivos. Todo depende de Plutón natal y no anuncia ninguna crisis concreta.")
+r("PLUTON", "DSC", "Plutón en el Descendente: vínculos intensos y transformadores",
+  "Con Plutón en el horizonte occidental, las relaciones se viven con hondura, pasión y juegos de poder. Los otros pueden aparecer como figuras magnéticas, dominantes o profundamente transformadoras.",
+  "Puede favorecer relaciones que cambian la vida, la verdad emocional, la lealtad profunda y el trabajo con terapeutas, abogados o socios que ayudan a ver lo oculto. Existe un potencial de alianzas muy sólidas.",
+  "Existe el riesgo de celos, manipulación, dependencia, control, rupturas dramáticas o relaciones donde se pierde la propia autonomía. Las dinámicas de poder en los contratos pueden volverse el tema central.",
+  "Conviene cuidar la transparencia, mantener la autonomía y revisar con calma las dinámicas de control. El efecto depende de la carta natal y de la manera de relacionarse.")
+r("PLUTON", "MC", "Plutón en el Medio Cielo: poder y transformación pública",
+  "Con Plutón culminando, la vida pública se vincula con el poder, la influencia y la reinvención. La carrera puede tener fases de ruptura y renacimiento y atraer responsabilidades que implican manejar recursos o secretos ajenos.",
+  "Se asocia con puestos de influencia, investigación, finanzas, psicología, política, cirugía y trabajos de transformación de estructuras. Puede dar una gran determinación y capacidad de resistir.",
+  "Pueden darse luchas de poder, desgaste por intensidad, miedo a perder estatus, intrigas o una necesidad de control que perjudique la reputación. Las crisis profesionales pueden ser profundas.",
+  "Ayuda ejercer el poder con transparencia, descansar de forma deliberada y aceptar que algunos ciclos terminan. Depende de Plutón natal; no pronostica ningún evento.")
+r("PLUTON", "IC", "Plutón en el Fondo del Cielo: raíces profundas",
+  "Con Plutón en el punto bajo, el trabajo se dirige a las raíces: familia, linaje, secretos y emociones antiguas. El hogar y el pasado se vuelven un terreno de intensidad y de posible regeneración.",
+  "Puede favorecer el trabajo terapéutico, la sanación de patrones familiares, la reconstrucción de la base personal y una fuerza interior considerable. Quien afronta lo que aflora puede salir con una raíz más sólida.",
+  "Aparecen el riesgo de dinámicas de control en la familia, de secretos, de duelos no resueltos o de un ambiente doméstico cargado. Los temas profundos pueden sentirse abrumadores.",
+  "Ayuda acompañarse de apoyo profesional y avanzar con ritmo propio. Los efectos dependen de Plutón natal y de la historia familiar, y no son predecibles.")
+
+
+def validate():
+    keys = [x["key"] for x in R]
+    expected = [f"{b}:{a}" for b in BODIES for a in ANGLES]
+    assert keys == expected, "claves o orden incorrectos"
+    errors = []
+    for x in R:
+        text = " ".join(x[k] for k in ("mechanism", "potential", "shadow", "practice"))
+        if len(text) < MIN_CHARS:
+            errors.append(f"{x['key']}: {len(text)} caracteres (< {MIN_CHARS})")
+        for pattern in FORBIDDEN:
+            if re.search(pattern, text, re.IGNORECASE):
+                errors.append(f"{x['key']}: lenguaje prohibido {pattern}")
+    if errors:
+        print("\n".join(errors), file=sys.stderr)
+        sys.exit(1)
+
+
+def main():
+    validate()
+    doc = {
+        "schemaVersion": 1,
+        "editorialVersion": EDITORIAL_VERSION,
+        "language": "es",
+        "reviewStatus": "revisado-por-el-usuario-2026-10-02",
+        "forbiddenPatterns": FORBIDDEN,
+        "minimumCharacters": MIN_CHARS,
+        "readings": [dict(x, sourceReferences=SOURCES) for x in R],
+    }
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(doc, ensure_ascii=False, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+    lengths = [len(" ".join(x[k] for k in ("mechanism", "potential", "shadow", "practice"))) for x in R]
+    print(f"{len(R)} lecturas -> {OUT.relative_to(ROOT)}; longitud min/media/max = "
+          f"{min(lengths)}/{sum(lengths)//len(lengths)}/{max(lengths)}")
+
+
+if __name__ == "__main__":
+    main()
