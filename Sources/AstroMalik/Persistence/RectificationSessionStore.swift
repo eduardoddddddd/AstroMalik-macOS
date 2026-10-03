@@ -157,3 +157,15 @@ final class RectificationSessionStore {
         return try decoder.decode(T.self, from: data)
     }
 }
+
+// F3: host persistence writes a session and its version in one transaction.
+extension RectificationSessionStore {
+    func rpcSave(session: RectificationSession, result: RectificationAnalysisResult?, narrative: RectificationNarrative?) throws -> Int {
+        try db.execute("BEGIN IMMEDIATE")
+        do {
+            let version = try save(session: session, result: result, narrative: narrative)
+            try db.execute("COMMIT")
+            return version
+        } catch { try? db.execute("ROLLBACK"); throw error }
+    }
+}

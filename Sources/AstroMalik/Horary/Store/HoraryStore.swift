@@ -255,3 +255,14 @@ private extension SavedHoraryQueryRecord {
 #if canImport(SwiftUI)
 extension HoraryStore: ObservableObject {}
 #endif
+
+// F3: same native tables and serialization as HoraryStore, without UI isolation.
+enum EngineHoraryPersistence {
+    static func create(db: SQLiteDB) throws { try SavedHoraryQueryRecord.createTable(db: db) }
+    static func list(db: SQLiteDB) throws -> [SavedHoraryQuery] {
+        try SavedHoraryQueryRecord.fetchAll(from: db).map { try $0.toSavedHoraryQuery() }
+    }
+    static func save(_ query: SavedHoraryQuery, db: SQLiteDB) throws {
+        try SavedHoraryQueryRecord(from: query).save(to: db)
+    }
+}
