@@ -17,7 +17,19 @@ final class AstroSavedPlaceRepositoryTests: XCTestCase {
         await Task.yield() // Let UserStore initialization tasks release their injected database.
         db = nil
         await Task.yield()
+        #if os(Windows)
+        // UserStore has an unstructured MainActor initial-load task.
+        // Windows forbids unlink while that task still retains the SQLite handle.
+        for attempt in 0..<50 {
+            do { try FileManager.default.removeItem(at: directory); return }
+            catch let error as NSError {
+                guard error.domain == NSCocoaErrorDomain, error.code == NSFileWriteNoPermissionError, attempt < 49 else { throw error }
+                try await Task.sleep(nanoseconds: 10_000_000)
+            }
+        }
+        #else
         try FileManager.default.removeItem(at: directory)
+        #endif
     }
     func testSaveLoadRestartUpdateDeleteAndOtherChartsUntouched() throws {
         let repo = try AstroSavedPlaceRepository(db: db)
