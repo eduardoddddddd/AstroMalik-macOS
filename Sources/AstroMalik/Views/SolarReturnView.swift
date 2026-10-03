@@ -614,9 +614,7 @@ private struct SolarReturnOverlayWheelView: View {
 // SolarReturnNoteBuilder lives in a platform-neutral core file.
 
 
-private func srDisplayName(_ chart: NatalChart) -> String {
-    chart.name.isEmpty ? chart.birthDate : chart.name
-}
+
 
 private extension PlanetBody {
     var symbol: String {

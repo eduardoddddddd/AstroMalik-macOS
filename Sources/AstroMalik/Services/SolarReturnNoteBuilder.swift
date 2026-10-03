@@ -66,3 +66,7 @@ enum SolarReturnNoteBuilder {
         return lines.joined(separator: "\n")
     }
 }
+
+func srDisplayName(_ chart: NatalChart) -> String {
+    chart.name.isEmpty ? chart.birthDate : chart.name
+}

@@ -70,3 +70,7 @@ enum LunarReturnNoteBuilder {
         return formatter.string(from: date)
     }
 }
+
+func lrDisplayName(_ chart: NatalChart) -> String {
+    chart.name.isEmpty ? chart.birthDate : chart.name
+}

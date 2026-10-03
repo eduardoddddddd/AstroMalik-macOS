@@ -860,6 +860,4 @@ private struct LunarReturnOverlayWheelView: View {
 // LunarReturnNoteBuilder lives in a platform-neutral core file.
 
 
-private func lrDisplayName(_ chart: NatalChart) -> String {
-    chart.name.isEmpty ? chart.birthDate : chart.name
-}
+
