@@ -335,4 +335,4 @@ No convertir estos puntos automáticamente a días o dólares. Calibrar F0 y una
 - [Swiss Ephemeris — interfaz oficial](https://www.astro.com/swisseph/swephprg.htm): referencia para flags, coordenadas ecuatoriales, tiempo sidéreo y casas. Registrar las opciones exactas de cada fixture; no comparar valores calculados con convenciones diferentes.
 - [Apple — MKMapView](https://developer.apple.com/documentation/mapkit/mkmapview) y [Apple — MapPolyline](https://developer.apple.com/documentation/mapkit/mappolyline): referencia oficial para mapa y overlays; F3.1 verifica capacidades con el SDK local y despliegue macOS 14 antes de fijar la integración.
 
-**Siguiente acción recomendada:** revisión humana editorial de las 40 lecturas (puerta G5), smoke manual de F4/F5 en un proceso nuevo y después F6. Punto de relevo vivo: seguimiento.
+**Siguiente acción recomendada:** la fase 7 está cerrada en local como candidata. Publicar (commit, push, tag o release) solo con autorización explícita. Sigue abierta la lentitud al cambiar de pestaña del panel. Punto de relevo vivo: seguimiento.

@@ -1,6 +1,6 @@
 # Informes PDF
 
-Desde 1.0 AstroMalik genera 14 informes PDF profesionales en español, todos basados en la misma infraestructura HTML+CSS → WebKit → PDF. Sin dependencias externas.
+Desde 1.0 AstroMalik genera 14 informes PDF profesionales en español, todos basados en la misma infraestructura HTML+CSS → WebKit → PDF. Sin dependencias externas. El informe de astrocartografía, posterior, usa esa misma infraestructura y se describe al final de esta página.
 
 ## Filosofía
 

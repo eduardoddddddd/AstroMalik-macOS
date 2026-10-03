@@ -87,7 +87,14 @@ struct AstroGuideView: View {
                 La hora de nacimiento importa. Un error de 4 minutos desplaza todas las líneas aproximadamente \
                 1° de longitud, unos 110 km sobre el ecuador. Si tu hora es dudosa, trata las líneas como una \
                 zona, no como una frontera. El cálculo es local y no usa Internet; solo el mapa base de Apple \
-                puede necesitar conexión. Los textos son lecturas simbólicas originales de AstroMalik.
+                puede necesitar conexión. Los textos son lecturas simbólicas originales de AstroMalik. \
+                No incluye parans ni Local Space.
+                """)
+            block("Exportar un lugar", """
+                En Lugar, «Exportar PDF» guarda el resumen, el mapa, las lecturas y la carta relocada. \
+                La casilla del mapa base de Apple es opcional y necesita conexión; si falta o falla, el informe \
+                usa una cuadrícula y lo dice. «Exportar a Joplin» crea una nota solo al pulsarla, en el cuaderno \
+                local que ves antes. Nada se envía solo.
                 """)
             glossary
         }
@@ -149,6 +156,7 @@ struct AstroGuideView: View {
             term("Carta relocada", "Tu mismo instante de nacimiento visto desde otro lugar: cambian casas y ángulos, no los planetas.")
             term("Tema", "Conjunto de líneas que la tradición asocia con un área de vida. Sirve para filtrar y ordenar; no puntúa.")
             term("Cerca / regional", "Banda de distancia a una línea, definida por el programa.")
+            term("Exportación", "PDF o nota de Joplin de un solo lugar, generados cuando lo pides.")
         }
     }
 

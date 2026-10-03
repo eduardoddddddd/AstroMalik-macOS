@@ -58,7 +58,7 @@ astromalik-cli astrocartography --chart "Edu" --place "Madrid" --near-km 50 --re
 ```
 
 Local, sin red y **determinista**: sin fecha de generación, la misma entrada produce la misma salida byte a byte. No usa `corpus.db`.
-`--place` y `--lat/--lon` son excluyentes; `--place` toma la primera coincidencia del catálogo local y lo advierte si hay varias. Los umbrales por defecto son 100/300 km. Con lugar incluye distancias a las 40 líneas, resumen por temas, carta relocada (o su error explícito) y las lecturas de las líneas cercanas. JSON con `schemaVersion: 1` y `kind: "astromalik.astrocartography"`; el esquema está en [ASTROCARTOGRAFIA_EXPORTACION.md](ASTROCARTOGRAFIA_EXPORTACION.md).
+`--place` y `--lat/--lon` son excluyentes; `--place` toma la primera coincidencia del catálogo local y lo advierte si hay varias. Los umbrales por defecto son 100/300 km. Con lugar incluye distancias a las 40 líneas, resumen por temas, carta relocada (o su error explícito) y las lecturas de las líneas cercanas. JSON con `schemaVersion: 1` y `kind: "astromalik.astrocartography"`; el esquema está en [ASTROCARTOGRAFIA_EXPORTACION.md](ASTROCARTOGRAFIA_EXPORTACION.md). Convenio y límites: [ASTROCARTOGRAFIA_METODOLOGIA.md](ASTROCARTOGRAFIA_METODOLOGIA.md).
 
 ## Flags globales
 

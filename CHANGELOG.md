@@ -4,6 +4,24 @@ Todas las novedades reseñables se documentan aquí. El formato sigue [Keep a Ch
 
 ## [Unreleased]
 
+## [1.2.0] — 2026-10-03
+
+Astrocartografía local: mapa, lugares, lecturas, carta relocada y exportación, calculados en el Mac.
+
+### Añadido — astrocartografía local
+
+- Mapa de 40 líneas (10 planetas × ASC, DSC, MC e IC) calculado en el Mac con Swiss Ephemeris, sin cuenta ni modelo de lenguaje.
+- Distancia a un lugar, resumen, lecturas simbólicas, temas para filtrar y ordenar, carta relocada y comparación de hasta 6 lugares.
+- Informe PDF de un lugar, con mapa vectorial y mapa base de Apple opcional; si ese mapa falla, el informe sale con cuadrícula y el motivo.
+- Nota de Joplin solo al pulsar exportar, y comando `astromalik-cli astrocartography` con JSON versionado.
+- Guía dentro de la sección y metodología en `docs/ASTROCARTOGRAFIA_METODOLOGIA.md`.
+
+### Límites
+
+- No incluye parans, Local Space ni bandas de incertidumbre de la hora.
+- Los umbrales de distancia y los temas no miden intensidad ni recomiendan un lugar.
+- El cambio de pestaña del panel puede seguir lento; está anotado y no resuelto.
+
 ## [1.1.4] — 2026-07-25
 
 Release centrada en una **renovación profunda de la sinastría**: corpus,
