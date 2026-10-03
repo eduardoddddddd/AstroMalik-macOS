@@ -96,7 +96,7 @@ final class AstrocartographyViewModelTests: XCTestCase {
     }
     #endif
 
-    func testNavigationIdentitiesAreUniqueAndRouteIsolated() {
+    func testNavigationIdentitiesAreUniqueAndRouteIsolated() async {
         XCTAssertEqual(NavItem.astrocartografia.label, "Astrocartografía")
         XCTAssertEqual(DetailRoute.astrocartography.viewIdentity, "astrocartography")
         XCTAssertEqual(Set(NavItem.allCases.map(\.id)).count, NavItem.allCases.count)

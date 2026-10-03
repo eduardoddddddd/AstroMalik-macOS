@@ -7,7 +7,7 @@ import XCTest
 
 @MainActor
 final class ReadingNotesStoreTests: XCTestCase {
-    func testSaveAndReloadSynthesisByChartId() throws {
+    func testSaveAndReloadSynthesisByChartId() async throws {
         let dir = FileManager.default.temporaryDirectory
             .appendingPathComponent("ReadingNotesStoreTests-")
             .appendingPathComponent(UUID().uuidString, isDirectory: true)
@@ -28,7 +28,7 @@ final class ReadingNotesStoreTests: XCTestCase {
         XCTAssertEqual(reloaded.note(for: "chart-1"), note)
     }
 
-    func testUpdatingExistingNoteDoesNotDuplicate() throws {
+    func testUpdatingExistingNoteDoesNotDuplicate() async throws {
         let dir = FileManager.default.temporaryDirectory
             .appendingPathComponent("ReadingNotesStoreTests-")
             .appendingPathComponent(UUID().uuidString, isDirectory: true)

@@ -73,7 +73,7 @@ final class AstroMercatorGeometryTests: XCTestCase {
     }
 
     #if canImport(MapKit)
-    @MainActor func testMapSpikeIdentityFilteringZoomSelectionAndExplicitPath() throws {
+    @MainActor func testMapSpikeIdentityFilteringZoomSelectionAndExplicitPath() async throws {
         _ = NSApplication.shared
         let lines = AstroBody.allCases.flatMap { body in AstroAngle.allCases.map { angle in
             AstroVisualLine(id: AstroLineID(body: body, angle: angle), segments: [AstroVisualSegment(coordinates: [

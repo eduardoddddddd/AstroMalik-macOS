@@ -95,7 +95,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
     // MARK: - Initial State
 
     #if canImport(SwiftUI)
-    func testInitialState() {
+    func testInitialState() async {
         let vm = PrimaryDirectionsViewModel(service: PrimaryDirectionsService())
         XCTAssertNil(vm.result)
         XCTAssertTrue(vm.filteredDirections.isEmpty)
@@ -108,7 +108,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
 
     // MARK: - Filter Tests
 
-    func testFiltersDefaultMatchesAll() {
+    func testFiltersDefaultMatchesAll() async {
         let filters = PDFilters()
         let dirs = [
             makeEnriched(aspect: .conjunction, age: 25),
@@ -118,7 +118,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertTrue(dirs.allSatisfy { filters.matches($0) }, "Default filters should match all")
     }
 
-    func testAspectFilterExcludesNonMatching() {
+    func testAspectFilterExcludesNonMatching() async {
         var filters = PDFilters()
         filters.aspects = [.trine]
 
@@ -129,7 +129,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertTrue(filters.matches(trine), "Trine should pass")
     }
 
-    func testAgeRangeFilter() {
+    func testAgeRangeFilter() async {
         var filters = PDFilters()
         filters.ageRange = 30...60
 
@@ -142,7 +142,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertFalse(filters.matches(old))
     }
 
-    func testDirectionTypeFilter() {
+    func testDirectionTypeFilter() async {
         var filters = PDFilters()
         filters.directionTypes = [.converse]
 
@@ -150,7 +150,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertFalse(filters.matches(directDir), "Direct should be excluded when only converse selected")
     }
 
-    func testPromissorsFilterEmpty_AllPass() {
+    func testPromissorsFilterEmpty_AllPass() async {
         var filters = PDFilters()
         filters.promissors = []  // empty = all pass
 
@@ -158,7 +158,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertTrue(filters.matches(makeEnriched(promissor: "LUNA")))
     }
 
-    func testPromissorsFilterNonEmpty_OnlySelected() {
+    func testPromissorsFilterNonEmpty_OnlySelected() async {
         var filters = PDFilters()
         filters.promissors = ["SOL"]
 
@@ -167,7 +167,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertFalse(filters.matches(makeEnriched(promissor: "MARTE")))
     }
 
-    func testOnlyWithCorpusFilter() {
+    func testOnlyWithCorpusFilter() async {
         var filters = PDFilters()
         filters.onlyWithCorpus = true
 
@@ -178,7 +178,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertFalse(filters.matches(withoutInterp))
     }
 
-    func testFiltersResetRestoresDefault() {
+    func testFiltersResetRestoresDefault() async {
         var filters = PDFilters()
         filters.aspects = [.conjunction]
         filters.ageRange = 20...40
@@ -189,12 +189,12 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertEqual(filters, PDFilters(), "After reset, filters should equal default")
     }
 
-    func testFilterIsDefaultWhenUnmodified() {
+    func testFilterIsDefaultWhenUnmodified() async {
         let filters = PDFilters()
         XCTAssertTrue(filters.isDefault)
     }
 
-    func testFilterIsNotDefaultWhenModified() {
+    func testFilterIsNotDefaultWhenModified() async {
         var filters = PDFilters()
         filters.onlyWithCorpus = true
         XCTAssertFalse(filters.isDefault)
@@ -202,7 +202,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
 
     // MARK: - PDSettings Tests
 
-    func testSettingsDefaultValues() {
+    func testSettingsDefaultValues() async {
         let settings = PDSettings()
         XCTAssertEqual(settings.method, .regiomontanus)
         XCTAssertEqual(settings.key, .naibod)
@@ -210,7 +210,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertEqual(settings.aspectPlane, .zodiacal)
     }
 
-    func testSettingsPersistAndLoad() {
+    func testSettingsPersistAndLoad() async {
         var settings = PDSettings()
         settings.key = .ptolemy
         settings.method = .regiomontanus
@@ -228,7 +228,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         reset.persist()
     }
 
-    func testSettingsCalculatorConfigBuilt() {
+    func testSettingsCalculatorConfigBuilt() async {
         let settings = PDSettings()
         let config = settings.calculatorConfig
         XCTAssertEqual(config.method, settings.method)
@@ -240,7 +240,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
     // MARK: - ViewModel applyFilters
 
     #if canImport(SwiftUI)
-    func testApplyFiltersNoResult_EmptyArray() {
+    func testApplyFiltersNoResult_EmptyArray() async {
         let vm = PrimaryDirectionsViewModel(service: PrimaryDirectionsService())
         XCTAssertNil(vm.result)
         vm.applyFilters()
@@ -249,7 +249,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
     #endif
 
     #if canImport(SwiftUI)
-    func testPreferredInitialSelectionPrioritizesCuratedText() {
+    func testPreferredInitialSelectionPrioritizesCuratedText() async {
         let silent = makeEnriched(promissor: "MARTE", age: 1, withInterpretation: false)
         let curated = makeEnriched(promissor: "VENUS", age: 49, withInterpretation: true)
         let laterSilent = makeEnriched(promissor: "SOL", age: 50, withInterpretation: false)
@@ -263,7 +263,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
     #endif
 
     #if canImport(SwiftUI)
-    func testPreferredInitialSelectionFallsBackToFirstVisibleDirection() {
+    func testPreferredInitialSelectionFallsBackToFirstVisibleDirection() async {
         let first = makeEnriched(promissor: "MARTE", age: 1, withInterpretation: false)
         let second = makeEnriched(promissor: "SOL", age: 2, withInterpretation: false)
 
@@ -298,20 +298,20 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
 
     // MARK: - DisplaySummary and Formatted helpers
 
-    func testDisplaySummary() {
+    func testDisplaySummary() async {
         let enriched = makeEnriched()
         XCTAssertFalse(enriched.displaySummary.isEmpty)
         XCTAssertTrue(enriched.displaySummary.contains("Marte") || enriched.displaySummary.contains("ASC"))
     }
 
-    func testAgeFormatted() {
+    func testAgeFormatted() async {
         let enriched = makeEnriched(age: 25.5)
         let formatted = enriched.ageFormatted
         XCTAssertTrue(formatted.contains("25"))
         XCTAssertTrue(formatted.contains("6") || formatted.contains("meses"))
     }
 
-    func testArcFormatted() {
+    func testArcFormatted() async {
         let enriched = makeEnriched(age: 25.5)
         let arc = enriched.arcFormatted
         XCTAssertFalse(arc.isEmpty)
