@@ -119,3 +119,10 @@ enum EphemerisEngine {
         return "\(sign) \(String(format: "%02d", degrees))°\(String(format: "%02d", minutes))'"
     }
 }
+
+// F3: expose the existing daily-row calculation at the requested midnight UTC.
+extension EphemerisEngine {
+    static func rpcDailyRow(jd: Double, timezone: String) throws -> DailyEphemerisRow {
+        try dailyRow(at: jd, timezone: timezone)
+    }
+}

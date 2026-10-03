@@ -125,7 +125,8 @@ func computeTransitPeriod(
     toDate: Date,
     timezone: String,
     excludeMoon: Bool = true,
-    corpusStore: CorpusStore
+    corpusStore: CorpusStore,
+    progress: ((Double) async -> Void)? = nil
 ) async throws -> [TransitEvent] {
 
     guard toDate >= fromDate else {
@@ -188,6 +189,7 @@ func computeTransitPeriod(
 
     for dayIdx in 0..<totalDays {
         try Task.checkCancellation()
+        if dayIdx % max(1, totalDays / 100) == 0 { await progress?(Double(dayIdx) / Double(totalDays)) }
 
         guard let currentDate = cal.date(byAdding: .day, value: dayIdx, to: fromDate) else {
             throw TransitError.dateCalculationFailed

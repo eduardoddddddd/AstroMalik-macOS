@@ -1322,3 +1322,11 @@ private extension AstroMalikCLIRunner {
         return RenderedLocalOutput(content: content, title: AstroExportMarkdown.title(document), networkUsed: false, model: "local", estimatedCostUSD: 0)
     }
 }
+
+// F3: shared renderer for JSON host; no output side effects, no network.
+extension AstroMalikCLIRunner {
+    static func rpcOutput(chart: NatalChart, request: AstroMalikCLIRequest, corpus: CorpusStore) async throws -> EngineJSON {
+        let rendered = try await renderChartCommand(chart: chart, corpusStore: corpus, request: request, generatedAt: request.referenceDate, log: { _ in })
+        return try JSONDecoder().decode(EngineJSON.self, from: Data(rendered.content.utf8))
+    }
+}
