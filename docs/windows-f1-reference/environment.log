@@ -1,0 +1,9 @@
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+Target: arm64-apple-macosx28.0
+Xcode 26.4.1
+Build version 17E202
+System tzdata: 2026c
+Global developer directory: /Library/Developer/CommandLineTools

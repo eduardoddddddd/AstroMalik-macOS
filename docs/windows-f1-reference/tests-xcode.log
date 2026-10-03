@@ -1,0 +1,1737 @@
+[0/1] Planning build
+Building for debugging...
+[0/18] Compiling CSwissEph swejpl.c
+[1/18] Compiling CSwissEph swehouse.c
+[2/18] Compiling CSwissEph swephlib.c
+[3/18] Write swift-version--58304C5D6DBC2206.txt
+[4/18] Compiling CSwissEph swemmoon.c
+[5/18] Compiling CSwissEph swedate.c
+[6/18] Compiling CSwissEph swehel.c
+[7/18] Compiling CSwissEph swemplan.c
+[8/18] Compiling CSwissEph sweph.c
+[9/18] Compiling CSwissEph swecl.c
+[11/94] Compiling AstroMalik DistributionEngine.swift
+[12/94] Compiling AstroMalik ExtendedAstroSupport.swift
+[13/94] Compiling AstroMalik FixedStarsEngine.swift
+[14/94] Compiling AstroMalik LotsEngine.swift
+[15/94] Compiling AstroMalik ReceptionEngine.swift
+[16/94] Compiling AstroMalik FirdariaEngine.swift
+[17/94] Compiling AstroMalik HellenisticLots.swift
+[18/94] Compiling AstroMalik JulianDay.swift
+[19/94] Compiling AstroMalik LunarReturnEngine.swift
+[20/94] Compiling AstroMalik NatalExtendedAnalysis.swift
+[21/94] Compiling AstroMalik ProfectionEngine.swift
+[22/94] Compiling AstroMalik ChartDistribution.swift
+[23/94] Compiling AstroMalik NatalReadingComposer.swift
+[24/94] Compiling AstroMalik ReadingRelevance.swift
+[25/94] Compiling AstroMalik ReadingTemplates.swift
+[26/94] Compiling AstroMalik RectificationCandidateGenerator.swift
+[27/94] Compiling AstroMalik RectificationEngine.swift
+[28/94] Compiling AstroMalik RectificationEphemerisCache.swift
+[29/94] Compiling AstroMalik RectificationProfessionalScorers.swift
+[30/94] Compiling AstroMalik RectificationScorers.swift
+[31/94] Compiling AstroMalik RectificationScoringPolicy.swift
+[32/94] Compiling AstroMalik RectificationSymbolismRules.swift
+[33/94] Compiling AstroMalik RectificationValidation.swift
+[34/94] Compiling AstroMalik RevolutionTemplates.swift
+[35/94] Compiling AstroMalik SecondaryProgressionEngine.swift
+[36/119] Emitting module AstroMalik
+[37/119] Compiling AstroMalik AppNavigation.swift
+[38/119] Compiling AstroMalik AppResources.swift
+[39/119] Compiling AstroMalik AppTheme.swift
+[40/119] Compiling AstroMalik AstroMalikApp.swift
+[41/119] Compiling AstroMalik AstroMalikCLIRunner.swift
+[42/119] Compiling AstroMalik AdaptiveAstroGeometry.swift
+[43/119] Compiling AstroMalik AstroLocationAnalyzer.swift
+[44/119] Compiling AstroMalik AstroRelocationEngine.swift
+[45/119] Compiling AstroMalik AstrocartographyEngine.swift
+[46/119] Compiling AstroMalik MundaneAngles.swift
+[47/119] Compiling AstroMalik SwissAstrocartographyEphemeris.swift
+[48/119] Compiling AstroMalik AstroBaseMapSnapshot.swift
+[49/119] Compiling AstroMalik AstroExportDocument.swift
+[50/119] Compiling AstroMalik AstroExportMarkdown.swift
+[51/119] Compiling AstroMalik AstroMapSVGRenderer.swift
+[52/119] Compiling AstroMalik AstroPlaceReadingBuilder.swift
+[53/119] Compiling AstroMalik AstroPlaceSummaryBuilder.swift
+[54/119] Compiling AstroMalik AstroThemes.swift
+[55/119] Compiling AstroMalik AstrocartographyReadingLibrary.swift
+[56/119] Compiling AstroMalik AstrocartographyContracts.swift
+[57/119] Compiling AstroMalik AstroSavedPlaceRepository.swift
+[58/119] Compiling AstroMalik AstroMercatorGeometry.swift
+[59/119] Compiling AstroMalik AstroVisualGeometry.swift
+[60/119] Compiling AstroMalik AstroLocationCalculationService.swift
+[61/119] Compiling AstroMalik AstroPlaceSearchService.swift
+[62/169] Compiling AstroMalik AstrocartographyCalculationService.swift
+[63/169] Compiling AstroMalik AstroGuideView.swift
+[64/169] Compiling AstroMalik AstroMapView.swift
+[65/169] Compiling AstroMalik AstroReadingViews.swift
+[66/169] Compiling AstroMalik AstrocartographyView.swift
+[67/169] Compiling AstroMalik AstrocartographyViewModel.swift
+[68/169] Compiling AstroMalik AstroEngine.swift
+[69/169] Compiling AstroMalik CrossPersonalAssembler.swift
+[70/169] Compiling AstroMalik CrossPersonalEngine.swift
+[71/169] Compiling AstroMalik AngularBisection.swift
+[72/169] Compiling AstroMalik EclipseCalculator.swift
+[73/169] Compiling AstroMalik EphemerisEngine.swift
+[74/169] Compiling AstroMalik EphemerisUtilities.swift
+[75/169] Compiling AstroMalik LunationCalculator.swift
+[76/169] Compiling AstroMalik MonthlySummaryEngine.swift
+[77/169] Compiling AstroMalik MundaneAspectCalculator.swift
+[78/169] Compiling AstroMalik SignIngressCalculator.swift
+[79/169] Compiling AstroMalik StationCalculator.swift
+[80/169] Compiling AstroMalik SwissEphemerisAccess.swift
+[81/169] Compiling AstroMalik VoidOfCourseCalculator.swift
+[82/169] Compiling AstroMalik EssentialDignityEngine.swift
+[83/169] Compiling AstroMalik AlmutenFigurisEngine.swift
+[84/169] Compiling AstroMalik AntisciaEngine.swift
+[85/169] Compiling AstroMalik AspectPatternEngine.swift
+[86/169] Compiling AstroMalik DeclinationEngine.swift
+[87/194] Compiling AstroMalik ChartSVGRenderingSupport.swift
+[88/194] Compiling AstroMalik DoubleWheelSVGRenderer.swift
+[89/194] Compiling AstroMalik EphemerisTableHTML.swift
+[90/194] Compiling AstroMalik Glyphs.swift
+[91/194] Compiling AstroMalik SVGCanvas.swift
+[92/194] Compiling AstroMalik TimelineSVGRenderer.swift
+[93/194] Compiling AstroMalik WheelSVGRenderer.swift
+[94/194] Compiling AstroMalik AstrocartographyReportData.swift
+[95/194] Compiling AstroMalik CrossPersonalReportData.swift
+[96/194] Compiling AstroMalik ExtendedNatalReportData.swift
+[97/194] Compiling AstroMalik HoraryReportData.swift
+[98/194] Compiling AstroMalik NatalReportData.swift
+[99/194] Compiling AstroMalik ReportCommonData.swift
+[100/194] Compiling AstroMalik SynastryReportData.swift
+[101/194] Compiling AstroMalik LongPredictiveReportBuilders.swift
+[102/194] Compiling AstroMalik LongPredictiveReportData.swift
+[103/194] Compiling AstroMalik MarkdownToHTML.swift
+[104/194] Compiling AstroMalik PredictiveReportData.swift
+[105/194] Compiling AstroMalik ReportData.swift
+[106/194] Compiling AstroMalik ReportPersistence.swift
+[107/194] Compiling AstroMalik ReportRenderer.swift
+[108/194] Compiling AstroMalik ReportService.swift
+[109/194] Compiling AstroMalik ReportSmoke.swift
+[110/194] Compiling AstroMalik ReportTheme.swift
+[111/194] Compiling AstroMalik TemplateEngine.swift
+[112/219] Compiling AstroMalik SectEngine.swift
+[113/219] Compiling AstroMalik SolarArcEngine.swift
+[114/219] Compiling AstroMalik SolarReturnEngine.swift
+[115/219] Compiling AstroMalik TransitEngine.swift
+[116/219] Compiling AstroMalik ZodiacalReleasingEngine.swift
+[117/219] Compiling AstroMalik HoraryEngine.swift
+[118/219] Compiling AstroMalik HoraryNativeEngine.swift
+[119/219] Compiling AstroMalik HoraryFoundryClient.swift
+[120/219] Compiling AstroMalik HoraryModels.swift
+[121/219] Compiling AstroMalik SavedHoraryQuery.swift
+[122/219] Compiling AstroMalik HoraryStore.swift
+[123/219] Compiling AstroMalik HoraryDiagnosticsView.swift
+[124/219] Compiling AstroMalik HoraryFormView.swift
+[125/219] Compiling AstroMalik HoraryHomeView.swift
+[126/219] Compiling AstroMalik HoraryResultView.swift
+[127/219] Compiling AstroMalik SavedHoraryView.swift
+[128/219] Compiling AstroMalik CrossPersonal.swift
+[129/219] Compiling AstroMalik EphemerisEvent.swift
+[130/219] Compiling AstroMalik Firdaria.swift
+[131/219] Compiling AstroMalik Interpretation.swift
+[132/219] Compiling AstroMalik LunarReturn.swift
+[133/219] Compiling AstroMalik MonthlySummary.swift
+[134/219] Compiling AstroMalik NatalChart.swift
+[135/219] Compiling AstroMalik NatalExtendedModels.swift
+[136/219] Compiling AstroMalik NatalReading.swift
+[137/244] Compiling AstroMalik Profection.swift
+[138/244] Compiling AstroMalik Progression.swift
+[139/244] Compiling AstroMalik Rectification.swift
+[140/244] Compiling AstroMalik RectificationProfessional.swift
+[141/244] Compiling AstroMalik SavedChart.swift
+[142/244] Compiling AstroMalik Sect.swift
+[143/244] Compiling AstroMalik SolarArcDirection.swift
+[144/244] Compiling AstroMalik SolarReturn.swift
+[145/244] Compiling AstroMalik Synastry.swift
+[146/244] Compiling AstroMalik Transit.swift
+[147/244] Compiling AstroMalik ZR.swift
+[148/244] Compiling AstroMalik MigrationRunner.swift
+[149/244] Compiling AstroMalik ReadingNotesStore.swift
+[150/244] Compiling AstroMalik RectificationSessionStore.swift
+[151/244] Compiling AstroMalik PrimaryDirectionCalculator.swift
+[152/244] Compiling AstroMalik RegiomontanusProjection.swift
+[153/244] Compiling AstroMalik PrimaryDirectionCorpusStore.swift
+[154/244] Compiling AstroMalik ContextualInterpretation.swift
+[155/244] Compiling AstroMalik OpenRouterClient.swift
+[156/244] Compiling AstroMalik PDInterpretationContextBuilder.swift
+[157/244] Compiling AstroMalik PrimaryDirectionContextualInterpreter.swift
+[158/244] Compiling AstroMalik PrimaryDirectionFoundryClient.swift
+[159/244] Compiling AstroMalik PrimaryDirectionLocalReading.swift
+[160/244] Compiling AstroMalik PDFilterPreset.swift
+[161/244] Compiling AstroMalik PDWeight.swift
+[162/244] Compiling AstroMalik PrimaryDirection.swift
+[163/244] Compiling AstroMalik PrimaryDirectionKey.swift
+[164/244] Compiling AstroMalik PrimaryDirectionMethod.swift
+[165/244] Compiling AstroMalik SpeculumRow.swift
+[166/244] Compiling AstroMalik PrimaryDirectionsNoteBuilder.swift
+[167/244] Compiling AstroMalik PrimaryDirectionsService.swift
+[168/244] Compiling AstroMalik SolarArcNoteBuilder.swift
+[169/244] Compiling AstroMalik PrimaryDirectionsViewModel.swift
+[170/244] Compiling AstroMalik SolarArcViewModel.swift
+[171/244] Compiling AstroMalik CurrentYearView.swift
+[172/244] Compiling AstroMalik PDDetailContainer.swift
+[173/244] Compiling AstroMalik PrimaryDirectionDetailView.swift
+[174/244] Compiling AstroMalik PrimaryDirectionFiltersView.swift
+[175/244] Compiling AstroMalik PrimaryDirectionsTableView.swift
+[176/244] Compiling AstroMalik PrimaryDirectionsTimelineView.swift
+[177/244] Compiling AstroMalik PrimaryDirectionsView.swift
+[178/244] Compiling AstroMalik SolarArcDirectionsView.swift
+[179/244] Compiling AstroMalik SpeculumTableView.swift
+[180/244] Compiling AstroMalik AstrocartographyReportBuilder.swift
+[181/244] Compiling AstroMalik CrossPersonalReportBuilder.swift
+[182/244] Compiling AstroMalik ExtendedNatalReportBuilder.swift
+[183/244] Compiling AstroMalik HoraryReportBuilder.swift
+[184/244] Compiling AstroMalik NatalReportBuilder.swift
+[185/244] Compiling AstroMalik RectificationReportBuilder.swift
+[186/244] Compiling AstroMalik SynastryReportBuilder.swift
+[187/244] Compiling AstroMalik AnthropicClient.swift
+[188/244] Compiling AstroMalik CrossPersonalNarrativeBuilder.swift
+[189/244] Compiling AstroMalik JoplinClipperService.swift
+[190/244] Compiling AstroMalik JoplinOpenRouterKeyLocator.swift
+[191/244] Compiling AstroMalik PlacesService.swift
+[192/244] Compiling AstroMalik RectificationNarrativeBuilder.swift
+[193/244] Compiling AstroMalik UnifiedLLMService.swift
+[194/244] Compiling AstroMalik CorpusStore.swift
+[195/244] Compiling AstroMalik SQLiteDB.swift
+[196/244] Compiling AstroMalik UserStore.swift
+[197/244] Compiling AstroMalik BirthChartForm.swift
+[198/244] Compiling AstroMalik ContentView.swift
+[199/244] Compiling AstroMalik CrossPersonalView.swift
+[200/244] Compiling AstroMalik EphemerisCalendarView.swift
+[201/244] Compiling AstroMalik EphemerisDayDetailView.swift
+[202/244] Compiling AstroMalik EphemerisNoteBuilder.swift
+[203/244] Compiling AstroMalik EphemerisTableView.swift
+[204/244] Compiling AstroMalik FirdariaView.swift
+[205/244] Compiling AstroMalik HelpView.swift
+[206/244] Compiling AstroMalik LunarReturnView.swift
+[207/244] Compiling AstroMalik MonthlySummaryNoteBuilder.swift
+[208/244] Compiling AstroMalik MonthlySummaryView.swift
+[209/244] Compiling AstroMalik MyReportsView.swift
+[210/244] Compiling AstroMalik NatalChartView.swift
+[211/244] Compiling AstroMalik NatalExtendedAnalysisView.swift
+[212/244] Compiling AstroMalik NatalWheelView.swift
+[213/244] Compiling AstroMalik PDFExportButton.swift
+[214/244] Compiling AstroMalik ProfectionsView.swift
+[215/244] Compiling AstroMalik ProgressionsView.swift
+[216/244] Compiling AstroMalik NatalReadingView.swift
+[217/244] Compiling AstroMalik ReadingBlockView.swift
+[218/244] Compiling AstroMalik ReadingChapterView.swift
+[219/244] Compiling AstroMalik ReadingNoteBuilder.swift
+[220/244] Compiling AstroMalik ReadingTOCView.swift
+[221/244] Compiling AstroMalik ReadingTypography.swift
+[222/244] Compiling AstroMalik RectificationAuditSummaryView.swift
+[223/244] Compiling AstroMalik RectificationConfigurationCard.swift
+[224/244] Compiling AstroMalik RectificationEventEditorRow.swift
+[225/244] Compiling AstroMalik RectificationInputCards.swift
+[226/244] Compiling AstroMalik RectificationView.swift
+[227/244] Compiling AstroMalik RectificationViewModel.swift
+[228/244] Compiling AstroMalik SavedChartsView.swift
+[229/244] Compiling AstroMalik SettingsView.swift
+[230/244] Compiling AstroMalik SolarReturnView.swift
+[231/244] Compiling AstroMalik SynastryView.swift
+[232/244] Compiling AstroMalik TransitTimelineView.swift
+[233/244] Compiling AstroMalik TransitsNoteBuilder.swift
+[234/244] Compiling AstroMalik TransitsView.swift
+[235/244] Compiling AstroMalik ZRView.swift
+[236/244] Compiling AstroMalik resource_bundle_accessor.swift
+[237/303] Compiling AstroMalikApp main.swift
+[238/303] Emitting module AstroMalikApp
+[238/303] Write Objects.LinkFileList
+[240/303] Emitting module astromalik_cli
+[241/303] Compiling astromalik_cli main.swift
+[241/303] Write Objects.LinkFileList
+[242/303] Linking AstroMalik
+[243/303] Applying AstroMalik
+[244/303] Linking astromalik-cli
+[245/303] Applying astromalik-cli
+[247/305] Emitting module AstroMalikTests
+[248/323] Compiling AstroMalikCLITests AstroMalikCLITests.swift
+[249/323] Emitting module AstroMalikCLITests
+[250/323] Compiling AstroMalikTests AstrocartographyReadingTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[251/323] Compiling AstroMalikTests AstrocartographyViewModelTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[252/323] Compiling AstroMalikTests MundaneAngleAnalyticTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[253/323] Compiling AstroMalikTests SwissAstrocartographyEphemerisTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[254/323] Compiling AstroMalikTests SwissEphemerisAccessTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[255/323] Compiling AstroMalikTests CrossPersonalEngineTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[256/323] Compiling AstroMalikTests CrossPersonalNarrativeBuilderTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[257/323] Compiling AstroMalikTests EclipseCalculatorTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[258/323] Compiling AstroMalikTests EphemerisEngineTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[259/323] Compiling AstroMalikTests LunationCalculatorTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[260/323] Compiling AstroMalikTests MonthlySummaryEngineTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[261/323] Compiling AstroMalikTests MundaneAspectCalculatorTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[262/323] Compiling AstroMalikTests SignIngressCalculatorTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[263/323] Compiling AstroMalikTests StationCalculatorTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[264/323] Compiling AstroMalikTests VoidOfCourseCalculatorTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[265/323] Compiling AstroMalikTests NatalExtendedEngineTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[266/323] Compiling AstroMalikTests FirdariaEngineTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[267/323] Compiling AstroMalikTests HoraryFoundryClientTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[268/323] Compiling AstroMalikTests HoraryReportTests.swift
+[269/323] Compiling AstroMalikTests LongPredictiveReportTests.swift
+[270/323] Compiling AstroMalikTests NatalReportTests.swift
+[271/323] Compiling AstroMalikTests PredictiveReportBuilderTests.swift
+[272/323] Compiling AstroMalikTests ReportPersistenceTests.swift
+[273/323] Compiling AstroMalikTests ReportRendererTests.swift
+[274/323] Compiling AstroMalikTests ReportServiceTests.swift
+[275/323] Compiling AstroMalikTests ReportTestSupport.swift
+[276/323] Compiling AstroMalikTests SynastryReportTests.swift
+[277/323] Compiling AstroMalikTests TemplateEngineTests.swift
+[278/323] Compiling AstroMalikTests WheelSVGRendererTests.swift
+[279/323] Compiling AstroMalikTests SecondaryProgressionEngineTests.swift
+[280/323] Compiling AstroMalikTests SectEngineTests.swift
+[281/323] Compiling AstroMalikTests SolarArcEngineTests.swift
+[282/323] Compiling AstroMalikTests MockAnthropicHTTPClient.swift
+[283/323] Compiling AstroMalikTests TechnicalDebt1And2Tests.swift
+[284/323] Compiling AstroMalikTests ZodiacalReleasingEngineTests.swift
+[285/323] Compiling AstroMalikTests resource_bundle_accessor.swift
+[286/323] Compiling AstroMalikTests HoraryParityTests.swift
+[287/323] Compiling AstroMalikTests JulianDaySecondsTests.swift
+[288/323] Compiling AstroMalikTests Phase4ContextualInterpreterTests.swift
+[289/323] Compiling AstroMalikTests Phase5ViewModelTests.swift
+[290/323] Compiling AstroMalikTests PrimaryDirectionFoundryClientTests.swift
+[291/323] Compiling AstroMalikTests PrimaryDirectionsGoldenTests.swift
+[292/323] Compiling AstroMalikTests PrimaryDirectionsTests.swift
+[293/323] Compiling AstroMalikTests ProfectionEngineTests.swift
+[294/323] Compiling AstroMalikTests NatalReadingComposerTests.swift
+[295/323] Compiling AstroMalikTests ReadingNotesStoreTests.swift
+[296/323] Compiling AstroMalikTests RectificationEngineTests.swift
+[297/323] Compiling AstroMalikTests RectificationModelTests.swift
+[298/323] Compiling AstroMalikTests RectificationNarrativeBuilderTests.swift
+[299/323] Compiling AstroMalikTests RectificationPersistenceTests.swift
+[300/323] Compiling AstroMalikTests RectificationProfessionalTests.swift
+[301/323] Compiling AstroMalikTests AstrocartographyReportTests.swift
+[302/323] Compiling AstroMalikTests CrossPersonalReportTests.swift
+[303/323] Compiling AstroMalikTests ExtendedNatalReportTests.swift
+[304/323] Compiling AstroMalikTests AnthropicClientTests.swift
+[305/323] Compiling AstroMalikTests AstroEngineTests.swift
+[306/323] Compiling AstroMalikTests AdaptiveAstroGeometryTests.swift
+[307/323] Compiling AstroMalikTests AstroLocationAnalyzerTests.swift
+[308/323] Compiling AstroMalikTests AstroMapStyleTrackerTests.swift
+[309/323] Compiling AstroMalikTests AstroMercatorGeometryTests.swift
+[310/323] Compiling AstroMalikTests AstroPlaceWorkflowTests.swift
+[311/323] Compiling AstroMalikTests AstroRelocationEngineTests.swift
+[312/323] Compiling AstroMalikTests AstroSavedPlaceRepositoryTests.swift
+[313/323] Compiling AstroMalikTests AstroThemeSummaryTests.swift
+[314/323] Compiling AstroMalikTests AstroVisualGeometryTests.swift
+[315/323] Compiling AstroMalikTests AstrocartographyAnalyticFixtureTests.swift
+[316/323] Compiling AstroMalikTests AstrocartographyCalculationServiceTests.swift
+[317/323] Compiling AstroMalikTests AstrocartographyContractTests.swift
+[318/323] Compiling AstroMalikTests AstrocartographyEngineTests.swift
+[319/323] Compiling AstroMalikTests AstrocartographyEphemerisReferenceTests.swift
+[320/323] Compiling AstroMalikTests AstrocartographyExportTests.swift
+[321/323] Compiling AstroMalikTests AstrocartographyPhase7HardeningTests.swift
+[322/325] Emitting module AstroMalikPackageTests
+[323/325] Compiling AstroMalikPackageTests runner.swift
+[323/325] Write Objects.LinkFileList
+[324/325] Linking AstroMalikPackageTests
+Build complete! (35.79s)
+Test Suite 'All tests' started at 2026-10-03 17:16:05.974.
+Test Suite 'AstroMalikPackageTests.xctest' started at 2026-10-03 17:16:05.975.
+Test Suite 'AdaptiveAstroGeometryTests' started at 2026-10-03 17:16:05.975.
+Test Case '-[AstroMalikTests.AdaptiveAstroGeometryTests testRefinementTangenciesAndOpenPolarEndpoints]' started.
+Test Case '-[AstroMalikTests.AdaptiveAstroGeometryTests testRefinementTangenciesAndOpenPolarEndpoints]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AdaptiveAstroGeometryTests testTenBodyWarmBenchmark]' started.
+Test Case '-[AstroMalikTests.AdaptiveAstroGeometryTests testTenBodyWarmBenchmark]' passed (0.043 seconds).
+Test Case '-[AstroMalikTests.AdaptiveAstroGeometryTests testUnsupportedPrecisionFailsExplicitlyWithoutRelaxingRequest]' started.
+Test Case '-[AstroMalikTests.AdaptiveAstroGeometryTests testUnsupportedPrecisionFailsExplicitlyWithoutRelaxingRequest]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AdaptiveAstroGeometryTests testWholeEdgesAgainstIndependentSphericalInterpolation]' started.
+Test Case '-[AstroMalikTests.AdaptiveAstroGeometryTests testWholeEdgesAgainstIndependentSphericalInterpolation]' passed (2.176 seconds).
+Test Suite 'AdaptiveAstroGeometryTests' passed at 2026-10-03 17:16:08.196.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 2.221 (2.221) seconds
+Test Suite 'AlmutenFigurisEngineTests' started at 2026-10-03 17:16:08.196.
+Test Case '-[AstroMalikTests.AlmutenFigurisEngineTests testAlmutenHasFiveScoredPointsAndBonuses]' started.
+Test Case '-[AstroMalikTests.AlmutenFigurisEngineTests testAlmutenHasFiveScoredPointsAndBonuses]' passed (0.009 seconds).
+Test Case '-[AstroMalikTests.AlmutenFigurisEngineTests testReferenceAlmutenFigurisExpectedManualWinner]' started.
+Test Case '-[AstroMalikTests.AlmutenFigurisEngineTests testReferenceAlmutenFigurisExpectedManualWinner]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.AlmutenFigurisEngineTests testReferenceUsesMostRecentPrenatalFullMoon]' started.
+Test Case '-[AstroMalikTests.AlmutenFigurisEngineTests testReferenceUsesMostRecentPrenatalFullMoon]' passed (0.006 seconds).
+Test Suite 'AlmutenFigurisEngineTests' passed at 2026-10-03 17:16:08.218.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.021 (0.021) seconds
+Test Suite 'AnthropicClientTests' started at 2026-10-03 17:16:08.218.
+Test Case '-[AstroMalikTests.AnthropicClientTests testCacheReadReducesCost]' started.
+Test Case '-[AstroMalikTests.AnthropicClientTests testCacheReadReducesCost]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AnthropicClientTests testHTTP401IsMappedToUnauthorized]' started.
+Test Case '-[AstroMalikTests.AnthropicClientTests testHTTP401IsMappedToUnauthorized]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.AnthropicClientTests testHTTP429IsMappedToRateLimited]' started.
+Test Case '-[AstroMalikTests.AnthropicClientTests testHTTP429IsMappedToRateLimited]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AnthropicClientTests testMissingAPIKeyThrows]' started.
+Test Case '-[AstroMalikTests.AnthropicClientTests testMissingAPIKeyThrows]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AnthropicClientTests testOpusPricingMatchesPublicSchedule]' started.
+Test Case '-[AstroMalikTests.AnthropicClientTests testOpusPricingMatchesPublicSchedule]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AnthropicClientTests testRequestIncludesPromptCachingOnSystemBlock]' started.
+Test Case '-[AstroMalikTests.AnthropicClientTests testRequestIncludesPromptCachingOnSystemBlock]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AnthropicClientTests testRequestUsesAnthropicVersionHeaderAndXApiKey]' started.
+Test Case '-[AstroMalikTests.AnthropicClientTests testRequestUsesAnthropicVersionHeaderAndXApiKey]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AnthropicClientTests testResponseCombinesTextBlocks]' started.
+Test Case '-[AstroMalikTests.AnthropicClientTests testResponseCombinesTextBlocks]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AnthropicClientTests testSonnetPricingMatchesPublicSchedule]' started.
+Test Case '-[AstroMalikTests.AnthropicClientTests testSonnetPricingMatchesPublicSchedule]' passed (0.000 seconds).
+Test Suite 'AnthropicClientTests' passed at 2026-10-03 17:16:08.228.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.010 (0.010) seconds
+Test Suite 'AntisciaEngineTests' started at 2026-10-03 17:16:08.228.
+Test Case '-[AstroMalikTests.AntisciaEngineTests testAntiscionAndContraAntiscionFormulas]' started.
+Test Case '-[AstroMalikTests.AntisciaEngineTests testAntiscionAndContraAntiscionFormulas]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AntisciaEngineTests testReferenceHasNoAntisciaContactsAtOneDegree]' started.
+Test Case '-[AstroMalikTests.AntisciaEngineTests testReferenceHasNoAntisciaContactsAtOneDegree]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AntisciaEngineTests testSyntheticAntisciaContactsDetected]' started.
+Test Case '-[AstroMalikTests.AntisciaEngineTests testSyntheticAntisciaContactsDetected]' passed (0.000 seconds).
+Test Suite 'AntisciaEngineTests' passed at 2026-10-03 17:16:08.229.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'AspectPatternEngineTests' started at 2026-10-03 17:16:08.229.
+Test Case '-[AstroMalikTests.AspectPatternEngineTests testAverageOrbIsComputedFromParticipatingAspects]' started.
+Test Case '-[AstroMalikTests.AspectPatternEngineTests testAverageOrbIsComputedFromParticipatingAspects]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AspectPatternEngineTests testReferenceChartHasNoMajorAspectPatternAtSixDegrees]' started.
+Test Case '-[AstroMalikTests.AspectPatternEngineTests testReferenceChartHasNoMajorAspectPatternAtSixDegrees]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.AspectPatternEngineTests testSyntheticPatternsDetectTGrandTrineYodGrandCrossKiteAndRectangle]' started.
+Test Case '-[AstroMalikTests.AspectPatternEngineTests testSyntheticPatternsDetectTGrandTrineYodGrandCrossKiteAndRectangle]' passed (0.001 seconds).
+Test Suite 'AspectPatternEngineTests' passed at 2026-10-03 17:16:08.235.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'AstroEngineTests' started at 2026-10-03 17:16:08.235.
+Test Case '-[AstroMalikTests.AstroEngineTests testDegToSign]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testDegToSign]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testEverySynastryCorpusTextEmbedsNamesWithoutResidualABMarkers]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testEverySynastryCorpusTextEmbedsNamesWithoutResidualABMarkers]' passed (1.053 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testHoraryDiagnosticsDoesNotThrow]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testHoraryDiagnosticsDoesNotThrow]' passed (0.236 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testHousesEx2ReferenceMatchesNatalChartAngles]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testHousesEx2ReferenceMatchesNatalChartAngles]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testJoplinClipperCreatesLunarReturnNotePayload]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testJoplinClipperCreatesLunarReturnNotePayload]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testJoplinClipperCreatesNotebookAndNotePayload]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testJoplinClipperCreatesNotebookAndNotePayload]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testJoplinClipperCreatesSolarReturnNotePayload]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testJoplinClipperCreatesSolarReturnNotePayload]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testJulianDayReference]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testJulianDayReference]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnLocationChangesAnglesButNotExactJD]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnLocationChangesAnglesButNotExactJD]' passed (0.009 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnNoteBuilderIncludesTechnicalSections]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnNoteBuilderIncludesTechnicalSections]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnReadingContainsTechnicalMetrics]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnReadingContainsTechnicalMetrics]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnSequenceIsOrderedAndAlignedWithNatalMoon]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnSequenceIsOrderedAndAlignedWithNatalMoon]' passed (0.025 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnThrowsWhenNatalMoonIsMissing]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testLunarReturnThrowsWhenNatalMoonIsMissing]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testNatalAspects]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testNatalAspects]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testNatalChartReference]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testNatalChartReference]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testNatalInterpretationsIncludeAscendant]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testNatalInterpretationsIncludeAscendant]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testScoreCalculation]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testScoreCalculation]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnJDIsInsideYearAndMatchesNatalSun]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnJDIsInsideYearAndMatchesNatalSun]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnLocationChangesAnglesButNotExactJD]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnLocationChangesAnglesButNotExactJD]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnNoteBuilderIncludesAnnualData]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnNoteBuilderIncludesAnnualData]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnReadingIncludesNatalCorpusAndNatalHouses]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnReadingIncludesNatalCorpusAndNatalHouses]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnThrowsWhenNatalSunIsMissing]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSolarReturnThrowsWhenNatalSunIsMissing]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryAngleContactsGetGeneratedNarrativeWithRealNames]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryAngleContactsGetGeneratedNarrativeWithRealNames]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryBalanceIsSymmetricAroundItsNeutralPoint]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryBalanceIsSymmetricAroundItsNeutralPoint]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryCentralContactPrefersLuminariesOverTighterMinorContact]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryCentralContactPrefersLuminariesOverTighterMinorContact]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryContactsPairReciprocalAspectsOnce]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryContactsPairReciprocalAspectsOnce]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryCorpusCoverage]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryCorpusCoverage]' passed (0.029 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryDisplayNameFallsBackToBirthDate]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryDisplayNameFallsBackToBirthDate]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryEditorialPriorityDefersPurelyGenerationalContacts]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryEditorialPriorityDefersPurelyGenerationalContacts]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryEngineGeneratesBothDirectionsAndCorpusKeys]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryEngineGeneratesBothDirectionsAndCorpusKeys]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryEngineIncludesAngleContactsWithTightOrbs]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryEngineIncludesAngleContactsWithTightOrbs]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryExactAspectOutweighsWideOneOfSamePair]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryExactAspectOutweighsWideOneOfSamePair]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryIgnoresDoubleWhammiesOutsideRelationalPairs]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryIgnoresDoubleWhammiesOutsideRelationalPairs]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryLookupAndReadingAllowsMissingTexts]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryLookupAndReadingAllowsMissingTexts]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryNoteBuilderIncludesCoverageAndDirections]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryNoteBuilderIncludesCoverageAndDirections]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryPresentationUsesRealNamesInBothDirections]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastryPresentationUsesRealNamesInBothDirections]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastrySamePlanetContactKeepsBothMirrorReadings]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastrySamePlanetContactKeepsBothMirrorReadings]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastrySlowPairsUseNarrowerOrbThanLuminaries]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastrySlowPairsUseNarrowerOrbThanLuminaries]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastrySynthesisDetectsDoubleWhammies]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testSynastrySynthesisDetectsDoubleWhammies]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTimezoneInferenceKnownCities]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTimezoneInferenceKnownCities]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitAspectWithinOneDegreeStillAppears]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitAspectWithinOneDegreeStillAppears]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitCalculationCanBeCancelled]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitCalculationCanBeCancelled]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitConjunctionUsesTransitOrbNotNatalOrb]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitConjunctionUsesTransitOrbNotNatalOrb]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitEventsIncludeAscendantAndMidheavenAsNatalTargets]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitEventsIncludeAscendantAndMidheavenAsNatalTargets]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitEventsIncludeTimelineSamplesInsideEventRange]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitEventsIncludeTimelineSamplesInsideEventRange]' passed (0.177 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitExactDateSampleMatchesMinimumOrbAndPeakIntensity]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitExactDateSampleMatchesMinimumOrbAndPeakIntensity]' passed (0.161 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitInvalidRangeThrows]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitInvalidRangeThrows]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitNodalAxisCanFormAspects]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitNodalAxisCanFormAspects]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitNodalAxisFusesNorthAndSouthSquares]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitNodalAxisFusesNorthAndSouthSquares]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPersonalRelevanceAddsAscendantRulerBonus]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPersonalRelevanceAddsAscendantRulerBonus]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPersonalRelevanceAddsNatalAngularHouseBonus]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPersonalRelevanceAddsNatalAngularHouseBonus]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPersonalRelevancePrioritizesSunOverNonAngularUranus]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPersonalRelevancePrioritizesSunOverNonAngularUranus]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPriorityBandUsesRelativeAndAbsoluteThresholds]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPriorityBandUsesRelativeAndAbsoluteThresholds]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPriorityScoreUsesTechnicalPersonalAndTemporalMetrics]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPriorityScoreUsesTechnicalPersonalAndTemporalMetrics]' passed (0.027 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPriorityStarsFollowPriorityBand]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitPriorityStarsFollowPriorityBand]' passed (0.160 seconds).
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitSquareDoesNotUseSevenDegreeNatalOrb]' started.
+Test Case '-[AstroMalikTests.AstroEngineTests testTransitSquareDoesNotUseSevenDegreeNatalOrb]' passed (0.002 seconds).
+Test Suite 'AstroEngineTests' passed at 2026-10-03 17:16:10.195.
+	 Executed 56 tests, with 0 failures (0 unexpected) in 1.958 (1.960) seconds
+Test Suite 'AstroLocationAnalyzerTests' started at 2026-10-03 17:16:10.195.
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testBetweenVerticesAndSeamOnMeridian]' started.
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testBetweenVerticesAndSeamOnMeridian]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testDisconnectedSegmentsAreNotArtificiallyJoined]' started.
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testDisconnectedSegmentsAreNotArtificiallyJoined]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testDistanceErrorAgainstIndependentGeographicEdgeMinimizer]' started.
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testDistanceErrorAgainstIndependentGeographicEdgeMinimizer]' passed (0.082 seconds).
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testFiltersPolicyAndCancellation]' started.
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testFiltersPolicyAndCancellation]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testHorizonIndependentPlaneOracleAndEndpoints]' started.
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testHorizonIndependentPlaneOracleAndEndpoints]' passed (0.411 seconds).
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testTangencyPolarOpenEndsAndNonUniqueBranch]' started.
+Test Case '-[AstroMalikTests.AstroLocationAnalyzerTests testTangencyPolarOpenEndsAndNonUniqueBranch]' passed (0.001 seconds).
+Test Suite 'AstroLocationAnalyzerTests' passed at 2026-10-03 17:16:10.692.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.496 (0.497) seconds
+Test Suite 'AstroMalikCLITests' started at 2026-10-03 17:16:10.692.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testAnthropicNarrativeWithoutAllowNetworkFails]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testAnthropicNarrativeWithoutAllowNetworkFails]' passed (0.000 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testAstrocartographyJSONIsVersionedDeterministicOfflineAndComplete]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testAstrocartographyJSONIsVersionedDeterministicOfflineAndComplete]' passed (0.107 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testAstrocartographyParserAcceptsPlaceOrCoordinatesAndRejectsMisuse]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testAstrocartographyParserAcceptsPlaceOrCoordinatesAndRejectsMisuse]' passed (0.000 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testAstrocartographyRejectsUnknownPlaceAndConflictingInputWithoutNetwork]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testAstrocartographyRejectsUnknownPlaceAndConflictingInputWithoutNetwork]' passed (0.011 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testChartsListWorksAgainstUserDBAndJSONReportsNoNetwork]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testChartsListWorksAgainstUserDBAndJSONReportsNoNetwork]' passed (0.004 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testCrossPersonalNarrativeNoneDoesNotRequireNetwork]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testCrossPersonalNarrativeNoneDoesNotRequireNetwork]' passed (0.000 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testGlobalFlagsCanPrecedeSubcommand]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testGlobalFlagsCanPrecedeSubcommand]' passed (0.000 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testLegacyCommandDefaultsToCrossPersonalWithoutNetworkOrNarrative]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testLegacyCommandDefaultsToCrossPersonalWithoutNetworkOrNarrative]' passed (0.000 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testOutputDestinationParsing]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testOutputDestinationParsing]' passed (0.000 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testParserHandlesNatalSubcommandAndGlobalDefaults]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testParserHandlesNatalSubcommandAndGlobalDefaults]' passed (0.000 seconds).
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testParserHandlesTransitsRange]' started.
+Test Case '-[AstroMalikCLITests.AstroMalikCLITests testParserHandlesTransitsRange]' passed (0.000 seconds).
+Test Suite 'AstroMalikCLITests' passed at 2026-10-03 17:16:10.815.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.123 (0.123) seconds
+Test Suite 'AstroMapStyleTrackerTests' started at 2026-10-03 17:16:10.815.
+Test Case '-[AstroMalikTests.AstroMapStyleTrackerTests testMapContainerIgnoresBindingsAndCallbacksButNotRealInputs]' started.
+Test Case '-[AstroMalikTests.AstroMapStyleTrackerTests testMapContainerIgnoresBindingsAndCallbacksButNotRealInputs]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroMapStyleTrackerTests testOnlyLinesWhoseSelectionOrEmphasisChangedAreRestyled]' started.
+Test Case '-[AstroMalikTests.AstroMapStyleTrackerTests testOnlyLinesWhoseSelectionOrEmphasisChangedAreRestyled]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroMapStyleTrackerTests testRemovedLinesAreForgottenAndStyledAgainWhenTheyReturnOrAfterReset]' started.
+Test Case '-[AstroMalikTests.AstroMapStyleTrackerTests testRemovedLinesAreForgottenAndStyledAgainWhenTheyReturnOrAfterReset]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroMapStyleTrackerTests testUnchangedRefreshesRestyleNothingSoTabSwitchesDoNotRedrawTheMap]' started.
+Test Case '-[AstroMalikTests.AstroMapStyleTrackerTests testUnchangedRefreshesRestyleNothingSoTabSwitchesDoNotRedrawTheMap]' passed (0.000 seconds).
+Test Suite 'AstroMapStyleTrackerTests' passed at 2026-10-03 17:16:10.816.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'AstroMercatorGeometryTests' started at 2026-10-03 17:16:10.816.
+Test Case '-[AstroMalikTests.AstroMercatorGeometryTests testInclusiveSeamAndUnclippedCore]' started.
+Test Case '-[AstroMalikTests.AstroMercatorGeometryTests testInclusiveSeamAndUnclippedCore]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroMercatorGeometryTests testInvalidProjectionInputIsRejected]' started.
+Test Case '-[AstroMalikTests.AstroMercatorGeometryTests testInvalidProjectionInputIsRejected]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroMercatorGeometryTests testMapSpikeIdentityFilteringZoomSelectionAndExplicitPath]' started.
+Test Case '-[AstroMalikTests.AstroMercatorGeometryTests testMapSpikeIdentityFilteringZoomSelectionAndExplicitPath]' passed (0.215 seconds).
+Test Case '-[AstroMalikTests.AstroMercatorGeometryTests testWholeProjectedEdgesUsingMapKitInverse]' started.
+Test Case '-[AstroMalikTests.AstroMercatorGeometryTests testWholeProjectedEdgesUsingMapKitInverse]' passed (0.611 seconds).
+Test Suite 'AstroMercatorGeometryTests' passed at 2026-10-03 17:16:11.644.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.827 (0.828) seconds
+Test Suite 'AstroPlaceWorkflowTests' started at 2026-10-03 17:16:11.644.
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testCallerCancellationInvalidationAndNoStaleCache]' started.
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testCallerCancellationInvalidationAndNoStaleCache]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testFingerprintIncludesChartFieldsAndHouseSystem]' started.
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testFingerprintIncludesChartFieldsAndHouseSystem]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testLocationServiceLatestWinsAndCacheActualInputs]' started.
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testLocationServiceLatestWinsAndCacheActualInputs]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testOfflineAccentSearchDoesNotRequireNetworkAndUnknownZoneIsUTC]' started.
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testOfflineAccentSearchDoesNotRequireNetworkAndUnknownZoneIsUTC]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testPolarRelocationFailureRetainsDistances]' started.
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testPolarRelocationFailureRetainsDistances]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testViewModelOldLocationCannotPublishAndSearchLatestWins]' started.
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testViewModelOldLocationCannotPublishAndSearchLatestWins]' passed (0.033 seconds).
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testViewModelRealOfflineSelectionRelocationComparisonAndNatalEdits]' started.
+Test Case '-[AstroMalikTests.AstroPlaceWorkflowTests testViewModelRealOfflineSelectionRelocationComparisonAndNatalEdits]' passed (0.082 seconds).
+Test Suite 'AstroPlaceWorkflowTests' passed at 2026-10-03 17:16:11.768.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.124 (0.125) seconds
+Test Suite 'AstroRelocationEngineTests' started at 2026-10-03 17:16:11.768.
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testBenchmarkTenBodiesDistanceAndRelocationWithoutCache]' started.
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testBenchmarkTenBodiesDistanceAndRelocationWithoutCache]' passed (0.145 seconds).
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testConcurrentRelocationAndSnapshotMatchSerial]' started.
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testConcurrentRelocationAndSnapshotMatchSerial]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testNatalCitySameHousesAndGeocentricPositionsAndOriginalIntact]' started.
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testNatalCitySameHousesAndGeocentricPositionsAndOriginalIntact]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testPolarFailureDoesNotSilentlyFallbackAndSupportedHouseSystems]' started.
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testPolarFailureDoesNotSilentlyFallbackAndSupportedHouseSystems]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testRelocatedAnglesAgainstIndependentEquatorialHorizonIdentities]' started.
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testRelocatedAnglesAgainstIndependentEquatorialHorizonIdentities]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testRemoteDestinationsAndZonesNeverChangeJDOrBodies]' started.
+Test Case '-[AstroMalikTests.AstroRelocationEngineTests testRemoteDestinationsAndZonesNeverChangeJDOrBodies]' passed (0.001 seconds).
+Test Suite 'AstroRelocationEngineTests' passed at 2026-10-03 17:16:11.924.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.155 (0.156) seconds
+Test Suite 'AstroSavedPlaceRepositoryTests' started at 2026-10-03 17:16:11.924.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testCorruptRowsArePreservedAndInvalidResultFallsBackToIntention]' started.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testCorruptRowsArePreservedAndInvalidResultFallsBackToIntention]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testFutureAstroSchemaDoesNotDisableNatalStorage]' started.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testFutureAstroSchemaDoesNotDisableNatalStorage]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testFutureSchemaRejectedWithoutModification]' started.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testFutureSchemaRejectedWithoutModification]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testMalformedFiniteButInvalidDataRejectedAndDecodedCoordinatesValidated]' started.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testMalformedFiniteButInvalidDataRejectedAndDecodedCoordinatesValidated]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testNatalEditOrResourceRevisionInvalidatesResultButRetainsIntention]' started.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testNatalEditOrResourceRevisionInvalidatesResultButRetainsIntention]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testSaveLoadRestartUpdateDeleteAndOtherChartsUntouched]' started.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testSaveLoadRestartUpdateDeleteAndOtherChartsUntouched]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testTransactionRollbackPreservesPlacesWhenNatalDeleteFails]' started.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testTransactionRollbackPreservesPlacesWhenNatalDeleteFails]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testUserStoreIsolatedLifecyclePreventsOrphansAndInvalidatesOnEditAndRename]' started.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testUserStoreIsolatedLifecyclePreventsOrphansAndInvalidatesOnEditAndRename]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testVersionOneMigrationIsIdempotentAndPreservesNatalData]' started.
+Test Case '-[AstroMalikTests.AstroSavedPlaceRepositoryTests testVersionOneMigrationIsIdempotentAndPreservesNatalData]' passed (0.003 seconds).
+Test Suite 'AstroSavedPlaceRepositoryTests' passed at 2026-10-03 17:16:11.953.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.029 (0.029) seconds
+Test Suite 'AstroThemeSummaryTests' started at 2026-10-03 17:16:11.953.
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testPanelSectionsStartWithGuideAndAreUnique]' started.
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testPanelSectionsStartWithGuideAndAreUnique]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testPlaceRankingByThemeOrdersByNearThenRegionalThenDistanceThenName]' started.
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testPlaceRankingByThemeOrdersByNearThenRegionalThenDistanceThenName]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testSpanishNamesHaveNoSymbolsAndMatchReadings]' started.
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testSpanishNamesHaveNoSymbolsAndMatchReadings]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testSummaryIsGlobalOrderedAndRanksThemesByProximityNotScore]' started.
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testSummaryIsGlobalOrderedAndRanksThemesByProximityNotScore]' passed (0.012 seconds).
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testSummaryWhenNothingIsNearNamesTheClosestLineAndSingularizes]' started.
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testSummaryWhenNothingIsNearNamesTheClosestLineAndSingularizes]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testThemeMembershipCountsMatchTheirPublishedExplanation]' started.
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testThemeMembershipCountsMatchTheirPublishedExplanation]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testViewModelThemeFilterEmphasisSummaryAndRankablePlaces]' started.
+Test Case '-[AstroMalikTests.AstroThemeSummaryTests testViewModelThemeFilterEmphasisSummaryAndRankablePlaces]' passed (0.033 seconds).
+Test Suite 'AstroThemeSummaryTests' passed at 2026-10-03 17:16:12.000.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.047 (0.047) seconds
+Test Suite 'AstroVisualGeometryTests' started at 2026-10-03 17:16:12.000.
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testAdaptiveCurvesAcrossOriginsDeclinationsAndClippingExtents]' started.
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testAdaptiveCurvesAcrossOriginsDeclinationsAndClippingExtents]' passed (0.138 seconds).
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testClippingAndSeamIntersectionAtSamePoint]' started.
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testClippingAndSeamIntersectionAtSamePoint]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testClippingNeverExtendsAstronomicalDomainOrConnectsSourceSegments]' started.
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testClippingNeverExtendsAstronomicalDomainOrConnectsSourceSegments]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testEastwardAndWestwardAntimeridianHavePairedBordersAndNoGap]' started.
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testEastwardAndWestwardAntimeridianHavePairedBordersAndNoGap]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testExactSeamVertexAndSeamMeridianDoNotProduceWorldChords]' started.
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testExactSeamVertexAndSeamMeridianDoNotProduceWorldChords]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testRealAdaptiveDomainCrossingSeamRetainsAllEdgesForAnalysis]' started.
+Test Case '-[AstroMalikTests.AstroVisualGeometryTests testRealAdaptiveDomainCrossingSeamRetainsAllEdgesForAnalysis]' passed (0.001 seconds).
+Test Suite 'AstroVisualGeometryTests' passed at 2026-10-03 17:16:12.140.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.140 (0.140) seconds
+Test Suite 'AstrocartographyAnalyticFixtureTests' started at 2026-10-03 17:16:12.140.
+Test Case '-[AstroMalikTests.AstrocartographyAnalyticFixtureTests testReferenceCasesSatisfyIndependentHorizontalIdentities]' started.
+Test Case '-[AstroMalikTests.AstrocartographyAnalyticFixtureTests testReferenceCasesSatisfyIndependentHorizontalIdentities]' passed (0.001 seconds).
+Test Suite 'AstrocartographyAnalyticFixtureTests' passed at 2026-10-03 17:16:12.141.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'AstrocartographyCalculationServiceTests' started at 2026-10-03 17:16:12.141.
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testCacheUsesActualInputsAndBoundedLRU]' started.
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testCacheUsesActualInputsAndBoundedLRU]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testCacheVertexBudgetAndDisabledCache]' started.
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testCacheVertexBudgetAndDisabledCache]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testEngineHonorsCancellationAfterNonCooperativeSnapshot]' started.
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testEngineHonorsCancellationAfterNonCooperativeSnapshot]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testExplicitAndCallerCancellationAndInvalidationDiscardLateResults]' started.
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testExplicitAndCallerCancellationAndInvalidationDiscardLateResults]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testFailedOrMismatchedCalculationNeverCachesAndCanRetry]' started.
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testFailedOrMismatchedCalculationNeverCachesAndCanRetry]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testLateNonCooperativeResultCannotOverwriteNewerOrPopulateCache]' started.
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testLateNonCooperativeResultCannotOverwriteNewerOrPopulateCache]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testRapidChartEditsLatestWinsEvenWhenEveryCalculatorIgnoresCancellation]' started.
+Test Case '-[AstroMalikTests.AstrocartographyCalculationServiceTests testRapidChartEditsLatestWinsEvenWhenEveryCalculatorIgnoresCancellation]' passed (0.001 seconds).
+Test Suite 'AstrocartographyCalculationServiceTests' passed at 2026-10-03 17:16:12.146.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.004 (0.004) seconds
+Test Suite 'AstrocartographyContractTests' started at 2026-10-03 17:16:12.146.
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testBodyOrderAndLineIdentityAreStable]' started.
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testBodyOrderAndLineIdentityAreStable]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testCoordinateValidationAndAntimeridianCanonicalization]' started.
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testCoordinateValidationAndAntimeridianCanonicalization]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testDecodingCannotBypassValidatedInitializers]' started.
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testDecodingCannotBypassValidatedInitializers]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testEquatorialPositionsValidateUnits]' started.
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testEquatorialPositionsValidateUnits]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testInstantBoundsAndNonFiniteValues]' started.
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testInstantBoundsAndNonFiniteValues]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testRequestRejectsEmptyDuplicateAndInvalidTolerance]' started.
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testRequestRejectsEmptyDuplicateAndInvalidTolerance]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testSnapshotRequiresExactlyOnePositionPerRequestedBody]' started.
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testSnapshotRequiresExactlyOnePositionPerRequestedBody]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testSyntheticFixtureIsExplicitAndMockRejectsAnotherInstant]' started.
+Test Case '-[AstroMalikTests.AstrocartographyContractTests testSyntheticFixtureIsExplicitAndMockRejectsAnotherInstant]' passed (0.000 seconds).
+Test Suite 'AstrocartographyContractTests' passed at 2026-10-03 17:16:12.147.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'AstrocartographyEngineTests' started at 2026-10-03 17:16:12.147.
+Test Case '-[AstroMalikTests.AstrocartographyEngineTests testRepeatedCalculationIsIdenticalAndFinite]' started.
+Test Case '-[AstroMalikTests.AstrocartographyEngineTests testRepeatedCalculationIsIdenticalAndFinite]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyEngineTests testSwissLinesStayInsideAnalyticTolerances]' started.
+Test Case '-[AstroMalikTests.AstrocartographyEngineTests testSwissLinesStayInsideAnalyticTolerances]' passed (0.035 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyEngineTests testSyntheticSnapshotProducesBothHemispheresAndFortyLineShape]' started.
+Test Case '-[AstroMalikTests.AstrocartographyEngineTests testSyntheticSnapshotProducesBothHemispheresAndFortyLineShape]' passed (0.000 seconds).
+Test Suite 'AstrocartographyEngineTests' passed at 2026-10-03 17:16:12.185.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.037 (0.037) seconds
+Test Suite 'AstrocartographyEphemerisReferenceTests' started at 2026-10-03 17:16:12.185.
+Test Case '-[AstroMalikTests.AstrocartographyEphemerisReferenceTests testSwissFacadeMatchesPythonReferenceForTenBodiesAndFourDates]' started.
+Test Case '-[AstroMalikTests.AstrocartographyEphemerisReferenceTests testSwissFacadeMatchesPythonReferenceForTenBodiesAndFourDates]' passed (0.002 seconds).
+Test Suite 'AstrocartographyEphemerisReferenceTests' passed at 2026-10-03 17:16:12.186.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'AstrocartographyExportTests' started at 2026-10-03 17:16:12.186.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testDocumentIsDeterministicCompleteAndTimestampFree]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testDocumentIsDeterministicCompleteAndTimestampFree]' passed (0.015 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testDocumentWithoutPlaceHasOnlyChartLinesAndRejectsInconsistentInput]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testDocumentWithoutPlaceHasOnlyChartLinesAndRejectsInconsistentInput]' passed (0.024 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testHumanLineNames]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testHumanLineNames]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testJoplinExportCreatesNoteWithDedupedTagsOnlyWhenCalled]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testJoplinExportCreatesNoteWithDedupedTagsOnlyWhenCalled]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testMarkdownHasTitleReadingsDistancesMethodAndDisclaimer]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testMarkdownHasTitleReadingsDistancesMethodAndDisclaimer]' passed (0.013 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testMissingEditorialTextIsVisibleInDocumentAndNeverInvented]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testMissingEditorialTextIsVisibleInDocumentAndNeverInvented]' passed (0.012 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testReportDataStatesBaseMapOrExplicitFallbackAndKeepsEveryNumber]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testReportDataStatesBaseMapOrExplicitFallbackAndKeepsEveryNumber]' passed (0.232 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testSVGProjectionEmphasisDashesPinAndFallbackBackground]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testSVGProjectionEmphasisDashesPinAndFallbackBackground]' passed (0.175 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testTemplateRendersAllSectionsWithoutUnresolvedPlaceholders]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testTemplateRendersAllSectionsWithoutUnresolvedPlaceholders]' passed (0.141 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testViewModelJoplinExportNeedsAnAnalysedPlaceAndSendsTheDocumentMarkdown]' started.
+Test Case '-[AstroMalikTests.AstrocartographyExportTests testViewModelJoplinExportNeedsAnAnalysedPlaceAndSendsTheDocumentMarkdown]' passed (0.034 seconds).
+Test Suite 'AstrocartographyExportTests' passed at 2026-10-03 17:16:12.833.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.646 (0.647) seconds
+Test Suite 'AstrocartographyPhase7HardeningTests' started at 2026-10-03 17:16:12.833.
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testBurstOfChartChangesNeverMixesSnapshots]' started.
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testBurstOfChartChangesNeverMixesSnapshots]' passed (0.081 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testConcurrentNatalAndAstrocartographyMatchSerialBaselines]' started.
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testConcurrentNatalAndAstrocartographyMatchSerialBaselines]' passed (0.020 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testExplicitCancelDropsTheInFlightChart]' started.
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testExplicitCancelDropsTheInFlightChart]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testSyntheticInstantsKeepMeridianOppositionAndBounds]' started.
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testSyntheticInstantsKeepMeridianOppositionAndBounds]' passed (0.028 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testTenBodyWarmBudgetOnThisHost]' started.
+Test Case '-[AstroMalikTests.AstrocartographyPhase7HardeningTests testTenBodyWarmBudgetOnThisHost]' passed (0.041 seconds).
+Test Suite 'AstrocartographyPhase7HardeningTests' passed at 2026-10-03 17:16:13.007.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.173 (0.174) seconds
+Test Suite 'AstrocartographyReadingTests' started at 2026-10-03 17:16:13.007.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testBundledLibraryHasAll40UniqueOriginalReadings]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testBundledLibraryHasAll40UniqueOriginalReadings]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testCatalogBundledMatchesLibraryAndReportsMissingResource]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testCatalogBundledMatchesLibraryAndReportsMissingResource]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testContractProjectionKeepsFrozenReadingDTO]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testContractProjectionKeepsFrozenReadingDTO]' passed (0.006 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testEditorialPolicyMatchesGeneratorAndRejectsForbiddenLanguage]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testEditorialPolicyMatchesGeneratorAndRejectsForbiddenLanguage]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testMissingOrUnavailableEditorialTextShowsVisibleFallbackAndKeepsDistances]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testMissingOrUnavailableEditorialTextShowsVisibleFallbackAndKeepsDistances]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testPlaceReadingsAreOrderedBandedCoveredAndKeepHiddenLinesGlobal]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testPlaceReadingsAreOrderedBandedCoveredAndKeepHiddenLinesGlobal]' passed (0.006 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testReviewStatusRecordsHumanEditorialReview]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testReviewStatusRecordsHumanEditorialReview]' passed (0.006 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testStructuralValidationRejectsIncompleteDuplicateMismatchedAndShort]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testStructuralValidationRejectsIncompleteDuplicateMismatchedAndShort]' passed (0.018 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testTitlesUseRealPlanetAndAngleNamesNotMarkers]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testTitlesUseRealPlanetAndAngleNamesNotMarkers]' passed (0.006 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testViewModelRealOfflinePlaceReadingsFiltersAndSelectedLine]' started.
+Test Case '-[AstroMalikTests.AstrocartographyReadingTests testViewModelRealOfflinePlaceReadingsFiltersAndSelectedLine]' passed (0.033 seconds).
+Test Suite 'AstrocartographyReadingTests' passed at 2026-10-03 17:16:13.101.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.094 (0.094) seconds
+Test Suite 'AstrocartographyViewModelTests' started at 2026-10-03 17:16:13.101.
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testCancelledCallerAndNilChartDoNotPublishOldResult]' started.
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testCancelledCallerAndNilChartDoNotPublishOldResult]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testEmptyReadyFiltersEditsErrorsAndCancel]' started.
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testEmptyReadyFiltersEditsErrorsAndCancel]' passed (0.038 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testNavigationIdentitiesAreUniqueAndRouteIsolated]' started.
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testNavigationIdentitiesAreUniqueAndRouteIsolated]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testRapidLatestWinsAndExplicitCancellation]' started.
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testRapidLatestWinsAndExplicitCancellation]' passed (0.326 seconds).
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testRevisionUsesFileContentAndRealBundledService]' started.
+Test Case '-[AstroMalikTests.AstrocartographyViewModelTests testRevisionUsesFileContentAndRealBundledService]' passed (0.027 seconds).
+Test Suite 'AstrocartographyViewModelTests' passed at 2026-10-03 17:16:13.499.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.398 (0.398) seconds
+Test Suite 'ChartDistributionTests' started at 2026-10-03 17:16:13.499.
+Test Case '-[AstroMalikTests.ChartDistributionTests testElementAndModalityCounts]' started.
+Test Case '-[AstroMalikTests.ChartDistributionTests testElementAndModalityCounts]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.ChartDistributionTests testMissingElementDetected]' started.
+Test Case '-[AstroMalikTests.ChartDistributionTests testMissingElementDetected]' passed (0.000 seconds).
+Test Suite 'ChartDistributionTests' passed at 2026-10-03 17:16:13.500.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'Charts' started at 2026-10-03 17:16:13.500.
+Test Case '-[AstroMalikTests.Charts testDailyEphemerisHTMLRendersTableSpeedsRetrogradesAndMoonPhase]' started.
+Test Case '-[AstroMalikTests.Charts testDailyEphemerisHTMLRendersTableSpeedsRetrogradesAndMoonPhase]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.Charts testDoubleWheelHasTwoRingsAndInterChartAspectLines]' started.
+Test Case '-[AstroMalikTests.Charts testDoubleWheelHasTwoRingsAndInterChartAspectLines]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.Charts testFirdariaTimelineRendersMajorPlanetBlocksOn75YearAxis]' started.
+Test Case '-[AstroMalikTests.Charts testFirdariaTimelineRendersMajorPlanetBlocksOn75YearAxis]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.Charts testTransitsTimelineRendersMonthlyTicksBandsAndPriorityBlocks]' started.
+Test Case '-[AstroMalikTests.Charts testTransitsTimelineRendersMonthlyTicksBandsAndPriorityBlocks]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.Charts testWheelAspectLinesOnlyGeneratedForNatalAspectsInOrb]' started.
+Test Case '-[AstroMalikTests.Charts testWheelAspectLinesOnlyGeneratedForNatalAspectsInOrb]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.Charts testWheelSVGContainsTenPlanetGlyphsAndViewBox]' started.
+Test Case '-[AstroMalikTests.Charts testWheelSVGContainsTenPlanetGlyphsAndViewBox]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.Charts testZRTimelineRendersL1L2AndMarkers]' started.
+Test Case '-[AstroMalikTests.Charts testZRTimelineRendersL1L2AndMarkers]' passed (0.001 seconds).
+Test Suite 'Charts' passed at 2026-10-03 17:16:13.515.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.015 (0.016) seconds
+Test Suite 'ContextualInterpretationTests' started at 2026-10-03 17:16:13.516.
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testComputedProperties]' started.
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testComputedProperties]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testDecodeValidJSON]' started.
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testDecodeValidJSON]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testIntensidadBajaNoEsAltoImpacto]' started.
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testIntensidadBajaNoEsAltoImpacto]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testJSONSchemaHelperIsNotEmpty]' started.
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testJSONSchemaHelperIsNotEmpty]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testNeutralAndMixedPolarityEmoji]' started.
+Test Case '-[AstroMalikTests.ContextualInterpretationTests testNeutralAndMixedPolarityEmoji]' passed (0.000 seconds).
+Test Suite 'ContextualInterpretationTests' passed at 2026-10-03 17:16:13.516.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'CrossPersonalEngineTests' started at 2026-10-03 17:16:13.516.
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testConvergenceBonusIncreasesScoreWithMoreLayers]' started.
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testConvergenceBonusIncreasesScoreWithMoreLayers]' passed (2.256 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testEngineProducesAnnualSignalsForReferenceChart]' started.
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testEngineProducesAnnualSignalsForReferenceChart]' passed (2.349 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testEngineProducesMediumAndShortTermLayers]' started.
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testEngineProducesMediumAndShortTermLayers]' passed (2.265 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testLordOfTheYearBonusApplied]' started.
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testLordOfTheYearBonusApplied]' passed (2.278 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testStateIsJSONSerializable]' started.
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testStateIsJSONSerializable]' passed (2.268 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testTopicsAreSortedByScoreDescending]' started.
+Test Case '-[AstroMalikTests.CrossPersonalEngineTests testTopicsAreSortedByScoreDescending]' passed (2.276 seconds).
+Test Suite 'CrossPersonalEngineTests' passed at 2026-10-03 17:16:27.209.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 13.692 (13.692) seconds
+Test Suite 'CrossPersonalNarrativeBuilderTests' started at 2026-10-03 17:16:27.209.
+Test Case '-[AstroMalikTests.CrossPersonalNarrativeBuilderTests testBuilderInjectsTemplateAndSerializesState]' started.
+Test Case '-[AstroMalikTests.CrossPersonalNarrativeBuilderTests testBuilderInjectsTemplateAndSerializesState]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalNarrativeBuilderTests testBuilderProducesMarkdownAndCostEstimate]' started.
+Test Case '-[AstroMalikTests.CrossPersonalNarrativeBuilderTests testBuilderProducesMarkdownAndCostEstimate]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalNarrativeBuilderTests testJoplinMarkdownIncludesTrazabilityAppendix]' started.
+Test Case '-[AstroMalikTests.CrossPersonalNarrativeBuilderTests testJoplinMarkdownIncludesTrazabilityAppendix]' passed (0.000 seconds).
+Test Suite 'CrossPersonalNarrativeBuilderTests' passed at 2026-10-03 17:16:27.213.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.004 (0.004) seconds
+Test Suite 'CrossPersonalReportTests' started at 2026-10-03 17:16:27.213.
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testBuilderProducesDataWithNarrativeSectionsMapped]' started.
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testBuilderProducesDataWithNarrativeSectionsMapped]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testBuilderRendersTopicsSortedByRank]' started.
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testBuilderRendersTopicsSortedByRank]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testBuilderWithoutNarrativeProducesEmptySectionsButKeepsData]' started.
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testBuilderWithoutNarrativeProducesEmptySectionsButKeepsData]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testMarkdownConvertsHeadingsParagraphsAndLists]' started.
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testMarkdownConvertsHeadingsParagraphsAndLists]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testMarkdownEscapesHTMLSpecialChars]' started.
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testMarkdownEscapesHTMLSpecialChars]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testNormalizeStripsAccentsAndPunctuation]' started.
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testNormalizeStripsAccentsAndPunctuation]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testSectionsByH2SplitsByHeadings]' started.
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testSectionsByH2SplitsByHeadings]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testTrazabilityRowsIncludeModelAndCostWhenNarrativePresent]' started.
+Test Case '-[AstroMalikTests.CrossPersonalReportTests testTrazabilityRowsIncludeModelAndCostWhenNarrativePresent]' passed (0.000 seconds).
+Test Suite 'CrossPersonalReportTests' passed at 2026-10-03 17:16:27.217.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'DeclinationEngineTests' started at 2026-10-03 17:16:27.217.
+Test Case '-[AstroMalikTests.DeclinationEngineTests testReferenceCalculatesTenPlanetsAndNodes]' started.
+Test Case '-[AstroMalikTests.DeclinationEngineTests testReferenceCalculatesTenPlanetsAndNodes]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.DeclinationEngineTests testReferenceDeclinationOutOfBoundsListIsDeterministic]' started.
+Test Case '-[AstroMalikTests.DeclinationEngineTests testReferenceDeclinationOutOfBoundsListIsDeterministic]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.DeclinationEngineTests testReferenceNodeAxisIsExactContraParallel]' started.
+Test Case '-[AstroMalikTests.DeclinationEngineTests testReferenceNodeAxisIsExactContraParallel]' passed (0.002 seconds).
+Test Suite 'DeclinationEngineTests' passed at 2026-10-03 17:16:27.222.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'DistributionEngineTests' started at 2026-10-03 17:16:27.222.
+Test Case '-[AstroMalikTests.DistributionEngineTests testReferenceElementAndModalityCounts]' started.
+Test Case '-[AstroMalikTests.DistributionEngineTests testReferenceElementAndModalityCounts]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.DistributionEngineTests testReferenceHemispheresAndQuadrantsCountTenPlanets]' started.
+Test Case '-[AstroMalikTests.DistributionEngineTests testReferenceHemispheresAndQuadrantsCountTenPlanets]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.DistributionEngineTests testReferenceSingletonIsMoonInEarth]' started.
+Test Case '-[AstroMalikTests.DistributionEngineTests testReferenceSingletonIsMoonInEarth]' passed (0.001 seconds).
+Test Suite 'DistributionEngineTests' passed at 2026-10-03 17:16:27.225.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.003 (0.003) seconds
+Test Suite 'EclipseCalculatorTests' started at 2026-10-03 17:16:27.225.
+Test Case '-[AstroMalikTests.EclipseCalculatorTests testFindEclipsesFor2026ReturnsSolarAndLunarEclipses]' started.
+Test Case '-[AstroMalikTests.EclipseCalculatorTests testFindEclipsesFor2026ReturnsSolarAndLunarEclipses]' passed (0.010 seconds).
+Test Case '-[AstroMalikTests.EclipseCalculatorTests testKnown2026LunarEclipseTypesAndApproximateDates]' started.
+Test Case '-[AstroMalikTests.EclipseCalculatorTests testKnown2026LunarEclipseTypesAndApproximateDates]' passed (0.008 seconds).
+Test Case '-[AstroMalikTests.EclipseCalculatorTests testKnown2026SolarEclipseTypesAndApproximateDates]' started.
+Test Case '-[AstroMalikTests.EclipseCalculatorTests testKnown2026SolarEclipseTypesAndApproximateDates]' passed (0.008 seconds).
+Test Suite 'EclipseCalculatorTests' passed at 2026-10-03 17:16:27.251.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.026 (0.026) seconds
+Test Suite 'EphemerisEngineTests' started at 2026-10-03 17:16:27.251.
+Test Case '-[AstroMalikTests.EphemerisEngineTests testComputeMonthForJune2026ContainsCoreEventsAndDailyRows]' started.
+Test Case '-[AstroMalikTests.EphemerisEngineTests testComputeMonthForJune2026ContainsCoreEventsAndDailyRows]' passed (0.401 seconds).
+Test Case '-[AstroMalikTests.EphemerisEngineTests testDailyRowsHaveTenPlanetsAndNorthNode]' started.
+Test Case '-[AstroMalikTests.EphemerisEngineTests testDailyRowsHaveTenPlanetsAndNorthNode]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.EphemerisEngineTests testEventsByDayGroupsByLocalDate]' started.
+Test Case '-[AstroMalikTests.EphemerisEngineTests testEventsByDayGroupsByLocalDate]' passed (0.401 seconds).
+Test Suite 'EphemerisEngineTests' passed at 2026-10-03 17:16:28.061.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.810 (0.811) seconds
+Test Suite 'EssentialDignityEngineTests' started at 2026-10-03 17:16:28.062.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testDescriptionReturnsDignityName]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testDescriptionReturnsDignityName]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testDomicileRulers]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testDomicileRulers]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testIsDiurnal]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testIsDiurnal]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testJupiterExaltacionCancer]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testJupiterExaltacionCancer]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMarteEnSectNocturna]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMarteEnSectNocturna]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMartePeregrenoEnLibra]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMartePeregrenoEnLibra]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMercurioEnAmbasSects]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMercurioEnAmbasSects]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMercurioEnSagitarioEsExilio]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMercurioEnSagitarioEsExilio]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMutualReceptionDetected]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testMutualReceptionDetected]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testNoMutualReception]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testNoMutualReception]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSaturnoExaltacionLibra]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSaturnoExaltacionLibra]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolCaidaEnLibra]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolCaidaEnLibra]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolEnLeoEsDomicilio]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolEnLeoEsDomicilio]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolEnLibraEsExilio]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolEnLibraEsExilio]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolEnSectDiurna]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolEnSectDiurna]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolExaltacionAries]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testSolExaltacionAries]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testTriplicidadFiltradaPorSecta]' started.
+Test Case '-[AstroMalikTests.EssentialDignityEngineTests testTriplicidadFiltradaPorSecta]' passed (0.000 seconds).
+Test Suite 'EssentialDignityEngineTests' passed at 2026-10-03 17:16:28.064.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'FirdariaEngineTests' started at 2026-10-03 17:16:28.064.
+Test Case '-[AstroMalikTests.FirdariaEngineTests testAge49IsVenusMajorAndCoherentMinor]' started.
+Test Case '-[AstroMalikTests.FirdariaEngineTests testAge49IsVenusMajorAndCoherentMinor]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.FirdariaEngineTests testCycleRestartsAfter75Years]' started.
+Test Case '-[AstroMalikTests.FirdariaEngineTests testCycleRestartsAfter75Years]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.FirdariaEngineTests testNocturnalOrderStartsWithMoonForNineYears]' started.
+Test Case '-[AstroMalikTests.FirdariaEngineTests testNocturnalOrderStartsWithMoonForNineYears]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.FirdariaEngineTests testNodesAreNotSubdivided]' started.
+Test Case '-[AstroMalikTests.FirdariaEngineTests testNodesAreNotSubdivided]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.FirdariaEngineTests testTimelineAtDateReturnsMatchingCycle]' started.
+Test Case '-[AstroMalikTests.FirdariaEngineTests testTimelineAtDateReturnsMatchingCycle]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.FirdariaEngineTests testUpcomingMinorChangesReturnsFiveDates]' started.
+Test Case '-[AstroMalikTests.FirdariaEngineTests testUpcomingMinorChangesReturnsFiveDates]' passed (0.001 seconds).
+Test Suite 'FirdariaEngineTests' passed at 2026-10-03 17:16:28.070.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.006 (0.006) seconds
+Test Suite 'FixedStarsEngineTests' started at 2026-10-03 17:16:28.070.
+Test Case '-[AstroMalikTests.FixedStarsEngineTests testAldebaranPrecessionAt1976DiffersFromJ2000ByAboutFourTenths]' started.
+Test Case '-[AstroMalikTests.FixedStarsEngineTests testAldebaranPrecessionAt1976DiffersFromJ2000ByAboutFourTenths]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.FixedStarsEngineTests testCatalogContainsCoreTwentyOneStars]' started.
+Test Case '-[AstroMalikTests.FixedStarsEngineTests testCatalogContainsCoreTwentyOneStars]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.FixedStarsEngineTests testSyntheticFixedStarConjunctionToPlanetIsDetected]' started.
+Test Case '-[AstroMalikTests.FixedStarsEngineTests testSyntheticFixedStarConjunctionToPlanetIsDetected]' passed (0.002 seconds).
+Test Suite 'FixedStarsEngineTests' passed at 2026-10-03 17:16:28.074.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.004 (0.004) seconds
+Test Suite 'HoraryFoundryClientTests' started at 2026-10-03 17:16:28.074.
+Test Case '-[AstroMalikTests.HoraryFoundryClientTests testDecodeInterpretationOutputAcceptsCleanJSON]' started.
+Test Case '-[AstroMalikTests.HoraryFoundryClientTests testDecodeInterpretationOutputAcceptsCleanJSON]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.HoraryFoundryClientTests testDecodeInterpretationOutputIgnoresFoundryNoiseAroundJSON]' started.
+Test Case '-[AstroMalikTests.HoraryFoundryClientTests testDecodeInterpretationOutputIgnoresFoundryNoiseAroundJSON]' passed (0.000 seconds).
+Test Suite 'HoraryFoundryClientTests' passed at 2026-10-03 17:16:28.074.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'HoraryParityTests' started at 2026-10-03 17:16:28.074.
+Test Case '-[AstroMalikTests.HoraryParityTests testCurrentSavedQuestionGoldenSetCalculatesNatively]' started.
+Test Case '-[AstroMalikTests.HoraryParityTests testCurrentSavedQuestionGoldenSetCalculatesNatively]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.HoraryParityTests testLegacyJudgementJSONDecodesWithoutStructuredFields]' started.
+Test Case '-[AstroMalikTests.HoraryParityTests testLegacyJudgementJSONDecodesWithoutStructuredFields]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.HoraryParityTests testMudanzaCase]' started.
+Test Case '-[AstroMalikTests.HoraryParityTests testMudanzaCase]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.HoraryParityTests testNativeContratoCaseProducesStructuredJudgement]' started.
+Test Case '-[AstroMalikTests.HoraryParityTests testNativeContratoCaseProducesStructuredJudgement]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.HoraryParityTests testSinPerfeccionWithVoidMoonDoesNotReturnCleanYes]' started.
+Test Case '-[AstroMalikTests.HoraryParityTests testSinPerfeccionWithVoidMoonDoesNotReturnCleanYes]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.HoraryParityTests testStolenFishHistoricalCase]' started.
+Test Case '-[AstroMalikTests.HoraryParityTests testStolenFishHistoricalCase]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.HoraryParityTests testVoidMoonAtEndOfSignCannotPerfectAfterSignChange]' started.
+Test Case '-[AstroMalikTests.HoraryParityTests testVoidMoonAtEndOfSignCannotPerfectAfterSignChange]' passed (0.001 seconds).
+Test Suite 'HoraryParityTests' passed at 2026-10-03 17:16:28.087.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.013 (0.013) seconds
+Test Suite 'JulianDaySecondsTests' started at 2026-10-03 17:16:28.087.
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testJulianDayPreservesSecondPrecision]' started.
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testJulianDayPreservesSecondPrecision]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testLegacyAndExplicitZeroSecondsProduceSameJulianDay]' started.
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testLegacyAndExplicitZeroSecondsProduceSameJulianDay]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testParseLocalTimeKeepsLegacyMinutesAndAcceptsSeconds]' started.
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testParseLocalTimeKeepsLegacyMinutesAndAcceptsSeconds]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testParseLocalTimeRejectsMalformedAndOutOfRangeValues]' started.
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testParseLocalTimeRejectsMalformedAndOutOfRangeValues]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testStrictLocalDateRejectsInvalidCalendarDateAndDSTGap]' started.
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testStrictLocalDateRejectsInvalidCalendarDateAndDSTGap]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testTimezoneConversionCanCrossUTCDateBoundaryWithSeconds]' started.
+Test Case '-[AstroMalikTests.JulianDaySecondsTests testTimezoneConversionCanCrossUTCDateBoundaryWithSeconds]' passed (0.000 seconds).
+Test Suite 'JulianDaySecondsTests' passed at 2026-10-03 17:16:28.090.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'LotsEngineTests' started at 2026-10-03 17:16:28.090.
+Test Case '-[AstroMalikTests.LotsEngineTests testDayFormulaInvertsFortuneAndSpirit]' started.
+Test Case '-[AstroMalikTests.LotsEngineTests testDayFormulaInvertsFortuneAndSpirit]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.LotsEngineTests testReferenceChartComputesSevenLotsInSpecOrder]' started.
+Test Case '-[AstroMalikTests.LotsEngineTests testReferenceChartComputesSevenLotsInSpecOrder]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.LotsEngineTests testReferenceNocturnalFortuneAndSpiritAreInExpectedSigns]' started.
+Test Case '-[AstroMalikTests.LotsEngineTests testReferenceNocturnalFortuneAndSpiritAreInExpectedSigns]' passed (0.001 seconds).
+Test Suite 'LotsEngineTests' passed at 2026-10-03 17:16:28.092.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'LunationCalculatorTests' started at 2026-10-03 17:16:28.092.
+Test Case '-[AstroMalikTests.LunationCalculatorTests testBisectAngularCrossingAcrossZeroDegreeWrap]' started.
+Test Case '-[AstroMalikTests.LunationCalculatorTests testBisectAngularCrossingAcrossZeroDegreeWrap]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.LunationCalculatorTests testBisectAngularCrossingWithLinearFunction]' started.
+Test Case '-[AstroMalikTests.LunationCalculatorTests testBisectAngularCrossingWithLinearFunction]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.LunationCalculatorTests testFindLunationsForJune2026FindsOneNewAndOneFullMoon]' started.
+Test Case '-[AstroMalikTests.LunationCalculatorTests testFindLunationsForJune2026FindsOneNewAndOneFullMoon]' passed (0.008 seconds).
+Test Case '-[AstroMalikTests.LunationCalculatorTests testFindQuartersForJune2026ReturnsTwoQuarters]' started.
+Test Case '-[AstroMalikTests.LunationCalculatorTests testFindQuartersForJune2026ReturnsTwoQuarters]' passed (0.008 seconds).
+Test Case '-[AstroMalikTests.LunationCalculatorTests testJune2026LunationSignsAreStable]' started.
+Test Case '-[AstroMalikTests.LunationCalculatorTests testJune2026LunationSignsAreStable]' passed (0.008 seconds).
+Test Case '-[AstroMalikTests.LunationCalculatorTests testLunarPhaseLabelsNearKnownJune2026Lunations]' started.
+Test Case '-[AstroMalikTests.LunationCalculatorTests testLunarPhaseLabelsNearKnownJune2026Lunations]' passed (0.000 seconds).
+Test Suite 'LunationCalculatorTests' passed at 2026-10-03 17:16:28.117.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.025 (0.025) seconds
+Test Suite 'MigrationRunnerTests' started at 2026-10-03 17:16:28.117.
+Test Case '-[AstroMalikTests.MigrationRunnerTests testApplyIsIdempotent]' started.
+Test Case '-[AstroMalikTests.MigrationRunnerTests testApplyIsIdempotent]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.MigrationRunnerTests testCorpusMigrationsGoToCorpusDB]' started.
+Test Case '-[AstroMalikTests.MigrationRunnerTests testCorpusMigrationsGoToCorpusDB]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.MigrationRunnerTests testIsCorpusMigrationConvention]' started.
+Test Case '-[AstroMalikTests.MigrationRunnerTests testIsCorpusMigrationConvention]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.MigrationRunnerTests testMigrationsTableCreatedAfterRun]' started.
+Test Case '-[AstroMalikTests.MigrationRunnerTests testMigrationsTableCreatedAfterRun]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.MigrationRunnerTests testResultReportsAppliedAndSkipped]' started.
+Test Case '-[AstroMalikTests.MigrationRunnerTests testResultReportsAppliedAndSkipped]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.MigrationRunnerTests testUserMigrationsGoToUserDB]' started.
+Test Case '-[AstroMalikTests.MigrationRunnerTests testUserMigrationsGoToUserDB]' passed (0.002 seconds).
+Test Suite 'MigrationRunnerTests' passed at 2026-10-03 17:16:28.141.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.024 (0.024) seconds
+Test Suite 'MonthlySummaryEngineTests' started at 2026-10-03 17:16:28.141.
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testActiveTransitsAreFilteredLimitedAndSorted]' started.
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testActiveTransitsAreFilteredLimitedAndSorted]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testClimateVariesForEclipsesStationsAndPriorityTransits]' started.
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testClimateVariesForEclipsesStationsAndPriorityTransits]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testLunationConjunctionOrbIsDetectedWithinFiveDegrees]' started.
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testLunationConjunctionOrbIsDetectedWithinFiveDegrees]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testLunationsProduceNatalHouseAndNarrative]' started.
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testLunationsProduceNatalHouseAndNarrative]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testStationOnNatalPlanetWithinThreeDegreesIsDetected]' started.
+Test Case '-[AstroMalikTests.MonthlySummaryEngineTests testStationOnNatalPlanetWithinThreeDegreesIsDetected]' passed (0.000 seconds).
+Test Suite 'MonthlySummaryEngineTests' passed at 2026-10-03 17:16:28.142.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'MundaneAngleAnalyticTests' started at 2026-10-03 17:16:28.142.
+Test Case '-[AstroMalikTests.MundaneAngleAnalyticTests testCrossingJustInsidePolarLimitKeepsDistinctRoots]' started.
+Test Case '-[AstroMalikTests.MundaneAngleAnalyticTests testCrossingJustInsidePolarLimitKeepsDistinctRoots]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.MundaneAngleAnalyticTests testEngineMatchesAnalyticFixtureRoots]' started.
+Test Case '-[AstroMalikTests.MundaneAngleAnalyticTests testEngineMatchesAnalyticFixtureRoots]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.MundaneAngleAnalyticTests testSouthernAndNorthernMeridiansShareLongitude]' started.
+Test Case '-[AstroMalikTests.MundaneAngleAnalyticTests testSouthernAndNorthernMeridiansShareLongitude]' passed (0.000 seconds).
+Test Suite 'MundaneAngleAnalyticTests' passed at 2026-10-03 17:16:28.142.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+Test Suite 'MundaneAspectCalculatorTests' started at 2026-10-03 17:16:28.142.
+Test Case '-[AstroMalikTests.MundaneAspectCalculatorTests testFindsMundaneAspectsForJune2026]' started.
+Test Case '-[AstroMalikTests.MundaneAspectCalculatorTests testFindsMundaneAspectsForJune2026]' passed (0.033 seconds).
+Test Case '-[AstroMalikTests.MundaneAspectCalculatorTests testKnownSlowAspectIfPresentIsMajor]' started.
+Test Case '-[AstroMalikTests.MundaneAspectCalculatorTests testKnownSlowAspectIfPresentIsMajor]' passed (0.466 seconds).
+Test Case '-[AstroMalikTests.MundaneAspectCalculatorTests testLunarOptionAddsMoreAspects]' started.
+Test Case '-[AstroMalikTests.MundaneAspectCalculatorTests testLunarOptionAddsMoreAspects]' passed (0.025 seconds).
+Test Suite 'MundaneAspectCalculatorTests' passed at 2026-10-03 17:16:28.666.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.523 (0.524) seconds
+Test Suite 'NatalExtendedOrchestratorTests' started at 2026-10-03 17:16:28.666.
+Test Case '-[AstroMalikTests.NatalExtendedOrchestratorTests testMarkdownExportContainsAllSections]' started.
+Test Case '-[AstroMalikTests.NatalExtendedOrchestratorTests testMarkdownExportContainsAllSections]' passed (0.012 seconds).
+Test Case '-[AstroMalikTests.NatalExtendedOrchestratorTests testOrchestratorPopulatesEverySubsystem]' started.
+Test Case '-[AstroMalikTests.NatalExtendedOrchestratorTests testOrchestratorPopulatesEverySubsystem]' passed (0.012 seconds).
+Test Suite 'NatalExtendedOrchestratorTests' passed at 2026-10-03 17:16:28.690.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.024 (0.024) seconds
+Test Suite 'NatalReadingComposerTests' started at 2026-10-03 17:16:28.690.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testAngleAspectInterpretationIncluded]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testAngleAspectInterpretationIncluded]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testAscendantRulerKeyForAllTwelveSigns]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testAscendantRulerKeyForAllTwelveSigns]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testAscRulerChapterForMars]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testAscRulerChapterForMars]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testAscRulerLuminaryDoesNotRepeatCorpus]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testAscRulerLuminaryDoesNotRepeatCorpus]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testChaptersFollowCanonicalOrder]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testChaptersFollowCanonicalOrder]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testComposeIsDeterministic]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testComposeIsDeterministic]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testCorpusParagraphsAreSplit]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testCorpusParagraphsAreSplit]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testEmptyChartProducesEmptyReading]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testEmptyChartProducesEmptyReading]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testEssentialDensityLimitsStructuralBlocks]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testEssentialDensityLimitsStructuralBlocks]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testHousesChapterListsEmptyHousesWithRulers]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testHousesChapterListsEmptyHousesWithRulers]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testMissingCorpusKeysAreReported]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testMissingCorpusKeysAreReported]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testPortraitContainsTemperamentAndChips]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testPortraitContainsTemperamentAndChips]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testStelliumDetectedInPortraitAndDraft]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testStelliumDetectedInPortraitAndDraft]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testStructuralAspectUsesCorpusText]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testStructuralAspectUsesCorpusText]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testSynthesisDraftContainsHardFacts]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testSynthesisDraftContainsHardFacts]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testTriadHasThreeHeadersAndCorpusTexts]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testTriadHasThreeHeadersAndCorpusTexts]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testTriadHouseTextsAreNotRepeatedInHousesChapter]' started.
+Test Case '-[AstroMalikTests.NatalReadingComposerTests testTriadHouseTextsAreNotRepeatedInHousesChapter]' passed (0.001 seconds).
+Test Suite 'NatalReadingComposerTests' passed at 2026-10-03 17:16:28.701.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 0.010 (0.011) seconds
+Test Suite 'OpenRouterClientTests' started at 2026-10-03 17:16:28.701.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCompleteSuccessWithMockClient]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCompleteSuccessWithMockClient]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCompleteThrowsOn401]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCompleteThrowsOn401]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCompleteThrowsOn429]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCompleteThrowsOn429]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCredentialSourceFallsBackToEnvironment]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCredentialSourceFallsBackToEnvironment]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCredentialSourcePrefersKeychainOverEnvironment]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testCredentialSourcePrefersKeychainOverEnvironment]' passed (0.014 seconds).
+Test Case '-[AstroMalikTests.OpenRouterClientTests testHasAPIKeyDoesNotCrash]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testHasAPIKeyDoesNotCrash]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.OpenRouterClientTests testJoplinKeyLocatorExtractsKeyFromSQLiteNote]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testJoplinKeyLocatorExtractsKeyFromSQLiteNote]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.OpenRouterClientTests testRequestBodyContainsJsonMode]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testRequestBodyContainsJsonMode]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.OpenRouterClientTests testResolveAPIKeyThrowsMissingWhenNoEnvVar]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testResolveAPIKeyThrowsMissingWhenNoEnvVar]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.OpenRouterClientTests testValidateCurrentKeyParsesSanitizedPayload]' started.
+Test Case '-[AstroMalikTests.OpenRouterClientTests testValidateCurrentKeyParsesSanitizedPayload]' passed (0.000 seconds).
+Test Suite 'OpenRouterClientTests' passed at 2026-10-03 17:16:28.722.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.021 (0.021) seconds
+Test Suite 'PDInterpretationContextBuilderTests' started at 2026-10-03 17:16:28.722.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testBuildReturnsContext]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testBuildReturnsContext]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testMarteFueraDeSectDiurna]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testMarteFueraDeSectDiurna]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testMarteSectNocturna]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testMarteSectNocturna]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testNativeAgeCalculated]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testNativeAgeCalculated]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testNocturnalChartDetected]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testNocturnalChartDetected]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testProfectionAtAge0IsAscendant]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testProfectionAtAge0IsAscendant]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testProfectionAtAge15]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testProfectionAtAge15]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testProfectionWrapsAround12]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testProfectionWrapsAround12]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testPromissorHouseExtracted]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testPromissorHouseExtracted]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testSectDetectedCorrectly]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testSectDetectedCorrectly]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testSignificatorConditionForASC]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testSignificatorConditionForASC]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testSignificatorConditionForMC]' started.
+Test Case '-[AstroMalikTests.PDInterpretationContextBuilderTests testSignificatorConditionForMC]' passed (0.000 seconds).
+Test Suite 'PDInterpretationContextBuilderTests' passed at 2026-10-03 17:16:28.725.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'PrimaryDirectionContextualInterpreterTests' started at 2026-10-03 17:16:28.725.
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testBuildUserPromptContainsAllSections]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testBuildUserPromptContainsAllSections]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testBuildUserPromptConversa]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testBuildUserPromptConversa]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testBuildUserPromptWithMissingFactors]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testBuildUserPromptWithMissingFactors]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testExtractJSONStripsMarkdownWrapper]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testExtractJSONStripsMarkdownWrapper]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testInterpretPersistentCacheSurvivesNewInterpreterInstance]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testInterpretPersistentCacheSurvivesNewInterpreterInstance]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testInterpretUsesMemoryCache]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testInterpretUsesMemoryCache]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testInterpretWithMockReturnsDecodedResult]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testInterpretWithMockReturnsDecodedResult]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testInvalidateCacheForDirection]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionContextualInterpreterTests testInvalidateCacheForDirection]' passed (0.000 seconds).
+Test Suite 'PrimaryDirectionContextualInterpreterTests' passed at 2026-10-03 17:16:28.730.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'PrimaryDirectionFoundryClientTests' started at 2026-10-03 17:16:28.730.
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testCompleteThrowsWhenPythonIsMissing]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testCompleteThrowsWhenPythonIsMissing]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testCompleteThrowsWhenScriptIsMissing]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testCompleteThrowsWhenScriptIsMissing]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testCompleteTimesOut]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testCompleteTimesOut]' passed (0.069 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testDecodeCompletionOutputAcceptsCleanJSON]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testDecodeCompletionOutputAcceptsCleanJSON]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testDecodeCompletionOutputIgnoresFoundryNoiseAroundJSON]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionFoundryClientTests testDecodeCompletionOutputIgnoresFoundryNoiseAroundJSON]' passed (0.000 seconds).
+Test Suite 'PrimaryDirectionFoundryClientTests' passed at 2026-10-03 17:16:28.800.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.070 (0.070) seconds
+Test Suite 'PrimaryDirectionsGoldenBootstrapTests' started at 2026-10-03 17:16:28.800.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenBootstrapTests testGeneratePrimaryDirectionsGoldenBaseline]' started.
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/PrimaryDirectionsGoldenTests.swift:216: -[AstroMalikTests.PrimaryDirectionsGoldenBootstrapTests testGeneratePrimaryDirectionsGoldenBaseline] : Test skipped - Run swift scripts/generate_pd_golden.swift to regenerate the golden baseline.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenBootstrapTests testGeneratePrimaryDirectionsGoldenBaseline]' skipped (0.001 seconds).
+Test Suite 'PrimaryDirectionsGoldenBootstrapTests' passed at 2026-10-03 17:16:28.801.
+	 Executed 1 test, with 1 test skipped and 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'PrimaryDirectionsGoldenTests' started at 2026-10-03 17:16:28.801.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testBuenosAiresPrimaryDirectionsGolden]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testBuenosAiresPrimaryDirectionsGolden]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testClassicalPresetReducesDirectionCount]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testClassicalPresetReducesDirectionCount]' passed (0.006 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testEduardoBraheKey]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testEduardoBraheKey]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testEduardoConverseDirections]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testEduardoConverseDirections]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testEduardoPartOfFortuneAsPromissor]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testEduardoPartOfFortuneAsPromissor]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testEduardoPrimaryDirectionsGolden]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testEduardoPrimaryDirectionsGolden]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testReykjavikPrimaryDirectionsGolden]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testReykjavikPrimaryDirectionsGolden]' passed (0.004 seconds).
+Test Suite 'PrimaryDirectionsGoldenTests' passed at 2026-10-03 17:16:28.831.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.030 (0.031) seconds
+Test Suite 'PrimaryDirectionsTests' started at 2026-10-03 17:16:28.831.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testArcToAge]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testArcToAge]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testASCSpeculumPoleIsGeoLat]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testASCSpeculumPoleIsGeoLat]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusBatchLookup]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusBatchLookup]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusBuildInterpretations]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusBuildInterpretations]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusClaveGeneration]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusClaveGeneration]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusNoPopulatedEntriesHaveNullText]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusNoPopulatedEntriesHaveNullText]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusRejectsTextWithoutPopulatedFlag]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusRejectsTextWithoutPopulatedFlag]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusSchemaCreation]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusSchemaCreation]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusSchemaIdempotent]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusSchemaIdempotent]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusSeedCoverageReport]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusSeedCoverageReport]' passed (0.010 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusSingleLookup]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusSingleLookup]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusStats]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusStats]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusUnpopulatedNotReturned]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testCorpusUnpopulatedNotReturned]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testDirectConverseAsymmetry]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testDirectConverseAsymmetry]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEclipticCorpusClaveGenerationUsesSeparateNamespace]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEclipticCorpusClaveGenerationUsesSeparateNamespace]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEclipticReferenceMeaningsReturnInterpretations]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEclipticReferenceMeaningsReturnInterpretations]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEclipticToEquatorial]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEclipticToEquatorial]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEduardoEclipticModeMatchesReferenceSequence]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEduardoEclipticModeMatchesReferenceSequence]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEduardoEclipticReferenceSequenceIsActuallyEnrichedByCorpus]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEduardoEclipticReferenceSequenceIsActuallyEnrichedByCorpus]' passed (0.006 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEduardoEquatorialData]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEduardoEquatorialData]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEduardoNatalDirections]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEduardoNatalDirections]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEnrichedDirectionFormatting]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testEnrichedDirectionFormatting]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testMCSpeculumPoleIsZero]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testMCSpeculumPoleIsZero]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testMundaneVsZodiacal]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testMundaneVsZodiacal]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testNaibodKey]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testNaibodKey]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testObliquityRange]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testObliquityRange]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testPartOfFortuneSectDifference]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testPartOfFortuneSectDifference]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testPrimaryDirectionsFilteredReportNoteBuilderIncludesSummaryCounts]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testPrimaryDirectionsFilteredReportNoteBuilderIncludesSummaryCounts]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testPrimaryDirectionsSingleNoteBuilderIncludesSelectedReading]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testPrimaryDirectionsSingleNoteBuilderIncludesSelectedReading]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testPtolemyKey]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testPtolemyKey]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testRamcComputation]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testRamcComputation]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testServiceComputeProducesResults]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testServiceComputeProducesResults]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testServiceFiltering]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testServiceFiltering]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testSunSpeculumEduardo]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testSunSpeculumEduardo]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testWilliamLillyDirections]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testWilliamLillyDirections]' passed (0.003 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testZenithDistanceKnownValues]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsTests testZenithDistanceKnownValues]' passed (0.000 seconds).
+Test Suite 'PrimaryDirectionsTests' passed at 2026-10-03 17:16:28.873.
+	 Executed 36 tests, with 0 failures (0 unexpected) in 0.040 (0.042) seconds
+Test Suite 'PrimaryDirectionsViewModelTests' started at 2026-10-03 17:16:28.873.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testAgeFormatted]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testAgeFormatted]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testAgeRangeFilter]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testAgeRangeFilter]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testApplyFiltersNoResult_EmptyArray]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testApplyFiltersNoResult_EmptyArray]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testArcFormatted]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testArcFormatted]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testAspectFilterExcludesNonMatching]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testAspectFilterExcludesNonMatching]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testDirectionTypeFilter]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testDirectionTypeFilter]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testDisplaySummary]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testDisplaySummary]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testFilterIsDefaultWhenUnmodified]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testFilterIsDefaultWhenUnmodified]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testFilterIsNotDefaultWhenModified]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testFilterIsNotDefaultWhenModified]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testFiltersDefaultMatchesAll]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testFiltersDefaultMatchesAll]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testFiltersResetRestoresDefault]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testFiltersResetRestoresDefault]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testInitialState]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testInitialState]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testOnlyWithCorpusFilter]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testOnlyWithCorpusFilter]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testPreferredInitialSelectionFallsBackToFirstVisibleDirection]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testPreferredInitialSelectionFallsBackToFirstVisibleDirection]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testPreferredInitialSelectionPrioritizesCuratedText]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testPreferredInitialSelectionPrioritizesCuratedText]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testPromissorsFilterEmpty_AllPass]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testPromissorsFilterEmpty_AllPass]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testPromissorsFilterNonEmpty_OnlySelected]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testPromissorsFilterNonEmpty_OnlySelected]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testSelectedDirectionClearedOnNewLoad]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testSelectedDirectionClearedOnNewLoad]' passed (0.207 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testSettingsCalculatorConfigBuilt]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testSettingsCalculatorConfigBuilt]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testSettingsDefaultValues]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testSettingsDefaultValues]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testSettingsPersistAndLoad]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsViewModelTests testSettingsPersistAndLoad]' passed (0.004 seconds).
+Test Suite 'PrimaryDirectionsViewModelTests' passed at 2026-10-03 17:16:29.088.
+	 Executed 21 tests, with 0 failures (0 unexpected) in 0.213 (0.215) seconds
+Test Suite 'ProfectionEngineTests' started at 2026-10-03 17:16:29.088.
+Test Case '-[AstroMalikTests.ProfectionEngineTests testAge0UsesHouse1AndAscendantRuler]' started.
+Test Case '-[AstroMalikTests.ProfectionEngineTests testAge0UsesHouse1AndAscendantRuler]' passed (0.577 seconds).
+Test Case '-[AstroMalikTests.ProfectionEngineTests testAge49AnnualProfectionActivatesHouse2]' started.
+Test Case '-[AstroMalikTests.ProfectionEngineTests testAge49AnnualProfectionActivatesHouse2]' passed (0.598 seconds).
+Test Case '-[AstroMalikTests.ProfectionEngineTests testAnnualMonthlyDailyProfectionsAreCoherent]' started.
+Test Case '-[AstroMalikTests.ProfectionEngineTests testAnnualMonthlyDailyProfectionsAreCoherent]' passed (0.600 seconds).
+Test Case '-[AstroMalikTests.ProfectionEngineTests testCurrentYearContainsLotYTransitActivation]' started.
+Test Case '-[AstroMalikTests.ProfectionEngineTests testCurrentYearContainsLotYTransitActivation]' passed (0.600 seconds).
+Test Case '-[AstroMalikTests.ProfectionEngineTests testJoplinClipperCreatesProfectionNotePayload]' started.
+Test Case '-[AstroMalikTests.ProfectionEngineTests testJoplinClipperCreatesProfectionNotePayload]' passed (0.610 seconds).
+Test Case '-[AstroMalikTests.ProfectionEngineTests testWholeSignProfectionDiffersFromQuadrantWhenAscIsLateInSign]' started.
+Test Case '-[AstroMalikTests.ProfectionEngineTests testWholeSignProfectionDiffersFromQuadrantWhenAscIsLateInSign]' passed (0.271 seconds).
+Test Suite 'ProfectionEngineTests' passed at 2026-10-03 17:16:32.345.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 3.257 (3.257) seconds
+Test Suite 'ReadingNotesStoreTests' started at 2026-10-03 17:16:32.345.
+Test Case '-[AstroMalikTests.ReadingNotesStoreTests testSaveAndReloadSynthesisByChartId]' started.
+Test Case '-[AstroMalikTests.ReadingNotesStoreTests testSaveAndReloadSynthesisByChartId]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.ReadingNotesStoreTests testUpdatingExistingNoteDoesNotDuplicate]' started.
+Test Case '-[AstroMalikTests.ReadingNotesStoreTests testUpdatingExistingNoteDoesNotDuplicate]' passed (0.002 seconds).
+Test Suite 'ReadingNotesStoreTests' passed at 2026-10-03 17:16:32.351.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.006 (0.006) seconds
+Test Suite 'ReadingRelevanceTests' started at 2026-10-03 17:16:32.351.
+Test Case '-[AstroMalikTests.ReadingRelevanceTests testDominantPlanetIsMars]' started.
+Test Case '-[AstroMalikTests.ReadingRelevanceTests testDominantPlanetIsMars]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.ReadingRelevanceTests testLuminaryPartilOutscoresLooseTrine]' started.
+Test Case '-[AstroMalikTests.ReadingRelevanceTests testLuminaryPartilOutscoresLooseTrine]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.ReadingRelevanceTests testRankedAspectsAreTotallyOrderedAndDeterministic]' started.
+Test Case '-[AstroMalikTests.ReadingRelevanceTests testRankedAspectsAreTotallyOrderedAndDeterministic]' passed (0.000 seconds).
+Test Suite 'ReadingRelevanceTests' passed at 2026-10-03 17:16:32.352.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'ReceptionEngineTests' started at 2026-10-03 17:16:32.352.
+Test Case '-[AstroMalikTests.ReceptionEngineTests testReferenceMixedReceptionSunSaturn]' started.
+Test Case '-[AstroMalikTests.ReceptionEngineTests testReferenceMixedReceptionSunSaturn]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.ReceptionEngineTests testSyntheticDomicileAndExaltationReceptions]' started.
+Test Case '-[AstroMalikTests.ReceptionEngineTests testSyntheticDomicileAndExaltationReceptions]' passed (0.000 seconds).
+Test Suite 'ReceptionEngineTests' passed at 2026-10-03 17:16:32.354.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'RectificationEngineTests' started at 2026-10-03 17:16:32.354.
+Test Case '-[AstroMalikTests.RectificationEngineTests testCachedTransitEphemeridesPreserveScoringOutput]' started.
+Test Case '-[AstroMalikTests.RectificationEngineTests testCachedTransitEphemeridesPreserveScoringOutput]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.RectificationEngineTests testCandidateGeneratorHandlesMidnightWithoutLosingCalendarDate]' started.
+Test Case '-[AstroMalikTests.RectificationEngineTests testCandidateGeneratorHandlesMidnightWithoutLosingCalendarDate]' passed (0.004 seconds).
+Test Case '-[AstroMalikTests.RectificationEngineTests testCandidateGeneratorProducesInclusiveCoarseRangeAndFineDeduplication]' started.
+Test Case '-[AstroMalikTests.RectificationEngineTests testCandidateGeneratorProducesInclusiveCoarseRangeAndFineDeduplication]' passed (0.013 seconds).
+Test Case '-[AstroMalikTests.RectificationEngineTests testEngineRanksCandidatesAndKeepsOnlyStrongestEvidencePerEventTechnique]' started.
+Test Case '-[AstroMalikTests.RectificationEngineTests testEngineRanksCandidatesAndKeepsOnlyStrongestEvidencePerEventTechnique]' passed (0.045 seconds).
+Test Case '-[AstroMalikTests.RectificationEngineTests testFullDayGeneratorRespectsDSTCivilDayLength]' started.
+Test Case '-[AstroMalikTests.RectificationEngineTests testFullDayGeneratorRespectsDSTCivilDayLength]' passed (0.073 seconds).
+Test Case '-[AstroMalikTests.RectificationEngineTests testMultipleHouseSystemsProducesAuditableComparisonAndWinner]' started.
+Test Case '-[AstroMalikTests.RectificationEngineTests testMultipleHouseSystemsProducesAuditableComparisonAndWinner]' passed (0.166 seconds).
+Test Case '-[AstroMalikTests.RectificationEngineTests testPrimaryDirectionsAndProgressionsScorersReturnAuditableEvidence]' started.
+Test Case '-[AstroMalikTests.RectificationEngineTests testPrimaryDirectionsAndProgressionsScorersReturnAuditableEvidence]' passed (1.037 seconds).
+Test Case '-[AstroMalikTests.RectificationEngineTests testSymbolismRulesDistinguishStrongAndWeakCareerContacts]' started.
+Test Case '-[AstroMalikTests.RectificationEngineTests testSymbolismRulesDistinguishStrongAndWeakCareerContacts]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationEngineTests testTwoIndependentReferenceChartsCompleteDeterministicAnalysis]' started.
+Test Case '-[AstroMalikTests.RectificationEngineTests testTwoIndependentReferenceChartsCompleteDeterministicAnalysis]' passed (0.059 seconds).
+Test Suite 'RectificationEngineTests' passed at 2026-10-03 17:16:33.756.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 1.402 (1.403) seconds
+Test Suite 'RectificationModelTests' started at 2026-10-03 17:16:33.756.
+Test Case '-[AstroMalikTests.RectificationModelTests testApproximateQuarterAndYearDoNotSatisfyMinimumReliableDataset]' started.
+Test Case '-[AstroMalikTests.RectificationModelTests testApproximateQuarterAndYearDoNotSatisfyMinimumReliableDataset]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationModelTests testDateRangeEventRequiresOrderedEndDate]' started.
+Test Case '-[AstroMalikTests.RectificationModelTests testDateRangeEventRequiresOrderedEndDate]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationModelTests testEventsBeforeBirthOrAfterAnalysisDateAreRejected]' started.
+Test Case '-[AstroMalikTests.RectificationModelTests testEventsBeforeBirthOrAfterAnalysisDateAreRejected]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationModelTests testHouseSystemCodesAndCandidateEstimateAreDeterministic]' started.
+Test Case '-[AstroMalikTests.RectificationModelTests testHouseSystemCodesAndCandidateEstimateAreDeterministic]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationModelTests testSessionAndConfigurationRoundTripWithoutLosingSchema]' started.
+Test Case '-[AstroMalikTests.RectificationModelTests testSessionAndConfigurationRoundTripWithoutLosingSchema]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationModelTests testUnsupportedSchemaAndInvalidCoordinatesAreRejected]' started.
+Test Case '-[AstroMalikTests.RectificationModelTests testUnsupportedSchemaAndInvalidCoordinatesAreRejected]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationModelTests testValidationRejectsInsufficientEvents]' started.
+Test Case '-[AstroMalikTests.RectificationModelTests testValidationRejectsInsufficientEvents]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationModelTests testValidationRejectsInvalidFineStepAndExcessCandidateCount]' started.
+Test Case '-[AstroMalikTests.RectificationModelTests testValidationRejectsInvalidFineStepAndExcessCandidateCount]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationModelTests testValidSessionAndDefaultConfigurationPassValidation]' started.
+Test Case '-[AstroMalikTests.RectificationModelTests testValidSessionAndDefaultConfigurationPassValidation]' passed (0.000 seconds).
+Test Suite 'RectificationModelTests' passed at 2026-10-03 17:16:33.758.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'RectificationNarrativeBuilderTests' started at 2026-10-03 17:16:33.758.
+Test Case '-[AstroMalikTests.RectificationNarrativeBuilderTests testBuilderUsesSelectedProviderAndReturnsTraceability]' started.
+Test Case '-[AstroMalikTests.RectificationNarrativeBuilderTests testBuilderUsesSelectedProviderAndReturnsTraceability]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationNarrativeBuilderTests testPayloadIsVersionedCompactAndContainsNoFullChart]' started.
+Test Case '-[AstroMalikTests.RectificationNarrativeBuilderTests testPayloadIsVersionedCompactAndContainsNoFullChart]' passed (0.000 seconds).
+Test Suite 'RectificationNarrativeBuilderTests' passed at 2026-10-03 17:16:33.759.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'RectificationPersistenceTests' started at 2026-10-03 17:16:33.759.
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testBundledMigrationCreatesRectificationTables]' started.
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testBundledMigrationCreatesRectificationTables]' passed (0.007 seconds).
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testRectificationReportGeneratesPDF]' started.
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testRectificationReportGeneratesPDF]' passed (0.484 seconds).
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testReportHTMLAndJoplinMarkdownContainTraceability]' started.
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testReportHTMLAndJoplinMarkdownContainTraceability]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testStoreRoundTripVersionsAndDelete]' started.
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testStoreRoundTripVersionsAndDelete]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testVersionedJSONExportImport]' started.
+Test Case '-[AstroMalikTests.RectificationPersistenceTests testVersionedJSONExportImport]' passed (0.006 seconds).
+Test Suite 'RectificationPersistenceTests' passed at 2026-10-03 17:16:34.261.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.502 (0.502) seconds
+Test Suite 'RectificationProfessionalTests' started at 2026-10-03 17:16:34.261.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testAntiOverfittingCalibrationCorpusPenalizesConcentrationAndComplexity]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testAntiOverfittingCalibrationCorpusPenalizesConcentrationAndComplexity]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testEventReliabilityReducesEvidenceIndependentlyFromDatePrecision]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testEventReliabilityReducesEvidenceIndependentlyFromDatePrecision]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testProfectionConfirmationUsesActivatedEventHouse]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testProfectionConfirmationUsesActivatedEventHouse]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testProfessionalConfigurationAndQuestionnaireValidation]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testProfessionalConfigurationAndQuestionnaireValidation]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testProfessionalConfirmationScorersExecuteOnReferenceChart]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testProfessionalConfirmationScorersExecuteOnReferenceChart]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testQuestionnaireProducesDeterministicPreliminarySign]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testQuestionnaireProducesDeterministicPreliminarySign]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testQuestionnaireScorerFavoursMatchingAscendant]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testQuestionnaireScorerFavoursMatchingAscendant]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testSchoolPresetsShiftTechniquePriorities]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testSchoolPresetsShiftTechniquePriorities]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testScoringPolicyKeepsPublishedHeuristicsCentralized]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testScoringPolicyKeepsPublishedHeuristicsCentralized]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testVersionOneJSONWithoutProfessionalFieldsStillDecodes]' started.
+Test Case '-[AstroMalikTests.RectificationProfessionalTests testVersionOneJSONWithoutProfessionalFieldsStillDecodes]' passed (0.000 seconds).
+Test Suite 'RectificationProfessionalTests' passed at 2026-10-03 17:16:34.265.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.004 (0.004) seconds
+Test Suite 'ReportPersistenceTests' started at 2026-10-03 17:16:34.265.
+Test Case '-[AstroMalikTests.ReportPersistenceTests testHistoryListsPDFsSortedByModificationDateDescending]' started.
+Test Case '-[AstroMalikTests.ReportPersistenceTests testHistoryListsPDFsSortedByModificationDateDescending]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.ReportPersistenceTests testSavingDummyPDFInDestinationFolderWorks]' started.
+Test Case '-[AstroMalikTests.ReportPersistenceTests testSavingDummyPDFInDestinationFolderWorks]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.ReportPersistenceTests testSuggestedFileNameFollowsDocumentedPattern]' started.
+Test Case '-[AstroMalikTests.ReportPersistenceTests testSuggestedFileNameFollowsDocumentedPattern]' passed (0.001 seconds).
+Test Suite 'ReportPersistenceTests' passed at 2026-10-03 17:16:34.267.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'Reports' started at 2026-10-03 17:16:34.267.
+Test Case '-[AstroMalikTests.Reports testAstrocartographyReportGeneratesPDFWithExplicitMaplessFallback]' started.
+Test Case '-[AstroMalikTests.Reports testAstrocartographyReportGeneratesPDFWithExplicitMaplessFallback]' passed (0.444 seconds).
+Test Case '-[AstroMalikTests.Reports testExtendedNatalReportGeneratesNonEmptyPDFAndExpectedSections]' started.
+Test Case '-[AstroMalikTests.Reports testExtendedNatalReportGeneratesNonEmptyPDFAndExpectedSections]' passed (0.340 seconds).
+Test Case '-[AstroMalikTests.Reports testHoraryReportGeneratesNonEmptyPDFAndExpectedSections]' started.
+Test Case '-[AstroMalikTests.Reports testHoraryReportGeneratesNonEmptyPDFAndExpectedSections]' passed (0.164 seconds).
+Test Case '-[AstroMalikTests.Reports testLongPredictiveReportBuildersRenderFiveHTMLTemplates]' started.
+Test Case '-[AstroMalikTests.Reports testLongPredictiveReportBuildersRenderFiveHTMLTemplates]' passed (0.017 seconds).
+Test Case '-[AstroMalikTests.Reports testLongPredictiveReportsContainRequiredProfessionalSections]' started.
+Test Case '-[AstroMalikTests.Reports testLongPredictiveReportsContainRequiredProfessionalSections]' passed (0.019 seconds).
+Test Case '-[AstroMalikTests.Reports testNatalReportGeneratesNonEmptyPDFAndExpectedSections]' started.
+Test Case '-[AstroMalikTests.Reports testNatalReportGeneratesNonEmptyPDFAndExpectedSections]' passed (0.361 seconds).
+Test Case '-[AstroMalikTests.Reports testPredictiveReportBuildersRenderSixHTMLTemplates]' started.
+Test Case '-[AstroMalikTests.Reports testPredictiveReportBuildersRenderSixHTMLTemplates]' passed (0.020 seconds).
+Test Case '-[AstroMalikTests.Reports testPredictiveReportSmokeRendersSixPDFMagicBytes]' started.
+Test Case '-[AstroMalikTests.Reports testPredictiveReportSmokeRendersSixPDFMagicBytes]' passed (0.574 seconds).
+Test Case '-[AstroMalikTests.Reports testReportRendererProducesPDFMagicBytes]' started.
+Test Case '-[AstroMalikTests.Reports testReportRendererProducesPDFMagicBytes]' passed (0.047 seconds).
+Test Case '-[AstroMalikTests.Reports testReportServiceRendersLayoutHTMLWithMockChartName]' started.
+Test Case '-[AstroMalikTests.Reports testReportServiceRendersLayoutHTMLWithMockChartName]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.Reports testReportThemeCSSVariablesContainDecidedPaletteAndScale]' started.
+Test Case '-[AstroMalikTests.Reports testReportThemeCSSVariablesContainDecidedPaletteAndScale]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.Reports testSolarLunarCalendarMonthlyAndProfectionsContainRequiredSections]' started.
+Test Case '-[AstroMalikTests.Reports testSolarLunarCalendarMonthlyAndProfectionsContainRequiredSections]' passed (0.019 seconds).
+Test Case '-[AstroMalikTests.Reports testSynastryReportGeneratesNonEmptyPDFAndExpectedSections]' started.
+Test Case '-[AstroMalikTests.Reports testSynastryReportGeneratesNonEmptyPDFAndExpectedSections]' passed (0.287 seconds).
+Test Case '-[AstroMalikTests.Reports testTemplateEngineEscapesHTMLByDefault]' started.
+Test Case '-[AstroMalikTests.Reports testTemplateEngineEscapesHTMLByDefault]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.Reports testTemplateEngineIncludesPartialsViaLoader]' started.
+Test Case '-[AstroMalikTests.Reports testTemplateEngineIncludesPartialsViaLoader]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.Reports testTemplateEngineRendersEachLoop]' started.
+Test Case '-[AstroMalikTests.Reports testTemplateEngineRendersEachLoop]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.Reports testTemplateEngineRendersIfAndUnlessSections]' started.
+Test Case '-[AstroMalikTests.Reports testTemplateEngineRendersIfAndUnlessSections]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.Reports testTemplateEngineRendersSimpleDotVariable]' started.
+Test Case '-[AstroMalikTests.Reports testTemplateEngineRendersSimpleDotVariable]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.Reports testTemplateEngineRendersTripleMustacheWithoutEscaping]' started.
+Test Case '-[AstroMalikTests.Reports testTemplateEngineRendersTripleMustacheWithoutEscaping]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.Reports testTemplateEngineThrowsMalformedSyntaxAndMissingPartial]' started.
+Test Case '-[AstroMalikTests.Reports testTemplateEngineThrowsMalformedSyntaxAndMissingPartial]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.Reports testTemplateEngineThrowsUnknownVariable]' started.
+Test Case '-[AstroMalikTests.Reports testTemplateEngineThrowsUnknownVariable]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.Reports testTransitsReportContainsPriorityTimelineCorpusAndHouseIngresses]' started.
+Test Case '-[AstroMalikTests.Reports testTransitsReportContainsPriorityTimelineCorpusAndHouseIngresses]' passed (0.006 seconds).
+Test Suite 'Reports' passed at 2026-10-03 17:16:36.571.
+	 Executed 22 tests, with 0 failures (0 unexpected) in 2.302 (2.304) seconds
+Test Suite 'SecondaryProgressionEngineTests' started at 2026-10-03 17:16:36.571.
+Test Case '-[AstroMalikTests.SecondaryProgressionEngineTests testProgressedAspectsReturnsAtLeastOneEventInOneYearWindow]' started.
+Test Case '-[AstroMalikTests.SecondaryProgressionEngineTests testProgressedAspectsReturnsAtLeastOneEventInOneYearWindow]' passed (2.216 seconds).
+Test Case '-[AstroMalikTests.SecondaryProgressionEngineTests testProgressedLunarPhaseIsCalculatedFromSunMoonAngle]' started.
+Test Case '-[AstroMalikTests.SecondaryProgressionEngineTests testProgressedLunarPhaseIsCalculatedFromSunMoonAngle]' passed (0.139 seconds).
+Test Case '-[AstroMalikTests.SecondaryProgressionEngineTests testProgressedMoonAtAge49MatchesSwissEphemerisDayForYear]' started.
+Test Case '-[AstroMalikTests.SecondaryProgressionEngineTests testProgressedMoonAtAge49MatchesSwissEphemerisDayForYear]' passed (0.139 seconds).
+Test Case '-[AstroMalikTests.SecondaryProgressionEngineTests testProgressedSunAtAge49AdvancesAboutFortyEightDegrees]' started.
+Test Case '-[AstroMalikTests.SecondaryProgressionEngineTests testProgressedSunAtAge49AdvancesAboutFortyEightDegrees]' passed (0.138 seconds).
+Test Suite 'SecondaryProgressionEngineTests' passed at 2026-10-03 17:16:39.203.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 2.632 (2.632) seconds
+Test Suite 'SectEngineTests' started at 2026-10-03 17:16:39.203.
+Test Case '-[AstroMalikTests.SectEngineTests testDayChartUsesSolarSect]' started.
+Test Case '-[AstroMalikTests.SectEngineTests testDayChartUsesSolarSect]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.SectEngineTests testReferenceChartIsNocturnal]' started.
+Test Case '-[AstroMalikTests.SectEngineTests testReferenceChartIsNocturnal]' passed (0.001 seconds).
+Test Suite 'SectEngineTests' passed at 2026-10-03 17:16:39.204.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'SignIngressCalculatorTests' started at 2026-10-03 17:16:39.204.
+Test Case '-[AstroMalikTests.SignIngressCalculatorTests testFindsRetrogradeIngressIn2026]' started.
+Test Case '-[AstroMalikTests.SignIngressCalculatorTests testFindsRetrogradeIngressIn2026]' passed (0.069 seconds).
+Test Case '-[AstroMalikTests.SignIngressCalculatorTests testIncludeMoonAddsFrequentLunarIngresses]' started.
+Test Case '-[AstroMalikTests.SignIngressCalculatorTests testIncludeMoonAddsFrequentLunarIngresses]' passed (0.005 seconds).
+Test Case '-[AstroMalikTests.SignIngressCalculatorTests testSunIngressesCancerAroundJuneSolstice2026]' started.
+Test Case '-[AstroMalikTests.SignIngressCalculatorTests testSunIngressesCancerAroundJuneSolstice2026]' passed (0.002 seconds).
+Test Suite 'SignIngressCalculatorTests' passed at 2026-10-03 17:16:39.280.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.075 (0.075) seconds
+Test Suite 'SolarArcEngineTests' started at 2026-10-03 17:16:39.280.
+Test Case '-[AstroMalikTests.SolarArcEngineTests testDetectsDirectedSunAspectToNatalAscendant]' started.
+Test Case '-[AstroMalikTests.SolarArcEngineTests testDetectsDirectedSunAspectToNatalAscendant]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.SolarArcEngineTests testNaibodSolarArcAtAge49]' started.
+Test Case '-[AstroMalikTests.SolarArcEngineTests testNaibodSolarArcAtAge49]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.SolarArcEngineTests testRealSolarArcAtAge49StaysNearNaibod]' started.
+Test Case '-[AstroMalikTests.SolarArcEngineTests testRealSolarArcAtAge49StaysNearNaibod]' passed (0.002 seconds).
+Test Suite 'SolarArcEngineTests' passed at 2026-10-03 17:16:39.285.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'StationCalculatorTests' started at 2026-10-03 17:16:39.285.
+Test Case '-[AstroMalikTests.StationCalculatorTests testAll2026StationsHaveDateLongitudeAndNearZeroSpeed]' started.
+Test Case '-[AstroMalikTests.StationCalculatorTests testAll2026StationsHaveDateLongitudeAndNearZeroSpeed]' passed (0.049 seconds).
+Test Case '-[AstroMalikTests.StationCalculatorTests testMercuryHasThreeRetrogradeAndThreeDirectStationsIn2026]' started.
+Test Case '-[AstroMalikTests.StationCalculatorTests testMercuryHasThreeRetrogradeAndThreeDirectStationsIn2026]' passed (0.049 seconds).
+Test Case '-[AstroMalikTests.StationCalculatorTests testSaturnHasOneRetrogradeAndOneDirectStationIn2026]' started.
+Test Case '-[AstroMalikTests.StationCalculatorTests testSaturnHasOneRetrogradeAndOneDirectStationIn2026]' passed (0.049 seconds).
+Test Suite 'StationCalculatorTests' passed at 2026-10-03 17:16:39.431.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.146 (0.146) seconds
+Test Suite 'SwissAstrocartographyEphemerisTests' started at 2026-10-03 17:16:39.431.
+Test Case '-[AstroMalikTests.SwissAstrocartographyEphemerisTests testMissingEphemerisDirectoryFailsBeforeCalculation]' started.
+Test Case '-[AstroMalikTests.SwissAstrocartographyEphemerisTests testMissingEphemerisDirectoryFailsBeforeCalculation]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.SwissAstrocartographyEphemerisTests testPartialRequestKeepsReturnedFlagsAndVisibleFallback]' started.
+Test Case '-[AstroMalikTests.SwissAstrocartographyEphemerisTests testPartialRequestKeepsReturnedFlagsAndVisibleFallback]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.SwissAstrocartographyEphemerisTests testSnapshotMatchesPythonReferenceIncludingFallbackDiagnostics]' started.
+Test Case '-[AstroMalikTests.SwissAstrocartographyEphemerisTests testSnapshotMatchesPythonReferenceIncludingFallbackDiagnostics]' passed (0.002 seconds).
+Test Suite 'SwissAstrocartographyEphemerisTests' passed at 2026-10-03 17:16:39.434.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.003 (0.003) seconds
+Test Suite 'SwissEphemerisAccessTests' started at 2026-10-03 17:16:39.434.
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testConcurrentNatalLikeAndEquatorialCallsMatchSerialBaseline]' started.
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testConcurrentNatalLikeAndEquatorialCallsMatchSerialBaseline]' passed (0.014 seconds).
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testContractDateBoundsMatchGregorianConversion]' started.
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testContractDateBoundsMatchGregorianConversion]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testCriticalSectionsNeverOverlap]' started.
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testCriticalSectionsNeverOverlap]' passed (0.016 seconds).
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testLibraryVersionIsReportedThroughFacade]' started.
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testLibraryVersionIsReportedThroughFacade]' passed (0.000 seconds).
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testRecursiveTransactionAndReleaseAfterThrow]' started.
+Test Case '-[AstroMalikTests.SwissEphemerisAccessTests testRecursiveTransactionAndReleaseAfterThrow]' passed (0.000 seconds).
+Test Suite 'SwissEphemerisAccessTests' passed at 2026-10-03 17:16:39.464.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.030 (0.030) seconds
+Test Suite 'VoidOfCourseCalculatorTests' started at 2026-10-03 17:16:39.464.
+Test Case '-[AstroMalikTests.VoidOfCourseCalculatorTests testVoidEndsAreLunarIngressEvents]' started.
+Test Case '-[AstroMalikTests.VoidOfCourseCalculatorTests testVoidEndsAreLunarIngressEvents]' passed (0.081 seconds).
+Test Case '-[AstroMalikTests.VoidOfCourseCalculatorTests testVoidPeriodsForWeekHaveReasonableDurations]' started.
+Test Case '-[AstroMalikTests.VoidOfCourseCalculatorTests testVoidPeriodsForWeekHaveReasonableDurations]' passed (0.080 seconds).
+Test Suite 'VoidOfCourseCalculatorTests' passed at 2026-10-03 17:16:39.625.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.161 (0.161) seconds
+Test Suite 'ZodiacalReleasingEngineTests' started at 2026-10-03 17:16:39.625.
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testAge49ExpectedL1Chapters]' started.
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testAge49ExpectedL1Chapters]' passed (0.002 seconds).
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testDepthThreeAndFourExposeNestedLevelsWithoutChangingDefaultUIContract]' started.
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testDepthThreeAndFourExposeNestedLevelsWithoutChangingDefaultUIContract]' passed (0.064 seconds).
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testFirstL1StartsOnLotSign]' started.
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testFirstL1StartsOnLotSign]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testInitialL2MatchesItsL1Sign]' started.
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testInitialL2MatchesItsL1Sign]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testJoplinClipperCreatesZodiacalReleasingNotePayload]' started.
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testJoplinClipperCreatesZodiacalReleasingNotePayload]' passed (0.026 seconds).
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testLoosingOfBondInFirstFortuneL1JumpsToOppositeOfL1Start]' started.
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testLoosingOfBondInFirstFortuneL1JumpsToOppositeOfL1Start]' passed (0.001 seconds).
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testReferenceLotsUseNocturnalFormula]' started.
+Test Case '-[AstroMalikTests.ZodiacalReleasingEngineTests testReferenceLotsUseNocturnalFormula]' passed (0.001 seconds).
+Test Suite 'ZodiacalReleasingEngineTests' passed at 2026-10-03 17:16:39.721.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.096 (0.096) seconds
+Test Suite 'AstroMalikPackageTests.xctest' passed at 2026-10-03 17:16:39.721.
+	 Executed 522 tests, with 1 test skipped and 0 failures (0 unexpected) in 33.719 (33.746) seconds
+Test Suite 'All tests' passed at 2026-10-03 17:16:39.721.
+	 Executed 522 tests, with 1 test skipped and 0 failures (0 unexpected) in 33.719 (33.747) seconds
+◇ Test run started.
+↳ Testing Library Version: 1743
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

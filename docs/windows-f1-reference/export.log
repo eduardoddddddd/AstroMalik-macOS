@@ -1,0 +1,26 @@
+swift-driver version: 1.148.6 [0/1] Planning build
+Building for debugging...
+[0/7] Write sources
+[1/7] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Emitting module AstroMalikTests
+[4/5] Compiling AstroMalikTests PrimaryDirectionsGoldenTests.swift
+[5/6] Compiling AstroMalikTests AstrocartographyAnalyticFixtureTests.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking AstroMalikPackageTests
+Build complete! (2.19s)
+Test Suite 'Selected tests' started at 2026-10-03 17:31:13.675.
+Test Suite 'AstroMalikPackageTests.xctest' started at 2026-10-03 17:31:13.676.
+Test Suite 'PrimaryDirectionsGoldenTests' started at 2026-10-03 17:31:13.676.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testExportF1MacReferences]' started.
+Test Case '-[AstroMalikTests.PrimaryDirectionsGoldenTests testExportF1MacReferences]' passed (0.051 seconds).
+Test Suite 'PrimaryDirectionsGoldenTests' passed at 2026-10-03 17:31:13.727.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.051 (0.051) seconds
+Test Suite 'AstroMalikPackageTests.xctest' passed at 2026-10-03 17:31:13.727.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.051 (0.051) seconds
+Test Suite 'Selected tests' passed at 2026-10-03 17:31:13.727.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.051 (0.052) seconds
+F1_EXPORT cases=160 transitions=45 tzdata=2026b
+◇ Test run started.
+↳ Testing Library Version: 1743
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.
