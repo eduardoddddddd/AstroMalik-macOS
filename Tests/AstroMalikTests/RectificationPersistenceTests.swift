@@ -69,8 +69,8 @@ final class RectificationPersistenceTests: XCTestCase {
         XCTAssertTrue(markdown.contains("mock-model"))
     }
 
-    @MainActor
     #if canImport(WebKit)
+    @MainActor
     func testRectificationReportGeneratesPDF() async throws {
         let fixture = makeFixture()
         let data = try await RectificationReportBuilder.generate(
