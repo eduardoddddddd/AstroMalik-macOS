@@ -13,8 +13,11 @@ final class AstroSavedPlaceRepositoryTests: XCTestCase {
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         db = try SQLiteDB(path: directory.appendingPathComponent("isolated-user.db").path)
     }
-    override func tearDownWithError() throws {
-        db = nil; try FileManager.default.removeItem(at: directory)
+    override func tearDown() async throws {
+        await Task.yield() // Let UserStore initialization tasks release their injected database.
+        db = nil
+        await Task.yield()
+        try FileManager.default.removeItem(at: directory)
     }
     func testSaveLoadRestartUpdateDeleteAndOtherChartsUntouched() throws {
         let repo = try AstroSavedPlaceRepository(db: db)

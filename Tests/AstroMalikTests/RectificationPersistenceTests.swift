@@ -70,6 +70,7 @@ final class RectificationPersistenceTests: XCTestCase {
     }
 
     @MainActor
+    #if canImport(WebKit)
     func testRectificationReportGeneratesPDF() async throws {
         let fixture = makeFixture()
         let data = try await RectificationReportBuilder.generate(
@@ -80,6 +81,7 @@ final class RectificationPersistenceTests: XCTestCase {
         XCTAssertTrue(data.starts(with: Data("%PDF".utf8)))
         XCTAssertGreaterThan(data.count, 1_000)
     }
+    #endif
 
     private func makeFixture() -> (session: RectificationSession, result: RectificationAnalysisResult, narrative: RectificationNarrative) {
         let event = RectificationEvent(type: .careerStart, title: "Trabajo", dateStart: Date(timeIntervalSince1970: 1_600_000_000), precision: .exactDay)

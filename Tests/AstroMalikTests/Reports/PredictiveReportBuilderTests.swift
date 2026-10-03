@@ -132,6 +132,7 @@ extension Reports {
         XCTAssertTrue(profections.contains("Activaciones del año"))
     }
 
+    #if canImport(WebKit)
     func testPredictiveReportSmokeRendersSixPDFMagicBytes() async throws {
         let chart = Self.predictiveSampleChart()
         let transit = Self.predictiveTransit(priority: .critical)
@@ -156,6 +157,7 @@ extension Reports {
             XCTAssertGreaterThan(data.count, 1_000, name)
         }
     }
+    #endif
 }
 
 private extension Reports {
