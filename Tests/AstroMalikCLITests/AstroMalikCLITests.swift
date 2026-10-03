@@ -116,6 +116,98 @@ final class AstroMalikCLITests: XCTestCase {
         XCTAssertEqual(charts.first?["name"] as? String, "Edu")
     }
 
+
+    // MARK: astrocartography (F6.4)
+
+    func testAstrocartographyParserAcceptsPlaceOrCoordinatesAndRejectsMisuse() throws {
+        func parse(_ args: [String]) throws -> CLIOptions {
+            guard case .run(let options) = try AstroMalikCLIParser.parse(arguments: args, defaultDate: defaultDate, calendar: calendar) else {
+                throw CLIParseError.invalidCommand("expected run")
+            }
+            return options
+        }
+        let byPlace = try parse(["astrocartography", "--chart", "Edu", "--place", "Madrid", "--near-km", "50", "--regional-km", "400", "--no-readings", "--format", "markdown"])
+        XCTAssertEqual(byPlace.command, .astrocartography)
+        XCTAssertEqual(byPlace.placeQuery, "Madrid"); XCTAssertEqual(byPlace.nearKm, 50); XCTAssertEqual(byPlace.regionalKm, 400)
+        XCTAssertFalse(byPlace.includeReadings); XCTAssertEqual(byPlace.format, .markdown); XCTAssertFalse(byPlace.allowNetwork)
+        let byCoords = try parse(["--lat", "40,4168", "astrocartography", "--chart", "Edu", "--lon", "-3.7"])
+        XCTAssertEqual(byCoords.latitude, 40.4168); XCTAssertEqual(byCoords.longitude, -3.7); XCTAssertTrue(byCoords.includeReadings)
+        let bare = try parse(["astrocartography", "--chart", "Edu"])
+        XCTAssertNil(bare.placeQuery); XCTAssertNil(bare.latitude); XCTAssertEqual(bare.format, .json)
+
+        XCTAssertThrowsError(try parse(["astrocartography"])) { XCTAssertEqual($0 as? CLIParseError, .missingChart) }
+        XCTAssertThrowsError(try parse(["astrocartography", "--chart", "Edu", "--lat", "40"])) // lon missing
+        XCTAssertThrowsError(try parse(["astrocartography", "--chart", "Edu", "--lat", "40", "--lon", "-3", "--place", "Madrid"]))
+        XCTAssertThrowsError(try parse(["astrocartography", "--chart", "Edu", "--lat", "91", "--lon", "0"])) { XCTAssertEqual($0 as? CLIParseError, .invalidNumber("--lat", "91")) }
+        XCTAssertThrowsError(try parse(["astrocartography", "--chart", "Edu", "--lat", "0", "--lon", "181"]))
+        XCTAssertThrowsError(try parse(["astrocartography", "--chart", "Edu", "--lat", "x", "--lon", "0"]))
+        XCTAssertThrowsError(try parse(["astrocartography", "--chart", "Edu", "--near-km", "300", "--regional-km", "300"]))
+        XCTAssertThrowsError(try parse(["astrocartography", "--chart", "Edu", "--regional-km", "50"])) // default near is 100
+        XCTAssertThrowsError(try parse(["natal", "--chart", "Edu", "--place", "Madrid"])) // only for astrocartography
+    }
+
+    func testAstrocartographyJSONIsVersionedDeterministicOfflineAndComplete() async throws {
+        let dbURL = try makeUserDBWithOneChart()
+        func run(_ build: (inout AstroMalikCLIRequest) -> Void) async throws -> AstroMalikCLIResult {
+            var request = AstroMalikCLIRequest(command: .astrocartography, chartQuery: "Edu", referenceDate: defaultDate, format: .json,
+                                               output: .stdout, userDBPath: dbURL.path, allowNetwork: false)
+            build(&request)
+            return try await AstroMalikCLIRunner.run(request: request)
+        }
+        let first = try await run { $0.latitude = 40.4168; $0.longitude = -3.7038 }
+        let second = try await run { $0.latitude = 40.4168; $0.longitude = -3.7038 }
+        XCTAssertEqual(first.content, second.content, "same input → byte-identical output")
+        XCTAssertFalse(first.networkUsed); XCTAssertEqual(first.model, "local"); XCTAssertEqual(first.estimatedCostUSD, 0)
+        XCTAssertFalse(first.content.lowercased().contains("generatedat"))
+        let object = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(first.content.utf8)) as? [String: Any])
+        XCTAssertEqual(object["schemaVersion"] as? Int, 1)
+        XCTAssertEqual(object["kind"] as? String, "astromalik.astrocartography")
+        XCTAssertEqual((object["chartLines"] as? [[String: Any]])?.count, 40)
+        let place = try XCTUnwrap(object["place"] as? [String: Any])
+        XCTAssertEqual((place["lines"] as? [[String: Any]])?.count, 40)
+        XCTAssertNotNil(place["headline"])
+        XCTAssertEqual((place["lines"] as? [[String: Any]])?.compactMap { $0["distanceKm"] as? Double }.sorted(), (place["lines"] as? [[String: Any]])?.compactMap { $0["distanceKm"] as? Double })
+        // The sample chart has only two bodies: the relocation is reported as unavailable, never faked.
+        XCTAssertNil(place["relocation"]); XCTAssertNotNil(place["relocationError"])
+        let method = try XCTUnwrap(object["method"] as? [String: Any])
+        XCTAssertEqual(method["ephemerisSource"] as? String, "swissEphemeris")
+        XCTAssertEqual(method["sphereRadiusKm"] as? Double, 6371.0088)
+
+        let bare = try await run { _ in }
+        let bareObject = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(bare.content.utf8)) as? [String: Any])
+        XCTAssertNil(bareObject["place"]); XCTAssertEqual((bareObject["chartLines"] as? [[String: Any]])?.count, 40)
+
+        let byName = try await run { $0.placeQuery = "Madrid" }
+        let named = try XCTUnwrap((try XCTUnwrap(JSONSerialization.jsonObject(with: Data(byName.content.utf8)) as? [String: Any]))["place"] as? [String: Any])
+        XCTAssertTrue((named["name"] as? String ?? "").contains("Madrid")); XCTAssertEqual(named["origin"] as? String, "localCatalog")
+
+        let noReadings = try await run { $0.latitude = 10; $0.longitude = 10; $0.includeReadings = false; $0.nearKm = 5000; $0.regionalKm = 9000 }
+        let nr = try XCTUnwrap((try XCTUnwrap(JSONSerialization.jsonObject(with: Data(noReadings.content.utf8)) as? [String: Any]))["place"] as? [String: Any])
+        XCTAssertEqual((nr["readings"] as? [Any])?.count, 0)
+        let withReadings = try await run { $0.latitude = 10; $0.longitude = 10; $0.nearKm = 5000; $0.regionalKm = 9000 }
+        let wr = try XCTUnwrap((try XCTUnwrap(JSONSerialization.jsonObject(with: Data(withReadings.content.utf8)) as? [String: Any]))["place"] as? [String: Any])
+        XCTAssertGreaterThan((wr["readings"] as? [Any])?.count ?? 0, 0)
+
+        let markdown = try await run { $0.format = .markdown; $0.latitude = 40; $0.longitude = -3 }
+        XCTAssertTrue(markdown.content.hasPrefix("# Astrocartografía — Edu"))
+    }
+
+    func testAstrocartographyRejectsUnknownPlaceAndConflictingInputWithoutNetwork() async throws {
+        let dbURL = try makeUserDBWithOneChart()
+        func request(_ build: (inout AstroMalikCLIRequest) -> Void) -> AstroMalikCLIRequest {
+            var r = AstroMalikCLIRequest(command: .astrocartography, chartQuery: "Edu", referenceDate: defaultDate, userDBPath: dbURL.path)
+            build(&r); return r
+        }
+        do { _ = try await AstroMalikCLIRunner.run(request: request { $0.placeQuery = "CiudadQueNoExisteZZZ" }); XCTFail("unknown place") }
+        catch let error as AstroMalikCLIRunnerError { XCTAssertTrue(error.localizedDescription.contains("no encontrado")); XCTAssertEqual(error.exitCode, 1) }
+        do { _ = try await AstroMalikCLIRunner.run(request: request { $0.placeQuery = "Madrid"; $0.latitude = 1; $0.longitude = 1 }); XCTFail("conflict") }
+        catch let error as AstroMalikCLIRunnerError { XCTAssertEqual(error.exitCode, 1) }
+        do { _ = try await AstroMalikCLIRunner.run(request: request { $0.nearKm = 500; $0.regionalKm = 100 }); XCTFail("thresholds") }
+        catch let error as AstroMalikCLIRunnerError { XCTAssertTrue(error.localizedDescription.contains("Umbrales")) }
+        do { _ = try await AstroMalikCLIRunner.run(request: request { $0.output = .joplin("codex") }); XCTFail("Joplin needs --allow-network") }
+        catch let error as AstroMalikCLIRunnerError { XCTAssertEqual(error.exitCode, 6) }
+    }
+
     private func makeUserDBWithOneChart() throws -> URL {
         let dir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)

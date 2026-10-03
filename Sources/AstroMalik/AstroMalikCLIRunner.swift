@@ -42,6 +42,7 @@ public enum AstroMalikCLICommandKind: String, Sendable, Codable, Equatable {
     case lunarReturn = "lunar-return"
     case primaryDirections = "primary-directions"
     case solarArc = "solar-arc"
+    case astrocartography
 }
 
 public enum AstroMalikCLIOutput: Equatable, Sendable {
@@ -66,6 +67,13 @@ public struct AstroMalikCLIRequest: Sendable {
     public var verbose: Bool
     public var allowNetwork: Bool
     public var narrative: AstroMalikCLINarrative
+    /// Astrocartography only. A catalog name OR a coordinate pair, never both.
+    public var placeQuery: String?
+    public var latitude: Double?
+    public var longitude: Double?
+    public var nearKm: Double?
+    public var regionalKm: Double?
+    public var includeReadings: Bool
 
     public init(
         command: AstroMalikCLICommandKind = .crossPersonal,
@@ -82,8 +90,20 @@ public struct AstroMalikCLIRequest: Sendable {
         corpusDBPath: String? = nil,
         verbose: Bool = false,
         allowNetwork: Bool = false,
-        narrative: AstroMalikCLINarrative = .none
+        narrative: AstroMalikCLINarrative = .none,
+        placeQuery: String? = nil,
+        latitude: Double? = nil,
+        longitude: Double? = nil,
+        nearKm: Double? = nil,
+        regionalKm: Double? = nil,
+        includeReadings: Bool = true
     ) {
+        self.placeQuery = placeQuery
+        self.latitude = latitude
+        self.longitude = longitude
+        self.nearKm = nearKm
+        self.regionalKm = regionalKm
+        self.includeReadings = includeReadings
         self.command = command
         self.chartQuery = chartQuery
         self.referenceDate = referenceDate
@@ -446,6 +466,9 @@ private extension AstroMalikCLIRunner {
             let directions = solarArcDirections(chart: chart, referenceDate: request.referenceDate)
             let envelope = LocalCLIEnvelope(metadata: metadata(chart: chart, request: request, generatedAt: generatedAt), chart: ChartSummary(chart), technicalData: LocalTechnicalData(solarArc: directions), events: solarArcEvents(directions), interpretations: [], warnings: [], source: "local", networkUsed: false)
             return try render(envelope: envelope, markdown: solarArcMarkdown(chart: chart, directions: directions), request: request, title: "Arco Solar — \(chart.name)")
+
+        case .astrocartography:
+            return try await renderAstrocartography(chart: chart, request: request)
 
         case .chartsList:
             throw AstroMalikCLIRunnerError.generic("Comando interno inválido.")
@@ -1023,7 +1046,7 @@ private extension AstroMalikCLIRunner {
 
     static func resolveCorpusDBURLIfNeeded(_ request: AstroMalikCLIRequest) throws -> URL? {
         switch request.command {
-        case .chartsList, .chartShow, .firdaria, .zodiacalReleasing, .progressions, .lunarReturn, .primaryDirections, .solarArc:
+        case .chartsList, .chartShow, .firdaria, .zodiacalReleasing, .progressions, .lunarReturn, .primaryDirections, .solarArc, .astrocartography:
             return nil
         default:
             return try resolveCorpusDBURL(request.corpusDBPath)
@@ -1215,4 +1238,79 @@ private func addMonths(_ months: Int, to date: Date) -> Date? {
     var calendar = Calendar(identifier: .gregorian)
     calendar.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
     return calendar.date(byAdding: .month, value: months, to: date)
+}
+
+// MARK: - Astrocartography (F6.4)
+
+private extension AstroMalikCLIRunner {
+    /// Deterministic and offline: no timestamps in the JSON, no network, no corpus.
+    /// The output is the same versioned `AstroExportDocument` used by the PDF and Joplin.
+    static func renderAstrocartography(chart: NatalChart, request: AstroMalikCLIRequest) async throws -> RenderedLocalOutput {
+        let hasCoordinates = request.latitude != nil || request.longitude != nil
+        if hasCoordinates && request.placeQuery != nil {
+            throw AstroMalikCLIRunnerError.generic("Usa --place o --lat/--lon, no ambos.")
+        }
+        guard let epheURL = AppResources.bundle.url(forResource: "sepl_18", withExtension: "se1", subdirectory: "ephe") else {
+            throw AstroMalikCLIRunnerError.io("No se encuentran las efemérides empaquetadas.")
+        }
+        let directory = epheURL.deletingLastPathComponent()
+        let input = AstroChartInput(chart)
+        let curves: AstrocartographyResult
+        do {
+            curves = try AstrocartographyEngine(ephemeris: SwissAstrocartographyEphemeris(ephemerisDirectory: directory.path))
+                .calculate(request: try input.request())
+        } catch {
+            throw AstroMalikCLIRunnerError.generic("No se pudo calcular la astrocartografía: \(error.localizedDescription)")
+        }
+
+        var policy = try AstroProximityPolicy()
+        if request.nearKm != nil || request.regionalKm != nil {
+            do { policy = try AstroProximityPolicy(nearKm: request.nearKm ?? policy.nearKm, regionalKm: request.regionalKm ?? policy.regionalKm) }
+            catch { throw AstroMalikCLIRunnerError.generic("Umbrales inválidos: cerca ≥ 0 km y regional mayor que cerca.") }
+        }
+
+        var place: AstroPlace?
+        var extraWarnings: [String] = []
+        if let query = request.placeQuery {
+            let result = try await AstroPlaceSearchService().search(query: query, online: false)
+            guard let first = result.places.first else {
+                throw AstroMalikCLIRunnerError.generic("Lugar no encontrado en el catálogo local: \(query). Usa --lat y --lon.")
+            }
+            place = first
+            if result.places.count > 1 {
+                extraWarnings.append("«\(query)» coincide con \(result.places.count) lugares del catálogo local; se usó el primero: \(first.name). Usa --lat y --lon para elegir otro.")
+            }
+        } else if hasCoordinates {
+            guard let lat = request.latitude, let lon = request.longitude else {
+                throw AstroMalikCLIRunnerError.generic("--lat y --lon deben indicarse juntos.")
+            }
+            do {
+                place = try AstroPlace(name: String(format: "%.4f, %.4f", lat, lon), coordinate: GeoCoordinate(latitude: lat, longitude: lon),
+                                       origin: .manual, timeZone: AstroDestinationTimeZone())
+            } catch { throw AstroMalikCLIRunnerError.generic("Coordenadas fuera de rango: latitud −90…90 y longitud −180…180.") }
+        }
+
+        var calculation: AstroLocationCalculation?
+        if let place {
+            var source: AstroRelocationSource?, sourceError: String?
+            do { source = try input.relocationSource(instant: curves.snapshot.request.instant) }
+            catch { sourceError = error.localizedDescription }
+            let calculator = AstroLocationCalculator(relocator: AstroRelocationEngine(ephemerisDirectory: directory.path))
+            do {
+                calculation = try calculator.calculate(AstroLocationCalculationRequest(
+                    curves: curves, source: source, sourceError: sourceError, destination: place.coordinate, timeZone: place.timeZone))
+            } catch { throw AstroMalikCLIRunnerError.generic("No se pudo analizar el lugar: \(error.localizedDescription)") }
+        }
+
+        let catalog = AstroReadingCatalog.bundled()
+        let document = try AstroExportDocumentBuilder.build(
+            chart: input.exportChart, curves: curves, place: place, calculation: calculation, policy: policy,
+            catalog: catalog, includeReadings: request.includeReadings, extraWarnings: extraWarnings)
+        let content: String
+        switch request.format {
+        case .json: content = try AstroExportDocumentBuilder.json(document)
+        case .markdown: content = AstroExportMarkdown.render(document)
+        }
+        return RenderedLocalOutput(content: content, title: AstroExportMarkdown.title(document), networkUsed: false, model: "local", estimatedCostUSD: 0)
+    }
 }

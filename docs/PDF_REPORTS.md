@@ -150,3 +150,7 @@ Ajustes (`SettingsView`) tiene una sección "Informes PDF" con:
 
 - **1.0**: 14 informes, infraestructura, integración UI, histórico.
 - **1.1+ posible**: embeber WOFF2 reales (EB Garamond, Inter, Astrodot), generar libro PDF maestro que combine varios informes en un solo entregable, exportación adicional a EPUB para lectores e-reader, modo bilingüe (es/en).
+
+## Astrocartografía (informe de lugar)
+
+Plantilla `astrocartography.html`, datos `AstrocartographyReportData` y builder `AstrocartographyReportBuilder`. Se genera desde la pestaña Lugar de Astrocartografía (botón «Exportar PDF») y reúne resumen, mapa de líneas, lecturas, carta relocada, distancias a las 40 líneas y método. Detalles, mapa base y fallback en [ASTROCARTOGRAFIA_EXPORTACION.md](ASTROCARTOGRAFIA_EXPORTACION.md).

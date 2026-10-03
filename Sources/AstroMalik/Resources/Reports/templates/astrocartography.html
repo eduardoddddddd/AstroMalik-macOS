@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{header.reportTitle}} — {{header.chartName}}</title>
+  <style>
+{{> _glyphs_css}}
+{{> _theme_css}}
+{{> _print_css}}
+.report-card { margin: 0 0 12pt; padding: 10pt 12pt; border: 0.5pt solid var(--neutral-rule); background: rgba(255,255,255,.24); break-inside: avoid; }
+.report-card h4 { margin: 0 0 2pt; font-size: 12.5pt; color: var(--primary); }
+.report-card .layer-title { font-family: var(--font-ui); font-size: 8.5pt; text-transform: uppercase; letter-spacing: .04em; color: var(--gold); margin: 6pt 0 1pt; }
+.report-card p { margin: 0 0 3pt; }
+.small-text { font-family: var(--font-ui); font-size: 9pt; color: var(--ink-soft); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+.map-figure { margin: 0; text-align: center; }
+.map-figure svg { width: 100%; max-width: 150mm; height: auto; }
+.legend { display: flex; flex-wrap: wrap; gap: 4pt 12pt; font-family: var(--font-ui); font-size: 8.5pt; margin: 6pt 0; justify-content: center; }
+.legend span.dot { display: inline-block; width: 8pt; height: 8pt; border-radius: 50%; margin-right: 3pt; vertical-align: middle; }
+.legend span.swatch { margin-right: 4pt; vertical-align: middle; }
+.warning { border-left: 3pt solid var(--malefic); padding: 4pt 8pt; margin: 4pt 0; font-family: var(--font-ui); font-size: 9pt; }
+table.compact td, table.compact th { font-size: 8.5pt; padding: 2pt 4pt; }
+  </style>
+</head>
+<body>
+  <header class="report-header" aria-label="Cabecera del informe">
+    <div class="report-header__title">{{header.reportTitle}}</div>
+    <div class="report-header__chart">{{header.chartName}}</div>
+  </header>
+  <main class="report-body">
+<section class="cover-page" aria-label="Portada">
+  <div class="cover-content"><div class="cover-kicker">Astrocartografía</div><h1 class="cover-title">{{header.reportTitle}}</h1><div class="cover-chart">{{chartName}} · {{placeName}}</div><div class="cover-meta"><div><strong>Carta:</strong> {{chartDetails}}</div><div><strong>Lugar:</strong> {{placeDetails}}</div><div><strong>Generación:</strong> {{generatedDate}}</div></div></div>
+</section>
+{{> _toc}}
+<section class="report-section">
+  <h2>Resumen</h2>
+  <p><strong>{{headline}}</strong></p>
+  {{#each themes}}<div class="report-card"><strong>{{label}}</strong> — {{value}}<p class="small-text">{{detail}}</p></div>{{/each}}
+  <p class="small-text">Los temas ordenan por cercanía de sus líneas; no puntúan ni predicen.</p>
+</section>
+<section class="report-section page-break">
+  <h2>Mapa de líneas</h2>
+  <figure class="map-figure">{{{mapSVG}}}<figcaption class="small-text">{{mapNote}}</figcaption></figure>
+  <div class="legend">{{#each legendBodies}}<span><span class="dot" style="background:{{swatch}}"></span>{{label}}</span>{{/each}}</div>
+  <div class="legend">{{#each legendAngles}}<span><span class="swatch">{{{swatch}}}</span>{{label}}</span>{{/each}}</div>
+</section>
+{{#if hasReadings}}
+<section class="report-section page-break">
+  <h2>Lecturas de las líneas cercanas</h2>
+  <p class="small-text">{{readingsNote}}</p>
+  {{#each readings}}<article class="report-card"><h4>{{title}}</h4><p class="small-text">{{meta}}</p><div class="layer-title">Qué suele activar</div><p>{{mechanism}}</p><div class="layer-title">Potencial</div><p>{{potential}}</p><div class="layer-title">Sombra</div><p>{{shadow}}</p><div class="layer-title">Cómo trabajarlo</div><p>{{practice}}</p></article>{{/each}}
+</section>
+{{/if}}
+{{#unless hasReadings}}
+<section class="report-section">
+  <h2>Lecturas</h2>
+  <p>{{readingsNote}}</p>
+</section>
+{{/unless}}
+<section class="report-section page-break">
+  <h2>Carta relocada</h2>
+  <p class="small-text">{{relocationNote}}</p>
+  {{#if hasRelocation}}
+  <div class="two-col"><div><h3>Ejes</h3>{{#each relocationAxes}}<div class="report-card"><strong>{{label}}</strong> — {{value}}<p class="small-text">{{detail}}</p></div>{{/each}}</div><div><h3>Cuerpos (longitud natal)</h3>{{#each relocationBodies}}<div class="report-card"><strong>{{label}}</strong> — {{value}}<p class="small-text">{{detail}}</p></div>{{/each}}</div></div>
+  <h3>Cúspides</h3>
+  <table class="compact"><thead><tr><th>Casa</th><th>Relocada</th><th>Natal</th></tr></thead><tbody>{{#each relocationCusps}}<tr><td>{{label}}</td><td>{{value}}</td><td>{{detail}}</td></tr>{{/each}}</tbody></table>
+  {{/if}}
+</section>
+<section class="report-section page-break">
+  <h2>Distancias a las 40 líneas</h2>
+  <p class="small-text">Distancia geográfica mínima a la curva completa, en km sobre esfera. * indica que la cota de error cruza un umbral de banda.</p>
+  <table class="compact"><thead><tr><th>Línea</th><th>Distancia</th><th>Cota</th><th>Banda</th><th>Punto más próximo</th></tr></thead><tbody>{{#each distances}}<tr><td>{{line}}</td><td>{{distance}}</td><td>{{error}}</td><td>{{band}}</td><td>{{nearest}}</td></tr>{{/each}}</tbody></table>
+</section>
+<section class="report-section page-break">
+  <h2>Método y límites</h2>
+  {{#each method}}<p>{{.}}</p>{{/each}}
+  {{#if hasWarnings}}<h3>Advertencias</h3>{{#each warnings}}<div class="warning">{{.}}</div>{{/each}}{{/if}}
+  <h3>Líneas de la carta</h3>
+  <table class="compact"><thead><tr><th>Línea</th><th>Asc. recta</th><th>Declinación</th><th>Flags Swiss</th><th>Con trazo</th></tr></thead><tbody>{{#each chartLines}}<tr><td>{{line}}</td><td>{{rightAscension}}</td><td>{{declination}}</td><td>{{flags}}</td><td>{{trace}}</td></tr>{{/each}}</tbody></table>
+  <p class="small-text">{{disclaimer}}</p>
+</section>
+  </main>
+  <footer class="report-footer" aria-label="Pie del informe">
+    <div class="report-footer__center">Generado por AstroMalik · {{generatedDate}}</div>
+    <div class="report-footer__page" aria-label="Número de página"></div>
+  </footer>
+</body>
+</html>

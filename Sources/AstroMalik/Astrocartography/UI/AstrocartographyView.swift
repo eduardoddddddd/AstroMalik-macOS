@@ -13,6 +13,9 @@ struct AstrocartographyView: View {
     @State private var showFilters = true
     @State private var panel: AstroPanelSection = .mapa
     @State private var showPanel = true
+    @State private var includeBaseMap = true
+    @State private var joplinBusy = false
+    @State private var joplinMessage: String?
     @State private var rankingTheme: AstroTheme = .career
     @AppStorage("astrocartography.guideSeen") private var guideSeen = false
     @State private var searchQuery = ""
@@ -81,11 +84,12 @@ struct AstrocartographyView: View {
         .onChange(of: model.angles) { _, _ in model.reconcileSelection() }
         .onChange(of: model.theme) { _, _ in model.reconcileSelection() }
         .onAppear { if !guideSeen { panel = .guia } }
-        .onChange(of: panel) { _, section in if section != .guia { guideSeen = true } }
+        .onChange(of: panel) { _, section in if section != .guia, !guideSeen { guideSeen = true } }
         .onChange(of: model.proximityPolicy) { _, value in
             nearThreshold = String(value.nearKm); regionalThreshold = String(value.regionalKm)
         }
         .onChange(of: model.selectedPlace) { _, value in
+            joplinMessage = nil
             if let value {
                 latitude = String(format: "%.6f", value.latitude)
                 longitude = String(format: "%.6f", value.longitude)
@@ -127,10 +131,11 @@ struct AstrocartographyView: View {
                 Button(showPanel ? "Ampliar mapa" : "Mostrar panel") { showPanel.toggle() }
                     .help("Oculta o muestra el panel lateral para ver el mapa más grande.")
             }
-            AstroMapView(lines: model.visibleLines, revision: presentation.revision,
+            AstroMapContainer(lines: model.visibleLines, revision: presentation.revision,
                 selectedLine: $model.selectedLine, selectedPlace: $model.selectedPlace,
                 emphasizedLines: model.emphasizedLines,
                 cameraCommand: cameraCommand, focusPlace: focusPlace, onMapError: { mapError = $0 })
+                .equatable()
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay(alignment: .topLeading) {
                     if model.visibleLines.isEmpty {
@@ -236,6 +241,7 @@ struct AstrocartographyView: View {
             if model.placeState == .ready, let summary = model.placeSummary {
                 AstroPlaceSummaryCard(summary: summary, activeTheme: model.theme,
                                       onSelectLine: { model.selectedLine = $0 }, onSelectTheme: { model.theme = $0 })
+                exportPanel
                 Divider()
             }
             placeSearch
@@ -263,6 +269,58 @@ struct AstrocartographyView: View {
             placeStatus
             if model.placeState == .ready, let calculation = model.placeCalculation { placeReadingPanel(calculation) }
             savedPlaceControls
+        }
+    }
+
+    /// Both exports are explicit actions on the place currently analysed; nothing is
+    /// generated, sent or saved until the user presses a button.
+    @ViewBuilder private var exportPanel: some View {
+        if model.placeState == .ready {
+            Divider()
+            Text("Exportar este lugar").font(.headline)
+            Text("Informe PDF con resumen, mapa, lecturas, carta relocada, distancias y método; o nota en Joplin con el mismo contenido. Solo se genera al pulsar.")
+                .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+            Toggle("Incluir mapa base de Apple (necesita conexión)", isOn: $includeBaseMap).toggleStyle(.checkbox)
+            Text("Sin conexión o si falla, el PDF se genera igual con las líneas sobre una cuadrícula y lo dice en la figura.")
+                .font(.caption2).foregroundStyle(.secondary)
+            HStack {
+                PDFExportButton(chartName: appState.activeNatalChart?.name ?? "Carta",
+                                reportType: "Astrocartografía — \(model.selectedPlaceName)") { size in
+                    try await makePDF(size: size)
+                }
+                Button { exportToJoplin() } label: {
+                    Label(joplinBusy ? "Creando…" : "Exportar a Joplin", systemImage: "square.and.pencil")
+                }
+                .buttonStyle(.bordered).disabled(joplinBusy)
+                .help("Crea una nota en el Web Clipper local de Joplin con etiquetas astrocartografía, astromalik y lugar.")
+            }
+            Text("Joplin recibe la nota solo en tu equipo (Web Clipper local, cuaderno «\(appState.joplinSettings.notebook)»).")
+                .font(.caption2).foregroundStyle(.secondary)
+            if let joplinMessage { Text(joplinMessage).font(.caption) }
+        }
+    }
+
+    private func makePDF(size: PDFPageSize) async throws -> Data {
+        let model = self.model, withBaseMap = includeBaseMap
+        guard let input = try await MainActor.run(body: { try model.makeReportInput() }) else {
+            throw PDFReportExportViewError.missingData("Espera a que termine el análisis del lugar antes de exportar.")
+        }
+        var provider: AstroBaseMapProvider?
+        if withBaseMap { provider = { await AstroBaseMapSnapshot.capture() } }
+        return try await AstrocartographyReportBuilder.generate(input: input, pageSize: size, baseMap: provider)
+    }
+
+    private func exportToJoplin() {
+        joplinBusy = true; joplinMessage = nil
+        let settings = appState.joplinSettings
+        Task {
+            do {
+                _ = try await model.exportToJoplin(settings: settings)
+                joplinMessage = "Nota creada en Joplin (cuaderno «\(settings.notebook)»)."
+            } catch {
+                joplinMessage = "No se pudo exportar a Joplin: \(error.localizedDescription)"
+            }
+            joplinBusy = false
         }
     }
 

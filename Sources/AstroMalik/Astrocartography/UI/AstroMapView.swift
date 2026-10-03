@@ -104,8 +104,27 @@ final class AstroMapRenderer: MKOverlayPathRenderer {
         }
         lineDashPattern = line.id.angle.dash.map { NSNumber(value: Double($0)) }
         lineCap = .round; lineJoin = .round
-        setNeedsDisplay()
     }
+}
+
+/// What a line's renderer was last styled with. SwiftUI calls `updateNSView` on
+/// every refresh of the parent (every tab switch, every keystroke); restyling 40
+/// overlays of ~19k vertices each time forced a full redraw and froze the UI.
+struct AstroOverlayStyleKey: Equatable {
+    let selected: Bool
+    let emphasized: Bool?
+}
+
+struct AstroMapStyleTracker {
+    private var applied: [AstroLineID: AstroOverlayStyleKey] = [:]
+
+    /// Lines whose style must be (re)applied. Lines no longer wanted are forgotten.
+    mutating func stale(desired: [AstroLineID: AstroOverlayStyleKey]) -> [AstroLineID] {
+        applied = applied.filter { desired[$0.key] != nil }
+        return desired.filter { applied[$0.key] != $0.value }.map(\.key).sorted { $0.stableKey < $1.stableKey }
+    }
+    mutating func record(_ id: AstroLineID, _ key: AstroOverlayStyleKey) { applied[id] = key }
+    mutating func reset() { applied.removeAll() }
 }
 
 struct AstroMapView: NSViewRepresentable {
@@ -147,12 +166,13 @@ struct AstroMapView: NSViewRepresentable {
         private(set) var overlays: [AstroLineID: AstroMapOverlay] = [:]
         private var revision: String?
         private var cameraCommand: UUID?
+        private var styles = AstroMapStyleTracker()
         private var pin: MKPointAnnotation?
         init(_ parent: AstroMapView) { self.parent = parent }
 
         func update(_ view: MKMapView) {
             if revision != parent.revision {
-                view.removeOverlays(Array(overlays.values)); overlays.removeAll()
+                view.removeOverlays(Array(overlays.values)); overlays.removeAll(); styles.reset()
                 revision = parent.revision
             }
             let wanted = Set(parent.lines.filter { !$0.segments.isEmpty }.map(\.id))
@@ -163,9 +183,16 @@ struct AstroMapView: NSViewRepresentable {
                 let overlay = AstroMapOverlay(line: line)
                 overlays[line.id] = overlay; view.addOverlay(overlay, level: .aboveLabels)
             }
-            for (id, overlay) in overlays {
-                (view.renderer(for: overlay) as? AstroMapRenderer)?.style(
-                    selected: id == parent.selectedLine, emphasized: parent.emphasizedLines.map { $0.contains(id) })
+            var desired: [AstroLineID: AstroOverlayStyleKey] = [:]
+            for id in overlays.keys {
+                desired[id] = AstroOverlayStyleKey(selected: id == parent.selectedLine,
+                                                   emphasized: parent.emphasizedLines.map { $0.contains(id) })
+            }
+            for id in styles.stale(desired: desired) {
+                guard let overlay = overlays[id], let key = desired[id],
+                      let renderer = view.renderer(for: overlay) as? AstroMapRenderer else { continue }
+                renderer.style(selected: key.selected, emphasized: key.emphasized)
+                styles.record(id, key)
             }
             if let place = parent.selectedPlace {
                 let annotation = pin ?? MKPointAnnotation()
@@ -185,8 +212,10 @@ struct AstroMapView: NSViewRepresentable {
         func mapView(_ mapView: MKMapView, rendererFor overlay: any MKOverlay) -> MKOverlayRenderer {
             let renderer = AstroMapRenderer(overlay: overlay)
             let id = (overlay as? AstroMapOverlay)?.line.id
-            renderer.style(selected: id == parent.selectedLine,
-                           emphasized: id.flatMap { id in parent.emphasizedLines.map { $0.contains(id) } })
+            let key = AstroOverlayStyleKey(selected: id == parent.selectedLine,
+                                           emphasized: id.flatMap { id in parent.emphasizedLines.map { $0.contains(id) } })
+            renderer.style(selected: key.selected, emphasized: key.emphasized)
+            if let id { styles.record(id, key) }
             return renderer
         }
         func mapViewDidFailLoadingMap(_ mapView: MKMapView, withError error: any Error) {
@@ -225,5 +254,35 @@ struct AstroMapView: NSViewRepresentable {
             let t = length == 0 ? 0 : min(1, max(0, ((p.x-a.x)*dx + (p.y-a.y)*dy) / length))
             return hypot(p.x - a.x - t * dx, p.y - a.y - t * dy)
         }
+    }
+}
+
+/// Wraps the map so SwiftUI skips it entirely when none of its real inputs changed
+/// (e.g. when only the side-panel tab or a text field changes). Geometry is
+/// identified by `revision` + the ids of the visible lines, never compared point
+/// by point. Bindings and callbacks are excluded from equality on purpose.
+struct AstroMapContainer: View, Equatable {
+    let lines: [AstroVisualLine]
+    let revision: String
+    let selectedLine: Binding<AstroLineID?>
+    let selectedPlace: Binding<GeoCoordinate?>
+    let emphasizedLines: Set<AstroLineID>?
+    let cameraCommand: UUID
+    let focusPlace: Bool
+    let onMapError: (String?) -> Void
+
+    static func == (a: AstroMapContainer, b: AstroMapContainer) -> Bool {
+        a.revision == b.revision
+            && a.lines.map(\.id) == b.lines.map(\.id)
+            && a.selectedLine.wrappedValue == b.selectedLine.wrappedValue
+            && a.selectedPlace.wrappedValue == b.selectedPlace.wrappedValue
+            && a.emphasizedLines == b.emphasizedLines
+            && a.cameraCommand == b.cameraCommand
+            && a.focusPlace == b.focusPlace
+    }
+
+    var body: some View {
+        AstroMapView(lines: lines, revision: revision, selectedLine: selectedLine, selectedPlace: selectedPlace,
+                     emphasizedLines: emphasizedLines, cameraCommand: cameraCommand, focusPlace: focusPlace, onMapError: onMapError)
     }
 }

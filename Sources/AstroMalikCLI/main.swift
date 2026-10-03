@@ -43,6 +43,7 @@ public enum CLICommandKind: Equatable {
     case lunarReturn
     case primaryDirections
     case solarArc
+    case astrocartography
 
     public var rawValue: String {
         switch self {
@@ -61,6 +62,7 @@ public enum CLICommandKind: Equatable {
         case .lunarReturn: return "lunar-return"
         case .primaryDirections: return "primary-directions"
         case .solarArc: return "solar-arc"
+        case .astrocartography: return "astrocartography"
         }
     }
 }
@@ -87,6 +89,12 @@ public struct CLIOptions: Equatable {
     public var verbose: Bool
     public var allowNetwork: Bool
     public var narrative: CLINarrative
+    public var placeQuery: String? = nil
+    public var latitude: Double? = nil
+    public var longitude: Double? = nil
+    public var nearKm: Double? = nil
+    public var regionalKm: Double? = nil
+    public var includeReadings: Bool = true
 }
 
 public enum CLICommand: Equatable {
@@ -109,6 +117,8 @@ public enum CLIParseError: LocalizedError, Equatable {
     case positionalArgument(String)
     case invalidCommand(String)
     case networkDenied(String)
+    case invalidNumber(String, String)
+    case invalidPlace(String)
 
     public var errorDescription: String? {
         switch self {
@@ -126,6 +136,8 @@ public enum CLIParseError: LocalizedError, Equatable {
         case .positionalArgument(let value): return "Argumento posicional no permitido: \(value)."
         case .invalidCommand(let value): return "Comando inválido: \(value)."
         case .networkDenied(let message): return message
+        case .invalidNumber(let flag, let value): return "Valor numérico inválido para \(flag): \(value)."
+        case .invalidPlace(let message): return message
         }
     }
 }
@@ -154,6 +166,12 @@ public enum AstroMalikCLIParser {
         var verbose = false
         var allowNetwork = false
         var narrative: CLINarrative = .none
+        var placeQuery: String?
+        var latitude: Double?
+        var longitude: Double?
+        var nearKm: Double?
+        var regionalKm: Double?
+        var includeReadings = true
 
         var index = 0
         while index < remaining.count {
@@ -208,6 +226,31 @@ public enum AstroMalikCLIParser {
                 userDBPath = try value(after: arg, in: remaining, index: &index)
             case "--corpus-db":
                 corpusDBPath = try value(after: arg, in: remaining, index: &index)
+            case "--place":
+                placeQuery = try value(after: arg, in: remaining, index: &index)
+            case "--lat":
+                let raw = try value(after: arg, in: remaining, index: &index)
+                guard let number = Double(raw.replacingOccurrences(of: ",", with: ".")), number.isFinite, (-90...90).contains(number) else {
+                    throw CLIParseError.invalidNumber(arg, raw)
+                }
+                latitude = number
+            case "--lon":
+                let raw = try value(after: arg, in: remaining, index: &index)
+                guard let number = Double(raw.replacingOccurrences(of: ",", with: ".")), number.isFinite, (-180...180).contains(number) else {
+                    throw CLIParseError.invalidNumber(arg, raw)
+                }
+                longitude = number
+            case "--near-km":
+                let raw = try value(after: arg, in: remaining, index: &index)
+                guard let number = Double(raw.replacingOccurrences(of: ",", with: ".")), number.isFinite, number >= 0 else { throw CLIParseError.invalidNumber(arg, raw) }
+                nearKm = number
+            case "--regional-km":
+                let raw = try value(after: arg, in: remaining, index: &index)
+                guard let number = Double(raw.replacingOccurrences(of: ",", with: ".")), number.isFinite, number > 0 else { throw CLIParseError.invalidNumber(arg, raw) }
+                regionalKm = number
+            case "--no-readings":
+                includeReadings = false
+                index += 1
             case "--narrative", "--llm":
                 let raw = try value(after: arg, in: remaining, index: &index)
                 guard let parsed = CLINarrative(rawValue: raw) else { throw CLIParseError.invalidNarrative(raw) }
@@ -220,6 +263,15 @@ public enum AstroMalikCLIParser {
 
         if command.requiresChart {
             guard let chartQuery, !chartQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw CLIParseError.missingChart }
+        }
+        if command == .astrocartography {
+            if (latitude == nil) != (longitude == nil) { throw CLIParseError.invalidPlace("--lat y --lon deben indicarse juntos.") }
+            if latitude != nil && placeQuery != nil { throw CLIParseError.invalidPlace("Usa --place o --lat/--lon, no ambos.") }
+            if (nearKm ?? 0) >= (regionalKm ?? Double.infinity) || (nearKm == nil && regionalKm.map { $0 <= 100 } == true) {
+                throw CLIParseError.invalidPlace("Umbrales inválidos: --regional-km debe ser mayor que --near-km (por defecto 100).")
+            }
+        } else if placeQuery != nil || latitude != nil || longitude != nil || nearKm != nil || regionalKm != nil {
+            throw CLIParseError.invalidPlace("--place, --lat, --lon, --near-km y --regional-km solo se aplican a astrocartography.")
         }
         if command == .transits && (fromDate == nil || toDate == nil) {
             throw CLIParseError.missingRange("transits: usa --from YYYY-MM-DD --to YYYY-MM-DD")
@@ -253,7 +305,13 @@ public enum AstroMalikCLIParser {
             corpusDBPath: corpusDBPath,
             verbose: verbose,
             allowNetwork: allowNetwork,
-            narrative: narrative
+            narrative: narrative,
+            placeQuery: placeQuery,
+            latitude: latitude,
+            longitude: longitude,
+            nearKm: nearKm,
+            regionalKm: regionalKm,
+            includeReadings: includeReadings
         ))
     }
 
@@ -276,6 +334,7 @@ public enum AstroMalikCLIParser {
         let valueFlags: Set<String> = [
             "--chart", "--date", "--from", "--to", "--month", "--scope", "--model",
             "--format", "--output", "--notebook", "--user-db", "--corpus-db", "--narrative", "--llm",
+            "--place", "--lat", "--lon", "--near-km", "--regional-km",
         ]
 
         var index = 0
@@ -318,6 +377,7 @@ public enum AstroMalikCLIParser {
             case "lunar-return": arguments.remove(at: index); return .lunarReturn
             case "primary-directions": arguments.remove(at: index); return .primaryDirections
             case "solar-arc": arguments.remove(at: index); return .solarArc
+            case "astrocartography": arguments.remove(at: index); return .astrocartography
             default: throw CLIParseError.invalidCommand(token)
             }
         }
@@ -399,6 +459,12 @@ private func printHelp() {
     Técnicas adicionales:
       profections | firdaria | zodiacal-releasing | progressions | solar-return | lunar-return | primary-directions | solar-arc
 
+    Astrocartografía (local, sin red, salida determinista y sin fecha de generación):
+      astromalik-cli astrocartography --chart <nombre|UUID> [--place <ciudad> | --lat <grados> --lon <grados>]
+                                      [--near-km N] [--regional-km N] [--no-readings] [--format json|markdown]
+      Sin lugar: las 40 líneas de la carta. Con lugar: distancias, resumen, carta relocada y lecturas.
+      --place busca en el catálogo local (sin red). JSON con schemaVersion y kind "astromalik.astrocartography".
+
     Flags globales:
       --format <json|markdown>                Default: json.
       --output <stdout|file:/ruta|joplin:Cuaderno>  Default: stdout.
@@ -439,7 +505,13 @@ private func map(_ options: CLIOptions) -> AstroMalikCLIRequest {
         corpusDBPath: options.corpusDBPath,
         verbose: options.verbose,
         allowNetwork: options.allowNetwork,
-        narrative: AstroMalikCLINarrative(rawValue: options.narrative.rawValue) ?? .none
+        narrative: AstroMalikCLINarrative(rawValue: options.narrative.rawValue) ?? .none,
+        placeQuery: options.placeQuery,
+        latitude: options.latitude,
+        longitude: options.longitude,
+        nearKm: options.nearKm,
+        regionalKm: options.regionalKm,
+        includeReadings: options.includeReadings
     )
 }
 
@@ -460,6 +532,7 @@ private func map(_ command: CLICommandKind) -> AstroMalikCLICommandKind {
     case .lunarReturn: return .lunarReturn
     case .primaryDirections: return .primaryDirections
     case .solarArc: return .solarArc
+    case .astrocartography: return .astrocartography
     }
 }
 

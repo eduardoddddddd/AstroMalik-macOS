@@ -8,6 +8,8 @@ struct AstroChartInput: Equatable, Sendable {
     let time: String
     let timezone: String
     let fingerprint: String
+    let name: String
+    let placeName: String
     let houseSystem: String
     let natalBodies: [AstroNatalBody]
     let natalCusps: [Double]
@@ -17,9 +19,15 @@ struct AstroChartInput: Equatable, Sendable {
     init(_ chart: NatalChart) {
         id = chart.id; date = chart.birthDate; time = chart.birthTime; timezone = chart.timezone
         fingerprint = (try? AstroNatalFingerprint.make(chart)) ?? ""
+        name = chart.name; placeName = chart.placeName
         houseSystem = chart.houseSystem
         natalBodies = chart.bodies.compactMap { p in AstroBody(rawValue: p.key).map { AstroNatalBody(body: $0, longitudeDegrees: p.longitude) } }
         natalCusps = chart.cusps; natalAsc = chart.ascendant.longitude; natalMC = chart.mc.longitude
+    }
+    var exportChart: AstroExportDocument.Chart {
+        AstroExportDocument.Chart(id: id, name: name, birthDate: date, birthTime: time, timezone: timezone, placeName: placeName,
+                                  houseSystem: houseSystem, natalAscendantDegrees: natalAsc, natalMCDegrees: natalMC,
+                                  natalCuspsDegrees: natalCusps)
     }
     func relocationSource(instant: AstroNatalInstant) throws -> AstroRelocationSource {
         try AstroRelocationSource(natalChartID: id, instant: instant, houseSystem: houseSystem, bodies: natalBodies)
@@ -112,6 +120,29 @@ final class AstrocartographyViewModel: ObservableObject {
         return AstroPlaceReadingBuilder.build(analysis: analysis, policy: proximityPolicy, catalog: readingCatalog,
                                               bodies: bodies, angles: angles, theme: theme, onlyVisible: onlyVisible,
                                               includeDistant: includeDistant)
+    }
+
+    /// Document of the place currently analysed; nil until its analysis is ready.
+    func makeExportDocument(includeReadings: Bool = true) throws -> AstroExportDocument? {
+        guard placeState == .ready, let input = loadedInput, let curves = presentation?.result,
+              let place = selectedDestination, let calculation = placeCalculation else { return nil }
+        return try AstroExportDocumentBuilder.build(chart: input.exportChart, curves: curves, place: place, calculation: calculation,
+                                                    policy: proximityPolicy, catalog: readingCatalog, includeReadings: includeReadings)
+    }
+
+    func makeReportInput() throws -> AstrocartographyReportInput? {
+        guard let document = try makeExportDocument(), let curves = presentation?.result else { return nil }
+        return AstrocartographyReportInput(document: document, curves: curves, placeCoordinate: selectedPlace)
+    }
+
+    /// Explicit user action only. Sends the note to the local Joplin Web Clipper and
+    /// returns the note id; never called automatically.
+    func exportToJoplin(settings: JoplinClipperSettings, client: JoplinHTTPClient = URLSession.shared) async throws -> String {
+        guard let document = try makeExportDocument() else {
+            throw AstrocartographyError.invalidValue("exportNeedsAnalysedPlace")
+        }
+        return try await JoplinClipperService(settings: settings, client: client).createNoteReturningID(
+            title: AstroExportMarkdown.title(document), body: AstroExportMarkdown.render(document), tags: AstroExportMarkdown.tags(document))
     }
 
     func placeReadings(for comparison: AstroPlaceComparison) -> AstroPlaceReadingSet {

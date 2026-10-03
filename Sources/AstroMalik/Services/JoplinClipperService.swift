@@ -42,6 +42,56 @@ final class JoplinClipperService {
         )
     }
 
+    /// Creates the note and attaches the tags (created if missing). Returns the note
+    /// id. Tag failures after the note exists are reported, never silently dropped.
+    @discardableResult
+    func createNoteReturningID(title: String, body: String, tags: [String]) async throws -> String {
+        let notebookID = try await findOrCreateNotebook()
+        let note = try await request(
+            path: "/notes",
+            method: "POST",
+            body: NotePayload(title: title, body: body, parentID: notebookID),
+            responseType: JoplinNote.self
+        )
+        var seen = Set<String>()
+        for tag in tags.map({ $0.trimmingCharacters(in: .whitespacesAndNewlines) }) where !tag.isEmpty {
+            guard seen.insert(tag.lowercased()).inserted else { continue }
+            let tagID = try await findOrCreateTag(tag)
+            _ = try await request(
+                path: "/tags/\(tagID)/notes",
+                method: "POST",
+                body: TagNotePayload(id: note.id),
+                responseType: JoplinIgnoredResponse.self
+            )
+        }
+        return note.id
+    }
+
+    private func findOrCreateTag(_ title: String) async throws -> String {
+        var page = 1
+        while true {
+            let response = try await request(
+                path: "/tags",
+                method: "GET",
+                page: page,
+                body: EmptyPayload?.none,
+                responseType: JoplinList<JoplinTag>.self
+            )
+            if let tag = response.items.first(where: { $0.title.caseInsensitiveCompare(title) == .orderedSame }) {
+                return tag.id
+            }
+            guard response.hasMore else { break }
+            page += 1
+        }
+        let created = try await request(
+            path: "/tags",
+            method: "POST",
+            body: FolderPayload(title: title),
+            responseType: JoplinTag.self
+        )
+        return created.id
+    }
+
     func createNoteWithPDFResource(title: String, body: String, fileURL: URL) async throws {
         let notebookID = try await findOrCreateNotebook()
         let resource = try await uploadResource(fileURL: fileURL)
@@ -273,6 +323,17 @@ private struct JoplinFolder: Decodable {
 }
 
 private struct JoplinNote: Decodable {
+    let id: String
+}
+
+private struct JoplinTag: Decodable {
+    let id: String
+    let title: String
+}
+
+private struct JoplinIgnoredResponse: Decodable {}
+
+private struct TagNotePayload: Encodable {
     let id: String
 }
 

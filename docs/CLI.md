@@ -48,6 +48,18 @@ astromalik-cli primary-directions --chart "Edu" --date 2026-06-13
 astromalik-cli solar-arc --chart "Edu" --date 2026-06-13
 ```
 
+## Astrocartografía
+
+```bash
+astromalik-cli astrocartography --chart "Edu"                                  # las 40 líneas de la carta
+astromalik-cli astrocartography --chart "Edu" --place "Madrid"                 # catálogo local, sin red
+astromalik-cli astrocartography --chart "Edu" --lat 40.4168 --lon -3.7038 --format markdown
+astromalik-cli astrocartography --chart "Edu" --place "Madrid" --near-km 50 --regional-km 400 --no-readings
+```
+
+Local, sin red y **determinista**: sin fecha de generación, la misma entrada produce la misma salida byte a byte. No usa `corpus.db`.
+`--place` y `--lat/--lon` son excluyentes; `--place` toma la primera coincidencia del catálogo local y lo advierte si hay varias. Los umbrales por defecto son 100/300 km. Con lugar incluye distancias a las 40 líneas, resumen por temas, carta relocada (o su error explícito) y las lecturas de las líneas cercanas. JSON con `schemaVersion: 1` y `kind: "astromalik.astrocartography"`; el esquema está en [ASTROCARTOGRAFIA_EXPORTACION.md](ASTROCARTOGRAFIA_EXPORTACION.md).
+
 ## Flags globales
 
 | Flag | Default | Descripción |

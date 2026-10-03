@@ -68,11 +68,11 @@ Plan y criterios completos: [ASTROCARTOGRAFIA_PLAN_MULTILLM.md](ASTROCARTOGRAFIA
 
 ### Fase 6 — exportaciones
 
-- [ ] **F6.1** Datos, builder y plantilla PDF.
-- [ ] **F6.2** Imagen del mapa y fallback.
-- [ ] **F6.3** Exportación voluntaria a Joplin.
-- [ ] **F6.4** CLI y JSON versionado.
-- [ ] **G6** Exportaciones aceptadas.
+- [x] **F6.1** Datos, builder y plantilla PDF (`AstroExportDocument`, `AstrocartographyReportData/Builder`, `astrocartography.html`).
+- [x] **F6.2** Imagen del mapa y fallback (SVG determinista; mapa base de Apple opcional en cuatro cuadrantes verificados; cuadrícula si falla).
+- [x] **F6.3** Exportación voluntaria a Joplin (nota Markdown, etiquetas, cuaderno `codex` por defecto).
+- [x] **F6.4** CLI y JSON versionado (`astromalik-cli astrocartography`, `schemaVersion: 1`).
+- [x] **G6** Exportaciones aceptadas **localmente por pruebas y revisión visual de imágenes**; pendiente de que el usuario las pruebe en la app (PDF, Joplin real).
 
 ### Fase 7 — entrega
 
@@ -464,3 +464,35 @@ Petición del usuario tras ver el paso 1 («está muy bien»): añadir resumen l
 - **Mapa**: casilla «Resaltar cercanas» (con lugar analizado, destaca las líneas a ≤ umbral regional y atenúa el resto cambiando solo grosor y opacidad, nunca el trazo, para no depender del color); sin líneas cercanas no se atenúa nada. Botón «Ampliar mapa» oculta el panel lateral.
 - **Validación**: 7 tests nuevos (`AstroThemeSummaryTests`): conteos por tema y que ninguna de las 40 líneas quede huérfana, resumen global/ordenado/singular/vacío, ranking con empates, y flujo real con Madrid (filtro por tema, emphasis, resumen invariante, lugares rankeables). Suite completa **499 / 1 omitido / 0 fallos**; guard Swiss y `git diff --check` OK. Las vistas nuevas (guía, resumen, ranking, barra) se renderizaron a imagen con `ImageRenderer` en un test temporal ya eliminado y se revisaron; los controles nativos aparecen allí como marcador, no son un fallo. Corregido un «1 líneas» gramatical detectado así.
 - **Límites**: el mapa con resaltado, la ampliación del panel y el salto automático de pestañas no se han visto en la app real (MapKit no se renderiza en el test); pendiente de que el usuario la abra. Ranking sobre un máximo de 6 comparaciones más los guardados válidos.
+
+### Cierre F6 — 02/10/2026
+
+Orden del usuario: arrancar la fase 6. Árbol de partida limpio sobre `a9c3942` (ya en `origin/main`). **Sin commit/push de F6.** Corpus, C vendorizado, contratos v1 y persistencia de lugares sin cambios. Documentación: [ASTROCARTOGRAFIA_EXPORTACION.md](ASTROCARTOGRAFIA_EXPORTACION.md); actualizados `CLI.md` y `PDF_REPORTS.md`.
+
+**Un solo modelo.** `Export/AstroExportDocument.swift` (versionado, determinista, sin marca de tiempo) alimenta PDF, Markdown de Joplin y JSON de la CLI. Conserva flags devueltos, procedencia, diagnósticos, cotas y la relocación o su error; los textos ausentes se declaran, nunca se inventan.
+
+**F6.2, hallazgo importante.** Una sola petición de `MKMapSnapshotter` con `MKMapRect.world` no devuelve el mundo entero (medido: ±90° de longitud al doble de escala), así que las líneas se habrían dibujado desalineadas sobre el mapa base. Se descubrió porque un marcador de prueba cayó en el océano. Solución: cuatro cuadrantes colocados con el propio `Snapshot.point(for:)`, escala verificada por cuadrante (si falla, se descarta el mapa base). Alineación comprobada con ocho ciudades y sin costura. Atribución impresa junto a la figura; sin conexión o tras 20 s, cuadrícula con aviso explícito.
+
+**F6.3.** `JoplinClipperService.createNoteReturningID(title:body:tags:)` (busca o crea cada etiqueta sin duplicar) y botón «Exportar a Joplin» en Lugar; nada se envía sin pulsarlo. Servicio existente intacto.
+
+**F6.4.** Comando `astrocartography` con `--place` (catálogo local) o `--lat/--lon`, `--near-km`, `--regional-km`, `--no-readings`, `--format`. Smoke con el binario release contra una `user.db` temporal: Markdown correcto y SHA-256 idéntico en dos ejecuciones.
+
+**UI.** Bloque «Exportar este lugar» en la pestaña Lugar: PDF (botón común), casilla de mapa base de Apple y Joplin, con el cuaderno destino a la vista. `AstroChartInput` incorpora nombre y lugar de nacimiento.
+
+**Pruebas.** 14 nuevas (499 → 513): 10 de documento, Markdown, SVG, datos/plantilla y Joplin (`AstrocartographyExportTests`), 1 PDF real offline con fallback explícito (`Reports`), y 3 de la CLI (`AstroMalikCLITests`: parser, JSON determinista/completo, rechazos). Suite completa **513 / 1 omitido / 0 fallos**; guard Swiss OK. PDF real generado con el motor Swiss y el mapa base y revisado como imagen (portada, resumen, mapa con líneas, leyendas). Paquete y firma OK, binario **23:40:11 CEST**, plantilla dentro del bundle.
+
+**Límites honestos.** (1) No probado contra un Joplin real: solo contra un cliente simulado. (2) PDF no visto en un lector externo ni impreso. (3) El mapa base necesita red; la verificación visual se hizo con red disponible y el camino sin red solo con pruebas. (4) Exporta un lugar por vez; no hay informe comparativo. (5) La app abierta sigue siendo el proceso anterior: hay que reiniciarla para ver el bloque de exportación.
+
+| Fecha | Paquetes | Evidencia / salida | Siguiente |
+|---|---|---|---|
+| 02/10/2026 | F6.1–F6.4 / G6 local | Documento único, PDF con mapa, Joplin con etiquetas, CLI determinista. 513 tests / 1 omitido / 0 fallos; PDF y alineación revisados como imagen; binario 23:40:11 CEST. Sin commit | Probar PDF y Joplin reales; commit; F7 |
+
+### Incidencia abierta: lentitud al cambiar de pestaña — 03/10/2026
+
+El usuario reporta que el cambio entre pestañas del panel (Guía, Mapa, Lugar…) es muy lento y que a veces hay que pulsar varias veces. **No está diagnosticado ni resuelto.**
+
+- Medido: la app en reposo no gasta CPU; el cálculo por refresco es despreciable (<0,2 ms) y renderizar el contenido de cada pestaña cuesta 3–13 ms. No se encontró el cuello de botella por ahí.
+- Hipótesis aplicada sin confirmar: el mapa reaplicaba el estilo a sus 40 overlays (~18.700 vértices) en cada refresco. Corregido con `AstroMapStyleTracker` (solo restila lo que cambia) y `AstroMapContainer` (equatable, no reevalúa el mapa si sus datos no cambian), más una escritura de ajustes innecesaria eliminada. Con tests, pero **sin verificar en la app real**; el usuario sigue viendo lentitud.
+- Dos grabaciones con `sample` del proceso real (60 s y ~94 s) salieron con el hilo principal 100 % ocioso: no coincidieron con pulsaciones, así que no hay traza del atasco.
+- Dato a descartar: consultas de accesibilidad a esta app tardan ~60–130 ms cada una (enumerar 191 elementos tardó 11–26 s). Si hay un cliente de accesibilidad conectado, cada cambio de pantalla podría disparar un recorrido pesado del árbol (MKMapView + SwiftUI).
+- Siguiente paso propuesto: grabación coordinada (el usuario avisa y pulsa durante `sample`) o un vigilante en la app que guarde una traza cuando el hilo principal tarde >300 ms.
