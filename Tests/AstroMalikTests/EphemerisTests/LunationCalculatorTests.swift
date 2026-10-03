@@ -1,6 +1,10 @@
 import XCTest
 import CSwissEph
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class LunationCalculatorTests: XCTestCase {
 

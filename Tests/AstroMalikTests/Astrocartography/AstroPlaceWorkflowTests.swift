@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class AstroPlaceWorkflowTests: XCTestCase {
     func testOfflineAccentSearchDoesNotRequireNetworkAndUnknownZoneIsUTC() async throws {
@@ -57,6 +61,7 @@ final class AstroPlaceWorkflowTests: XCTestCase {
         XCTAssertFalse(calculation.analysis.proximities.isEmpty)
         XCTAssertNil(calculation.relocation); XCTAssertEqual(calculation.relocationError, "polar test")
     }
+    #if canImport(SwiftUI)
     @MainActor
     func testViewModelRealOfflineSelectionRelocationComparisonAndNatalEdits() async throws {
         let chart = try natal()
@@ -84,6 +89,8 @@ final class AstroPlaceWorkflowTests: XCTestCase {
         XCTAssertNil(model.placeCalculation); XCTAssertTrue(model.comparisons.isEmpty); XCTAssertNil(model.selectedPlace)
         model.cancel(); XCTAssertEqual(model.placeState, .empty)
     }
+    #endif
+    #if canImport(SwiftUI)
     @MainActor
     func testViewModelOldLocationCannotPublishAndSearchLatestWins() async throws {
         let entered = expectation(description: "old location"), release = DispatchSemaphore(value: 0)
@@ -106,6 +113,7 @@ final class AstroPlaceWorkflowTests: XCTestCase {
         await model.search(query: "new", online: false); await gate.resume(); await oldSearch.value
         XCTAssertEqual(model.searchResults.first?.name, "new")
     }
+    #endif
     func testFingerprintIncludesChartFieldsAndHouseSystem() throws {
         let chart = try natal(); let base = try AstroNatalFingerprint.make(chart)
         var changed = chart; changed.name = "renamed"; XCTAssertNotEqual(base, try AstroNatalFingerprint.make(changed))

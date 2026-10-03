@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class PrimaryDirectionFoundryClientTests: XCTestCase {
     func testDecodeCompletionOutputAcceptsCleanJSON() throws {
@@ -47,7 +51,7 @@ final class PrimaryDirectionFoundryClientTests: XCTestCase {
 
     func testCompleteThrowsWhenScriptIsMissing() async throws {
         let client = PrimaryDirectionFoundryClient(
-            pythonPath: "/bin/sh",
+            pythonPath: Self.shellPath,
             scriptPath: "/definitely/missing/foundry_primary_direction_once.py"
         )
 
@@ -66,6 +70,9 @@ final class PrimaryDirectionFoundryClientTests: XCTestCase {
     }
 
     func testCompleteTimesOut() async throws {
+        #if os(Windows)
+        throw XCTSkip("POSIX /bin/sh sleep harness; Windows process integration belongs to F5.")
+        #else
         let tempURL = URL(fileURLWithPath: NSTemporaryDirectory())
             .appendingPathComponent("pd-foundry-timeout-\(UUID().uuidString).sh")
         let script = "#!/bin/sh\nsleep 1\n"
@@ -74,7 +81,7 @@ final class PrimaryDirectionFoundryClientTests: XCTestCase {
         defer { try? FileManager.default.removeItem(at: tempURL) }
 
         let client = PrimaryDirectionFoundryClient(
-            pythonPath: "/bin/sh",
+            pythonPath: Self.shellPath,
             scriptPath: tempURL.path,
             timeoutNanoseconds: 50_000_000
         )
@@ -91,6 +98,15 @@ final class PrimaryDirectionFoundryClientTests: XCTestCase {
         } catch PrimaryDirectionFoundryError.timeout {
             // Correcto
         }
+        #endif
+    }
+
+    private static var shellPath: String {
+        #if os(Windows)
+        return (ProcessInfo.processInfo.environment["SystemRoot"] ?? "C:\\Windows") + "\\System32\\cmd.exe"
+        #else
+        return "/bin/sh"
+        #endif
     }
 
     private static let sampleJSON = """

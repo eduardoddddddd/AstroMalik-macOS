@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 /// Validates the reference artifact itself. Production roots are checked in MundaneAngleAnalyticTests.
 final class AstrocartographyAnalyticFixtureTests: XCTestCase {

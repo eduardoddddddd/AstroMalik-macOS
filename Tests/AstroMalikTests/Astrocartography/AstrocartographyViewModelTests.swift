@@ -1,8 +1,13 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 @MainActor
 final class AstrocartographyViewModelTests: XCTestCase {
+    #if canImport(SwiftUI)
     func testEmptyReadyFiltersEditsErrorsAndCancel() async throws {
         let service = try AstrocartographyCalculationService(calculator: UIAstroCalculator(), ephemerisRevision: "test")
         let model = AstrocartographyViewModel(factory: { service })
@@ -29,7 +34,9 @@ final class AstrocartographyViewModelTests: XCTestCase {
         model.cancel(); XCTAssertEqual(model.state, .cancelled)
         await model.load(nil); XCTAssertEqual(model.state, .empty)
     }
+    #endif
 
+    #if canImport(SwiftUI)
     func testRapidLatestWinsAndExplicitCancellation() async throws {
         let entered = expectation(description: "old calculation entered")
         let release = DispatchSemaphore(value: 0)
@@ -51,7 +58,9 @@ final class AstrocartographyViewModelTests: XCTestCase {
         XCTAssertEqual(model.presentation?.result.snapshot.request.instant.julianDay, 2451565)
         XCTAssertEqual(model.visibleLines.count, 40)
     }
+    #endif
 
+    #if canImport(SwiftUI)
     func testCancelledCallerAndNilChartDoNotPublishOldResult() async throws {
         let entered = expectation(description: "entered")
         let release = DispatchSemaphore(value: 0)
@@ -65,7 +74,9 @@ final class AstrocartographyViewModelTests: XCTestCase {
         release.signal(); await task.value
         XCTAssertEqual(model.state, .empty); XCTAssertNil(model.presentation)
     }
+    #endif
 
+    #if canImport(SwiftUI)
     func testRevisionUsesFileContentAndRealBundledService() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
@@ -83,8 +94,9 @@ final class AstrocartographyViewModelTests: XCTestCase {
         XCTAssertEqual(model.presentation?.result.snapshot.provenance.source, .swissEphemeris)
         XCTAssertEqual(model.presentation?.result.snapshot.request.geometryToleranceKm, 0.9)
     }
+    #endif
 
-    func testNavigationIdentitiesAreUniqueAndRouteIsolated() {
+    func testNavigationIdentitiesAreUniqueAndRouteIsolated() async {
         XCTAssertEqual(NavItem.astrocartografia.label, "Astrocartografía")
         XCTAssertEqual(DetailRoute.astrocartography.viewIdentity, "astrocartography")
         XCTAssertEqual(Set(NavItem.allCases.map(\.id)).count, NavItem.allCases.count)

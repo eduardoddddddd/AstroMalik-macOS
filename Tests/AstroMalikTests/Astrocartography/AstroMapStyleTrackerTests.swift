@@ -1,6 +1,10 @@
 import XCTest
 import SwiftUI
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class AstroMapStyleTrackerTests: XCTestCase {
     private let sun = AstroLineID(body: .sun, angle: .mc)

@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class AstrocartographyReadingTests: XCTestCase {
     // MARK: Resource and editorial policy (F5.1/F5.2)
@@ -161,6 +165,7 @@ final class AstrocartographyReadingTests: XCTestCase {
         }
     }
 
+    #if canImport(SwiftUI)
     @MainActor
     func testViewModelRealOfflinePlaceReadingsFiltersAndSelectedLine() async throws {
         let model = AstrocartographyViewModel()
@@ -191,6 +196,7 @@ final class AstrocartographyReadingTests: XCTestCase {
         degraded.selectedLine = AstroLineID(body: .sun, angle: .mc)
         guard case .missing? = degraded.selectedLineReading else { return XCTFail("fallback expected") }
     }
+    #endif
 
     // MARK: Helpers
 

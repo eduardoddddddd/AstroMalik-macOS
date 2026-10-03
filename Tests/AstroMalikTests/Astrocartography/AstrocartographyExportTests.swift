@@ -1,5 +1,12 @@
 import XCTest
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class AstrocartographyExportTests: XCTestCase {
     // MARK: Document (F6.1/F6.4 shared model)
@@ -129,7 +136,7 @@ final class AstrocartographyExportTests: XCTestCase {
         let failed = AstrocartographyReportBuilder.makeData(input: input, baseMap: .unavailable("sin conexión."), generatedAt: date)
         XCTAssertTrue(failed.mapNote.contains("Sin mapa base: sin conexión.")); XCTAssertTrue(failed.mapNote.contains("cuadrícula"))
         let ok = AstrocartographyReportBuilder.makeData(input: input, baseMap: AstroBaseMapResult(dataURI: "data:image/png;base64,AAAA", failure: nil), generatedAt: date)
-        XCTAssertTrue(ok.mapNote.contains("Apple Maps")); XCTAssertTrue(ok.mapSVG.contains("<image"))
+        XCTAssertTrue(ok.mapNote.contains(AstroBaseMapSnapshot.attribution)); XCTAssertTrue(ok.mapSVG.contains("<image"))
         XCTAssertEqual(none.distances.count, 40); XCTAssertEqual(none.chartLines.count, 40)
         XCTAssertEqual(none.readings.count, try XCTUnwrap(document.place).readings.count)
         XCTAssertEqual(none.hasReadings, !none.readings.isEmpty)
@@ -187,6 +194,7 @@ final class AstrocartographyExportTests: XCTestCase {
         XCTAssertEqual(attach["id"] as? String, "note-1")
     }
 
+    #if canImport(SwiftUI)
     @MainActor
     func testViewModelJoplinExportNeedsAnAnalysedPlaceAndSendsTheDocumentMarkdown() async throws {
         let model = AstrocartographyViewModel()
@@ -214,6 +222,7 @@ final class AstrocartographyExportTests: XCTestCase {
         let input = try XCTUnwrap(try model.makeReportInput())
         XCTAssertEqual(input.document, document)
     }
+    #endif
 
     // MARK: Helpers
 

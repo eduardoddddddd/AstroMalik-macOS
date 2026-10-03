@@ -1,8 +1,15 @@
 import XCTest
+#if canImport(MapKit)
 import MapKit
+#endif
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class AstroMercatorGeometryTests: XCTestCase {
+    #if canImport(MapKit)
     func testWholeProjectedEdgesUsingMapKitInverse() throws {
         var maximum = 0.0, edges = 0
         for declination in [-89.999, -45, -23.4, -0.000001, 0, 0.000001, 23.4, 45, 89.999] {
@@ -38,6 +45,7 @@ final class AstroMercatorGeometryTests: XCTestCase {
         }
         print("F3 Mercator vs geographic: \(edges) edges × 33 samples, maximum=\(maximum) km (budget0.1)")
     }
+    #endif
 
     func testInclusiveSeamAndUnclippedCore() throws {
         let points = try [GeoCoordinate(latitude: -90, longitude: 179), GeoCoordinate(latitude: 0, longitude: -179),
@@ -49,8 +57,10 @@ final class AstroMercatorGeometryTests: XCTestCase {
         let vertices = prepared.segments.flatMap(\.coordinates)
         XCTAssertTrue(vertices.contains { $0.longitude == 180 })
         XCTAssertTrue(vertices.contains { $0.longitude == -180 })
+        #if canImport(MapKit)
         XCTAssertEqual(AstroMapOverlay.point(AstroVisualCoordinate(latitude: 0, longitude: 180)).x, MKMapSize.world.width)
         XCTAssertEqual(AstroMapOverlay.point(AstroVisualCoordinate(latitude: 0, longitude: -180)).x, 0)
+        #endif
         XCTAssertTrue(vertices.allSatisfy { abs($0.latitude) <= AstroMercatorGeometry.latitudeLimit })
     }
 
@@ -62,7 +72,8 @@ final class AstroMercatorGeometryTests: XCTestCase {
         }
     }
 
-    @MainActor func testMapSpikeIdentityFilteringZoomSelectionAndExplicitPath() throws {
+    #if canImport(MapKit)
+    @MainActor func testMapSpikeIdentityFilteringZoomSelectionAndExplicitPath() async throws {
         _ = NSApplication.shared
         let lines = AstroBody.allCases.flatMap { body in AstroAngle.allCases.map { angle in
             AstroVisualLine(id: AstroLineID(body: body, angle: angle), segments: [AstroVisualSegment(coordinates: [
@@ -104,4 +115,5 @@ final class AstroMercatorGeometryTests: XCTestCase {
         XCTAssertEqual(Set(AstroAngle.allCases.map(\.dash)).count, 4)
         map.delegate = nil
     }
+    #endif
 }

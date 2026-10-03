@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class AstroLocationAnalyzerTests: XCTestCase {
     private func result(declination: Double = 23, origin: Double = 20, tolerance: Double = 0.9) throws -> AstrocartographyResult {

@@ -1,5 +1,12 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class MockAnthropicHTTPClient: AnthropicHTTPClient, @unchecked Sendable {
     let statusCode: Int

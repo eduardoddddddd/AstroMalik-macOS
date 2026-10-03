@@ -1,6 +1,10 @@
 import XCTest
 import CSwissEph
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 /// Numerical properties of phase-1 lines. Residuals use the horizon identity, not the engine as its own oracle.
 final class AstrocartographyEngineTests: XCTestCase {

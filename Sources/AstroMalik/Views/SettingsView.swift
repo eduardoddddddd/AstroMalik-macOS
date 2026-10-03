@@ -267,6 +267,8 @@ struct SettingsView: View {
 
     private var anthropicCredentialStatus: String {
         switch anthropicCredentialSource {
+        case .request:
+            return "Sesión actual"
         case .keychain:
             return "Keychain"
         case .environment:

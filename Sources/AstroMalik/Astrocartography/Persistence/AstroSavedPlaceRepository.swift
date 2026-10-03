@@ -1,5 +1,9 @@
 import Foundation
+#if canImport(CryptoKit)
 import CryptoKit
+#else
+import Crypto
+#endif
 
 /// Includes every persisted natal field, not merely ID/JD. Any edit invalidates
 /// derived results while retaining the user's destination intention.

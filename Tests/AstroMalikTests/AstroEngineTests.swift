@@ -1,6 +1,13 @@
 import XCTest
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 import CSwissEph
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 // MARK: - Sanity Check
 // Carta de referencia: 1976-10-11 20:33 Europe/Madrid

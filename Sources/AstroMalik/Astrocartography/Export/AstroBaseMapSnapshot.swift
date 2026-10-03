@@ -2,17 +2,6 @@ import Foundation
 import MapKit
 import AppKit
 
-struct AstroBaseMapResult: Sendable, Equatable {
-    /// `data:image/jpeg;base64,…` of the whole Web-Mercator world, or nil.
-    let dataURI: String?
-    /// Human reason when the base map could not be obtained (offline, timeout…).
-    let failure: String?
-
-    static func unavailable(_ reason: String) -> AstroBaseMapResult { AstroBaseMapResult(dataURI: nil, failure: reason) }
-}
-
-typealias AstroBaseMapProvider = @Sendable () async -> AstroBaseMapResult
-
 /// Best-effort Apple Maps capture of the full Mercator world (F6.2). It needs a
 /// connection for tiles, so every failure is expected and degrades to the plain
 /// graticule figure; it never blocks the export beyond `timeout`.

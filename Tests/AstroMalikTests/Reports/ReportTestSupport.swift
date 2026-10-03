@@ -1,7 +1,13 @@
 import Foundation
+#if canImport(PDFKit)
 import PDFKit
+#endif
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 enum ReportTestSupport {
     static func referenceChart(name: String = "Referencia Madrid", birthTime: String = "20:33") throws -> NatalChart {
@@ -16,6 +22,7 @@ enum ReportTestSupport {
         return chart
     }
 
+    #if canImport(PDFKit)
     static func assertPDF(_ data: Data, contains expected: [String], file: StaticString = #filePath, line: UInt = #line) {
         XCTAssertGreaterThan(data.count, 1_000, "PDF vacío o demasiado pequeño", file: file, line: line)
         XCTAssertEqual(String(decoding: data.prefix(5), as: UTF8.self), "%PDF-", file: file, line: line)
@@ -31,6 +38,7 @@ enum ReportTestSupport {
             )
         }
     }
+    #endif
 
     static func assertHTML(_ html: String, contains expected: [String], file: StaticString = #filePath, line: UInt = #line) {
         for string in expected {

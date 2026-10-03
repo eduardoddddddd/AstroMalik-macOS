@@ -1033,10 +1033,14 @@ private extension AstroMalikCLIRunner {
         if let override, !override.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             url = URL(fileURLWithPath: expandTilde(override))
         } else {
+            #if os(Windows)
+            url = try AstroDataPaths.userDatabaseURL(createDirectory: false)
+            #else
             guard let appSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
                 throw AstroMalikCLIRunnerError.io("No se pudo localizar Application Support.")
             }
             url = appSupport.appendingPathComponent("AstroMalik", isDirectory: true).appendingPathComponent("user.db")
+            #endif
         }
         guard FileManager.default.fileExists(atPath: url.path) else {
             throw AstroMalikCLIRunnerError.io("No existe user.db en \(url.path)")
@@ -1062,10 +1066,14 @@ private extension AstroMalikCLIRunner {
             return url
         }
 
+        #if os(Windows)
+        let dir = try AstroDataPaths.directory()
+        #else
         guard let appSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
             throw AstroMalikCLIRunnerError.io("No se pudo localizar Application Support.")
         }
         let dir = appSupport.appendingPathComponent("AstroMalik", isDirectory: true)
+        #endif
         let writableURL = dir.appendingPathComponent("corpus.db")
         if !FileManager.default.fileExists(atPath: writableURL.path) {
             try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
