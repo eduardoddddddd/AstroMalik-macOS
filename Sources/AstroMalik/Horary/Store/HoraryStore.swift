@@ -1,9 +1,14 @@
 import Foundation
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
 @MainActor
-final class HoraryStore: ObservableObject {
-    @Published var savedQueries: [SavedHoraryQuery] = []
+final class HoraryStore {
+    #if canImport(SwiftUI)
+    @Published
+    #endif
+    var savedQueries: [SavedHoraryQuery] = []
 
     private var db: SQLiteDB?
 
@@ -24,6 +29,9 @@ final class HoraryStore: ObservableObject {
     }
 
     private static func userDBURL() throws -> URL {
+        #if os(Windows)
+        return try AstroDataPaths.userDatabaseURL()
+        #else
         guard let appSupport = FileManager.default.urls(
             for: .applicationSupportDirectory, in: .userDomainMask
         ).first else {
@@ -32,6 +40,7 @@ final class HoraryStore: ObservableObject {
         let dir = appSupport.appendingPathComponent("AstroMalik", isDirectory: true)
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         return dir.appendingPathComponent("user.db")
+        #endif
     }
 
     func load() async {
@@ -242,3 +251,7 @@ private extension SavedHoraryQueryRecord {
         self.createdAt = createdAt
     }
 }
+
+#if canImport(SwiftUI)
+extension HoraryStore: ObservableObject {}
+#endif

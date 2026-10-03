@@ -1,5 +1,10 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+#if canImport(Security)
 import Security
+#endif
 
 // MARK: - OpenRouter HTTP Client Protocol
 
@@ -52,6 +57,7 @@ actor OpenRouterClient {
 
     // MARK: - State
 
+    nonisolated private let secretStore: (any SecretStore)?
     private let httpClient: OpenRouterHTTPClient
     private let config: Config
     nonisolated private let keychainService: String
@@ -63,9 +69,10 @@ actor OpenRouterClient {
 
     // MARK: - Init
 
-    init(config: Config = .default, httpClient: OpenRouterHTTPClient = URLSession.shared) {
+    init(config: Config = .default, httpClient: OpenRouterHTTPClient = URLSession.shared, secretStore: (any SecretStore)? = nil) {
         self.config = config
         self.httpClient = httpClient
+        self.secretStore = secretStore
         self.keychainService = config.keychainService
         self.keychainAccount = config.keychainAccount
         self.environmentVariableName = config.environmentVariableName
@@ -79,6 +86,7 @@ actor OpenRouterClient {
     /// Recupera la API key. Orden: Keychain → env var.
     /// Lanza `OpenRouterError.missingAPIKey` si no se encuentra en ningún sitio.
     func resolveAPIKey() throws -> String {
+        if let key = secretStore?.secret(service: keychainService, account: keychainAccount) { return key }
         // 1. Intentar Keychain
         if let key = readFromKeychain() {
             return key
@@ -93,6 +101,7 @@ actor OpenRouterClient {
 
     /// Devuelve la fuente efectiva de la key de runtime.
     nonisolated func credentialSource() -> OpenRouterCredentialSource? {
+        if secretStore?.secret(service: keychainService, account: keychainAccount) != nil { return .request }
         if readFromKeychain() != nil {
             return .keychain
         }
@@ -106,6 +115,7 @@ actor OpenRouterClient {
     /// Guarda la API key en el Keychain del usuario (acceso solo para esta app).
     /// Llamar desde Settings cuando el usuario introduce la key por primera vez.
     nonisolated func saveAPIKey(_ key: String) throws {
+        #if canImport(Security)
         let data = Data(key.utf8)
         // Intentar actualizar primero
         let updateQuery: [CFString: Any] = [
@@ -131,20 +141,28 @@ actor OpenRouterClient {
         guard status == errSecSuccess else {
             throw OpenRouterError.keychainError(status)
         }
+        #else
+        throw OpenRouterError.keychainUnavailable
+        #endif
     }
 
     /// Elimina la API key del Keychain.
     nonisolated func deleteAPIKey() {
+        #if canImport(Security)
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: keychainService,
             kSecAttrAccount: keychainAccount
         ]
         SecItemDelete(query as CFDictionary)
+        #else
+        return
+        #endif
     }
 
     /// True si hay una API key disponible (Keychain o env var).
     nonisolated func hasAPIKey() -> Bool {
+        if secretStore?.secret(service: keychainService, account: keychainAccount) != nil { return true }
         if readFromKeychain() != nil { return true }
         if let key = ProcessInfo.processInfo.environment[environmentVariableName],
            !key.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return true }
@@ -257,6 +275,7 @@ actor OpenRouterClient {
     // MARK: - Private Keychain helper
 
     private nonisolated func readFromKeychain() -> String? {
+        #if canImport(Security)
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: keychainService,
@@ -272,6 +291,9 @@ actor OpenRouterClient {
               !key.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         else { return nil }
         return key
+        #else
+        return nil
+        #endif
     }
 
     private static func sanitizeLabel(_ label: String) -> String {
@@ -368,6 +390,7 @@ private struct KeyValidationData: Decodable {
 }
 
 enum OpenRouterCredentialSource: String, Sendable {
+    case request = "Aplicación"
     case keychain = "Keychain"
     case environment = "OPENROUTER_API_KEY"
 
@@ -387,6 +410,7 @@ struct OpenRouterKeyValidation: Equatable, Sendable {
 
 enum OpenRouterError: LocalizedError, Equatable {
     case missingAPIKey
+    case keychainUnavailable
     case keychainError(OSStatus)
     case invalidResponse
     case unauthorized
@@ -399,6 +423,8 @@ enum OpenRouterError: LocalizedError, Equatable {
         switch self {
         case .missingAPIKey:
             return "No se encontró la API key de OpenRouter. Configúrala en Ajustes o en la variable de entorno OPENROUTER_API_KEY."
+        case .keychainUnavailable:
+            return "El motor Windows recibe la clave desde la aplicación; no guarda claves en disco."
         case .keychainError(let status):
             return "Error de Keychain al guardar la API key (OSStatus \(status))."
         case .invalidResponse:

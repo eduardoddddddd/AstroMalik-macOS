@@ -66,12 +66,18 @@ enum PDFReportPersistence {
         if let data = defaults.data(forKey: PDFReportPreferenceKeys.defaultFolderBookmark), !data.isEmpty {
             var stale = false
             do {
+                #if os(Windows)
+                guard let raw = String(data: data, encoding: .utf8), let url = URL(string: raw), url.isFileURL else {
+                    throw PDFReportPersistenceError.invalidBookmark
+                }
+                #else
                 let url = try URL(
                     resolvingBookmarkData: data,
                     options: [.withSecurityScope],
                     relativeTo: nil,
                     bookmarkDataIsStale: &stale
                 )
+                #endif
                 if stale {
                     try storeReportsFolder(url, defaults: defaults)
                 }
@@ -89,7 +95,11 @@ enum PDFReportPersistence {
 
     static func storeReportsFolder(_ url: URL, defaults: UserDefaults = .standard) throws {
         try ensureDirectory(url)
+        #if os(Windows)
+        let data = Data(url.absoluteString.utf8)
+        #else
         let data = try url.bookmarkData(options: [.withSecurityScope], includingResourceValuesForKeys: nil, relativeTo: nil)
+        #endif
         defaults.set(data, forKey: PDFReportPreferenceKeys.defaultFolderBookmark)
     }
 

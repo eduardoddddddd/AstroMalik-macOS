@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 extension Reports {
     func testHoraryReportGeneratesNonEmptyPDFAndExpectedSections() async throws {
@@ -20,7 +24,9 @@ extension Reports {
         let html = try await service.renderHTML(request: ReportRequest(templateName: "horary", data: payload))
         ReportTestSupport.assertHTML(html, contains: ["Informe horario", "¿Prospera el proyecto AstroMalik?", "Carta horaria", "Significadores", "Veredicto estructurado", "Espéculo completo", "☉"])
 
+        #if canImport(WebKit)
         let pdf = try await HoraryReportBuilder.generate(from: query)
         ReportTestSupport.assertPDF(pdf, contains: ["Informe horario", "AstroMalik", "Veredicto"])
+        #endif
     }
 }

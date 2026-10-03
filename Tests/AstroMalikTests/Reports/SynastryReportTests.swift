@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 extension Reports {
     func testSynastryReportGeneratesNonEmptyPDFAndExpectedSections() async throws {
@@ -11,7 +15,9 @@ extension Reports {
         let html = try await service.renderHTML(request: ReportRequest(templateName: "synastry", data: payload))
         ReportTestSupport.assertHTML(html, contains: ["Informe de sinastría", "Referencia A", "Referencia B", "Rueda doble SVG", "Aspectos A→B", "Casas mutuas"])
 
+        #if canImport(WebKit)
         let pdf = try await SynastryReportBuilder.generate(from: reading)
         ReportTestSupport.assertPDF(pdf, contains: ["Informe de sinastría", "Referencia A", "Referencia B"])
+        #endif
     }
 }

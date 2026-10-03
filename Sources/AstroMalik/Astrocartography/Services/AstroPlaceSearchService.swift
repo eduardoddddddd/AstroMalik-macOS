@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 enum AstroPlaceOrigin: String, Codable, Sendable { case localCatalog, nominatim, manual, map }
 struct AstroPlace: Codable, Equatable, Identifiable, Sendable {

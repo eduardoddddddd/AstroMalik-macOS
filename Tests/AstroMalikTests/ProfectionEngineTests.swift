@@ -1,6 +1,13 @@
 import XCTest
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 import CSwissEph
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class ProfectionEngineTests: XCTestCase {
     override func setUp() {

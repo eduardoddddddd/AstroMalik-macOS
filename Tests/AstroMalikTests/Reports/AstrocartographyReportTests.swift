@@ -1,10 +1,17 @@
+#if canImport(PDFKit)
 import PDFKit
+#endif
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 extension Reports {
     /// Real WebKit PDF, offline: no base map is requested, so the report must say so
     /// and still contain every section. Never touches the network.
+    #if canImport(WebKit)
     func testAstrocartographyReportGeneratesPDFWithExplicitMaplessFallback() async throws {
         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
         let positions = try AstroBody.allCases.enumerated().map {
@@ -26,12 +33,15 @@ extension Reports {
         let input = AstrocartographyReportInput(document: document, curves: curves, placeCoordinate: place.coordinate)
 
         let failing: AstroBaseMapProvider = { .unavailable("sin conexión.") }
+        #if canImport(WebKit)
         let pdf = try await AstrocartographyReportBuilder.generate(input: input, baseMap: failing)
         ReportTestSupport.assertPDF(pdf, contains: ["Informe de astrocartografía", "Carta PDF", "Lugar de prueba"])
+        #endif
         let text = PDFDocument(data: pdf)?.string ?? ""
         XCTAssertTrue(text.contains("Sin mapa base"), "the figure must state the fallback")
         XCTAssertFalse(text.contains("Apple Maps"), "no Apple attribution when the base map is not used")
         XCTAssertTrue(text.contains("Distancias a las 40 líneas"))
         XCTAssertTrue(text.contains("Método y límites"))
     }
+    #endif
 }

@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 /// Production roots against the phase-0 analytic fixture. The fixture test stays independent.
 final class MundaneAngleAnalyticTests: XCTestCase {

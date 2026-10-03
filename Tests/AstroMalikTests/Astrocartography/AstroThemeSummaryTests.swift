@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class AstroThemeSummaryTests: XCTestCase {
     // MARK: Themes
@@ -93,6 +97,7 @@ final class AstroThemeSummaryTests: XCTestCase {
 
     // MARK: View-model: filters, emphasis, summary and rankable places
 
+    #if canImport(SwiftUI)
     @MainActor
     func testViewModelThemeFilterEmphasisSummaryAndRankablePlaces() async throws {
         let model = AstrocartographyViewModel()
@@ -143,12 +148,15 @@ final class AstroThemeSummaryTests: XCTestCase {
         model.cancel()
         XCTAssertNil(model.emphasizedLines)
     }
+    #endif
 
+    #if canImport(SwiftUI)
     func testPanelSectionsStartWithGuideAndAreUnique() {
         XCTAssertEqual(AstroPanelSection.allCases.first, .guia)
         XCTAssertEqual(AstroPanelSection.allCases.map(\.rawValue), ["Guía", "Mapa", "Lugar", "Relocada", "Comparar", "Datos"])
         XCTAssertEqual(Set(AstroPanelSection.allCases.map(\.systemImage)).count, 6)
     }
+    #endif
 
     // MARK: Helpers
 

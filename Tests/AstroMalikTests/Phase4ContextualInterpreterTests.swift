@@ -1,6 +1,17 @@
 import XCTest
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
+#if canImport(Darwin)
 import Darwin
+#elseif canImport(Glibc)
+import Glibc
+#endif
 
 // MARK: - Phase 4 Tests: OpenRouterClient + ContextualInterpreter
 // Todos los tests usan mocks. CERO llamadas reales a la API.
@@ -336,6 +347,7 @@ final class OpenRouterClientTests: XCTestCase {
                        "request body debe incluir response_format.type = json_object")
     }
 
+    #if canImport(Security)
     func testCredentialSourcePrefersKeychainOverEnvironment() async throws {
         let envName = "OPENROUTER_TEST_KEYCHAIN_PRIORITY"
         setenv(envName, "env-priority-key", 1)
@@ -350,6 +362,7 @@ final class OpenRouterClientTests: XCTestCase {
         let resolved = try await client.resolveAPIKey()
         XCTAssertEqual(resolved, "keychain-priority-key")
     }
+    #endif
 
     func testCredentialSourceFallsBackToEnvironment() async throws {
         let envName = "OPENROUTER_TEST_ENV_ONLY"

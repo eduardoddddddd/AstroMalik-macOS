@@ -1,12 +1,15 @@
 import Foundation
+#if canImport(WebKit)
 import CoreGraphics
 @preconcurrency import WebKit
+#endif
 
 enum PDFPageSize: Equatable, Sendable {
     case a4Portrait
     case a4Landscape
     case letter
 
+    #if canImport(WebKit)
     var sizeInPoints: CGSize {
         switch self {
         case .a4Portrait:
@@ -18,6 +21,8 @@ enum PDFPageSize: Equatable, Sendable {
         }
     }
 
+    #endif
+
     var cssPageSize: String {
         switch self {
         case .a4Portrait: return "A4 portrait"
@@ -26,9 +31,11 @@ enum PDFPageSize: Equatable, Sendable {
         }
     }
 
+    #if canImport(WebKit)
     private static func mmToPoints(_ millimeters: Double) -> CGFloat {
         CGFloat(millimeters / 25.4 * 72.0)
     }
+    #endif
 }
 
 struct PDFMargins: Equatable, Sendable {
@@ -81,6 +88,7 @@ struct PDFRenderError: Error, Equatable, Sendable, LocalizedError {
     }
 }
 
+#if canImport(WebKit)
 actor ReportRenderer {
     private let baseURL: URL?
     private let timeout: TimeInterval
@@ -293,3 +301,12 @@ private final class WebViewNavigationWaiter: NSObject, WKNavigationDelegate {
         }
     }
 }
+
+#else
+actor ReportRenderer {
+    init(baseURL: URL? = nil, timeout: TimeInterval = 30) {}
+    func render(html: String, pageSize: PDFPageSize = .a4Portrait, margins: PDFMargins = .standard) async throws -> Data {
+        throw PDFRenderError.webkitFailure(reason: "La exportación PDF en Windows corresponde a la aplicación (F6).")
+    }
+}
+#endif

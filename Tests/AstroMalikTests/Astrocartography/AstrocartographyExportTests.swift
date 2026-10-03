@@ -1,5 +1,12 @@
 import XCTest
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class AstrocartographyExportTests: XCTestCase {
     // MARK: Document (F6.1/F6.4 shared model)
@@ -187,6 +194,7 @@ final class AstrocartographyExportTests: XCTestCase {
         XCTAssertEqual(attach["id"] as? String, "note-1")
     }
 
+    #if canImport(SwiftUI)
     @MainActor
     func testViewModelJoplinExportNeedsAnAnalysedPlaceAndSendsTheDocumentMarkdown() async throws {
         let model = AstrocartographyViewModel()
@@ -214,6 +222,7 @@ final class AstrocartographyExportTests: XCTestCase {
         let input = try XCTUnwrap(try model.makeReportInput())
         XCTAssertEqual(input.document, document)
     }
+    #endif
 
     // MARK: Helpers
 

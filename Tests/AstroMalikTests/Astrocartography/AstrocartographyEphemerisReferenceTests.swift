@@ -1,6 +1,10 @@
 import XCTest
 import CSwissEph
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 /// Independent Python binding fixture; not a substitute for testing F1 lines.
 final class AstrocartographyEphemerisReferenceTests: XCTestCase {

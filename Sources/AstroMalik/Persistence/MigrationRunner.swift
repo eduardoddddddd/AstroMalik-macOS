@@ -117,7 +117,7 @@ final class MigrationRunner {
     }
 
     private static func loadSQLFilesFromBundleRoot(bundle: Bundle) throws -> [SQLFile] {
-        let urls = bundle.urls(forResourcesWithExtension: "sql", subdirectory: nil) ?? []
+        let urls = (bundle.urls(forResourcesWithExtension: "sql", subdirectory: nil) ?? []).map { $0 as URL }
         return try urls.sorted { $0.lastPathComponent < $1.lastPathComponent }.map { url in
             let content = try String(contentsOf: url, encoding: .utf8)
             return SQLFile(name: url.lastPathComponent, content: content)
@@ -197,6 +197,9 @@ final class MigrationRunner {
 extension MigrationRunner.Config {
     /// Configuración estándar usando el bundle del módulo y Application Support de macOS.
     static func standard(resourceBundle: Bundle = AppResources.bundle) throws -> MigrationRunner.Config {
+        #if os(Windows)
+        let dir = try AstroDataPaths.directory()
+        #else
         guard let appSupport = FileManager.default.urls(
             for: .applicationSupportDirectory, in: .userDomainMask
         ).first else {
@@ -204,6 +207,7 @@ extension MigrationRunner.Config {
         }
         let dir = appSupport.appendingPathComponent("AstroMalik", isDirectory: true)
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        #endif
 
         return MigrationRunner.Config(
             corpusWritableURL: dir.appendingPathComponent("corpus.db"),

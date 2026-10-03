@@ -1,8 +1,10 @@
 import Foundation
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
 @MainActor
-final class ReadingNotesStore: ObservableObject {
+final class ReadingNotesStore {
     struct ReadingNote: Codable, Equatable, Identifiable {
         var id: String { chartId }
         var chartId: String
@@ -10,7 +12,13 @@ final class ReadingNotesStore: ObservableObject {
         var updatedAt: Date
     }
 
-    @Published private(set) var notes: [String: ReadingNote] = [:]
+    #if canImport(SwiftUI)
+
+    @Published
+
+    #endif
+
+    private(set) var notes: [String: ReadingNote] = [:]
 
     private var db: SQLiteDB?
 
@@ -75,6 +83,9 @@ final class ReadingNotesStore: ObservableObject {
     }
 
     private static func userDBURL() throws -> URL {
+        #if os(Windows)
+        return try AstroDataPaths.userDatabaseURL()
+        #else
         guard let appSupport = FileManager.default.urls(
             for: .applicationSupportDirectory, in: .userDomainMask
         ).first else {
@@ -83,6 +94,7 @@ final class ReadingNotesStore: ObservableObject {
         let dir = appSupport.appendingPathComponent("AstroMalik", isDirectory: true)
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         return dir.appendingPathComponent("user.db")
+        #endif
     }
 }
 
@@ -93,3 +105,7 @@ private enum ReadingNotesStoreError: LocalizedError {
         "No se pudo localizar Application Support para guardar notas de lectura."
     }
 }
+
+#if canImport(SwiftUI)
+extension ReadingNotesStore: ObservableObject {}
+#endif

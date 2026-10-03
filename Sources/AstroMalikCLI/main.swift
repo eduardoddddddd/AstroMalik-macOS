@@ -1,5 +1,9 @@
 import Foundation
+#if canImport(AstroMalikCore)
+import AstroMalikCore
+#else
 import AstroMalik
+#endif
 
 let EX_USAGE: Int32 = 64
 

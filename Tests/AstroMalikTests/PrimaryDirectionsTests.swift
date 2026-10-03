@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 // MARK: - Primary Directions Parity Tests
 // Validación obligatoria contra valores de referencia de Morinus.
@@ -890,11 +894,13 @@ final class PrimaryDirectionsTests: XCTestCase {
             expectedKeys.isSubset(of: foundKeys),
             "Faltan claves eclípticas esperadas: \(expectedKeys.subtracting(foundKeys).sorted())"
         )
+        #if canImport(SwiftUI)
         XCTAssertTrue(
             PrimaryDirectionsViewModel
                 .preferredInitialSelection(from: result.enrichedDirections)?
                 .hasInterpretation == true
         )
+        #endif
     }
 
     /// Test: buildInterpretations integrates correctly with direction results

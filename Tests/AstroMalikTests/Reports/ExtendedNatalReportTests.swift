@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 extension Reports {
     func testExtendedNatalReportGeneratesNonEmptyPDFAndExpectedSections() async throws {
@@ -10,7 +14,9 @@ extension Reports {
         let html = try await service.renderHTML(request: ReportRequest(templateName: "extended_natal", data: payload))
         ReportTestSupport.assertHTML(html, contains: ["Análisis natal extendido", "Lotes helenísticos", "Almuten Figuris", "Regente de la genitura", "Recepciones mutuas", "Estrellas fijas"])
 
+        #if canImport(WebKit)
         let pdf = try await ExtendedNatalReportBuilder.generate(from: chart)
         ReportTestSupport.assertPDF(pdf, contains: ["Análisis natal extendido", "Referencia Madrid", "Almuten"])
+        #endif
     }
 }

@@ -1,12 +1,20 @@
 import Foundation
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
 // MARK: - User Store (SQLite3 directo, sin GRDB)
 
 @MainActor
-final class UserStore: ObservableObject {
-    @Published var savedCharts: [NatalChart] = []
-    @Published var chartMetadata: [UUID: ChartMetadata] = [:]
+final class UserStore {
+    #if canImport(SwiftUI)
+    @Published
+    #endif
+    var savedCharts: [NatalChart] = []
+    #if canImport(SwiftUI)
+    @Published
+    #endif
+    var chartMetadata: [UUID: ChartMetadata] = [:]
 
     private var db: SQLiteDB?
     private var astroPlaces: AstroSavedPlaceRepository?
@@ -45,6 +53,9 @@ final class UserStore: ObservableObject {
     }
 
     private static func userDBURL() throws -> URL {
+        #if os(Windows)
+        return try AstroDataPaths.userDatabaseURL()
+        #else
         guard let appSupport = FileManager.default.urls(
             for: .applicationSupportDirectory, in: .userDomainMask
         ).first else {
@@ -53,6 +64,7 @@ final class UserStore: ObservableObject {
         let dir = appSupport.appendingPathComponent("AstroMalik", isDirectory: true)
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         return dir.appendingPathComponent("user.db")
+        #endif
     }
 
     // MARK: - CRUD
@@ -160,3 +172,7 @@ private enum UserStoreError: LocalizedError {
         }
     }
 }
+
+#if canImport(SwiftUI)
+extension UserStore: ObservableObject {}
+#endif

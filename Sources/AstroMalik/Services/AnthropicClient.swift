@@ -1,5 +1,10 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+#if canImport(Security)
 import Security
+#endif
 
 // MARK: - HTTP Client Protocol
 
@@ -20,6 +25,7 @@ enum AnthropicError: LocalizedError {
     case unauthorized
     case rateLimited
     case overloaded
+    case keychainUnavailable
     case keychainError(OSStatus)
 
     var errorDescription: String? {
@@ -40,6 +46,8 @@ enum AnthropicError: LocalizedError {
             return "Anthropic está limitando el ritmo de llamadas (429). Espera antes de reintentar."
         case .overloaded:
             return "Anthropic sobrecargado (529). Reintenta más tarde."
+        case .keychainUnavailable:
+            return "El motor Windows recibe la clave desde la aplicación; no guarda claves en disco."
         case .keychainError(let status):
             return "Error de Keychain: \(status)."
         }
@@ -49,6 +57,7 @@ enum AnthropicError: LocalizedError {
 // MARK: - Credential Source
 
 enum AnthropicCredentialSource: String, Codable {
+    case request
     case keychain
     case environment
 }
@@ -220,6 +229,7 @@ actor AnthropicClient {
         )
     }
 
+    nonisolated private let secretStore: (any SecretStore)?
     private let httpClient: AnthropicHTTPClient
     private var config: Config
     nonisolated private let keychainService: String
@@ -229,9 +239,10 @@ actor AnthropicClient {
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
 
-    init(config: Config = .default, httpClient: AnthropicHTTPClient = URLSession.shared) {
+    init(config: Config = .default, httpClient: AnthropicHTTPClient = URLSession.shared, secretStore: (any SecretStore)? = nil) {
         self.config = config
         self.httpClient = httpClient
+        self.secretStore = secretStore
         self.keychainService = config.keychainService
         self.keychainAccount = config.keychainAccount
         self.environmentVariableName = config.environmentVariableName
@@ -251,6 +262,7 @@ actor AnthropicClient {
     // MARK: - API Key Resolution
 
     func resolveAPIKey() throws -> String {
+        if let key = secretStore?.secret(service: keychainService, account: keychainAccount) { return key }
         if let key = readFromKeychain() { return key }
         if let key = ProcessInfo.processInfo.environment[environmentVariableName],
            !key.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
@@ -260,6 +272,7 @@ actor AnthropicClient {
     }
 
     nonisolated func credentialSource() -> AnthropicCredentialSource? {
+        if secretStore?.secret(service: keychainService, account: keychainAccount) != nil { return .request }
         if readFromKeychain() != nil { return .keychain }
         if let key = ProcessInfo.processInfo.environment[environmentVariableName],
            !key.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
@@ -272,7 +285,7 @@ actor AnthropicClient {
 
     /// Devuelve los 4 últimos caracteres de la key para mostrarlos en UI sin filtrar.
     nonisolated func maskedKeyTail() -> String? {
-        if let key = readFromKeychain() ?? ProcessInfo.processInfo.environment[environmentVariableName],
+        if let key = secretStore?.secret(service: keychainService, account: keychainAccount) ?? readFromKeychain() ?? ProcessInfo.processInfo.environment[environmentVariableName],
            key.count > 4 {
             return String(key.suffix(4))
         }
@@ -280,6 +293,7 @@ actor AnthropicClient {
     }
 
     nonisolated func saveAPIKey(_ key: String) throws {
+        #if canImport(Security)
         let data = Data(key.utf8)
         let updateQuery: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
@@ -301,15 +315,22 @@ actor AnthropicClient {
         guard status == errSecSuccess else {
             throw AnthropicError.keychainError(status)
         }
+        #else
+        throw AnthropicError.keychainUnavailable
+        #endif
     }
 
     nonisolated func deleteAPIKey() {
+        #if canImport(Security)
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: keychainService,
             kSecAttrAccount: keychainAccount
         ]
         SecItemDelete(query as CFDictionary)
+        #else
+        return
+        #endif
     }
 
     // MARK: - Messages
@@ -375,6 +396,7 @@ actor AnthropicClient {
     // MARK: - Private
 
     private nonisolated func readFromKeychain() -> String? {
+        #if canImport(Security)
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: keychainService,
@@ -390,5 +412,8 @@ actor AnthropicClient {
               !key.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         else { return nil }
         return key
+        #else
+        return nil
+        #endif
     }
 }

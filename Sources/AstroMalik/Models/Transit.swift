@@ -1,5 +1,8 @@
 import Foundation
 
+#if canImport(SwiftUI)
+import SwiftUI
+
 @MainActor
 final class TransitWorkspaceState: ObservableObject {
     @Published var fromDate = Date()
@@ -37,6 +40,8 @@ final class TransitWorkspaceState: ObservableObject {
         needsRecalculation = false
     }
 }
+
+#endif
 
 struct TransitHouseIngress: Identifiable, Codable, Equatable, Hashable {
     let id: UUID

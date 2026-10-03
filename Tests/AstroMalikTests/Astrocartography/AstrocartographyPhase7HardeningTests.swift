@@ -1,6 +1,14 @@
+#if canImport(Darwin)
 import Darwin
+#elseif canImport(Glibc)
+import Glibc
+#endif
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 /// Independent F7 checks: they compare astrocartography with a serial baseline and
 /// with natal output, instead of trusting the tests written alongside each phase.
@@ -179,12 +187,16 @@ final class AstrocartographyPhase7HardeningTests: XCTestCase {
     }
 
     private func machineModel() -> String {
+        #if canImport(Darwin)
         var size = 0
         sysctlbyname("hw.model", nil, &size, nil, 0)
         guard size > 1 else { return "desconocido" }
         var buffer = [CChar](repeating: 0, count: size)
         sysctlbyname("hw.model", &buffer, &size, nil, 0)
         return String(cString: buffer)
+        #else
+        return ProcessInfo.processInfo.hostName
+        #endif
     }
 }
 

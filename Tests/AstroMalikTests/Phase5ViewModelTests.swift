@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 // MARK: - Phase 5 ViewModel Tests
 
@@ -90,6 +94,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
 
     // MARK: - Initial State
 
+    #if canImport(SwiftUI)
     func testInitialState() {
         let vm = PrimaryDirectionsViewModel(service: PrimaryDirectionsService())
         XCTAssertNil(vm.result)
@@ -99,6 +104,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         XCTAssertFalse(vm.isGeneratingInterpretation)
         XCTAssertNil(vm.error)
     }
+    #endif
 
     // MARK: - Filter Tests
 
@@ -233,13 +239,16 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
 
     // MARK: - ViewModel applyFilters
 
+    #if canImport(SwiftUI)
     func testApplyFiltersNoResult_EmptyArray() {
         let vm = PrimaryDirectionsViewModel(service: PrimaryDirectionsService())
         XCTAssertNil(vm.result)
         vm.applyFilters()
         XCTAssertTrue(vm.filteredDirections.isEmpty)
     }
+    #endif
 
+    #if canImport(SwiftUI)
     func testPreferredInitialSelectionPrioritizesCuratedText() {
         let silent = makeEnriched(promissor: "MARTE", age: 1, withInterpretation: false)
         let curated = makeEnriched(promissor: "VENUS", age: 49, withInterpretation: true)
@@ -251,7 +260,9 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
 
         XCTAssertEqual(selected?.id, curated.id)
     }
+    #endif
 
+    #if canImport(SwiftUI)
     func testPreferredInitialSelectionFallsBackToFirstVisibleDirection() {
         let first = makeEnriched(promissor: "MARTE", age: 1, withInterpretation: false)
         let second = makeEnriched(promissor: "SOL", age: 2, withInterpretation: false)
@@ -262,7 +273,9 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
 
         XCTAssertEqual(selected?.id, first.id)
     }
+    #endif
 
+    #if canImport(SwiftUI)
     func testSelectedDirectionClearedOnNewLoad() async {
         let vm = PrimaryDirectionsViewModel(service: PrimaryDirectionsService())
         // Pre-select a direction
@@ -281,6 +294,7 @@ final class PrimaryDirectionsViewModelTests: XCTestCase {
         try? await Task.sleep(nanoseconds: 200_000_000) // 200ms
         XCTAssertFalse(vm.isCalculating)
     }
+    #endif
 
     // MARK: - DisplaySummary and Formatted helpers
 

@@ -1,5 +1,9 @@
 import XCTest
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class ReportPersistenceTests: XCTestCase {
     private var tempFolder: URL!

@@ -1,5 +1,12 @@
 import XCTest
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+#if canImport(AstroMalikCore)
+@testable import AstroMalikCore
+#else
 @testable import AstroMalik
+#endif
 
 final class ZodiacalReleasingEngineTests: XCTestCase {
     private let expectedFortunaLongitude = 201.4569171995368
