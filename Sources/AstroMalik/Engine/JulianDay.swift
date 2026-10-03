@@ -160,7 +160,7 @@ func julianDayFromLocal(
     let jd = SwissEphemerisAccess.swe_julday(utYear, utMonth, utDay, utHour, SE_GREG_CAL)
 
     #if os(Windows)
-    // Swift 6.4 ISO8601DateFormatter traps when formatting an IANA zone.
+    // Swift 6.4 Foundation formatters trap on some IANA zone aliases.
     // Formatting only: Calendar above still resolves the historical UTC instant.
     let isoFormatter = DateFormatter()
     isoFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -169,7 +169,12 @@ func julianDayFromLocal(
     #else
     let isoFormatter = ISO8601DateFormatter()
     #endif
+    #if os(Windows)
+    // Use the offset already resolved for this instant; no timezone rules change.
+    isoFormatter.timeZone = TimeZone(secondsFromGMT: tz.secondsFromGMT(for: localDate))
+    #else
     isoFormatter.timeZone = tz
+    #endif
     let localISO = isoFormatter.string(from: localDate)
     isoFormatter.timeZone = utc
     let utcISO = isoFormatter.string(from: localDate)
