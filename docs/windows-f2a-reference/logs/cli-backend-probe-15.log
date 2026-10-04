@@ -1,0 +1,229 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/60] Compiling AstroMalikTests AnthropicClientTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[4/60] Compiling AstroMalikTests AstroEngineTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[5/60] Compiling AstroMalikTests AdaptiveAstroGeometryTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[6/60] Compiling AstroMalikTests AstroLocationAnalyzerTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[7/60] Compiling AstroMalikTests AstroMapStyleTrackerTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[8/60] Compiling AstroMalikTests AstroMercatorGeometryTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[9/60] Compiling AstroMalikTests AstroPlaceWorkflowTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[10/60] Compiling AstroMalikTests AstroRelocationEngineTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[11/60] Compiling AstroMalikTests AstroSavedPlaceRepositoryTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[12/60] Compiling AstroMalikTests AstroThemeSummaryTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[13/60] Compiling AstroMalikTests AstroVisualGeometryTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[14/60] Compiling AstroMalikTests AstrocartographyAnalyticFixtureTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[15/60] Compiling AstroMalikTests AstrocartographyCalculationServiceTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[16/60] Compiling AstroMalikTests AstrocartographyContractTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[17/60] Compiling AstroMalikTests AstrocartographyEngineTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[18/60] Compiling AstroMalikTests AstrocartographyEphemerisReferenceTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[19/60] Compiling AstroMalikTests AstrocartographyExportTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[20/60] Compiling AstroMalikTests AstrocartographyPhase7HardeningTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[21/60] Compiling AstroMalikTests AstrocartographyReadingTests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikTests/Astrocartography/AstrocartographyReadingTests.swift:207:27: warning: no calls to throwing functions occur within 'try' expression
+205 |         let request = try AstrocartographyRequest(instant: AstroNatalInstant(julianDay: 2451545))
+206 |         let location = try GeoCoordinate(latitude: 40, longitude: -3)
+207 |         let proximities = try lines.map {
+    |                           `- warning: no calls to throwing functions occur within 'try' expression
+208 |             AstroLineProximity(lineID: AstroLineID(body: $0.0, angle: $0.1), distanceKm: $0.2,
+209 |                                nearestPoint: location, estimatedErrorKm: 0.001)
+[22/60] Emitting module AstroMalikTests
+[23/60] Compiling AstroMalikTests AstrocartographyViewModelTests.swift
+[24/60] Compiling AstroMalikTests MundaneAngleAnalyticTests.swift
+[25/60] Compiling AstroMalikTests SwissAstrocartographyEphemerisTests.swift
+[26/60] Compiling AstroMalikTests SwissEphemerisAccessTests.swift
+[27/60] Compiling AstroMalikTests CrossPersonalEngineTests.swift
+[28/60] Compiling AstroMalikTests CrossPersonalNarrativeBuilderTests.swift
+[29/60] Compiling AstroMalikTests EclipseCalculatorTests.swift
+[30/60] Compiling AstroMalikTests EphemerisEngineTests.swift
+[31/60] Compiling AstroMalikTests LunationCalculatorTests.swift
+[32/60] Compiling AstroMalikTests MonthlySummaryEngineTests.swift
+[33/60] Compiling AstroMalikTests MundaneAspectCalculatorTests.swift
+[34/60] Compiling AstroMalikTests SignIngressCalculatorTests.swift
+[35/60] Compiling AstroMalikTests StationCalculatorTests.swift
+[36/60] Compiling AstroMalikTests VoidOfCourseCalculatorTests.swift
+[37/60] Compiling AstroMalikTests NatalExtendedEngineTests.swift
+[38/60] Compiling AstroMalikTests F2BackendProbe.swift
+[39/60] Compiling AstroMalikTests FirdariaEngineTests.swift
+[40/60] Compiling AstroMalikTests HoraryFoundryClientTests.swift
+[41/60] Compiling AstroMalikTests HoraryParityTests.swift
+[42/60] Compiling AstroMalikTests JulianDaySecondsTests.swift
+[43/60] Compiling AstroMalikTests Phase4ContextualInterpreterTests.swift
+[44/60] Compiling AstroMalikTests Phase5ViewModelTests.swift
+[45/60] Compiling AstroMalikTests PrimaryDirectionFoundryClientTests.swift
+[46/60] Compiling AstroMalikTests PrimaryDirectionsGoldenTests.swift
+[47/60] Compiling AstroMalikTests PrimaryDirectionsTests.swift
+[48/60] Compiling AstroMalikTests ProfectionEngineTests.swift
+[49/60] Compiling AstroMalikTests NatalReadingComposerTests.swift
+[50/60] Compiling AstroMalikTests ReadingNotesStoreTests.swift
+[51/60] Compiling AstroMalikTests RectificationEngineTests.swift
+[52/60] Compiling AstroMalikTests RectificationModelTests.swift
+[53/60] Compiling AstroMalikTests RectificationNarrativeBuilderTests.swift
+[54/60] Compiling AstroMalikTests RectificationPersistenceTests.swift
+[55/60] Compiling AstroMalikTests RectificationProfessionalTests.swift
+[56/60] Compiling AstroMalikTests AstrocartographyReportTests.swift
+[57/60] Compiling AstroMalikTests CrossPersonalReportTests.swift
+[58/60] Compiling AstroMalikTests ExtendedNatalReportTests.swift
+[59/78] Compiling AstroMalikTests HoraryReportTests.swift
+[60/78] Compiling AstroMalikTests LongPredictiveReportTests.swift
+[61/78] Compiling AstroMalikTests NatalReportTests.swift
+[62/78] Compiling AstroMalikTests PredictiveReportBuilderTests.swift
+[63/78] Compiling AstroMalikTests ReportPersistenceTests.swift
+[64/78] Compiling AstroMalikTests ReportRendererTests.swift
+[65/78] Compiling AstroMalikTests ReportServiceTests.swift
+[66/78] Compiling AstroMalikTests ReportTestSupport.swift
+[67/78] Compiling AstroMalikTests SynastryReportTests.swift
+[68/78] Compiling AstroMalikTests TemplateEngineTests.swift
+[69/78] Compiling AstroMalikTests WheelSVGRendererTests.swift
+[70/78] Compiling AstroMalikTests SecondaryProgressionEngineTests.swift
+[71/78] Compiling AstroMalikTests SectEngineTests.swift
+[72/78] Compiling AstroMalikTests SolarArcEngineTests.swift
+[73/78] Compiling AstroMalikTests MockAnthropicHTTPClient.swift
+[74/78] Compiling AstroMalikTests TechnicalDebt1And2Tests.swift
+[75/78] Compiling AstroMalikTests ZodiacalReleasingEngineTests.swift
+[76/78] Compiling AstroMalikTests resource_bundle_accessor.swift
+[76/78] Write Objects.LinkFileList
+[77/78] Linking AstroMalikPackageTests
+Build complete! (4.55s)
+Test Suite 'Selected tests' started at 2026-10-04 15:37:05.317.
+Test Suite 'AstroMalikPackageTests.xctest' started at 2026-10-04 15:37:05.318.
+Test Suite 'F2BackendProbe' started at 2026-10-04 15:37:05.318.
+Test Case '-[AstroMalikTests.F2BackendProbe testExportConfiguredCLIBackend]' started.
+Test Case '-[AstroMalikTests.F2BackendProbe testExportConfiguredCLIBackend]' passed (0.006 seconds).
+Test Suite 'F2BackendProbe' passed at 2026-10-04 15:37:05.324.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.006 (0.006) seconds
+Test Suite 'AstroMalikPackageTests.xctest' passed at 2026-10-04 15:37:05.324.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.006 (0.006) seconds
+Test Suite 'Selected tests' passed at 2026-10-04 15:37:05.324.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.006 (0.007) seconds
+◇ Test run started.
+↳ Testing Library Version: 1743
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

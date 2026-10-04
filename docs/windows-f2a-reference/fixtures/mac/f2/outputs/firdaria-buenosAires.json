@@ -1,0 +1,413 @@
+{
+  "chart": {
+    "ascendant": "♊ Géminis 23°12'",
+    "birthDate": "1985-03-15",
+    "birthTime": "14:00",
+    "houseSystem": "Placidus",
+    "id": "22222222-2222-2222-2222-222222222222",
+    "latitude": -34.6037,
+    "longitude": -58.3816,
+    "mc": "♈ Aries 10°43'",
+    "name": "Buenos Aires Control",
+    "placeName": "Buenos Aires, Argentina",
+    "timezone": "America/Argentina/Buenos_Aires"
+  },
+  "events": [
+    {
+      "detail": "10.0 años nominales",
+      "from": "1985-03-15",
+      "id": "major-0-0-SOL",
+      "priority": 10,
+      "source": "firdaria",
+      "title": "Firdaria mayor: ☉ Sol",
+      "to": "1995-03-15"
+    },
+    {
+      "detail": "8.0 años nominales",
+      "from": "1995-03-15",
+      "id": "major-0-1-VENUS",
+      "priority": 10,
+      "source": "firdaria",
+      "title": "Firdaria mayor: ♀ Venus",
+      "to": "2003-03-15"
+    },
+    {
+      "detail": "13.0 años nominales",
+      "from": "2003-03-15",
+      "id": "major-0-2-MERCURIO",
+      "priority": 10,
+      "source": "firdaria",
+      "title": "Firdaria mayor: ☿ Mercurio",
+      "to": "2016-03-15"
+    },
+    {
+      "detail": "9.0 años nominales",
+      "from": "2016-03-15",
+      "id": "major-0-3-LUNA",
+      "priority": 10,
+      "source": "firdaria",
+      "title": "Firdaria mayor: ☽ Luna",
+      "to": "2025-03-15"
+    },
+    {
+      "detail": "11.0 años nominales",
+      "from": "2025-03-15",
+      "id": "major-0-4-SATURNO",
+      "priority": 30,
+      "source": "firdaria",
+      "title": "Firdaria mayor: ♄ Saturno",
+      "to": "2036-03-15"
+    },
+    {
+      "date": "2026-10-10",
+      "id": "minor-change-minor-0-4-1-JUPITER",
+      "priority": 20,
+      "source": "firdaria",
+      "title": "Cambio menor a ♃ Júpiter"
+    },
+    {
+      "date": "2028-05-06",
+      "id": "minor-change-minor-0-4-2-MARTE",
+      "priority": 20,
+      "source": "firdaria",
+      "title": "Cambio menor a ♂ Marte"
+    },
+    {
+      "date": "2029-12-01",
+      "id": "minor-change-minor-0-4-3-SOL",
+      "priority": 20,
+      "source": "firdaria",
+      "title": "Cambio menor a ☉ Sol"
+    },
+    {
+      "date": "2031-06-28",
+      "id": "minor-change-minor-0-4-4-VENUS",
+      "priority": 20,
+      "source": "firdaria",
+      "title": "Cambio menor a ♀ Venus"
+    },
+    {
+      "date": "2033-01-22",
+      "id": "minor-change-minor-0-4-5-MERCURIO",
+      "priority": 20,
+      "source": "firdaria",
+      "title": "Cambio menor a ☿ Mercurio"
+    },
+    {
+      "date": "2034-08-19",
+      "id": "minor-change-minor-0-4-6-LUNA",
+      "priority": 20,
+      "source": "firdaria",
+      "title": "Cambio menor a ☽ Luna"
+    },
+    {
+      "date": "2036-03-15",
+      "id": "minor-change-minor-0-5-0-JUPITER",
+      "priority": 20,
+      "source": "firdaria",
+      "title": "Cambio menor a ♃ Júpiter"
+    },
+    {
+      "detail": "12.0 años nominales",
+      "from": "2036-03-15",
+      "id": "major-0-5-JUPITER",
+      "priority": 10,
+      "source": "firdaria",
+      "title": "Firdaria mayor: ♃ Júpiter",
+      "to": "2048-03-15"
+    },
+    {
+      "date": "2037-12-01",
+      "id": "minor-change-minor-0-5-1-MARTE",
+      "priority": 20,
+      "source": "firdaria",
+      "title": "Cambio menor a ♂ Marte"
+    },
+    {
+      "detail": "7.0 años nominales",
+      "from": "2048-03-15",
+      "id": "major-0-6-MARTE",
+      "priority": 10,
+      "source": "firdaria",
+      "title": "Firdaria mayor: ♂ Marte",
+      "to": "2055-03-15"
+    },
+    {
+      "detail": "3.0 años nominales",
+      "from": "2055-03-15",
+      "id": "major-0-7-NODO_NORTE",
+      "priority": 10,
+      "source": "firdaria",
+      "title": "Firdaria mayor: ☊ Nodo Norte",
+      "to": "2058-03-15"
+    },
+    {
+      "detail": "2.0 años nominales",
+      "from": "2058-03-15",
+      "id": "major-0-8-NODO_SUR",
+      "priority": 10,
+      "source": "firdaria",
+      "title": "Firdaria mayor: ☋ Nodo Sur",
+      "to": "2060-03-15"
+    }
+  ],
+  "interpretations": [],
+  "metadata": {
+    "chartID": "22222222-2222-2222-2222-222222222222",
+    "chartName": "Buenos Aires Control",
+    "command": "firdaria",
+    "date": "2026-10-04T00:00:00Z",
+    "format": "json",
+    "generatedAt": "2026-10-04T18:30:27Z",
+    "narrative": "none",
+    "scope": "complete",
+    "timezone": "America/Argentina/Buenos_Aires"
+  },
+  "networkUsed": false,
+  "source": "local",
+  "technicalData": {
+    "firdaria": {
+      "currentMajor": {
+        "cycleIndex": 0,
+        "endDate": "2036-03-15T17:00:00Z",
+        "id": "major-0-4-SATURNO",
+        "kind": "major",
+        "nominalYears": 11,
+        "ruler": "SATURNO",
+        "sequenceIndex": 4,
+        "startDate": "2025-03-15T17:00:00Z"
+      },
+      "currentMinor": {
+        "cycleIndex": 0,
+        "endDate": "2026-10-10T17:00:00Z",
+        "id": "minor-0-4-0-SATURNO",
+        "kind": "minor",
+        "nominalYears": 1.5714285714285714,
+        "ruler": "SATURNO",
+        "sequenceIndex": 0,
+        "startDate": "2025-03-15T17:00:00Z"
+      },
+      "timeline": {
+        "birthDate": "1985-03-15T17:00:00Z",
+        "cycleEndDate": "2060-03-15T17:00:00Z",
+        "cycleIndex": 0,
+        "cycleStartDate": "1985-03-15T17:00:00Z",
+        "majorPeriods": [
+          {
+            "cycleIndex": 0,
+            "endDate": "1995-03-15T17:00:00Z",
+            "id": "major-0-0-SOL",
+            "kind": "major",
+            "nominalYears": 10,
+            "ruler": "SOL",
+            "sequenceIndex": 0,
+            "startDate": "1985-03-15T17:00:00Z"
+          },
+          {
+            "cycleIndex": 0,
+            "endDate": "2003-03-15T17:00:00Z",
+            "id": "major-0-1-VENUS",
+            "kind": "major",
+            "nominalYears": 8,
+            "ruler": "VENUS",
+            "sequenceIndex": 1,
+            "startDate": "1995-03-15T17:00:00Z"
+          },
+          {
+            "cycleIndex": 0,
+            "endDate": "2016-03-15T17:00:00Z",
+            "id": "major-0-2-MERCURIO",
+            "kind": "major",
+            "nominalYears": 13,
+            "ruler": "MERCURIO",
+            "sequenceIndex": 2,
+            "startDate": "2003-03-15T17:00:00Z"
+          },
+          {
+            "cycleIndex": 0,
+            "endDate": "2025-03-15T17:00:00Z",
+            "id": "major-0-3-LUNA",
+            "kind": "major",
+            "nominalYears": 9,
+            "ruler": "LUNA",
+            "sequenceIndex": 3,
+            "startDate": "2016-03-15T17:00:00Z"
+          },
+          {
+            "cycleIndex": 0,
+            "endDate": "2036-03-15T17:00:00Z",
+            "id": "major-0-4-SATURNO",
+            "kind": "major",
+            "nominalYears": 11,
+            "ruler": "SATURNO",
+            "sequenceIndex": 4,
+            "startDate": "2025-03-15T17:00:00Z"
+          },
+          {
+            "cycleIndex": 0,
+            "endDate": "2048-03-15T17:00:00Z",
+            "id": "major-0-5-JUPITER",
+            "kind": "major",
+            "nominalYears": 12,
+            "ruler": "JUPITER",
+            "sequenceIndex": 5,
+            "startDate": "2036-03-15T17:00:00Z"
+          },
+          {
+            "cycleIndex": 0,
+            "endDate": "2055-03-15T17:00:00Z",
+            "id": "major-0-6-MARTE",
+            "kind": "major",
+            "nominalYears": 7,
+            "ruler": "MARTE",
+            "sequenceIndex": 6,
+            "startDate": "2048-03-15T17:00:00Z"
+          },
+          {
+            "cycleIndex": 0,
+            "endDate": "2058-03-15T17:00:00Z",
+            "id": "major-0-7-NODO_NORTE",
+            "kind": "major",
+            "nominalYears": 3,
+            "ruler": "NODO_NORTE",
+            "sequenceIndex": 7,
+            "startDate": "2055-03-15T17:00:00Z"
+          },
+          {
+            "cycleIndex": 0,
+            "endDate": "2060-03-15T17:00:00Z",
+            "id": "major-0-8-NODO_SUR",
+            "kind": "major",
+            "nominalYears": 2,
+            "ruler": "NODO_SUR",
+            "sequenceIndex": 8,
+            "startDate": "2058-03-15T17:00:00Z"
+          }
+        ],
+        "sect": {
+          "benefic": "JUPITER",
+          "contrarySectBenefic": "VENUS",
+          "contrarySectMalefic": "MARTE",
+          "isDiurnal": true,
+          "luminary": "SOL",
+          "malefic": "SATURNO"
+        }
+      },
+      "upcomingMinorChanges": [
+        {
+          "date": "2026-10-10T17:00:00Z",
+          "id": "minor-change-minor-0-4-1-JUPITER",
+          "period": {
+            "cycleIndex": 0,
+            "endDate": "2028-05-06T17:00:00Z",
+            "id": "minor-0-4-1-JUPITER",
+            "kind": "minor",
+            "nominalYears": 1.5714285714285714,
+            "ruler": "JUPITER",
+            "sequenceIndex": 1,
+            "startDate": "2026-10-10T17:00:00Z"
+          }
+        },
+        {
+          "date": "2028-05-06T17:00:00Z",
+          "id": "minor-change-minor-0-4-2-MARTE",
+          "period": {
+            "cycleIndex": 0,
+            "endDate": "2029-12-01T17:00:00Z",
+            "id": "minor-0-4-2-MARTE",
+            "kind": "minor",
+            "nominalYears": 1.5714285714285714,
+            "ruler": "MARTE",
+            "sequenceIndex": 2,
+            "startDate": "2028-05-06T17:00:00Z"
+          }
+        },
+        {
+          "date": "2029-12-01T17:00:00Z",
+          "id": "minor-change-minor-0-4-3-SOL",
+          "period": {
+            "cycleIndex": 0,
+            "endDate": "2031-06-28T17:00:00Z",
+            "id": "minor-0-4-3-SOL",
+            "kind": "minor",
+            "nominalYears": 1.5714285714285714,
+            "ruler": "SOL",
+            "sequenceIndex": 3,
+            "startDate": "2029-12-01T17:00:00Z"
+          }
+        },
+        {
+          "date": "2031-06-28T17:00:00Z",
+          "id": "minor-change-minor-0-4-4-VENUS",
+          "period": {
+            "cycleIndex": 0,
+            "endDate": "2033-01-22T17:00:00Z",
+            "id": "minor-0-4-4-VENUS",
+            "kind": "minor",
+            "nominalYears": 1.5714285714285714,
+            "ruler": "VENUS",
+            "sequenceIndex": 4,
+            "startDate": "2031-06-28T17:00:00Z"
+          }
+        },
+        {
+          "date": "2033-01-22T17:00:00Z",
+          "id": "minor-change-minor-0-4-5-MERCURIO",
+          "period": {
+            "cycleIndex": 0,
+            "endDate": "2034-08-19T17:00:00Z",
+            "id": "minor-0-4-5-MERCURIO",
+            "kind": "minor",
+            "nominalYears": 1.5714285714285714,
+            "ruler": "MERCURIO",
+            "sequenceIndex": 5,
+            "startDate": "2033-01-22T17:00:00Z"
+          }
+        },
+        {
+          "date": "2034-08-19T17:00:00Z",
+          "id": "minor-change-minor-0-4-6-LUNA",
+          "period": {
+            "cycleIndex": 0,
+            "endDate": "2036-03-15T17:00:00Z",
+            "id": "minor-0-4-6-LUNA",
+            "kind": "minor",
+            "nominalYears": 1.5714285714285714,
+            "ruler": "LUNA",
+            "sequenceIndex": 6,
+            "startDate": "2034-08-19T17:00:00Z"
+          }
+        },
+        {
+          "date": "2036-03-15T17:00:00Z",
+          "id": "minor-change-minor-0-5-0-JUPITER",
+          "period": {
+            "cycleIndex": 0,
+            "endDate": "2037-12-01T20:25:42Z",
+            "id": "minor-0-5-0-JUPITER",
+            "kind": "minor",
+            "nominalYears": 1.7142857142857142,
+            "ruler": "JUPITER",
+            "sequenceIndex": 0,
+            "startDate": "2036-03-15T17:00:00Z"
+          }
+        },
+        {
+          "date": "2037-12-01T20:25:42Z",
+          "id": "minor-change-minor-0-5-1-MARTE",
+          "period": {
+            "cycleIndex": 0,
+            "endDate": "2039-08-19T23:51:25Z",
+            "id": "minor-0-5-1-MARTE",
+            "kind": "minor",
+            "nominalYears": 1.7142857142857142,
+            "ruler": "MARTE",
+            "sequenceIndex": 1,
+            "startDate": "2037-12-01T20:25:42Z"
+          }
+        }
+      ]
+    }
+  },
+  "warnings": []
+}

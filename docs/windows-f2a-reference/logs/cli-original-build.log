@@ -1,0 +1,6 @@
+[0/1] Planning build
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+[2/3] Compiling AstroMalik AppNavigation.swift
+[3/4] Compiling astromalik_cli main.swift
+Build of product 'astromalik-cli' complete! (89.00s)

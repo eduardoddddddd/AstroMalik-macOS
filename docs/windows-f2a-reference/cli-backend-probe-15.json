@@ -1,0 +1,144 @@
+{
+  "configuredResource" : "sepl_18.se1",
+  "kind" : "observed-original-cli-backend",
+  "platform" : "macOS",
+  "probes" : [
+    {
+      "backend" : "swiss-files",
+      "body" : 0,
+      "diagnostic" : "",
+      "id" : "eduardo",
+      "julianDay" : 2443063.3145833332,
+      "longitude" : 198.60605924656568,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 1,
+      "diagnostic" : "",
+      "id" : "eduardo",
+      "julianDay" : 2443063.3145833332,
+      "longitude" : 57.692039057605868,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 9,
+      "diagnostic" : "",
+      "id" : "eduardo",
+      "julianDay" : 2443063.3145833332,
+      "longitude" : 191.87188185317348,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 0,
+      "diagnostic" : "",
+      "id" : "buenosAires",
+      "julianDay" : 2446140.2083333335,
+      "longitude" : 355.05730749050235,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 1,
+      "diagnostic" : "",
+      "id" : "buenosAires",
+      "julianDay" : 2446140.2083333335,
+      "longitude" : 289.21118573579861,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 9,
+      "diagnostic" : "",
+      "id" : "buenosAires",
+      "julianDay" : 2446140.2083333335,
+      "longitude" : 214.3496923032807,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 0,
+      "diagnostic" : "",
+      "id" : "reykjavik",
+      "julianDay" : 2447892.7708333335,
+      "longitude" : 280.580629263893,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 1,
+      "diagnostic" : "",
+      "id" : "reykjavik",
+      "julianDay" : 2447892.7708333335,
+      "longitude" : 330.18596444139786,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 9,
+      "diagnostic" : "",
+      "id" : "reykjavik",
+      "julianDay" : 2447892.7708333335,
+      "longitude" : 227.08684425980442,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 0,
+      "diagnostic" : "",
+      "id" : "madrid-war1940-control",
+      "julianDay" : 2429825.9583333335,
+      "longitude" : 112.78260405353758,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 1,
+      "diagnostic" : "",
+      "id" : "madrid-war1940-control",
+      "julianDay" : 2429825.9583333335,
+      "longitude" : 243.94923584044889,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 9,
+      "diagnostic" : "",
+      "id" : "madrid-war1940-control",
+      "julianDay" : 2429825.9583333335,
+      "longitude" : 122.19319290800659,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 0,
+      "diagnostic" : "",
+      "id" : "reference",
+      "julianDay" : 2461317.5,
+      "longitude" : 190.78967266933606,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 1,
+      "diagnostic" : "",
+      "id" : "reference",
+      "julianDay" : 2461317.5,
+      "longitude" : 106.58710491350257,
+      "returnedFlags" : 258
+    },
+    {
+      "backend" : "swiss-files",
+      "body" : 9,
+      "diagnostic" : "",
+      "id" : "reference",
+      "julianDay" : 2461317.5,
+      "longitude" : 303.10349040692694,
+      "returnedFlags" : 258
+    }
+  ],
+  "swissVersion" : "2.10.03",
+  "tzdataVersion" : "2026b"
+}

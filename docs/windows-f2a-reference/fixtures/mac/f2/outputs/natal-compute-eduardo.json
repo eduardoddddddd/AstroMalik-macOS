@@ -1,0 +1,132 @@
+{
+  "ascendant": {
+    "formatted": "♊ Géminis 00°32'",
+    "longitude": 60.542776128902716
+  },
+  "birthDate": "1976-10-11",
+  "birthTime": "20:33",
+  "bodies": [
+    {
+      "formatted": "♎ Libra 18°36'",
+      "house": 6,
+      "key": "SOL",
+      "label": "☉ Sol",
+      "longitude": 198.60605924656568,
+      "retrograde": false
+    },
+    {
+      "formatted": "♉ Tauro 27°41'",
+      "house": 12,
+      "key": "LUNA",
+      "label": "☽ Luna",
+      "longitude": 57.69203905760587,
+      "retrograde": false
+    },
+    {
+      "formatted": "♎ Libra 01°36'",
+      "house": 5,
+      "key": "MERCURIO",
+      "label": "☿ Mercurio",
+      "longitude": 181.61105228630962,
+      "retrograde": false
+    },
+    {
+      "formatted": "♏ Escorpio 19°07'",
+      "house": 6,
+      "key": "VENUS",
+      "label": "♀ Venus",
+      "longitude": 229.1303908204509,
+      "retrograde": false
+    },
+    {
+      "formatted": "♏ Escorpio 02°00'",
+      "house": 6,
+      "key": "MARTE",
+      "label": "♂ Marte",
+      "longitude": 212.0097297198107,
+      "retrograde": false
+    },
+    {
+      "formatted": "♊ Géminis 00°23'",
+      "house": 12,
+      "key": "JUPITER",
+      "label": "♃ Júpiter",
+      "longitude": 60.39966848022305,
+      "retrograde": true
+    },
+    {
+      "formatted": "♌ Leo 14°54'",
+      "house": 4,
+      "key": "SATURNO",
+      "label": "♄ Saturno",
+      "longitude": 134.91161857378282,
+      "retrograde": false
+    },
+    {
+      "formatted": "♏ Escorpio 06°18'",
+      "house": 6,
+      "key": "URANO",
+      "label": "⛢ Urano",
+      "longitude": 216.30454873056806,
+      "retrograde": false
+    },
+    {
+      "formatted": "♐ Sagitario 11°51'",
+      "house": 7,
+      "key": "NEPTUNO",
+      "label": "♆ Neptuno",
+      "longitude": 251.85057486713205,
+      "retrograde": false
+    },
+    {
+      "formatted": "♎ Libra 11°52'",
+      "house": 5,
+      "key": "PLUTON",
+      "label": "♇ Plutón",
+      "longitude": 191.87188185317348,
+      "retrograde": false
+    },
+    {
+      "formatted": "♏ Escorpio 03°31'",
+      "house": 6,
+      "key": "NODO_NORTE",
+      "label": "☊ Nodo Norte",
+      "longitude": 213.53059781846025,
+      "retrograde": false
+    },
+    {
+      "formatted": "♉ Tauro 03°31'",
+      "house": 12,
+      "key": "NODO_SUR",
+      "label": "☋ Nodo Sur",
+      "longitude": 33.53059781846025,
+      "retrograde": false
+    }
+  ],
+  "createdAt": "2026-10-04T18:30:31Z",
+  "cusps": [
+    60.542776128902716,
+    84.8885861869915,
+    105.62427285893865,
+    127.64810877414453,
+    155.5232108782467,
+    194.4574454818698,
+    240.54277612890272,
+    264.8885861869915,
+    285.62427285893864,
+    307.64810877414453,
+    335.5232108782467,
+    14.45744548186981
+  ],
+  "houseSystem": "Placidus",
+  "id": "11111111-1111-1111-1111-111111111111",
+  "latitude": 40.4168,
+  "longitude": -3.7038,
+  "mc": {
+    "formatted": "♒ Acuario 07°38'",
+    "longitude": 307.64810877414453
+  },
+  "name": "Eduardo",
+  "placeName": "Madrid, España",
+  "timezone": "Europe/Madrid"
+}

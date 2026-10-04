@@ -1,0 +1,4469 @@
+{
+  "chart" : {
+    "ascendant" : "♊ Géminis 00°32'",
+    "birthDate" : "1976-10-11",
+    "birthTime" : "20:33",
+    "houseSystem" : "Placidus",
+    "id" : "11111111-1111-1111-1111-111111111111",
+    "latitude" : 40.4168,
+    "longitude" : -3.7038,
+    "mc" : "♒ Acuario 07°38'",
+    "name" : "Eduardo",
+    "placeName" : "Madrid, España",
+    "timezone" : "Europe\/Madrid"
+  },
+  "events" : [
+    {
+      "date" : "2026-10-01",
+      "detail" : "Saturno en tránsito en oposición a tu Plutón\n\nCuando Saturno entra en contacto con Plutón, sus defensas fallan y dejan al descubierto las dudas y debilidades relacionados con su emplazamiento. Es como si alguien te estuviera arrancando la máscara y dejando al descubierto lo que hay en ti más vulnerable y sensible. Te sientes desnudo e indefenso ante la fuerza transformadora de Plutón, ya que tus intentos de ocultar tu dolor y tu inseguridad no tienen éxito, y ahora debes hacer frente a lo que más miedo tienes de ver en ti mismo.\n\nDurante este período Plutón pone a prueba la muralla protectora de Saturno, finalmente echándola abajo, y es seguro que no será una experiencia fácil de soportar. Sin embargo, al desprenderte de la imagen que has construido de ti mismo y volver a conectarte con lo que habías excluido de tu identidad, puedes cambiar y crecer. También debes recordar que lo que niegas o reprimes no son sólo partes «negativas» de tu interior, ya que Saturno tiende a suprimir cualquier sentimiento «sospechoso» (aunque sea válido).\n\nDurante este tránsito, Plutón ofrece la oportunidad de derrumbar las barreras que impiden el desarrollo de las facetas reprimidas y ocultas de tu ser, pero tienes que tener paciencia y aceptar conscientemente que la tarea de integración de nuevas ideas y visiones no será fácil y tomará tiempo. Saturno tiene los pies firmemente plantados en el suelo, y se sentirá amenazado por el efecto transformador de Plutón. Por más que todo esto puede inquietarte, es probable que tengas que dejarte desintegrar para poder reorganizarte de otra manera.",
+      "from" : "2026-10-01",
+      "id" : "D663DEE9-3365-40BF-BEE8-47F68BF16C89",
+      "priority" : 50.481200000000015,
+      "source" : "transit",
+      "title" : "Saturno Oposicion Pluton",
+      "to" : "2026-10-31"
+    },
+    {
+      "date" : "2026-10-03",
+      "detail" : "♀ Venus se estaciona retrógrada sobre tu ⛢ Urano natal en casa 6 (orbe 2.2°). Durante varias semanas, la energía de ♀ Venus se concentra intensamente en este punto de tu carta.",
+      "id" : "5FBFE54C-F92B-45A7-9296-CDF57EA935DE",
+      "priority" : 22.81,
+      "source" : "station",
+      "title" : "♀ Venus estación retrógrada en ♏ Escorpio"
+    },
+    {
+      "date" : "2026-10-10",
+      "detail" : "Luna Nueva en tu casa 6: ajustes en salud, rutina, trabajo diario y servicio. Además, esta lunación activa directamente tu ☉ Sol natal (orbe 1.2°), amplificando su significado personal.",
+      "id" : "4CD399C7-5BF6-48C6-8A9E-A1A1E1711BB4",
+      "priority" : 20,
+      "source" : "lunation",
+      "title" : "🌑 Luna Nueva en ♎ Libra"
+    },
+    {
+      "date" : "2026-10-11",
+      "detail" : "El tránsito de Marte en oposición al Medio Cielo hace que sea más difícil avanzar en su vida profesional. Puede sentir que sus colegas o jefes están trabajando en su contra. Incluso si se siente fuerte y confiado, sus acciones pueden parecer menos efectivas de lo habitual. La tendencia a enojarse fácilmente y actuar impulsivamente significa que debes tener cuidado de no dañar tu reputación o tus perspectivas profesionales.\n\nSi bien las acciones de superiores o competidores pueden molestarte, probablemente haya un problema subyacente más profundo en casa o en tu pasado que esté causando esta manifestación externa. La ira reprimida puede resurgir o usted puede volver a patrones y hábitos de conducta antiguos y destructivos. Quizás subconscientemente todavía estés enojado por algo hiriente que uno de tus padres hizo. Tómate un tiempo para meditar y descubrir la fuente de tu dolor interior.\n\nEl conflicto del ego es posible en casa, especialmente con hombres como tu padre. No debe evitar la confrontación si ello permitirá sacar las cosas a la luz y ayudar a resolver un problema persistente. Sin embargo, evita molestar a familiares inocentes, ya que puedes molestarlos inconscientemente sin darte cuenta. También puedes liberar una acumulación de energía caliente y destructiva de forma segura en privado. Podrían ser tareas domésticas intensas, proyectos de mejoras para el hogar, ejercicio u otras actividades prácticas estimulantes.\n\nDenuncia al indígena muchos males, robos, contiendas, querellas, restricción de la libertad, muchos daños, que tanto procederán de él como de los demás; muchas veces se amenaza públicamente con la muerte, o con acusaciones públicas; en algunos, señala acusaciones contra ellos por Coyning o falsificación de Dinero: señala pérdida de Cargos, Mandos, etc. en Reyes o Príncipes, observa peligro de destitución, pérdida de sus ejércitos, tumultos de sus soldados, motines, alborotos, gente descontenta con sus soldados; en tiempos de paz, muestra la opresión de los reyes y los súbditos vejados. [Astrología cristiana, William Lilly, 1647, p.671. ]",
+      "from" : "2026-10-06",
+      "id" : "D676A4D0-440C-412A-8B8D-1C590242B3B4",
+      "priority" : 38.6268575,
+      "source" : "transit",
+      "title" : "Marte Oposicion Medio Cielo",
+      "to" : "2026-10-16"
+    },
+    {
+      "date" : "2026-10-11",
+      "id" : "DBFB19EC-3D15-4E7F-99D1-AEB3EF7A6544",
+      "priority" : 12,
+      "source" : "house-ingress",
+      "title" : "Marte ingresa en casa 4"
+    },
+    {
+      "date" : "2026-10-16",
+      "detail" : "Plutón en tránsito en cuadratura a tu Marte\n\nEs hora de que aprendas más sobre tus impulsos agresivos, tus ansias de poder, y tus deseos sexuales. Plutón excava profundamente en los rincones más escondidos de la psique y va más allá de las fronteras y defensas habituales. Te obligará a enfrentarte con los impulsos más oscuros de tu personalidad y llegar a un acuerdo con esta parte de tu ser. Si has sido demasiado pasivo y temeroso, es probable que este tránsito te haga tomar más conciencia de la necesidad de hacerte valer por derecho propio. Y si has sido excesivamente dominado por la energía marciana, es posible que Plutón bloquee temporalmente esta agresividad, en un intento de ayudarte a descubrir maneras de relacionarte con tu entorno de una forma más refinada.\n\nCuando Plutón afecta a la sexualidad, pueden suceder dos cosas: si has estado desconectado de tu sexualidad, vas a abrir los ojos a su existencia, y si la has canalizado tus impulsos libremente, puede aparecer un bloqueo para que cambies la forma en que te relacionas sexualmente con los demás.\n\nNo será fácil manejar de forma positiva este tránsito, pero si logras afrontarlo y resolverlo con éxito, tendrás una excelente oportunidad para crecer psicológicamente y desarrollar tu personalidad de tal forma que te permitirá usar tus energías con más juicio y prudencia.",
+      "from" : "2026-10-01",
+      "id" : "46716C73-29F4-4879-91EA-1ECCB7054D44",
+      "priority" : 57.39734000000001,
+      "source" : "transit",
+      "title" : "Pluton Cuadratura Marte",
+      "to" : "2026-10-31"
+    },
+    {
+      "date" : "2026-10-16",
+      "detail" : "Plutón en tránsito en trígono a tu Mercurio\n\nMercurio está vinculado con el pensamiento y la comunicación, y Plutón, el señor del submundo, insta a Mercurio a que profundice más en la naturaleza de la realidad, a que explore el lado oculto y oscuro de la vida y descubra secretos y se adentre en misterios. Plutón transforma todo lo que toca, y durante este tránsito es posible que alguien a quien conoces o algo que hayas leído o estudiado revolucione tus creencias y tu manera habitual de pensar y enfocar la vida.\n\nSientes la necesidad de sondear lo que está sepultado en tu interior y ahondar en el inconsciente a fin de traer a la conciencia lo que encuentres allí abajo. Éste es un periodo durante el cual la psicoterapia, la meditación y el estudio filosófico pueden servir para abrirte mentalmente de manera que antes no parecía posible. Por supuesto, es posible que aquello que encuentres «allí abajo» sea desagradable y te asuste o deprima, pero si te enfrentas con esas imágenes subterráneas y las reconoces y aceptas como parte tuya, ya puedes trabajar con la energía contenida en estas compulsiones. Si las afrontas con paciencia y confianza, pronto se hará sentir la nueva energía y podrás establecer contacto con talentos y recursos que todavía no están completamente realizados. Quizá descubras en ti dotes para las lenguas, una determinada capacidad intelectual o una facilidad para la comunicación escrita.",
+      "from" : "2026-10-01",
+      "id" : "6EDBE574-4658-4AAA-BDCC-05FF076FC0B3",
+      "priority" : 39.288700000000006,
+      "source" : "transit",
+      "title" : "Pluton Trigono Mercurio",
+      "to" : "2026-10-31"
+    },
+    {
+      "date" : "2026-10-24",
+      "detail" : "☿ Mercurio se estaciona retrógrada sobre tu ♀ Venus natal en casa 6 (orbe 1.8°). Durante varias semanas, la energía de ☿ Mercurio se concentra intensamente en este punto de tu carta.",
+      "id" : "C966FAC5-DFE0-4CD6-8FB7-7DABCCE9522C",
+      "priority" : 23.15,
+      "source" : "station",
+      "title" : "☿ Mercurio estación retrógrada en ♏ Escorpio"
+    },
+    {
+      "date" : "2026-10-25",
+      "detail" : "Activación del eje nodal, Toca Sol\/Luna, Planeta natal cadente, Tránsito por casa angular, Duración sostenida, Orbe exacto menor de 0.25°",
+      "from" : "2026-10-01",
+      "id" : "1D7407B6-C3FD-4B69-81B2-9BA7172DDE8A",
+      "priority" : 42.191489999999995,
+      "source" : "transit",
+      "title" : "Eje Nodal Cuadratura Luna",
+      "to" : "2026-10-31"
+    },
+    {
+      "date" : "2026-10-26",
+      "detail" : "Luna Llena en tu casa 12: retiro, introspección, cierre de ciclos y lo inconsciente.",
+      "id" : "E32076A2-4F13-4AC5-BDD7-466D436F96B2",
+      "priority" : 20,
+      "source" : "lunation",
+      "title" : "🌕 Luna Llena en ♉ Tauro"
+    },
+    {
+      "date" : "2026-10-31",
+      "detail" : "Neptuno en tránsito en oposición a tu Mercurio\n\nDurante este tránsito el lado consciente y el lado inconsciente de tu psique vuelven a reunirse, pero de una manera que puede ser bastante inquietante. El miedo, la duda y la confusión pueden adueñarse de tu mente y obstaculizar tu buen juicio y tu capacidad de funcionar bien en el mundo. Te cuesta más organizarte y organizar tu vida diaria, e incluso las actividades más rutinarias pueden resultarte difíciles. La energía neptuniana te vuelve indeciso, aletargado y despistado, ya que tu pensamiento racional se ve invadido por estados de ánimo y complejos emocionales que afloran desde el inconsciente o de las profundidades de tu ser. No es un buen momento para tomar decisiones importantes, que requieran astucia, o firmar algún contrato. Sería aconsejable que acudas a una persona de confianza para que te ayude o que, por lo menos, leas cuidadosamente la letra pequeña.\n\nPor otro lado, debido a que el inconsciente está más activo, este tránsito señala un buen momento para iniciar alguna forma de terapia o autoexploración, pero debes estar seguro de que lo haces con un profesional experimentado que pueda ayudarte a superar las manifestaciones más difíciles de esta influencia de Neptuno.",
+      "from" : "2026-10-01",
+      "id" : "EAE3F991-C9E0-4577-9699-2D3524452F94",
+      "priority" : 90.74419200000004,
+      "source" : "transit",
+      "title" : "Neptuno Oposicion Mercurio",
+      "to" : "2026-10-31"
+    },
+    {
+      "date" : "2026-10-31",
+      "detail" : "Toca Nodo natal, Duración sostenida, Orbe exacto menor de 0.5°, Cluster de tránsitos al mismo punto",
+      "from" : "2026-10-01",
+      "id" : "AF3D91FD-D271-4FC8-9118-459D0E5CD725",
+      "priority" : 67.27607040000001,
+      "source" : "transit",
+      "title" : "Pluton Cuadratura Nodo Norte",
+      "to" : "2026-10-31"
+    },
+    {
+      "date" : "2026-10-31",
+      "detail" : "Toca Nodo natal, Duración sostenida, Orbe exacto menor de 0.5°, Cluster de tránsitos al mismo punto",
+      "from" : "2026-10-01",
+      "id" : "ED3D397F-958C-46B3-BC21-74089CB1B410",
+      "priority" : 67.27607040000001,
+      "source" : "transit",
+      "title" : "Pluton Cuadratura Nodo Sur",
+      "to" : "2026-10-31"
+    }
+  ],
+  "interpretations" : [
+    {
+      "id" : "climate",
+      "source" : "local-template",
+      "text" : "2 estación(es) planetaria(s) tocan tu carta directamente. 5 tránsito(s) de prioridad crítica.",
+      "title" : "Clima del mes"
+    },
+    {
+      "id" : "EAE3F991-C9E0-4577-9699-2D3524452F94",
+      "source" : "Grupo Venus",
+      "text" : "Neptuno en tránsito en oposición a tu Mercurio\n\nDurante este tránsito el lado consciente y el lado inconsciente de tu psique vuelven a reunirse, pero de una manera que puede ser bastante inquietante. El miedo, la duda y la confusión pueden adueñarse de tu mente y obstaculizar tu buen juicio y tu capacidad de funcionar bien en el mundo. Te cuesta más organizarte y organizar tu vida diaria, e incluso las actividades más rutinarias pueden resultarte difíciles. La energía neptuniana te vuelve indeciso, aletargado y despistado, ya que tu pensamiento racional se ve invadido por estados de ánimo y complejos emocionales que afloran desde el inconsciente o de las profundidades de tu ser. No es un buen momento para tomar decisiones importantes, que requieran astucia, o firmar algún contrato. Sería aconsejable que acudas a una persona de confianza para que te ayude o que, por lo menos, leas cuidadosamente la letra pequeña.\n\nPor otro lado, debido a que el inconsciente está más activo, este tránsito señala un buen momento para iniciar alguna forma de terapia o autoexploración, pero debes estar seguro de que lo haces con un profesional experimentado que pueda ayudarte a superar las manifestaciones más difíciles de esta influencia de Neptuno.",
+      "title" : "Neptuno Oposicion Mercurio"
+    },
+    {
+      "id" : "46716C73-29F4-4879-91EA-1ECCB7054D44",
+      "source" : "Grupo Venus",
+      "text" : "Plutón en tránsito en cuadratura a tu Marte\n\nEs hora de que aprendas más sobre tus impulsos agresivos, tus ansias de poder, y tus deseos sexuales. Plutón excava profundamente en los rincones más escondidos de la psique y va más allá de las fronteras y defensas habituales. Te obligará a enfrentarte con los impulsos más oscuros de tu personalidad y llegar a un acuerdo con esta parte de tu ser. Si has sido demasiado pasivo y temeroso, es probable que este tránsito te haga tomar más conciencia de la necesidad de hacerte valer por derecho propio. Y si has sido excesivamente dominado por la energía marciana, es posible que Plutón bloquee temporalmente esta agresividad, en un intento de ayudarte a descubrir maneras de relacionarte con tu entorno de una forma más refinada.\n\nCuando Plutón afecta a la sexualidad, pueden suceder dos cosas: si has estado desconectado de tu sexualidad, vas a abrir los ojos a su existencia, y si la has canalizado tus impulsos libremente, puede aparecer un bloqueo para que cambies la forma en que te relacionas sexualmente con los demás.\n\nNo será fácil manejar de forma positiva este tránsito, pero si logras afrontarlo y resolverlo con éxito, tendrás una excelente oportunidad para crecer psicológicamente y desarrollar tu personalidad de tal forma que te permitirá usar tus energías con más juicio y prudencia.",
+      "title" : "Pluton Cuadratura Marte"
+    },
+    {
+      "id" : "D663DEE9-3365-40BF-BEE8-47F68BF16C89",
+      "source" : "Grupo Venus",
+      "text" : "Saturno en tránsito en oposición a tu Plutón\n\nCuando Saturno entra en contacto con Plutón, sus defensas fallan y dejan al descubierto las dudas y debilidades relacionados con su emplazamiento. Es como si alguien te estuviera arrancando la máscara y dejando al descubierto lo que hay en ti más vulnerable y sensible. Te sientes desnudo e indefenso ante la fuerza transformadora de Plutón, ya que tus intentos de ocultar tu dolor y tu inseguridad no tienen éxito, y ahora debes hacer frente a lo que más miedo tienes de ver en ti mismo.\n\nDurante este período Plutón pone a prueba la muralla protectora de Saturno, finalmente echándola abajo, y es seguro que no será una experiencia fácil de soportar. Sin embargo, al desprenderte de la imagen que has construido de ti mismo y volver a conectarte con lo que habías excluido de tu identidad, puedes cambiar y crecer. También debes recordar que lo que niegas o reprimes no son sólo partes «negativas» de tu interior, ya que Saturno tiende a suprimir cualquier sentimiento «sospechoso» (aunque sea válido).\n\nDurante este tránsito, Plutón ofrece la oportunidad de derrumbar las barreras que impiden el desarrollo de las facetas reprimidas y ocultas de tu ser, pero tienes que tener paciencia y aceptar conscientemente que la tarea de integración de nuevas ideas y visiones no será fácil y tomará tiempo. Saturno tiene los pies firmemente plantados en el suelo, y se sentirá amenazado por el efecto transformador de Plutón. Por más que todo esto puede inquietarte, es probable que tengas que dejarte desintegrar para poder reorganizarte de otra manera.",
+      "title" : "Saturno Oposicion Pluton"
+    },
+    {
+      "id" : "6EDBE574-4658-4AAA-BDCC-05FF076FC0B3",
+      "source" : "Grupo Venus",
+      "text" : "Plutón en tránsito en trígono a tu Mercurio\n\nMercurio está vinculado con el pensamiento y la comunicación, y Plutón, el señor del submundo, insta a Mercurio a que profundice más en la naturaleza de la realidad, a que explore el lado oculto y oscuro de la vida y descubra secretos y se adentre en misterios. Plutón transforma todo lo que toca, y durante este tránsito es posible que alguien a quien conoces o algo que hayas leído o estudiado revolucione tus creencias y tu manera habitual de pensar y enfocar la vida.\n\nSientes la necesidad de sondear lo que está sepultado en tu interior y ahondar en el inconsciente a fin de traer a la conciencia lo que encuentres allí abajo. Éste es un periodo durante el cual la psicoterapia, la meditación y el estudio filosófico pueden servir para abrirte mentalmente de manera que antes no parecía posible. Por supuesto, es posible que aquello que encuentres «allí abajo» sea desagradable y te asuste o deprima, pero si te enfrentas con esas imágenes subterráneas y las reconoces y aceptas como parte tuya, ya puedes trabajar con la energía contenida en estas compulsiones. Si las afrontas con paciencia y confianza, pronto se hará sentir la nueva energía y podrás establecer contacto con talentos y recursos que todavía no están completamente realizados. Quizá descubras en ti dotes para las lenguas, una determinada capacidad intelectual o una facilidad para la comunicación escrita.",
+      "title" : "Pluton Trigono Mercurio"
+    },
+    {
+      "id" : "D676A4D0-440C-412A-8B8D-1C590242B3B4",
+      "source" : "Astrology King",
+      "text" : "El tránsito de Marte en oposición al Medio Cielo hace que sea más difícil avanzar en su vida profesional. Puede sentir que sus colegas o jefes están trabajando en su contra. Incluso si se siente fuerte y confiado, sus acciones pueden parecer menos efectivas de lo habitual. La tendencia a enojarse fácilmente y actuar impulsivamente significa que debes tener cuidado de no dañar tu reputación o tus perspectivas profesionales.\n\nSi bien las acciones de superiores o competidores pueden molestarte, probablemente haya un problema subyacente más profundo en casa o en tu pasado que esté causando esta manifestación externa. La ira reprimida puede resurgir o usted puede volver a patrones y hábitos de conducta antiguos y destructivos. Quizás subconscientemente todavía estés enojado por algo hiriente que uno de tus padres hizo. Tómate un tiempo para meditar y descubrir la fuente de tu dolor interior.\n\nEl conflicto del ego es posible en casa, especialmente con hombres como tu padre. No debe evitar la confrontación si ello permitirá sacar las cosas a la luz y ayudar a resolver un problema persistente. Sin embargo, evita molestar a familiares inocentes, ya que puedes molestarlos inconscientemente sin darte cuenta. También puedes liberar una acumulación de energía caliente y destructiva de forma segura en privado. Podrían ser tareas domésticas intensas, proyectos de mejoras para el hogar, ejercicio u otras actividades prácticas estimulantes.\n\nDenuncia al indígena muchos males, robos, contiendas, querellas, restricción de la libertad, muchos daños, que tanto procederán de él como de los demás; muchas veces se amenaza públicamente con la muerte, o con acusaciones públicas; en algunos, señala acusaciones contra ellos por Coyning o falsificación de Dinero: señala pérdida de Cargos, Mandos, etc. en Reyes o Príncipes, observa peligro de destitución, pérdida de sus ejércitos, tumultos de sus soldados, motines, alborotos, gente descontenta con sus soldados; en tiempos de paz, muestra la opresión de los reyes y los súbditos vejados. [Astrología cristiana, William Lilly, 1647, p.671. ]",
+      "title" : "Marte Oposicion Medio Cielo"
+    }
+  ],
+  "metadata" : {
+    "chartID" : "11111111-1111-1111-1111-111111111111",
+    "chartName" : "Eduardo",
+    "command" : "monthly",
+    "date" : "2026-10-04T00:00:00Z",
+    "format" : "json",
+    "from" : "2026-10-01T00:00:00Z",
+    "generatedAt" : "2026-10-04T18:30:27Z",
+    "month" : "2026-10",
+    "narrative" : "none",
+    "scope" : "complete",
+    "timezone" : "Europe\/Madrid",
+    "to" : "2026-10-31T00:00:00Z"
+  },
+  "networkUsed" : false,
+  "source" : "local",
+  "technicalData" : {
+    "houseIngresses" : [
+      {
+        "date" : "2026-10-11",
+        "fromHouse" : 3,
+        "house" : 4,
+        "id" : "DBFB19EC-3D15-4E7F-99D1-AEB3EF7A6544",
+        "score" : 12,
+        "stars" : 3,
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      }
+    ],
+    "monthlySummary" : {
+      "activeTransitIDs" : [
+        "EAE3F991-C9E0-4577-9699-2D3524452F94",
+        "AF3D91FD-D271-4FC8-9118-459D0E5CD725",
+        "ED3D397F-958C-46B3-BC21-74089CB1B410",
+        "46716C73-29F4-4879-91EA-1ECCB7054D44",
+        "D663DEE9-3365-40BF-BEE8-47F68BF16C89",
+        "1D7407B6-C3FD-4B69-81B2-9BA7172DDE8A",
+        "6EDBE574-4658-4AAA-BDCC-05FF076FC0B3",
+        "D676A4D0-440C-412A-8B8D-1C590242B3B4"
+      ],
+      "chartName" : "Eduardo",
+      "climateSummary" : "2 estación(es) planetaria(s) tocan tu carta directamente. 5 tránsito(s) de prioridad crítica.",
+      "eclipses" : [
+
+      ],
+      "houseIngressIDs" : [
+        "DBFB19EC-3D15-4E7F-99D1-AEB3EF7A6544"
+      ],
+      "id" : "2026-10-11111111-1111-1111-1111-111111111111",
+      "lunations" : [
+        "2026-10-10 17:50 — 🌑 Luna Nueva en ♎ Libra — casa 6: Luna Nueva en tu casa 6: ajustes en salud, rutina, trabajo diario y servicio. Además, esta lunación activa directamente tu ☉ Sol natal (orbe 1.2°), amplificando su significado personal.",
+        "2026-10-26 05:12 — 🌕 Luna Llena en ♉ Tauro — casa 12: Luna Llena en tu casa 12: retiro, introspección, cierre de ciclos y lo inconsciente."
+      ],
+      "month" : 10,
+      "stations" : [
+        "2026-10-03 09:15 — ♀ Venus estación retrógrada en ♏ Escorpio — ⛢ Urano: ♀ Venus se estaciona retrógrada sobre tu ⛢ Urano natal en casa 6 (orbe 2.2°). Durante varias semanas, la energía de ♀ Venus se concentra intensamente en este punto de tu carta.",
+        "2026-10-24 09:12 — ☿ Mercurio estación retrógrada en ♏ Escorpio — ♀ Venus: ☿ Mercurio se estaciona retrógrada sobre tu ♀ Venus natal en casa 6 (orbe 1.8°). Durante varias semanas, la energía de ☿ Mercurio se concentra intensamente en este punto de tu carta."
+      ],
+      "year" : 2026
+    },
+    "transits" : [
+      {
+        "activeDays" : 31,
+        "aspectKey" : "OPOSICION",
+        "aspectLabel" : "Oposicion",
+        "color" : "#a21caf",
+        "exactDate" : "2026-10-31",
+        "fromDate" : "2026-10-01",
+        "id" : "EAE3F991-C9E0-4577-9699-2D3524452F94",
+        "metricReasons" : [
+          "Regente del Ascendente",
+          "Planeta personal",
+          "Planeta natal sucedente",
+          "Tránsito por casa sucedente",
+          "Duración sostenida",
+          "Orbe exacto menor de 0.5°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.4834514512327246,
+        "natalKey" : "MERCURIO",
+        "natalLabel" : "Mercurio",
+        "personalRelevance" : 1.8,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "critical",
+        "priorityScore" : 90.74419200000004,
+        "priorityStars" : 5,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.588,
+            "orb" : 1.24
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.597,
+            "orb" : 1.21
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.606,
+            "orb" : 1.18
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.615,
+            "orb" : 1.15
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.624,
+            "orb" : 1.13
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.633,
+            "orb" : 1.1
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.642,
+            "orb" : 1.07
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.651,
+            "orb" : 1.05
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.66,
+            "orb" : 1.02
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.669,
+            "orb" : 0.99
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.678,
+            "orb" : 0.97
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.687,
+            "orb" : 0.94
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.696,
+            "orb" : 0.91
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.704,
+            "orb" : 0.89
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.713,
+            "orb" : 0.86
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.721,
+            "orb" : 0.84
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.73,
+            "orb" : 0.81
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.738,
+            "orb" : 0.79
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.747,
+            "orb" : 0.76
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.755,
+            "orb" : 0.74
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.763,
+            "orb" : 0.71
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.771,
+            "orb" : 0.69
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.779,
+            "orb" : 0.66
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.787,
+            "orb" : 0.64
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.795,
+            "orb" : 0.62
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.802,
+            "orb" : 0.59
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.81,
+            "orb" : 0.57
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.817,
+            "orb" : 0.55
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.825,
+            "orb" : 0.53
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.832,
+            "orb" : 0.5
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.839,
+            "orb" : 0.48
+          }
+        ],
+        "score" : 37.2,
+        "source" : "Grupo Venus",
+        "stars" : 5,
+        "technicalScore" : 37.2,
+        "technicalStars" : 5,
+        "temporalImpact" : 1.3552000000000004,
+        "temporalImpactStars" : 3,
+        "text" : "Neptuno en tránsito en oposición a tu Mercurio\n\nDurante este tránsito el lado consciente y el lado inconsciente de tu psique vuelven a reunirse, pero de una manera que puede ser bastante inquietante. El miedo, la duda y la confusión pueden adueñarse de tu mente y obstaculizar tu buen juicio y tu capacidad de funcionar bien en el mundo. Te cuesta más organizarte y organizar tu vida diaria, e incluso las actividades más rutinarias pueden resultarte difíciles. La energía neptuniana te vuelve indeciso, aletargado y despistado, ya que tu pensamiento racional se ve invadido por estados de ánimo y complejos emocionales que afloran desde el inconsciente o de las profundidades de tu ser. No es un buen momento para tomar decisiones importantes, que requieran astucia, o firmar algún contrato. Sería aconsejable que acudas a una persona de confianza para que te ayude o que, por lo menos, leas cuidadosamente la letra pequeña.\n\nPor otro lado, debido a que el inconsciente está más activo, este tránsito señala un buen momento para iniciar alguna forma de terapia o autoexploración, pero debes estar seguro de que lo haces con un profesional experimentado que pueda ayudarte a superar las manifestaciones más difíciles de esta influencia de Neptuno.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "NEPTUNO",
+        "transitLabel" : "Neptuno"
+      },
+      {
+        "activeDays" : 31,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-31",
+        "fromDate" : "2026-10-01",
+        "id" : "AF3D91FD-D271-4FC8-9118-459D0E5CD725",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Duración sostenida",
+          "Orbe exacto menor de 0.5°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.4057965933137666,
+        "natalKey" : "NODO_NORTE",
+        "natalLabel" : "Nodo Norte",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "critical",
+        "priorityScore" : 67.27607040000001,
+        "priorityStars" : 5,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.863,
+            "orb" : 0.41
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.861,
+            "orb" : 0.42
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.859,
+            "orb" : 0.42
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.857,
+            "orb" : 0.43
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.855,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.853,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.852,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.851,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.85,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.849,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.848,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.847,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.847,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.847,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.848,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.848,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.849,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.85,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.852,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.853,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.854,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.856,
+            "orb" : 0.43
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.858,
+            "orb" : 0.43
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.86,
+            "orb" : 0.42
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.862,
+            "orb" : 0.41
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.865,
+            "orb" : 0.41
+          }
+        ],
+        "score" : 37.3,
+        "stars" : 5,
+        "technicalScore" : 37.3,
+        "technicalStars" : 5,
+        "temporalImpact" : 1.5030400000000002,
+        "temporalImpactStars" : 4,
+        "toDate" : "2026-10-31",
+        "transitKey" : "PLUTON",
+        "transitLabel" : "Pluton"
+      },
+      {
+        "activeDays" : 31,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-31",
+        "fromDate" : "2026-10-01",
+        "id" : "ED3D397F-958C-46B3-BC21-74089CB1B410",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Duración sostenida",
+          "Orbe exacto menor de 0.5°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.4057965933137666,
+        "natalKey" : "NODO_SUR",
+        "natalLabel" : "Nodo Sur",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "critical",
+        "priorityScore" : 67.27607040000001,
+        "priorityStars" : 5,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.863,
+            "orb" : 0.41
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.861,
+            "orb" : 0.42
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.859,
+            "orb" : 0.42
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.857,
+            "orb" : 0.43
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.855,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.853,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.852,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.851,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.85,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.849,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.848,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.847,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.847,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.846,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.847,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.848,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.848,
+            "orb" : 0.46
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.849,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.85,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.852,
+            "orb" : 0.45
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.853,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.854,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.856,
+            "orb" : 0.43
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.858,
+            "orb" : 0.43
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.86,
+            "orb" : 0.42
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.862,
+            "orb" : 0.41
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.865,
+            "orb" : 0.41
+          }
+        ],
+        "score" : 37.3,
+        "stars" : 5,
+        "technicalScore" : 37.3,
+        "technicalStars" : 5,
+        "temporalImpact" : 1.5030400000000002,
+        "temporalImpactStars" : 4,
+        "toDate" : "2026-10-31",
+        "transitKey" : "PLUTON",
+        "transitLabel" : "Pluton"
+      },
+      {
+        "activeDays" : 31,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-16",
+        "fromDate" : "2026-10-01",
+        "id" : "46716C73-29F4-4879-91EA-1ECCB7054D44",
+        "metricReasons" : [
+          "Planeta personal fuerte",
+          "Planeta natal cadente",
+          "Duración sostenida",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 1.0589184587653335,
+        "natalKey" : "MARTE",
+        "natalLabel" : "Marte",
+        "personalRelevance" : 1.3,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "critical",
+        "priorityScore" : 57.39734000000001,
+        "priorityStars" : 5,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.63,
+            "orb" : 1.11
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.632,
+            "orb" : 1.1
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.634,
+            "orb" : 1.1
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.636,
+            "orb" : 1.09
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.638,
+            "orb" : 1.09
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.64,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.641,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.642,
+            "orb" : 1.07
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.644,
+            "orb" : 1.07
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.645,
+            "orb" : 1.07
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.645,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.646,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.646,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.647,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.647,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.647,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.647,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.647,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.646,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.646,
+            "orb" : 1.06
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.645,
+            "orb" : 1.07
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.644,
+            "orb" : 1.07
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.643,
+            "orb" : 1.07
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.642,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.64,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.639,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.637,
+            "orb" : 1.09
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.635,
+            "orb" : 1.1
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.633,
+            "orb" : 1.1
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.631,
+            "orb" : 1.11
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.628,
+            "orb" : 1.12
+          }
+        ],
+        "score" : 32.9,
+        "source" : "Grupo Venus",
+        "stars" : 5,
+        "technicalScore" : 32.9,
+        "technicalStars" : 5,
+        "temporalImpact" : 1.342,
+        "temporalImpactStars" : 3,
+        "text" : "Plutón en tránsito en cuadratura a tu Marte\n\nEs hora de que aprendas más sobre tus impulsos agresivos, tus ansias de poder, y tus deseos sexuales. Plutón excava profundamente en los rincones más escondidos de la psique y va más allá de las fronteras y defensas habituales. Te obligará a enfrentarte con los impulsos más oscuros de tu personalidad y llegar a un acuerdo con esta parte de tu ser. Si has sido demasiado pasivo y temeroso, es probable que este tránsito te haga tomar más conciencia de la necesidad de hacerte valer por derecho propio. Y si has sido excesivamente dominado por la energía marciana, es posible que Plutón bloquee temporalmente esta agresividad, en un intento de ayudarte a descubrir maneras de relacionarte con tu entorno de una forma más refinada.\n\nCuando Plutón afecta a la sexualidad, pueden suceder dos cosas: si has estado desconectado de tu sexualidad, vas a abrir los ojos a su existencia, y si la has canalizado tus impulsos libremente, puede aparecer un bloqueo para que cambies la forma en que te relacionas sexualmente con los demás.\n\nNo será fácil manejar de forma positiva este tránsito, pero si logras afrontarlo y resolverlo con éxito, tendrás una excelente oportunidad para crecer psicológicamente y desarrollar tu personalidad de tal forma que te permitirá usar tus energías con más juicio y prudencia.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "PLUTON",
+        "transitLabel" : "Pluton"
+      },
+      {
+        "activeDays" : 31,
+        "aspectKey" : "OPOSICION",
+        "aspectLabel" : "Oposicion",
+        "color" : "#a21caf",
+        "exactDate" : "2026-10-01",
+        "fromDate" : "2026-10-01",
+        "id" : "D663DEE9-3365-40BF-BEE8-47F68BF16C89",
+        "metricReasons" : [
+          "Planeta natal sucedente",
+          "Tránsito por casa sucedente",
+          "Duración sostenida",
+          "Orbe exacto menor de 0.5°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.33281275119230713,
+        "natalKey" : "PLUTON",
+        "natalLabel" : "Pluton",
+        "personalRelevance" : 1.25,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "critical",
+        "priorityScore" : 50.481200000000015,
+        "priorityStars" : 5,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.889,
+            "orb" : 0.33
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.863,
+            "orb" : 0.41
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.837,
+            "orb" : 0.49
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.811,
+            "orb" : 0.57
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.784,
+            "orb" : 0.65
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.758,
+            "orb" : 0.73
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.732,
+            "orb" : 0.8
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.706,
+            "orb" : 0.88
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.68,
+            "orb" : 0.96
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.654,
+            "orb" : 1.04
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.628,
+            "orb" : 1.12
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.602,
+            "orb" : 1.19
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.576,
+            "orb" : 1.27
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.551,
+            "orb" : 1.35
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.525,
+            "orb" : 1.42
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.5,
+            "orb" : 1.5
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.475,
+            "orb" : 1.58
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.45,
+            "orb" : 1.65
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.425,
+            "orb" : 1.72
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.401,
+            "orb" : 1.8
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.376,
+            "orb" : 1.87
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.352,
+            "orb" : 1.94
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.328,
+            "orb" : 2.01
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.305,
+            "orb" : 2.09
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.282,
+            "orb" : 2.16
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.259,
+            "orb" : 2.22
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.236,
+            "orb" : 2.29
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.214,
+            "orb" : 2.36
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.192,
+            "orb" : 2.43
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.17,
+            "orb" : 2.49
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.149,
+            "orb" : 2.55
+          }
+        ],
+        "score" : 29.8,
+        "source" : "Grupo Venus",
+        "stars" : 5,
+        "technicalScore" : 29.8,
+        "technicalStars" : 5,
+        "temporalImpact" : 1.3552000000000004,
+        "temporalImpactStars" : 3,
+        "text" : "Saturno en tránsito en oposición a tu Plutón\n\nCuando Saturno entra en contacto con Plutón, sus defensas fallan y dejan al descubierto las dudas y debilidades relacionados con su emplazamiento. Es como si alguien te estuviera arrancando la máscara y dejando al descubierto lo que hay en ti más vulnerable y sensible. Te sientes desnudo e indefenso ante la fuerza transformadora de Plutón, ya que tus intentos de ocultar tu dolor y tu inseguridad no tienen éxito, y ahora debes hacer frente a lo que más miedo tienes de ver en ti mismo.\n\nDurante este período Plutón pone a prueba la muralla protectora de Saturno, finalmente echándola abajo, y es seguro que no será una experiencia fácil de soportar. Sin embargo, al desprenderte de la imagen que has construido de ti mismo y volver a conectarte con lo que habías excluido de tu identidad, puedes cambiar y crecer. También debes recordar que lo que niegas o reprimes no son sólo partes «negativas» de tu interior, ya que Saturno tiende a suprimir cualquier sentimiento «sospechoso» (aunque sea válido).\n\nDurante este tránsito, Plutón ofrece la oportunidad de derrumbar las barreras que impiden el desarrollo de las facetas reprimidas y ocultas de tu ser, pero tienes que tener paciencia y aceptar conscientemente que la tarea de integración de nuevas ideas y visiones no será fácil y tomará tiempo. Saturno tiene los pies firmemente plantados en el suelo, y se sentirá amenazado por el efecto transformador de Plutón. Por más que todo esto puede inquietarte, es probable que tengas que dejarte desintegrar para poder reorganizarte de otra manera.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "SATURNO",
+        "transitLabel" : "Saturno"
+      },
+      {
+        "activeDays" : 31,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-25",
+        "fromDate" : "2026-10-01",
+        "id" : "1D7407B6-C3FD-4B69-81B2-9BA7172DDE8A",
+        "metricReasons" : [
+          "Activación del eje nodal",
+          "Toca Sol\/Luna",
+          "Planeta natal cadente",
+          "Tránsito por casa angular",
+          "Duración sostenida",
+          "Orbe exacto menor de 0.25°"
+        ],
+        "minOrb" : 0.06401830319202872,
+        "natalKey" : "LUNA",
+        "natalLabel" : "Luna",
+        "personalRelevance" : 1.65,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "high",
+        "priorityScore" : 42.191489999999995,
+        "priorityStars" : 4,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.287,
+            "orb" : 1.43
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.308,
+            "orb" : 1.38
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.316,
+            "orb" : 1.37
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.311,
+            "orb" : 1.38
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.301,
+            "orb" : 1.4
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.291,
+            "orb" : 1.42
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.291,
+            "orb" : 1.42
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.306,
+            "orb" : 1.39
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.339,
+            "orb" : 1.32
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.391,
+            "orb" : 1.22
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.459,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.537,
+            "orb" : 0.93
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.617,
+            "orb" : 0.77
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.691,
+            "orb" : 0.62
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.752,
+            "orb" : 0.5
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.796,
+            "orb" : 0.41
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.821,
+            "orb" : 0.36
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.83,
+            "orb" : 0.34
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.827,
+            "orb" : 0.35
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.82,
+            "orb" : 0.36
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.817,
+            "orb" : 0.37
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.825,
+            "orb" : 0.35
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.852,
+            "orb" : 0.3
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.9,
+            "orb" : 0.2
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.968,
+            "orb" : 0.06
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.95,
+            "orb" : 0.1
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.862,
+            "orb" : 0.28
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.778,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.708,
+            "orb" : 0.58
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.658,
+            "orb" : 0.68
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.63,
+            "orb" : 0.74
+          }
+        ],
+        "score" : 19.7,
+        "stars" : 4,
+        "technicalScore" : 19.7,
+        "technicalStars" : 4,
+        "temporalImpact" : 1.298,
+        "temporalImpactStars" : 3,
+        "toDate" : "2026-10-31",
+        "transitKey" : "EJE_NODAL",
+        "transitLabel" : "Eje Nodal"
+      },
+      {
+        "activeDays" : 31,
+        "aspectKey" : "TRIGONO",
+        "aspectLabel" : "Trigono",
+        "color" : "#15803d",
+        "exactDate" : "2026-10-16",
+        "fromDate" : "2026-10-01",
+        "id" : "6EDBE574-4658-4AAA-BDCC-05FF076FC0B3",
+        "metricReasons" : [
+          "Regente del Ascendente",
+          "Planeta personal",
+          "Planeta natal sucedente",
+          "Duración sostenida",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 1.4576019708238164,
+        "natalKey" : "MERCURIO",
+        "natalLabel" : "Mercurio",
+        "personalRelevance" : 1.7,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "high",
+        "priorityScore" : 39.288700000000006,
+        "priorityStars" : 4,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.246,
+            "orb" : 1.51
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.249,
+            "orb" : 1.5
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.252,
+            "orb" : 1.5
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.255,
+            "orb" : 1.49
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.258,
+            "orb" : 1.48
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.26,
+            "orb" : 1.48
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.262,
+            "orb" : 1.48
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.264,
+            "orb" : 1.47
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.266,
+            "orb" : 1.47
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.267,
+            "orb" : 1.47
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.269,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.27,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.27,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.271,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.271,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.271,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.271,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.271,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.27,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.269,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.268,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.266,
+            "orb" : 1.47
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.265,
+            "orb" : 1.47
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.263,
+            "orb" : 1.47
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.261,
+            "orb" : 1.48
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.259,
+            "orb" : 1.48
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.256,
+            "orb" : 1.49
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.253,
+            "orb" : 1.49
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.25,
+            "orb" : 1.5
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.247,
+            "orb" : 1.51
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.243,
+            "orb" : 1.51
+          }
+        ],
+        "score" : 19.1,
+        "source" : "Grupo Venus",
+        "stars" : 4,
+        "technicalScore" : 19.1,
+        "technicalStars" : 4,
+        "temporalImpact" : 1.2100000000000002,
+        "temporalImpactStars" : 3,
+        "text" : "Plutón en tránsito en trígono a tu Mercurio\n\nMercurio está vinculado con el pensamiento y la comunicación, y Plutón, el señor del submundo, insta a Mercurio a que profundice más en la naturaleza de la realidad, a que explore el lado oculto y oscuro de la vida y descubra secretos y se adentre en misterios. Plutón transforma todo lo que toca, y durante este tránsito es posible que alguien a quien conoces o algo que hayas leído o estudiado revolucione tus creencias y tu manera habitual de pensar y enfocar la vida.\n\nSientes la necesidad de sondear lo que está sepultado en tu interior y ahondar en el inconsciente a fin de traer a la conciencia lo que encuentres allí abajo. Éste es un periodo durante el cual la psicoterapia, la meditación y el estudio filosófico pueden servir para abrirte mentalmente de manera que antes no parecía posible. Por supuesto, es posible que aquello que encuentres «allí abajo» sea desagradable y te asuste o deprima, pero si te enfrentas con esas imágenes subterráneas y las reconoces y aceptas como parte tuya, ya puedes trabajar con la energía contenida en estas compulsiones. Si las afrontas con paciencia y confianza, pronto se hará sentir la nueva energía y podrás establecer contacto con talentos y recursos que todavía no están completamente realizados. Quizá descubras en ti dotes para las lenguas, una determinada capacidad intelectual o una facilidad para la comunicación escrita.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "PLUTON",
+        "transitLabel" : "Pluton"
+      },
+      {
+        "activeDays" : 11,
+        "aspectKey" : "OPOSICION",
+        "aspectLabel" : "Oposicion",
+        "color" : "#a21caf",
+        "exactDate" : "2026-10-11",
+        "fromDate" : "2026-10-06",
+        "id" : "D676A4D0-440C-412A-8B8D-1C590242B3B4",
+        "metricReasons" : [
+          "Toca Medio Cielo",
+          "Planeta natal angular",
+          "Orbe exacto menor de 0.25°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.04388985031590664,
+        "natalKey" : "MC",
+        "natalLabel" : "Medio Cielo",
+        "personalRelevance" : 1.75,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "high",
+        "priorityScore" : 38.6268575,
+        "priorityStars" : 4,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.072,
+            "orb" : 2.78
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.262,
+            "orb" : 2.21
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.451,
+            "orb" : 1.65
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.64,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.828,
+            "orb" : 0.52
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.985,
+            "orb" : 0.04
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.799,
+            "orb" : 0.6
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.614,
+            "orb" : 1.16
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.429,
+            "orb" : 1.71
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.245,
+            "orb" : 2.26
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.062,
+            "orb" : 2.81
+          }
+        ],
+        "score" : 17.9,
+        "source" : "Astrology King",
+        "stars" : 4,
+        "technicalScore" : 17.9,
+        "technicalStars" : 4,
+        "temporalImpact" : 1.2331,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito de Marte en oposición al Medio Cielo hace que sea más difícil avanzar en su vida profesional. Puede sentir que sus colegas o jefes están trabajando en su contra. Incluso si se siente fuerte y confiado, sus acciones pueden parecer menos efectivas de lo habitual. La tendencia a enojarse fácilmente y actuar impulsivamente significa que debes tener cuidado de no dañar tu reputación o tus perspectivas profesionales.\n\nSi bien las acciones de superiores o competidores pueden molestarte, probablemente haya un problema subyacente más profundo en casa o en tu pasado que esté causando esta manifestación externa. La ira reprimida puede resurgir o usted puede volver a patrones y hábitos de conducta antiguos y destructivos. Quizás subconscientemente todavía estés enojado por algo hiriente que uno de tus padres hizo. Tómate un tiempo para meditar y descubrir la fuente de tu dolor interior.\n\nEl conflicto del ego es posible en casa, especialmente con hombres como tu padre. No debe evitar la confrontación si ello permitirá sacar las cosas a la luz y ayudar a resolver un problema persistente. Sin embargo, evita molestar a familiares inocentes, ya que puedes molestarlos inconscientemente sin darte cuenta. También puedes liberar una acumulación de energía caliente y destructiva de forma segura en privado. Podrían ser tareas domésticas intensas, proyectos de mejoras para el hogar, ejercicio u otras actividades prácticas estimulantes.\n\nDenuncia al indígena muchos males, robos, contiendas, querellas, restricción de la libertad, muchos daños, que tanto procederán de él como de los demás; muchas veces se amenaza públicamente con la muerte, o con acusaciones públicas; en algunos, señala acusaciones contra ellos por Coyning o falsificación de Dinero: señala pérdida de Cargos, Mandos, etc. en Reyes o Príncipes, observa peligro de destitución, pérdida de sus ejércitos, tumultos de sus soldados, motines, alborotos, gente descontenta con sus soldados; en tiempos de paz, muestra la opresión de los reyes y los súbditos vejados. [Astrología cristiana, William Lilly, 1647, p.671. ]",
+        "toDate" : "2026-10-16",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 15,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-01",
+        "fromDate" : "2026-10-01",
+        "id" : "0A27076D-962F-449C-BB3B-59E7B915D062",
+        "metricReasons" : [
+          "Planeta personal fuerte",
+          "Planeta natal cadente",
+          "Tránsito por casa angular",
+          "Orbe exacto menor de 1°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.5502889956070476,
+        "natalKey" : "VENUS",
+        "natalLabel" : "Venus",
+        "personalRelevance" : 1.5,
+        "personalRelevanceStars" : 4,
+        "priorityBand" : "high",
+        "priorityScore" : 36.22179,
+        "priorityStars" : 4,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.817,
+            "orb" : 0.55
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.757,
+            "orb" : 0.73
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.699,
+            "orb" : 0.9
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.64,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.583,
+            "orb" : 1.25
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.525,
+            "orb" : 1.42
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.469,
+            "orb" : 1.59
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.412,
+            "orb" : 1.76
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.357,
+            "orb" : 1.93
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.302,
+            "orb" : 2.09
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.247,
+            "orb" : 2.26
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.193,
+            "orb" : 2.42
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.14,
+            "orb" : 2.58
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.087,
+            "orb" : 2.74
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.035,
+            "orb" : 2.9
+          }
+        ],
+        "score" : 21.8,
+        "source" : "Grupo Venus",
+        "stars" : 4,
+        "technicalScore" : 21.8,
+        "technicalStars" : 4,
+        "temporalImpact" : 1.1077,
+        "temporalImpactStars" : 2,
+        "text" : "Júpiter en tránsito en cuadratura a tu Venus\n\nEn esta época te puede resultar difícil reconocer y aprovechar las oportunidades que se te brindan, especialmente en relación con tu carrera. Y tienes tendencia a sobrestimar tus posibilidades, siendo conveniente que busques consejo antes de tomar decisiones importantes, aunque te resulte difícil aceptar los buenos consejos de los demás. Otras tendencias negativas durante este tránsito son la vanidad, la presunción, la extravagancia y la indulgencia.",
+        "toDate" : "2026-10-15",
+        "transitKey" : "JUPITER",
+        "transitLabel" : "Jupiter"
+      },
+      {
+        "activeDays" : 12,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-24",
+        "fromDate" : "2026-10-19",
+        "id" : "0DCFB6CA-DB8F-494F-BCBB-8671FD90CAF4",
+        "metricReasons" : [
+          "Planeta social",
+          "Planeta natal angular",
+          "Tránsito por casa angular",
+          "Orbe exacto menor de 0.25°"
+        ],
+        "minOrb" : 0.1538061993820179,
+        "natalKey" : "SATURNO",
+        "natalLabel" : "Saturno",
+        "personalRelevance" : 1.65,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "high",
+        "priorityScore" : 36.068175,
+        "priorityStars" : 4,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.06,
+            "orb" : 2.82
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.24,
+            "orb" : 2.28
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.418,
+            "orb" : 1.74
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.596,
+            "orb" : 1.21
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.773,
+            "orb" : 0.68
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.949,
+            "orb" : 0.15
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.876,
+            "orb" : 0.37
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.702,
+            "orb" : 0.89
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.529,
+            "orb" : 1.41
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.357,
+            "orb" : 1.93
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.186,
+            "orb" : 2.44
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.016,
+            "orb" : 2.95
+          }
+        ],
+        "score" : 19.5,
+        "source" : "Astrology King",
+        "stars" : 4,
+        "technicalScore" : 19.5,
+        "technicalStars" : 4,
+        "temporalImpact" : 1.121,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito de Marte en conjunción con Saturno puede tener un efecto bastante variable y puede encender sus deseos más oscuros o brindarle la resistencia y la paciencia para completar las tareas más complejas. Proporciona fuerza duradera, coraje y capacidad para trabajar duro. Sin embargo, también son posibles la ira y el resentimiento reprimidos.\n\nInicialmente, este tránsito tiende a enojarte, sentirte resentido o vengativo. Sin embargo, si la canalizas temprano hacia un trabajo físico duro o un proyecto creativo, transmutarás esta energía en logros positivos y productivos.\n\nTomar el camino bajo debido a la ignorancia o la pereza puede generar frustración y situaciones difíciles. Seguir la corriente y no tomar la iniciativa permitirá que la frustración alcance un nivel peligroso. Esta energía destructiva podría entonces manifestarse como acciones impulsivas.\n\nPor otro lado, esta energía negativa podría manifestarse a través de las acciones destructivas de otra persona hacia usted, como la maldad o la violencia.\n\nEste no es el momento adecuado para ir a la guerra, ya que correr riesgos supone un peligro. Quédate en casa, afila tus cuchillos y trabaja duro con paciencia y previsión. Utilice esta energía determinada de manera constructiva o creativa.",
+        "toDate" : "2026-10-30",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 23,
+        "aspectKey" : "TRIGONO",
+        "aspectLabel" : "Trigono",
+        "color" : "#15803d",
+        "exactDate" : "2026-10-01",
+        "fromDate" : "2026-10-01",
+        "id" : "0456A593-7A19-4ED0-9869-4112D3C2542C",
+        "metricReasons" : [
+          "Planeta natal angular",
+          "Tránsito por casa sucedente",
+          "Orbe exacto menor de 0.5°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.3113111437813245,
+        "natalKey" : "NEPTUNO",
+        "natalLabel" : "Neptuno",
+        "personalRelevance" : 1.4000000000000001,
+        "personalRelevanceStars" : 4,
+        "priorityBand" : "high",
+        "priorityScore" : 31.788064000000002,
+        "priorityStars" : 4,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.844,
+            "orb" : 0.31
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.805,
+            "orb" : 0.39
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.766,
+            "orb" : 0.47
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.727,
+            "orb" : 0.55
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.687,
+            "orb" : 0.63
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.648,
+            "orb" : 0.7
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.609,
+            "orb" : 0.78
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.569,
+            "orb" : 0.86
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.53,
+            "orb" : 0.94
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.491,
+            "orb" : 1.02
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.452,
+            "orb" : 1.1
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.413,
+            "orb" : 1.17
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.375,
+            "orb" : 1.25
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.337,
+            "orb" : 1.33
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.298,
+            "orb" : 1.4
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.26,
+            "orb" : 1.48
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.223,
+            "orb" : 1.55
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.185,
+            "orb" : 1.63
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.148,
+            "orb" : 1.7
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.112,
+            "orb" : 1.78
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.075,
+            "orb" : 1.85
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.039,
+            "orb" : 1.92
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.003,
+            "orb" : 1.99
+          }
+        ],
+        "score" : 19.4,
+        "source" : "Grupo Venus",
+        "stars" : 4,
+        "technicalScore" : 19.4,
+        "technicalStars" : 4,
+        "temporalImpact" : 1.1704,
+        "temporalImpactStars" : 3,
+        "text" : "Saturno en tránsito en trígono a tu Neptuno\n\nCuando Saturno entra en contacto con Neptuno, sus defensas tienden a fallar y dejar al descubierto las dudas y debilidades relacionados con su emplazamiento. Durante este período Neptuno va minando la muralla protectora de Saturno, y es probable que no sea una experiencia fácil de soportar. Sin embargo, al desprenderte de la imagen que tienes de ti mismo y volver a conectarte con lo que habías excluido de tu identidad, puedes cambiar y crecer. Saturno intenta proteger del dolor y de la inseguridad, pero también puede estar reprimiendo parte de tu potencial creativo, recursos todavía no explotados y talentos ocultos que están esperando ser cultivados. Este tránsito te ayudará a ver más allá de esas defensas y contactar con tus sentimientos y aspiraciones más escondidos.\n\nEs buen momento para unir tu visión espiritual o intuitiva con el sentido práctico de la realidad cotidiana. Por ende, puede ser una época muy favorable para que, con paciencia y disciplina, des alguna forma de expresión concreta a tu inspiración creativa. Si toda tu visión del mundo está cambiando aparecen nuevas ideas y conceptos que vienen a sustituir la antigua manera de encarar la vida, el proceso creativo puede ser una buena vía para integrar esos cambios internos en la psique, dándoles estructuras concretas.",
+        "toDate" : "2026-10-23",
+        "transitKey" : "SATURNO",
+        "transitLabel" : "Saturno"
+      },
+      {
+        "activeDays" : 8,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-04",
+        "fromDate" : "2026-10-01",
+        "id" : "C8B3901A-AFA6-4C6E-9C2A-5B3411F8EDFD",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.18543934678325513,
+        "natalKey" : "NODO_SUR",
+        "natalLabel" : "Nodo Sur",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "high",
+        "priorityScore" : 25.437731999999997,
+        "priorityStars" : 4,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.483,
+            "orb" : 1.55
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.677,
+            "orb" : 0.97
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.87,
+            "orb" : 0.39
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.938,
+            "orb" : 0.19
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.747,
+            "orb" : 0.76
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.556,
+            "orb" : 1.33
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.366,
+            "orb" : 1.9
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.176,
+            "orb" : 2.47
+          }
+        ],
+        "score" : 15.5,
+        "stars" : 4,
+        "technicalScore" : 15.5,
+        "technicalStars" : 4,
+        "temporalImpact" : 1.36762,
+        "temporalImpactStars" : 3,
+        "toDate" : "2026-10-08",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 8,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-04",
+        "fromDate" : "2026-10-01",
+        "id" : "DCB140B2-93E8-4212-8ABC-28A9C8D3BA97",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.18543934678325513,
+        "natalKey" : "NODO_NORTE",
+        "natalLabel" : "Nodo Norte",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "medium",
+        "priorityScore" : 25.437731999999997,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.483,
+            "orb" : 1.55
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.677,
+            "orb" : 0.97
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.87,
+            "orb" : 0.39
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.938,
+            "orb" : 0.19
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.747,
+            "orb" : 0.76
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.556,
+            "orb" : 1.33
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.366,
+            "orb" : 1.9
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.176,
+            "orb" : 2.47
+          }
+        ],
+        "score" : 15.5,
+        "stars" : 4,
+        "technicalScore" : 15.5,
+        "technicalStars" : 4,
+        "temporalImpact" : 1.36762,
+        "temporalImpactStars" : 3,
+        "toDate" : "2026-10-08",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 12,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-01",
+        "fromDate" : "2026-10-01",
+        "id" : "319F5516-D9B2-49E7-97AA-ADC50EF6CCFD",
+        "metricReasons" : [
+          "Activación del eje nodal",
+          "Toca Ascendente",
+          "Planeta natal angular",
+          "Tránsito por casa angular"
+        ],
+        "minOrb" : 1.424301220926509,
+        "natalKey" : "ASC",
+        "natalLabel" : "Ascendente",
+        "personalRelevance" : 1.85,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "medium",
+        "priorityScore" : 22.67175,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.288,
+            "orb" : 1.42
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.266,
+            "orb" : 1.47
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.259,
+            "orb" : 1.48
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.263,
+            "orb" : 1.47
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.274,
+            "orb" : 1.45
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.283,
+            "orb" : 1.43
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.284,
+            "orb" : 1.43
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.269,
+            "orb" : 1.46
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.236,
+            "orb" : 1.53
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.183,
+            "orb" : 1.63
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.115,
+            "orb" : 1.77
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.038,
+            "orb" : 1.92
+          }
+        ],
+        "score" : 12.9,
+        "stars" : 3,
+        "technicalScore" : 12.9,
+        "technicalStars" : 3,
+        "temporalImpact" : 0.95,
+        "temporalImpactStars" : 2,
+        "toDate" : "2026-10-12",
+        "transitKey" : "EJE_NODAL",
+        "transitLabel" : "Eje Nodal"
+      },
+      {
+        "activeDays" : 8,
+        "aspectKey" : "TRIGONO",
+        "aspectLabel" : "Trigono",
+        "color" : "#15803d",
+        "exactDate" : "2026-10-19",
+        "fromDate" : "2026-10-15",
+        "id" : "8FF358EE-99A9-4EFD-B579-E6042C9D0612",
+        "metricReasons" : [
+          "Planeta natal angular",
+          "Tránsito por casa angular",
+          "Orbe exacto menor de 0.25°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.2420454246212671,
+        "natalKey" : "NEPTUNO",
+        "natalLabel" : "Neptuno",
+        "personalRelevance" : 1.5,
+        "personalRelevanceStars" : 4,
+        "priorityBand" : "medium",
+        "priorityScore" : 20.901045000000003,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.031,
+            "orb" : 1.94
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.305,
+            "orb" : 1.39
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.579,
+            "orb" : 0.84
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.85,
+            "orb" : 0.3
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.879,
+            "orb" : 0.24
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.61,
+            "orb" : 0.78
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.342,
+            "orb" : 1.32
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.075,
+            "orb" : 1.85
+          }
+        ],
+        "score" : 11.3,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 11.3,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.2331,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito de Marte trígono y Neptuno estimula la sensualidad, la creatividad y el espíritu comunitario. Disfrutará de un fuerte atractivo magnético y un encanto sensual, lo que lo convierte en un momento ideal para el romance. Los encuentros sexuales serán intensamente compasivos, tiernos y espirituales. Es probable que atraigas a una pareja menos agresiva y con más inclinaciones espirituales si sales con alguien.\n\nAunque no es un tránsito de alta energía, debes estar motivado para expresar tu creatividad y un buen sentido del ritmo a través de la danza, la música, la escultura y otras salidas físicas y creativas. También es posible que se le inste encarecidamente a participar en actividades religiosas o más espirituales, especialmente si involucra a grupos de personas. Este sería un excelente momento para aprender más sobre cómo la astrología afecta tu vida y el mundo, y estarás más en contacto con las energías vibratorias sutiles que influyen en nuestras vidas.\n\nEsta no es una energía agresiva, pero puedes recurrir a un fuerte coraje espiritual y un espíritu de lucha para defenderte a ti mismo y a tus seres queridos. Ahora puedes ganar batallas más mediante actos de bondad que atacando a otros. Deberías sentirte motivado para defender a los desvalidos y oprimidos del mundo. Este es un tránsito excelente para involucrarse activamente en causas y grupos benéficos o de derechos humanos. Su deseo de salvar a las personas, a los animales o al medio ambiente se basa en fuertes convicciones morales y éticas.",
+        "toDate" : "2026-10-22",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 10,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-09",
+        "fromDate" : "2026-10-04",
+        "id" : "30340F44-E7ED-4D54-9DD1-08D1FCDE74F2",
+        "metricReasons" : [
+          "Planeta natal cadente",
+          "Orbe exacto menor de 0.5°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.26279542968711667,
+        "natalKey" : "URANO",
+        "natalLabel" : "Urano",
+        "personalRelevance" : 1.05,
+        "personalRelevanceStars" : 2,
+        "priorityBand" : "medium",
+        "priorityScore" : 20.853655200000002,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.137,
+            "orb" : 2.59
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.329,
+            "orb" : 2.01
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.52,
+            "orb" : 1.44
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.71,
+            "orb" : 0.87
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.899,
+            "orb" : 0.3
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.912,
+            "orb" : 0.26
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.725,
+            "orb" : 0.83
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.538,
+            "orb" : 1.39
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.351,
+            "orb" : 1.95
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.166,
+            "orb" : 2.5
+          }
+        ],
+        "score" : 15.3,
+        "source" : "Astrology King",
+        "stars" : 4,
+        "technicalScore" : 15.3,
+        "technicalStars" : 4,
+        "temporalImpact" : 1.2980800000000001,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito de Marte en cuadratura con Urano puede causar impulsividad, obstinación repentina, ansia de excitación, excentricidad, imprudencia y acciones repentinas. Un fuerte impulso de liberarse de las restricciones y rebelarse contra la autoridad, sin tener en cuenta las consecuencias, puede provocar trastornos o conflictos importantes en su vida. En cambio, la conciencia de esta energía dinámica puede conducir a avances innovadores y creativos y a una nueva vida personal.\n\nLo mejor sería encontrar un área donde puedas romper las reglas y divertirte. No puedes frenar esta energía errática, por lo que debes expresar tu lado loco, creativo o inventivo en un ambiente seguro. Si tiene un lugar de trabajo estructurado y jerárquico, debe encontrar una salida creativa a través de actividades sociales, sexuales o de pasatiempos.\n\nNecesitas ser diferente y cometer tus propios errores. Es mejor hacer esto en privado con una pareja de mente abierta que tomar medidas precipitadas en público, lo que resultaría en ridículo y ostracismo.\n\nSu objetivo es sacar sus deseos pervertidos o peligrosos de su sistema de forma segura sin molestar a los demás. Una perspectiva original puede conducir a obras de brillantez creativa o avances científicos, pero debes evitar acciones impulsivas y correr riesgos peligrosos. La falta de atención y concentración puede provocar accidentes, especialmente al conducir o trabajar con electricidad o tecnología. Si no está roto no lo arregles.",
+        "toDate" : "2026-10-13",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 5,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-31",
+        "fromDate" : "2026-10-27",
+        "id" : "B40892CE-B9B5-4D75-A846-60BAC61A3DE2",
+        "metricReasons" : [
+          "Planeta personal fuerte",
+          "Planeta natal cadente",
+          "Tránsito por casa angular",
+          "Tránsito breve",
+          "Orbe exacto menor de 1°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.7609560720881063,
+        "natalKey" : "VENUS",
+        "natalLabel" : "Venus",
+        "personalRelevance" : 1.5,
+        "personalRelevanceStars" : 4,
+        "priorityBand" : "medium",
+        "priorityScore" : 20.813100000000002,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.064,
+            "orb" : 2.81
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.236,
+            "orb" : 2.29
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.407,
+            "orb" : 1.78
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.577,
+            "orb" : 1.27
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.746,
+            "orb" : 0.76
+          }
+        ],
+        "score" : 14,
+        "source" : "Grupo Venus",
+        "stars" : 3,
+        "technicalScore" : 14,
+        "technicalStars" : 3,
+        "temporalImpact" : 0.9911000000000001,
+        "temporalImpactStars" : 2,
+        "text" : "Marte en tránsito en cuadratura a tu Venus\n\nEste período se caracteriza por una sensualidad exacerbada, los celos y el deseo de posesión exclusiva. Puede incluso llegar a provocar, por el choque de las pasiones, un conflicto latente con tu pareja, de aquí el riesgo de disputas e incluso de «dramas pasionales».\n\nEste período es igualmente incierto para las finanzas. Existe el riesgo de gastos inconsiderados, ostentaciones impulsivas, o falsas generosidades destinadas únicamente a deslumbrar al ser adorado.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 13,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-01",
+        "fromDate" : "2026-10-01",
+        "id" : "6EE21527-1090-4E55-9E92-E31F7837747D",
+        "metricReasons" : [
+          "Activación del eje nodal",
+          "Planeta social",
+          "Planeta natal cadente",
+          "Tránsito por casa angular"
+        ],
+        "minOrb" : 1.2812289246602404,
+        "natalKey" : "JUPITER",
+        "natalLabel" : "Jupiter",
+        "personalRelevance" : 1.4,
+        "personalRelevanceStars" : 4,
+        "priorityBand" : "medium",
+        "priorityScore" : 18.087999999999997,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.359,
+            "orb" : 1.28
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.338,
+            "orb" : 1.32
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.33,
+            "orb" : 1.34
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.335,
+            "orb" : 1.33
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.345,
+            "orb" : 1.31
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.355,
+            "orb" : 1.29
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.355,
+            "orb" : 1.29
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.34,
+            "orb" : 1.32
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.307,
+            "orb" : 1.39
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.255,
+            "orb" : 1.49
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.187,
+            "orb" : 1.63
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.109,
+            "orb" : 1.78
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.03,
+            "orb" : 1.94
+          }
+        ],
+        "score" : 13.6,
+        "stars" : 3,
+        "technicalScore" : 13.6,
+        "technicalStars" : 3,
+        "temporalImpact" : 0.95,
+        "temporalImpactStars" : 2,
+        "toDate" : "2026-10-13",
+        "transitKey" : "EJE_NODAL",
+        "transitLabel" : "Eje Nodal"
+      },
+      {
+        "activeDays" : 17,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-18",
+        "fromDate" : "2026-10-15",
+        "id" : "B6928D34-4BA4-4B7F-B98C-5598391C4978",
+        "metricReasons" : [
+          "Planeta personal fuerte",
+          "Planeta natal cadente",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.07356978190989594,
+        "natalKey" : "VENUS",
+        "natalLabel" : "Venus",
+        "personalRelevance" : 1.3,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "medium",
+        "priorityScore" : 17.601269400000003,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.254,
+            "orb" : 2.24
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.517,
+            "orb" : 1.45
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.759,
+            "orb" : 0.72
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.975,
+            "orb" : 0.07
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.834,
+            "orb" : 0.5
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.674,
+            "orb" : 0.98
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.545,
+            "orb" : 1.36
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.452,
+            "orb" : 1.64
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.398,
+            "orb" : 1.81
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.385,
+            "orb" : 1.85
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.416,
+            "orb" : 1.75
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.495,
+            "orb" : 1.51
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.624,
+            "orb" : 1.13
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.804,
+            "orb" : 0.59
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.965,
+            "orb" : 0.11
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.684,
+            "orb" : 0.95
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.357,
+            "orb" : 1.93
+          }
+        ],
+        "score" : 9.9,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 9.9,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.36762,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito de Mercurio en conjunción con Venus fomenta la interacción personal, haciendo que las comunicaciones sean más armoniosas y placenteras. Te ayuda a compartir tu amor y afecto, lo que lo hace ideal para socializar, hacer amigos y tener citas. Estás en contacto con lo que amas de una persona y puedes expresarlo más fácilmente que en otros momentos.\n\nEste es el momento perfecto para expresar su amor a alguien o mostrar su agradecimiento mediante un obsequio atento u otro gesto de afecto. También es probable que reciba el amor o la gratitud de otra persona, y también puede recibir un cumplido, una carta, una invitación, un regalo o dinero.\n\nMercurio con Venus une a las personas y fomenta la cooperación. Proporciona habilidades diplomáticas y de negociación para resolver conflictos, encontrar soluciones pacíficas a las disputas y derribar barreras al progreso.\n\nEsta conjunción también potencia tus habilidades artísticas y creativas. Quizás te guste hacer algo con las manos o la voz, como poesía, música y manualidades. Hacer negocios también se ve favorecido por una buena cabeza para los números y la capacidad de encontrar situaciones en las que todos ganen. Debe tener confianza al firmar contratos.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "MERCURIO",
+        "transitLabel" : "Mercurio"
+      },
+      {
+        "activeDays" : 10,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-22",
+        "fromDate" : "2026-10-17",
+        "id" : "3AD9CCAB-D478-4584-9A53-7424DEE8298A",
+        "metricReasons" : [
+          "Planeta personal fuerte",
+          "Planeta natal cadente",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.24902798761900158,
+        "natalKey" : "MARTE",
+        "natalLabel" : "Marte",
+        "personalRelevance" : 1.3,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "medium",
+        "priorityScore" : 17.067897600000002,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.134,
+            "orb" : 2.6
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.311,
+            "orb" : 2.07
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.495,
+            "orb" : 1.51
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.686,
+            "orb" : 0.94
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.883,
+            "orb" : 0.35
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.917,
+            "orb" : 0.25
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.714,
+            "orb" : 0.86
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.51,
+            "orb" : 1.47
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.306,
+            "orb" : 2.08
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.104,
+            "orb" : 2.69
+          }
+        ],
+        "score" : 9.6,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 9.6,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.36762,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito de Venus en conjunción con Marte aumenta su deseo de tener relaciones íntimas. Impulsado por una intensa necesidad de satisfacción sexual, puede volverse muy directo en su búsqueda de una pareja para aparearse. Este impulso primario de reproducirse no es tan crudo y agresivo como para hacer que los demás se sientan incómodos.\n\nDomina tu lado más tierno y sensual, aumentando tus posibilidades de encontrar el romance en este momento. Esto complementa tu pura pasión y atractivo sexual, haciéndote muy atractivo para tu pareja o parejas potenciales. El aumento del carisma y la popularidad hacen que la socialización sea más placentera y emocionante. Este es un momento ideal tanto para el romance como para hacer nuevos amigos.\n\nTambién encontrará satisfacción en las actividades creativas. Este es un excelente momento para iniciar obras de arte, especialmente aquellas que combinan lo físico y lo emocional, como la danza o la escultura. Incluso el trabajo rutinario debería ser más agradable ahora, ya que tienes el impulso y la necesidad creativa de hacer que las cosas se vean o funcionen mejor. Este también es un momento excelente para organizar una fiesta o celebración.",
+        "toDate" : "2026-10-26",
+        "transitKey" : "VENUS",
+        "transitLabel" : "Venus"
+      },
+      {
+        "activeDays" : 16,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-09",
+        "fromDate" : "2026-10-01",
+        "id" : "275A9E44-F65D-4C42-B3D0-46FD715F671B",
+        "metricReasons" : [
+          "Toca Medio Cielo",
+          "Planeta natal angular",
+          "Orbe exacto menor de 0.25°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.08579836942124075,
+        "natalKey" : "MC",
+        "natalLabel" : "Medio Cielo",
+        "personalRelevance" : 1.75,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "medium",
+        "priorityScore" : 17.0476075,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.74,
+            "orb" : 0.78
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.723,
+            "orb" : 0.83
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.719,
+            "orb" : 0.84
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.728,
+            "orb" : 0.82
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.75,
+            "orb" : 0.75
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.786,
+            "orb" : 0.64
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.834,
+            "orb" : 0.5
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.896,
+            "orb" : 0.31
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.971,
+            "orb" : 0.09
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.94,
+            "orb" : 0.18
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.839,
+            "orb" : 0.48
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.726,
+            "orb" : 0.82
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.6,
+            "orb" : 1.2
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.463,
+            "orb" : 1.61
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.314,
+            "orb" : 2.06
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.155,
+            "orb" : 2.53
+          }
+        ],
+        "score" : 7.9,
+        "source" : "Astrology King",
+        "stars" : 2,
+        "technicalScore" : 7.9,
+        "technicalStars" : 2,
+        "temporalImpact" : 1.2331,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito de Venus en cuadratura por el Medio Cielo no suele ser una influencia dura y debería ayudarte a compartir tus afectos. Deberías sentir una necesidad de compañía más fuerte de lo habitual y compartir tu amor físicamente. Sin embargo, el descontento es posible en una pareja debido a diferentes objetivos personales o desacuerdos sobre la naturaleza del futuro de la relación.\n\nEs más probable que surjan problemas si eres vago, egoísta, inmoral, deshonesto o desleal. Además de poner en peligro una relación especial, ese comportamiento podría causar problemas en su carrera, perfil público y vida familiar. Tus padres o tus hijos podrían sentirse heridos o avergonzados por tu comportamiento. También es posible que se dañe su reputación y que sus perspectivas profesionales se vean afectadas.\n\nEsto está siempre lleno de escándalo e ignominia, y resta fama y honor al nativo, por medio de las mujeres, y suscita luchas, odio y contiendas contra él; el nativo está sujeto a ser engañado por las mujeres, a cortejar a muchas y a ser rechazado por la mayoría o por todos, las mujeres engañan al nativo, lo desprecian y se burlan de él, quien estará celoso de su amante en cada ocasión insignificante: en la Natividad de un rey o un príncipe, importa el escándalo al tener una concubina, etc. Muestra muchas veces la muerte a la Madre o Esposa, y una vida inquieta y triste con su Esposa; muchas veces Divorcio, Celos y grandes Descontentos, venta o pérdida de mucho Patrimonio, o de muchas Joyas costosas. He conocido a algunos Mrry en la oposición del Medio Cielo a Venus, pero nunca vivieron juntos por mucho tiempo, sino que se separaron rápidamente; además, el acto fue imprudente y ambas partes se arrepintieron al instante, y por lo general se habían conocido anteriormente, etc. [Astrología cristiana, William Lilly, 1647, p.673-674. ]",
+        "toDate" : "2026-10-16",
+        "transitKey" : "VENUS",
+        "transitLabel" : "Venus"
+      },
+      {
+        "activeDays" : 12,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-19",
+        "fromDate" : "2026-10-13",
+        "id" : "7A6BE1B0-5680-45D0-9E00-F76E72241688",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.0070995125134913906,
+        "natalKey" : "NODO_NORTE",
+        "natalLabel" : "Nodo Norte",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "medium",
+        "priorityScore" : 16.41144,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.028,
+            "orb" : 2.92
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.165,
+            "orb" : 2.51
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.313,
+            "orb" : 2.06
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.472,
+            "orb" : 1.58
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.641,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.818,
+            "orb" : 0.55
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.998,
+            "orb" : 0.01
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.807,
+            "orb" : 0.58
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.61,
+            "orb" : 1.17
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.41,
+            "orb" : 1.77
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.207,
+            "orb" : 2.38
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.003,
+            "orb" : 2.99
+          }
+        ],
+        "score" : 10,
+        "stars" : 3,
+        "technicalScore" : 10,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.36762,
+        "temporalImpactStars" : 3,
+        "toDate" : "2026-10-24",
+        "transitKey" : "VENUS",
+        "transitLabel" : "Venus"
+      },
+      {
+        "activeDays" : 6,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-25",
+        "fromDate" : "2026-10-22",
+        "id" : "AA6FF8B0-79D2-44EC-8EBA-6C7F9780C974",
+        "metricReasons" : [
+          "Planeta personal fuerte",
+          "Planeta natal cadente",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.07973151728936045,
+        "natalKey" : "MARTE",
+        "natalLabel" : "Marte",
+        "personalRelevance" : 1.3,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "medium",
+        "priorityScore" : 15.748504199999998,
+        "priorityStars" : 3,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.031,
+            "orb" : 2.91
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.363,
+            "orb" : 1.91
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.695,
+            "orb" : 0.92
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.973,
+            "orb" : 0.08
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.641,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.309,
+            "orb" : 2.07
+          }
+        ],
+        "score" : 9.9,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 9.9,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.2236599999999997,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito del Sol en conjunción con Marte trae abundante energía e iniciativa, que deben quemarse de manera constructiva; de lo contrario, puede haber consecuencias perjudiciales. Si esta energía caliente se acumulara en el cuerpo, se liberaría espontáneamente y sin control. Tal liberación de energía caliente incontrolada sería rápida y destructiva, dañando a usted mismo o a otros. Aunque la manifestación de este tránsito puede ser positiva o negativa, dependiendo de cómo se utilice, lo considero generalmente dañino por su potencial de daño.\n\nPermanecer inconsciente de la acumulación de energía puede provocar accidentes, agresiones, rabietas e incluso violencia o violaciones. Inicialmente notarás la acumulación de energía en forma de irritación, molestia o impaciencia. En esta etapa, o antes, la mejor opción es realizar una actividad positiva de forma consciente. Este tránsito brinda un gran potencial para transformar la energía caliente en algo constructivo y productivo.\n\nLa naturaleza creativa del Sol en conjunción con Marte se puede aplicar al arte, o mejor aún, a la escultura y otras actividades creativas, como la danza. Se prefiere la actividad física, pero el cerebro también puede gastar una cantidad significativa de energía. El deseo sexual puede dispararse, y tener un bebé encaja en el papel de creativo y productivo, además de placentero. Puedes expresar tu identidad a través de acciones físicas.\n\nUn alto grado de asertividad e iniciativa es ideal para iniciar nuevos proyectos. Un ego inflado debe mantenerse bajo control cuando se trabaja con otros en este momento. Esto, combinado con su actitud directa y brusca, sugiere que se prefiere trabajar solo.\n\nSer consciente de cómo te perciben los demás en tus relaciones es fundamental. Pueden sentirse amenazados o dominados, lo que les lleva a reaccionar con agresividad o rencor. Si siente que se está gestando una discusión o lo provocan, sería más prudente dar marcha atrás para mantener la armonía.\n\nSi usted o sus seres queridos se ven amenazados y en peligro, este es un excelente momento para actuar. Tus músculos están preparados para actuar por instinto cuando la adrenalina entra en acción. En una pelea, no necesitas pensar; ¡hazlo!.\n\nEsta Dirección carga el cuerpo con muchas enfermedades, lo aflige con exceso de cólera, con fiebres agudas y agudas, dolores de cabeza muy amargos, vicia la vista de los ojos con embotamiento u otras enfermedades, deforma el rostro con heridas o cicatrices, y el resto del cuerpo con hierro, fuego o agua caliente y hirviente; diseña al Nativo para que sea inconstante y variable en sus Consejos, reflexiones y Acciones, y que encontrará muchos trabajos y dificultades a causa de Personas o Malhechores malvados, perniciosos; sus enemigos se apoderarán de él; el nativo caerá fácilmente en el odio y el ceño fruncido de reyes y grandes hombres, y debe tener cuidado de recibir prejuicios o daño por la mordedura de un perro rabioso, o la patada de un caballo o alguna otra criatura de cuatro patas: es bueno que en este año evite a los soldados: a una Natividad marcial da preferencia: pide a los reyes que tengan cuidado con Poyson y la traición, cuando se significa una muerte violenta, lo demuestra, el tiempo o la ocasión para ello está cerca; en la mayoría de los signos, es un signo seguro del flujo sangriento. [Astrología cristiana, William Lilly, 1647, p.682. ]\n\nEsta interpretación del tránsito del Sol en conjunción con Marte también se puede aplicar a un eclipse solar y una Luna Nueva en conjunción con Marte.",
+        "toDate" : "2026-10-27",
+        "transitKey" : "SOL",
+        "transitLabel" : "Sol"
+      },
+      {
+        "activeDays" : 5,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-06",
+        "fromDate" : "2026-10-04",
+        "id" : "2CBD087A-ACC6-41CF-92F4-5DDACEF5BA96",
+        "metricReasons" : [
+          "Toca Medio Cielo",
+          "Planeta natal angular",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.25°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.027611022008954933,
+        "natalKey" : "MC",
+        "natalLabel" : "Medio Cielo",
+        "personalRelevance" : 1.75,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "low",
+        "priorityScore" : 15.4462,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.178,
+            "orb" : 2.47
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.589,
+            "orb" : 1.23
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.991,
+            "orb" : 0.03
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.616,
+            "orb" : 1.15
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.234,
+            "orb" : 2.3
+          }
+        ],
+        "score" : 8,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 8,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.1033,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito de Mercurio en cuadratura por el Medio Cielo te despierta curiosidad por el futuro y nostalgia por el pasado. Es posible que tenga conversaciones esenciales con familiares o con colegas y superiores. Estas discusiones serias podrían ser sobre el pasado o el futuro. Es posible que tengas que viajar para conocer gente, lo que podría suponer retrasos o resultar molesto.\n\nEs posible una mezcla de optimismo y escepticismo al pensar en su futuro. Es posible que se sienta triste por las oportunidades perdidas o que se arrepienta, incluso se sienta culpable por las decisiones que tomó en el pasado. Por tanto, es posible cierta indecisión o vacilación, lo cual no es necesariamente malo.\n\nSin embargo, debe evitar centrar sus intereses de manera demasiado amplia en varias áreas. Existe el riesgo de distraerse fácilmente o atascarse en detalles menores, lo que podría llevarle a perder el panorama general y no terminar su trabajo, darse por vencido o cancelar cosas.\n\nAdemás, piense detenidamente las cosas detenidamente e investigue. Difundir ideas fantasiosas o que no han sido plenamente demostradas puede generar polémica y escándalo. Piénselo dos veces antes de compartir información en las redes sociales.\n\nSus discusiones pueden involucrar puntos conflictivos o problemas que deben resolverse antes de poder seguir adelante. Pero las discusiones y los conflictos son posibles si intentas forzar tus ideas sin escuchar los consejos de los demás. Corre el riesgo de molestar a las personas en su carrera que pueden volverse en su contra y dañar sus perspectivas.\n\nEngrandecerse a sí mismo o ser demasiado franco podría generar controversia, críticas, cobertura mediática negativa y pérdida de reputación. La mentalidad abierta y la cooperación conducirán a situaciones beneficiosas para todos y a mejores relaciones con la familia, los colegas y los superiores.\n\nPresagia para el nativo un momento muy difícil y ambiguo, oprimido y atormentado por y con hombres mercuriales, ingeniosos y eruditos, que darán ocasión de problemas e inquietudes al nativo, malinterpretando sus acciones con varios informes secundarios; muestra muchas veces pleitos pesados, sentencias injustas; y a los Schollers, la no obtención de los Cargos o Títulos en Aprendizaje que se deseen, o la falta de un Beneficio de la Iglesia; involucra al nativo en un designio impío y ocasiona la pérdida de su preferencia; suscita muchos Informes fingidos y falsos contra el Nativo, muy abusados ​​por Cartas e Informaciones siniestras, Testigos y Actitudes falsos, y sentencias injustas, o trato parcial de los Jueces, ya sean espirituales o temporales. [Astrología cristiana, William Lilly, 1647, p.675. ]",
+        "toDate" : "2026-10-08",
+        "transitKey" : "MERCURIO",
+        "transitLabel" : "Mercurio"
+      },
+      {
+        "activeDays" : 12,
+        "aspectKey" : "OPOSICION",
+        "aspectLabel" : "Oposicion",
+        "color" : "#a21caf",
+        "exactDate" : "2026-10-19",
+        "fromDate" : "2026-10-13",
+        "id" : "FC8FF67A-D6DB-43CE-BB1A-69A75FDA3D7F",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.0070995125134913906,
+        "natalKey" : "NODO_SUR",
+        "natalLabel" : "Nodo Sur",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "low",
+        "priorityScore" : 14.770295999999998,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.028,
+            "orb" : 2.92
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.165,
+            "orb" : 2.51
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.313,
+            "orb" : 2.06
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.472,
+            "orb" : 1.58
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.641,
+            "orb" : 1.08
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.818,
+            "orb" : 0.55
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.998,
+            "orb" : 0.01
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.807,
+            "orb" : 0.58
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.61,
+            "orb" : 1.17
+          },
+          {
+            "date" : "2026-10-22",
+            "intensity" : 0.41,
+            "orb" : 1.77
+          },
+          {
+            "date" : "2026-10-23",
+            "intensity" : 0.207,
+            "orb" : 2.38
+          },
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.003,
+            "orb" : 2.99
+          }
+        ],
+        "score" : 9,
+        "stars" : 3,
+        "technicalScore" : 9,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.36762,
+        "temporalImpactStars" : 3,
+        "toDate" : "2026-10-24",
+        "transitKey" : "VENUS",
+        "transitLabel" : "Venus"
+      },
+      {
+        "activeDays" : 19,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-13",
+        "fromDate" : "2026-10-01",
+        "id" : "3C43E087-E973-47DF-B4AB-3E36B5976384",
+        "metricReasons" : [
+          "Planeta natal cadente",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.14344028372613593,
+        "natalKey" : "URANO",
+        "natalLabel" : "Urano",
+        "personalRelevance" : 1.05,
+        "personalRelevanceStars" : 2,
+        "priorityBand" : "low",
+        "priorityScore" : 14.072809800000002,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.292,
+            "orb" : 2.12
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.275,
+            "orb" : 2.17
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.271,
+            "orb" : 2.19
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.28,
+            "orb" : 2.16
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.303,
+            "orb" : 2.09
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.338,
+            "orb" : 1.99
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.387,
+            "orb" : 1.84
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.448,
+            "orb" : 1.65
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.524,
+            "orb" : 1.43
+          },
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.612,
+            "orb" : 1.16
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.713,
+            "orb" : 0.86
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.826,
+            "orb" : 0.52
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.952,
+            "orb" : 0.14
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.91,
+            "orb" : 0.27
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.762,
+            "orb" : 0.71
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.603,
+            "orb" : 1.19
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.435,
+            "orb" : 1.7
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.258,
+            "orb" : 2.23
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.073,
+            "orb" : 2.78
+          }
+        ],
+        "score" : 9.8,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 9.8,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.36762,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito de Venus en conjunción con Urano trae cambios y emoción con el amor, el dinero o ambos. Su mayor necesidad de estimulación puede provocar cambios repentinos o puede estar sujeto a cambios inesperados a su alrededor.\n\nSi las cosas se han estancado y son rutinarias con tu pareja, es más probable que te rebeles o hagas algo que ponga en riesgo la relación. Si esto no produce el resultado deseado (más atención y diversión), puedes dejarlo. Sólo recuerda que esta necesidad de emoción es algo pasajero. La estimulación saludable se puede encontrar en los parques de atracciones o con juguetes sexuales.\n\nSi es soltero, tiene mayores posibilidades de obtener puntaje y las citas por Internet se adaptan a este aspecto. Aunque usted puede disfrutar de una mayor atención y emoción, un nuevo romance iniciado bajo esta influencia probablemente perderá fuerza rápidamente. La excepción a esto serían los tránsitos de mayor duración o las fases lunares que lo contradigan.\n\nTambién se pueden encontrar emociones a través de la inversión; Puede seguir sus instintos al invertir o comprar. Buen momento para compras impulsivas en moda, cosmética y joyería. Recuerde gastar dentro de su presupuesto porque las pérdidas financieras son tan probables como las ganancias financieras inesperadas. Ahora es fácil aprovechar tu talento creativo, permitiéndote desarrollar tu estilo único. Las sorpresas también pueden venir en forma de invitaciones, obsequios, cumplidos u ofertas curiosas y morbosas.",
+        "toDate" : "2026-10-19",
+        "transitKey" : "VENUS",
+        "transitLabel" : "Venus"
+      },
+      {
+        "activeDays" : 5,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-03",
+        "fromDate" : "2026-10-01",
+        "id" : "10529CEE-05BD-42A4-A4CC-A90A61C68612",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.5°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.3929811933754763,
+        "natalKey" : "NODO_NORTE",
+        "natalLabel" : "Nodo Norte",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "low",
+        "priorityScore" : 12.961670400000001,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.269,
+            "orb" : 2.19
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.704,
+            "orb" : 0.89
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.869,
+            "orb" : 0.39
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.45,
+            "orb" : 1.65
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.039,
+            "orb" : 2.88
+          }
+        ],
+        "score" : 9.3,
+        "stars" : 3,
+        "technicalScore" : 9.3,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.16144,
+        "temporalImpactStars" : 3,
+        "toDate" : "2026-10-05",
+        "transitKey" : "MERCURIO",
+        "transitLabel" : "Mercurio"
+      },
+      {
+        "activeDays" : 6,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-26",
+        "fromDate" : "2026-10-24",
+        "id" : "1A1EACD9-CC1E-4284-A3BC-815D9C2F10F1",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.5°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.444678753646258,
+        "natalKey" : "NODO_NORTE",
+        "natalLabel" : "Nodo Norte",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "low",
+        "priorityScore" : 12.961670400000001,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.188,
+            "orb" : 2.44
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.52,
+            "orb" : 1.44
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.852,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.816,
+            "orb" : 0.55
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.483,
+            "orb" : 1.55
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.151,
+            "orb" : 2.55
+          }
+        ],
+        "score" : 9.3,
+        "stars" : 3,
+        "technicalScore" : 9.3,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.16144,
+        "temporalImpactStars" : 3,
+        "toDate" : "2026-10-29",
+        "transitKey" : "SOL",
+        "transitLabel" : "Sol"
+      },
+      {
+        "activeDays" : 3,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-02",
+        "fromDate" : "2026-10-01",
+        "id" : "A4AABA68-2A07-4469-AE0C-76A1A1DB7643",
+        "metricReasons" : [
+          "Planeta personal fuerte",
+          "Planeta natal cadente",
+          "Tránsito breve",
+          "Orbe exacto menor de 1°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.632730603966138,
+        "natalKey" : "MARTE",
+        "natalLabel" : "Marte",
+        "personalRelevance" : 1.3,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "low",
+        "priorityScore" : 12.717975400000002,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.776,
+            "orb" : 0.67
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.789,
+            "orb" : 0.63
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.362,
+            "orb" : 1.91
+          }
+        ],
+        "score" : 8.9,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 8.9,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.09922,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito de Mercurio en conjunción con Marte brinda agudeza mental, decisión, entusiasmo y destreza manual. Con una mente concentrada y un intelecto penetrante, puede defender su caso y defender a otros contra el acoso o la provocación.\n\nPuede haber una naturaleza agresiva o defensiva en su pensamiento en este momento. Esto, junto con tiempos de respuesta extremadamente rápidos, significa que existe la posibilidad de entablar discusiones, perder los estribos y ser innecesariamente grosero o abusivo. Estos atributos son aceptables en una pelea, pero no útiles en entornos sociales o entre parejas.\n\nLa clave para manejar esta energía potencialmente provocativa proviene de tomar conciencia de la acumulación de energía nerviosa e impulsiva. Si no tienes una causa digna por la que luchar, aplica esta energía al trabajo mental como estudios o investigaciones. Incluso hacer un crucigrama liberaría la acumulación de irritación y enojo.\n\nEs posible que encuentres hostilidad en los demás sin utilizar esta energía en un buen debate o resolviendo acertijos. Esto podría venir en forma de amenazas, abuso o intimidación. No debes echarte atrás en una pelea, sino elegir tus batallas con cuidado. Recuerda, este tránsito tiende a hacerte actuar antes de pensar.",
+        "toDate" : "2026-10-03",
+        "transitKey" : "MERCURIO",
+        "transitLabel" : "Mercurio"
+      },
+      {
+        "activeDays" : 5,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-05",
+        "fromDate" : "2026-10-03",
+        "id" : "5A639283-2577-43FA-BFB3-659E1EB91003",
+        "metricReasons" : [
+          "Planeta natal cadente",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.10947872647886925,
+        "natalKey" : "URANO",
+        "natalLabel" : "Urano",
+        "personalRelevance" : 1.05,
+        "personalRelevanceStars" : 2,
+        "priorityBand" : "low",
+        "priorityScore" : 12.591461399999998,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.206,
+            "orb" : 2.38
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.626,
+            "orb" : 1.12
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.964,
+            "orb" : 0.11
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.561,
+            "orb" : 1.32
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.169,
+            "orb" : 2.49
+          }
+        ],
+        "score" : 9.8,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 9.8,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.2236599999999997,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito de Mercurio en conjunción con Urano estimula su pensamiento, agregando emoción a sus interacciones y rutinas diarias. La influencia electrizante en tu cerebro hace que este sea un momento ideal para cualquier trabajo mental o creativo que requiera originalidad. Una mayor apertura de mente y una mayor intuición pueden conducir a destellos de perspicacia y avances.\n\nEs probable que el estudio sistemático y la concentración se vean afectados porque usted se distrae más fácilmente. Sin embargo, estas son condiciones excelentes para campos científicos o técnicos donde captar conceptos es más importante que memorizar una fórmula. Las áreas extrañas u ocultas se pueden comprender mejor, incluida la astrología, con el regente de transición Mercurio y el regente moderno Urano.\n\nEs posible que le lleguen noticias inesperadas, pero este tránsito por sí solo no implica buenas o malas noticias. Su rápido tiempo de reacción es bueno para la agilidad, pero puede causar problemas como sacar conclusiones precipitadas o interrumpir conversaciones. Tu discurso podría incluso volverse abrupto cuando dejes escapar cualquier cosa que te venga a la mente. Cualquier condición nerviosa, como inquietud, morderse las uñas o espasmos musculares, se vería exacerbada.\n\nEste es un buen momento para adquirir mayor conciencia y experimentar, pero no es un buen momento para hacer planes, negociaciones serias o apegarse a una rutina. Es más probable que se cometan errores de juicio y faltas de ortografía. Sea consciente de la tendencia a distraerse al conducir o utilizar máquinas. Las computadoras, los aparatos electrónicos y los electrodomésticos pueden funcionar mal.\n\nSu pensamiento errático y su estilo de comunicación afectan las interacciones personales, lo que puede conducir a descubrimientos interesantes sobre usted y los demás. Es posible que nuevas personas entren en tu vida y probablemente sean diferentes o convincentes de alguna manera. Aceptará más a las personas inusuales y esos encuentros casuales le proporcionarán conocimientos valiosos. Aunque las nuevas amistades serán emocionantes, probablemente serán pasajeras a menos que otros tránsitos indiquen lo contrario.",
+        "toDate" : "2026-10-07",
+        "transitKey" : "MERCURIO",
+        "transitLabel" : "Mercurio"
+      },
+      {
+        "activeDays" : 7,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-13",
+        "fromDate" : "2026-10-10",
+        "id" : "8B00D7BE-7701-4934-B9FB-D457D9AF2535",
+        "metricReasons" : [
+          "Planeta social",
+          "Planeta natal angular",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.25°",
+          "Dos pasadas por retrogradación"
+        ],
+        "minOrb" : 0.2269522901672758,
+        "natalKey" : "SATURNO",
+        "natalLabel" : "Saturno",
+        "personalRelevance" : 1.45,
+        "personalRelevanceStars" : 4,
+        "priorityBand" : "low",
+        "priorityScore" : 12.542314399999999,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-10",
+            "intensity" : 0.077,
+            "orb" : 2.77
+          },
+          {
+            "date" : "2026-10-11",
+            "intensity" : 0.424,
+            "orb" : 1.73
+          },
+          {
+            "date" : "2026-10-12",
+            "intensity" : 0.757,
+            "orb" : 0.73
+          },
+          {
+            "date" : "2026-10-13",
+            "intensity" : 0.924,
+            "orb" : 0.23
+          },
+          {
+            "date" : "2026-10-14",
+            "intensity" : 0.623,
+            "orb" : 1.13
+          },
+          {
+            "date" : "2026-10-15",
+            "intensity" : 0.339,
+            "orb" : 1.98
+          },
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.076,
+            "orb" : 2.77
+          }
+        ],
+        "score" : 7.7,
+        "source" : "Astrology King",
+        "stars" : 2,
+        "technicalScore" : 7.7,
+        "technicalStars" : 2,
+        "temporalImpact" : 1.12336,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito de Mercurio en cuadratura con Saturno favorece el trabajo mental arduo, que probablemente sea mejor hacerlo solo. Comunicar sus planes e ideas puede ser un desafío debido a pensamientos negativos y malentendidos. Al estudiar o ordenar su papeleo, preste atención a los detalles.\n\nTómese su tiempo al tomar decisiones y negociaciones importantes. Busque asesoramiento profesional y confiable en contratos, negocios o asuntos legales. No confíes en las palabras de los demás; ten cuidado con los tuyos. Probablemente dirás algo incorrecto y cavarás un hoyo más profundo.\n\nPuede haber cierta distancia o separación en las relaciones cercanas. Los pensamientos sombríos, las malas noticias o los sentimientos de soledad pueden afectar negativamente al bienestar mental. Trate de recordar que probablemente esté viendo el peor lado de cada asunto.",
+        "toDate" : "2026-10-16",
+        "transitKey" : "MERCURIO",
+        "transitLabel" : "Mercurio"
+      },
+      {
+        "activeDays" : 5,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-29",
+        "fromDate" : "2026-10-27",
+        "id" : "F8007BBE-E4E7-4BF5-ADA2-FEE494124264",
+        "metricReasons" : [
+          "Planeta natal cadente",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.25°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.2258396030857739,
+        "natalKey" : "URANO",
+        "natalLabel" : "Urano",
+        "personalRelevance" : 1.05,
+        "personalRelevanceStars" : 2,
+        "priorityBand" : "low",
+        "priorityScore" : 12.334492799999998,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.259,
+            "orb" : 2.22
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.592,
+            "orb" : 1.22
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.925,
+            "orb" : 0.23
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.742,
+            "orb" : 0.77
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.409,
+            "orb" : 1.77
+          }
+        ],
+        "score" : 9.6,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 9.6,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.2236599999999997,
+        "temporalImpactStars" : 3,
+        "text" : "El tránsito del Sol en conjunción con Urano señala un momento de emoción, cambios inesperados, libertad y rebelión. Debería sentir una fuerte necesidad de romper con la rutina y hacer algo diferente a sus actividades normales. Para evitar inquietudes y tensiones nerviosas, es mejor estar activo y buscar hacer algo fuera de lo común y no esperar a que te suceda un cambio. Resistirse al cambio podría manifestar cambios inesperados y desagradables que causen perturbaciones perturbadoras en su vida.\n\nEste tránsito abrirá su conciencia a vibraciones más elevadas, lo que quizás resulte en una mayor autoconciencia o percepción psíquica. Sin duda, permanecer flexible y de mente abierta aumentará las posibilidades de vivir sorpresas más agradables y experiencias emocionantes. Podrías conocer tipos de personas nuevas y poco convencionales o de orígenes culturales o sociales muy diferentes a los tuyos.\n\nUna expresión más negativa de esta energía eléctrica e impulsiva sería correr riesgos innecesarios o rebelarse contra la autoridad por el simple hecho de hacerlo. Esto no sólo sería peligroso, ya que Urano rige los accidentes, sino que también dañaría tu posición en el trabajo y provocaría confrontación o reacción agresiva por parte de tus superiores.\n\nEsta interpretación del tránsito del Sol en conjunción con Urano también se puede leer para un eclipse solar y una Luna Nueva en conjunción con Urano.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "SOL",
+        "transitLabel" : "Sol"
+      },
+      {
+        "activeDays" : 4,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-31",
+        "fromDate" : "2026-10-28",
+        "id" : "9B56A18C-A72A-4F9E-AD96-BE0712666D1A",
+        "metricReasons" : [
+          "Toca Medio Cielo",
+          "Planeta natal angular",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.5°"
+        ],
+        "minOrb" : 0.42885372949729117,
+        "natalKey" : "MC",
+        "natalLabel" : "Medio Cielo",
+        "personalRelevance" : 1.75,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "low",
+        "priorityScore" : 12.328400000000002,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.144,
+            "orb" : 2.57
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.477,
+            "orb" : 1.57
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.81,
+            "orb" : 0.57
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.857,
+            "orb" : 0.43
+          }
+        ],
+        "score" : 7.4,
+        "source" : "Astrology King",
+        "stars" : 2,
+        "technicalScore" : 7.4,
+        "technicalStars" : 2,
+        "temporalImpact" : 0.9520000000000001,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito del Sol en cuadratura por el Medio Cielo te hace estar más decidido a alcanzar tus objetivos y salirte con la tuya. En tu profesión, trabajarás duro y lograrás mucho en lo que se refiere a tus objetivos personales. Otros pueden ver esto como egoísmo, por lo que es posible que haya discusiones y es probable que sus objetivos entren en conflicto con los de quienes lo rodean.\n\nTe motivarás por tus propias necesidades, por lo que debes intentar evitar alienar a las personas que te rodean. Aunque no tengas ganas de hacerlo, debes trabajar en equipo y encajar. Puedes encontrar una manera de no trabajar con los demás, pero no trabajes en contra de ellos. Trate de ver el otro lado si surge una discusión. No dejes que tu ego se interponga en tu camino hacia el progreso.\n\nHace que el nativo sea evidente ante muchas molestias; lo hace odioso para los grandes hombres; perder su cargo, honor o ascensos de repente cambia y pervierte todas sus buenas fortunas anteriores; un comerciante, quiebra su crédito o se declara en quiebra, etc. de modo que ahora corre peligro de ser encarcelado, desterrado, y muchas veces, (si la Natividad amenaza) es sentenciado a muerte por juicio de su Príncipe, o de alguno de sus Oficiales. Donde viven los Padres, participan de la infelicidad de una forma u otra; ya sea en la pérdida de su patrimonio por incendio u otras bajas mundanas. En la Natividad de un Rey mancha su honor con el orgullo y el descuido de su Pueblo; desprecia a su nobleza y a su nobleza, por quienes nunca recupera su amor, pero al final se resiente por ello. [Astrología cristiana, William Lilly, 1647, p.672-673. ]\n\nEsta interpretación del tránsito del Sol en cuadratura con el Medio Cielo también se puede aplicar a un eclipse solar y una Luna Nueva en cuadratura con el Medio Cielo.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "SOL",
+        "transitLabel" : "Sol"
+      },
+      {
+        "activeDays" : 3,
+        "aspectKey" : "SEXTIL",
+        "aspectLabel" : "Sextil",
+        "color" : "#2563eb",
+        "exactDate" : "2026-10-31",
+        "fromDate" : "2026-10-29",
+        "id" : "356EBAF4-13CF-4504-8212-D1A66D47A31C",
+        "metricReasons" : [
+          "Toca Sol\/Luna",
+          "Planeta natal cadente",
+          "Tránsito por casa angular",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.25°"
+        ],
+        "minOrb" : 0.23661171661206026,
+        "natalKey" : "SOL",
+        "natalLabel" : "Sol",
+        "personalRelevance" : 1.65,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "low",
+        "priorityScore" : 12.246629999999998,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.164,
+            "orb" : 1.25
+          },
+          {
+            "date" : "2026-10-30",
+            "intensity" : 0.504,
+            "orb" : 0.74
+          },
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.842,
+            "orb" : 0.24
+          }
+        ],
+        "score" : 7.4,
+        "source" : "Grupo Venus",
+        "stars" : 2,
+        "technicalScore" : 7.4,
+        "technicalStars" : 2,
+        "temporalImpact" : 1.003,
+        "temporalImpactStars" : 2,
+        "text" : "Marte en tránsito en sextil a tu Sol\n\nEste tránsito te vuelve valiente, lleno de seguridad, confiado en tu fuerza y en tus medios, con una gran voluntad de acción. Puedes llegar a demostrar una sorprendente iniciativa y combatividad para realizar tus ambiciones; te diriges sin mirar a los lados, derecho a la meta, con vigor, franqueza y audacia.\n\nEs un buen momento para resolver tus asuntos urgentes, todo lo que tengas que realizar de forma expeditiva. Las situaciones son claras, limpias, y las dificultades son vencidas fácilmente. Los éxitos conquistados gracias a tu energía y valentía, así como tus realizaciones, te pueden traer la admiración de tu jefe o de importantes personalidades. Es también un período inmejorable para colocarte en un primer plano, incluso, si eres deportista, para ganar una competición.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 6,
+        "aspectKey" : "CONJUNCION",
+        "aspectLabel" : "Conjuncion",
+        "color" : "#d97706",
+        "exactDate" : "2026-10-05",
+        "fromDate" : "2026-10-02",
+        "id" : "CA76B4CF-F9AD-4AD0-8BD4-23748753ADE8",
+        "metricReasons" : [
+          "Planeta natal sucedente",
+          "Tránsito por casa sucedente",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.5°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.39521780808195217,
+        "natalKey" : "PLUTON",
+        "natalLabel" : "Pluton",
+        "personalRelevance" : 1.25,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "low",
+        "priorityScore" : 12.173700000000002,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.147,
+            "orb" : 2.56
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.475,
+            "orb" : 1.57
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.803,
+            "orb" : 0.59
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.868,
+            "orb" : 0.4
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.54,
+            "orb" : 1.38
+          },
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.211,
+            "orb" : 2.37
+          }
+        ],
+        "score" : 9.3,
+        "source" : "Astrology King",
+        "stars" : 3,
+        "technicalScore" : 9.3,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.0472000000000001,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito del Sol en conjunción con Plutón aumenta drásticamente su poder y capacidad para influir en los resultados de su vida. Sin embargo, su mayor intensidad y su naturaleza inquisitiva pueden conducir a luchas de poder. Es posible que tengas que manejar tácticas encubiertas, como el comportamiento controlador y manipulador.\n\nPuede que empieces a sentirte paranoico, pero también es posible que tus enemigos estén conspirando contra ti. Si bien ese comportamiento de tu parte puede llevarte a la ruina, puedes descubrir secretos y llegar al fondo de cualquier misterio.\n\nAhora tienes talento para la investigación y la investigación profunda. Esto también se aplica en el ámbito psicológico, donde se pueden obtener conocimientos sobre comportamientos destructivos como las obsesiones y las adicciones. Este también es un excelente momento para llegar al fondo de cualquier dificultad grave en la relación. La compleja dinámica de las relaciones se volverá más evidente para usted. Gran parte de la percepción que obtengas puede ocurrir a nivel psíquico, y estarás proyectando tu yo psíquico de manera penetrante.\n\nSer demasiado fuerte puede causar problemas en las relaciones y los demás pueden sentir que estás mirando dentro de su alma. Evite interrogar a sus seres queridos y utilice su mayor poder para realizar transformaciones positivas a su alrededor. Ser desinteresado traerá los mejores resultados.\n\nEs posible que experimente algo dramático o perturbador. Si es así, considérelo como una oportunidad para empezar desde cero. Este tránsito favorece las transformaciones y la evolución del alma. Inicialmente, esto implicará retirarse y observar la situación. El proceso de renacimiento conducirá a una mayor autoestima y eficacia personal.\n\nEste es el momento de abordar cualquier área oscura y siniestra de tu vida, desde el crimen hasta la sordidez, el acoso y las adicciones. Haga reparaciones ahora, especialmente en todo lo que tenga que ver con plomería y desagües o bajo tierra. También puedes utilizar este tránsito para limpiar la basura y eliminar el desorden innecesario.\n\nEsta interpretación para el tránsito del Sol en conjunción con Plutón también se puede leer para un eclipse solar y una Luna Nueva en conjunción con Plutón.",
+        "toDate" : "2026-10-07",
+        "transitKey" : "SOL",
+        "transitLabel" : "Sol"
+      },
+      {
+        "activeDays" : 5,
+        "aspectKey" : "OPOSICION",
+        "aspectLabel" : "Oposicion",
+        "color" : "#a21caf",
+        "exactDate" : "2026-10-03",
+        "fromDate" : "2026-10-01",
+        "id" : "1B3AFFB8-8F12-46BB-BFF1-9AAA88369A0A",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.5°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.3929811933754763,
+        "natalKey" : "NODO_SUR",
+        "natalLabel" : "Nodo Sur",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "low",
+        "priorityScore" : 11.7073152,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.269,
+            "orb" : 2.19
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.704,
+            "orb" : 0.89
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.869,
+            "orb" : 0.39
+          },
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.45,
+            "orb" : 1.65
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.039,
+            "orb" : 2.88
+          }
+        ],
+        "score" : 8.4,
+        "stars" : 3,
+        "technicalScore" : 8.4,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.16144,
+        "temporalImpactStars" : 3,
+        "toDate" : "2026-10-05",
+        "transitKey" : "MERCURIO",
+        "transitLabel" : "Mercurio"
+      },
+      {
+        "activeDays" : 6,
+        "aspectKey" : "OPOSICION",
+        "aspectLabel" : "Oposicion",
+        "color" : "#a21caf",
+        "exactDate" : "2026-10-26",
+        "fromDate" : "2026-10-24",
+        "id" : "4D5F8FD0-B326-4EDE-9DC9-DF9D48629EC5",
+        "metricReasons" : [
+          "Toca Nodo natal",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.5°",
+          "Cluster de tránsitos al mismo punto"
+        ],
+        "minOrb" : 0.444678753646258,
+        "natalKey" : "NODO_SUR",
+        "natalLabel" : "Nodo Sur",
+        "personalRelevance" : 1.2,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "low",
+        "priorityScore" : 11.567942400000002,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-24",
+            "intensity" : 0.188,
+            "orb" : 2.44
+          },
+          {
+            "date" : "2026-10-25",
+            "intensity" : 0.52,
+            "orb" : 1.44
+          },
+          {
+            "date" : "2026-10-26",
+            "intensity" : 0.852,
+            "orb" : 0.44
+          },
+          {
+            "date" : "2026-10-27",
+            "intensity" : 0.816,
+            "orb" : 0.55
+          },
+          {
+            "date" : "2026-10-28",
+            "intensity" : 0.483,
+            "orb" : 1.55
+          },
+          {
+            "date" : "2026-10-29",
+            "intensity" : 0.151,
+            "orb" : 2.55
+          }
+        ],
+        "score" : 8.3,
+        "stars" : 3,
+        "technicalScore" : 8.3,
+        "technicalStars" : 3,
+        "temporalImpact" : 1.16144,
+        "temporalImpactStars" : 3,
+        "toDate" : "2026-10-29",
+        "transitKey" : "SOL",
+        "transitLabel" : "Sol"
+      },
+      {
+        "activeDays" : 2,
+        "aspectKey" : "SEXTIL",
+        "aspectLabel" : "Sextil",
+        "color" : "#2563eb",
+        "exactDate" : "2026-10-01",
+        "fromDate" : "2026-10-01",
+        "id" : "9163BC7D-9CED-4FE1-9CDE-4C5BAB4C1195",
+        "metricReasons" : [
+          "Regente del Ascendente",
+          "Planeta personal",
+          "Planeta natal sucedente",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.5°"
+        ],
+        "minOrb" : 0.3684251112287029,
+        "natalKey" : "MERCURIO",
+        "natalLabel" : "Mercurio",
+        "personalRelevance" : 1.7,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "low",
+        "priorityScore" : 11.328800000000001,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.754,
+            "orb" : 0.37
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.367,
+            "orb" : 0.95
+          }
+        ],
+        "score" : 7,
+        "source" : "Grupo Venus",
+        "stars" : 2,
+        "technicalScore" : 7,
+        "technicalStars" : 2,
+        "temporalImpact" : 0.9520000000000001,
+        "temporalImpactStars" : 2,
+        "text" : "Marte en tránsito en sextil a tu Mercurio\n\nDurante el período de este tránsito, te sientes especialmente joven y despierto, con una intensa necesidad de actuar, de moverte, de desplazarte. Tu pensamiento y tus gestos son ahora más rápidos de lo habitual, y te sientes más hábil a la hora de expresarte tanto verbalmente como por escrito, y además de forma franca, directa y convincente. Es una oportunidad para promover tus propias ideas a otros, de conseguir una gestión gracias a argumentos incisivos e irrefutables.",
+        "toDate" : "2026-10-02",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 6,
+        "aspectKey" : "SEXTIL",
+        "aspectLabel" : "Sextil",
+        "color" : "#2563eb",
+        "exactDate" : "2026-10-19",
+        "fromDate" : "2026-10-16",
+        "id" : "41A8FC41-CB11-45B5-BEA6-4EA1A317BCA2",
+        "metricReasons" : [
+          "Planeta natal sucedente",
+          "Tránsito por casa angular",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.25°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.2205438172102845,
+        "natalKey" : "PLUTON",
+        "natalLabel" : "Pluton",
+        "personalRelevance" : 1.3499999999999999,
+        "personalRelevanceStars" : 3,
+        "priorityBand" : "low",
+        "priorityScore" : 11.021967,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-16",
+            "intensity" : 0.06,
+            "orb" : 1.41
+          },
+          {
+            "date" : "2026-10-17",
+            "intensity" : 0.424,
+            "orb" : 0.86
+          },
+          {
+            "date" : "2026-10-18",
+            "intensity" : 0.786,
+            "orb" : 0.32
+          },
+          {
+            "date" : "2026-10-19",
+            "intensity" : 0.853,
+            "orb" : 0.22
+          },
+          {
+            "date" : "2026-10-20",
+            "intensity" : 0.494,
+            "orb" : 0.76
+          },
+          {
+            "date" : "2026-10-21",
+            "intensity" : 0.137,
+            "orb" : 1.29
+          }
+        ],
+        "score" : 7.4,
+        "source" : "Astrology King",
+        "stars" : 2,
+        "technicalScore" : 7.4,
+        "technicalStars" : 2,
+        "temporalImpact" : 1.1033,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito de Marte sextil a Plutón proporciona una tremenda energía, fuerza de voluntad y coraje. Con un impulso y una determinación intensos, podrás concentrarte en una tarea particular y lograr tus objetivos. Esta energía dirigida a un objetivo es intensa pero bien regulada, lo que proporciona resistencia y vigor. Una vez que haya decidido un curso de acción, persistirá hasta alcanzar su objetivo.\n\nEste tránsito favorece abordar proyectos complejos que antes parecían demasiado difíciles de realizar. No habrá postergaciones y podrá mantenerse concentrado con facilidad. Algo muy dentro de ti te está impulsando, una especie de instinto de supervivencia primario. Esta energía es excelente para tomar la iniciativa y dar una buena impresión a los superiores.\n\nProyectarás fuertemente tu físico y sexualidad y parecerás más atractivo en este estado. Tu energía sexual es provocativa con un toque de misterio o peligro, pero no lo suficientemente amenazadora como para atrapar a tu presa. Es posible que tu pareja tenga problemas para mantener tu resistencia física y es posible que tengas que relajarte un poco.\n\nAunque este no es un tránsito agresivo, te levantarás y lucharás si te amenazan o te provocan. Un instinto agudo y una oleada de adrenalina presagian la victoria en la batalla. También podrás proyectarte firmemente en el ámbito espiritual o psíquico.",
+        "toDate" : "2026-10-21",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 3,
+        "aspectKey" : "SEXTIL",
+        "aspectLabel" : "Sextil",
+        "color" : "#2563eb",
+        "exactDate" : "2026-10-01",
+        "fromDate" : "2026-10-01",
+        "id" : "89C366C4-9D54-4CA1-8F15-5BDDD5392448",
+        "metricReasons" : [
+          "Toca Sol\/Luna",
+          "Planeta natal cadente",
+          "Tránsito por casa angular",
+          "Tránsito breve"
+        ],
+        "minOrb" : 1.0746333510830937,
+        "natalKey" : "SOL",
+        "natalLabel" : "Sol",
+        "personalRelevance" : 1.65,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "low",
+        "priorityScore" : 10.799249999999999,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.284,
+            "orb" : 1.07
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.165,
+            "orb" : 1.25
+          },
+          {
+            "date" : "2026-10-03",
+            "intensity" : 0.048,
+            "orb" : 1.43
+          }
+        ],
+        "score" : 7.7,
+        "source" : "Grupo Venus",
+        "stars" : 2,
+        "technicalScore" : 7.7,
+        "technicalStars" : 2,
+        "temporalImpact" : 0.85,
+        "temporalImpactStars" : 1,
+        "text" : "Júpiter en tránsito en sextil a tu Sol\n\nUn buen período para hacer planes, tomar decisiones o encontrar el camino apropiado para solucionar cualquier problema a la vista. Te sientes francamente bien, lleno de optimismo y entusiasmo, y eres capaz de arreglártelas con éxito. Tu dirección interna es perfecta para aprovechar las oportunidades que se te presentan. Aunque debes tener cuidado a la hora de asumir demasiadas experiencias nuevas, ya que esto podría suponer un desperdicio de tu energía así como de tus recursos.\n\nEste tránsito muestra una gran necesidad de gratificación interior, tratando de hacer algo para que los demás se fijen en ti.\n\nTambién puede indicar un periodo en el que tengas experiencias religiosas o místicas. En general, es un periodo en el que puedes viajar para ampliar tus experiencias; pudiendo ser un viaje tanto físico como mental, explorando nuevos puntos de vista en cuanto al entendimiento general de la vida se refiere. Además de sentir que tienes más suerte de lo normal.",
+        "toDate" : "2026-10-03",
+        "transitKey" : "JUPITER",
+        "transitLabel" : "Jupiter"
+      },
+      {
+        "activeDays" : 2,
+        "aspectKey" : "TRIGONO",
+        "aspectLabel" : "Trigono",
+        "color" : "#15803d",
+        "exactDate" : "2026-10-01",
+        "fromDate" : "2026-10-01",
+        "id" : "D52530F2-04AF-41AD-8665-C06D87AF08C1",
+        "metricReasons" : [
+          "Toca Medio Cielo",
+          "Planeta natal angular",
+          "Tránsito por casa sucedente",
+          "Tránsito breve",
+          "Orbe exacto menor de 1°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.6820573724555743,
+        "natalKey" : "MC",
+        "natalLabel" : "Medio Cielo",
+        "personalRelevance" : 1.85,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "low",
+        "priorityScore" : 9.167675000000001,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.659,
+            "orb" : 0.68
+          },
+          {
+            "date" : "2026-10-02",
+            "intensity" : 0.167,
+            "orb" : 1.67
+          }
+        ],
+        "score" : 5,
+        "source" : "Astrology King",
+        "stars" : 2,
+        "technicalScore" : 5,
+        "technicalStars" : 2,
+        "temporalImpact" : 0.9911000000000001,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito del Sol en trígono por el Medio Cielo brinda ambición, confianza en uno mismo y confianza en uno mismo para lograr metas y experimentar la vida al máximo. Es ideal para establecer prioridades, objetivos y direcciones. Una combinación de trabajo duro y buena suerte hace que el éxito y la prominencia sean muy probables en su carrera o profesión.\n\nPuede contar con una vida hogareña que lo apoye y puede asumir más responsabilidades hacia los miembros de la familia. El respeto y la ayuda provienen de compañeros y figuras de autoridad. Podrás convertirte en líder, representante, portavoz, promotor y organizador. También puedes unir personas por una causa común y construir grandes redes.\n\nUsted sabe conscientemente lo que quiere y cree y puede comunicarlo de manera efectiva a una gran audiencia. Por tanto, este es un momento excelente para autopromocionarse, escribir, compartir, convencer, educar, enseñar y asesorar. Puede obtener rápidamente apoyo, reconocimiento y popularidad.\n\nAunque se trata de un tránsito afortunado, una mayor exposición pública puede generar un deseo de mayor privacidad. Los atajos previos, el plagio o la inmoralidad podrían derivar en escándalo, problemas legales o críticas públicas.\n\nPromete cargos públicos y honores, obsequios y amistad que le otorgará algún Rey, Príncipe, Noble o Persona eminente, mediante los cuales sentará las bases para alcanzar grandes ascensos, y así se ordenará a sí mismo y a sus asuntos, de modo que se vuelva magnánimo, generoso, sin pensar en asuntos insignificantes, sino que gobernará la República, o parte de ella, con elogios y mucha reputación, sin que nadie envidie su grandeza. En una Natividad de Reyes, se le muestra inclinado a amar a su Pueblo, a hacer justicia, a hacer progresar en muchas partes de su Reino, la gran buena voluntad y agrado que el Pueblo tiene de él, y el honor que de él tiene. [Astrología cristiana, William Lilly, 1647, p.672. ]\n\nEsta interpretación del tránsito del Medio Cielo en trígono con el Sol también se puede leer para un eclipse solar y el Medio Cielo en trígono con Luna Nueva.",
+        "toDate" : "2026-10-02",
+        "transitKey" : "SOL",
+        "transitLabel" : "Sol"
+      },
+      {
+        "activeDays" : 1,
+        "aspectKey" : "CUADRADO",
+        "aspectLabel" : "Cuadratura",
+        "color" : "#dc2626",
+        "exactDate" : "2026-10-31",
+        "fromDate" : "2026-10-31",
+        "id" : "6C564A48-9B0E-4F87-BA11-392934D4A63F",
+        "metricReasons" : [
+          "Planeta social",
+          "Planeta natal angular",
+          "Tránsito breve",
+          "Dos pasadas por retrogradación"
+        ],
+        "minOrb" : 2.2883791887168172,
+        "natalKey" : "SATURNO",
+        "natalLabel" : "Saturno",
+        "personalRelevance" : 1.45,
+        "personalRelevanceStars" : 4,
+        "priorityBand" : "low",
+        "priorityScore" : 6.763960000000001,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : true,
+        "samples" : [
+          {
+            "date" : "2026-10-31",
+            "intensity" : 0.237,
+            "orb" : 2.29
+          }
+        ],
+        "score" : 4.9,
+        "source" : "Astrology King",
+        "stars" : 2,
+        "technicalScore" : 4.9,
+        "technicalStars" : 2,
+        "temporalImpact" : 0.9520000000000001,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito de Mercurio en cuadratura con Saturno favorece el trabajo mental arduo, que probablemente sea mejor hacerlo solo. Comunicar sus planes e ideas puede ser un desafío debido a pensamientos negativos y malentendidos. Al estudiar o ordenar su papeleo, preste atención a los detalles.\n\nTómese su tiempo al tomar decisiones y negociaciones importantes. Busque asesoramiento profesional y confiable en contratos, negocios o asuntos legales. No confíes en las palabras de los demás; ten cuidado con los tuyos. Probablemente dirás algo incorrecto y cavarás un hoyo más profundo.\n\nPuede haber cierta distancia o separación en las relaciones cercanas. Los pensamientos sombríos, las malas noticias o los sentimientos de soledad pueden afectar negativamente al bienestar mental. Trate de recordar que probablemente esté viendo el peor lado de cada asunto.",
+        "toDate" : "2026-10-31",
+        "transitKey" : "MERCURIO",
+        "transitLabel" : "Mercurio"
+      },
+      {
+        "activeDays" : 1,
+        "aspectKey" : "SEXTIL",
+        "aspectLabel" : "Sextil",
+        "color" : "#2563eb",
+        "exactDate" : "2026-10-01",
+        "fromDate" : "2026-10-01",
+        "id" : "80662C36-FE07-4941-8FD4-A46991D1651F",
+        "metricReasons" : [
+          "Toca Ascendente",
+          "Planeta natal angular",
+          "Tránsito breve"
+        ],
+        "minOrb" : 1.436699129814258,
+        "natalKey" : "ASC",
+        "natalLabel" : "Ascendente",
+        "personalRelevance" : 1.75,
+        "personalRelevanceStars" : 5,
+        "priorityBand" : "low",
+        "priorityScore" : 6.2475000000000005,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-01",
+            "intensity" : 0.042,
+            "orb" : 1.44
+          }
+        ],
+        "score" : 4.2,
+        "source" : "Astrology King",
+        "stars" : 2,
+        "technicalScore" : 4.2,
+        "technicalStars" : 2,
+        "temporalImpact" : 0.85,
+        "temporalImpactStars" : 1,
+        "text" : "El tránsito ascendente sextil de Marte es excelente para la autopromoción y las relaciones íntimas porque aporta confianza en uno mismo, coraje, magnetismo sexual y atractivo físico.\n\nSi tienes una cita, puedes vencer cualquier timidez natural para romper el hielo y causar una excelente primera impresión. Tu alta energía física, impaciencia e impulsividad atraerán a personas deportistas y sexys.\n\nEste también es un buen momento para explorar tu sexualidad. Si te sientes más aventurero, puedes superar los límites y probar algo nuevo con una pareja dispuesta. Es más probable que te ayuden a cumplir tus deseos apasionados ahora que en otros momentos. Este también sería el momento ideal para “revelar” tu orientación sexual si has estado demasiado asustado antes.\n\nEste es el momento adecuado para contarle a la gente tus verdaderos sentimientos e intenciones sobre cualquier tema. Al ser más asertivo y atrevido, podrás tomar la iniciativa y ser muy directo a la hora de conseguir lo que deseas. Es más probable que las personas sigan sus planes y respeten su honestidad.\n\nSi encuentra alguna resistencia, profundice y oponga resistencia. Este tránsito ganador premia la iniciativa y la acción decisiva, así que defienda sus derechos y defienda los derechos de sus seres queridos. Quien se atreve gana.\n\nEl Horóscopo dirigido al sextil o trígono de Marte, invita al Nativo a toda clase de ejercicios marciales, montar al gran Caballo, Esgrima, ejercicio de toda clase de asuntos militares, con mucho respeto a los Soldados, Preferimiento de Armas, aceptable para Príncipes, Coroneles, Comandantes de Ejércitos, dado a inventar estratagemas bélicas: Si el Nativo es un hombre Mecánico, sigue de cerca su Oficio, hace buen Trabajo, prueba muchos Inventos, gasta más que él. Obtiene para ese año, es propenso a ser Cholerick, ese humor predominante e incita a la impaciencia. [Astrología cristiana, William Lilly, 1647, p.659. ]",
+        "toDate" : "2026-10-01",
+        "transitKey" : "MARTE",
+        "transitLabel" : "Marte"
+      },
+      {
+        "activeDays" : 3,
+        "aspectKey" : "SEXTIL",
+        "aspectLabel" : "Sextil",
+        "color" : "#2563eb",
+        "exactDate" : "2026-10-08",
+        "fromDate" : "2026-10-07",
+        "id" : "F18D741B-3B49-42D9-925C-90B2279263A5",
+        "metricReasons" : [
+          "Planeta social",
+          "Planeta natal angular",
+          "Tránsito por casa sucedente",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.5°"
+        ],
+        "minOrb" : 0.3151265429085015,
+        "natalKey" : "SATURNO",
+        "natalLabel" : "Saturno",
+        "personalRelevance" : 1.55,
+        "personalRelevanceStars" : 4,
+        "priorityBand" : "low",
+        "priorityScore" : 5.31216,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-07",
+            "intensity" : 0.552,
+            "orb" : 0.67
+          },
+          {
+            "date" : "2026-10-08",
+            "intensity" : 0.79,
+            "orb" : 0.32
+          },
+          {
+            "date" : "2026-10-09",
+            "intensity" : 0.131,
+            "orb" : 1.3
+          }
+        ],
+        "score" : 3.6,
+        "source" : "Astrology King",
+        "stars" : 2,
+        "technicalScore" : 3.6,
+        "technicalStars" : 2,
+        "temporalImpact" : 0.9520000000000001,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito Sol sextil Saturno brinda paciencia, autodisciplina, determinación y una sólida ética de trabajo. Le ayuda a superar contratiempos, resolver problemas, completar objetivos a largo plazo y establecer metas nuevas, realistas y alcanzables. Perseverarás, serás práctico y prestarás atención a los detalles.\n\nEl sentido común, la madurez, la lealtad y el respeto mutuo pueden ayudar a resolver conflictos y aportar armonía, estabilidad y compromiso a las relaciones. Las nuevas asociaciones serán leales y duraderas. Puede asumir responsabilidades adicionales sin sentirse como una carga.\n\nSe pueden materializar logros, reconocimientos o ascensos importantes a partir del arduo trabajo anterior. Es posible que deba mostrar sus cualidades de liderazgo o que le pidan que instruya a otros. Se pueden buscar buenos consejos de los mayores y superiores, y los más jóvenes pueden buscar su sabiduría, confianza y guía. Este es un momento para trabajar duro porque sentirás que estás perdiendo el tiempo relajándote o divirtiéndote.\n\nAlgunas señales de honor de un caballero, comandante o magistrado anciano; Prefirió a muchos otros, moderando sus asuntos prósperamente, obteniendo riqueza y gloria. Inclina al nativo a la gravedad, a la severidad; importa mucha riqueza obtenida de los productos básicos del país, la ganadería, la arquitectura y algunas herencias ocasionales. [Astrología cristiana, William Lilly, 1647, p.680. ]\n\nEsta interpretación para el tránsito del Sol sextil a Saturno también se puede aplicar a un eclipse solar y una Luna Nueva sextil a Saturno.",
+        "toDate" : "2026-10-09",
+        "transitKey" : "SOL",
+        "transitLabel" : "Sol"
+      },
+      {
+        "activeDays" : 3,
+        "aspectKey" : "SEXTIL",
+        "aspectLabel" : "Sextil",
+        "color" : "#2563eb",
+        "exactDate" : "2026-10-05",
+        "fromDate" : "2026-10-04",
+        "id" : "9ACB1F81-00EE-4098-B0E1-8695108A0A5D",
+        "metricReasons" : [
+          "Planeta natal angular",
+          "Tránsito por casa sucedente",
+          "Tránsito breve",
+          "Orbe exacto menor de 0.5°",
+          "Dos tránsitos próximos al mismo punto"
+        ],
+        "minOrb" : 0.4167194154929348,
+        "natalKey" : "NEPTUNO",
+        "natalLabel" : "Neptuno",
+        "personalRelevance" : 1.4000000000000001,
+        "personalRelevanceStars" : 4,
+        "priorityBand" : "low",
+        "priorityScore" : 4.9846720000000015,
+        "priorityStars" : 2,
+        "retrogradeOnExact" : false,
+        "samples" : [
+          {
+            "date" : "2026-10-04",
+            "intensity" : 0.621,
+            "orb" : 0.57
+          },
+          {
+            "date" : "2026-10-05",
+            "intensity" : 0.722,
+            "orb" : 0.42
+          },
+          {
+            "date" : "2026-10-06",
+            "intensity" : 0.065,
+            "orb" : 1.4
+          }
+        ],
+        "score" : 3.4,
+        "source" : "Astrology King",
+        "stars" : 2,
+        "technicalScore" : 3.4,
+        "technicalStars" : 2,
+        "temporalImpact" : 1.0472000000000001,
+        "temporalImpactStars" : 2,
+        "text" : "El tránsito Sol sextil Neptuno aumenta tu sensibilidad, intuición, imaginación y creatividad. Una mayor conciencia psíquica puede brindarle información valiosa sobre usted mismo, las personas que lo rodean y el futuro. Así que este es un excelente momento para visualizar o soñar tu futuro ideal. Establezca nuevas metas ahora para convertir sus sueños en realidad.\n\nEste también es un momento ideal para expresar su lado solidario, caritativo e idealista sirviendo a los demás. Podrías unirte a un grupo ambientalista o de derechos humanos. Al hacerlo, sentirás un aumento en tu autoestima y satisfacción personal.\n\nUna mayor empatía y receptividad tanto de usted como de los demás significa que todas sus relaciones se beneficiarán de una comprensión compartida que puede ser no verbal. Los sueños vívidos, las prácticas ocultas y místicas, la astrología y la religión se pueden utilizar para mejorar la autoconciencia. Puedes sentirte más conectado con otras personas y con el universo entero.\n\nEsta interpretación del tránsito del Sol en sextil y Neptuno también se puede leer para un eclipse solar y una Luna Nueva en sextil para Neptuno.",
+        "toDate" : "2026-10-06",
+        "transitKey" : "SOL",
+        "transitLabel" : "Sol"
+      }
+    ]
+  },
+  "warnings" : [
+
+  ]
+}

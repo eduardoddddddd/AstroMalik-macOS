@@ -1,0 +1,141 @@
+{
+  "chart": {
+    "ascendant": "♏ Escorpio 18°32'",
+    "birthDate": "1990-01-01",
+    "birthTime": "06:30",
+    "houseSystem": "Placidus",
+    "id": "33333333-3333-3333-3333-333333333333",
+    "latitude": 64.1466,
+    "longitude": -21.9426,
+    "mc": "♍ Virgo 25°52'",
+    "name": "Reykjavik Control",
+    "placeName": "Reykjavik, Iceland",
+    "timezone": "Atlantic/Reykjavik"
+  },
+  "events": [
+    {
+      "date": "2025-10-29",
+      "detail": "Edad estimada 35.83",
+      "id": "698FF8EE-E54A-4D7A-BCA9-1E5ECAD71498",
+      "priority": 2,
+      "source": "primary-direction",
+      "title": "♂ Marte ☌ Conjunción ☉ Sol"
+    },
+    {
+      "date": "2027-05-08",
+      "detail": "Edad estimada 37.35",
+      "id": "2D23B1E3-C7B6-44D4-BDDE-AB4B1B68197B",
+      "priority": 2,
+      "source": "primary-direction",
+      "title": "♂ Marte ☌ Conjunción ☉ Sol"
+    },
+    {
+      "date": "2027-06-05",
+      "detail": "Edad estimada 37.43",
+      "id": "97C8815E-C3A7-42E0-8FEC-BBE5DB32BB44",
+      "priority": 3,
+      "source": "primary-direction",
+      "title": "⛢ Urano □ Cuadratura ASC"
+    }
+  ],
+  "interpretations": [],
+  "metadata": {
+    "chartID": "33333333-3333-3333-3333-333333333333",
+    "chartName": "Reykjavik Control",
+    "command": "primary-directions",
+    "date": "2026-10-04T00:00:00Z",
+    "format": "json",
+    "generatedAt": "2026-10-04T18:30:29Z",
+    "narrative": "none",
+    "scope": "complete",
+    "timezone": "Atlantic/Reykjavik"
+  },
+  "networkUsed": false,
+  "source": "local",
+  "technicalData": {
+    "primaryDirections": [
+      {
+        "arc": -35.31162547482131,
+        "aspect": "conjuncion",
+        "aspectAngle": 0,
+        "aspectPlane": "zodiacal",
+        "directionType": "directa",
+        "estimatedAge": 35.82582558819409,
+        "estimatedDate": "2025-10-29T15:41:13Z",
+        "id": "698FF8EE-E54A-4D7A-BCA9-1E5ECAD71498",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "MARTE",
+        "promissorLabel": "♂ Marte",
+        "significator": "SOL",
+        "significatorLabel": "☉ Sol",
+        "technicalData": {
+          "geoLatitude": 64.1466,
+          "obliquity": 23.442363404009985,
+          "promissorDeclination": -21.958648185546917,
+          "promissorRA": 248.1843230928242,
+          "ramc": 176.21099191388848,
+          "significatorDeclination": -23.020611285250563,
+          "significatorPole": 53.11333990033486,
+          "significatorRA": 281.5081260740696
+        },
+        "weight": 2
+      },
+      {
+        "arc": 36.8126444993307,
+        "aspect": "conjuncion",
+        "aspectAngle": 0,
+        "aspectPlane": "zodiacal",
+        "directionType": "conversa",
+        "estimatedAge": 37.348702121164195,
+        "estimatedDate": "2027-05-08T21:13:22Z",
+        "id": "2D23B1E3-C7B6-44D4-BDDE-AB4B1B68197B",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "MARTE",
+        "promissorLabel": "♂ Marte",
+        "significator": "SOL",
+        "significatorLabel": "☉ Sol",
+        "technicalData": {
+          "geoLatitude": 64.1466,
+          "obliquity": 23.442363404009985,
+          "promissorDeclination": -21.958648185546917,
+          "promissorRA": 248.1843230928242,
+          "ramc": 176.21099191388848,
+          "significatorDeclination": -23.020611285250563,
+          "significatorPole": 61.06072222934311,
+          "significatorRA": 281.5081260740696
+        },
+        "weight": 2
+      },
+      {
+        "arc": -36.88842403074949,
+        "aspect": "cuadratura",
+        "aspectAngle": 90,
+        "aspectPlane": "zodiacal",
+        "directionType": "directa",
+        "estimatedAge": 37.42558513743033,
+        "estimatedDate": "2027-06-05T23:10:45Z",
+        "id": "97C8815E-C3A7-42E0-8FEC-BBE5DB32BB44",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "URANO",
+        "promissorLabel": "⛢ Urano",
+        "significator": "ASC",
+        "significatorLabel": "ASC",
+        "technicalData": {
+          "geoLatitude": 64.1466,
+          "obliquity": 23.442363404009985,
+          "promissorDeclination": -23.58628407696345,
+          "promissorRA": 276.29978507820886,
+          "ramc": 176.21099191388848,
+          "significatorDeclination": -17.34521755164004,
+          "significatorPole": 64.1466,
+          "significatorRA": 226.07870790403547
+        },
+        "weight": 3
+      }
+    ]
+  },
+  "warnings": []
+}

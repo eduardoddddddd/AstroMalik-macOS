@@ -1,0 +1,4270 @@
+{
+  "analysisDate": "2026-10-04T18:30:31Z",
+  "candidates": [
+    {
+      "ascendantFormatted": "♉ Tauro 29°01'",
+      "ascendantLongitude": 59.021156361082085,
+      "birthTime": "20:28:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♉ Tauro 29°01'",
+          "longitude": 59.021156361082085
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:28:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.6026242984826,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°39'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.65104260489913,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.60623254983486,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.12615043068686,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.00737178377167,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.3999182958014,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91134295402782,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30433890044995,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85048709856994,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.8717467875122,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.53052739410617,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.53052739410617,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          59.021156361082085,
+          83.70248942685906,
+          104.50128225796956,
+          126.41970431615255,
+          154.0252533904919,
+          192.67297249235952,
+          239.0211563610821,
+          263.7024894268591,
+          284.5012822579696,
+          306.41970431615255,
+          334.0252533904919,
+          12.67297249235952
+        ],
+        "houseSystem": "placidus",
+        "id": "8BF04A3D-131F-46AE-90F6-1B1D014E0BB2",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 06°25'",
+          "longitude": 306.41970431615255
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        55.15,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        24.182
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "24.4880666196523",
+            "aspect": "cuadratura",
+            "source": "PLUTON",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.06°.",
+          "factor": "♇ Plutón por arco solar □ Cuadratura Medio Cielo",
+          "id": "00477859-E792-44A4-9494-41A23D179618",
+          "orbDegrees": 0.05989090898805216,
+          "score": 55.15,
+          "symbolicFit": "strong",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "URANO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "⛢ Urano en tránsito ⚹ Sextil Ascendente",
+          "id": "CE9F320B-85A6-47D4-91B5-F9030A29AC3D",
+          "orbDegrees": 0.3924605847305429,
+          "score": 22.15,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "arc": "33.84547455503045",
+            "aspect": "sextil",
+            "source": "MARTE",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.57°.",
+          "factor": "♂ Marte por arco solar ⚹ Sextil Medio Cielo",
+          "id": "59868E9B-C86C-4784-9673-C26A6502221C",
+          "orbDegrees": 0.5668579773504234,
+          "score": 10.16,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        }
+      ],
+      "id": "844FC7F7-AD04-49B4-98E6-677E9D055666",
+      "mcFormatted": "♒ Acuario 06°25'",
+      "mcLongitude": 306.41970431615255,
+      "overfittingDiagnostics": {
+        "adjustedScore": 25.84,
+        "dominantEventShare": 0.6951797509201836,
+        "dominantTechniqueShare": 0.5958397956390841,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.6,
+        "rawScore": 26.44
+      },
+      "techniqueScores": [
+        "solarArc",
+        32.655,
+        "transitsToAngles",
+        22.15
+      ],
+      "totalScore": 25.84,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♉ Tauro 29°19'",
+      "ascendantLongitude": 59.32732267565445,
+      "birthTime": "20:29:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♉ Tauro 29°19'",
+          "longitude": 59.32732267565445
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:29:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.60331128740748,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°39'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.65924184157707,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.6071964300173,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.12699850884115,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.00784337007076,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.399868335581004,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91139807925214,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30438086623366,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85050465186634,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87177380068664,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.53054147428332,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.530541474283325,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          59.32732267565445,
+          83.94036182331872,
+          104.72594565850926,
+          126.66502924738751,
+          154.3243034878028,
+          193.0304353826905,
+          239.32732267565444,
+          263.9403618233187,
+          284.72594565850926,
+          306.6650292473875,
+          334.32430348780275,
+          13.03043538269051
+        ],
+        "houseSystem": "placidus",
+        "id": "AE94E094-BB30-4817-B951-562CE6A3F796",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 06°39'",
+          "longitude": 306.6650292473875
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        29.626,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0.46,
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        40.76
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "24.48807393540517",
+            "aspect": "cuadratura",
+            "source": "PLUTON",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.31°.",
+          "factor": "♇ Plutón por arco solar □ Cuadratura Medio Cielo",
+          "id": "0FD8FF9D-3FAA-4377-ABF0-D5C35097488E",
+          "orbDegrees": 0.30518151129570015,
+          "score": 40.76,
+          "symbolicFit": "strong",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "URANO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "⛢ Urano en tránsito ⚹ Sextil Ascendente",
+          "id": "008AEFB8-A9F0-4F61-B3BA-F27C7B0007D6",
+          "orbDegrees": 0.08629427015819147,
+          "score": 28.27,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "arc": "33.845485192913486",
+            "aspect": "sextil",
+            "source": "NODO_NORTE",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.71°.",
+          "factor": "☊ Nodo Norte por arco solar ⚹ Sextil Medio Cielo",
+          "id": "B295985F-5076-4431-B36F-89A251DF3AB4",
+          "orbDegrees": 0.7109974198093028,
+          "score": 6.78,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "41.704493810688376",
+            "aspect": "oposicion",
+            "source": "SOL",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.98°.",
+          "factor": "☉ Sol por arco solar ☍ Oposición Ascendente",
+          "id": "115FC90C-75ED-4B0B-9102-4463507FF968",
+          "orbDegrees": 0.9804824224414119,
+          "score": 0.46,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        }
+      ],
+      "id": "579F2217-4854-4969-B122-92477E3FACB4",
+      "mcFormatted": "♒ Acuario 06°39'",
+      "mcLongitude": 306.6650292473875,
+      "overfittingDiagnostics": {
+        "adjustedScore": 23.38,
+        "dominantEventShare": 0.575332411145301,
+        "dominantTechniqueShare": 0.6385814321210753,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.24,
+        "rawScore": 23.62
+      },
+      "techniqueScores": [
+        "transitsToAngles",
+        28.27,
+        "solarArc",
+        16
+      ],
+      "totalScore": 23.38,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♉ Tauro 28°42'",
+      "ascendantLongitude": 58.71405959647981,
+      "birthTime": "20:27:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♉ Tauro 28°42'",
+          "longitude": 58.71405959647981
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:27:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.60193730985762,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°38'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.642843394570626,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.60526870317537,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.1253023524028,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.00690019789522,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.399968254572535,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91128782814215,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30429693479002,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85046954547718,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87171977431476,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.5305133162783,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.5305133162783,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          58.71405959647981,
+          83.46428553169359,
+          104.27658342796583,
+          126.17455620487709,
+          153.72647843296636,
+          192.31523938788845,
+          238.7140595964798,
+          263.4642855316936,
+          284.2765834279658,
+          306.1745562048771,
+          333.72647843296636,
+          12.315239387888461
+        ],
+        "houseSystem": "placidus",
+        "id": "0CDB0ACA-B77F-4A1B-82A3-D04E29632E19",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 06°10'",
+          "longitude": 306.1745562048771
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        19.192,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0,
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        47.8
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "24.48805930383338",
+            "aspect": "cuadratura",
+            "source": "PLUTON",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.19°.",
+          "factor": "♇ Plutón por arco solar □ Cuadratura Medio Cielo",
+          "id": "B6D17023-4734-49D1-A3E4-CD9CF8A9DF78",
+          "orbDegrees": 0.18522287327104436,
+          "score": 47.8,
+          "symbolicFit": "strong",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "URANO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "⛢ Urano en tránsito ⚹ Sextil Ascendente",
+          "id": "57B4E17B-133B-48CF-B17F-5319BAF55E02",
+          "orbDegrees": 0.6995573493328493,
+          "score": 16.01,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "arc": "33.84546391709782",
+            "aspect": "sextil",
+            "source": "MARTE",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.32°.",
+          "factor": "♂ Marte por arco solar ⚹ Sextil Medio Cielo",
+          "id": "9B95E848-99C0-48CB-A5C8-65F6AF177CB3",
+          "orbDegrees": 0.3221920898840551,
+          "score": 15.91,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        }
+      ],
+      "id": "A5DA1048-E27E-4D00-A76A-6A25587BB7B3",
+      "mcFormatted": "♒ Acuario 06°10'",
+      "mcLongitude": 306.1745562048771,
+      "overfittingDiagnostics": {
+        "adjustedScore": 21.52,
+        "dominantEventShare": 0.7135180320038215,
+        "dominantTechniqueShare": 0.665517601587799,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.81,
+        "rawScore": 22.33
+      },
+      "techniqueScores": [
+        "transitsToAngles",
+        16.01,
+        "solarArc",
+        31.854999999999997
+      ],
+      "totalScore": 21.52,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♉ Tauro 29°37'",
+      "ascendantLongitude": 59.63256315096383,
+      "birthTime": "20:30:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♉ Tauro 29°37'",
+          "longitude": 59.63256315096383
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:30:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.60399827663204,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°40'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.6674411046183,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.6081603437191,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.1278465868658,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.00831495679265,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.39981837391143,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91145320384746,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30442283213006,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85052220536906,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87180081383823,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.53055555680828,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.53055555680828,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          59.63256315096383,
+          84.1779052131631,
+          104.95057502785916,
+          126.91053158724702,
+          154.62362652922536,
+          193.38762105082932,
+          239.63256315096385,
+          264.1779052131631,
+          284.95057502785914,
+          306.910531587247,
+          334.62362652922536,
+          13.38762105082932
+        ],
+        "houseSystem": "placidus",
+        "id": "32535999-FE93-4243-8B7B-ED7DF1A3E782",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 06°54'",
+          "longitude": 306.910531587247
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        26.36,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        28.128,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        7.6
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "24.48808125109244",
+            "aspect": "cuadratura",
+            "source": "PLUTON",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.55°.",
+          "factor": "♇ Plutón por arco solar □ Cuadratura Medio Cielo",
+          "id": "3F7ADB5E-C175-487F-8D67-6638E5419989",
+          "orbDegrees": 0.5506495223163483,
+          "score": 26.36,
+          "symbolicFit": "strong",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "URANO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "⛢ Urano en tránsito ⚹ Sextil Ascendente",
+          "id": "5C9669D8-74F3-4DD6-B694-5E762F4325FC",
+          "orbDegrees": 0.21894620515121233,
+          "score": 25.62,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "arc": "33.84549583074718",
+            "aspect": "sextil",
+            "source": "NODO_NORTE",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.47°.",
+          "factor": "☊ Nodo Norte por arco solar ⚹ Sextil Medio Cielo",
+          "id": "302279AF-E434-4316-AEFB-1A0661319C0D",
+          "orbDegrees": 0.4655198003084422,
+          "score": 12.54,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "41.70450704048457",
+            "aspect": "oposicion",
+            "source": "SOL",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.68°.",
+          "factor": "☉ Sol por arco solar ☍ Oposición Ascendente",
+          "id": "C9D29F89-C320-4EC4-95C1-78FE6E63C14F",
+          "orbDegrees": 0.6759421661527654,
+          "score": 7.6,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        }
+      ],
+      "id": "7002B46B-B80C-4557-A5EC-21F176EDA495",
+      "mcFormatted": "♒ Acuario 06°54'",
+      "mcLongitude": 306.910531587247,
+      "overfittingDiagnostics": {
+        "adjustedScore": 20.62,
+        "dominantEventShare": 0.4530344027831465,
+        "dominantTechniqueShare": 0.6230544747081712,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.08,
+        "rawScore": 20.7
+      },
+      "techniqueScores": [
+        "solarArc",
+        15.5,
+        "transitsToAngles",
+        25.62
+      ],
+      "totalScore": 20.62,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♊ Géminis 00°14'",
+      "ascendantLongitude": 60.240285188030626,
+      "birthTime": "20:32:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♊ Géminis 00°14'",
+          "longitude": 60.240285188030626
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:32:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.60537225598088,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°41'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.68383970986279,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.61008827142535,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.12954274224668,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.0092581315045,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.3997184462737,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.9115634510862,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30450676428322,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85055731299605,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.8718548400726,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.5305837288937,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.5305837288937,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          60.240285188030626,
+          84.65201491555167,
+          105.39973724165908,
+          127.40207079026146,
+          155.2230825001659,
+          194.1011329668059,
+          240.2402851880306,
+          264.65201491555166,
+          285.39973724165907,
+          307.40207079026146,
+          335.2230825001659,
+          14.101132966805878
+        ],
+        "houseSystem": "placidus",
+        "id": "EFA01A46-B781-4EB2-8799-64A70870332D",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 07°24'",
+          "longitude": 307.40207079026146
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        11.177999999999999,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        25.554,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        21.953999999999997
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "33.84551710626533",
+            "aspect": "sextil",
+            "source": "NODO_NORTE",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.03°.",
+          "factor": "☊ Nodo Norte por arco solar ⚹ Sextil Medio Cielo",
+          "id": "4151AA55-BE71-4E04-8801-D010C3E253DA",
+          "orbDegrees": 0.0259699551024255,
+          "score": 22.86,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "41.704533499727034",
+            "aspect": "oposicion",
+            "source": "SOL",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.07°.",
+          "factor": "☉ Sol por arco solar ☍ Oposición Ascendente",
+          "id": "BBCAD361-202D-4BB3-B938-2B2505600D1A",
+          "orbDegrees": 0.06962056767730473,
+          "score": 21.83,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "URANO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "⛢ Urano en tránsito ⚹ Sextil Ascendente",
+          "id": "625C85E5-5EEB-4E28-B7C7-D23E710D29EF",
+          "orbDegrees": 0.826668242217977,
+          "score": 13.47,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "arc": "24.48809588226922",
+            "aspect": "oposicion",
+            "source": "URANO",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.55°.",
+          "factor": "⛢ Urano por arco solar ☍ Oposición Ascendente",
+          "id": "D1D1B783-D4C7-48BA-8756-44CC6D15C11B",
+          "orbDegrees": 0.5523174585218271,
+          "score": 10.51,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "MC",
+            "transit": "NEPTUNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♆ Neptuno en tránsito ☌ Conjunción Medio Cielo",
+          "id": "C58BED5B-2538-4C60-8824-E9C8E33CE535",
+          "orbDegrees": 1.3747430453151424,
+          "score": 3.34,
+          "symbolicFit": "strong",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "MC",
+            "transit": "MARTE"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♂ Marte en tránsito ☌ Conjunción Medio Cielo",
+          "id": "1BCF2E38-F59F-4329-B10C-7FCCEF771E7C",
+          "orbDegrees": 0.9612520678435317,
+          "score": 0.62,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "E89E7395-F659-43B8-BDA7-C5761572725E",
+      "mcFormatted": "♒ Acuario 07°24'",
+      "mcLongitude": 307.40207079026146,
+      "overfittingDiagnostics": {
+        "adjustedScore": 19.07,
+        "dominantEventShare": 0.4354360494836929,
+        "dominantTechniqueShare": 0.7600165220983065,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.49,
+        "rawScore": 19.56
+      },
+      "techniqueScores": [
+        "transitsToAngles",
+        5.81,
+        "solarArc",
+        18.4
+      ],
+      "totalScore": 19.07,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♊ Géminis 00°32'",
+      "ascendantLongitude": 60.542776128902716,
+      "birthTime": "20:33:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♊ Géminis 00°32'",
+          "longitude": 60.542776128902716
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:33:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.60605924656568,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°41'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.69203905760587,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.61105228630962,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.1303908204509,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.0097297198107,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 12,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.39966848022305,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91161857378282,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30454873056806,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85057486713205,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87188185317348,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.53059781846025,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.53059781846025,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          60.542776128902716,
+          84.8885861869915,
+          105.62427285893865,
+          127.64810877414453,
+          155.5232108782467,
+          194.4574454818698,
+          240.54277612890272,
+          264.8885861869915,
+          285.62427285893864,
+          307.64810877414453,
+          335.5232108782467,
+          14.45744548186981
+        ],
+        "houseSystem": "placidus",
+        "id": "EE14E2C1-5FB5-40DA-BE8F-8308C9ADBF9C",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 07°38'",
+          "longitude": 307.64810877414453
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        19.331999999999997,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        18.932,
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        19.580000000000002
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "41.7045467287133",
+            "aspect": "oposicion",
+            "source": "SOL",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.23°.",
+          "factor": "☉ Sol por arco solar ☍ Oposición Ascendente",
+          "id": "2F843071-88EE-46ED-879A-50F1EEA1F686",
+          "orbDegrees": 0.23217015362374127,
+          "score": 18.02,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "24.48810319729833",
+            "aspect": "oposicion",
+            "source": "URANO",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.25°.",
+          "factor": "⛢ Urano por arco solar ☍ Oposición Ascendente",
+          "id": "0C4A016D-CF23-4AFF-A097-980FCA74D969",
+          "orbDegrees": 0.2498757989636715,
+          "score": 17.6,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "33.84552774348944",
+            "aspect": "sextil",
+            "source": "NODO_NORTE",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.27°.",
+          "factor": "☊ Nodo Norte por arco solar ⚹ Sextil Medio Cielo",
+          "id": "D21FC106-E683-4F0F-8D74-E146C5BA5411",
+          "orbDegrees": 0.27198321219484,
+          "score": 17.08,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "JUPITER"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♃ Júpiter en tránsito ⚹ Sextil Ascendente",
+          "id": "C85C96FD-14C6-4ECC-83B5-D1DB64D56D56",
+          "orbDegrees": 0.4439732576715798,
+          "score": 11.26,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "MC",
+            "transit": "NEPTUNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♆ Neptuno en tránsito ☌ Conjunción Medio Cielo",
+          "id": "A468D83C-A2E8-4794-9D75-DB7184334260",
+          "orbDegrees": 1.128705061432072,
+          "score": 9.9,
+          "symbolicFit": "strong",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "MC",
+            "transit": "MARTE"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♂ Marte en tránsito ☌ Conjunción Medio Cielo",
+          "id": "1E320289-A5E5-40F1-A74E-94C8DAC5905A",
+          "orbDegrees": 0.7152140839604613,
+          "score": 4.56,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "CA22147C-147B-4406-966A-A6EA568614A6",
+      "mcFormatted": "♒ Acuario 07°38'",
+      "mcLongitude": 307.64810877414453,
+      "overfittingDiagnostics": {
+        "adjustedScore": 19.06,
+        "dominantEventShare": 0.3384966461517185,
+        "dominantTechniqueShare": 0.6720224432542719,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.22,
+        "rawScore": 19.28
+      },
+      "techniqueScores": [
+        "solarArc",
+        17.566666666666666,
+        "transitsToAngles",
+        8.573333333333332
+      ],
+      "totalScore": 19.06,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♉ Tauro 28°24'",
+      "ascendantLongitude": 58.40602780386695,
+      "birthTime": "20:26:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♉ Tauro 28°24'",
+          "longitude": 58.40602780386695
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:26:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.60125032153246,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°38'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.6346440715215,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.60430489004258,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.12445427398907,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.00642861244154,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°24'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.4000182118945,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91123270162748,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30425496924283,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85045199259343,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87169276109438,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.5304992407923,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.530499240792324,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          58.40602780386695,
+          83.22574763964657,
+          104.05184776438601,
+          125.92958431246757,
+          153.42798077713348,
+          191.95724312998365,
+          238.40602780386695,
+          263.22574763964656,
+          284.051847764386,
+          305.92958431246757,
+          333.4279807771335,
+          11.957243129983661
+        ],
+        "houseSystem": "placidus",
+        "id": "B224BA91-1A56-469F-AB1A-23567B18F317",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 05°55'",
+          "longitude": 305.92958431246757
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        33.43,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        23.61,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "24.488051987948836",
+            "aspect": "cuadratura",
+            "source": "PLUTON",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.43°.",
+          "factor": "♇ Plutón por arco solar □ Cuadratura Medio Cielo",
+          "id": "8782C682-289C-4FA7-B2BB-9A56D5CA90AA",
+          "orbDegrees": 0.4301604365756475,
+          "score": 33.43,
+          "symbolicFit": "strong",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "33.8454532791155",
+            "aspect": "sextil",
+            "source": "MARTE",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.08°.",
+          "factor": "♂ Marte por arco solar ⚹ Sextil Medio Cielo",
+          "id": "A38C5AE8-A77C-4614-B5AC-B1639868C76B",
+          "orbDegrees": 0.07770242091052637,
+          "score": 21.64,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "URANO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "⛢ Urano en tránsito ⚹ Sextil Ascendente",
+          "id": "72FCBC85-ACAD-4C11-887C-C6D4C9353464",
+          "orbDegrees": 1.0075891419456866,
+          "score": 9.85,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "841BC9CC-2893-4D3C-B985-36120E005351",
+      "mcFormatted": "♒ Acuario 05°55'",
+      "mcLongitude": 305.92958431246757,
+      "overfittingDiagnostics": {
+        "adjustedScore": 18.49,
+        "dominantEventShare": 0.5860799438990182,
+        "dominantTechniqueShare": 0.736525344389461,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.52,
+        "rawScore": 19.01
+      },
+      "techniqueScores": [
+        "transitsToAngles",
+        9.85,
+        "solarArc",
+        27.535
+      ],
+      "totalScore": 18.49,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♉ Tauro 29°56'",
+      "ascendantLongitude": 59.93688243066598,
+      "birthTime": "20:31:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♉ Tauro 29°56'",
+          "longitude": 59.93688243066598
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:31:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.6046852661566,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°40'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.67564039403855,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.6091242909366,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.1286946644814,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.00878654393722,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.3997684107927,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91150832778135,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.3044647981503,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85053975908073,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87182782696686,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.5305696416789,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.53056964167888,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          59.93688243066598,
+          84.4151220836071,
+          105.17517175966684,
+          127.15621191324101,
+          154.92322028708907,
+          193.74452254458183,
+          239.93688243066597,
+          264.4151220836071,
+          285.17517175966685,
+          307.156211913241,
+          334.92322028708907,
+          13.744522544581832
+        ],
+        "houseSystem": "placidus",
+        "id": "247A56DE-2299-4147-B4EA-BE1453805A73",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 07°09'",
+          "longitude": 307.156211913241
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        14.73,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        23.192,
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        11.95
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "URANO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "⛢ Urano en tránsito ⚹ Sextil Ascendente",
+          "id": "9FDACA4E-67EF-4174-BD42-FF3D083FB04D",
+          "orbDegrees": 0.5232654848533684,
+          "score": 19.53,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "arc": "33.84550646899987",
+            "aspect": "sextil",
+            "source": "NODO_NORTE",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.22°.",
+          "factor": "☊ Nodo Norte por arco solar ⚹ Sextil Medio Cielo",
+          "id": "680F43D8-209F-47B9-A9A8-F2127B243CF3",
+          "orbDegrees": 0.2198641974377722,
+          "score": 18.31,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "41.70452027016407",
+            "aspect": "oposicion",
+            "source": "SOL",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.37°.",
+          "factor": "☉ Sol por arco solar ☍ Oposición Ascendente",
+          "id": "AAFEC63D-9E9C-42FE-AFDB-41E707F9AE52",
+          "orbDegrees": 0.3723231056546865,
+          "score": 14.73,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "24.48808856671363",
+            "aspect": "cuadratura",
+            "source": "PLUTON",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.80°.",
+          "factor": "♇ Plutón por arco solar □ Cuadratura Medio Cielo",
+          "id": "193A22FE-A620-4AC0-877E-8EA51330AF42",
+          "orbDegrees": 0.7962955195605161,
+          "score": 11.95,
+          "symbolicFit": "strong",
+          "technique": "solarArc"
+        }
+      ],
+      "id": "A88260A7-C1DA-4211-87DF-A6ACE4C6BFDF",
+      "mcFormatted": "♒ Acuario 07°09'",
+      "mcLongitude": 307.156211913241,
+      "overfittingDiagnostics": {
+        "adjustedScore": 16.62,
+        "dominantEventShare": 0.46503047802374076,
+        "dominantTechniqueShare": 0.5656497393319174,
+        "enabledTechniqueCount": 2,
+        "penalty": 0,
+        "rawScore": 16.62
+      },
+      "techniqueScores": [
+        "transitsToAngles",
+        19.53,
+        "solarArc",
+        14.996666666666664
+      ],
+      "totalScore": 16.62,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♊ Géminis 03°31'",
+      "ascendantLongitude": 63.51858848678862,
+      "birthTime": "20:43:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♊ Géminis 03°31'",
+          "longitude": 63.51858848678862
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:43:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.61292916475904,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°46'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.774034081717026,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°37'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.6206942712473,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°08'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.13887158996278,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.01444562341587,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 12,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.39916874036601,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.9121697648469,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30496839964368,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85075041971623,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.8721519827602,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.53073884248587,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.5307388424859,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          63.51858848678862,
+          87.23715377296753,
+          107.86828718210572,
+          130.1184528662343,
+          158.53860669812843,
+          198.00272480223185,
+          243.51858848678862,
+          267.23715377296753,
+          287.86828718210575,
+          310.1184528662343,
+          338.53860669812843,
+          18.002724802231867
+        ],
+        "houseSystem": "placidus",
+        "id": "87B2B9B6-7C52-41A3-A12D-5DD1C9D8361B",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 10°07'",
+          "longitude": 310.1184528662343
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        44.510000000000005,
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        6.83,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "33.845634117618744",
+            "aspect": "sextil",
+            "source": "URANO",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.03°.",
+          "factor": "⛢ Urano por arco solar ⚹ Sextil Medio Cielo",
+          "id": "490EF11D-E167-4292-A582-D4670854BA9D",
+          "orbDegrees": 0.03214965102813494,
+          "score": 42.59,
+          "symbolicFit": "moderate",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "trigono",
+            "target": "ASC",
+            "transit": "SATURNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♄ Saturno en tránsito △ Trígono Ascendente",
+          "id": "39D1F94D-CB49-4F1C-9FF9-FE8D4C50E2C3",
+          "orbDegrees": 0.600253208681977,
+          "score": 9.6,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "ASC",
+            "transit": "SATURNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♄ Saturno en tránsito ☌ Conjunción Ascendente",
+          "id": "C336B791-B1EC-4DE3-BC6C-86A426EDCC9D",
+          "orbDegrees": 1.1583359965573052,
+          "score": 6.83,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "CCD5B654-F7AC-4438-8C5E-06A631D0999B",
+      "mcFormatted": "♒ Acuario 10°07'",
+      "mcLongitude": 310.1184528662343,
+      "overfittingDiagnostics": {
+        "adjustedScore": 15.61,
+        "dominantEventShare": 0.8669653291780288,
+        "dominantTechniqueShare": 0.8383033166026965,
+        "enabledTechniqueCount": 2,
+        "penalty": 1.5,
+        "rawScore": 17.11
+      },
+      "techniqueScores": [
+        "transitsToAngles",
+        8.215,
+        "solarArc",
+        42.59
+      ],
+      "totalScore": 15.61,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♊ Géminis 02°02'",
+      "ascendantLongitude": 62.04172024788213,
+      "birthTime": "20:38:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♊ Géminis 02°02'",
+          "longitude": 62.04172024788213
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:38:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.60949420214456,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°43'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.733036171307845,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.61587286064253,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°08'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.13463120697264,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.01208766655654,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 12,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.39941862836704,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91189417739096,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30475856364225,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.8506626408515,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.8720169182643,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.5306683013275,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.53066830132752,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          62.04172024788213,
+          86.06670554589326,
+          106.7465511674321,
+          128.8810039999408,
+          157.0277629458975,
+          196.234304493793,
+          242.04172024788213,
+          266.0667055458932,
+          286.74655116743213,
+          308.8810039999408,
+          337.0277629458975,
+          16.23430449379298
+        ],
+        "houseSystem": "placidus",
+        "id": "377BA987-4C4B-493A-B8AE-252749089C4F",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 08°52'",
+          "longitude": 308.8810039999408
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        4.75,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        7.72,
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        37.22
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "MC",
+            "transit": "NEPTUNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♆ Neptuno en tránsito ☌ Conjunción Medio Cielo",
+          "id": "15DC2DD3-8F99-4BB9-8C3E-1EBCA07FF0DC",
+          "orbDegrees": 0.1041901643641836,
+          "score": 37.22,
+          "symbolicFit": "strong",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "MC",
+            "transit": "MARTE"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♂ Marte en tránsito ☌ Conjunción Medio Cielo",
+          "id": "ED606917-0558-427F-89E2-3E541922C8FB",
+          "orbDegrees": 0.5176811418357943,
+          "score": 7.72,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "JUPITER"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♃ Júpiter en tránsito ⚹ Sextil Ascendente",
+          "id": "4C4740CA-6185-427D-9E43-CBDEFED95BE0",
+          "orbDegrees": 1.0549708613078366,
+          "score": 4.75,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "03885378-6141-4787-A9CF-5FF65BF28CD3",
+      "mcFormatted": "♒ Acuario 08°52'",
+      "mcLongitude": 308.8810039999408,
+      "overfittingDiagnostics": {
+        "adjustedScore": 15,
+        "dominantEventShare": 0.7490440732541759,
+        "dominantTechniqueShare": 1,
+        "enabledTechniqueCount": 2,
+        "penalty": 1.56,
+        "rawScore": 16.56
+      },
+      "techniqueScores": [
+        "solarArc",
+        0,
+        "transitsToAngles",
+        16.563333333333333
+      ],
+      "totalScore": 15,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♊ Géminis 03°13'",
+      "ascendantLongitude": 63.224951645736994,
+      "birthTime": "20:42:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♊ Géminis 03°13'",
+          "longitude": 63.224951645736994
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:42:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.61224217163647,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°45'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.765834335398,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°37'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.6197299221274,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°08'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.1380235136241,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.01397403119847,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 12,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.39921872087411,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.912114648656,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30492643220475,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85073286353185,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.8721249699069,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.5307247295941,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.53072472959411,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          63.224951645736994,
+          87.00366321820673,
+          107.64397528881211,
+          129.8705960136287,
+          158.23594977724474,
+          197.6497540446032,
+          243.224951645737,
+          267.0036632182067,
+          287.6439752888121,
+          309.8705960136287,
+          338.23594977724474,
+          17.649754044603224
+        ],
+        "houseSystem": "placidus",
+        "id": "E118BE94-D58A-47DD-91CB-2A210A14450D",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 09°52'",
+          "longitude": 309.8705960136287
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0,
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        12.71,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        32.974
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "33.84562348042974",
+            "aspect": "sextil",
+            "source": "URANO",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.28°.",
+          "factor": "⛢ Urano por arco solar ⚹ Sextil Medio Cielo",
+          "id": "B427153B-9CD4-426E-877F-62150CB65045",
+          "orbDegrees": 0.2799538990057897,
+          "score": 31.68,
+          "symbolicFit": "moderate",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "ASC",
+            "transit": "SATURNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♄ Saturno en tránsito ☌ Conjunción Ascendente",
+          "id": "6B2068A5-4737-40A9-B355-2E392E55CFEE",
+          "orbDegrees": 0.8646991555056758,
+          "score": 12.71,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "trigono",
+            "target": "ASC",
+            "transit": "SATURNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♄ Saturno en tránsito △ Trígono Ascendente",
+          "id": "BCFC3518-C54E-498C-A7FB-8D146458BF4F",
+          "orbDegrees": 0.8938900497335993,
+          "score": 6.47,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "6C565298-760E-4A8D-8589-77CCC3DEDD93",
+      "mcFormatted": "♒ Acuario 09°52'",
+      "mcLongitude": 309.8705960136287,
+      "overfittingDiagnostics": {
+        "adjustedScore": 14.42,
+        "dominantEventShare": 0.7217844321863234,
+        "dominantTechniqueShare": 0.7676278168160893,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.81,
+        "rawScore": 15.23
+      },
+      "techniqueScores": [
+        "solarArc",
+        31.68,
+        "transitsToAngles",
+        9.59
+      ],
+      "totalScore": 14.42,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♉ Tauro 27°47'",
+      "ascendantLongitude": 57.78714079574563,
+      "birthTime": "20:24:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♉ Tauro 27°47'",
+          "longitude": 57.78714079574563
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:24:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°35'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.59987634532092,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°37'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.61824577686011,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.60237736396599,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.12275811648323,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.0054854424861,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°24'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.400118122175215,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91112244660943,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.3041710384807,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.8504168874303,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 6,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87163873456691,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.53047109689032,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.530471096890324,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          57.78714079574563,
+          82.74765968772523,
+          103.60226014577013,
+          125.44016656023518,
+          152.83182565631068,
+          191.240489420688,
+          237.78714079574564,
+          262.7476596877252,
+          283.6022601457701,
+          305.4401665602352,
+          332.8318256563107,
+          11.240489420688004
+        ],
+        "houseSystem": "placidus",
+        "id": "F3C8FFF0-4BD4-412B-966B-FD8FE5805F3E",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 05°26'",
+          "longitude": 305.4401665602352
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        18.04,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        24.778,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "33.84543200299416",
+            "aspect": "cuadratura",
+            "source": "MERCURIO",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.01°.",
+          "factor": "☿ Mercurio por arco solar □ Cuadratura Medio Cielo",
+          "id": "5A821F8C-1ECB-4794-8A9F-E7AE7609A2FA",
+          "orbDegrees": 0.007642806724959428,
+          "score": 23.29,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "24.488037355976275",
+            "aspect": "oposicion",
+            "source": "NODO_NORTE",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.23°.",
+          "factor": "☊ Nodo Norte por arco solar ☍ Oposición Ascendente",
+          "id": "4A6D067A-378A-4622-846C-74C50486D1A4",
+          "orbDegrees": 0.23136765712098395,
+          "score": 18.04,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "cuadratura",
+            "target": "ASC",
+            "transit": "NEPTUNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♆ Neptuno en tránsito □ Cuadratura Ascendente",
+          "id": "63B3C24E-D33F-4270-B90C-EA760686EB8F",
+          "orbDegrees": 0.8025023106824278,
+          "score": 7.44,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "A6FD61E4-F222-47B9-9B1C-04E18B2730D9",
+      "mcFormatted": "♒ Acuario 05°26'",
+      "mcLongitude": 305.4401665602352,
+      "overfittingDiagnostics": {
+        "adjustedScore": 13.9,
+        "dominantEventShare": 0.5786818627679947,
+        "dominantTechniqueShare": 0.7352784202099271,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.37,
+        "rawScore": 14.27
+      },
+      "techniqueScores": [
+        "transitsToAngles",
+        7.44,
+        "solarArc",
+        20.665
+      ],
+      "totalScore": 13.9,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♉ Tauro 28°05'",
+      "ascendantLongitude": 58.09705644082236,
+      "birthTime": "20:25:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♉ Tauro 28°05'",
+          "longitude": 58.09705644082236
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:25:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.60056333350704,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°37'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.62644491380458,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.60334111068067,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.1236061954457,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.0059570274106,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°24'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.400068167767195,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91117757445144,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30421300381389,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85043443991324,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 6,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87166574785115,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.53048516766867,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.530485167668644,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          58.09705644082236,
+          82.98687324746001,
+          103.82707385815698,
+          125.68478802640766,
+          153.12976255215267,
+          191.59899083209865,
+          238.09705644082237,
+          262.98687324746004,
+          283.82707385815695,
+          305.68478802640766,
+          333.1297625521527,
+          11.598990832098655
+        ],
+        "houseSystem": "placidus",
+        "id": "152D3534-E557-4C31-A1AC-B53A1EE72C30",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 05°41'",
+          "longitude": 305.68478802640766
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0,
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        21.62,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        20.386
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "24.488044671998637",
+            "aspect": "oposicion",
+            "source": "NODO_NORTE",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.08°.",
+          "factor": "☊ Nodo Norte por arco solar ☍ Oposición Ascendente",
+          "id": "B86B1D91-41C3-43F4-BE42-8215335EAA8E",
+          "orbDegrees": 0.0785266011550334,
+          "score": 21.62,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "33.84544264108371",
+            "aspect": "sextil",
+            "source": "MARTE",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.17°.",
+          "factor": "♂ Marte por arco solar ⚹ Sextil Medio Cielo",
+          "id": "1B4558FC-77AC-4B67-B51B-30B9F9155666",
+          "orbDegrees": 0.16661164208665014,
+          "score": 19.56,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "cuadratura",
+            "target": "ASC",
+            "transit": "NEPTUNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♆ Neptuno en tránsito □ Cuadratura Ascendente",
+          "id": "6D9DB0C0-159C-4DBB-B037-57F07BFA79A6",
+          "orbDegrees": 1.112417955759156,
+          "score": 4.13,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "E9ACB848-46E9-4016-91C0-82E8AF2C8688",
+      "mcFormatted": "♒ Acuario 05°41'",
+      "mcLongitude": 305.68478802640766,
+      "overfittingDiagnostics": {
+        "adjustedScore": 13.49,
+        "dominantEventShare": 0.5146883778507833,
+        "dominantTechniqueShare": 0.8329288025889968,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.51,
+        "rawScore": 14
+      },
+      "techniqueScores": [
+        "transitsToAngles",
+        4.13,
+        "solarArc",
+        20.59
+      ],
+      "totalScore": 13.49,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♊ Géminis 02°55'",
+      "ascendantLongitude": 62.93045131065338,
+      "birthTime": "20:41:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♊ Géminis 02°55'",
+          "longitude": 62.93045131065338
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:41:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.61155517881363,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°45'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.75763475449209,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°37'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.61876560647917,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°08'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.13717543715578,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.0135024394039,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 12,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.39926869993318,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.9120595318036,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30488446488957,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85071530755098,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87209795703072,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.53071061903628,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.53071061903631,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          62.93045131065338,
+          86.7698755364326,
+          107.41964707328904,
+          129.6229231379259,
+          157.93353434930486,
+          197.29642039599767,
+          242.93045131065338,
+          266.7698755364326,
+          287.41964707328907,
+          309.6229231379259,
+          337.9335343493048,
+          17.296420395997668
+        ],
+        "houseSystem": "placidus",
+        "id": "F2D89BCD-D8CB-4BE9-9870-F2608452F11A",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 09°37'",
+          "longitude": 309.6229231379259
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        18.6,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        21.454,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "33.84561284319133",
+            "aspect": "sextil",
+            "source": "URANO",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.53°.",
+          "factor": "⛢ Urano por arco solar ⚹ Sextil Medio Cielo",
+          "id": "3DE6EDCA-7625-440F-949D-9E8E896911BF",
+          "orbDegrees": 0.5275741701549919,
+          "score": 20.79,
+          "symbolicFit": "moderate",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "ASC",
+            "transit": "SATURNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♄ Saturno en tránsito ☌ Conjunción Ascendente",
+          "id": "CFE34154-85F7-42D4-AD19-F07974424E70",
+          "orbDegrees": 0.570198820422064,
+          "score": 18.6,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "trigono",
+            "target": "ASC",
+            "transit": "SATURNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♄ Saturno en tránsito △ Trígono Ascendente",
+          "id": "6DC16D9D-1336-429C-9FDF-94C818C99BF5",
+          "orbDegrees": 1.188390384817211,
+          "score": 3.32,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "C26DA234-DD30-4129-B61C-42233B6156FC",
+      "mcFormatted": "♒ Acuario 09°37'",
+      "mcLongitude": 309.6229231379259,
+      "overfittingDiagnostics": {
+        "adjustedScore": 13.23,
+        "dominantEventShare": 0.535626903680032,
+        "dominantTechniqueShare": 0.6548031496062992,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.12,
+        "rawScore": 13.35
+      },
+      "techniqueScores": [
+        "solarArc",
+        20.79,
+        "transitsToAngles",
+        10.96
+      ],
+      "totalScore": 13.23,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♊ Géminis 02°38'",
+      "ascendantLongitude": 62.635082565361714,
+      "birthTime": "20:40:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♊ Géminis 02°38'",
+          "longitude": 62.635082565361714
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:40:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.61086818629082,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°44'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.74943520020738,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°37'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.61780132430638,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°08'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.13632736055774,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.01303084803206,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 12,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.39931867754318,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.91200441432213,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30484249768705,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85069775177917,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87207094413154,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.53069651080463,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.53069651080466,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          62.635082565361714,
+          86.53578831337174,
+          107.19530120645861,
+          129.37543380907175,
+          157.63136302297823,
+          196.94273006281412,
+          242.6350825653617,
+          266.53578831337177,
+          287.1953012064586,
+          309.37543380907175,
+          337.63136302297823,
+          16.942730062814135
+        ],
+        "houseSystem": "placidus",
+        "id": "C7A6E72B-29D4-43D1-8586-5081A8CE2172",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 09°22'",
+          "longitude": 309.37543380907175
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        24.5,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        9.934000000000001,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        0
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "ASC",
+            "transit": "SATURNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♄ Saturno en tránsito ☌ Conjunción Ascendente",
+          "id": "EC0ED399-B54C-48B3-8ABA-1D62D8C83277",
+          "orbDegrees": 0.2748300751303958,
+          "score": 24.5,
+          "symbolicFit": "moderate",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "arc": "33.84560220590316",
+            "aspect": "sextil",
+            "source": "URANO",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.78°.",
+          "factor": "⛢ Urano por arco solar ⚹ Sextil Medio Cielo",
+          "id": "E454984A-5203-4CC6-8547-62F58A91ECE6",
+          "orbDegrees": 0.7750108945184593,
+          "score": 9.9,
+          "symbolicFit": "moderate",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "trigono",
+            "target": "ASC",
+            "transit": "SATURNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♄ Saturno en tránsito △ Trígono Ascendente",
+          "id": "9480408E-B41A-4A01-A2A1-3A3C3A379B5A",
+          "orbDegrees": 1.4837591301088793,
+          "score": 0.17,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "E295E3B2-1EAA-401E-865B-110B229E9464",
+      "mcFormatted": "♒ Acuario 09°22'",
+      "mcLongitude": 309.37543380907175,
+      "overfittingDiagnostics": {
+        "adjustedScore": 11.19,
+        "dominantEventShare": 0.7115060695823896,
+        "dominantTechniqueShare": 0.5547560152912077,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.29,
+        "rawScore": 11.48
+      },
+      "techniqueScores": [
+        "solarArc",
+        9.9,
+        "transitsToAngles",
+        12.335
+      ],
+      "totalScore": 11.19,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♉ Tauro 27°28'",
+      "ascendantLongitude": 57.47627681746398,
+      "birthTime": "20:23:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♉ Tauro 27°28'",
+          "longitude": 57.47627681746398
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:23:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°35'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.59918935789506,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°36'",
+            "house": 1,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.6100466717152,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°36'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.60141365143517,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°07'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.12191003768038,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.00501385830057,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°24'",
+            "house": 1,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.40016807514943,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.911067318143,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.3041290732883,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85039933516276,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 6,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.8716117212778,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.5304570284779,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.53045702847794,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          57.47627681746398,
+          82.50810476777487,
+          103.3774055094484,
+          125.19571960648756,
+          152.53417255203658,
+          190.88174659104692,
+          237.476276817464,
+          262.50810476777485,
+          283.3774055094484,
+          305.19571960648756,
+          332.5341725520366,
+          10.881746591046923
+        ],
+        "houseSystem": "placidus",
+        "id": "DB754B82-932F-452A-9DF3-B6EBEC2C599B",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 05°11'",
+          "longitude": 305.19571960648756
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        19.722,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        3.27,
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        10.74
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "arc": "33.84542136486334",
+            "aspect": "cuadratura",
+            "source": "MERCURIO",
+            "target": "MC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.25°.",
+          "factor": "☿ Mercurio por arco solar □ Cuadratura Medio Cielo",
+          "id": "3AA783EB-D85A-42D9-92F1-5E4E4BCDEB07",
+          "orbDegrees": 0.25111540981095004,
+          "score": 17.57,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "aspect": "cuadratura",
+            "target": "ASC",
+            "transit": "NEPTUNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♆ Neptuno en tránsito □ Cuadratura Ascendente",
+          "id": "94A40227-9CC6-434F-8DCE-34B85B5E6945",
+          "orbDegrees": 0.4916383324007825,
+          "score": 10.76,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "arc": "24.48803003989454",
+            "aspect": "oposicion",
+            "source": "NODO_NORTE",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.54°.",
+          "factor": "☊ Nodo Norte por arco solar ☍ Oposición Ascendente",
+          "id": "1CD1B540-F576-4A2B-A67B-AA51E6BB9EFC",
+          "orbDegrees": 0.5422102509084539,
+          "score": 10.74,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        },
+        {
+          "debugData": {
+            "arc": "41.70441442898891",
+            "aspect": "trigono",
+            "source": "SATURNO",
+            "target": "ASC"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "El arco solar activa un ángulo natal con orbe 0.86°.",
+          "factor": "♄ Saturno por arco solar △ Trígono Ascendente",
+          "id": "23BAA66B-BB70-43E0-BB0F-C5FAB1DBF2FE",
+          "orbDegrees": 0.8607950703320597,
+          "score": 3.27,
+          "symbolicFit": "weak",
+          "technique": "solarArc"
+        }
+      ],
+      "id": "BB13984B-4FA5-46D5-9ABD-66FD0B97AC46",
+      "mcFormatted": "♒ Acuario 05°11'",
+      "mcLongitude": 305.19571960648756,
+      "overfittingDiagnostics": {
+        "adjustedScore": 11.18,
+        "dominantEventShare": 0.5846673781572395,
+        "dominantTechniqueShare": 0.505480739116818,
+        "enabledTechniqueCount": 2,
+        "penalty": 0.06,
+        "rawScore": 11.24
+      },
+      "techniqueScores": [
+        "solarArc",
+        10.526666666666666,
+        "transitsToAngles",
+        10.76
+      ],
+      "totalScore": 11.18,
+      "warnings": []
+    },
+    {
+      "ascendantFormatted": "♊ Géminis 02°20'",
+      "ascendantLongitude": 62.3388405058067,
+      "birthTime": "20:39:00",
+      "chart": {
+        "ascendant": {
+          "formatted": "♊ Géminis 02°20'",
+          "longitude": 62.3388405058067
+        },
+        "birthDate": "1976-10-11",
+        "birthTime": "20:39:00",
+        "bodies": [
+          {
+            "formatted": "♎ Libra 18°36'",
+            "house": 6,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 198.61018119406768,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 27°44'",
+            "house": 12,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 57.74123567247691,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 01°37'",
+            "house": 5,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 181.61683707561264,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 19°08'",
+            "house": 6,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 229.13547928383002,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 02°00'",
+            "house": 6,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 212.01255925708293,
+            "retrograde": false
+          },
+          {
+            "formatted": "♊ Géminis 00°23'",
+            "house": 12,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 60.399368653704116,
+            "retrograde": true
+          },
+          {
+            "formatted": "♌ Leo 14°54'",
+            "house": 4,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 134.9119492961792,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 06°18'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 216.30480053060833,
+            "retrograde": false
+          },
+          {
+            "formatted": "♐ Sagitario 11°51'",
+            "house": 7,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 251.85068019621087,
+            "retrograde": false
+          },
+          {
+            "formatted": "♎ Libra 11°52'",
+            "house": 5,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 191.87204393120942,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 03°31'",
+            "house": 6,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 213.5306824049011,
+            "retrograde": false
+          },
+          {
+            "formatted": "♉ Tauro 03°31'",
+            "house": 12,
+            "key": "NODO_SUR",
+            "label": "☋ Nodo Sur",
+            "longitude": 33.530682404901086,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "2026-10-04T18:30:31Z",
+        "cusps": [
+          62.3388405058067,
+          86.30139912560918,
+          106.97093635120848,
+          129.12812758154053,
+          157.32943837283733,
+          196.5886893151488,
+          242.3388405058067,
+          266.3013991256092,
+          286.9709363512085,
+          309.1281275815405,
+          337.3294383728373,
+          16.588689315148798
+        ],
+        "houseSystem": "placidus",
+        "id": "1E4B8014-27ED-4213-892A-F6623983050B",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "mc": {
+          "formatted": "♒ Acuario 09°07'",
+          "longitude": 309.1281275815405
+        },
+        "name": "Caso de referencia",
+        "placeName": "Referencia",
+        "timezone": "Europe/Madrid"
+      },
+      "confidenceBand": "low",
+      "eventScores": [
+        "C6E225A1-5947-4299-84FD-28AEC7521382",
+        30.63,
+        "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        1.58,
+        "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+        3.76
+      ],
+      "evidence": [
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "MC",
+            "transit": "NEPTUNO"
+          },
+          "deltaDays": 0,
+          "eventDate": "2001-05-10T00:00:00Z",
+          "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+          "exactDate": "2001-05-10T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♆ Neptuno en tránsito ☌ Conjunción Medio Cielo",
+          "id": "94524B10-A5C0-4778-A8F6-DDEBC334E0AF",
+          "orbDegrees": 0.35131374596392106,
+          "score": 30.63,
+          "symbolicFit": "strong",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "conjuncion",
+            "target": "MC",
+            "transit": "MARTE"
+          },
+          "deltaDays": 0,
+          "eventDate": "2018-06-15T00:00:00Z",
+          "eventID": "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+          "exactDate": "2018-06-15T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♂ Marte en tránsito ☌ Conjunción Medio Cielo",
+          "id": "216FDD89-550E-435B-9273-F0AAF6C427CC",
+          "orbDegrees": 0.7648047234355317,
+          "score": 3.76,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        },
+        {
+          "debugData": {
+            "aspect": "sextil",
+            "target": "ASC",
+            "transit": "JUPITER"
+          },
+          "deltaDays": 0,
+          "eventDate": "2010-09-01T00:00:00Z",
+          "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+          "exactDate": "2010-09-01T00:00:00Z",
+          "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+          "factor": "♃ Júpiter en tránsito ⚹ Sextil Ascendente",
+          "id": "BCC0A51A-CD2F-486B-8A3A-14086BBDF7F7",
+          "orbDegrees": 1.352091119232405,
+          "score": 1.58,
+          "symbolicFit": "weak",
+          "technique": "transitsToAngles"
+        }
+      ],
+      "id": "2FE8ABC2-7F1E-400B-A016-C2BE0A117F53",
+      "mcFormatted": "♒ Acuario 09°07'",
+      "mcLongitude": 309.1281275815405,
+      "overfittingDiagnostics": {
+        "adjustedScore": 10.67,
+        "dominantEventShare": 0.8515429524603837,
+        "dominantTechniqueShare": 1,
+        "enabledTechniqueCount": 2,
+        "penalty": 1.32,
+        "rawScore": 11.99
+      },
+      "techniqueScores": [
+        "transitsToAngles",
+        11.99,
+        "solarArc",
+        0
+      ],
+      "totalScore": 10.67,
+      "warnings": []
+    }
+  ],
+  "clusters": [
+    {
+      "ascendantSign": "TAURO",
+      "averageScore": 21.139999999999997,
+      "candidateIDs": [
+        "841BC9CC-2893-4D3C-B985-36120E005351",
+        "A5DA1048-E27E-4D00-A76A-6A25587BB7B3",
+        "844FC7F7-AD04-49B4-98E6-677E9D055666",
+        "579F2217-4854-4969-B122-92477E3FACB4",
+        "7002B46B-B80C-4557-A5EC-21F176EDA495",
+        "E89E7395-F659-43B8-BDA7-C5761572725E",
+        "CA22147C-147B-4406-966A-A6EA568614A6"
+      ],
+      "centerTime": "20:28:00",
+      "id": "E255F5B4-910D-4817-BCDC-5EDA79D457B7",
+      "timeRange": "20:26:00–20:33:00"
+    }
+  ],
+  "computeTimeSeconds": 0.027873992919921875,
+  "configUsed": {
+    "clusterWindowMinutes": 10,
+    "enabledTechniques": [
+      "transitsToAngles",
+      "solarArc"
+    ],
+    "evaluateMultipleHouseSystems": false,
+    "houseSystem": "placidus",
+    "minimumEventsForAnalysis": 3,
+    "orbMultiplier": 1,
+    "overfittingPenaltyStrength": 0.35,
+    "penalizeWeakContacts": true,
+    "schemaVersion": 1,
+    "school": "balanced",
+    "techniqueWeights": [
+      "solarArc",
+      1.1,
+      "ascendantSignQuestionnaire",
+      0.5,
+      "solarReturn",
+      0.8,
+      "zodiacalReleasing",
+      0.65,
+      "primaryDirections",
+      1.5,
+      "firdaria",
+      0.55,
+      "secondaryProgressions",
+      1,
+      "transitsToAngles",
+      0.75,
+      "lots",
+      0.6,
+      "profections",
+      0.7
+    ],
+    "useModernPlanets": true
+  },
+  "eventCoverage": [
+    "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+    2,
+    "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+    0,
+    "C6E225A1-5947-4299-84FD-28AEC7521382",
+    1
+  ],
+  "overallConfidence": "low",
+  "schemaVersion": 1,
+  "sectCrossingDetected": false,
+  "sessionID": "A5936031-5815-46E1-8B06-8054197460AF",
+  "topCandidate": {
+    "ascendantFormatted": "♉ Tauro 29°01'",
+    "ascendantLongitude": 59.021156361082085,
+    "birthTime": "20:28:00",
+    "chart": {
+      "ascendant": {
+        "formatted": "♉ Tauro 29°01'",
+        "longitude": 59.021156361082085
+      },
+      "birthDate": "1976-10-11",
+      "birthTime": "20:28:00",
+      "bodies": [
+        {
+          "formatted": "♎ Libra 18°36'",
+          "house": 6,
+          "key": "SOL",
+          "label": "☉ Sol",
+          "longitude": 198.6026242984826,
+          "retrograde": false
+        },
+        {
+          "formatted": "♉ Tauro 27°39'",
+          "house": 12,
+          "key": "LUNA",
+          "label": "☽ Luna",
+          "longitude": 57.65104260489913,
+          "retrograde": false
+        },
+        {
+          "formatted": "♎ Libra 01°36'",
+          "house": 5,
+          "key": "MERCURIO",
+          "label": "☿ Mercurio",
+          "longitude": 181.60623254983486,
+          "retrograde": false
+        },
+        {
+          "formatted": "♏ Escorpio 19°07'",
+          "house": 6,
+          "key": "VENUS",
+          "label": "♀ Venus",
+          "longitude": 229.12615043068686,
+          "retrograde": false
+        },
+        {
+          "formatted": "♏ Escorpio 02°00'",
+          "house": 6,
+          "key": "MARTE",
+          "label": "♂ Marte",
+          "longitude": 212.00737178377167,
+          "retrograde": false
+        },
+        {
+          "formatted": "♊ Géminis 00°23'",
+          "house": 1,
+          "key": "JUPITER",
+          "label": "♃ Júpiter",
+          "longitude": 60.3999182958014,
+          "retrograde": true
+        },
+        {
+          "formatted": "♌ Leo 14°54'",
+          "house": 4,
+          "key": "SATURNO",
+          "label": "♄ Saturno",
+          "longitude": 134.91134295402782,
+          "retrograde": false
+        },
+        {
+          "formatted": "♏ Escorpio 06°18'",
+          "house": 6,
+          "key": "URANO",
+          "label": "⛢ Urano",
+          "longitude": 216.30433890044995,
+          "retrograde": false
+        },
+        {
+          "formatted": "♐ Sagitario 11°51'",
+          "house": 7,
+          "key": "NEPTUNO",
+          "label": "♆ Neptuno",
+          "longitude": 251.85048709856994,
+          "retrograde": false
+        },
+        {
+          "formatted": "♎ Libra 11°52'",
+          "house": 5,
+          "key": "PLUTON",
+          "label": "♇ Plutón",
+          "longitude": 191.8717467875122,
+          "retrograde": false
+        },
+        {
+          "formatted": "♏ Escorpio 03°31'",
+          "house": 6,
+          "key": "NODO_NORTE",
+          "label": "☊ Nodo Norte",
+          "longitude": 213.53052739410617,
+          "retrograde": false
+        },
+        {
+          "formatted": "♉ Tauro 03°31'",
+          "house": 12,
+          "key": "NODO_SUR",
+          "label": "☋ Nodo Sur",
+          "longitude": 33.53052739410617,
+          "retrograde": false
+        }
+      ],
+      "createdAt": "2026-10-04T18:30:31Z",
+      "cusps": [
+        59.021156361082085,
+        83.70248942685906,
+        104.50128225796956,
+        126.41970431615255,
+        154.0252533904919,
+        192.67297249235952,
+        239.0211563610821,
+        263.7024894268591,
+        284.5012822579696,
+        306.41970431615255,
+        334.0252533904919,
+        12.67297249235952
+      ],
+      "houseSystem": "placidus",
+      "id": "8BF04A3D-131F-46AE-90F6-1B1D014E0BB2",
+      "latitude": 40.4168,
+      "longitude": -3.7038,
+      "mc": {
+        "formatted": "♒ Acuario 06°25'",
+        "longitude": 306.41970431615255
+      },
+      "name": "Caso de referencia",
+      "placeName": "Referencia",
+      "timezone": "Europe/Madrid"
+    },
+    "confidenceBand": "low",
+    "eventScores": [
+      "C6E225A1-5947-4299-84FD-28AEC7521382",
+      55.15,
+      "60F30DA1-40AB-46F5-A453-90CA57C9264A",
+      0,
+      "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+      24.182
+    ],
+    "evidence": [
+      {
+        "debugData": {
+          "arc": "24.4880666196523",
+          "aspect": "cuadratura",
+          "source": "PLUTON",
+          "target": "MC"
+        },
+        "deltaDays": 0,
+        "eventDate": "2001-05-10T00:00:00Z",
+        "eventID": "C6E225A1-5947-4299-84FD-28AEC7521382",
+        "exactDate": "2001-05-10T00:00:00Z",
+        "explanation": "El arco solar activa un ángulo natal con orbe 0.06°.",
+        "factor": "♇ Plutón por arco solar □ Cuadratura Medio Cielo",
+        "id": "00477859-E792-44A4-9494-41A23D179618",
+        "orbDegrees": 0.05989090898805216,
+        "score": 55.15,
+        "symbolicFit": "strong",
+        "technique": "solarArc"
+      },
+      {
+        "debugData": {
+          "aspect": "sextil",
+          "target": "ASC",
+          "transit": "URANO"
+        },
+        "deltaDays": 0,
+        "eventDate": "2010-09-01T00:00:00Z",
+        "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        "exactDate": "2010-09-01T00:00:00Z",
+        "explanation": "Un planeta transitante activa un ángulo de la candidata en la fecha del evento.",
+        "factor": "⛢ Urano en tránsito ⚹ Sextil Ascendente",
+        "id": "CE9F320B-85A6-47D4-91B5-F9030A29AC3D",
+        "orbDegrees": 0.3924605847305429,
+        "score": 22.15,
+        "symbolicFit": "moderate",
+        "technique": "transitsToAngles"
+      },
+      {
+        "debugData": {
+          "arc": "33.84547455503045",
+          "aspect": "sextil",
+          "source": "MARTE",
+          "target": "MC"
+        },
+        "deltaDays": 0,
+        "eventDate": "2010-09-01T00:00:00Z",
+        "eventID": "F2EE3512-8B49-4D5A-8150-A70F010E6B28",
+        "exactDate": "2010-09-01T00:00:00Z",
+        "explanation": "El arco solar activa un ángulo natal con orbe 0.57°.",
+        "factor": "♂ Marte por arco solar ⚹ Sextil Medio Cielo",
+        "id": "59868E9B-C86C-4784-9673-C26A6502221C",
+        "orbDegrees": 0.5668579773504234,
+        "score": 10.16,
+        "symbolicFit": "weak",
+        "technique": "solarArc"
+      }
+    ],
+    "id": "844FC7F7-AD04-49B4-98E6-677E9D055666",
+    "mcFormatted": "♒ Acuario 06°25'",
+    "mcLongitude": 306.41970431615255,
+    "overfittingDiagnostics": {
+      "adjustedScore": 25.84,
+      "dominantEventShare": 0.6951797509201836,
+      "dominantTechniqueShare": 0.5958397956390841,
+      "enabledTechniqueCount": 2,
+      "penalty": 0.6,
+      "rawScore": 26.44
+    },
+    "techniqueScores": [
+      "solarArc",
+      32.655,
+      "transitsToAngles",
+      22.15
+    ],
+    "totalScore": 25.84,
+    "warnings": []
+  },
+  "warnings": [
+    "Las primeras candidatas están muy próximas: el resultado no distingue un minuto único.",
+    "Hay eventos sin cobertura por ninguna técnica habilitada."
+  ]
+}

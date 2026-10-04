@@ -1,0 +1,3985 @@
+{
+  "dailyRows": [
+    {
+      "date": "2026-10-01",
+      "id": "A0A75795-C75A-4376-8EB1-807B120AD649",
+      "lunarPhaseAngle": 242.718076,
+      "lunarPhaseLabel": "Gibosa menguante",
+      "positions": [
+        {
+          "formatted": "♎ 08°19'",
+          "longitude": 188.330166,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98299236
+        },
+        {
+          "formatted": "♊ 11°02'",
+          "longitude": 71.048242,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "GEMINIS",
+          "speed": 14.28246618
+        },
+        {
+          "formatted": "♏ 01°20'",
+          "longitude": 211.339082,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.31416294
+        },
+        {
+          "formatted": "♏ 08°25'",
+          "longitude": 218.428801,
+          "planetKey": "VENUS",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.06883389
+        },
+        {
+          "formatted": "♌ 01°58'",
+          "longitude": 121.979475,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.58189151
+        },
+        {
+          "formatted": "♌ 19°40'",
+          "longitude": 139.680696,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.17840816
+        },
+        {
+          "formatted": "♈ 11°32' ℞",
+          "longitude": 11.539269,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07839511
+        },
+        {
+          "formatted": "♊ 05°31' ℞",
+          "longitude": 65.517434,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.01703014
+        },
+        {
+          "formatted": "♈ 02°50' ℞",
+          "longitude": 2.848255,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.0275549
+        },
+        {
+          "formatted": "♒ 03°07' ℞",
+          "longitude": 303.118969,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00675072
+        },
+        {
+          "formatted": "♒ 29°07' ℞",
+          "longitude": 329.118475,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.05764604
+        }
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "id": "4D380F5A-06A2-45F4-BD1E-C08EF13EA109",
+      "lunarPhaseAngle": 256.001303,
+      "lunarPhaseLabel": "Cuarto menguante",
+      "positions": [
+        {
+          "formatted": "♎ 09°18'",
+          "longitude": 189.313483,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98364221
+        },
+        {
+          "formatted": "♊ 25°18'",
+          "longitude": 85.314786,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "GEMINIS",
+          "speed": 14.24236061
+        },
+        {
+          "formatted": "♏ 02°38'",
+          "longitude": 212.642464,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.29243296
+        },
+        {
+          "formatted": "♏ 08°28'",
+          "longitude": 218.478724,
+          "planetKey": "VENUS",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.03090274
+        },
+        {
+          "formatted": "♌ 02°33'",
+          "longitude": 122.56037,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.57989001
+        },
+        {
+          "formatted": "♌ 19°51'",
+          "longitude": 139.858399,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.17699094
+        },
+        {
+          "formatted": "♈ 11°27' ℞",
+          "longitude": 11.460815,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07850967
+        },
+        {
+          "formatted": "♊ 05°30' ℞",
+          "longitude": 65.500019,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.01780108
+        },
+        {
+          "formatted": "♈ 02°49' ℞",
+          "longitude": 2.820734,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02748834
+        },
+        {
+          "formatted": "♒ 03°06' ℞",
+          "longitude": 303.112443,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00630132
+        },
+        {
+          "formatted": "♒ 29°04' ℞",
+          "longitude": 329.075151,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.02869536
+        }
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "id": "EE061EE0-BB53-4CA8-81D4-36390B361B28",
+      "lunarPhaseAngle": 269.221774,
+      "lunarPhaseLabel": "Cuarto menguante",
+      "positions": [
+        {
+          "formatted": "♎ 10°17'",
+          "longitude": 190.297448,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98428878
+        },
+        {
+          "formatted": "♋ 09°31'",
+          "longitude": 99.519223,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "CANCER",
+          "speed": 14.16097987
+        },
+        {
+          "formatted": "♏ 03°55'",
+          "longitude": 213.923579,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.26960036
+        },
+        {
+          "formatted": "♏ 08°29' ℞",
+          "longitude": 218.490398,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.00765103
+        },
+        {
+          "formatted": "♌ 03°08'",
+          "longitude": 123.139239,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.57784198
+        },
+        {
+          "formatted": "♌ 20°02'",
+          "longitude": 140.034665,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.17553477
+        },
+        {
+          "formatted": "♈ 11°22' ℞",
+          "longitude": 11.382261,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07859164
+        },
+        {
+          "formatted": "♊ 05°28' ℞",
+          "longitude": 65.481831,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.01857584
+        },
+        {
+          "formatted": "♈ 02°47' ℞",
+          "longitude": 2.793279,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02742044
+        },
+        {
+          "formatted": "♒ 03°06' ℞",
+          "longitude": 303.106364,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00585769
+        },
+        {
+          "formatted": "♒ 29°03' ℞",
+          "longitude": 329.060487,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00153721
+        }
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "id": "94F6F762-2354-4745-9766-0F310CB7FAED",
+      "lunarPhaseAngle": 282.3459,
+      "lunarPhaseLabel": "Cuarto menguante",
+      "positions": [
+        {
+          "formatted": "♎ 11°16'",
+          "longitude": 191.282057,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98492796
+        },
+        {
+          "formatted": "♋ 23°37'",
+          "longitude": 113.627957,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "CANCER",
+          "speed": 14.05306032
+        },
+        {
+          "formatted": "♏ 05°10'",
+          "longitude": 215.181238,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.24549058
+        },
+        {
+          "formatted": "♏ 08°27' ℞",
+          "longitude": 218.463248,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.04672618
+        },
+        {
+          "formatted": "♌ 03°42'",
+          "longitude": 123.716037,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.57574593
+        },
+        {
+          "formatted": "♌ 20°12'",
+          "longitude": 140.209455,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.17403961
+        },
+        {
+          "formatted": "♈ 11°18' ℞",
+          "longitude": 11.303642,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07863923
+        },
+        {
+          "formatted": "♊ 05°27' ℞",
+          "longitude": 65.462866,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.01935294
+        },
+        {
+          "formatted": "♈ 02°45' ℞",
+          "longitude": 2.765893,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02735004
+        },
+        {
+          "formatted": "♒ 03°06' ℞",
+          "longitude": 303.100726,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00541899
+        },
+        {
+          "formatted": "♒ 29°04'",
+          "longitude": 329.069287,
+          "planetKey": "NODO_NORTE",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.01720432
+        }
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "id": "7392E613-3968-4DB7-88DC-F971E2DAEAD4",
+      "lunarPhaseAngle": 295.352513,
+      "lunarPhaseLabel": "Menguante",
+      "positions": [
+        {
+          "formatted": "♎ 12°16'",
+          "longitude": 192.2673,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98555784
+        },
+        {
+          "formatted": "♌ 07°37'",
+          "longitude": 127.619813,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 13.92831279
+        },
+        {
+          "formatted": "♏ 06°24'",
+          "longitude": 216.41407,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.21991067
+        },
+        {
+          "formatted": "♏ 08°23' ℞",
+          "longitude": 218.396813,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.08620299
+        },
+        {
+          "formatted": "♌ 04°17'",
+          "longitude": 124.290715,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.5736032
+        },
+        {
+          "formatted": "♌ 20°22'",
+          "longitude": 140.382732,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.17250784
+        },
+        {
+          "formatted": "♈ 11°13' ℞",
+          "longitude": 11.224995,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.0786486
+        },
+        {
+          "formatted": "♊ 05°26' ℞",
+          "longitude": 65.443125,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02012879
+        },
+        {
+          "formatted": "♈ 02°44' ℞",
+          "longitude": 2.73858,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02727393
+        },
+        {
+          "formatted": "♒ 03°05' ℞",
+          "longitude": 303.095525,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00498229
+        },
+        {
+          "formatted": "♒ 29°05'",
+          "longitude": 329.090372,
+          "planetKey": "NODO_NORTE",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.02245143
+        }
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "id": "5EAB3F17-A430-4B2D-A62D-936870588A4D",
+      "lunarPhaseAngle": 308.227052,
+      "lunarPhaseLabel": "Menguante",
+      "positions": [
+        {
+          "formatted": "♎ 13°15'",
+          "longitude": 193.253168,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.9861781
+        },
+        {
+          "formatted": "♌ 21°28'",
+          "longitude": 141.48022,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 13.79023584
+        },
+        {
+          "formatted": "♏ 07°37'",
+          "longitude": 217.620498,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.19264592
+        },
+        {
+          "formatted": "♏ 08°17' ℞",
+          "longitude": 218.290757,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.12594199
+        },
+        {
+          "formatted": "♌ 04°51'",
+          "longitude": 124.863228,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.57141709
+        },
+        {
+          "formatted": "♌ 20°33'",
+          "longitude": 140.55446,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.17094308
+        },
+        {
+          "formatted": "♈ 11°08' ℞",
+          "longitude": 11.146358,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07861482
+        },
+        {
+          "formatted": "♊ 05°25' ℞",
+          "longitude": 65.42261,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02089859
+        },
+        {
+          "formatted": "♈ 02°42' ℞",
+          "longitude": 2.711348,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02718775
+        },
+        {
+          "formatted": "♒ 03°05' ℞",
+          "longitude": 303.090761,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00454358
+        },
+        {
+          "formatted": "♒ 29°06'",
+          "longitude": 329.108965,
+          "planetKey": "NODO_NORTE",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.01214083
+        }
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "id": "8B00B29A-3701-4415-BAAE-230EBF0D4653",
+      "lunarPhaseAngle": 320.955685,
+      "lunarPhaseLabel": "Menguante",
+      "positions": [
+        {
+          "formatted": "♎ 14°14'",
+          "longitude": 194.239652,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98678917
+        },
+        {
+          "formatted": "♍ 05°11'",
+          "longitude": 155.195338,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "VIRGO",
+          "speed": 13.63711158
+        },
+        {
+          "formatted": "♏ 08°47'",
+          "longitude": 218.79872,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.1634563
+        },
+        {
+          "formatted": "♏ 08°08' ℞",
+          "longitude": 218.144897,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.16578267
+        },
+        {
+          "formatted": "♌ 05°26'",
+          "longitude": 125.433536,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.56919176
+        },
+        {
+          "formatted": "♌ 20°43'",
+          "longitude": 140.724608,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.16934938
+        },
+        {
+          "formatted": "♈ 11°04' ℞",
+          "longitude": 11.06778,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.0785331
+        },
+        {
+          "formatted": "♊ 05°24' ℞",
+          "longitude": 65.401331,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02165756
+        },
+        {
+          "formatted": "♈ 02°41' ℞",
+          "longitude": 2.684209,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02708721
+        },
+        {
+          "formatted": "♒ 03°05' ℞",
+          "longitude": 303.086439,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00409885
+        },
+        {
+          "formatted": "♒ 29°06' ℞",
+          "longitude": 329.109837,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.01251752
+        }
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "id": "46FC21C5-A225-48F5-BCB6-69EFA3E3E302",
+      "lunarPhaseAngle": 333.521288,
+      "lunarPhaseLabel": "Menguante",
+      "positions": [
+        {
+          "formatted": "♎ 15°13'",
+          "longitude": 195.226743,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98739136
+        },
+        {
+          "formatted": "♍ 18°44'",
+          "longitude": 168.748031,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "VIRGO",
+          "speed": 13.46459751
+        },
+        {
+          "formatted": "♏ 09°56'",
+          "longitude": 219.946679,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.13207273
+        },
+        {
+          "formatted": "♏ 07°57' ℞",
+          "longitude": 217.95922,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.20554254
+        },
+        {
+          "formatted": "♌ 06°00'",
+          "longitude": 126.0016,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.56693092
+        },
+        {
+          "formatted": "♌ 20°53'",
+          "longitude": 140.89315,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.16772984
+        },
+        {
+          "formatted": "♈ 10°59' ℞",
+          "longitude": 10.989309,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07839985
+        },
+        {
+          "formatted": "♊ 05°22' ℞",
+          "longitude": 65.3793,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02240191
+        },
+        {
+          "formatted": "♈ 02°39' ℞",
+          "longitude": 2.657179,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02696905
+        },
+        {
+          "formatted": "♒ 03°04' ℞",
+          "longitude": 303.082566,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00364513
+        },
+        {
+          "formatted": "♒ 29°04' ℞",
+          "longitude": 329.080524,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.04732621
+        }
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "id": "8D9F1EEB-FD02-4C9A-BB67-11630F2E94A3",
+      "lunarPhaseAngle": 345.902446,
+      "lunarPhaseLabel": "Nueva",
+      "positions": [
+        {
+          "formatted": "♎ 16°12'",
+          "longitude": 196.214431,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.9879843
+        },
+        {
+          "formatted": "♎ 02°07'",
+          "longitude": 182.116877,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 13.26900589
+        },
+        {
+          "formatted": "♏ 11°03'",
+          "longitude": 221.062033,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.09819328
+        },
+        {
+          "formatted": "♏ 07°44' ℞",
+          "longitude": 217.733907,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.2450161
+        },
+        {
+          "formatted": "♌ 06°34'",
+          "longitude": 126.567386,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.5646372
+        },
+        {
+          "formatted": "♌ 21°03'",
+          "longitude": 141.06006,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.16608619
+        },
+        {
+          "formatted": "♈ 10°54' ℞",
+          "longitude": 10.910998,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07821341
+        },
+        {
+          "formatted": "♊ 05°21' ℞",
+          "longitude": 65.356533,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02312968
+        },
+        {
+          "formatted": "♈ 02°37' ℞",
+          "longitude": 2.630277,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02683188
+        },
+        {
+          "formatted": "♒ 03°04' ℞",
+          "longitude": 303.079152,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00318128
+        },
+        {
+          "formatted": "♒ 29°00' ℞",
+          "longitude": 329.013869,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.08605665
+        }
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "id": "3595E3EB-7814-4E71-8574-64618AFB456C",
+      "lunarPhaseAngle": 358.075654,
+      "lunarPhaseLabel": "Nueva",
+      "positions": [
+        {
+          "formatted": "♎ 17°12'",
+          "longitude": 197.202708,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98856676
+        },
+        {
+          "formatted": "♎ 15°16'",
+          "longitude": 195.278362,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 13.05027172
+        },
+        {
+          "formatted": "♏ 12°08'",
+          "longitude": 222.142121,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.06148009
+        },
+        {
+          "formatted": "♏ 07°28' ℞",
+          "longitude": 217.469358,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.2839743
+        },
+        {
+          "formatted": "♌ 07°07'",
+          "longitude": 127.130863,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.56231155
+        },
+        {
+          "formatted": "♌ 21°13'",
+          "longitude": 141.225314,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.16441826
+        },
+        {
+          "formatted": "♈ 10°49' ℞",
+          "longitude": 10.8329,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.0779743
+        },
+        {
+          "formatted": "♊ 05°19' ℞",
+          "longitude": 65.333046,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02384086
+        },
+        {
+          "formatted": "♈ 02°36' ℞",
+          "longitude": 2.603521,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02667626
+        },
+        {
+          "formatted": "♒ 03°04' ℞",
+          "longitude": 303.076207,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00270807
+        },
+        {
+          "formatted": "♒ 28°54' ℞",
+          "longitude": 328.909438,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.12172344
+        }
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "id": "33210635-0318-43EC-8FCF-6C4B6AB79D2D",
+      "lunarPhaseAngle": 10.019971,
+      "lunarPhaseLabel": "Nueva",
+      "positions": [
+        {
+          "formatted": "♎ 18°11'",
+          "longitude": 198.191561,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98913702
+        },
+        {
+          "formatted": "♎ 28°12'",
+          "longitude": 208.211532,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 12.8137544
+        },
+        {
+          "formatted": "♏ 13°11'",
+          "longitude": 223.183923,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 1.02155652
+        },
+        {
+          "formatted": "♏ 07°09' ℞",
+          "longitude": 217.166212,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.32216453
+        },
+        {
+          "formatted": "♌ 07°41'",
+          "longitude": 127.691999,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.55995357
+        },
+        {
+          "formatted": "♌ 21°23'",
+          "longitude": 141.388888,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.16272452
+        },
+        {
+          "formatted": "♈ 10°45' ℞",
+          "longitude": 10.755067,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07768477
+        },
+        {
+          "formatted": "♊ 05°18' ℞",
+          "longitude": 65.308856,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02453702
+        },
+        {
+          "formatted": "♈ 02°34' ℞",
+          "longitude": 2.57693,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02650434
+        },
+        {
+          "formatted": "♒ 03°04' ℞",
+          "longitude": 303.073739,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00222783
+        },
+        {
+          "formatted": "♒ 28°46' ℞",
+          "longitude": 328.773591,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.14794442
+        }
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "id": "D5B68BD3-77F7-4244-B0F8-4E46AE2C8C65",
+      "lunarPhaseAngle": 21.722683,
+      "lunarPhaseLabel": "Nueva",
+      "positions": [
+        {
+          "formatted": "♎ 19°10'",
+          "longitude": 199.180977,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.98969345
+        },
+        {
+          "formatted": "♏ 10°54'",
+          "longitude": 220.903661,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 12.57044634
+        },
+        {
+          "formatted": "♏ 14°11'",
+          "longitude": 224.184023,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.97800493
+        },
+        {
+          "formatted": "♏ 06°49' ℞",
+          "longitude": 216.825373,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.35931147
+        },
+        {
+          "formatted": "♌ 08°15'",
+          "longitude": 128.250759,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.55756211
+        },
+        {
+          "formatted": "♌ 21°33'",
+          "longitude": 141.550754,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.16100279
+        },
+        {
+          "formatted": "♈ 10°40' ℞",
+          "longitude": 10.677548,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07734794
+        },
+        {
+          "formatted": "♊ 05°17' ℞",
+          "longitude": 65.283976,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02522049
+        },
+        {
+          "formatted": "♈ 02°33' ℞",
+          "longitude": 2.550517,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02631903
+        },
+        {
+          "formatted": "♒ 03°04' ℞",
+          "longitude": 303.071754,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00174359
+        },
+        {
+          "formatted": "♒ 28°37' ℞",
+          "longitude": 328.61826,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.16012003
+        }
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "id": "1C56AC4F-2C23-4F3D-94E2-C29C9A2ADFC6",
+      "lunarPhaseAngle": 33.184416,
+      "lunarPhaseLabel": "Creciente",
+      "positions": [
+        {
+          "formatted": "♎ 20°10'",
+          "longitude": 200.170943,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99023506
+        },
+        {
+          "formatted": "♏ 23°21'",
+          "longitude": 233.355359,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 12.33573925
+        },
+        {
+          "formatted": "♏ 15°08'",
+          "longitude": 225.138569,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.93036479
+        },
+        {
+          "formatted": "♏ 06°26' ℞",
+          "longitude": 216.448031,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.39511974
+        },
+        {
+          "formatted": "♌ 08°48'",
+          "longitude": 128.807111,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.5551358
+        },
+        {
+          "formatted": "♌ 21°42'",
+          "longitude": 141.710884,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.15925099
+        },
+        {
+          "formatted": "♈ 10°36' ℞",
+          "longitude": 10.600387,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07696696
+        },
+        {
+          "formatted": "♊ 05°15' ℞",
+          "longitude": 65.258418,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02589354
+        },
+        {
+          "formatted": "♈ 02°31' ℞",
+          "longitude": 2.524296,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02612314
+        },
+        {
+          "formatted": "♒ 03°04' ℞",
+          "longitude": 303.070253,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00125824
+        },
+        {
+          "formatted": "♒ 28°27' ℞",
+          "longitude": 328.45874,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.1562256
+        }
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "id": "F27AC3AE-7F87-4CA9-A879-0D4191B43732",
+      "lunarPhaseAngle": 44.422542,
+      "lunarPhaseLabel": "Creciente",
+      "positions": [
+        {
+          "formatted": "♎ 21°09'",
+          "longitude": 201.161443,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99076179
+        },
+        {
+          "formatted": "♐ 05°35'",
+          "longitude": 245.583985,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "SAGITARIO",
+          "speed": 12.12734852
+        },
+        {
+          "formatted": "♏ 16°02'",
+          "longitude": 226.043221,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.87813142
+        },
+        {
+          "formatted": "♏ 06°02' ℞",
+          "longitude": 216.03568,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.42927773
+        },
+        {
+          "formatted": "♌ 09°21'",
+          "longitude": 129.361019,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.55267371
+        },
+        {
+          "formatted": "♌ 21°52'",
+          "longitude": 141.869246,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.1574676
+        },
+        {
+          "formatted": "♈ 10°31' ℞",
+          "longitude": 10.523629,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07654442
+        },
+        {
+          "formatted": "♊ 05°13' ℞",
+          "longitude": 65.232192,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02655784
+        },
+        {
+          "formatted": "♈ 02°29' ℞",
+          "longitude": 2.498274,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02591884
+        },
+        {
+          "formatted": "♒ 03°04' ℞",
+          "longitude": 303.069238,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00077413
+        },
+        {
+          "formatted": "♒ 28°18' ℞",
+          "longitude": 328.310911,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.13711569
+        }
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "id": "AC563324-9F52-4508-9A83-2F26E6D786C8",
+      "lunarPhaseAngle": 55.472384,
+      "lunarPhaseLabel": "Creciente",
+      "positions": [
+        {
+          "formatted": "♎ 22°09'",
+          "longitude": 202.152463,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99127442
+        },
+        {
+          "formatted": "♐ 17°37'",
+          "longitude": 257.624847,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "SAGITARIO",
+          "speed": 11.96311955
+        },
+        {
+          "formatted": "♏ 16°53'",
+          "longitude": 226.893117,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.82075579
+        },
+        {
+          "formatted": "♏ 05°35' ℞",
+          "longitude": 215.590131,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.46146325
+        },
+        {
+          "formatted": "♌ 09°54'",
+          "longitude": 129.912447,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.55017526
+        },
+        {
+          "formatted": "♌ 22°01'",
+          "longitude": 142.025808,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.15565181
+        },
+        {
+          "formatted": "♈ 10°26' ℞",
+          "longitude": 10.447313,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07608222
+        },
+        {
+          "formatted": "♊ 05°12' ℞",
+          "longitude": 65.205305,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02721432
+        },
+        {
+          "formatted": "♈ 02°28' ℞",
+          "longitude": 2.472461,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02570757
+        },
+        {
+          "formatted": "♒ 03°04' ℞",
+          "longitude": 303.068705,
+          "planetKey": "PLUTON",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00029265
+        },
+        {
+          "formatted": "♒ 28°11' ℞",
+          "longitude": 328.188424,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.10632474
+        }
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "id": "82574120-A276-4A82-93B9-8F36717DAFA4",
+      "lunarPhaseAngle": 66.386409,
+      "lunarPhaseLabel": "Creciente",
+      "positions": [
+        {
+          "formatted": "♎ 23°08'",
+          "longitude": 203.143988,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99177433
+        },
+        {
+          "formatted": "♐ 29°31'",
+          "longitude": 269.530398,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "SAGITARIO",
+          "speed": 11.85923345
+        },
+        {
+          "formatted": "♏ 17°40'",
+          "longitude": 227.682822,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.75764664
+        },
+        {
+          "formatted": "♏ 05°06' ℞",
+          "longitude": 215.113518,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.49134988
+        },
+        {
+          "formatted": "♌ 10°27'",
+          "longitude": 130.461357,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.54764028
+        },
+        {
+          "formatted": "♌ 22°10'",
+          "longitude": 142.180539,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.15380337
+        },
+        {
+          "formatted": "♈ 10°22' ℞",
+          "longitude": 10.371478,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07558159
+        },
+        {
+          "formatted": "♊ 05°10' ℞",
+          "longitude": 65.177766,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02786327
+        },
+        {
+          "formatted": "♈ 02°26' ℞",
+          "longitude": 2.446862,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.0254901
+        },
+        {
+          "formatted": "♒ 03°04'",
+          "longitude": 303.068652,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00018536
+        },
+        {
+          "formatted": "♒ 28°06' ℞",
+          "longitude": 328.100311,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.06942043
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "id": "5B348FA7-665C-4C75-A1E1-66EAE9B2EA74",
+      "lunarPhaseAngle": 77.231896,
+      "lunarPhaseLabel": "Cuarto creciente",
+      "positions": [
+        {
+          "formatted": "♎ 24°08'",
+          "longitude": 204.136009,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99226335
+        },
+        {
+          "formatted": "♑ 11°22'",
+          "longitude": 281.367905,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "CAPRICORNIO",
+          "speed": 11.82897299
+        },
+        {
+          "formatted": "♏ 18°24'",
+          "longitude": 228.40629,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.68817641
+        },
+        {
+          "formatted": "♏ 04°36' ℞",
+          "longitude": 214.608304,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.51861412
+        },
+        {
+          "formatted": "♌ 11°00'",
+          "longitude": 131.007715,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.54506889
+        },
+        {
+          "formatted": "♌ 22°20'",
+          "longitude": 142.333404,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.15192259
+        },
+        {
+          "formatted": "♈ 10°17' ℞",
+          "longitude": 10.296163,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07504325
+        },
+        {
+          "formatted": "♊ 05°08' ℞",
+          "longitude": 65.149581,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02850449
+        },
+        {
+          "formatted": "♈ 02°25' ℞",
+          "longitude": 2.421483,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02526662
+        },
+        {
+          "formatted": "♒ 03°04'",
+          "longitude": 303.069075,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00065964
+        },
+        {
+          "formatted": "♒ 28°02' ℞",
+          "longitude": 328.049408,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.03304074
+        }
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "id": "A82FB65D-BBDD-45F4-8E65-4ABE15F53819",
+      "lunarPhaseAngle": 88.087607,
+      "lunarPhaseLabel": "Cuarto creciente",
+      "positions": [
+        {
+          "formatted": "♎ 25°07'",
+          "longitude": 205.128513,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99274374
+        },
+        {
+          "formatted": "♑ 23°12'",
+          "longitude": 293.21612,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "CAPRICORNIO",
+          "speed": 11.8819006
+        },
+        {
+          "formatted": "♏ 19°03'",
+          "longitude": 229.056837,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.61169269
+        },
+        {
+          "formatted": "♏ 04°04' ℞",
+          "longitude": 214.077269,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.54294253
+        },
+        {
+          "formatted": "♌ 11°33'",
+          "longitude": 131.551483,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.54246161
+        },
+        {
+          "formatted": "♌ 22°29'",
+          "longitude": 142.484373,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.1500102
+        },
+        {
+          "formatted": "♈ 10°13' ℞",
+          "longitude": 10.221404,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07446749
+        },
+        {
+          "formatted": "♊ 05°07' ℞",
+          "longitude": 65.120759,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.02913732
+        },
+        {
+          "formatted": "♈ 02°23' ℞",
+          "longitude": 2.39633,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02503692
+        },
+        {
+          "formatted": "♒ 03°04'",
+          "longitude": 303.06997,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00113047
+        },
+        {
+          "formatted": "♒ 28°01' ℞",
+          "longitude": 328.03184,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.0037911
+        }
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "id": "E5A2A027-FF93-490C-AF83-A777AA95A43E",
+      "lunarPhaseAngle": 99.039708,
+      "lunarPhaseLabel": "Cuarto creciente",
+      "positions": [
+        {
+          "formatted": "♎ 26°07'",
+          "longitude": 206.121495,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99321821
+        },
+        {
+          "formatted": "♒ 05°09'",
+          "longitude": 305.161203,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 12.02313873
+        },
+        {
+          "formatted": "♏ 19°37'",
+          "longitude": 229.627119,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.52753755
+        },
+        {
+          "formatted": "♏ 03°31' ℞",
+          "longitude": 213.523498,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.56403931
+        },
+        {
+          "formatted": "♌ 12°05'",
+          "longitude": 132.092626,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.53981923
+        },
+        {
+          "formatted": "♌ 22°38'",
+          "longitude": 142.633414,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.14806722
+        },
+        {
+          "formatted": "♈ 10°08' ℞",
+          "longitude": 10.14724,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.0738542
+        },
+        {
+          "formatted": "♊ 05°05' ℞",
+          "longitude": 65.091309,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.0297607
+        },
+        {
+          "formatted": "♈ 02°22' ℞",
+          "longitude": 2.371411,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02480032
+        },
+        {
+          "formatted": "♒ 03°04'",
+          "longitude": 303.071335,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00159845
+        },
+        {
+          "formatted": "♒ 28°02'",
+          "longitude": 328.037593,
+          "planetKey": "NODO_NORTE",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.01282937
+        }
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "id": "8DCB1BEB-4C38-49AE-B556-49D0AB1EB7ED",
+      "lunarPhaseAngle": 110.176892,
+      "lunarPhaseLabel": "Cuarto creciente",
+      "positions": [
+        {
+          "formatted": "♎ 27°06'",
+          "longitude": 207.11495,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99369005
+        },
+        {
+          "formatted": "♒ 17°17'",
+          "longitude": 317.291842,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 12.25243353
+        },
+        {
+          "formatted": "♏ 20°06'",
+          "longitude": 230.109144,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.43507761
+        },
+        {
+          "formatted": "♏ 02°57' ℞",
+          "longitude": 212.950361,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.58163345
+        },
+        {
+          "formatted": "♌ 12°37'",
+          "longitude": 132.63111,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.53714289
+        },
+        {
+          "formatted": "♌ 22°46'",
+          "longitude": 142.780498,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.14609517
+        },
+        {
+          "formatted": "♈ 10°04' ℞",
+          "longitude": 10.073708,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07320294
+        },
+        {
+          "formatted": "♊ 05°03' ℞",
+          "longitude": 65.061241,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.0303732
+        },
+        {
+          "formatted": "♈ 02°20' ℞",
+          "longitude": 2.346731,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.0245558
+        },
+        {
+          "formatted": "♒ 03°04'",
+          "longitude": 303.073166,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00206466
+        },
+        {
+          "formatted": "♒ 28°03'",
+          "longitude": 328.0521,
+          "planetKey": "NODO_NORTE",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.01334584
+        }
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "id": "59F629F0-3B18-46B4-8B67-E898C077CAD7",
+      "lunarPhaseAngle": 121.58436,
+      "lunarPhaseLabel": "Gibosa creciente",
+      "positions": [
+        {
+          "formatted": "♎ 28°06'",
+          "longitude": 208.108877,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99416329
+        },
+        {
+          "formatted": "♒ 29°41'",
+          "longitude": 329.693237,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 12.5628123
+        },
+        {
+          "formatted": "♏ 20°29'",
+          "longitude": 230.494317,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.33374853
+        },
+        {
+          "formatted": "♏ 02°21' ℞",
+          "longitude": 212.361481,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.59548572
+        },
+        {
+          "formatted": "♌ 13°10'",
+          "longitude": 133.1669,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.53443408
+        },
+        {
+          "formatted": "♌ 22°55'",
+          "longitude": 142.925596,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.14409593
+        },
+        {
+          "formatted": "♈ 10°00' ℞",
+          "longitude": 10.000846,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07251286
+        },
+        {
+          "formatted": "♊ 05°01' ℞",
+          "longitude": 65.030567,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03097303
+        },
+        {
+          "formatted": "♈ 02°19' ℞",
+          "longitude": 2.322302,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02430189
+        },
+        {
+          "formatted": "♒ 03°04'",
+          "longitude": 303.075463,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.0025306
+        },
+        {
+          "formatted": "♒ 28°03' ℞",
+          "longitude": 328.058623,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.00302215
+        }
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "id": "DBFA23A7-1F5D-4BD8-A4B9-CF6B4659FF54",
+      "lunarPhaseAngle": 133.336287,
+      "lunarPhaseLabel": "Gibosa creciente",
+      "positions": [
+        {
+          "formatted": "♎ 29°06'",
+          "longitude": 209.103279,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "LIBRA",
+          "speed": 0.99464294
+        },
+        {
+          "formatted": "♓ 12°26'",
+          "longitude": 342.439567,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "PISCIS",
+          "speed": 12.93892161
+        },
+        {
+          "formatted": "♏ 20°46'",
+          "longitude": 230.773539,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.22311803
+        },
+        {
+          "formatted": "♏ 01°45' ℞",
+          "longitude": 211.760706,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.60539522
+        },
+        {
+          "formatted": "♌ 13°41'",
+          "longitude": 133.699967,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.53169461
+        },
+        {
+          "formatted": "♌ 23°04'",
+          "longitude": 143.068681,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.1420719
+        },
+        {
+          "formatted": "♈ 09°55' ℞",
+          "longitude": 9.928695,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07178261
+        },
+        {
+          "formatted": "♊ 04°59' ℞",
+          "longitude": 64.9993,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03155782
+        },
+        {
+          "formatted": "♈ 02°17' ℞",
+          "longitude": 2.298131,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02403658
+        },
+        {
+          "formatted": "♒ 03°04'",
+          "longitude": 303.078227,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00299833
+        },
+        {
+          "formatted": "♒ 28°02' ℞",
+          "longitude": 328.041145,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.03402283
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "id": "ADA51CB4-7BB9-49FF-8269-3951D91789D2",
+      "lunarPhaseAngle": 145.486657,
+      "lunarPhaseLabel": "Gibosa creciente",
+      "positions": [
+        {
+          "formatted": "♏ 00°05'",
+          "longitude": 210.098167,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.99513485
+        },
+        {
+          "formatted": "♓ 25°35'",
+          "longitude": 355.584825,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "PISCIS",
+          "speed": 13.35558517
+        },
+        {
+          "formatted": "♏ 20°56'",
+          "longitude": 230.937378,
+          "planetKey": "MERCURIO",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.1029716
+        },
+        {
+          "formatted": "♏ 01°09' ℞",
+          "longitude": 211.152059,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.61120578
+        },
+        {
+          "formatted": "♌ 14°13'",
+          "longitude": 134.23028,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.52892626
+        },
+        {
+          "formatted": "♌ 23°12'",
+          "longitude": 143.209732,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.14002578
+        },
+        {
+          "formatted": "♈ 09°51' ℞",
+          "longitude": 9.857295,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07101044
+        },
+        {
+          "formatted": "♊ 04°58' ℞",
+          "longitude": 64.967457,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03212492
+        },
+        {
+          "formatted": "♈ 02°16' ℞",
+          "longitude": 2.274233,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02375745
+        },
+        {
+          "formatted": "♒ 03°04'",
+          "longitude": 303.081461,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00347041
+        },
+        {
+          "formatted": "♒ 27°59' ℞",
+          "longitude": 327.987403,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.07446421
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "id": "CE454711-4480-4AC8-A8F5-A35A605D1959",
+      "lunarPhaseAngle": 158.059215,
+      "lunarPhaseLabel": "Llena",
+      "positions": [
+        {
+          "formatted": "♏ 01°05'",
+          "longitude": 211.093556,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.99564491
+        },
+        {
+          "formatted": "♈ 09°09'",
+          "longitude": 9.152771,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "ARIES",
+          "speed": 13.77768734
+        },
+        {
+          "formatted": "♏ 20°58' ℞",
+          "longitude": 230.976343,
+          "planetKey": "MERCURIO",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.02657586
+        },
+        {
+          "formatted": "♏ 00°32' ℞",
+          "longitude": 210.539696,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.61281235
+        },
+        {
+          "formatted": "♌ 14°45'",
+          "longitude": 134.75781,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.52612995
+        },
+        {
+          "formatted": "♌ 23°20'",
+          "longitude": 143.348727,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.1379599
+        },
+        {
+          "formatted": "♈ 09°47' ℞",
+          "longitude": 9.786689,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.07019477
+        },
+        {
+          "formatted": "♊ 04°56' ℞",
+          "longitude": 64.935057,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03267187
+        },
+        {
+          "formatted": "♈ 02°15' ℞",
+          "longitude": 2.250622,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02346225
+        },
+        {
+          "formatted": "♒ 03°05'",
+          "longitude": 303.085171,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00394915
+        },
+        {
+          "formatted": "♒ 27°53' ℞",
+          "longitude": 327.891558,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.11684231
+        }
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "id": "106B366C-3682-4DE4-A968-897F0CD6DABF",
+      "lunarPhaseAngle": 171.038576,
+      "lunarPhaseLabel": "Llena",
+      "positions": [
+        {
+          "formatted": "♏ 02°05'",
+          "longitude": 212.089465,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.99617755
+        },
+        {
+          "formatted": "♈ 23°07'",
+          "longitude": 23.128041,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "ARIES",
+          "speed": 14.16285242
+        },
+        {
+          "formatted": "♏ 20°52' ℞",
+          "longitude": 230.881279,
+          "planetKey": "MERCURIO",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.16494097
+        },
+        {
+          "formatted": "♎ 29°55' ℞",
+          "longitude": 209.92785,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "LIBRA",
+          "speed": -0.61016742
+        },
+        {
+          "formatted": "♌ 15°16'",
+          "longitude": 135.28253,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.52330425
+        },
+        {
+          "formatted": "♌ 23°29'",
+          "longitude": 143.485646,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.13587501
+        },
+        {
+          "formatted": "♈ 09°43' ℞",
+          "longitude": 9.716921,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.06933526
+        },
+        {
+          "formatted": "♊ 04°54' ℞",
+          "longitude": 64.90212,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03319765
+        },
+        {
+          "formatted": "♈ 02°13' ℞",
+          "longitude": 2.227314,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02315004
+        },
+        {
+          "formatted": "♒ 03°05'",
+          "longitude": 303.089363,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00443571
+        },
+        {
+          "formatted": "♒ 27°45' ℞",
+          "longitude": 327.75594,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.15257892
+        }
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "id": "78EE7E91-51AB-4644-B163-0366D7F17163",
+      "lunarPhaseAngle": 184.36589,
+      "lunarPhaseLabel": "Llena",
+      "positions": [
+        {
+          "formatted": "♏ 03°05'",
+          "longitude": 213.085919,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.99673406
+        },
+        {
+          "formatted": "♉ 07°27'",
+          "longitude": 37.451809,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "TAURO",
+          "speed": 14.46793099
+        },
+        {
+          "formatted": "♏ 20°38' ℞",
+          "longitude": 230.643917,
+          "planetKey": "MERCURIO",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.31090753
+        },
+        {
+          "formatted": "♎ 29°19' ℞",
+          "longitude": 209.320771,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "LIBRA",
+          "speed": -0.60328644
+        },
+        {
+          "formatted": "♌ 15°48'",
+          "longitude": 135.804408,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.5204442
+        },
+        {
+          "formatted": "♌ 23°37'",
+          "longitude": 143.62047,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.13376906
+        },
+        {
+          "formatted": "♈ 09°38' ℞",
+          "longitude": 9.648034,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.06843384
+        },
+        {
+          "formatted": "♊ 04°52' ℞",
+          "longitude": 64.868668,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03370368
+        },
+        {
+          "formatted": "♈ 02°12' ℞",
+          "longitude": 2.204327,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02282228
+        },
+        {
+          "formatted": "♒ 03°05'",
+          "longitude": 303.094046,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00492876
+        },
+        {
+          "formatted": "♒ 27°35' ℞",
+          "longitude": 327.591267,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.173804
+        }
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "id": "377D3C45-359A-44A5-95A2-AEF5CEF54079",
+      "lunarPhaseAngle": 197.942684,
+      "lunarPhaseLabel": "Llena",
+      "positions": [
+        {
+          "formatted": "♏ 04°04'",
+          "longitude": 214.08294,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.99731174
+        },
+        {
+          "formatted": "♉ 22°01'",
+          "longitude": 52.025624,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "TAURO",
+          "speed": 14.65851318
+        },
+        {
+          "formatted": "♏ 20°15' ℞",
+          "longitude": 230.257595,
+          "planetKey": "MERCURIO",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.46244633
+        },
+        {
+          "formatted": "♎ 28°43' ℞",
+          "longitude": 208.722659,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "LIBRA",
+          "speed": -0.59225039
+        },
+        {
+          "formatted": "♌ 16°19'",
+          "longitude": 136.323405,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.51754095
+        },
+        {
+          "formatted": "♌ 23°45'",
+          "longitude": 143.753176,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.13163698
+        },
+        {
+          "formatted": "♈ 09°34' ℞",
+          "longitude": 9.580068,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.06749495
+        },
+        {
+          "formatted": "♊ 04°50' ℞",
+          "longitude": 64.834718,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03419408
+        },
+        {
+          "formatted": "♈ 02°10' ℞",
+          "longitude": 2.181674,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02248308
+        },
+        {
+          "formatted": "♒ 03°05'",
+          "longitude": 303.099223,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00542432
+        },
+        {
+          "formatted": "♒ 27°24' ℞",
+          "longitude": 327.414939,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.17535363
+        }
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "id": "81DCB9DC-86EB-4376-92D1-CAD7ECC6637A",
+      "lunarPhaseAngle": 211.644428,
+      "lunarPhaseLabel": "Gibosa menguante",
+      "positions": [
+        {
+          "formatted": "♏ 05°04'",
+          "longitude": 215.080547,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.99790453
+        },
+        {
+          "formatted": "♊ 06°43'",
+          "longitude": 66.724975,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "GEMINIS",
+          "speed": 14.71814046
+        },
+        {
+          "formatted": "♏ 19°43' ℞",
+          "longitude": 229.718159,
+          "planetKey": "MERCURIO",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.61654133
+        },
+        {
+          "formatted": "♎ 28°08' ℞",
+          "longitude": 208.137604,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "LIBRA",
+          "speed": -0.57720409
+        },
+        {
+          "formatted": "♌ 16°50'",
+          "longitude": 136.839472,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.51458327
+        },
+        {
+          "formatted": "♌ 23°53'",
+          "longitude": 143.883733,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.12947185
+        },
+        {
+          "formatted": "♈ 09°30' ℞",
+          "longitude": 9.513057,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.06652444
+        },
+        {
+          "formatted": "♊ 04°48' ℞",
+          "longitude": 64.800283,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03467444
+        },
+        {
+          "formatted": "♈ 02°09' ℞",
+          "longitude": 2.159364,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02213809
+        },
+        {
+          "formatted": "♒ 03°06'",
+          "longitude": 303.104895,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00591678
+        },
+        {
+          "formatted": "♒ 27°14' ℞",
+          "longitude": 327.247453,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.15639332
+        }
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "id": "4258C33D-85C6-4A9A-A1FA-D4067BA53FD1",
+      "lunarPhaseAngle": 225.341248,
+      "lunarPhaseLabel": "Gibosa menguante",
+      "positions": [
+        {
+          "formatted": "♏ 06°04'",
+          "longitude": 216.078751,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.998505
+        },
+        {
+          "formatted": "♊ 21°25'",
+          "longitude": 81.419999,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "GEMINIS",
+          "speed": 14.65268944
+        },
+        {
+          "formatted": "♏ 19°01' ℞",
+          "longitude": 229.025025,
+          "planetKey": "MERCURIO",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.76905816
+        },
+        {
+          "formatted": "♎ 27°34' ℞",
+          "longitude": 207.569519,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "LIBRA",
+          "speed": -0.55834966
+        },
+        {
+          "formatted": "♌ 17°21'",
+          "longitude": 137.35255,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.51156016
+        },
+        {
+          "formatted": "♌ 24°00'",
+          "longitude": 144.012106,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.12726722
+        },
+        {
+          "formatted": "♈ 09°26' ℞",
+          "longitude": 9.447029,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.06552742
+        },
+        {
+          "formatted": "♊ 04°45' ℞",
+          "longitude": 64.765371,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03514973
+        },
+        {
+          "formatted": "♈ 02°08' ℞",
+          "longitude": 2.137399,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.0217924
+        },
+        {
+          "formatted": "♒ 03°06'",
+          "longitude": 303.111056,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00640102
+        },
+        {
+          "formatted": "♒ 27°06' ℞",
+          "longitude": 327.107669,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.12102228
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "id": "EE0EB83C-741B-428D-B37C-ECBBFB84A769",
+      "lunarPhaseAngle": 238.919371,
+      "lunarPhaseLabel": "Gibosa menguante",
+      "positions": [
+        {
+          "formatted": "♏ 07°04'",
+          "longitude": 217.077557,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.99910663
+        },
+        {
+          "formatted": "♋ 05°59'",
+          "longitude": 95.996927,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "CANCER",
+          "speed": 14.48736876
+        },
+        {
+          "formatted": "♏ 18°10' ℞",
+          "longitude": 228.182321,
+          "planetKey": "MERCURIO",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -0.91470903
+        },
+        {
+          "formatted": "♎ 27°01' ℞",
+          "longitude": 207.02209,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "LIBRA",
+          "speed": -0.53593638
+        },
+        {
+          "formatted": "♌ 17°51'",
+          "longitude": 137.862568,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.50846352
+        },
+        {
+          "formatted": "♌ 24°08'",
+          "longitude": 144.138253,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.12501923
+        },
+        {
+          "formatted": "♈ 09°22' ℞",
+          "longitude": 9.382011,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.06450638
+        },
+        {
+          "formatted": "♊ 04°43' ℞",
+          "longitude": 64.729985,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03562219
+        },
+        {
+          "formatted": "♈ 02°06' ℞",
+          "longitude": 2.115779,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.0214485
+        },
+        {
+          "formatted": "♒ 03°07'",
+          "longitude": 303.117695,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.00687439
+        },
+        {
+          "formatted": "♒ 27°00' ℞",
+          "longitude": 327.008204,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.07730782
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "id": "13C25051-F822-4EE8-96FF-B81C47F742F5",
+      "lunarPhaseAngle": 252.296343,
+      "lunarPhaseLabel": "Cuarto menguante",
+      "positions": [
+        {
+          "formatted": "♏ 08°04'",
+          "longitude": 218.076963,
+          "planetKey": "SOL",
+          "retrograde": false,
+          "signKey": "ESCORPIO",
+          "speed": 0.99970528
+        },
+        {
+          "formatted": "♋ 20°22'",
+          "longitude": 110.373306,
+          "planetKey": "LUNA",
+          "retrograde": false,
+          "signKey": "CANCER",
+          "speed": 14.2578434
+        },
+        {
+          "formatted": "♏ 17°11' ℞",
+          "longitude": 227.199996,
+          "planetKey": "MERCURIO",
+          "retrograde": true,
+          "signKey": "ESCORPIO",
+          "speed": -1.04717636
+        },
+        {
+          "formatted": "♎ 26°29' ℞",
+          "longitude": 206.498738,
+          "planetKey": "VENUS",
+          "retrograde": true,
+          "signKey": "LIBRA",
+          "speed": -0.51024935
+        },
+        {
+          "formatted": "♌ 18°22'",
+          "longitude": 138.369451,
+          "planetKey": "MARTE",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.50528945
+        },
+        {
+          "formatted": "♌ 24°15'",
+          "longitude": 144.26213,
+          "planetKey": "JUPITER",
+          "retrograde": false,
+          "signKey": "LEO",
+          "speed": 0.12272771
+        },
+        {
+          "formatted": "♈ 09°19' ℞",
+          "longitude": 9.318025,
+          "planetKey": "SATURNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.06346033
+        },
+        {
+          "formatted": "♊ 04°41' ℞",
+          "longitude": 64.694128,
+          "planetKey": "URANO",
+          "retrograde": true,
+          "signKey": "GEMINIS",
+          "speed": -0.03609057
+        },
+        {
+          "formatted": "♈ 02°05' ℞",
+          "longitude": 2.094502,
+          "planetKey": "NEPTUNO",
+          "retrograde": true,
+          "signKey": "ARIES",
+          "speed": -0.02110549
+        },
+        {
+          "formatted": "♒ 03°07'",
+          "longitude": 303.124801,
+          "planetKey": "PLUTON",
+          "retrograde": false,
+          "signKey": "ACUARIO",
+          "speed": 0.0073376
+        },
+        {
+          "formatted": "♒ 26°57' ℞",
+          "longitude": 326.952162,
+          "planetKey": "NODO_NORTE",
+          "retrograde": true,
+          "signKey": "ACUARIO",
+          "speed": -0.03586123
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "aspectKey": "SEXTIL",
+      "aspectLabel": "⚹ Sextil",
+      "dateLocal": "2026-10-02 04:41",
+      "dateUTC": "2026-10-02T02:41:36Z",
+      "formatted": "♊ Géminis 19°47'",
+      "id": "87AB7FA6-C1FF-46D6-AB98-08CE481FCC13",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "♃ Júpiter",
+      "lastAspectType": "⚹ Sextil",
+      "longitude": 79.787559,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "GEMINIS",
+      "signLabel": "♊ Géminis",
+      "subtitle": "Último aspecto: ⚹ Sextil con ♃ Júpiter — inicia 04:41",
+      "title": "☽ Luna vacía de curso en ♊ Géminis",
+      "voidDurationMinutes": 1033,
+      "voidEnds": "2026-10-02T19:54:15Z"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-02 11:14",
+      "dateUTC": "2026-10-02T09:14:24Z",
+      "formatted": "♏ Escorpio 02°29'",
+      "id": "D66D4E84-69F2-48B3-A5B0-8403B0957F99",
+      "importance": 1,
+      "kind": "mundaneAspect",
+      "longitude": 212.4937,
+      "planetKeyA": "MERCURIO",
+      "planetKeyB": "MARTE",
+      "planetLabelA": "☿ Mercurio",
+      "planetLabelB": "♂ Marte",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Exacto — 11:14",
+      "title": "☿ Mercurio □ Cuadratura ♂ Marte"
+    },
+    {
+      "dateLocal": "2026-10-02 21:54",
+      "dateUTC": "2026-10-02T19:54:15Z",
+      "formatted": "♋ Cáncer 00°00'",
+      "id": "E0FF9630-6A65-4E88-8433-C41F1CBA69FC",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 90.001766,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "CANCER",
+      "signLabel": "♋ Cáncer",
+      "subtitle": "Ingreso lunar — 21:54",
+      "title": "☽ Fin de Luna vacía: ingreso en ♋ Cáncer"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-02 22:42",
+      "dateUTC": "2026-10-02T20:42:46Z",
+      "formatted": "♏ Escorpio 03°06'",
+      "id": "2392B7DD-C6EF-4BFF-9D01-88CBBCB5103F",
+      "importance": 1,
+      "kind": "mundaneAspect",
+      "longitude": 213.11019,
+      "planetKeyA": "MERCURIO",
+      "planetKeyB": "PLUTON",
+      "planetLabelA": "☿ Mercurio",
+      "planetLabelB": "♇ Plutón ℞",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Exacto — 22:42",
+      "title": "☿ Mercurio □ Cuadratura ♇ Plutón"
+    },
+    {
+      "aspectKey": "SEXTIL",
+      "aspectLabel": "⚹ Sextil",
+      "dateLocal": "2026-10-03 00:17",
+      "dateUTC": "2026-10-02T22:17:41Z",
+      "formatted": "♌ Leo 02°48'",
+      "id": "595C61F2-6139-485D-B2BE-E044230E03D4",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 122.80893,
+      "planetKeyA": "MARTE",
+      "planetKeyB": "NEPTUNO",
+      "planetLabelA": "♂ Marte",
+      "planetLabelB": "♆ Neptuno ℞",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Exacto — 00:17",
+      "title": "♂ Marte ⚹ Sextil ♆ Neptuno"
+    },
+    {
+      "aspectKey": "TRIGONO",
+      "aspectLabel": "△ Trígono",
+      "dateLocal": "2026-10-03 00:17",
+      "dateUTC": "2026-10-02T22:17:41Z",
+      "formatted": "♌ Leo 02°48'",
+      "id": "61CB63B5-4927-4A1F-927C-AE43D554AD08",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 122.80893,
+      "planetKeyA": "MARTE",
+      "planetKeyB": "NEPTUNO",
+      "planetLabelA": "♂ Marte",
+      "planetLabelB": "♆ Neptuno ℞",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Exacto — 00:17",
+      "title": "♂ Marte △ Trígono ♆ Neptuno"
+    },
+    {
+      "dateLocal": "2026-10-03 09:15",
+      "dateUTC": "2026-10-03T07:15:35Z",
+      "formatted": "♏ Escorpio 08°29'",
+      "id": "A08953DA-524C-4DC3-98EA-9536475C1D87",
+      "importance": 3,
+      "kind": "stationRetrograde",
+      "longitude": 218.491152,
+      "planetKeyA": "VENUS",
+      "planetLabelA": "♀ Venus",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "stationSpeed": 8.47e-06,
+      "subtitle": "SR — ♏ Escorpio 08°29' — 09:15",
+      "title": "♀ Venus estación retrógrada en ♏ Escorpio"
+    },
+    {
+      "aspectKey": "CONJUNCION",
+      "aspectLabel": "☌ Conjunción",
+      "dateLocal": "2026-10-03 12:38",
+      "dateUTC": "2026-10-03T10:38:47Z",
+      "formatted": "♌ Leo 03°06'",
+      "id": "8A2966A7-ED9D-46B0-A7AC-3D95EF6D27AE",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 123.106648,
+      "planetKeyA": "MARTE",
+      "planetKeyB": "PLUTON",
+      "planetLabelA": "♂ Marte",
+      "planetLabelB": "♇ Plutón ℞",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Exacto — 12:38",
+      "title": "♂ Marte ☌ Conjunción ♇ Plutón"
+    },
+    {
+      "aspectKey": "OPOSICION",
+      "aspectLabel": "☍ Oposición",
+      "dateLocal": "2026-10-03 12:38",
+      "dateUTC": "2026-10-03T10:38:47Z",
+      "formatted": "♌ Leo 03°06'",
+      "id": "059290F3-287E-47A8-AB38-86464EED2E5C",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 123.106648,
+      "planetKeyA": "MARTE",
+      "planetKeyB": "PLUTON",
+      "planetLabelA": "♂ Marte",
+      "planetLabelB": "♇ Plutón ℞",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Exacto — 12:38",
+      "title": "♂ Marte ☍ Oposición ♇ Plutón"
+    },
+    {
+      "dateLocal": "2026-10-03 15:24",
+      "dateUTC": "2026-10-03T13:24:43Z",
+      "formatted": "♋ Cáncer 10°21'",
+      "id": "F2A2D279-C8BE-4B4C-88D3-F0805C42DBCC",
+      "importance": 3,
+      "kind": "lastQuarter",
+      "longitude": 100.352256,
+      "planetKeyA": "LUNA",
+      "planetKeyB": "SOL",
+      "planetLabelA": "☽ Luna",
+      "planetLabelB": "☉ Sol",
+      "signKey": "CANCER",
+      "signLabel": "♋ Cáncer",
+      "subtitle": "♋ Cáncer 10°21' — 15:24",
+      "title": "🌗 Cuarto Menguante en ♋ Cáncer"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-03 17:08",
+      "dateUTC": "2026-10-03T15:08:47Z",
+      "formatted": "♋ Cáncer 11°22'",
+      "id": "D7D87821-63BD-4B5A-991C-3B64EB747697",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "♄ Saturno",
+      "lastAspectType": "□ Cuadratura",
+      "longitude": 101.374921,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "CANCER",
+      "signLabel": "♋ Cáncer",
+      "subtitle": "Último aspecto: □ Cuadratura con ♄ Saturno — inicia 17:08",
+      "title": "☽ Luna vacía de curso en ♋ Cáncer",
+      "voidDurationMinutes": 1905,
+      "voidEnds": "2026-10-04T22:54:15Z"
+    },
+    {
+      "aspectKey": "CONJUNCION",
+      "aspectLabel": "☌ Conjunción",
+      "dateLocal": "2026-10-04 14:29",
+      "dateUTC": "2026-10-04T12:29:10Z",
+      "formatted": "♎ Libra 11°18'",
+      "id": "BAD0B611-3C36-4974-8D18-B3726332E972",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 191.302015,
+      "planetKeyA": "SOL",
+      "planetKeyB": "SATURNO",
+      "planetLabelA": "☉ Sol",
+      "planetLabelB": "♄ Saturno ℞",
+      "signKey": "LIBRA",
+      "signLabel": "♎ Libra",
+      "subtitle": "Exacto — 14:29",
+      "title": "☉ Sol ☌ Conjunción ♄ Saturno"
+    },
+    {
+      "aspectKey": "OPOSICION",
+      "aspectLabel": "☍ Oposición",
+      "dateLocal": "2026-10-04 14:29",
+      "dateUTC": "2026-10-04T12:29:10Z",
+      "formatted": "♎ Libra 11°18'",
+      "id": "CD8E5CED-D0FA-4297-BA35-B79945F39368",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 191.302015,
+      "planetKeyA": "SOL",
+      "planetKeyB": "SATURNO",
+      "planetLabelA": "☉ Sol",
+      "planetLabelB": "♄ Saturno ℞",
+      "signKey": "LIBRA",
+      "signLabel": "♎ Libra",
+      "subtitle": "Exacto — 14:29",
+      "title": "☉ Sol ☍ Oposición ♄ Saturno"
+    },
+    {
+      "dateLocal": "2026-10-05 00:54",
+      "dateUTC": "2026-10-04T22:54:15Z",
+      "formatted": "♌ Leo 00°00'",
+      "id": "9B174957-0579-40BF-8574-EA6933BDE1ED",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 120.000542,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Ingreso lunar — 00:54",
+      "title": "☽ Fin de Luna vacía: ingreso en ♌ Leo"
+    },
+    {
+      "aspectKey": "SEXTIL",
+      "aspectLabel": "⚹ Sextil",
+      "dateLocal": "2026-10-05 22:38",
+      "dateUTC": "2026-10-05T20:38:05Z",
+      "formatted": "♌ Leo 12°37'",
+      "id": "7E83EDB0-41A6-4DE8-9FCF-D92D6C798103",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "☉ Sol",
+      "lastAspectType": "⚹ Sextil",
+      "longitude": 132.622348,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Último aspecto: ⚹ Sextil con ☉ Sol — inicia 22:38",
+      "title": "☽ Luna vacía de curso en ♌ Leo",
+      "voidDurationMinutes": 1815,
+      "voidEnds": "2026-10-07T02:52:37Z"
+    },
+    {
+      "dateLocal": "2026-10-07 04:52",
+      "dateUTC": "2026-10-07T02:52:37Z",
+      "formatted": "♌ Leo 00°00'",
+      "id": "4B78EBBE-CEDC-4EF2-8481-5FE555A21482",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 149.99996,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Ingreso lunar — 04:52",
+      "title": "☽ Fin de Luna vacía: ingreso en ♌ Leo"
+    },
+    {
+      "aspectKey": "SEXTIL",
+      "aspectLabel": "⚹ Sextil",
+      "dateLocal": "2026-10-07 12:41",
+      "dateUTC": "2026-10-07T10:41:36Z",
+      "formatted": "♌ Leo 05°24'",
+      "id": "87A65F95-4320-4ACC-A3CC-59430E6F2BD1",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 125.402544,
+      "planetKeyA": "MARTE",
+      "planetKeyB": "URANO",
+      "planetLabelA": "♂ Marte",
+      "planetLabelB": "⛢ Urano ℞",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Exacto — 12:41",
+      "title": "♂ Marte ⚹ Sextil ⛢ Urano"
+    },
+    {
+      "aspectKey": "TRIGONO",
+      "aspectLabel": "△ Trígono",
+      "dateLocal": "2026-10-07 12:41",
+      "dateUTC": "2026-10-07T10:41:36Z",
+      "formatted": "♌ Leo 05°24'",
+      "id": "BCE67300-02F9-4326-B54B-B57466F3F113",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 125.402544,
+      "planetKeyA": "MARTE",
+      "planetKeyB": "URANO",
+      "planetLabelA": "♂ Marte",
+      "planetLabelB": "⛢ Urano ℞",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Exacto — 12:41",
+      "title": "♂ Marte △ Trígono ⛢ Urano"
+    },
+    {
+      "aspectKey": "SEXTIL",
+      "aspectLabel": "⚹ Sextil",
+      "dateLocal": "2026-10-07 20:56",
+      "dateUTC": "2026-10-07T18:56:50Z",
+      "formatted": "♍ Virgo 09°08'",
+      "id": "A588689A-DE51-4D16-9730-C5AE6601C5D5",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "☿ Mercurio",
+      "lastAspectType": "⚹ Sextil",
+      "longitude": 159.135991,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "VIRGO",
+      "signLabel": "♍ Virgo",
+      "subtitle": "Último aspecto: ⚹ Sextil con ☿ Mercurio — inicia 20:56",
+      "title": "☽ Luna vacía de curso en ♍ Virgo",
+      "voidDurationMinutes": 2234,
+      "voidEnds": "2026-10-09T08:10:25Z"
+    },
+    {
+      "dateLocal": "2026-10-09 10:10",
+      "dateUTC": "2026-10-09T08:10:25Z",
+      "formatted": "♍ Virgo 00°00'",
+      "id": "AC4E5BB6-B5AC-4CF0-A850-481E31744A43",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 179.998852,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "VIRGO",
+      "signLabel": "♍ Virgo",
+      "subtitle": "Ingreso lunar — 10:10",
+      "title": "☽ Fin de Luna vacía: ingreso en ♍ Virgo"
+    },
+    {
+      "aspectKey": "CONJUNCION",
+      "aspectLabel": "☌ Conjunción",
+      "dateLocal": "2026-10-10 17:50",
+      "dateUTC": "2026-10-10T15:50:16Z",
+      "formatted": "♎ Libra 17°21'",
+      "id": "3D625CDD-44AF-4937-BC73-B4426F36C806",
+      "importance": 3,
+      "kind": "newMoon",
+      "longitude": 197.362326,
+      "planetKeyA": "LUNA",
+      "planetKeyB": "SOL",
+      "planetLabelA": "☽ Luna",
+      "planetLabelB": "☉ Sol",
+      "signKey": "LIBRA",
+      "signLabel": "♎ Libra",
+      "subtitle": "♎ Libra 17°21' — 17:50",
+      "title": "🌑 Luna Nueva en ♎ Libra"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-10 23:31",
+      "dateUTC": "2026-10-10T21:31:17Z",
+      "formatted": "♏ Escorpio 07°21'",
+      "id": "1828B904-80D6-4F50-A611-D3D25C812BFD",
+      "importance": 1,
+      "kind": "mundaneAspect",
+      "longitude": 217.353666,
+      "planetKeyA": "VENUS",
+      "planetKeyB": "MARTE",
+      "planetLabelA": "♀ Venus ℞",
+      "planetLabelB": "♂ Marte",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Exacto — 23:31",
+      "title": "♀ Venus □ Cuadratura ♂ Marte"
+    },
+    {
+      "aspectKey": "SEXTIL",
+      "aspectLabel": "⚹ Sextil",
+      "dateLocal": "2026-10-11 01:06",
+      "dateUTC": "2026-10-10T23:06:54Z",
+      "formatted": "♎ Libra 21°17'",
+      "id": "063EF49A-F421-46E5-86A8-BB9C6FFD6187",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "♃ Júpiter",
+      "lastAspectType": "⚹ Sextil",
+      "longitude": 201.297562,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "LIBRA",
+      "signLabel": "♎ Libra",
+      "subtitle": "Último aspecto: ⚹ Sextil con ♃ Júpiter — inicia 01:06",
+      "title": "☽ Luna vacía de curso en ♎ Libra",
+      "voidDurationMinutes": 975,
+      "voidEnds": "2026-10-11T15:21:26Z"
+    },
+    {
+      "dateLocal": "2026-10-11 17:21",
+      "dateUTC": "2026-10-11T15:21:26Z",
+      "formatted": "♏ Escorpio 00°00'",
+      "id": "BE6D1AA5-FC85-457B-932C-805443B48B7F",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 210.001716,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Ingreso lunar — 17:21",
+      "title": "☽ Fin de Luna vacía: ingreso en ♏ Escorpio"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-13 10:45",
+      "dateUTC": "2026-10-13T08:45:49Z",
+      "formatted": "♏ Escorpio 21°41'",
+      "id": "6535B46D-018E-43BA-9E47-6E97C10060C6",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "♃ Júpiter",
+      "lastAspectType": "□ Cuadratura",
+      "longitude": 231.689852,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Último aspecto: □ Cuadratura con ♃ Júpiter — inicia 10:45",
+      "title": "☽ Luna vacía de curso en ♏ Escorpio",
+      "voidDurationMinutes": 974,
+      "voidEnds": "2026-10-14T00:59:24Z"
+    },
+    {
+      "dateLocal": "2026-10-14 02:59",
+      "dateUTC": "2026-10-14T00:59:24Z",
+      "formatted": "♐ Sagitario 00°00'",
+      "id": "975F02FA-66F8-4113-AFE7-EA6348596105",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 240.000081,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "SAGITARIO",
+      "signLabel": "♐ Sagitario",
+      "subtitle": "Ingreso lunar — 02:59",
+      "title": "☽ Fin de Luna vacía: ingreso en ♐ Sagitario"
+    },
+    {
+      "aspectKey": "SEXTIL",
+      "aspectLabel": "⚹ Sextil",
+      "dateLocal": "2026-10-15 10:21",
+      "dateUTC": "2026-10-15T08:21:40Z",
+      "formatted": "♎ Libra 22°00'",
+      "id": "55199E3A-2B1B-4229-9585-08A40EF9AA7C",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 202.00218,
+      "planetKeyA": "SOL",
+      "planetKeyB": "JUPITER",
+      "planetLabelA": "☉ Sol",
+      "planetLabelB": "♃ Júpiter",
+      "signKey": "LIBRA",
+      "signLabel": "♎ Libra",
+      "subtitle": "Exacto — 10:21",
+      "title": "☉ Sol ⚹ Sextil ♃ Júpiter"
+    },
+    {
+      "aspectKey": "TRIGONO",
+      "aspectLabel": "△ Trígono",
+      "dateLocal": "2026-10-15 10:21",
+      "dateUTC": "2026-10-15T08:21:40Z",
+      "formatted": "♎ Libra 22°00'",
+      "id": "389F04F2-C3D1-4BD7-A2E5-724CA9293527",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 202.00218,
+      "planetKeyA": "SOL",
+      "planetKeyB": "JUPITER",
+      "planetLabelA": "☉ Sol",
+      "planetLabelB": "♃ Júpiter",
+      "signKey": "LIBRA",
+      "signLabel": "♎ Libra",
+      "subtitle": "Exacto — 10:21",
+      "title": "☉ Sol △ Trígono ♃ Júpiter"
+    },
+    {
+      "aspectKey": "SEXTIL",
+      "aspectLabel": "⚹ Sextil",
+      "dateLocal": "2026-10-15 23:55",
+      "dateUTC": "2026-10-15T21:55:53Z",
+      "formatted": "♐ Sagitario 22°33'",
+      "id": "477C625E-7BC0-450A-A90E-6D233DBA93B1",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "☉ Sol",
+      "lastAspectType": "⚹ Sextil",
+      "longitude": 262.56444,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "SAGITARIO",
+      "signLabel": "♐ Sagitario",
+      "subtitle": "Último aspecto: ⚹ Sextil con ☉ Sol — inicia 23:55",
+      "title": "☽ Luna vacía de curso en ♐ Sagitario",
+      "voidDurationMinutes": 901,
+      "voidEnds": "2026-10-16T12:57:18Z"
+    },
+    {
+      "dateLocal": "2026-10-16 04:40",
+      "dateUTC": "2026-10-16T02:40:39Z",
+      "formatted": "♒ Acuario 03°04'",
+      "id": "67538AFB-86ED-497F-A48D-70E43CC5FB89",
+      "importance": 3,
+      "kind": "stationDirect",
+      "longitude": 303.068616,
+      "planetKeyA": "PLUTON",
+      "planetLabelA": "♇ Plutón",
+      "signKey": "ACUARIO",
+      "signLabel": "♒ Acuario",
+      "stationSpeed": 1.2e-07,
+      "subtitle": "SD — ♒ Acuario 03°04' — 04:40",
+      "title": "♇ Plutón estación directa en ♒ Acuario"
+    },
+    {
+      "aspectKey": "SEXTIL",
+      "aspectLabel": "⚹ Sextil",
+      "dateLocal": "2026-10-16 10:32",
+      "dateUTC": "2026-10-16T08:32:13Z",
+      "formatted": "♌ Leo 10°22'",
+      "id": "7165EE7E-2819-4D9E-A297-848A3244762B",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 130.382313,
+      "planetKeyA": "MARTE",
+      "planetKeyB": "SATURNO",
+      "planetLabelA": "♂ Marte",
+      "planetLabelB": "♄ Saturno ℞",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Exacto — 10:32",
+      "title": "♂ Marte ⚹ Sextil ♄ Saturno"
+    },
+    {
+      "aspectKey": "TRIGONO",
+      "aspectLabel": "△ Trígono",
+      "dateLocal": "2026-10-16 10:32",
+      "dateUTC": "2026-10-16T08:32:13Z",
+      "formatted": "♌ Leo 10°22'",
+      "id": "06352924-2252-4261-A941-40EA46966C69",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 130.382313,
+      "planetKeyA": "MARTE",
+      "planetKeyB": "SATURNO",
+      "planetLabelA": "♂ Marte",
+      "planetLabelB": "♄ Saturno ℞",
+      "signKey": "LEO",
+      "signLabel": "♌ Leo",
+      "subtitle": "Exacto — 10:32",
+      "title": "♂ Marte △ Trígono ♄ Saturno"
+    },
+    {
+      "dateLocal": "2026-10-16 14:57",
+      "dateUTC": "2026-10-16T12:57:18Z",
+      "formatted": "♑ Capricornio 00°00'",
+      "id": "FB90070D-75A6-4B9F-80CE-66EFF5F1309A",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 270.002281,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "CAPRICORNIO",
+      "signLabel": "♑ Capricornio",
+      "subtitle": "Ingreso lunar — 14:57",
+      "title": "☽ Fin de Luna vacía: ingreso en ♑ Capricornio"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-18 18:12",
+      "dateUTC": "2026-10-18T16:12:32Z",
+      "formatted": "♑ Capricornio 25°18'",
+      "id": "F536442E-796A-402C-8E65-EEF56AE7D8B1",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "☉ Sol",
+      "lastAspectType": "□ Cuadratura",
+      "longitude": 295.301455,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "CAPRICORNIO",
+      "signLabel": "♑ Capricornio",
+      "subtitle": "Último aspecto: □ Cuadratura con ☉ Sol — inicia 18:12",
+      "title": "☽ Luna vacía de curso en ♑ Capricornio",
+      "voidDurationMinutes": 568,
+      "voidEnds": "2026-10-19T01:40:11Z"
+    },
+    {
+      "dateLocal": "2026-10-18 18:12",
+      "dateUTC": "2026-10-18T16:12:46Z",
+      "formatted": "♑ Capricornio 25°18'",
+      "id": "17BBD94C-4FD8-42DB-B98F-0C0731B68676",
+      "importance": 3,
+      "kind": "firstQuarter",
+      "longitude": 295.303404,
+      "planetKeyA": "LUNA",
+      "planetKeyB": "SOL",
+      "planetLabelA": "☽ Luna",
+      "planetLabelB": "☉ Sol",
+      "signKey": "CAPRICORNIO",
+      "signLabel": "♑ Capricornio",
+      "subtitle": "♑ Capricornio 25°18' — 18:12",
+      "title": "🌓 Cuarto Creciente en ♑ Capricornio"
+    },
+    {
+      "dateLocal": "2026-10-19 03:40",
+      "dateUTC": "2026-10-19T01:40:11Z",
+      "formatted": "♒ Acuario 00°00'",
+      "id": "F98144B3-51BA-4ADD-B33A-B4D597A7A952",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 300.002233,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "ACUARIO",
+      "signLabel": "♒ Acuario",
+      "subtitle": "Ingreso lunar — 03:40",
+      "title": "☽ Fin de Luna vacía: ingreso en ♒ Acuario"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-20 08:55",
+      "dateUTC": "2026-10-20T06:55:53Z",
+      "formatted": "♏ Escorpio 03°04'",
+      "id": "B4FF9D4F-9316-4CEC-B0E9-A7526133E9B1",
+      "importance": 1,
+      "kind": "mundaneAspect",
+      "longitude": 213.072833,
+      "planetKeyA": "VENUS",
+      "planetKeyB": "PLUTON",
+      "planetLabelA": "♀ Venus ℞",
+      "planetLabelB": "♇ Plutón",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Exacto — 08:55",
+      "title": "♀ Venus □ Cuadratura ♇ Plutón"
+    },
+    {
+      "aspectKey": "TRIGONO",
+      "aspectLabel": "△ Trígono",
+      "dateLocal": "2026-10-21 10:42",
+      "dateUTC": "2026-10-21T08:42:46Z",
+      "formatted": "♒ Acuario 27°58'",
+      "id": "42AEEF0E-B99D-4F4D-BCDB-BB5853812357",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "☉ Sol",
+      "lastAspectType": "△ Trígono",
+      "longitude": 327.975802,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "ACUARIO",
+      "signLabel": "♒ Acuario",
+      "subtitle": "Último aspecto: △ Trígono con ☉ Sol — inicia 10:42",
+      "title": "☽ Luna vacía de curso en ♒ Acuario",
+      "voidDurationMinutes": 232,
+      "voidEnds": "2026-10-21T12:34:48Z"
+    },
+    {
+      "dateLocal": "2026-10-21 14:34",
+      "dateUTC": "2026-10-21T12:34:48Z",
+      "formatted": "♒ Acuario 00°00'",
+      "id": "44DBFB6E-3AA3-48E0-B386-AC0634AA56A4",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 329.996981,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "ACUARIO",
+      "signLabel": "♒ Acuario",
+      "subtitle": "Ingreso lunar — 14:34",
+      "title": "☽ Fin de Luna vacía: ingreso en ♒ Acuario"
+    },
+    {
+      "aspectKey": "TRIGONO",
+      "aspectLabel": "△ Trígono",
+      "dateLocal": "2026-10-23 05:31",
+      "dateUTC": "2026-10-23T03:31:31Z",
+      "formatted": "♓ Piscis 20°53'",
+      "id": "C0ADF7E6-D157-469A-8875-DB10A30484B3",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "☿ Mercurio",
+      "lastAspectType": "△ Trígono",
+      "longitude": 350.895301,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "PISCIS",
+      "signLabel": "♓ Piscis",
+      "subtitle": "Último aspecto: △ Trígono con ☿ Mercurio — inicia 05:31",
+      "title": "☽ Luna vacía de curso en ♓ Piscis",
+      "voidDurationMinutes": 982,
+      "voidEnds": "2026-10-23T19:53:33Z"
+    },
+    {
+      "dateLocal": "2026-10-23 11:37",
+      "dateUTC": "2026-10-23T09:37:37Z",
+      "formatted": "♏ Escorpio 00°00'",
+      "id": "4288B374-64C0-4382-8823-41C6015071C5",
+      "importance": 2,
+      "ingressDirection": "directo",
+      "kind": "signIngress",
+      "longitude": 209.999774,
+      "planetKeyA": "SOL",
+      "planetLabelA": "☉ Sol",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Directo — 11:37",
+      "title": "☉ Sol ingresa en ♏ Escorpio"
+    },
+    {
+      "dateLocal": "2026-10-23 21:53",
+      "dateUTC": "2026-10-23T19:53:33Z",
+      "formatted": "♓ Piscis 00°00'",
+      "id": "3C21799E-F1B8-4AD9-AF96-7CB5D3B4591E",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 359.999982,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "PISCIS",
+      "signLabel": "♓ Piscis",
+      "subtitle": "Ingreso lunar — 21:53",
+      "title": "☽ Fin de Luna vacía: ingreso en ♓ Piscis"
+    },
+    {
+      "aspectKey": "CONJUNCION",
+      "aspectLabel": "☌ Conjunción",
+      "dateLocal": "2026-10-24 05:43",
+      "dateUTC": "2026-10-24T03:43:56Z",
+      "formatted": "♏ Escorpio 00°45'",
+      "id": "312F2FF6-2540-4F80-8350-5B1ACB12FE55",
+      "importance": 1,
+      "kind": "mundaneAspect",
+      "longitude": 210.750604,
+      "planetKeyA": "SOL",
+      "planetKeyB": "VENUS",
+      "planetLabelA": "☉ Sol",
+      "planetLabelB": "♀ Venus ℞",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Exacto — 05:43",
+      "title": "☉ Sol ☌ Conjunción ♀ Venus"
+    },
+    {
+      "aspectKey": "OPOSICION",
+      "aspectLabel": "☍ Oposición",
+      "dateLocal": "2026-10-24 05:43",
+      "dateUTC": "2026-10-24T03:43:56Z",
+      "formatted": "♏ Escorpio 00°45'",
+      "id": "69E4AB31-2456-4B56-B91B-FF31C2CEE0B5",
+      "importance": 1,
+      "kind": "mundaneAspect",
+      "longitude": 210.750604,
+      "planetKeyA": "SOL",
+      "planetKeyB": "VENUS",
+      "planetLabelA": "☉ Sol",
+      "planetLabelB": "♀ Venus ℞",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Exacto — 05:43",
+      "title": "☉ Sol ☍ Oposición ♀ Venus"
+    },
+    {
+      "dateLocal": "2026-10-24 09:12",
+      "dateUTC": "2026-10-24T07:12:46Z",
+      "formatted": "♏ Escorpio 20°58'",
+      "id": "8E3E49C0-ACD0-4222-8942-75D95B4FF79E",
+      "importance": 3,
+      "kind": "stationRetrograde",
+      "longitude": 230.978988,
+      "planetKeyA": "MERCURIO",
+      "planetLabelA": "☿ Mercurio",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "stationSpeed": -5.34e-06,
+      "subtitle": "SR — ♏ Escorpio 20°58' — 09:12",
+      "title": "☿ Mercurio estación retrógrada en ♏ Escorpio"
+    },
+    {
+      "dateLocal": "2026-10-25 10:09",
+      "dateUTC": "2026-10-25T09:09:29Z",
+      "formatted": "♎ Libra 00°00'",
+      "id": "1CCB2789-C5D5-45C5-B5F4-0337E2932BC6",
+      "importance": 1,
+      "ingressDirection": "retrógrado",
+      "kind": "signIngress",
+      "longitude": 210.000131,
+      "planetKeyA": "VENUS",
+      "planetLabelA": "♀ Venus",
+      "signKey": "LIBRA",
+      "signLabel": "♎ Libra",
+      "subtitle": "Retrógrado — 10:09",
+      "title": "♀ Venus ingresa en ♎ Libra"
+    },
+    {
+      "aspectKey": "TRIGONO",
+      "aspectLabel": "△ Trígono",
+      "dateLocal": "2026-10-25 13:36",
+      "dateUTC": "2026-10-25T12:36:26Z",
+      "formatted": "♈ Aries 23°29'",
+      "id": "3EBF8E3B-6682-4EDD-ADF9-45F92FF7AD9F",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "♃ Júpiter",
+      "lastAspectType": "△ Trígono",
+      "longitude": 23.486592,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "ARIES",
+      "signLabel": "♈ Aries",
+      "subtitle": "Último aspecto: △ Trígono con ♃ Júpiter — inicia 13:36",
+      "title": "☽ Luna vacía de curso en ♈ Aries",
+      "voidDurationMinutes": 659,
+      "voidEnds": "2026-10-25T23:35:02Z"
+    },
+    {
+      "dateLocal": "2026-10-26 00:35",
+      "dateUTC": "2026-10-25T23:35:02Z",
+      "formatted": "♉ Tauro 00°00'",
+      "id": "DAC4C9DD-55B3-4671-818B-CBF6E10473FF",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 30.003386,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "TAURO",
+      "signLabel": "♉ Tauro",
+      "subtitle": "Ingreso lunar — 00:35",
+      "title": "☽ Fin de Luna vacía: ingreso en ♉ Tauro"
+    },
+    {
+      "aspectKey": "OPOSICION",
+      "aspectLabel": "☍ Oposición",
+      "dateLocal": "2026-10-26 05:12",
+      "dateUTC": "2026-10-26T04:12:04Z",
+      "formatted": "♉ Tauro 02°45'",
+      "id": "BFDAAC84-DFA4-4EB0-AC4D-CF5E32A53830",
+      "importance": 3,
+      "kind": "fullMoon",
+      "longitude": 32.764394,
+      "planetKeyA": "LUNA",
+      "planetKeyB": "SOL",
+      "planetLabelA": "☽ Luna",
+      "planetLabelB": "☉ Sol",
+      "signKey": "TAURO",
+      "signLabel": "♉ Tauro",
+      "subtitle": "♉ Tauro 02°45' — 05:12",
+      "title": "🌕 Luna Llena en ♉ Tauro"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-26 13:11",
+      "dateUTC": "2026-10-26T12:11:36Z",
+      "formatted": "♏ Escorpio 03°05'",
+      "id": "6E6A74B4-8EDE-4BE0-9035-6013E346128E",
+      "importance": 2,
+      "kind": "mundaneAspect",
+      "longitude": 213.093949,
+      "planetKeyA": "SOL",
+      "planetKeyB": "PLUTON",
+      "planetLabelA": "☉ Sol",
+      "planetLabelB": "♇ Plutón",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Exacto — 13:11",
+      "title": "☉ Sol □ Cuadratura ♇ Plutón"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-27 15:51",
+      "dateUTC": "2026-10-27T14:51:26Z",
+      "formatted": "♉ Tauro 23°46'",
+      "id": "0415E43B-359A-4D66-81AB-05BAC54830D9",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "♃ Júpiter",
+      "lastAspectType": "□ Cuadratura",
+      "longitude": 53.7717,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "TAURO",
+      "signLabel": "♉ Tauro",
+      "subtitle": "Último aspecto: □ Cuadratura con ♃ Júpiter — inicia 15:51",
+      "title": "☽ Luna vacía de curso en ♉ Tauro",
+      "voidDurationMinutes": 611,
+      "voidEnds": "2026-10-28T01:02:13Z"
+    },
+    {
+      "dateLocal": "2026-10-28 02:02",
+      "dateUTC": "2026-10-28T01:02:13Z",
+      "formatted": "♊ Géminis 00°00'",
+      "id": "9E5D9322-4A54-4468-875B-9D4912D98BD0",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 60.003359,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "GEMINIS",
+      "signLabel": "♊ Géminis",
+      "subtitle": "Ingreso lunar — 02:02",
+      "title": "☽ Fin de Luna vacía: ingreso en ♊ Géminis"
+    },
+    {
+      "aspectKey": "TRIGONO",
+      "aspectLabel": "△ Trígono",
+      "dateLocal": "2026-10-29 22:43",
+      "dateUTC": "2026-10-29T21:43:28Z",
+      "formatted": "♊ Géminis 27°20'",
+      "id": "37D2C58A-3432-4499-9098-714177473656",
+      "importance": 2,
+      "kind": "voidOfCourse",
+      "lastAspectPlanet": "♀ Venus",
+      "lastAspectType": "△ Trígono",
+      "longitude": 87.346136,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "GEMINIS",
+      "signLabel": "♊ Géminis",
+      "subtitle": "Último aspecto: △ Trígono con ♀ Venus — inicia 22:43",
+      "title": "☽ Luna vacía de curso en ♊ Géminis",
+      "voidDurationMinutes": 262,
+      "voidEnds": "2026-10-30T02:05:30Z"
+    },
+    {
+      "dateLocal": "2026-10-30 03:05",
+      "dateUTC": "2026-10-30T02:05:30Z",
+      "formatted": "♊ Géminis 00°00'",
+      "id": "95F30965-4200-46AA-9C74-F4C197A32B3C",
+      "importance": 1,
+      "kind": "voidOfCourseEnd",
+      "longitude": 89.999383,
+      "planetKeyA": "LUNA",
+      "planetLabelA": "☽ Luna",
+      "signKey": "GEMINIS",
+      "signLabel": "♊ Géminis",
+      "subtitle": "Ingreso lunar — 03:05",
+      "title": "☽ Fin de Luna vacía: ingreso en ♊ Géminis"
+    },
+    {
+      "aspectKey": "CUADRADO",
+      "aspectLabel": "□ Cuadratura",
+      "dateLocal": "2026-10-30 18:20",
+      "dateUTC": "2026-10-30T17:20:16Z",
+      "formatted": "♏ Escorpio 17°58'",
+      "id": "3DBF1308-6E21-4D9F-82DD-C5419D78D854",
+      "importance": 1,
+      "kind": "mundaneAspect",
+      "longitude": 227.975436,
+      "planetKeyA": "MERCURIO",
+      "planetKeyB": "MARTE",
+      "planetLabelA": "☿ Mercurio ℞",
+      "planetLabelB": "♂ Marte",
+      "signKey": "ESCORPIO",
+      "signLabel": "♏ Escorpio",
+      "subtitle": "Exacto — 18:20",
+      "title": "☿ Mercurio □ Cuadratura ♂ Marte"
+    }
+  ],
+  "id": "2026-10",
+  "month": 10,
+  "year": 2026
+}

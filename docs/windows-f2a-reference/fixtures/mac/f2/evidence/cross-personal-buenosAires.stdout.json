@@ -1,0 +1,2408 @@
+{
+  "chart" : {
+    "ascendant" : "♊ Géminis 23°12'",
+    "birthDate" : "1985-03-15",
+    "birthTime" : "14:00",
+    "houseSystem" : "Placidus",
+    "id" : "22222222-2222-2222-2222-222222222222",
+    "latitude" : -34.6037,
+    "longitude" : -58.3816,
+    "mc" : "♈ Aries 10°43'",
+    "name" : "Buenos Aires Control",
+    "placeName" : "Buenos Aires, Argentina",
+    "timezone" : "America\/Argentina\/Buenos_Aires"
+  },
+  "events" : [
+    {
+      "detail" : "Capítulo mayor de Fortuna en ♊ Géminis. Tema de fondo de este período de la vida.",
+      "from" : "2008-03-15",
+      "id" : "annual.zr.fortune.l1.GEMINIS",
+      "priority" : 0.9,
+      "source" : "zr_l1_fortune",
+      "title" : "ZR Fortuna L1 en ♊ Géminis",
+      "to" : "2028-03-15"
+    },
+    {
+      "detail" : "Capítulo mayor de Espíritu en ♎ Libra. Tema de fondo de este período de la vida.",
+      "from" : "2024-03-15",
+      "id" : "annual.zr.spirit.l1.LIBRA",
+      "priority" : 0.9,
+      "source" : "zr_l1_spirit",
+      "title" : "ZR Espíritu L1 en ♎ Libra",
+      "to" : "2032-03-15"
+    },
+    {
+      "detail" : "Período firdariano mayor en curso. Da el color de fondo de varios años.",
+      "from" : "2025-03-15",
+      "id" : "annual.firdaria.major.SATURNO",
+      "priority" : 0.85,
+      "source" : "firdaria_major",
+      "title" : "Firdaria mayor: Saturno (11 años)",
+      "to" : "2036-03-15"
+    },
+    {
+      "detail" : "Sub-período firdariano en curso. Modula el período mayor.",
+      "from" : "2025-03-15",
+      "id" : "annual.firdaria.minor.SATURNO",
+      "priority" : 0.6,
+      "source" : "firdaria_minor",
+      "title" : "Firdaria menor: Saturno dentro de Saturno",
+      "to" : "2026-10-10"
+    },
+    {
+      "detail" : "Sub-período L2 en curso dentro de ♊ Géminis.",
+      "from" : "2025-09-12",
+      "id" : "annual.zr.fortune.l2.CAPRICORNIO.1757692800",
+      "priority" : 0.75,
+      "source" : "zr_l2_fortune",
+      "title" : "ZR Fortuna L2 en ♑ Capricornio",
+      "to" : "2027-12-01"
+    },
+    {
+      "date" : "2025-10-28",
+      "detail" : "Dirección por arco solar (modo Sol progresado real).",
+      "id" : "medium.solarArc.4C5818C2-002A-460B-AE9B-232F88ACE1A2",
+      "priority" : 0.6,
+      "source" : "solar_arc",
+      "title" : "Arco solar: ♃ Júpiter □ Cuadratura ⛢ Urano"
+    },
+    {
+      "date" : "2025-12-07",
+      "detail" : "Dirección por arco solar (modo Sol progresado real).",
+      "id" : "medium.solarArc.E6873B1C-C04F-47E8-9B2C-AA424557FEDA",
+      "priority" : 0.4,
+      "source" : "solar_arc",
+      "title" : "Arco solar: ⛢ Urano ⚹ Sextil ♄ Saturno"
+    },
+    {
+      "date" : "2025-12-21",
+      "detail" : "Dirección primaria directa en plano zodiacal, clave Naibod.",
+      "id" : "medium.primary.B75D23A8-052B-4755-A220-23118F37EC25",
+      "priority" : 0.8,
+      "source" : "primary_direction",
+      "title" : "PD: ♃ Júpiter □ ASC"
+    },
+    {
+      "detail" : "Sub-período L2 en curso dentro de ♎ Libra.",
+      "from" : "2026-02-03",
+      "id" : "annual.zr.spirit.l2.SAGITARIO.1770138000",
+      "priority" : 0.75,
+      "source" : "zr_l2_spirit",
+      "title" : "ZR Espíritu L2 en ♐ Sagitario",
+      "to" : "2027-01-29"
+    },
+    {
+      "date" : "2026-03-14",
+      "detail" : "Dirección por arco solar (modo Sol progresado real).",
+      "id" : "medium.solarArc.147AAAA1-C217-4FE7-8B48-AE685550A6D1",
+      "priority" : 0.8,
+      "source" : "solar_arc",
+      "title" : "Arco solar: ♂ Marte ⚹ Sextil MC"
+    },
+    {
+      "date" : "2026-03-14",
+      "detail" : "Dirección por arco solar (modo Sol progresado real).",
+      "id" : "medium.solarArc.88BE0352-4FF6-41E0-BAE4-9085A136B236",
+      "priority" : 0.6,
+      "source" : "solar_arc",
+      "title" : "Arco solar: ♂ Marte △ Trígono IC"
+    },
+    {
+      "detail" : "Profección anual whole-sign desde el Ascendente. Lord of the Year = regente domicilio del signo profeccionado.",
+      "from" : "2026-03-15",
+      "id" : "annual.profection.6.MARTE",
+      "priority" : 1,
+      "source" : "profection",
+      "title" : "Año en casa 6 (♏ Escorpio); Lord of the Year: ♂ Marte",
+      "to" : "2027-03-15"
+    },
+    {
+      "detail" : "Regente del año. Sus tránsitos y direcciones pesan el doble durante este año profeccional.",
+      "from" : "2026-03-15",
+      "id" : "annual.profection.loty.MARTE",
+      "priority" : 0.9,
+      "source" : "profection_loty",
+      "title" : "Lord of the Year: ♂ Marte",
+      "to" : "2027-03-15"
+    },
+    {
+      "detail" : "El planeta que rige el ASC de la revolución solar marca el tono operativo del año.",
+      "from" : "2026-03-15",
+      "id" : "annual.solarReturn.ascRuler.MERCURIO",
+      "priority" : 0.7,
+      "source" : "solar_return",
+      "title" : "Regente del Ascendente de la Revolución Solar: ☿ Mercurio",
+      "to" : "2027-03-15"
+    },
+    {
+      "detail" : "Planetas angulares en la revolución solar dominan el año.",
+      "from" : "2026-03-15",
+      "id" : "annual.solarReturn.angular.SOL",
+      "priority" : 0.6,
+      "source" : "solar_return_angular",
+      "title" : "☉ Sol angular en RS (casa 10)",
+      "to" : "2027-03-15"
+    },
+    {
+      "detail" : "Planetas angulares en la revolución solar dominan el año.",
+      "from" : "2026-03-15",
+      "id" : "annual.solarReturn.angular.VENUS",
+      "priority" : 0.6,
+      "source" : "solar_return_angular",
+      "title" : "♀ Venus angular en RS (casa 10)",
+      "to" : "2027-03-15"
+    },
+    {
+      "detail" : "Planetas angulares en la revolución solar dominan el año.",
+      "from" : "2026-03-15",
+      "id" : "annual.solarReturn.angular.SATURNO",
+      "priority" : 0.6,
+      "source" : "solar_return_angular",
+      "title" : "♄ Saturno angular en RS (casa 10)",
+      "to" : "2027-03-15"
+    },
+    {
+      "detail" : "Planetas angulares en la revolución solar dominan el año.",
+      "from" : "2026-03-15",
+      "id" : "annual.solarReturn.angular.NEPTUNO",
+      "priority" : 0.6,
+      "source" : "solar_return_angular",
+      "title" : "♆ Neptuno angular en RS (casa 10)",
+      "to" : "2027-03-15"
+    },
+    {
+      "detail" : "Repetición de casa natal-solar: tema natal reforzado este año.",
+      "from" : "2026-03-15",
+      "id" : "annual.solarReturn.repetition.SOL",
+      "priority" : 0.5,
+      "source" : "solar_return_repetition",
+      "title" : "☉ Sol repite casa 9 en la revolución solar",
+      "to" : "2027-03-15"
+    },
+    {
+      "detail" : "Repetición de casa natal-solar: tema natal reforzado este año.",
+      "from" : "2026-03-15",
+      "id" : "annual.solarReturn.repetition.VENUS",
+      "priority" : 0.5,
+      "source" : "solar_return_repetition",
+      "title" : "♀ Venus repite casa 10 en la revolución solar",
+      "to" : "2027-03-15"
+    },
+    {
+      "date" : "2026-04-04",
+      "detail" : "Planeta social · Planeta natal sucedente · Tránsito por casa sucedente · Duración sostenida · Orbe exacto menor de 1° · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.F0F7630E-168D-4DA7-B0B8-E0486E3C37BA",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Urano Oposicion Saturno (Crítica)"
+    },
+    {
+      "date" : "2026-04-20",
+      "detail" : "Planeta social · Planeta natal sucedente · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación · Dos tránsitos próximos al mismo punto",
+      "id" : "short.transit.1CD8A628-D440-48DA-B0F1-E1C719E7CBCD",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Saturno Sextil Jupiter (Alta)"
+    },
+    {
+      "date" : "2026-05-06",
+      "detail" : "Planeta social · Planeta natal sucedente · Tránsito por casa sucedente · Duración sostenida · Dos pasadas por retrogradación · Dos tránsitos próximos al mismo punto",
+      "id" : "short.transit.44F8C2C0-F274-49B5-AA8D-F0B79357D635",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Pluton Conjuncion Jupiter (Crítica)"
+    },
+    {
+      "date" : "2026-05-15",
+      "detail" : "Toca Medio Cielo · Planeta natal angular · Duración sostenida · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación",
+      "id" : "short.transit.9017E996-4828-4F8A-AE74-AE211F96FFFF",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Saturno Conjuncion Medio Cielo (Crítica)"
+    },
+    {
+      "date" : "2026-05-28",
+      "detail" : "Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.BD417727-A5F2-4402-9613-0A6381001859",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Nodo Norte Trigono Pluton (Alta)"
+    },
+    {
+      "date" : "2026-06-01",
+      "detail" : "Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.6500C2E4-C292-4DD9-A9FF-3C74598DE232",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Nodo Sur Trigono Neptuno (Alta)"
+    },
+    {
+      "date" : "2026-07-03",
+      "detail" : "Prog → natal",
+      "id" : "medium.progressed.progressedToNatal-ASC-CUADRADO-PLUTON--1-2026-07-03",
+      "priority" : 1,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Ascendente progresado □ Cuadratura Plutón"
+    },
+    {
+      "date" : "2026-07-03",
+      "detail" : "Prog → natal",
+      "id" : "medium.progressed.progressedToNatal-ASC-CUADRADO-PLUTON-1-2026-07-03",
+      "priority" : 1,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Ascendente progresado □ Cuadratura Plutón"
+    },
+    {
+      "date" : "2026-07-04",
+      "detail" : "Prog → prog",
+      "id" : "medium.progressed.progressedToProgressed-LUNA-CUADRADO-MERCURIO--1-2026-07-04",
+      "priority" : 0.9,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna □ Cuadratura Mercurio"
+    },
+    {
+      "date" : "2026-07-04",
+      "detail" : "Prog → prog",
+      "id" : "medium.progressed.progressedToProgressed-LUNA-CUADRADO-MERCURIO-1-2026-07-04",
+      "priority" : 0.9,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna □ Cuadratura Mercurio"
+    },
+    {
+      "date" : "2026-07-13",
+      "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Duración sostenida · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.CCEFB3E2-3B38-44AC-8082-F9462F6A2EEF",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Nodo Norte Sextil Marte (Alta)"
+    },
+    {
+      "date" : "2026-07-13",
+      "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Duración sostenida · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.E17DA9DF-C401-4EFE-BC33-A628A6295E77",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Nodo Sur Trigono Marte (Crítica)"
+    },
+    {
+      "date" : "2026-07-31",
+      "detail" : "Prog → natal",
+      "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-MC-1-2026-07-31",
+      "priority" : 1,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna □ Cuadratura Medio Cielo natal"
+    },
+    {
+      "date" : "2026-07-31",
+      "detail" : "Prog → natal",
+      "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-MC--1-2026-07-31",
+      "priority" : 1,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna □ Cuadratura Medio Cielo natal"
+    },
+    {
+      "date" : "2026-08-08",
+      "detail" : "Dirección primaria directa en plano zodiacal, clave Naibod.",
+      "id" : "medium.primary.8148A51E-DDA6-4EB1-99E4-1B72E77E2BE0",
+      "priority" : 0.6,
+      "source" : "primary_direction",
+      "title" : "PD: ☿ Mercurio △ ☽ Luna"
+    },
+    {
+      "date" : "2026-09-07",
+      "detail" : "Regente del Ascendente · Planeta personal · Planeta natal angular · Duración larga · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.E9BF29A2-3620-40F7-B7DC-159ED14A63CC",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Saturno Conjuncion Mercurio (Crítica)"
+    },
+    {
+      "date" : "2026-10-11",
+      "detail" : "Toca Medio Cielo · Planeta natal angular · Tránsito por casa angular · Duración larga · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.9C16B3A5-CC56-40DB-B9A6-D72A8A6922A5",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Saturno Conjuncion Medio Cielo (Crítica)"
+    },
+    {
+      "date" : "2026-10-13",
+      "detail" : "Prog → natal",
+      "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-MERCURIO-1-2026-10-13",
+      "priority" : 1,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna □ Cuadratura Mercurio"
+    },
+    {
+      "date" : "2026-10-13",
+      "detail" : "Prog → natal",
+      "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-MERCURIO--1-2026-10-13",
+      "priority" : 1,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna □ Cuadratura Mercurio"
+    },
+    {
+      "date" : "2026-10-16",
+      "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Duración sostenida · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.030DEFAF-5FDD-4267-949F-826ECB07779F",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Pluton Cuadratura Marte (Crítica)"
+    },
+    {
+      "date" : "2026-10-26",
+      "detail" : "Lunación próxima a ♉ Tauro — orbe 2.40°.",
+      "id" : "lunar.lunation.fullMoon.MARTE.1792987924",
+      "priority" : 0.5,
+      "source" : "lunation",
+      "title" : "Luna Llena sobre Lord of the Year: ♂ Marte"
+    },
+    {
+      "date" : "2026-12-07",
+      "detail" : "Toca Ascendente · Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.2906E188-0C9A-4830-AAFD-714D4F1C621A",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Nodo Norte Trigono Ascendente (Crítica)"
+    },
+    {
+      "date" : "2026-12-07",
+      "detail" : "Toca Ascendente · Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.14C24C0C-0DEB-451D-B190-BA9A47EEB00F",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Nodo Sur Sextil Ascendente (Alta)"
+    },
+    {
+      "date" : "2026-12-16",
+      "detail" : "Planeta social · Planeta natal sucedente · Duración sostenida · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación",
+      "id" : "short.transit.2A32494E-7306-4F9E-BC3D-B1283B0C6D96",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Saturno Sextil Jupiter (Alta)"
+    },
+    {
+      "date" : "2026-12-18",
+      "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Dos tránsitos próximos al mismo punto",
+      "id" : "short.transit.6CB29FF9-37C9-43EE-8B78-D54BD2F8166D",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Nodo Norte Sextil Venus (Media)"
+    },
+    {
+      "date" : "2026-12-18",
+      "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Duración sostenida · Orbe exacto menor de 0.25° · Dos tránsitos próximos al mismo punto",
+      "id" : "short.transit.390B5289-00F1-4172-9914-28303962BA65",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Nodo Sur Trigono Venus (Crítica)"
+    },
+    {
+      "date" : "2027-01-01",
+      "detail" : "Dirección por arco solar (modo Sol progresado real).",
+      "id" : "medium.solarArc.2F9A32B7-2F88-48E5-A95D-C9ABE6991B0A",
+      "priority" : 0.6,
+      "source" : "solar_arc",
+      "title" : "Arco solar: ASC □ Cuadratura ♇ Plutón"
+    },
+    {
+      "date" : "2027-01-01",
+      "detail" : "Dirección por arco solar (modo Sol progresado real).",
+      "id" : "medium.solarArc.16C767FC-EF3C-4BFD-A538-40AEC3DE7535",
+      "priority" : 0.6,
+      "source" : "solar_arc",
+      "title" : "Arco solar: DSC □ Cuadratura ♇ Plutón"
+    },
+    {
+      "date" : "2027-01-02",
+      "detail" : "Dirección por arco solar (modo Sol progresado real).",
+      "id" : "medium.solarArc.905A5255-252B-48ED-88CD-7098435F104F",
+      "priority" : 0.6,
+      "source" : "solar_arc",
+      "title" : "Arco solar: ☽ Luna ⚹ Sextil ♂ Marte"
+    },
+    {
+      "date" : "2027-02-08",
+      "detail" : "Prog → natal",
+      "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-PARTE_FORTUNA--1-2027-02-08",
+      "priority" : 1,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna □ Cuadratura Parte de Fortuna natal"
+    },
+    {
+      "date" : "2027-02-08",
+      "detail" : "Prog → natal",
+      "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-PARTE_FORTUNA-1-2027-02-08",
+      "priority" : 1,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna □ Cuadratura Parte de Fortuna natal"
+    },
+    {
+      "date" : "2027-02-08",
+      "detail" : "Dirección por arco solar (modo Sol progresado real).",
+      "id" : "medium.solarArc.DA752618-76F9-4D27-BB4C-6363EC5507C1",
+      "priority" : 0.6,
+      "source" : "solar_arc",
+      "title" : "Arco solar: ♃ Júpiter ⚹ Sextil ☽ Luna"
+    },
+    {
+      "date" : "2027-03-02",
+      "detail" : "Regente del Ascendente · Planeta personal · Planeta natal angular · Duración sostenida · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación",
+      "id" : "short.transit.F4D9E5F9-6289-4B12-8AFA-C3094050E7FE",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Saturno Conjuncion Mercurio (Crítica)"
+    },
+    {
+      "date" : "2027-03-05",
+      "detail" : "Prog → prog",
+      "id" : "medium.progressed.progressedToProgressed-LUNA-TRIGONO-NODO_NORTE--1-2027-03-05",
+      "priority" : 0.8,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna △ Trígono Nodo Norte"
+    },
+    {
+      "date" : "2027-03-05",
+      "detail" : "Prog → prog",
+      "id" : "medium.progressed.progressedToProgressed-LUNA-SEXTIL-NODO_NORTE-1-2027-03-05",
+      "priority" : 0.8,
+      "source" : "progressed_aspect",
+      "title" : "Progresión: Luna ⚹ Sextil Nodo Norte"
+    },
+    {
+      "date" : "2027-04-04",
+      "detail" : "Planeta social · Planeta natal sucedente · Tránsito por casa sucedente · Duración sostenida · Dos pasadas por retrogradación",
+      "id" : "short.transit.B3BE57C6-9705-48C9-AF16-7172F73E2CFC",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Pluton Conjuncion Jupiter (Crítica)"
+    },
+    {
+      "date" : "2027-04-04",
+      "detail" : "Toca Sol\/Luna · Planeta natal angular · Tránsito por casa angular",
+      "id" : "short.transit.CB3CA584-D2D9-49CA-BB23-869017D6994C",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Saturno Cuadratura Luna (Alta)"
+    },
+    {
+      "date" : "2027-04-04",
+      "detail" : "Planeta natal cadente · Tránsito por casa angular · Orbe exacto menor de 1° · Cluster de tránsitos al mismo punto",
+      "id" : "short.transit.0DF26906-2C7E-4E09-AAB2-4EBDE41AAAE6",
+      "priority" : 1,
+      "source" : "transit",
+      "title" : "Tránsito: Saturno Trigono Urano (Alta)"
+    },
+    {
+      "date" : "2027-04-06",
+      "detail" : "Dirección primaria conversa en plano zodiacal, clave Naibod.",
+      "id" : "medium.primary.754DDA85-CBE8-4AF0-B4C2-EEA8A5AD837E",
+      "priority" : 0.8,
+      "source" : "primary_direction",
+      "title" : "PD: ♇ Plutón □ ASC"
+    },
+    {
+      "date" : "2027-08-25",
+      "detail" : "Dirección por arco solar (modo Sol progresado real).",
+      "id" : "medium.solarArc.3F92FA40-97AB-4D80-8A05-062D4924F234",
+      "priority" : 0.6,
+      "source" : "solar_arc",
+      "title" : "Arco solar: ☿ Mercurio ⚹ Sextil ☉ Sol"
+    },
+    {
+      "date" : "2027-12-01",
+      "detail" : "Loosing of the Bond próximo. Cambio cualitativo del capítulo.",
+      "id" : "annual.zr.fortune.lb.zr-lb-fortune-zr-fortune-L1-2-GEMINIS-1205596800-11-CAPRICORNIO",
+      "priority" : 0.7,
+      "source" : "zr_lb_fortune",
+      "title" : "Próximo LB de Fortuna — ♑ Capricornio"
+    },
+    {
+      "date" : "2028-02-01",
+      "detail" : "La Luna progresada ingresa en ♌ Leo.",
+      "id" : "medium.progressed.moon.signIngress.moon-sign-4-2028-01-31",
+      "priority" : 0.4,
+      "source" : "progressed_moon_sign_ingress",
+      "title" : "Luna progresada → ♌ Leo"
+    },
+    {
+      "date" : "2029-04-18",
+      "detail" : "Loosing of the Bond próximo. Cambio cualitativo del capítulo.",
+      "id" : "annual.zr.spirit.lb.zr-lb-spirit-zr-spirit-L1-2-LIBRA-1710522000-3-CAPRICORNIO",
+      "priority" : 0.7,
+      "source" : "zr_lb_spirit",
+      "title" : "Próximo LB de Espíritu — ♑ Capricornio"
+    },
+    {
+      "date" : "2030-04-21",
+      "detail" : "La Luna progresada ingresa en ♍ Virgo.",
+      "id" : "medium.progressed.moon.signIngress.moon-sign-5-2030-04-21",
+      "priority" : 0.4,
+      "source" : "progressed_moon_sign_ingress",
+      "title" : "Luna progresada → ♍ Virgo"
+    },
+    {
+      "detail" : "La Luna progresada permanece ~2-3 años en cada casa: tema doméstico\/emocional del período.",
+      "id" : "medium.progressed.moon.house.12",
+      "priority" : 0.55,
+      "source" : "progressed_moon_house",
+      "title" : "Luna progresada en casa 12 (♋ Cáncer)"
+    },
+    {
+      "detail" : "Fase progresada del ciclo Sol-Luna (~30 años por ciclo completo).",
+      "id" : "medium.progressed.phase.Creciente",
+      "priority" : 0.45,
+      "source" : "progressed_lunar_phase",
+      "title" : "Fase lunar progresada: Creciente"
+    }
+  ],
+  "interpretations" : [
+    {
+      "id" : "topic.planet.MERCURIO",
+      "source" : "cross-personal-local",
+      "text" : "6 señales · progressed_aspect, transit",
+      "title" : "Mercurio como tema"
+    },
+    {
+      "id" : "topic.axis.MC",
+      "source" : "cross-personal-local",
+      "text" : "5 señales · solar_arc, progressed_aspect, transit",
+      "title" : "Medio Cielo — eje activado"
+    },
+    {
+      "id" : "topic.axis.ASC",
+      "source" : "cross-personal-local",
+      "text" : "4 señales · primary_direction, transit",
+      "title" : "Ascendente — eje activado"
+    },
+    {
+      "id" : "topic.planet.SATURNO",
+      "source" : "cross-personal-local",
+      "text" : "4 señales · solar_return_angular, firdaria_major, firdaria_minor, solar_arc",
+      "title" : "♄ Saturno como tema"
+    },
+    {
+      "id" : "topic.lot.LOTE_FORTUNE",
+      "source" : "cross-personal-local",
+      "text" : "3 señales · zr_lb_fortune, progressed_aspect",
+      "title" : "Lote de Fortuna — capítulo activo"
+    },
+    {
+      "id" : "topic.planet.JUPITER",
+      "source" : "cross-personal-local",
+      "text" : "4 señales · transit",
+      "title" : "Jupiter como tema"
+    },
+    {
+      "id" : "topic.planet.SOL",
+      "source" : "cross-personal-local",
+      "text" : "3 señales · solar_return_repetition, solar_return_angular, solar_arc",
+      "title" : "☉ Sol como tema"
+    },
+    {
+      "id" : "topic.planet.MARTE",
+      "source" : "cross-personal-local",
+      "text" : "2 señales · profection_loty, solar_arc",
+      "title" : "♂ Marte como tema"
+    },
+    {
+      "id" : "topic.planet.MARTE",
+      "source" : "cross-personal-local",
+      "text" : "3 señales · transit",
+      "title" : "Marte como tema"
+    },
+    {
+      "id" : "topic.planet.LUNA",
+      "source" : "cross-personal-local",
+      "text" : "5 señales · primary_direction, solar_arc, progressed_lunar_phase, progressed_moon_sign_ingress",
+      "title" : "☽ Luna como tema"
+    },
+    {
+      "id" : "topic.planet.PLUTON",
+      "source" : "cross-personal-local",
+      "text" : "2 señales · progressed_aspect",
+      "title" : "Plutón como tema"
+    },
+    {
+      "id" : "topic.planet.NODO_NORTE",
+      "source" : "cross-personal-local",
+      "text" : "2 señales · progressed_aspect",
+      "title" : "Nodo Norte como tema"
+    }
+  ],
+  "metadata" : {
+    "chartID" : "22222222-2222-2222-2222-222222222222",
+    "chartName" : "Buenos Aires Control",
+    "command" : "cross-personal",
+    "date" : "2026-10-04T00:00:00Z",
+    "format" : "json",
+    "generatedAt" : "2026-10-04T18:30:28Z",
+    "narrative" : "none",
+    "scope" : "complete",
+    "timezone" : "America\/Argentina\/Buenos_Aires"
+  },
+  "networkUsed" : false,
+  "source" : "local",
+  "technicalData" : {
+    "crossPersonal" : {
+      "layers" : [
+        {
+          "kind" : "annual",
+          "label" : "Capa anual",
+          "signals" : [
+            {
+              "detail" : "Profección anual whole-sign desde el Ascendente. Lord of the Year = regente domicilio del signo profeccionado.",
+              "endsAt" : "2027-03-15T17:00:00Z",
+              "id" : "annual.profection.6.MARTE",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "MARTE",
+                  "kind" : "planet",
+                  "label" : "♂ Marte"
+                },
+                {
+                  "key" : "ESCORPIO",
+                  "kind" : "sign",
+                  "label" : "♏ Escorpio"
+                }
+              ],
+              "source" : "profection",
+              "startsAt" : "2026-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "CASA_6",
+                "kind" : "house",
+                "label" : "Casa 6"
+              },
+              "summary" : "Año en casa 6 (♏ Escorpio); Lord of the Year: ♂ Marte",
+              "weight" : 1
+            },
+            {
+              "detail" : "Regente del año. Sus tránsitos y direcciones pesan el doble durante este año profeccional.",
+              "endsAt" : "2027-03-15T17:00:00Z",
+              "id" : "annual.profection.loty.MARTE",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "CASA_6",
+                  "kind" : "house",
+                  "label" : "Casa 6"
+                }
+              ],
+              "source" : "profection_loty",
+              "startsAt" : "2026-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "MARTE",
+                "kind" : "planet",
+                "label" : "♂ Marte"
+              },
+              "summary" : "Lord of the Year: ♂ Marte",
+              "weight" : 0.9
+            },
+            {
+              "detail" : "El planeta que rige el ASC de la revolución solar marca el tono operativo del año.",
+              "endsAt" : "2027-03-15T17:00:00Z",
+              "id" : "annual.solarReturn.ascRuler.MERCURIO",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "ASC",
+                  "kind" : "axis",
+                  "label" : "Ascendente"
+                }
+              ],
+              "source" : "solar_return",
+              "startsAt" : "2026-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "MERCURIO",
+                "kind" : "planet",
+                "label" : "☿ Mercurio"
+              },
+              "summary" : "Regente del Ascendente de la Revolución Solar: ☿ Mercurio",
+              "weight" : 0.7
+            },
+            {
+              "detail" : "Repetición de casa natal-solar: tema natal reforzado este año.",
+              "endsAt" : "2027-03-15T17:00:00Z",
+              "id" : "annual.solarReturn.repetition.SOL",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "CASA_9",
+                  "kind" : "house",
+                  "label" : "Casa 9"
+                }
+              ],
+              "source" : "solar_return_repetition",
+              "startsAt" : "2026-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "SOL",
+                "kind" : "planet",
+                "label" : "☉ Sol"
+              },
+              "summary" : "☉ Sol repite casa 9 en la revolución solar",
+              "weight" : 0.5
+            },
+            {
+              "detail" : "Repetición de casa natal-solar: tema natal reforzado este año.",
+              "endsAt" : "2027-03-15T17:00:00Z",
+              "id" : "annual.solarReturn.repetition.VENUS",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "CASA_10",
+                  "kind" : "house",
+                  "label" : "Casa 10"
+                }
+              ],
+              "source" : "solar_return_repetition",
+              "startsAt" : "2026-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "VENUS",
+                "kind" : "planet",
+                "label" : "♀ Venus"
+              },
+              "summary" : "♀ Venus repite casa 10 en la revolución solar",
+              "weight" : 0.5
+            },
+            {
+              "detail" : "Planetas angulares en la revolución solar dominan el año.",
+              "endsAt" : "2027-03-15T17:00:00Z",
+              "id" : "annual.solarReturn.angular.SOL",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "CASA_10",
+                  "kind" : "house",
+                  "label" : "Casa 10"
+                }
+              ],
+              "source" : "solar_return_angular",
+              "startsAt" : "2026-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "SOL",
+                "kind" : "planet",
+                "label" : "☉ Sol"
+              },
+              "summary" : "☉ Sol angular en RS (casa 10)",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Planetas angulares en la revolución solar dominan el año.",
+              "endsAt" : "2027-03-15T17:00:00Z",
+              "id" : "annual.solarReturn.angular.VENUS",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "CASA_10",
+                  "kind" : "house",
+                  "label" : "Casa 10"
+                }
+              ],
+              "source" : "solar_return_angular",
+              "startsAt" : "2026-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "VENUS",
+                "kind" : "planet",
+                "label" : "♀ Venus"
+              },
+              "summary" : "♀ Venus angular en RS (casa 10)",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Planetas angulares en la revolución solar dominan el año.",
+              "endsAt" : "2027-03-15T17:00:00Z",
+              "id" : "annual.solarReturn.angular.SATURNO",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "CASA_10",
+                  "kind" : "house",
+                  "label" : "Casa 10"
+                }
+              ],
+              "source" : "solar_return_angular",
+              "startsAt" : "2026-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "SATURNO",
+                "kind" : "planet",
+                "label" : "♄ Saturno"
+              },
+              "summary" : "♄ Saturno angular en RS (casa 10)",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Planetas angulares en la revolución solar dominan el año.",
+              "endsAt" : "2027-03-15T17:00:00Z",
+              "id" : "annual.solarReturn.angular.NEPTUNO",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "CASA_10",
+                  "kind" : "house",
+                  "label" : "Casa 10"
+                }
+              ],
+              "source" : "solar_return_angular",
+              "startsAt" : "2026-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "NEPTUNO",
+                "kind" : "planet",
+                "label" : "♆ Neptuno"
+              },
+              "summary" : "♆ Neptuno angular en RS (casa 10)",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Capítulo mayor de Espíritu en ♎ Libra. Tema de fondo de este período de la vida.",
+              "endsAt" : "2032-03-15T17:00:00Z",
+              "id" : "annual.zr.spirit.l1.LIBRA",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "LOTE_SPIRIT",
+                  "kind" : "lot",
+                  "label" : "Lote de Espíritu"
+                }
+              ],
+              "source" : "zr_l1_spirit",
+              "startsAt" : "2024-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "LIBRA",
+                "kind" : "sign",
+                "label" : "♎ Libra"
+              },
+              "summary" : "ZR Espíritu L1 en ♎ Libra",
+              "weight" : 0.9
+            },
+            {
+              "detail" : "Sub-período L2 en curso dentro de ♎ Libra.",
+              "endsAt" : "2027-01-29T17:00:00Z",
+              "id" : "annual.zr.spirit.l2.SAGITARIO.1770138000",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "LOTE_SPIRIT",
+                  "kind" : "lot",
+                  "label" : "Lote de Espíritu"
+                },
+                {
+                  "key" : "LIBRA",
+                  "kind" : "sign",
+                  "label" : "♎ Libra"
+                }
+              ],
+              "source" : "zr_l2_spirit",
+              "startsAt" : "2026-02-03T17:00:00Z",
+              "subject" : {
+                "key" : "SAGITARIO",
+                "kind" : "sign",
+                "label" : "♐ Sagitario"
+              },
+              "summary" : "ZR Espíritu L2 en ♐ Sagitario",
+              "weight" : 0.75
+            },
+            {
+              "detail" : "Loosing of the Bond próximo. Cambio cualitativo del capítulo.",
+              "exactAt" : "2029-04-18T17:00:00Z",
+              "id" : "annual.zr.spirit.lb.zr-lb-spirit-zr-spirit-L1-2-LIBRA-1710522000-3-CAPRICORNIO",
+              "layer" : "annual",
+              "secondarySubjects" : [
+
+              ],
+              "source" : "zr_lb_spirit",
+              "subject" : {
+                "key" : "LOTE_SPIRIT",
+                "kind" : "lot",
+                "label" : "Lote de Espíritu"
+              },
+              "summary" : "Próximo LB de Espíritu — ♑ Capricornio",
+              "weight" : 0.7
+            },
+            {
+              "detail" : "Capítulo mayor de Fortuna en ♊ Géminis. Tema de fondo de este período de la vida.",
+              "endsAt" : "2028-03-15T17:00:00Z",
+              "id" : "annual.zr.fortune.l1.GEMINIS",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "LOTE_FORTUNE",
+                  "kind" : "lot",
+                  "label" : "Lote de Fortuna"
+                }
+              ],
+              "source" : "zr_l1_fortune",
+              "startsAt" : "2008-03-15T16:00:00Z",
+              "subject" : {
+                "key" : "GEMINIS",
+                "kind" : "sign",
+                "label" : "♊ Géminis"
+              },
+              "summary" : "ZR Fortuna L1 en ♊ Géminis",
+              "weight" : 0.9
+            },
+            {
+              "detail" : "Sub-período L2 en curso dentro de ♊ Géminis.",
+              "endsAt" : "2027-12-01T16:00:00Z",
+              "id" : "annual.zr.fortune.l2.CAPRICORNIO.1757692800",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "LOTE_FORTUNE",
+                  "kind" : "lot",
+                  "label" : "Lote de Fortuna"
+                },
+                {
+                  "key" : "GEMINIS",
+                  "kind" : "sign",
+                  "label" : "♊ Géminis"
+                }
+              ],
+              "source" : "zr_l2_fortune",
+              "startsAt" : "2025-09-12T16:00:00Z",
+              "subject" : {
+                "key" : "CAPRICORNIO",
+                "kind" : "sign",
+                "label" : "♑ Capricornio"
+              },
+              "summary" : "ZR Fortuna L2 en ♑ Capricornio",
+              "weight" : 0.75
+            },
+            {
+              "detail" : "Loosing of the Bond próximo. Cambio cualitativo del capítulo.",
+              "exactAt" : "2027-12-01T16:00:00Z",
+              "id" : "annual.zr.fortune.lb.zr-lb-fortune-zr-fortune-L1-2-GEMINIS-1205596800-11-CAPRICORNIO",
+              "layer" : "annual",
+              "secondarySubjects" : [
+
+              ],
+              "source" : "zr_lb_fortune",
+              "subject" : {
+                "key" : "LOTE_FORTUNE",
+                "kind" : "lot",
+                "label" : "Lote de Fortuna"
+              },
+              "summary" : "Próximo LB de Fortuna — ♑ Capricornio",
+              "weight" : 0.7
+            },
+            {
+              "detail" : "Período firdariano mayor en curso. Da el color de fondo de varios años.",
+              "endsAt" : "2036-03-15T17:00:00Z",
+              "id" : "annual.firdaria.major.SATURNO",
+              "layer" : "annual",
+              "secondarySubjects" : [
+
+              ],
+              "source" : "firdaria_major",
+              "startsAt" : "2025-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "SATURNO",
+                "kind" : "planet",
+                "label" : "♄ Saturno"
+              },
+              "summary" : "Firdaria mayor: Saturno (11 años)",
+              "weight" : 0.85
+            },
+            {
+              "detail" : "Sub-período firdariano en curso. Modula el período mayor.",
+              "endsAt" : "2026-10-10T17:00:00Z",
+              "id" : "annual.firdaria.minor.SATURNO",
+              "layer" : "annual",
+              "secondarySubjects" : [
+                {
+                  "key" : "SATURNO",
+                  "kind" : "planet",
+                  "label" : "♄ Saturno"
+                }
+              ],
+              "source" : "firdaria_minor",
+              "startsAt" : "2025-03-15T17:00:00Z",
+              "subject" : {
+                "key" : "SATURNO",
+                "kind" : "planet",
+                "label" : "♄ Saturno"
+              },
+              "summary" : "Firdaria menor: Saturno dentro de Saturno",
+              "weight" : 0.6
+            }
+          ]
+        },
+        {
+          "kind" : "mediumTerm",
+          "label" : "Capa medio plazo",
+          "signals" : [
+            {
+              "detail" : "Dirección primaria directa en plano zodiacal, clave Naibod.",
+              "exactAt" : "2025-12-21T22:51:03Z",
+              "id" : "medium.primary.B75D23A8-052B-4755-A220-23118F37EC25",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "JUPITER",
+                  "kind" : "planet",
+                  "label" : "♃ Júpiter"
+                }
+              ],
+              "source" : "primary_direction",
+              "subject" : {
+                "key" : "ASC",
+                "kind" : "axis",
+                "label" : "Ascendente"
+              },
+              "summary" : "PD: ♃ Júpiter □ ASC",
+              "weight" : 0.8
+            },
+            {
+              "detail" : "Dirección primaria directa en plano zodiacal, clave Naibod.",
+              "exactAt" : "2026-08-08T11:57:13Z",
+              "id" : "medium.primary.8148A51E-DDA6-4EB1-99E4-1B72E77E2BE0",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "MERCURIO",
+                  "kind" : "planet",
+                  "label" : "☿ Mercurio"
+                }
+              ],
+              "source" : "primary_direction",
+              "subject" : {
+                "key" : "LUNA",
+                "kind" : "planet",
+                "label" : "☽ Luna"
+              },
+              "summary" : "PD: ☿ Mercurio △ ☽ Luna",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Dirección primaria conversa en plano zodiacal, clave Naibod.",
+              "exactAt" : "2027-04-06T01:24:02Z",
+              "id" : "medium.primary.754DDA85-CBE8-4AF0-B4C2-EEA8A5AD837E",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "PLUTON",
+                  "kind" : "planet",
+                  "label" : "♇ Plutón"
+                }
+              ],
+              "source" : "primary_direction",
+              "subject" : {
+                "key" : "ASC",
+                "kind" : "axis",
+                "label" : "Ascendente"
+              },
+              "summary" : "PD: ♇ Plutón □ ASC",
+              "weight" : 0.8
+            },
+            {
+              "detail" : "Dirección por arco solar (modo Sol progresado real).",
+              "exactAt" : "2025-10-28T02:05:40Z",
+              "id" : "medium.solarArc.4C5818C2-002A-460B-AE9B-232F88ACE1A2",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "JUPITER",
+                  "kind" : "planet",
+                  "label" : "♃ Júpiter"
+                }
+              ],
+              "source" : "solar_arc",
+              "subject" : {
+                "key" : "URANO",
+                "kind" : "planet",
+                "label" : "⛢ Urano"
+              },
+              "summary" : "Arco solar: ♃ Júpiter □ Cuadratura ⛢ Urano",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Dirección por arco solar (modo Sol progresado real).",
+              "exactAt" : "2025-12-07T13:13:07Z",
+              "id" : "medium.solarArc.E6873B1C-C04F-47E8-9B2C-AA424557FEDA",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "URANO",
+                  "kind" : "planet",
+                  "label" : "⛢ Urano"
+                }
+              ],
+              "source" : "solar_arc",
+              "subject" : {
+                "key" : "SATURNO",
+                "kind" : "planet",
+                "label" : "♄ Saturno"
+              },
+              "summary" : "Arco solar: ⛢ Urano ⚹ Sextil ♄ Saturno",
+              "weight" : 0.4
+            },
+            {
+              "detail" : "Dirección por arco solar (modo Sol progresado real).",
+              "exactAt" : "2026-03-14T00:02:03Z",
+              "id" : "medium.solarArc.147AAAA1-C217-4FE7-8B48-AE685550A6D1",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "MARTE",
+                  "kind" : "planet",
+                  "label" : "♂ Marte"
+                }
+              ],
+              "source" : "solar_arc",
+              "subject" : {
+                "key" : "MC",
+                "kind" : "axis",
+                "label" : "Medio Cielo"
+              },
+              "summary" : "Arco solar: ♂ Marte ⚹ Sextil MC",
+              "weight" : 0.8
+            },
+            {
+              "detail" : "Dirección por arco solar (modo Sol progresado real).",
+              "exactAt" : "2026-03-14T00:02:03Z",
+              "id" : "medium.solarArc.88BE0352-4FF6-41E0-BAE4-9085A136B236",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "MARTE",
+                  "kind" : "planet",
+                  "label" : "♂ Marte"
+                }
+              ],
+              "source" : "solar_arc",
+              "subject" : {
+                "key" : "IC",
+                "kind" : "axis",
+                "label" : "IC"
+              },
+              "summary" : "Arco solar: ♂ Marte △ Trígono IC",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Dirección por arco solar (modo Sol progresado real).",
+              "exactAt" : "2027-01-01T15:00:57Z",
+              "id" : "medium.solarArc.2F9A32B7-2F88-48E5-A95D-C9ABE6991B0A",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "ASC",
+                  "kind" : "axis",
+                  "label" : "Ascendente"
+                }
+              ],
+              "source" : "solar_arc",
+              "subject" : {
+                "key" : "PLUTON",
+                "kind" : "planet",
+                "label" : "♇ Plutón"
+              },
+              "summary" : "Arco solar: ASC □ Cuadratura ♇ Plutón",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Dirección por arco solar (modo Sol progresado real).",
+              "exactAt" : "2027-01-01T15:00:57Z",
+              "id" : "medium.solarArc.16C767FC-EF3C-4BFD-A538-40AEC3DE7535",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "DSC",
+                  "kind" : "axis",
+                  "label" : "DSC"
+                }
+              ],
+              "source" : "solar_arc",
+              "subject" : {
+                "key" : "PLUTON",
+                "kind" : "planet",
+                "label" : "♇ Plutón"
+              },
+              "summary" : "Arco solar: DSC □ Cuadratura ♇ Plutón",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Dirección por arco solar (modo Sol progresado real).",
+              "exactAt" : "2027-01-02T11:28:58Z",
+              "id" : "medium.solarArc.905A5255-252B-48ED-88CD-7098435F104F",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "☽ Luna"
+                }
+              ],
+              "source" : "solar_arc",
+              "subject" : {
+                "key" : "MARTE",
+                "kind" : "planet",
+                "label" : "♂ Marte"
+              },
+              "summary" : "Arco solar: ☽ Luna ⚹ Sextil ♂ Marte",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Dirección por arco solar (modo Sol progresado real).",
+              "exactAt" : "2027-02-08T15:23:30Z",
+              "id" : "medium.solarArc.DA752618-76F9-4D27-BB4C-6363EC5507C1",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "JUPITER",
+                  "kind" : "planet",
+                  "label" : "♃ Júpiter"
+                }
+              ],
+              "source" : "solar_arc",
+              "subject" : {
+                "key" : "LUNA",
+                "kind" : "planet",
+                "label" : "☽ Luna"
+              },
+              "summary" : "Arco solar: ♃ Júpiter ⚹ Sextil ☽ Luna",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Dirección por arco solar (modo Sol progresado real).",
+              "exactAt" : "2027-08-25T23:34:21Z",
+              "id" : "medium.solarArc.3F92FA40-97AB-4D80-8A05-062D4924F234",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "MERCURIO",
+                  "kind" : "planet",
+                  "label" : "☿ Mercurio"
+                }
+              ],
+              "source" : "solar_arc",
+              "subject" : {
+                "key" : "SOL",
+                "kind" : "planet",
+                "label" : "☉ Sol"
+              },
+              "summary" : "Arco solar: ☿ Mercurio ⚹ Sextil ☉ Sol",
+              "weight" : 0.6
+            },
+            {
+              "detail" : "Prog → natal",
+              "exactAt" : "2026-07-03T13:27:53Z",
+              "id" : "medium.progressed.progressedToNatal-ASC-CUADRADO-PLUTON--1-2026-07-03",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "ASC",
+                  "kind" : "axis",
+                  "label" : "Ascendente"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "PLUTON",
+                "kind" : "planet",
+                "label" : "Plutón"
+              },
+              "summary" : "Progresión: Ascendente progresado □ Cuadratura Plutón",
+              "weight" : 1
+            },
+            {
+              "detail" : "Prog → natal",
+              "exactAt" : "2026-07-03T13:27:54Z",
+              "id" : "medium.progressed.progressedToNatal-ASC-CUADRADO-PLUTON-1-2026-07-03",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "ASC",
+                  "kind" : "axis",
+                  "label" : "Ascendente"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "PLUTON",
+                "kind" : "planet",
+                "label" : "Plutón"
+              },
+              "summary" : "Progresión: Ascendente progresado □ Cuadratura Plutón",
+              "weight" : 1
+            },
+            {
+              "detail" : "Prog → prog",
+              "exactAt" : "2026-07-04T19:54:49Z",
+              "id" : "medium.progressed.progressedToProgressed-LUNA-CUADRADO-MERCURIO--1-2026-07-04",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "MERCURIO",
+                "kind" : "planet",
+                "label" : "Mercurio"
+              },
+              "summary" : "Progresión: Luna □ Cuadratura Mercurio",
+              "weight" : 0.9
+            },
+            {
+              "detail" : "Prog → prog",
+              "exactAt" : "2026-07-04T19:54:49Z",
+              "id" : "medium.progressed.progressedToProgressed-LUNA-CUADRADO-MERCURIO-1-2026-07-04",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "MERCURIO",
+                "kind" : "planet",
+                "label" : "Mercurio"
+              },
+              "summary" : "Progresión: Luna □ Cuadratura Mercurio",
+              "weight" : 0.9
+            },
+            {
+              "detail" : "Prog → natal",
+              "exactAt" : "2026-07-31T21:28:39Z",
+              "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-MC-1-2026-07-31",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "MC",
+                "kind" : "axis",
+                "label" : "Medio Cielo"
+              },
+              "summary" : "Progresión: Luna □ Cuadratura Medio Cielo natal",
+              "weight" : 1
+            },
+            {
+              "detail" : "Prog → natal",
+              "exactAt" : "2026-07-31T21:28:39Z",
+              "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-MC--1-2026-07-31",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "MC",
+                "kind" : "axis",
+                "label" : "Medio Cielo"
+              },
+              "summary" : "Progresión: Luna □ Cuadratura Medio Cielo natal",
+              "weight" : 1
+            },
+            {
+              "detail" : "Prog → natal",
+              "exactAt" : "2026-10-13T22:51:37Z",
+              "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-MERCURIO-1-2026-10-13",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "MERCURIO",
+                "kind" : "planet",
+                "label" : "Mercurio"
+              },
+              "summary" : "Progresión: Luna □ Cuadratura Mercurio",
+              "weight" : 1
+            },
+            {
+              "detail" : "Prog → natal",
+              "exactAt" : "2026-10-13T22:51:37Z",
+              "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-MERCURIO--1-2026-10-13",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "MERCURIO",
+                "kind" : "planet",
+                "label" : "Mercurio"
+              },
+              "summary" : "Progresión: Luna □ Cuadratura Mercurio",
+              "weight" : 1
+            },
+            {
+              "detail" : "Prog → natal",
+              "exactAt" : "2027-02-08T06:21:25Z",
+              "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-PARTE_FORTUNA--1-2027-02-08",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "LOTE_FORTUNE",
+                "kind" : "lot",
+                "label" : "Lote de Fortuna"
+              },
+              "summary" : "Progresión: Luna □ Cuadratura Parte de Fortuna natal",
+              "weight" : 1
+            },
+            {
+              "detail" : "Prog → natal",
+              "exactAt" : "2027-02-08T06:21:25Z",
+              "id" : "medium.progressed.progressedToNatal-LUNA-CUADRADO-PARTE_FORTUNA-1-2027-02-08",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "LOTE_FORTUNE",
+                "kind" : "lot",
+                "label" : "Lote de Fortuna"
+              },
+              "summary" : "Progresión: Luna □ Cuadratura Parte de Fortuna natal",
+              "weight" : 1
+            },
+            {
+              "detail" : "Prog → prog",
+              "exactAt" : "2027-03-05T05:14:44Z",
+              "id" : "medium.progressed.progressedToProgressed-LUNA-SEXTIL-NODO_NORTE-1-2027-03-05",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "NODO_NORTE",
+                "kind" : "planet",
+                "label" : "Nodo Norte"
+              },
+              "summary" : "Progresión: Luna ⚹ Sextil Nodo Norte",
+              "weight" : 0.8
+            },
+            {
+              "detail" : "Prog → prog",
+              "exactAt" : "2027-03-05T05:14:44Z",
+              "id" : "medium.progressed.progressedToProgressed-LUNA-TRIGONO-NODO_NORTE--1-2027-03-05",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "Luna"
+                }
+              ],
+              "source" : "progressed_aspect",
+              "subject" : {
+                "key" : "NODO_NORTE",
+                "kind" : "planet",
+                "label" : "Nodo Norte"
+              },
+              "summary" : "Progresión: Luna △ Trígono Nodo Norte",
+              "weight" : 0.8
+            },
+            {
+              "detail" : "La Luna progresada permanece ~2-3 años en cada casa: tema doméstico\/emocional del período.",
+              "id" : "medium.progressed.moon.house.12",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "LUNA",
+                  "kind" : "planet",
+                  "label" : "☽ Luna"
+                }
+              ],
+              "source" : "progressed_moon_house",
+              "subject" : {
+                "key" : "CASA_12",
+                "kind" : "house",
+                "label" : "Casa 12"
+              },
+              "summary" : "Luna progresada en casa 12 (♋ Cáncer)",
+              "weight" : 0.55
+            },
+            {
+              "detail" : "Fase progresada del ciclo Sol-Luna (~30 años por ciclo completo).",
+              "id" : "medium.progressed.phase.Creciente",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "SOL",
+                  "kind" : "planet",
+                  "label" : "☉ Sol"
+                }
+              ],
+              "source" : "progressed_lunar_phase",
+              "subject" : {
+                "key" : "LUNA",
+                "kind" : "planet",
+                "label" : "☽ Luna"
+              },
+              "summary" : "Fase lunar progresada: Creciente",
+              "weight" : 0.45
+            },
+            {
+              "detail" : "La Luna progresada ingresa en ♌ Leo.",
+              "exactAt" : "2028-02-01T01:33:36Z",
+              "id" : "medium.progressed.moon.signIngress.moon-sign-4-2028-01-31",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+
+              ],
+              "source" : "progressed_moon_sign_ingress",
+              "subject" : {
+                "key" : "LUNA",
+                "kind" : "planet",
+                "label" : "☽ Luna"
+              },
+              "summary" : "Luna progresada → ♌ Leo",
+              "weight" : 0.4
+            },
+            {
+              "detail" : "La Luna progresada ingresa en ♍ Virgo.",
+              "exactAt" : "2030-04-21T04:55:05Z",
+              "id" : "medium.progressed.moon.signIngress.moon-sign-5-2030-04-21",
+              "layer" : "mediumTerm",
+              "secondarySubjects" : [
+
+              ],
+              "source" : "progressed_moon_sign_ingress",
+              "subject" : {
+                "key" : "LUNA",
+                "kind" : "planet",
+                "label" : "☽ Luna"
+              },
+              "summary" : "Luna progresada → ♍ Virgo",
+              "weight" : 0.4
+            }
+          ]
+        },
+        {
+          "kind" : "shortTerm",
+          "label" : "Capa corto plazo",
+          "signals" : [
+            {
+              "detail" : "Regente del Ascendente · Planeta personal · Planeta natal angular · Duración larga · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-09-07T12:00:00Z",
+              "id" : "short.transit.E9BF29A2-3620-40F7-B7DC-159ED14A63CC",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "SATURNO",
+                  "kind" : "planet",
+                  "label" : "Saturno"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "MERCURIO",
+                "kind" : "planet",
+                "label" : "Mercurio"
+              },
+              "summary" : "Tránsito: Saturno Conjuncion Mercurio (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Toca Medio Cielo · Planeta natal angular · Tránsito por casa angular · Duración larga · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-10-11T12:00:00Z",
+              "id" : "short.transit.9C16B3A5-CC56-40DB-B9A6-D72A8A6922A5",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "SATURNO",
+                  "kind" : "planet",
+                  "label" : "Saturno"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "MC",
+                "kind" : "axis",
+                "label" : "Medio Cielo"
+              },
+              "summary" : "Tránsito: Saturno Conjuncion Medio Cielo (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Regente del Ascendente · Planeta personal · Planeta natal angular · Duración sostenida · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación",
+              "exactAt" : "2027-03-02T12:00:00Z",
+              "id" : "short.transit.F4D9E5F9-6289-4B12-8AFA-C3094050E7FE",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "SATURNO",
+                  "kind" : "planet",
+                  "label" : "Saturno"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "MERCURIO",
+                "kind" : "planet",
+                "label" : "Mercurio"
+              },
+              "summary" : "Tránsito: Saturno Conjuncion Mercurio (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Toca Medio Cielo · Planeta natal angular · Duración sostenida · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación",
+              "exactAt" : "2026-05-15T12:00:00Z",
+              "id" : "short.transit.9017E996-4828-4F8A-AE74-AE211F96FFFF",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "SATURNO",
+                  "kind" : "planet",
+                  "label" : "Saturno"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "MC",
+                "kind" : "axis",
+                "label" : "Medio Cielo"
+              },
+              "summary" : "Tránsito: Saturno Conjuncion Medio Cielo (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta social · Planeta natal sucedente · Tránsito por casa sucedente · Duración sostenida · Dos pasadas por retrogradación",
+              "exactAt" : "2027-04-04T12:00:00Z",
+              "id" : "short.transit.B3BE57C6-9705-48C9-AF16-7172F73E2CFC",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "PLUTON",
+                  "kind" : "planet",
+                  "label" : "Pluton"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "JUPITER",
+                "kind" : "planet",
+                "label" : "Jupiter"
+              },
+              "summary" : "Tránsito: Pluton Conjuncion Jupiter (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta social · Planeta natal sucedente · Tránsito por casa sucedente · Duración sostenida · Orbe exacto menor de 1° · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-04-04T12:00:00Z",
+              "id" : "short.transit.F0F7630E-168D-4DA7-B0B8-E0486E3C37BA",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "URANO",
+                  "kind" : "planet",
+                  "label" : "Urano"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "SATURNO",
+                "kind" : "planet",
+                "label" : "Saturno"
+              },
+              "summary" : "Tránsito: Urano Oposicion Saturno (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta social · Planeta natal sucedente · Tránsito por casa sucedente · Duración sostenida · Dos pasadas por retrogradación · Dos tránsitos próximos al mismo punto",
+              "exactAt" : "2026-05-06T12:00:00Z",
+              "id" : "short.transit.44F8C2C0-F274-49B5-AA8D-F0B79357D635",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "PLUTON",
+                  "kind" : "planet",
+                  "label" : "Pluton"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "JUPITER",
+                "kind" : "planet",
+                "label" : "Jupiter"
+              },
+              "summary" : "Tránsito: Pluton Conjuncion Jupiter (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Duración sostenida · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-10-16T12:00:00Z",
+              "id" : "short.transit.030DEFAF-5FDD-4267-949F-826ECB07779F",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "PLUTON",
+                  "kind" : "planet",
+                  "label" : "Pluton"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "MARTE",
+                "kind" : "planet",
+                "label" : "Marte"
+              },
+              "summary" : "Tránsito: Pluton Cuadratura Marte (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Duración sostenida · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-07-13T12:00:00Z",
+              "id" : "short.transit.E17DA9DF-C401-4EFE-BC33-A628A6295E77",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "NODO_SUR",
+                  "kind" : "planet",
+                  "label" : "Nodo Sur"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "MARTE",
+                "kind" : "planet",
+                "label" : "Marte"
+              },
+              "summary" : "Tránsito: Nodo Sur Trigono Marte (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Toca Ascendente · Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-12-07T12:00:00Z",
+              "id" : "short.transit.2906E188-0C9A-4830-AAFD-714D4F1C621A",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "NODO_NORTE",
+                  "kind" : "planet",
+                  "label" : "Nodo Norte"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "ASC",
+                "kind" : "axis",
+                "label" : "Ascendente"
+              },
+              "summary" : "Tránsito: Nodo Norte Trigono Ascendente (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Duración sostenida · Orbe exacto menor de 0.25° · Dos tránsitos próximos al mismo punto",
+              "exactAt" : "2026-12-18T12:00:00Z",
+              "id" : "short.transit.390B5289-00F1-4172-9914-28303962BA65",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "NODO_SUR",
+                  "kind" : "planet",
+                  "label" : "Nodo Sur"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "VENUS",
+                "kind" : "planet",
+                "label" : "Venus"
+              },
+              "summary" : "Tránsito: Nodo Sur Trigono Venus (Crítica)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Toca Sol\/Luna · Planeta natal angular · Tránsito por casa angular",
+              "exactAt" : "2027-04-04T12:00:00Z",
+              "id" : "short.transit.CB3CA584-D2D9-49CA-BB23-869017D6994C",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "SATURNO",
+                  "kind" : "planet",
+                  "label" : "Saturno"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "LUNA",
+                "kind" : "planet",
+                "label" : "Luna"
+              },
+              "summary" : "Tránsito: Saturno Cuadratura Luna (Alta)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-06-01T12:00:00Z",
+              "id" : "short.transit.6500C2E4-C292-4DD9-A9FF-3C74598DE232",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "NODO_SUR",
+                  "kind" : "planet",
+                  "label" : "Nodo Sur"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "NEPTUNO",
+                "kind" : "planet",
+                "label" : "Neptuno"
+              },
+              "summary" : "Tránsito: Nodo Sur Trigono Neptuno (Alta)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-05-28T12:00:00Z",
+              "id" : "short.transit.BD417727-A5F2-4402-9613-0A6381001859",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "NODO_NORTE",
+                  "kind" : "planet",
+                  "label" : "Nodo Norte"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "PLUTON",
+                "kind" : "planet",
+                "label" : "Pluton"
+              },
+              "summary" : "Tránsito: Nodo Norte Trigono Pluton (Alta)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta natal cadente · Tránsito por casa angular · Orbe exacto menor de 1° · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2027-04-04T12:00:00Z",
+              "id" : "short.transit.0DF26906-2C7E-4E09-AAB2-4EBDE41AAAE6",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "SATURNO",
+                  "kind" : "planet",
+                  "label" : "Saturno"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "URANO",
+                "kind" : "planet",
+                "label" : "Urano"
+              },
+              "summary" : "Tránsito: Saturno Trigono Urano (Alta)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta social · Planeta natal sucedente · Duración sostenida · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación",
+              "exactAt" : "2026-12-16T12:00:00Z",
+              "id" : "short.transit.2A32494E-7306-4F9E-BC3D-B1283B0C6D96",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "SATURNO",
+                  "kind" : "planet",
+                  "label" : "Saturno"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "JUPITER",
+                "kind" : "planet",
+                "label" : "Jupiter"
+              },
+              "summary" : "Tránsito: Saturno Sextil Jupiter (Alta)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Duración sostenida · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-07-13T12:00:00Z",
+              "id" : "short.transit.CCEFB3E2-3B38-44AC-8082-F9462F6A2EEF",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "NODO_NORTE",
+                  "kind" : "planet",
+                  "label" : "Nodo Norte"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "MARTE",
+                "kind" : "planet",
+                "label" : "Marte"
+              },
+              "summary" : "Tránsito: Nodo Norte Sextil Marte (Alta)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta social · Planeta natal sucedente · Orbe exacto menor de 0.25° · Dos pasadas por retrogradación · Dos tránsitos próximos al mismo punto",
+              "exactAt" : "2026-04-20T12:00:00Z",
+              "id" : "short.transit.1CD8A628-D440-48DA-B0F1-E1C719E7CBCD",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "SATURNO",
+                  "kind" : "planet",
+                  "label" : "Saturno"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "JUPITER",
+                "kind" : "planet",
+                "label" : "Jupiter"
+              },
+              "summary" : "Tránsito: Saturno Sextil Jupiter (Alta)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Toca Ascendente · Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Cluster de tránsitos al mismo punto",
+              "exactAt" : "2026-12-07T12:00:00Z",
+              "id" : "short.transit.14C24C0C-0DEB-451D-B190-BA9A47EEB00F",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "NODO_SUR",
+                  "kind" : "planet",
+                  "label" : "Nodo Sur"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "ASC",
+                "kind" : "axis",
+                "label" : "Ascendente"
+              },
+              "summary" : "Tránsito: Nodo Sur Sextil Ascendente (Alta)",
+              "weight" : 1
+            },
+            {
+              "detail" : "Planeta personal fuerte · Planeta natal angular · Tránsito por casa sucedente · Orbe exacto menor de 0.25° · Dos tránsitos próximos al mismo punto",
+              "exactAt" : "2026-12-18T12:00:00Z",
+              "id" : "short.transit.6CB29FF9-37C9-43EE-8B78-D54BD2F8166D",
+              "layer" : "shortTerm",
+              "secondarySubjects" : [
+                {
+                  "key" : "NODO_NORTE",
+                  "kind" : "planet",
+                  "label" : "Nodo Norte"
+                }
+              ],
+              "source" : "transit",
+              "subject" : {
+                "key" : "VENUS",
+                "kind" : "planet",
+                "label" : "Venus"
+              },
+              "summary" : "Tránsito: Nodo Norte Sextil Venus (Media)",
+              "weight" : 1
+            }
+          ]
+        },
+        {
+          "kind" : "lunar",
+          "label" : "Capa lunar y eclíptica",
+          "signals" : [
+            {
+              "detail" : "Lunación próxima a ♉ Tauro — orbe 2.40°.",
+              "exactAt" : "2026-10-26T04:12:04Z",
+              "id" : "lunar.lunation.fullMoon.MARTE.1792987924",
+              "layer" : "lunar",
+              "secondarySubjects" : [
+
+              ],
+              "source" : "lunation",
+              "subject" : {
+                "key" : "MARTE",
+                "kind" : "planet",
+                "label" : "Lord of the Year: ♂ Marte"
+              },
+              "summary" : "Luna Llena sobre Lord of the Year: ♂ Marte",
+              "weight" : 0.5
+            }
+          ]
+        }
+      ],
+      "metadata" : {
+        "chartID" : "22222222-2222-2222-2222-222222222222",
+        "chartName" : "Buenos Aires Control",
+        "engineVersion" : "1.0.0",
+        "generatedAt" : "2026-10-04T18:30:28Z",
+        "referenceDate" : "2026-10-04T00:00:00Z"
+      },
+      "natalSignature" : {
+        "almutenFigurisKey" : "VENUS",
+        "almutenFigurisLabel" : "♀ Venus",
+        "ascendant" : {
+          "degree" : "♊ Géminis 23°12'",
+          "signLabel" : "♊ Géminis"
+        },
+        "ascendantRulerKey" : "MERCURIO",
+        "ascendantRulerLabel" : "☿ Mercurio",
+        "aspectPatterns" : [
+
+        ],
+        "elementBalance" : {
+          "air" : 1,
+          "earth" : 3,
+          "fire" : 3,
+          "water" : 3
+        },
+        "fixedStarContacts" : [
+
+        ],
+        "mc" : {
+          "degree" : "♈ Aries 10°43'",
+          "signLabel" : "♈ Aries"
+        },
+        "modalityBalance" : {
+          "cardinal" : 4,
+          "fixed" : 4,
+          "mutable" : 2
+        },
+        "moon" : {
+          "degree" : "♑ Capricornio 19°12'",
+          "house" : 7,
+          "key" : "LUNA",
+          "label" : "☽ Luna",
+          "retrograde" : false,
+          "signLabel" : "♑ Capricornio"
+        },
+        "prominentLots" : [
+          {
+            "house" : 10,
+            "kind" : "fortune",
+            "rulerLabel" : "♂ Marte",
+            "signLabel" : "♈ Aries"
+          },
+          {
+            "house" : 2,
+            "kind" : "spirit",
+            "rulerLabel" : "☉ Sol",
+            "signLabel" : "♌ Leo"
+          },
+          {
+            "house" : 8,
+            "kind" : "eros",
+            "rulerLabel" : "♄ Saturno",
+            "signLabel" : "♒ Acuario"
+          }
+        ],
+        "rulerOfGenitureKey" : "JUPITER",
+        "rulerOfGenitureLabel" : "♃ Júpiter",
+        "sect" : {
+          "benefic" : "JUPITER",
+          "contrarySectBenefic" : "VENUS",
+          "contrarySectMalefic" : "MARTE",
+          "isDiurnal" : true,
+          "luminary" : "SOL",
+          "malefic" : "SATURNO"
+        },
+        "sun" : {
+          "degree" : "♓ Piscis 25°03'",
+          "house" : 9,
+          "key" : "SOL",
+          "label" : "☉ Sol",
+          "retrograde" : false,
+          "signLabel" : "♓ Piscis"
+        }
+      },
+      "topics" : [
+        {
+          "convergenceScore" : 6.36,
+          "id" : "topic.planet.MERCURIO",
+          "layerCount" : 2,
+          "layers" : [
+            "mediumTerm",
+            "shortTerm"
+          ],
+          "signalIDs" : [
+            "medium.progressed.progressedToProgressed-LUNA-CUADRADO-MERCURIO--1-2026-07-04",
+            "medium.progressed.progressedToProgressed-LUNA-CUADRADO-MERCURIO-1-2026-07-04",
+            "medium.progressed.progressedToNatal-LUNA-CUADRADO-MERCURIO-1-2026-10-13",
+            "medium.progressed.progressedToNatal-LUNA-CUADRADO-MERCURIO--1-2026-10-13",
+            "short.transit.E9BF29A2-3620-40F7-B7DC-159ED14A63CC",
+            "short.transit.F4D9E5F9-6289-4B12-8AFA-C3094050E7FE"
+          ],
+          "subject" : {
+            "key" : "MERCURIO",
+            "kind" : "planet",
+            "label" : "Mercurio"
+          },
+          "summary" : "6 señales · progressed_aspect, transit",
+          "title" : "Mercurio como tema"
+        },
+        {
+          "convergenceScore" : 5.16,
+          "id" : "topic.axis.MC",
+          "layerCount" : 2,
+          "layers" : [
+            "mediumTerm",
+            "shortTerm"
+          ],
+          "signalIDs" : [
+            "medium.solarArc.147AAAA1-C217-4FE7-8B48-AE685550A6D1",
+            "medium.progressed.progressedToNatal-LUNA-CUADRADO-MC-1-2026-07-31",
+            "medium.progressed.progressedToNatal-LUNA-CUADRADO-MC--1-2026-07-31",
+            "short.transit.9C16B3A5-CC56-40DB-B9A6-D72A8A6922A5",
+            "short.transit.9017E996-4828-4F8A-AE74-AE211F96FFFF"
+          ],
+          "subject" : {
+            "key" : "MC",
+            "kind" : "axis",
+            "label" : "Medio Cielo"
+          },
+          "summary" : "5 señales · solar_arc, progressed_aspect, transit",
+          "title" : "Medio Cielo — eje activado"
+        },
+        {
+          "convergenceScore" : 3.72,
+          "id" : "topic.axis.ASC",
+          "layerCount" : 2,
+          "layers" : [
+            "mediumTerm",
+            "shortTerm"
+          ],
+          "signalIDs" : [
+            "medium.primary.B75D23A8-052B-4755-A220-23118F37EC25",
+            "medium.primary.754DDA85-CBE8-4AF0-B4C2-EEA8A5AD837E",
+            "short.transit.2906E188-0C9A-4830-AAFD-714D4F1C621A",
+            "short.transit.14C24C0C-0DEB-451D-B190-BA9A47EEB00F"
+          ],
+          "subject" : {
+            "key" : "ASC",
+            "kind" : "axis",
+            "label" : "Ascendente"
+          },
+          "summary" : "4 señales · primary_direction, transit",
+          "title" : "Ascendente — eje activado"
+        },
+        {
+          "convergenceScore" : 3.555,
+          "id" : "topic.planet.SATURNO",
+          "layerCount" : 2,
+          "layers" : [
+            "annual",
+            "mediumTerm"
+          ],
+          "signalIDs" : [
+            "annual.solarReturn.angular.SATURNO",
+            "annual.firdaria.major.SATURNO",
+            "annual.firdaria.minor.SATURNO",
+            "medium.solarArc.E6873B1C-C04F-47E8-9B2C-AA424557FEDA"
+          ],
+          "subject" : {
+            "key" : "SATURNO",
+            "kind" : "planet",
+            "label" : "♄ Saturno"
+          },
+          "summary" : "4 señales · solar_return_angular, firdaria_major, firdaria_minor, solar_arc",
+          "title" : "♄ Saturno como tema"
+        },
+        {
+          "convergenceScore" : 3.45,
+          "id" : "topic.lot.LOTE_FORTUNE",
+          "layerCount" : 2,
+          "layers" : [
+            "annual",
+            "mediumTerm"
+          ],
+          "signalIDs" : [
+            "annual.zr.fortune.lb.zr-lb-fortune-zr-fortune-L1-2-GEMINIS-1205596800-11-CAPRICORNIO",
+            "medium.progressed.progressedToNatal-LUNA-CUADRADO-PARTE_FORTUNA--1-2027-02-08",
+            "medium.progressed.progressedToNatal-LUNA-CUADRADO-PARTE_FORTUNA-1-2027-02-08"
+          ],
+          "subject" : {
+            "key" : "LOTE_FORTUNE",
+            "kind" : "lot",
+            "label" : "Lote de Fortuna"
+          },
+          "summary" : "3 señales · zr_lb_fortune, progressed_aspect",
+          "title" : "Lote de Fortuna — capítulo activo"
+        },
+        {
+          "convergenceScore" : 2.6,
+          "id" : "topic.planet.JUPITER",
+          "layerCount" : 1,
+          "layers" : [
+            "shortTerm"
+          ],
+          "signalIDs" : [
+            "short.transit.B3BE57C6-9705-48C9-AF16-7172F73E2CFC",
+            "short.transit.44F8C2C0-F274-49B5-AA8D-F0B79357D635",
+            "short.transit.2A32494E-7306-4F9E-BC3D-B1283B0C6D96",
+            "short.transit.1CD8A628-D440-48DA-B0F1-E1C719E7CBCD"
+          ],
+          "subject" : {
+            "key" : "JUPITER",
+            "kind" : "planet",
+            "label" : "Jupiter"
+          },
+          "summary" : "4 señales · transit",
+          "title" : "Jupiter como tema"
+        },
+        {
+          "convergenceScore" : 2.57,
+          "id" : "topic.planet.SOL",
+          "layerCount" : 2,
+          "layers" : [
+            "annual",
+            "mediumTerm"
+          ],
+          "signalIDs" : [
+            "annual.solarReturn.repetition.SOL",
+            "annual.solarReturn.angular.SOL",
+            "medium.solarArc.3F92FA40-97AB-4D80-8A05-062D4924F234"
+          ],
+          "subject" : {
+            "key" : "SOL",
+            "kind" : "planet",
+            "label" : "☉ Sol"
+          },
+          "summary" : "3 señales · solar_return_repetition, solar_return_angular, solar_arc",
+          "title" : "☉ Sol como tema"
+        },
+        {
+          "convergenceScore" : 2.37,
+          "id" : "topic.planet.MARTE",
+          "layerCount" : 2,
+          "layers" : [
+            "annual",
+            "mediumTerm"
+          ],
+          "signalIDs" : [
+            "annual.profection.loty.MARTE",
+            "medium.solarArc.905A5255-252B-48ED-88CD-7098435F104F"
+          ],
+          "subject" : {
+            "key" : "MARTE",
+            "kind" : "planet",
+            "label" : "♂ Marte"
+          },
+          "summary" : "2 señales · profection_loty, solar_arc",
+          "title" : "♂ Marte como tema"
+        },
+        {
+          "convergenceScore" : 2.1,
+          "id" : "topic.planet.MARTE",
+          "layerCount" : 1,
+          "layers" : [
+            "shortTerm"
+          ],
+          "signalIDs" : [
+            "short.transit.030DEFAF-5FDD-4267-949F-826ECB07779F",
+            "short.transit.E17DA9DF-C401-4EFE-BC33-A628A6295E77",
+            "short.transit.CCEFB3E2-3B38-44AC-8082-F9462F6A2EEF"
+          ],
+          "subject" : {
+            "key" : "MARTE",
+            "kind" : "planet",
+            "label" : "Marte"
+          },
+          "summary" : "3 señales · transit",
+          "title" : "Marte como tema"
+        },
+        {
+          "convergenceScore" : 1.96,
+          "id" : "topic.planet.LUNA",
+          "layerCount" : 1,
+          "layers" : [
+            "mediumTerm"
+          ],
+          "signalIDs" : [
+            "medium.primary.8148A51E-DDA6-4EB1-99E4-1B72E77E2BE0",
+            "medium.solarArc.DA752618-76F9-4D27-BB4C-6363EC5507C1",
+            "medium.progressed.phase.Creciente",
+            "medium.progressed.moon.signIngress.moon-sign-4-2028-01-31",
+            "medium.progressed.moon.signIngress.moon-sign-5-2030-04-21"
+          ],
+          "subject" : {
+            "key" : "LUNA",
+            "kind" : "planet",
+            "label" : "☽ Luna"
+          },
+          "summary" : "5 señales · primary_direction, solar_arc, progressed_lunar_phase, progressed_moon_sign_ingress",
+          "title" : "☽ Luna como tema"
+        },
+        {
+          "convergenceScore" : 1.6,
+          "id" : "topic.planet.PLUTON",
+          "layerCount" : 1,
+          "layers" : [
+            "mediumTerm"
+          ],
+          "signalIDs" : [
+            "medium.progressed.progressedToNatal-ASC-CUADRADO-PLUTON--1-2026-07-03",
+            "medium.progressed.progressedToNatal-ASC-CUADRADO-PLUTON-1-2026-07-03"
+          ],
+          "subject" : {
+            "key" : "PLUTON",
+            "kind" : "planet",
+            "label" : "Plutón"
+          },
+          "summary" : "2 señales · progressed_aspect",
+          "title" : "Plutón como tema"
+        },
+        {
+          "convergenceScore" : 1.28,
+          "id" : "topic.planet.NODO_NORTE",
+          "layerCount" : 1,
+          "layers" : [
+            "mediumTerm"
+          ],
+          "signalIDs" : [
+            "medium.progressed.progressedToProgressed-LUNA-SEXTIL-NODO_NORTE-1-2027-03-05",
+            "medium.progressed.progressedToProgressed-LUNA-TRIGONO-NODO_NORTE--1-2027-03-05"
+          ],
+          "subject" : {
+            "key" : "NODO_NORTE",
+            "kind" : "planet",
+            "label" : "Nodo Norte"
+          },
+          "summary" : "2 señales · progressed_aspect",
+          "title" : "Nodo Norte como tema"
+        }
+      ]
+    }
+  },
+  "warnings" : [
+    "Narrativa LLM desactivada explícitamente o por defecto; salida local\/state-only."
+  ]
+}

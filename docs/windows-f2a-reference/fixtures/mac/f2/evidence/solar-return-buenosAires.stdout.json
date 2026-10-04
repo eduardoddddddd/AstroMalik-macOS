@@ -1,0 +1,1167 @@
+{
+  "chart" : {
+    "ascendant" : "♊ Géminis 23°12'",
+    "birthDate" : "1985-03-15",
+    "birthTime" : "14:00",
+    "houseSystem" : "Placidus",
+    "id" : "22222222-2222-2222-2222-222222222222",
+    "latitude" : -34.6037,
+    "longitude" : -58.3816,
+    "mc" : "♈ Aries 10°43'",
+    "name" : "Buenos Aires Control",
+    "placeName" : "Buenos Aires, Argentina",
+    "timezone" : "America\/Argentina\/Buenos_Aires"
+  },
+  "events" : [
+    {
+      "date" : "2026-03-15",
+      "detail" : "Interioridad, retiro, cierre de ciclos y espiritualidad. Es un año para hacer balance, soltar, descansar y preparar internamente lo que vendrá. Puede haber momentos de aislamiento elegido o forzado. La vida interior se enriquece si le das espacio.",
+      "id" : "22222222-2222-2222-2222-222222222222-2026",
+      "priority" : 30,
+      "source" : "solar-return",
+      "title" : "Interioridad y cierre de ciclos"
+    }
+  ],
+  "interpretations" : [
+    {
+      "id" : "ASC_CASA_1",
+      "source" : "Corpus AstroMalik",
+      "text" : "El Ascendente marca la cúspide de la Casa 1: el umbral por el que la carta entra en la experiencia visible. Describe el tono corporal, la primera reacción ante la vida, la manera de iniciar procesos y la máscara funcional con la que la persona se orienta en el mundo. No es una casa más donde cae un planeta, sino el eje que abre la Casa 1 y organiza la relación entre identidad, cuerpo y entorno inmediato. Por eso conviene leerlo junto a su signo, sus aspectos y el estado del planeta regente.",
+      "title" : "Ascendente de revolución en Casa 1"
+    },
+    {
+      "id" : "ASC_GEMINIS",
+      "source" : "Corpus AstroMalik",
+      "text" : "El Ascendente en Géminis muestra una entrada curiosa, móvil y comunicativa en la vida. La persona suele observar, preguntar, conectar datos y adaptarse con rapidez al entorno. La primera impresión puede ser juvenil, nerviosa, inteligente o cambiante. Bien integrado, da flexibilidad mental, humor y facilidad para aprender. En sombra, puede dispersarse, vivir demasiado desde la cabeza o saltar de una posibilidad a otra sin encarnar una dirección clara.",
+      "title" : "Ascendente de revolución en ♊ Géminis"
+    },
+    {
+      "id" : "SOL_PISCIS",
+      "source" : "Astrolibrary",
+      "text" : "Los nativos de Piscis son comprensivos, compasivos, modestos, idealistas, intuitivos, agradables, adaptables, psíquicos, emocionales, creativos, reservados, versátiles, imaginativos y abnegados. También pueden ser impresionables, indecisos, autocompasivos, hipersensibles y cambiantes. Necesitan servir a los demás.\n\nLos nativos de Piscis son sentimentales y románticos enamorados. A veces, esperan demasiado de los demás y luego se sienten heridos si la otra persona no les ayuda. Tienen una fuerte tendencia a colocar a su ser querido en un pedestal. Esto les lleva a la desilusión cuando descubren que su ser querido también tiene defectos.\n\nEl símbolo de Piscis son dos peces que van en direcciones opuestas conectados por una cuerda. Un pez representa la personalidad y el otro representa el espíritu. Estas dos fuerzas opuestas operan dentro de Piscis, provocando inseguridad e indecisión. Manejar estas fuerzas de manera positiva les resulta muy difícil. Algunos buscarán escapar de estas presiones mediante la comida, el alcohol, las drogas u otros excesos. Eso es lo que representa uno de los peces. El otro pez representa a Piscis elevándose a grandes alturas a través de la abnegación, el sacrificio y luego el logro máximo. Los nativos de Piscis aprenden a través del sufrimiento y necesitan aprender a perseverar.\n\nLos nativos de Piscis tienden a absorber la información y el entorno que los rodea. Por eso es importante que se rodeen de personas y circunstancias edificantes. Los nativos de Piscis son personas creativas, autosuficientes y con una mente extremadamente activa, debido a su fuerte imaginación, con la que en ocasiones pueden dejarse llevar. Sienten y sienten cosas de las que otros no son conscientes.\n\nLos nativos de Piscis generalmente no poseen una gran fuerza de voluntad ni tienen un enfoque dinámico ante la vida. Aunque por fuera pueden parecer muy decididos, en el fondo se están gestando dudas internas. Esta inseguridad les hace necesitar que los demás los tranquilicen. Una de sus mayores necesidades es aprender a comprender sus altibajos emocionales. Como tienden a dudar de sus propias conclusiones, necesitan aprender a creer en sí mismos.\n\nLos nativos de Piscis son muy generosos con su tiempo para ayudar a otras personas. Siempre se sienten mejor cuando sirven a los demás de alguna manera. Al usar su compasión exteriormente por los demás, no se volverán tan malhumorados ni introvertidos. Dado que los nativos de Piscis son reacios a herir a los demás o a afrontar cualquier tipo de confrontación, pueden verse envueltos en situaciones emocionales muy difíciles que les resulta extremadamente difícil superar. A veces les cuesta decir que no y se quedan en situaciones malas pensando que de alguna manera pueden cambiar a la otra persona y entonces todo estará bien. A algunos nativos de Piscis les encanta jugar al mártir, mientras que otros necesitan jugar al salvador. Los nativos de Piscis tienden a pensar con el corazón más que con la cabeza y otros pueden utilizarlos fácilmente. Muchos caen en cualquier tipo de historia triste, en detrimento suyo propio. Sus corazones están en el lugar correcto, solo necesitan ser más realistas y con los pies en la tierra.\n\nLos nativos de Piscis pueden ser muy reservados, pero hacen amigos con bastante facilidad y les son bastante leales. No les gustan especialmente las peleas verbales o combativas, pero defenderán a sus amigos de manera sutil.\n\nLos nativos de Piscis a veces carecen de vitalidad, lo que a menudo da a la gente la idea de que son vagos. Bueno, algunos lo son y a los nativos de Piscis en general les gusta posponer las cosas. Un Piscis necesita suficiente tiempo cada día para estar solo mientras recupera sus energías fluctuantes.\n\nEl deseo innato de Piscis de escapar de la vida física se puede utilizar de manera constructiva a través de la creatividad. Les atraen muchas formas de arte, danza y música. Parecen conocer instintivamente sus propias capacidades y limitaciones. Des…",
+      "title" : "☉ Sol de revolución en ♓ Piscis"
+    },
+    {
+      "id" : "LUNA_ACUARIO",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes la Luna en Acuario, tus emociones tienden a estar guiadas por el intelecto y puedes mostrarte muy desapegado a la hora de lidiar con ellas. Otros pueden pensar que eres frío y distante porque no entienden la forma en que manejas tus sentimientos. Esta posición estabiliza tus emociones. Encuentra seguridad al tratar y trabajar con grupos de personas, especialmente en esfuerzos que benefician a la mayoría. Eres inventivo, original y de pensamiento progresista y quieres hacer del mundo un lugar mejor para vivir. Los lazos y apegos familiares pueden no ser tan importantes para ti como lo son para los demás y quizás a menudo consideres a tus amigos más cercanos a ti que a tus parientes consanguíneos. Necesitas libertad e independencia en tus relaciones con los demás. A veces retrocedes si se acercan demasiado. Odias mucho a una pareja celosa y posesiva. Te gusta experimentar y jugar en el campo. Hay poco cariño por lo convencional y lo tradicional. Tiendes a ser amigable, intuitivo, humano, progresista e independiente. Eres de mente abierta y deseas investigar todo conocimiento. Es posible que tenga dificultades para comprender las necesidades emocionales de los demás. A veces expresas ideas inusuales simplemente para sorprender o sorprender a los demás y sacarlos de su letargo o simplemente para ver qué tipo de reacción obtendrás. En el lado negativo, puedes ser impersonal, testarudo, errático, rebelde, rígido, emocionalmente estrecho y egoísta.",
+      "title" : "☽ Luna de revolución en ♒ Acuario"
+    },
+    {
+      "id" : "MERCURIO_PISCIS",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes Mercurio en Piscis, tú, tus pensamientos y tus formas de comunicarte tienden a ser idealistas, psíquicos, intuitivos, imaginativos, comprensivos, diplomáticos, extremadamente sensibles, compasivos y visionarios. En el lado negativo, puedes ser perezoso, poco práctico, soñador, demasiado sensible, postergador, indiferente y distraído. Es posible que le falte un fuerte deseo de trabajar o de esforzarse en hacer cualquier cosa que requiera mucha fuerza, organización, paciencia y responsabilidad. Preferirías ser poeta o músico que científico o mecánico. Es posible que el aprendizaje formal de libros no sea su área de fortaleza, sin embargo, puede absorber conocimientos de las maneras más notables si está interesado en el área temática. Eres sensible a tu entorno y, por lo tanto, debes tener cuidado con los entornos en los que te mueves. Tus nervios y tu salud mental requieren que descanses periódicamente lejos del ruido del mundo laboral diario. Tómate un tiempo para estar a solas contigo mismo y reagruparte. Pero no demasiado tiempo, ya que tienes tendencia a dejarte llevar por ti mismo y por tus problemas. La curación mediante técnicas de visualización o la curación mediante la imposición de manos puede resultarle atractiva. Es posible que tengas gran interés y talento en el arte, la música, el teatro o la poesía. Tu imaginación puede estar bastante desarrollada. Debido a que tiende a pensar en términos de abstracciones mentales, traducir sus pensamientos e impresiones a un lenguaje concreto y cotidiano puede resultarle difícil a veces y, en consecuencia, puede parecer menos inteligente o al menos menos ingenioso y verbal que otros. No le gusta que le limiten a los hechos y sigue su instinto más que la lógica. Eres intuitivo y capaz de sentir cuáles son los pensamientos y sentimientos de los demás, incluso antes de que te digan algo. A veces te sumerges tanto en tu propio mundo de pensamiento e imaginación que pasas por alto cosas de tu entorno inmediato y tangible. Tienes una mente extremadamente abierta y crees que todo es posible. Las fuerzas intangibles o espirituales te parecen tan reales como cualquier cosa en el mundo concreto y a menudo te formas una opinión sobre una persona o situación sin mucho conocimiento fáctico de ellas, y tus impresiones suelen ser correctas. Es importante mantener la mente ocupada positivamente, ya que soñar despierto tiende a tomar direcciones extrañas.",
+      "title" : "☿ Mercurio de revolución en ♓ Piscis"
+    },
+    {
+      "id" : "VENUS_ARIES",
+      "source" : "Astrolibrary",
+      "text" : "Venus desea relaciones, sociabilidad y afecto. Aries es franco, exigente y quiere tomar la iniciativa. Por lo tanto, si tienes Venus en Aries, puedes ser muy ardiente y perseverante en las relaciones. Tus sentimientos y pasiones se despiertan fácilmente y normalmente intentas tomar la iniciativa en los asuntos sociales y del corazón. Sales y consigues lo que crees que quieres. El problema es que, una vez adquirido, es posible que te canses de tenerlo. La emoción de la persecución es más importante para ti que la captura final. Por lo tanto, sus romances pueden comenzar con una llamarada de emoción y gloria para terminar en aburrimiento y monotonía. Siempre hay nuevos campos que conquistar y hay que ir tras ellos. Es casi una cruzada para ti. Las peores cualidades de Venus son esforzarse demasiado en complacer a los demás y tomar la línea de menor resistencia. Entonces, en las relaciones, puedes elegir parejas que tienden a dominarte y quieren que hagas las cosas a su manera a expensas de tus propios deseos. Venus en Aries te pide que seas asertivo, pero no dominante, complaciente, pero no un trapo. Eres independiente y tienes un enfoque impulsivo hacia el amor. Te gusta la competitividad y tal vez buscas peleas sólo por la acción y la emoción. Puedes ser muy desconsiderado con los demás porque a veces no piensas en tus acciones y en los efectos que tienen en las personas más cercanas a ti. La impaciencia y el egoísmo pueden ser un problema para usted. Vea ideas de regalos para personas con Venus en Aries. Más sobre Venus en Aries.",
+      "title" : "♀ Venus de revolución en ♈ Aries"
+    },
+    {
+      "id" : "MARTE_PISCIS",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes Marte en Piscis, tus energías y agresividad tienden a manifestarse de manera no combativa ni competitiva. Eres un poco pacifista y no te gusta enfrentarte a nadie ni a nada de manera directa y confrontativa. Trabajar con personas o situaciones o trabajar detrás de escena, en secreto, es más tu estilo preferido. Si es necesario, es más tu tendencia a renunciar a algo que a luchar por ello. Debido a que su ego no está especialmente interesado en los logros personales, la glorificación, las ventajas materiales o ganar a expensas de otra persona, puede parecerle a los demás como alguien de voluntad débil o ineficaz. Estar en la cima, ser el mejor o el primero no significa mucho para ti, por lo que puedes ser muy feliz en un papel secundario, trabajando en beneficio de otros o por una causa en la que crees.\n\nEs posible que experimente dificultades para planificar metas claras y definidas para usted en el mundo real. No estás seguro de lo que quieres de la vida, excepto que instintivamente pareces saber que tienes y necesitas encontrar un propósito espiritual. Tienes muchos sueños, altos ideales y un fuerte impulso místico o religioso. También tienes una imaginación creativa y puedes aplicarte con éxito al arte o la música. Eres intuitivo, divertido y diplomático, tranquilo por fuera, pero inquieto por dentro.\n\nEn el lado negativo, puede ser indeciso, procrastinar, demasiado interesado en el lado sensual de la vida y puede recurrir al uso de drogas o alcohol como una forma de escapar de las presiones y responsabilidades de lidiar con la vida cotidiana. Aprender el autocontrol es importante para usted. Actúe, no se limite a soñar despierto.",
+      "title" : "♂ Marte de revolución en ♓ Piscis"
+    },
+    {
+      "id" : "JUPITER_CANCER",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes a Júpiter en Cáncer, eres cariñoso, pacífico, amigable, sociable, comprensivo y probablemente muy patriótico. Tienes una imaginación muy vívida y muchos sueños utópicos. Probablemente haya interés en las cosas místicas. Tiene buen juicio financiero, especialmente en bienes raíces, con capacidad para acumular dinero y posesiones, especialmente después de la mediana edad. Se recibe mucha ayuda de los padres. Es posible que tenga problemas de peso, especialmente en una etapa avanzada de su vida, porque disfruta de las delicias de la mesa. Es posible que no alcance todo su potencial hasta la mediana edad o la vejez. Puede haber una tendencia a la tacañería, a aferrarse demasiado a recuerdos y posesiones. Puede que seas una rata de carga. El sentimentalismo sensiblero y el exceso de emotividad también pueden ser problemas para usted.",
+      "title" : "♃ Júpiter de revolución en ♋ Cáncer"
+    },
+    {
+      "id" : "SATURNO_ARIES",
+      "source" : "Astrolibrary",
+      "text" : "La mejor cualidad de Saturno es el sistema y la mejor cualidad de Aries es el liderazgo. Por lo tanto, si tienes a Saturno en Aries, puedes ser un líder muy capaz, uno que sabe qué hacer y no tiene miedo de salir a hacerlo sin importar lo que cueste ni el tiempo que cueste. El combate y la competitividad te impulsan a lograr mayores logros. La autosuficiencia es alta dentro de ti y probablemente sientas que eres más capaz que quienes te rodean, por lo que puedes terminar haciendo todo el trabajo, lo que puede enojarte si sientes que los demás no están cumpliendo con su parte. La peor cualidad de Saturno es el egoísmo y la peor cualidad de Aries es la interferencia con los planes de los demás. Por lo tanto, también eres capaz de entrometerte y tratar de manejar los asuntos de los demás. Usted puede pisotearlos al tratar de lograr que hagan su voluntad en lugar de la suya. Puedes ser un verdadero negrero. No le gustan las restricciones de ningún tipo y no le agrada que los demás le digan qué hacer. Recuerda esto cuando des las órdenes. Los obstáculos, las frustraciones y las limitaciones entran en juego en sus esfuerzos pioneros y emprendedores. La libertad sólo llega a través de la responsabilidad y la disciplina. La impaciencia puede arruinar todo el buen trabajo que intentas hacer. Es posible que sea necesario tener precaución al llevar a cabo sus planes. La estabilidad y la seguridad son importantes para usted y trabaja con esos pensamientos en mente. Los sentimientos de incapacidad pueden impulsarlo a emprender inmensas empresas para sentirse más valorado o digno. El estrés por tratar de lograr demasiado puede hacerte propenso a sufrir dolores de cabeza. Saturno en Aries te pide que seas abnegado.",
+      "title" : "♄ Saturno de revolución en ♈ Aries"
+    },
+    {
+      "id" : "URANO_TAURO",
+      "source" : "Astrolibrary",
+      "text" : "(1850\/51 – 1858\/59, 1934\/35 – 1941\/42, 2018\/19 – 2025\/26)\n\nTauro resalta la cualidad obstinada de Urano. Si otros signos fijos son prominentes en la carta, el individuo puede decir con orgullo: \"Una vez que haya tomado una decisión, no la cambio\". Sin embargo, si la carta tiende a la indecisión, con un poderoso énfasis en Libra o Piscis, esta es una buena ubicación, ya que brinda una combinación de estabilidad y originalidad uraniana. De cualquier manera, esta ubicación genera tendencias opuestas. Por un lado, la influencia fija de Tauro hace que uno quiera ser convencional. Esto choca con el impulso natural de Urano de liberarse de todas las convenciones. Si se consigue el equilibrio, muchas veces nos encontramos con un individuo original y práctico, que es cuando Urano en Tauro está en su mejor momento.  Lee más sobre Urano en Tauro.",
+      "title" : "⛢ Urano de revolución en ♉ Tauro"
+    },
+    {
+      "id" : "SOL_CASA_10",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes el Sol en la décima casa, es posible que desees alcanzar el éxito y el poder en beneficio de los demás o buscar el éxito y el poder para ti mismo sin pensar en nadie más. Quieres brillar y ser reconocido por tus logros. Quieres ser realmente bueno en algo. Existe una fuerte motivación hacia el éxito en una carrera y\/o logros personales. Tienes la capacidad de inspirar a otros a través de tu ejemplo. Eres ambicioso y el engrandecimiento personal es posible. Las personas en las altas esferas pueden ayudar o obstaculizar su carrera.",
+      "title" : "☉ Sol de revolución en Casa 10"
+    },
+    {
+      "id" : "LUNA_CASA_9",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes la Luna en la novena casa, eres un soñador y a menudo reflexionas sobre los aspectos superiores de la vida. Dado que es posible que no esté satisfecho con la forma en que va su vida actualmente, desea buscar nuevos campos. Esta búsqueda puede llevarle a realizar muchos viajes largos, tanto físicos como mentales. La seguridad puede encontrarse en un ideal religioso o filosófico. Tu filosofía de vida es la que te nutre y te da seguridad. Tienes una variedad de intereses, en deportes, pasatiempos y estudios. Eres un profesor estimulante debido a tu interés personal en las materias que enseñas. Realmente son parte de ti y eso se nota en quienes te escuchan. Es posible que tengas sueños precognitivos. Respecto a la vocación: el énfasis se pone en la mente superior, las dimensiones de la filosofía, las costumbres públicas, la religión, el derecho o compartir el razonamiento del público. Las cuestiones relativas a los viajes al extranjero, la reubicación e incluso el cambio de ciudadanía son dimensiones importantes a considerar en la búsqueda de condiciones laborales que traigan el éxito personal.",
+      "title" : "☽ Luna de revolución en Casa 9"
+    },
+    {
+      "id" : "MERCURIO_CASA_9",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes Mercurio en la Casa 9, eres flexible, con una mente adaptable que quizás esté interesada en actividades intelectuales, leyes, religión o filosofía. Tienes muchas ideas y creencias con la capacidad de expresarlas bien verbalmente. Probablemente le gusten los viajes y la cultura extranjera y esto le resulte especialmente educativo. Tienes la capacidad de aprender idiomas extranjeros o de ser traductor. Puedes ser profesor o estar involucrado en la educación superior de alguna otra manera. Puede existir interés en publicaciones o publicidad.",
+      "title" : "☿ Mercurio de revolución en Casa 9"
+    },
+    {
+      "id" : "VENUS_CASA_10",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes Venus en la Casa Décima, tu disposición agradable y tu naturaleza armoniosa te hacen popular en tu carrera y en el mundo en general. La gente parece querer hacer cosas buenas por ti, lo que puede provocarte pereza si abusas de esta energía. Tienes una actitud amorosa y amigable hacia el mundo con una actitud general de optimismo. Esta ubicación puede resultar favorable para hablar en público y cantar. Su voz puede usarse para complacer e inspirar a las personas. Esta posición suele garantizar unas cómodas circunstancias económicas.",
+      "title" : "♀ Venus de revolución en Casa 10"
+    },
+    {
+      "id" : "MARTE_CASA_9",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes a Marte en la Casa 9, tu mente está entusiasta, pero inquieta. Eres independiente en pensamiento. Hay que vigilar vuestro celo religioso para que no se convierta en fanatismo. Tiene opiniones firmes y está feliz de contarlas a cualquiera que quiera escucharlas. Tienes un fuerte deseo de viajar, no necesariamente físicamente, sino mentalmente. Tienes una filosofía liberal, amplia y progresista sobre la vida y no quieres que nadie más te imponga sus creencias. Existe la posibilidad de conflictos con los suegros. Lucharás por tus convicciones. Es posible que deba observar una tendencia a creer que siempre tiene la razón.",
+      "title" : "♂ Marte de revolución en Casa 9"
+    },
+    {
+      "id" : "JUPITER_CASA_2",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes a Júpiter en la Casa 2, tienes la capacidad de tener éxito financiero. El dinero parece llegar a ti y probablemente nunca te hayas perdido una comida en tu vida. Tienes confianza y optimismo en tus talentos y habilidades. Sus ideas e inversiones visionarias suelen prosperar gracias a su valoración intuitiva de las situaciones. Disfrutas de las posesiones materiales y se te puede considerar \"afortunado\". Inspira confianza en los demás y puede beneficiarse de recibir ayuda financiera de otros para desarrollar sus ideas visionarias e idealistas. Debes cuidarte de la autocomplacencia y la extravagancia excesiva. Frena tu deseo por comidas y postres ricos y dulces.",
+      "title" : "♃ Júpiter de revolución en Casa 2"
+    },
+    {
+      "id" : "SATURNO_CASA_10",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes a Saturno en la Casa 10, eres autosuficiente e independiente con buena capacidad para los negocios y la organización. Para usted, el éxito llega lentamente, a través de la perseverancia y el trabajo duro. Debes aceptar tus responsabilidades, de lo contrario la vida será una serie de reveses y fracasos. Perseguir el poder y utilizar a otros para conseguir lo que quieres provocará tu caída. Necesitas controlar tus ambiciones. Tenga cuidado con los puentes que queme; es posible que deba volver a cruzarlos. Puede haber dificultades con cualquiera de los padres debido a su disciplina, rigor o la necesidad de controlar su vida.",
+      "title" : "♄ Saturno de revolución en Casa 10"
+    },
+    {
+      "id" : "NEPTUNO_CASA_10",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes a Neptuno en la Casa Décima, pueden suceder cosas extrañas y confusas con respecto a tu carrera y tu impulso para tener éxito en ella. Esta posición está acompañada de un fuerte idealismo, así que mantén los ojos abiertos y los pies en el suelo. Su carrera puede involucrar algo artístico, inspirador, humanitario, dramático, promocional o psíquico. El teatro, la química, las actividades psíquicas, la fotografía o el tráfico de drogas son posibles salidas profesionales. Su imagen pública puede tener altibajos debido a fuerzas que escapan a su control. Es posible que se produzca un sentimiento de rechazo por parte de uno o ambos padres.\n\nVea otra interpretación de Neptuno en la casa 10 de Aleister Crowley.",
+      "title" : "♆ Neptuno de revolución en Casa 10"
+    },
+    {
+      "id" : "PLUTON_CASA_8",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes a Plutón en la Casa 8, posees una fuerte intuición y buen sentido para los negocios. Tienes una mente analítica, con coraje, fortaleza e interés por el mundo metafísico. Es posible que tengas habilidades clarividentes. Existe la posibilidad de una herencia. Puede haber preocupación o dificultad por el dinero a través del matrimonio o de un socio comercial. Puede haber trastornos financieros y la transformación puede llegar por este medio. Busca el significado de la vida y puede desarrollar una fascinación o interés por la muerte y el más allá. Quieres saber cómo funciona el Universo. Esta posición desarrolla la percepción, la autoconciencia, la independencia y la regeneración. Cualquier tendencia a dominar, controlar o poseer a otros debe abordarse de manera positiva. Será necesario superar una fuerte naturaleza de deseos para que se produzca la regeneración.",
+      "title" : "♇ Plutón de revolución en Casa 8"
+    },
+    {
+      "id" : "URANO_CASA_12",
+      "source" : "Astrolibrary",
+      "text" : "Si tienes a Urano en la Casa 12, tiendes a ser muy intuitivo y reservado, con ideales humanitarios. Es posible que tenga sentimientos de soledad. Puede haber dificultades nerviosas. Hay interés por los temas metafísicos. Es posible que tengas experiencias psíquicas únicas que guardas para ti por miedo a ser ridiculizado. Tienes un deseo tremendo de sentirte libre y un cuestionamiento constante sobre el sentido de la vida y de las imperfecciones que ves a tu alrededor. Es necesario sacar a la luz y eliminar las dificultades no resueltas en su mente subconsciente. Tienes tendencia a sentir que algo te va a \"atrapar\", a sorprenderte si no tienes cuidado. Es como si siempre tuvieras una sensación de perdición inminente. Es necesario superar este temor. Se debe desarrollar el autocontrol. Lee más sobre Urano en la casa duodécima.",
+      "title" : "⛢ Urano de revolución en Casa 12"
+    },
+    {
+      "id" : "SOL_MC_CONJUNCION",
+      "source" : "Astrology King",
+      "text" : "El Sol en conjunción con el Medio Cielo natal también se llama Sol culminante. Te hace estar muy orientado a objetivos. El éxito en su carrera es una de sus necesidades más esenciales. Expresas tu identidad a través de logros y trabajas duro para dejar tu huella. Debes gozar de una buena posición social y ser socialmente popular.\n\nEl fracaso puede ser devastador para usted y dañar gravemente su autoestima. Por este motivo, conviene evitar los posibles inconvenientes de este aspecto. Estás orgulloso, pero la arrogancia o el egoísmo causarán mucha resistencia a tus objetivos. Tienes cualidades de liderazgo, pero puedes tender a rebelarte contra las figuras de autoridad. Por esta razón, necesita controlar su ritmo y aprender a trabajar bajo dirección hasta que adquiera las habilidades necesarias para tener éxito.\n\nEstá bien que te sientas importante y pienses que estás destinado a grandes cosas, pero no se lo restriegues en la cara a la gente. Probablemente admirabas a tu padre y te resultaría más fácil avanzar si él te apoyara. Aprenda de sus mayores y superiores y muéstreles respeto. De esta manera, llegarás a la cima y te ganarás el respeto y la distinción que buscas. Si no puede trabajar dentro de una burocracia o ser un pez pequeño en un estanque grande, lo mejor sería que pudiera iniciar un negocio por su cuenta.",
+      "title" : "☉ Sol ☌ Conjunción MC (orbe 7.3°)"
+    },
+    {
+      "id" : "SOL_NEPTUNO_CONJUNCION",
+      "source" : "Astrology King",
+      "text" : "Sol en conjunción con Neptuno natal te hace sentir muy sensible y afectuoso. Tienes una gran imaginación y experimentas una rica vida espiritual y onírica. Debido a su mayor sensibilidad a la energía vibratoria, existe una gran variabilidad en la forma en que las personas manejan ese flujo de energía. Esto puede variar desde la iluminación espiritual hasta la paranoia, dependiendo de las estrellas fijas y otros aspectos de esta conjunción.\n\nProbablemente serás altruista y sumiso a medida que Neptuno eleve tu ego por encima del interés personal. Trasciendes las necesidades y deseos primitivos del ego mientras parte de tu ego se funde con tu entorno. Te vuelves uno con tu pareja, tu familia, tu comunidad y la humanidad.\n\nSu conexión puede ir más allá de lo personal e incluir empatía o comunión con otras formas de vida y el medio ambiente. Con tu ego tan desnudo o expuesto, eres vulnerable a las energías negativas tanto como las energías positivas te potencian. Aquí es donde mirar su gráfico se vuelve más importante, siendo este aspecto más que cualquier otro.\n\nCon aportes negativos en una etapa temprana de la vida, como abuso psicológico o físico, pobreza, discriminación, etc., su ego se protegerá retirándose y escondiéndose de la fuente de energía negativa. En tales casos, usted puede sentirse solo, abandonado, asustado o victimizado.\n\nPara compensar la pérdida de aportes externos, su vívida imaginación crearía realidades alternativas en las que sentirá compañía, apoyo, alimento y propósito. Puedes imaginar personajes que adopten su propia forma en el mundo de los espíritus.\n\nMás adelante, esto puede conducir a una incapacidad para afrontar la realidad, a soñar despierto, a evitar responsabilidades, a mentir, a abusar de sustancias o a sufrir enfermedades mentales. El vacío se puede llenar con la autoexpresión creativa en el mundo real, por ejemplo a través de la religión, el cine, la música, el arte, la poesía, el teatro y los juegos de rol.\n\nLa expresión positiva de este Sol en conjunción con Neptuno se producirá de forma natural con buenas asociaciones de estrellas fijas u otros aspectos útiles. Cambiar el condicionamiento negativo inicial implicará salir lentamente de su burbuja o manta de seguridad para reincorporarse al mundo real exterior. Un ser querido de confianza sería invaluable para brindar apoyo y ayudar a establecer metas.\n\nCompartirse a uno mismo manteniendo un ego sano es clave para afrontar este aspecto natal. Debe aprender a establecer límites realistas, de modo que comparta lo suficiente para mantener relaciones saludables pero conserve lo suficiente para satisfacer sus propias necesidades. El objetivo es confianza, vitalidad y un sentido de propósito.\n\nDemasiado límite conducirá a los ejemplos anteriores del niño retraído. No tener suficientes límites podría llevar a sentirse abrumado por energías negativas, pérdida de vitalidad y enfermedades. Ser egoísta y solidario al mismo tiempo será un trabajo en progreso.",
+      "title" : "☉ Sol ☌ Conjunción ♆ Neptuno (orbe 6.53°)"
+    },
+    {
+      "id" : "SOL_URANO_SEXTIL",
+      "source" : "Astrology King",
+      "text" : "Sol sextil Urano natal te permite expresar emoción, cambio y excentricidad a través de tu ego. Le gusta mostrar sus diferencias a través de una personalidad \"exterior\" y sus intereses y trabajo. Es posible que hayas sido rebelde cuando eras niño. Buscas activamente cambios y entusiasmo en tu vida.\n\nTus peculiaridades y tendencia al cambio generalmente no causan drama ni caos. Incluso otras personas aceptarán tus diferencias porque tienes un efecto estimulante en quienes te rodean. Esta aceptación también surge de la autoconciencia de tu singularidad y de cómo te ven los demás.\n\nEs posible que se sienta atraído por carreras científicas o basadas en Internet, y sería adecuado para temas ocultos como la astrología. Disfrutas de la libertad y la confianza en ti mismo para expresarte con estilo. También eres muy inteligente, ingenioso, inventivo y excepcionalmente creativo.\n\nEs posible que tengas un ego grande y saludable y estés orgulloso de ser diferente. Defenderás a los desvalidos y lucharás contra la injusticia y el gobierno autoritario. Los destellos de perspicacia y una asombrosa capacidad para encontrar formas nuevas y creativas de hacer las cosas pueden conducir a descubrimientos y revelaciones.",
+      "title" : "☉ Sol ⚹ Sextil ⛢ Urano (orbe 3.08°)"
+    },
+    {
+      "id" : "LUNA_PLUTON_CONJUNCION",
+      "source" : "Astrology King",
+      "text" : "Luna en conjunción con Plutón natal da una vida emocional intensa y dramática. Sientes las cosas tan profundamente que controlar cómo reaccionas ante las personas y las situaciones a veces resulta un desafío. También experimenta estados de ánimo extremos y una tendencia hacia estados de ánimo extremos y, a veces, oscuros.\n\nTus emociones y reacciones también están fuertemente influenciadas por tu poderosa intuición. Los sueños, visiones o impresiones psíquicas suelen ser extremadamente vívidos y profundos. Por naturaleza, tienes poco control sobre tu subconsciente, pero tus sentimientos e intuición pueden tomar control sobre tus intenciones y acciones conscientes.\n\nSi está de mal humor, es posible que se sienta abrumado por el miedo y la paranoia. Puede creer que otros están tratando de controlarlo. Pueden seguir comportamientos como la manipulación, la mentira y la intimidación.\n\nLa manipulación emocional es más probable que ocurra en el hogar cuando eres pequeño y en las relaciones íntimas, particularmente con mujeres. Si tu madre fuera entrometida, manipuladora o autoritaria, habrías aprendido ese comportamiento controlador. Si es así, deshacer este lavado de cerebro subconsciente es una prioridad importante y una tarea necesaria antes de poder disfrutar de relaciones saludables.\n\nAfortunadamente, tu poderoso subconsciente tiene tremendos poderes de regeneración y transformación. Puede aprender rápidamente el autoanálisis psicológico y otras técnicas para acceder a recuerdos y sentimientos profundamente enterrados.\n\nLa meditación, la astrología, el trabajo con los sueños y la regresión a vidas pasadas son formas naturales de transformar positivamente las emociones siniestras o los comportamientos destructivos. Tu poderoso subconsciente es capaz de hacer cosas asombrosas.",
+      "title" : "☽ Luna ☌ Conjunción ♇ Plutón (orbe 7.92°)"
+    },
+    {
+      "id" : "LUNA_VENUS_SEXTIL",
+      "source" : "Astrology King",
+      "text" : "Luna sextil Venus natal da una naturaleza dulce, encantadora y adorable. Eres genuinamente cariñoso, amable y afectuoso, con excelentes habilidades sociales.\n\nLa Luna y Venus son suaves, sensibles y pasivos, pero el aspecto sextil es enérgico y expresivo. Entonces, si bien eres amigable y amante de la paz, no eres fácil de convencer y defenderás a ti mismo, a tu familia y a tus valores.\n\nPuedes conquistar a la gente con tu encanto y belleza, y no necesitas aplicar fuerza física o psicológica para salirte con la tuya. Su franqueza y honestidad al compartir sus sentimientos y afectos le brindan buenos amigos, popularidad, atractivo público y, a veces, fama.\n\nLa familia y los buenos amigos son esenciales para su sensación de seguridad. No funciona bien en aislamiento o en entornos desagradables, sucios o peligrosos. Es una persona extrovertida y amante de la diversión, debería disfrutar del éxito relativamente temprano en la vida. La comodidad, la popularidad y la riqueza pueden llegar fácilmente, pero usted gana y merece buena fortuna.",
+      "title" : "☽ Luna ⚹ Sextil ♀ Venus (orbe 1.39°)"
+    },
+    {
+      "id" : "MERCURIO_ASC_CUADRADO",
+      "source" : "Astrology King",
+      "text" : "Mercurio en cuadratura Ascendente natal otorga una mente aguda, curiosidad e inteligencia creativa. Eres excelente con las palabras, ya sea aprendiendo, leyendo, escribiendo o hablando. Tu mente es tan activa que debes mantenerte ocupado con un trabajo mental apasionante y exigente. De lo contrario, puedes ponerte nervioso, distraído o perturbador.\n\nEres una persona de ideas y un comunicador de ideas. Sus ideas pueden ser controvertidas, pero normalmente están bien pensadas y son convincentes. Eres bueno para informar, educar, compartir, aclarar, provocar y entretener a los demás. Por eso, debatir, hablar en público, escribir e incluso cantar y predicar son formas de mantener la mente activa y productiva.\n\nEs probable que estés con otras personas a menudo, pero esto no tiene por qué arruinar las relaciones o afectar tu salud mental si aprendes de la experiencia. A veces puedes ser bastante hablador y obstinado, por lo que es vital reducir la velocidad y escuchar a los demás. Escuche consejos y obtenga segundas opiniones.\n\nSi alguien no está de acuerdo contigo, no lo tomes automáticamente como algo personal. Mantenga el debate a nivel intelectual y evite los chismes y rumores. Puedes ser un embaucador, pero es fundamental conocer tus límites. Hacer reír a la gente es una cosa, pero burlarse o intimidar es otra.",
+      "title" : "☿ Mercurio □ Cuadratura ASC de revolución (orbe 4.7°)"
+    },
+    {
+      "id" : "MERCURIO_JUPITER_TRIGONO",
+      "source" : "Astrology King",
+      "text" : "Mercurio trígono con Júpiter natal brinda una perspectiva amplia y un conocimiento vasto y completo. Tu actitud alegre, tolerante y optimista, tu gran sentido del humor y tu generosidad hacen que sea divertido estar contigo. Debería disfrutar mezclarse con grupos de personas y no debería tener problemas para hacer amigos. Querido y popular, incluso podrías volverte famoso. Posees habilidades sociales elocuentes y formas amistades mutuamente beneficiosas.\n\nEste aspecto ayuda a que su vida transcurra sin problemas gracias a su amplia perspectiva, su perspicacia y su capacidad para planificar el futuro. Júpiter amplifica tus sentidos, procesos de pensamiento y habilidades de comunicación de Mercurio. Tu punto de vista lógico, agilidad mental y visión amplia son ideales para estudiar y enseñar idiomas, filosofía, religión y derecho. Dado su pensamiento orientado al futuro, es posible que también tenga talento para escribir ciencia ficción. Su conocimiento empresarial le ayudará en cualquier carrera que elija.\n\nMercurio en trígono con Júpiter otorga una naturaleza progresista y generosa que favorece las obras de caridad, pero también puedes esperar beneficiarte de la generosidad de otras personas. Valora la libertad de expresión y otros derechos humanos y, sin duda, condenaría la censura. Puedes ser llamativo, contundente e incluso intenso al comunicar tus ideas. La política o el activismo social se adaptarían a tu estilo.\n\nLos viajes de larga distancia serían excelentes para ampliar sus perspectivas y aumentar sus conocimientos generales. Continuarás creciendo intelectualmente a lo largo de tu vida, e incluso podrás manifestar esta expansión a través del ejercicio físico o el culturismo. Quizás el único inconveniente de este aspecto natal positivo sea la tendencia a pensar demasiado, lo que puede provocar agotamiento mental.",
+      "title" : "☿ Mercurio △ Trígono ♃ Júpiter (orbe 5.25°)"
+    },
+    {
+      "id" : "MERCURIO_MC_CONJUNCION",
+      "source" : "Astrology King",
+      "text" : "Mercurio en conjunción con el Medio Cielo natal proporciona un intelecto penetrante y habilidades de comunicación muy por encima del promedio. Lo ves todo y lo ves muy claramente. Generalmente eres imparcial y disfrutas compartir tu perspectiva sobre el mundo. Dar sentido a ideas complejas y comunicarlas en un estilo educativo o entretenido es una parte importante de su papel en la vida. También te debería gustar socializar; cuanta más interacción tengas con los demás, mejor.\n\nPuedes sentirte inquieto o ansioso cuando no tienes nada que hacer, por lo que siempre buscas estimulación mental y experiencias excitantes. La tendencia a distraerse fácilmente podría significar dificultad para concentrarse en un tema a la vez. Sin embargo, Internet se adapta a su estilo de aprendizaje e investigación y puede encontrar rápidamente la información que necesita. Quizás deberías marcar las páginas donde comienzas para poder regresar a tu línea de preguntas original.\n\nAl comunicarse con los demás, utilizar el corazón y la cabeza es fundamental. Tienes el potencial de volverte demasiado intelectual y menos íntimo a menos que tengas una Luna o Venus bien ubicados.\n\nTus habilidades superiores de comunicación y tu rápido ingenio te ayudarán a avanzar en tu carrera. Destacarías en las industrias de los medios y el entretenimiento, desde lector de noticias hasta periodista o comediante. Otras funciones específicas de Mercurio incluyen negocios, comercio, economía, educación primaria y secundaria, transporte, administración, trabajo secretarial o administrativo, análisis, cajero, impuestos, negociación, promociones, ventas telefónicas y ventas generales.",
+      "title" : "☿ Mercurio ☌ Conjunción MC (orbe 7.9°)"
+    },
+    {
+      "id" : "MERCURIO_MARTE_CONJUNCION",
+      "source" : "Astrology King",
+      "text" : "Mercurio en conjunción con Marte natal proporciona una mente rápida, reflejos rápidos y una lengua afilada. Estos atributos son ideales para tomar decisiones rápidas en el calor del momento, mientras otros dudan. Excelentes habilidades de debate le permitirán defender no sólo sus derechos sino también los derechos de los demás.\n\nSu forma entusiasta, directa y valiente de expresarse puede ganarse la admiración en la política, los negocios y el ejército. Sin embargo, este medio directo de comunicación puede generar discusiones y hostilidad en las relaciones más personales y en la vida social.\n\nLa clave para gestionar este potente aspecto es controlar el lado impulsivo y agresivo de Marte. Incluso en tu vida profesional, formar relaciones armoniosas requerirá modificar tu actitud naturalmente defensiva. A menudo sabrás que tienes razón, pero por la paz, debes permitir que otros compartan sus opiniones incluso si parecen equivocadas.\n\nEs en sus relaciones más íntimas donde esta tendencia a discutir plantea los problemas más importantes. Sus amigos y familiares pueden sentirse tratados por sus gestos y estilo de comunicación, incluso cuando crea que se encuentra en un estado de calma. Puede utilizar su agudo intelecto para reconocer cuándo provoca reacciones defensivas u hostiles en los demás. El aumento resultante de la autoconciencia le permitirá moderar su enfoque cuando sus habilidades de lucha no sean necesarias.",
+      "title" : "☿ Mercurio ☌ Conjunción ♂ Marte (orbe 0.42°)"
+    },
+    {
+      "id" : "VENUS_JUPITER_CUADRADO",
+      "source" : "Astrology King",
+      "text" : "Venus en cuadratura con Júpiter natal te convierte en una persona afortunada, creativa y amante de la diversión. Este tiene que ser el mejor de todos los desafiantes aspectos de la cuadratura en astrología. Hay varias dificultades asociadas, pero en general son relativamente fáciles de superar.\n\nTu perspectiva optimista, tu generosidad y tu naturaleza encantadora hacen que sea agradable estar contigo y deberías ser popular y tener poca o ninguna dificultad para hacer amigos. La tensión que existe en tu interior es un buen motivador para la creatividad. Este aspecto favorece cualquier arte, incluido el teatro, la comedia, la música, la escritura creativa, la pintura y la escultura. Tu sentido del humor rozaría el lado descarado.\n\nVenus en cuadratura con Júpiter puede causar problemas de motivación, particularmente en lo que respecta a las tareas diarias y el trabajo monótono que requiere un ingreso. La falta de autodisciplina puede provocar dificultades en el trabajo y en el cumplimiento de otros deberes y responsabilidades esenciales en la vida. Esto es especialmente cierto cuando tienes una familia. Su carisma sólo le permitirá evitar las pesadas tareas de criar hijos hasta cierto punto.\n\nOtras personas pueden percibir que usted tiene una moral cuestionable o \"laxa\". Lo más probable es que esto cause problemas en su vida amorosa, ya que bajar sus estándares puede generar complicaciones o vergüenza. Alternativamente, podría ser que asumir compromisos en las relaciones, como el matrimonio, cause preocupación. A veces, una actitud laxa puede irritar a tu pareja o puedes dar la impresión de que no te importa o que no te pueden molestar.\n\nSin embargo, como se mencionó anteriormente, abordar cualquier debilidad que agregue fricción a sus relaciones no requeriría mucho esfuerzo. Lo mismo se aplica a sus finanzas. Es posible que tenga dificultades para encontrar fondos suficientes para mantener el estilo de vida que desea. Lujos como entretenimiento, diversiones y vacaciones requieren que usted asuma una posición más responsable en su carrera.\n\nEn este aspecto existe una tendencia a sobreestimar sus recursos y a ser extravagante. Los peores escenarios implicarían avaricia y adicción, y es posible que sea necesario controlar su generosidad hacia usted mismo y hacia los demás. Sin embargo, en general, debe disfrutar de suficientes golpes de suerte para evitar muchas dificultades que restringen la capacidad de otras personas de disfrutar la vida al máximo.",
+      "title" : "♀ Venus □ Cuadratura ♃ Júpiter (orbe 3.69°)"
+    },
+    {
+      "id" : "VENUS_SATURNO_CONJUNCION",
+      "source" : "Astrology King",
+      "text" : "Venus en conjunción con Saturno natal te convierte en una persona muy leal y afectuosa, pero puedes tener problemas para demostrarlo. Esto puede provocar retrasos y restricciones en el establecimiento de relaciones cercanas. Anhelas amor y cariño, pero parecen existir impedimentos para lograrlo.\n\nEste puede ser un aspecto kármico. Las personas de vidas anteriores que se sintieron traicionadas o heridas por ti te buscarán en esta vida para darte una lección y equilibrar las cosas. Las personas que te lastimaron en encarnaciones anteriores pueden regresar con amor para darte y valiosas lecciones que enseñarte. Una vez que hayas alcanzado cierto punto evolutivo, las dificultades y el dolor darán paso a relaciones amorosas y duraderas.\n\nVenus en conjunción con Saturno puede ser un gran desafío durante el crecimiento. La falta de amor propio o respeto por uno mismo suele ser el principal motivo de timidez o dificultad para mantener relaciones cercanas. Esto sería mucho peor si los padres o los profesores fueran duros contigo. Es posible que hayas enfrentado privaciones, mezquindad, retirada de amor y afecto, o ausencia, especialmente de tu padre. El abuso también es posible, pero el punto principal es que es posible que usted no se haya sentido amado ni valorado por los demás.\n\nEl rechazo, el aislamiento y la soledad exacerban estas dificultades a medida que se pierde el desarrollo de habilidades de interacción social y personal. Es probable que tengas incomodidad social y prefieres relacionarte con una sola persona o con varias personas a la vez.\n\nCuanto más mal te sientas contigo mismo, más gente te evitará. Imagínese llevar un cartel alrededor del cuello que diga \"no es digno de ser amado\". Tu lección kármica en esta vida es amarte a ti mismo para que otros puedan amarte. Es posible que experimentes períodos de aislamiento entre relaciones, y las rupturas y los divorcios son típicos de este aspecto.\n\nSi eres joven, es posible que prefieras la compañía de personas más serias o mayores. Cuando sea mayor, podrá elegir una pareja más joven. La paciencia, el trabajo duro y la determinación serán recompensados. Cuanto más aprendas a aceptarte y amarte a ti mismo, más podrás expresar tu amor y afecto. El respeto por uno mismo genera el respeto de los demás y usted se ganará el amor y la lealtad que se merece.\n\nEste aspecto da un buen sentido del ritmo y talentos creativos sobresalientes. Puedes dar forma a la belleza y la armonía. Sin embargo, las dificultades financieras son posibles hasta que aprenda el valor del dinero y cómo conservar suficiente cantidad para vivir. Con el tiempo, como ocurre con el amor, aprenderás a aferrarte a él y a no experimentar períodos de restricción o pobreza. Ahorrar e invertir te traerá la estabilidad y seguridad que buscas.",
+      "title" : "♀ Venus ☌ Conjunción ♄ Saturno (orbe 7.92°)"
+    },
+    {
+      "id" : "MARTE_ASC_CUADRADO",
+      "source" : "Astrology King",
+      "text" : "Marte en cuadratura Ascendente natal te brinda una energía extraordinaria, lo que te hace motivado, motivado y apasionado. También puede motivar e inspirar a otros y es posible que tenga buenas cualidades de liderazgo. Sin embargo, la naturaleza cruda y abrasiva de esta energía dinámica raya en la agresión que puede intimidar y asustar a los demás.\n\nMuchas personas con este aspecto se sienten atraídas por luchar contra la injusticia y defender a los desvalidos. Puedes tener una influencia muy positiva y ayudar a muchas personas canalizando tu agresión hacia la lucha por causas dignas. Podría ser en el feminismo, la igualdad de derechos, los derechos de los trabajadores o alguna otra causa social que te entusiasme.\n\nSin embargo, el mismo activismo radical y el mismo espíritu de lucha agresivo que pueden marcar una diferencia significativa también pueden causar serios problemas en las relaciones. Debe darse cuenta de que el mismo comportamiento puede dañar a sus seres queridos.\n\nSus socios, en particular, pueden encontrarle arrogante, dominante, egoísta, egoísta, exigente, a la defensiva y de piel fina. Es posible que tienda a perder los estribos y arremeter contra la gente. Una pareja fuerte, devota y comprensiva debe permanecer en una relación tan tumultuosa.\n\nLa escritora y activista feminista Betty Friedan tenía Marte en cuadratura ascendente (0°03′). Ella escribió:\n\n“La verdad es que siempre he sido una perra de mal carácter”.\n\nY su marido dijo:\n\n\"Ella cambió el curso de la historia casi sin ayuda de nadie. Fue necesaria una dinamo motivada, súper agresiva, egocéntrica y casi lunática para sacudir al mundo como lo hizo. Desafortunadamente, ella era la misma persona en casa, donde ese tipo de conducta no funciona. Simplemente nunca entendió esto\".\n\nBetty también dio una pista sobre cómo canalizar la energía dinámica de este aspecto:\n\n“La única manera que tiene una mujer, como un hombre, de encontrarse a sí misma, de conocerse como persona, es mediante el trabajo creativo propio.",
+      "title" : "♂ Marte □ Cuadratura ASC de revolución (orbe 5.1°)"
+    },
+    {
+      "id" : "MARTE_JUPITER_TRIGONO",
+      "source" : "Astrology King",
+      "text" : "Marte trígono con Júpiter natal es un indicador de éxito en la vida. Algunos pueden llamarte afortunado, pero tu propia suerte la creas a través de una fuerte confianza en ti mismo y de buenas y honestas intenciones. Nadie puede dudar de su sólida ética de trabajo y productividad.\n\nEres audaz, confiado y nunca te avergüenzas de probar suerte en algo nuevo o desafiante. Este aspecto destaca por su físico, apariencia sexy, fuerza y ​​atletismo. La victoria en los deportes y la guerra también se puede aplicar a los negocios y la política, donde su talento de liderazgo atrae a colegas y fanáticos leales.\n\nSerías un buen guerrero, pero tu integridad y generosidad generan más compromisos y situaciones en las que todos ganan que hostilidades. Usted es quien dará el primer paso audaz para hacer que las cosas sucedan en beneficio de todos los involucrados. Puede que sea tu instinto o tu criterio, pero la acción decisiva es tu punto fuerte.\n\nLograr que las personas trabajen juntas en objetivos comunes proviene de su talento creativo. Este es un aspecto del parto en el que aplicas tu amplia energía e iniciativa para crear algo grande, valioso y exitoso.\n\nTambién hay una energía creativa primordial detrás de tu sexualidad. Sin embargo, la forma orgullosa en que expresas tu sexualidad puede estar muy alejada de la supervivencia de la especie. El magnetismo sexual que rezumas te hace ganar muchos admiradores, pero también puede abrirte muchas puertas en la vida.",
+      "title" : "♂ Marte △ Trígono ♃ Júpiter (orbe 4.84°)"
+    },
+    {
+      "id" : "MARTE_MC_CONJUNCION",
+      "source" : "Astrology King",
+      "text" : "Marte en conjunción con el Medio Cielo natal te determina a hacer todo a tu manera. Eres muy ambicioso, competitivo y excelente tomando la iniciativa. También conocido como culminación de Marte, este aspecto significa que usted toma decisiones en una fracción de segundo y actúa muy rápidamente, sabiendo exactamente qué hacer. Te enojarías si alguien intentara detenerte y, a veces, te indignarías. Puede que le resulte desafiante, pero escuchar las ideas de los demás le ayudará a evitar discusiones, incluso si solo finge estar interesado.\n\nTe identificas con tus metas, carrera, vocación o lo que sea que te propongas hacer. Si alguien cuestiona tus intenciones, sientes que te está atacando personalmente. Ser consciente de esta tendencia te ayudará a separarte de tus acciones.\n\nTu carrera debería permitirte la independencia y permitirte gastar mucha energía física. Sin embargo, esto no significa que debas ser soldado, trabajador siderúrgico o atleta profesional. Su cerebro quema mucha energía durante el trabajo mental desafiante, y cualquier cosa competitiva, como las ventas y los negocios, sería adecuada para Marte en conjunción con el Medio Cielo. Probablemente le resulte más útil trabajar con menos personas. Aportas tu lado competitivo al trabajo, tu atractivo físico y tu fuerte atractivo sexual.",
+      "title" : "♂ Marte ☌ Conjunción MC (orbe 7.4°)"
+    },
+    {
+      "id" : "JUPITER_MC_TRIGONO",
+      "source" : "Astrology King",
+      "text" : "Júpiter trígono Medio Cielo natal te permite hacer una carrera exitosa a partir de tu pasatiempo o de lo que te brinda placer y satisfacción. Es posible que encuentres tu vocación temprano y recibas apoyo y aliento de tus padres. Su vida hogareña temprana es como un campo de entrenamiento para su futura carrera. Este aspecto de la fructificación proporciona abundante energía y entusiasmo. También lo bendice con habilidades y talentos naturales que puede desarrollar en todo su potencial.\n\nTienes una perspectiva optimista, amplia y progresista. Tu naturaleza aventurera, pionera y emprendedora es ideal para marcar la diferencia en los negocios. La riqueza, la influencia y el renombre provienen de seguir tus pasiones. Puede recibir ayuda de familiares, maestros, mentores, superiores y funcionarios gubernamentales.\n\nEl amor por aprender permanecerá contigo mucho tiempo después de la escuela. El interés por la geografía, la filosofía, los idiomas, la poesía, la medicina, la religión, la espiritualidad, el derecho y la política puede conducir a una profesión. Este aspecto también se adapta a carreras en entretenimiento, música, actuación, literatura, astrología y deportes.\n\nEste aspecto también está asociado a la generosidad y a ser un modelo a seguir. Puede compartir su éxito retribuyendo a su comunidad a través de donaciones caritativas o filantropía. Su sentido de justicia social puede llevarlo a defender causas valiosas. Como probablemente recibió ayuda a lo largo del camino, es posible que desee contratar un aprendiz, ser mentor de personas más jóvenes o convertirse en maestro o formador.\n\nPuede parecer educado, educado, humilde, poético y divertido, pero esto puede enmascarar su naturaleza más ambiciosa, obsesiva, perfeccionista y celosa. Quieres triunfar y hacerte notar, o crees que tienes un destino especial que cumplir. La popularidad, la fama y el estatus de celebridad son posibles, pero es posible que te sientas vacío una vez que tu alto perfil público disminuya. Ser el centro de atención también puede exponerte al escrutinio público, a la controversia y al escándalo.\n\nJúpiter en trígono Medio Cielo es un aspecto muy afortunado que significa éxito profesional. Sin embargo, una conjunción de Júpiter o el Medio Cielo con una estrella fija desafiante, o con un aspecto severo de otro planeta, puede conducir a la codicia, el egoísmo, el juego, la adicción y tendencias poco éticas. La alineación de Júpiter Y Medio Cielo con estrellas fijas negativas puede resultar en éxito en empresas inmorales o criminales, así como en infamia y sentencias judiciales. Una vez que te metes en algo, puede ser difícil detenerlo.",
+      "title" : "♃ Júpiter △ Trígono MC (orbe 2.6°)"
+    },
+    {
+      "id" : "SATURNO_NEPTUNO_CONJUNCION",
+      "source" : "Café Astrology",
+      "text" : "Aspectos planetarios: Saturno en conjunción con Neptuno ¿Qué significa Saturno en conjunción con Neptuno? La respuesta depende de si se trata de un aspecto que ocurre en su carta natal, que se está formando actualmente en el cosmos (aspecto de tránsito a tránsito), que está en tránsito por su carta o que ocurre en una comparación de cartas (astrología de relación de sinastría). Sin embargo, este aspecto entre planetas tiene temas generales comunes. A continuación se muestran interpretaciones de la conjunción de Saturno y Neptuno en estas diversas formas, así como en general. Cuando Saturno y Neptuno se conectan, intentamos integrar nuestras necesidades de tradición, convención y estabilidad con nuestras necesidades de espiritualidad, imaginación e inspiración, así como seguir nuestros ideales. Con Saturno formando una conjunción con Neptuno en la carta natal, te tomas muy en serio tus creencias, ideales y principios. Tu conciencia social está bien desarrollada y juega un papel importante en tu personalidad. Llevar una existencia sencilla te resulta atractivo. Este puede ser un aspecto importante para hacer realidad los sueños. Una posible lucha con este aspecto en su carta implica dificultad para dejar volar realmente su imaginación o derramar su fe en algo. A menudo podrías encontrarte microgestionando tus expectativas, ya que podrías sentir que si no lo haces, te llevarían a una montaña rusa. Si no tienes cuidado, la culpa, la ansiedad o el temor pueden vivir muy cerca de la superficie, listos para aparecer en cualquier momento. Superar esta tendencia es esencial para su felicidad y satisfacción. En verdad, tu inclinación a tomarte las cosas en serio es una fortaleza, pero llevar esto demasiado lejos puede convertirse en una carga. Tenga cuidado de no aferrarse a problemas que no son realmente suyos. Además, tenga cuidado de no sentirse excesivamente culpable. Se marca una gran necesidad de tiempo libre o de soledad. Necesitas tiempo para digerir las cosas y espacio para sacar tus propias conclusiones. Hay una inclinación hacia el secreto y el misterio en este aspecto, y es posible que mantengas tus ideas o creencias cerca de tu pecho. También tienes mucho talento en la investigación. \"Posibles rasgos clave de Saturno en conjunción con Neptuno\". Encontrarás algunos, muchos o todos los siguientes, dependiendo de qué tan fuerte sea este aspecto en la carta natal: Entiende instintivamente el concepto de hacer sacrificios. Se esfuerza por lograr el ideal de compasión y práctica espiritual constante, responsable y disciplinada. Puede mantenerse firme y realista mientras comprende el concepto de infinito. Puede luchar contra el miedo al éxito, la culpa excesiva o un sentimiento de terrible fatalidad. Con Saturno formando una conjunción con Neptuno, nuestros ideales se ponen a prueba. Las circunstancias son tales que necesitamos reconstruir la confianza y la fe. Este tránsito une dos energías muy diferentes, la soñadora y la realista. Hacer realidad planes y sueños puede ser una manifestación. El idealismo práctico está a nuestro alcance y podríamos dedicarnos a un ideal, visión u objetivo particular. Este tránsito afecta o describe profundamente nuestras percepciones. También pone en primer plano nuestras inseguridades y cualquier tendencia latente a la depresión o los sentimientos de aislamiento. La propensión a adivinar o dudar de las cosas es fuerte. La negligencia pasada ahora puede manifestarse de manera más concreta. Puede ser un momento de mayor temor, culpa, cinismo o remordimiento. Es posible que estemos luchando con sentimientos de desánimo y gestionando nuestras expectativas. Los sentimientos de fatalidad inminente pueden persistir hasta que superemos nuestros miedos y preocupaciones. Quizás queramos hacer algo especial, compasivo y generoso, pero nuestro deseo de ganar materialmente, en términos de seguridad o reconocimiento, también está presente. Es un momento en el que podríamos trabajar para hacer realidad nuest…",
+      "title" : "♄ Saturno ☌ Conjunción ♆ Neptuno (orbe 1.92°)"
+    },
+    {
+      "id" : "SATURNO_ASC_SEXTIL",
+      "source" : "Astrology King",
+      "text" : "Saturno sextil Ascendente natal te convierte en una persona seria, sincera y decidida. Este aspecto no significa necesariamente dificultades, pero probablemente aprendiste a ser responsable a una edad temprana. Se enfrenta bien a situaciones difíciles y es posible que se haya vuelto independiente rápidamente. Un estilo de vida loco y de fiesta no es tu estilo.\n\nA veces puedes sentirte como un inadaptado y probablemente tendrás un número relativamente pequeño de amigos. Pero eres un amigo leal y confiable. Es probable que se formen amistades para toda la vida; Podrías hacer amigos mayores cuando seas joven y amigos mucho más jóvenes cuando seas mayor. Saturno sextil Ascendente brinda buenas relaciones con padres, maestros, superiores y autoridades. Sus relaciones pueden implicar ambición compartida, responsabilidad, rutina, tristeza o culpa.\n\nA pesar de ser autosuficiente, el matrimonio le atrae por la estabilidad y la satisfacción que aporta. Probablemente atraerás a alguien leal y comprometido como tú. Formas estrechos vínculos kármicos con personas de tu carrera y de tu vida privada. Siempre se esforzará por respetar los acuerdos y cumplir con sus obligaciones. Del mismo modo, espera que los demás cumplan su parte del trato.\n\nCuanta más gente participe en situaciones sociales, menos cómodo te sentirás. Sin embargo, trabaja bien dentro de grupos y organizaciones más formales con una jerarquía estructurada. La gente aprecia su practicidad y franqueza en su enfoque. Su profundidad de comprensión y su aire de autoridad lo convierten en un buen líder, maestro, mentor y padre. Te ganas el respeto de los demás incluso con tu estilo provocativo y desafiante.",
+      "title" : "♄ Saturno ⚹ Sextil ASC de revolución (orbe 1.6°)"
+    },
+    {
+      "id" : "SATURNO_PLUTON_SEXTIL",
+      "source" : "Astrology King",
+      "text" : "Saturno sextil Plutón natal brinda una determinación y resistencia férreas, que pones en práctica para crear algo de valor, algo duradero. Tienes una capacidad fantástica para concentrarte en un proyecto en particular y verlo hasta su finalización.\n\nSigues investigando y trabajando tan duro como una máquina. Los sistemas y el orden son una alta prioridad en su vida, por lo que a menudo adopta un enfoque sistemático, con rutinas y estructuras estrictas para mantener el orden y una sensación de seguridad.\n\nSin embargo, una estricta autodisciplina no restringe su proceso creativo. Puedes encontrar nuevas formas revolucionarias de hacer las cosas. Pero su continuo autodesarrollo generalmente es fluido y no perturbador. Cambias o evolucionas de manera sostenida y ordenada.\n\nSaturno sextil con Plutón también otorga increíbles poderes de resistencia y recuperación. Puedes afrontar cualquier desafío o crisis de frente y ser una fuente de fortaleza para quienes te rodean.\n\nEres un sobreviviente y puedes funcionar eficientemente con muy poco. El respeto y el alto reconocimiento pueden provenir de tus logros. También puede poseer potencial gerencial y podría ascender a un puesto de liderazgo en una gran corporación o departamento gubernamental.",
+      "title" : "♄ Saturno ⚹ Sextil ♇ Plutón (orbe 1.39°)"
+    },
+    {
+      "id" : "NEPTUNO_ASC_SEXTIL",
+      "source" : "Astrology King",
+      "text" : "Neptuno sextil Ascendente natal genera fascinación por la vida y las personas y la necesidad de experimentar todo lo que puedas en su forma ideal. Esto te convierte en un aventurero, un viajero y un buscador de la iluminación.\n\nSu espíritu optimista y su sentido de asombro lo llevan a una multitud de intereses variados. Tu necesidad de vivir la vida al máximo puede llevarte a cometer algunos errores. Sin embargo, tienes una visión optimista del fracaso y consideras cada uno de ellos una experiencia de vida valiosa.\n\nLa sensibilidad es la palabra clave principal para este aspecto. Extremadamente intuitivo, ves o sientes cosas que otros no ven. Ser tan receptivo te habría convertido en un niño muy impresionable. Esto puede conducir a un interés y experiencias esclarecedoras sobre la espiritualidad, la religión, las múltiples dimensiones y los fenómenos psíquicos. También es posible el interés por las cuestiones humanitarias y ecológicas.\n\nSer capaz de sentir los estados de ánimo y las necesidades de los demás es un excelente indicador de las habilidades interpersonales. Te vuelve compasivo, caritativo, extremadamente bondadoso y muy agradable. Eres guapo y encantador, y la gente se interesa instantáneamente en ti.\n\nQuieres ser amado incondicionalmente y admirado por los demás, y no tienes miedo de alardear y venderte. Puede atraer a una pareja glamorosa y una mezcla ecléctica de amigos. Sin embargo, también puedes ser igualmente introspectivo, lacónico, contemplativo, retraído y melancólico. A veces tu extrema sensibilidad puede ser abrumadora y obligarte a aislarte y ermitizar.\n\nEstar solitario por un tiempo puede ayudarte a centrarte. También puedes encontrar conexión a tierra en la naturaleza y la lectura. El arte, la música y el cine también te ayudarán a expresar tus talentos creativos únicos. También puedes ser un hábil narrador.\n\nEste es un aspecto positivo. Vivir auténticamente inspira algo en los demás. Sin embargo, su sensibilidad y necesidad de armonía pueden conducir a la sumisión y al miedo al conflicto. Generalmente eres honesto, pero también puedes tener éxito mintiendo. Ser incomprendido, también son posibles comportamientos poco convencionales, ansiedad, depresión y ataques de pánico.",
+      "title" : "♆ Neptuno ⚹ Sextil ASC de revolución (orbe 3.6°)"
+    },
+    {
+      "id" : "NEPTUNO_PLUTON_SEXTIL",
+      "source" : "Astrology King",
+      "text" : "Hay 49 aspectos de Neptuno sextil de Plutón desde 1950 hasta 2032, que ocurren en 3 marcos de tiempo separados:\n\n15 de 1950 a 1956\n\n21 de 1976 a 1986\n\n13 de 2026 a 2032\n\nNeptuno sextil Plutón natal otorga un espíritu pionero, lo que te hace no tener miedo de desafiar la forma aceptada de pensar y hacer las cosas. Puedes deconstruir cualquier aspecto de la vida, un sistema, una creencia o un procedimiento. Se pueden eliminar los prejuicios políticos, religiosos, culturales y de género y reconstruirlos en un estado más avanzado y sin adulterar. Estás inspirado por la verdad y el potencial humano.\n\nAccedes al subconsciente masivo y puedes medir los pensamientos predominantes de la humanidad. Compartes con tu generación una idea de hacia dónde se dirige colectivamente la sociedad en un sentido evolutivo. Incluso puedes llevar este sentido compartido de destino a la vida, al planeta y a toda la existencia.\n\nEres un organizador compulsivo y un fanático del control del más alto nivel, pero los demás pueden verte como algo muy diferente. Aunque puedas exhibir tendencias obsesivas en la vida diaria, tus procesos de pensamiento superiores luchan por lograr el orden en el caos y la simplicidad en la complejidad.\n\nLa humanidad está atravesando un salto evolutivo obligado por un cambio poderoso. Usted tiene un papel que desempeñar en la adaptación de la humanidad para sobrevivir a cambios extremos. Una parte importante de esta transformación abarca desde la comunicación hasta la espiritualidad, pasando por la creatividad y la sexualidad. El objetivo final es acercar a las personas, no físicamente, sino en un sentido espiritual.\n\nTe das cuenta de que sólo a través de un movimiento de masas que comparta un único superconsciente puede la humanidad evolucionar lo suficientemente rápido como para evitar la extinción. Una intensa sensibilidad ante la destrucción desatada por la industrialización transformará la generación de energía y frenará la degradación y el agotamiento de los recursos compartidos.\n\nSu aporte a la conciencia de masas transforma la forma en que nos comunicamos y vivimos unos con otros a través de la renovación política, religiosa y cultural. Los viejos sistemas y creencias basados ​​en el imperio y la superioridad se están desintegrando. En su lugar, estamos soñando, o imaginando, un enfoque más humanitario y una responsabilidad compartida por el bienestar de todos y de todo, el sueño colectivo.\n\nMegan Fox 0°00′, Martina Navratilova 0°00′, Megan Rapinoe 0°01′, Rafael Nadal 0°01′, Jo-Wilfried Tsonga 0°02′, Xi Jinping 0°03′, Kris Jenner 0°03′, Piero di Cosimo 0°03′, Rafael de Urbino 0°03′, Tara Reid 0°04′, Willem Dafoe 0°04′, Carrie Fisher 0°04′, Chris Carter 0°04′, Gloria Estefan 0°04′, Alicia Silverstone 0°05′, Richard Gasquet 0°05′, John Edwards 0°05′, Maria Shriver 0°05′, Gilles Villeneuve 0°05′, Rolf de Heer 0°05′, Emmanuel Macron 0°05′, Manuel Ferrara 0°05′, Bill Gates 0°06′, Travis Barker 0°06′, Agnetha Fältskog 0°07′, Sam Altman 0°08′, Maritha Pottenger 0°08′, Bernard Arnault 0°08′, Crystal Gayle 0°09′, Stephen Fry 0°09′, Gates McFadden 0°09′, Colin Prescot 0°10′.\n\nNeptuno sextil Plutón, el 25 de julio de 2026, forma un patrón de aspecto Gran Trígono Menor con Urano. Ver Urano, Neptuno, Plutón 2025 a 2028 – El Triángulo Mágico\n\nNeptuno Sextil Plutón Julio 2026\n\nHay 49 aspectos geocéntricos desde 1950 hasta 2032 que ocurren en 3 períodos de tiempo separados:\n\n15 de 1950 a 1956\n\n21 de 1976 a 1986\n\n13 de 2026 a 2032\n\nPero ocurre con un orbe de dos grados en dos períodos de tiempo separados:\n\n43 años de 1947 a 1990\n\n12 años del 2022 al 2034\n\nHay tres sextiles heliocéntricos:\n\nA lo largo de estos años, Neptuno y Plutón recorren casi la mitad del zodíaco:\n\nNeptuno del 17 de Libra al 14 de Aries\n\nPlutón del 17 de Leo al 14 de Acuario",
+      "title" : "♆ Neptuno ⚹ Sextil ♇ Plutón (orbe 3.31°)"
+    },
+    {
+      "id" : "PLUTON_ASC_TRIGONO",
+      "source" : "Astrology King",
+      "text" : "Plutón trígono Ascendente natal brinda una personalidad profunda, profunda e hipnótica con una tremenda conciencia e inmensos poderes de atracción. Dejas una impresión duradera en quienes te rodean y puedes tener una influencia significativa en la vida de muchos.\n\nTu personalidad intrigante y magnética es muy atractiva, pero a menudo esconde una naturaleza interior más intensa, compleja y oscura. Llamas mucho la atención y puedes volverte muy popular. Sin embargo, cierto grado de timidez puede hacer que te sientas incómodo con demasiada atención, lo que te llevará a encerrarte en tu propio mundo privado con frecuencia.\n\nCuando eras niño eras inteligente, un estudiante brillante y probablemente artístico, tal vez travieso. Valoras tu individualidad e independencia y es posible que hayas desarrollado un fuerte sentido de identidad desde muy temprana edad.\n\nSu nivel de confianza en sí mismo cuando era joven dependía en gran medida de la influencia de su padre, abuelo o pareja, particularmente la influencia paterna; en algunos casos, sería maternal. Los elogios y el refuerzo positivo obviamente conducirían a la confianza y a relaciones adultas saludables.\n\nDeseas la perfección y evolucionas continuamente, a menudo a través de relaciones uno a uno. Incluso los encuentros breves pueden conducir a transformaciones significativas en sus valores, creencias y comportamientos.\n\nLa capacidad innata de comprender los sentimientos e ideas de los demás le permite establecer una relación subconsciente. Esto significa que puedes ganarte rápidamente la confianza de las personas, hacer amigos fácilmente y mantener relaciones estrechas y armoniosas.\n\nSin embargo, la intimidación temprana, el abuso o el condicionamiento negativo de uno de los padres, o una conjunción de estrella fija desafiante pueden llevar a una vida de drama, adicción o crimen. Es posible que tenga numerosas relaciones casuales y serias de diferentes duraciones e intensidades a lo largo de su vida, que a veces pueden superponerse. Son posibles infidelidades en serie, obsesiones sexuales, disputas con compañeros y trastornos neuróticos.\n\nPosee una comprensión profunda de la naturaleza humana y la dinámica de las relaciones. Entonces serías un excelente psicólogo, psicoterapeuta o filósofo. La investigación, la investigación y el espionaje también le convendrían debido a su naturaleza inquisitiva. Puedes resolver misterios, descubrir secretos y guardar secretos, pero también puedes parecer reservado, sospechoso o entrometido. Una fuerte empatía por el sufrimiento y el deseo de ayudar pueden conducir a la participación en organizaciones benéficas y causas sociales.\n\nEste es generalmente un aspecto armonioso y beneficioso, pero incluso con una actitud positiva y éxito, puede haber tragedias familiares desgarradoras que afrontar y encuentros cercanos con la muerte. Son posibles el desaliento, los recuerdos traumáticos, las obsesiones con la muerte y lo oculto y una actitud fatalista.\n\nOtras palabras clave para este aspecto incluyen visionario, aspiracional, apasionado, competitivo, pionero, reformador, estiloso, elegante, creador de tendencias y juicio despiadado.",
+      "title" : "♇ Plutón △ Trígono ASC de revolución (orbe 0.3°)"
+    },
+    {
+      "id" : "URANO_PLUTON_TRIGONO",
+      "source" : "Café Astrology",
+      "text" : "¿Qué significa Urano en trígono con Plutón? La respuesta depende de si se trata de un aspecto que ocurre en su carta natal, que se está formando actualmente en el cosmos (aspecto de tránsito a tránsito), que está en tránsito por su carta o que ocurre en una comparación de cartas (astrología de relación de sinastría). Sin embargo, este aspecto entre planetas tiene temas generales comunes. A continuación se muestran interpretaciones de Urano en trígono con Plutón en estas diversas formas y en general. Cuando Urano y Plutón se conectan, se activa nuestra necesidad de reforma y cambio. Tenga en cuenta que este aspecto es generacional y lo comparten muchas personas nacidas en la misma generación. Sus rasgos son compartidos por todos los que tienen este aspecto, pero son más obvios en aquellos que tienen este aspecto resaltado en su carta. Ejemplos de un trígono prominente entre Urano y Plutón son cuando Urano o Plutón están alineados con el Sol, la Luna o el Ascendente. Con Urano formando un trígono con Plutón en la carta natal, crees en el cambio y el progreso, incluso si tienes que agitar las cosas para lograr mejoras. No te conformas automáticamente, ya que naturalmente cuestionas las tradiciones. No te sorprenden muchas cosas en lo que respecta a la psicología humana y, como resultado, eres un buen consejero y persona de apoyo. Encontrar soluciones creativas a los problemas de la vida, junto con su perspectiva y conocimiento únicos, lo distinguen.",
+      "title" : "⛢ Urano △ Trígono ♇ Plutón (orbe 6.77°)"
+    },
+    {
+      "id" : "URANO_ASC_CONJUNCION",
+      "source" : "Astrology King",
+      "text" : "Urano en conjunción con el Ascendente natal te da una fuerte necesidad de independencia y una vena rebelde. Eres experimental y original y tienes problemas para adaptarte a la tradición o a los estándares sociales. La energía eléctrica de Urano puede sentirse como ansiedad o nerviosismo, pero también puede dar una intuición brillante y un genio creativo.\n\nLa forma en que expresas tu naturaleza independiente y aventurera depende de aspectos asociados y conjunciones de estrellas fijas. Generalmente, encuentras tendencias o similitudes específicas cuando miras la lista de celebridades con un aspecto particular. Sin embargo, con Urano en conjunción con el Ascendente, no es fácil encontrar ningún vínculo común. Esto debe deberse a la naturaleza excéntrica y cambiante del planeta. Nunca sabes qué esperar, excepto una sorpresa o un cambio.\n\nUna vida llena de cambios y entusiasmo puede generar un sentimiento de inquietud o incapacidad para relajarse. Su relación íntima puede verse afectada por una incapacidad para comprometerse. Debes tener una pareja de mente abierta que acepte tu necesidad de espacio y libertad.\n\nTenga cuidado de que su vago sentido del humor y su necesidad de estimulación no le lleven a burlarse de los demás. Cuanto más aburrida sea tu rutina, más problemas tendrás para realizar cambios. Serías etiquetado como rebelde o traidor y podrías sufrir rechazo y alienarte aún más.\n\nEs fundamental sentirse cómodo siendo único y diferente de la norma. Una vez que encuentre su nicho, podrá volcar su energía creativa en algo constructivo y productivo y hacer algo especial.",
+      "title" : "⛢ Urano ☌ Conjunción ASC de revolución (orbe 7.0°)"
+    },
+    {
+      "id" : "URANO_NEPTUNO_SEXTIL",
+      "source" : "Café Astrology",
+      "text" : "Aspectos planetarios: Urano sextil Neptuno ¿Qué significa Urano sextil Neptuno en astrología? La respuesta depende de si se trata de un aspecto que ocurre en su carta natal, que se está formando actualmente en el cosmos (aspecto de tránsito a tránsito), que está en tránsito por su carta o que ocurre en una comparación de cartas (astrología de relación de sinastría). Sin embargo, este aspecto entre planetas tiene temas generales comunes. A continuación se muestran interpretaciones de Urano sextil con Neptuno en estas diversas formas, así como en general. Cuando Urano y Neptuno se conecten, queremos cambiar el status quo. Podemos ser visionarios e inspirados. Con Urano formando un sextil con Neptuno en la carta natal, estás abierto a elevar la conciencia y a ideas, creencias espirituales y estilos de vida alternativos. Te molesta que te digan cómo vivir y qué pensar, y estás totalmente a favor de mejorar, actualizar y reformar áreas neptunianas como la forma en que practicamos la religión, la compasión, el escapismo y la trascendencia. No te gusta que te alimenten a la fuerza con tu espiritualidad o tus sistemas de creencias. Cree que puede hacer realidad sus sueños y ser muy inventivo en esta búsqueda. Eres sensible a la injusticia social y a las dificultades de los desfavorecidos. Se nota tu divertido sentido del humor y tu perspicacia. Vale la pena señalar que este aspecto, aunque poco común, avanza tan lentamente que su influencia dura varios años seguidos. En otras palabras, cuando este aspecto ocurre, permanece en órbita durante muchos años. Por ejemplo, todas las personas nacidas entre 1965 y 1969 tienen este aspecto en sus cartas natales. Este aspecto es compartido por la mayoría de las personas nacidas en uno o dos años cercanos a su fecha de nacimiento. Si bien puede que no siempre sea una influencia muy personal, puede convertirse en un factor fuerte y significativo en el gráfico bajo ciertas condiciones. Por ejemplo, si el Sol o la Luna están alineados con Urano o Neptuno o si cualquiera de los planetas está en ángulo, los astrólogos considerarían este aspecto fuerte y más relevante. Estos casos pueden despertar un interés más profundo sobre su posible influencia.",
+      "title" : "⛢ Urano ⚹ Sextil ♆ Neptuno (orbe 3.45°)"
+    }
+  ],
+  "metadata" : {
+    "chartID" : "22222222-2222-2222-2222-222222222222",
+    "chartName" : "Buenos Aires Control",
+    "command" : "solar-return",
+    "date" : "2026-10-04T00:00:00Z",
+    "format" : "json",
+    "generatedAt" : "2026-10-04T18:30:28Z",
+    "narrative" : "none",
+    "scope" : "complete",
+    "timezone" : "America\/Argentina\/Buenos_Aires"
+  },
+  "networkUsed" : false,
+  "source" : "local",
+  "technicalData" : {
+    "solarReturn" : {
+      "angularPlanets" : [
+        {
+          "formatted" : "♓ Piscis 25°03'",
+          "natalHouse" : 9,
+          "planetKey" : "SOL",
+          "planetLabel" : "☉ Sol",
+          "solarHouse" : 10
+        },
+        {
+          "formatted" : "♈ Aries 11°25'",
+          "natalHouse" : 10,
+          "planetKey" : "VENUS",
+          "planetLabel" : "♀ Venus",
+          "solarHouse" : 10
+        },
+        {
+          "formatted" : "♈ Aries 03°30'",
+          "natalHouse" : 9,
+          "planetKey" : "SATURNO",
+          "planetLabel" : "♄ Saturno",
+          "solarHouse" : 10
+        },
+        {
+          "formatted" : "♈ Aries 01°35'",
+          "natalHouse" : 9,
+          "planetKey" : "NEPTUNO",
+          "planetLabel" : "♆ Neptuno",
+          "solarHouse" : 10
+        }
+      ],
+      "ascSignKey" : "GEMINIS",
+      "ascSignLabel" : "♊ Géminis",
+      "dominantAspects" : [
+        {
+          "aspKey" : "CONJUNCION",
+          "aspLabel" : "☌ Conjunción",
+          "corpusClave" : "MERCURIO_MARTE_CONJUNCION",
+          "keyA" : "MERCURIO",
+          "keyB" : "MARTE",
+          "labelA" : "☿ Mercurio",
+          "labelB" : "♂ Marte",
+          "orb" : 0.42
+        },
+        {
+          "aspKey" : "SEXTIL",
+          "aspLabel" : "⚹ Sextil",
+          "corpusClave" : "LUNA_VENUS_SEXTIL",
+          "keyA" : "LUNA",
+          "keyB" : "VENUS",
+          "labelA" : "☽ Luna",
+          "labelB" : "♀ Venus",
+          "orb" : 1.39
+        },
+        {
+          "aspKey" : "SEXTIL",
+          "aspLabel" : "⚹ Sextil",
+          "corpusClave" : "SATURNO_PLUTON_SEXTIL",
+          "keyA" : "SATURNO",
+          "keyB" : "PLUTON",
+          "labelA" : "♄ Saturno",
+          "labelB" : "♇ Plutón",
+          "orb" : 1.39
+        },
+        {
+          "aspKey" : "CONJUNCION",
+          "aspLabel" : "☌ Conjunción",
+          "corpusClave" : "SATURNO_NEPTUNO_CONJUNCION",
+          "keyA" : "SATURNO",
+          "keyB" : "NEPTUNO",
+          "labelA" : "♄ Saturno",
+          "labelB" : "♆ Neptuno",
+          "orb" : 1.92
+        },
+        {
+          "aspKey" : "SEXTIL",
+          "aspLabel" : "⚹ Sextil",
+          "corpusClave" : "SOL_URANO_SEXTIL",
+          "keyA" : "SOL",
+          "keyB" : "URANO",
+          "labelA" : "☉ Sol",
+          "labelB" : "⛢ Urano",
+          "orb" : 3.08
+        },
+        {
+          "aspKey" : "SEXTIL",
+          "aspLabel" : "⚹ Sextil",
+          "corpusClave" : "NEPTUNO_PLUTON_SEXTIL",
+          "keyA" : "NEPTUNO",
+          "keyB" : "PLUTON",
+          "labelA" : "♆ Neptuno",
+          "labelB" : "♇ Plutón",
+          "orb" : 3.31
+        },
+        {
+          "aspKey" : "SEXTIL",
+          "aspLabel" : "⚹ Sextil",
+          "corpusClave" : "URANO_NEPTUNO_SEXTIL",
+          "keyA" : "URANO",
+          "keyB" : "NEPTUNO",
+          "labelA" : "⛢ Urano",
+          "labelB" : "♆ Neptuno",
+          "orb" : 3.45
+        },
+        {
+          "aspKey" : "CUADRADO",
+          "aspLabel" : "□ Cuadratura",
+          "corpusClave" : "VENUS_JUPITER_CUADRADO",
+          "keyA" : "VENUS",
+          "keyB" : "JUPITER",
+          "labelA" : "♀ Venus",
+          "labelB" : "♃ Júpiter",
+          "orb" : 3.69
+        },
+        {
+          "aspKey" : "TRIGONO",
+          "aspLabel" : "△ Trígono",
+          "corpusClave" : "MARTE_JUPITER_TRIGONO",
+          "keyA" : "MARTE",
+          "keyB" : "JUPITER",
+          "labelA" : "♂ Marte",
+          "labelB" : "♃ Júpiter",
+          "orb" : 4.84
+        },
+        {
+          "aspKey" : "TRIGONO",
+          "aspLabel" : "△ Trígono",
+          "corpusClave" : "MERCURIO_JUPITER_TRIGONO",
+          "keyA" : "MERCURIO",
+          "keyB" : "JUPITER",
+          "labelA" : "☿ Mercurio",
+          "labelB" : "♃ Júpiter",
+          "orb" : 5.25
+        }
+      ],
+      "exactJD" : 2461115.149552298,
+      "exactLocalDateTime" : "2026-03-15 12:35",
+      "exactUTCDateTime" : "2026-03-15 15:35",
+      "interpretations" : [
+        {
+          "clave" : "ASC_CASA_1",
+          "fuente" : "Corpus AstroMalik",
+          "orden" : 0,
+          "texto" : "El Ascendente marca la cúspide de la Casa 1: el umbral por el que la carta entra en la experiencia visible. Describe el tono corporal, la primera reacción ante la vida, la manera de iniciar procesos y la máscara funcional con la que la persona se orienta en el mundo. No es una casa más donde cae un planeta, sino el eje que abre la Casa 1 y organiza la relación entre identidad, cuerpo y entorno inmediato. Por eso conviene leerlo junto a su signo, sus aspectos y el estado del planeta regente.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "Ascendente de revolución en Casa 1"
+        },
+        {
+          "clave" : "ASC_GEMINIS",
+          "fuente" : "Corpus AstroMalik",
+          "orden" : 0,
+          "texto" : "El Ascendente en Géminis muestra una entrada curiosa, móvil y comunicativa en la vida. La persona suele observar, preguntar, conectar datos y adaptarse con rapidez al entorno. La primera impresión puede ser juvenil, nerviosa, inteligente o cambiante. Bien integrado, da flexibilidad mental, humor y facilidad para aprender. En sombra, puede dispersarse, vivir demasiado desde la cabeza o saltar de una posibilidad a otra sin encarnar una dirección clara.",
+          "tipo" : "natal_planeta_signo",
+          "titulo" : "Ascendente de revolución en ♊ Géminis"
+        },
+        {
+          "clave" : "SOL_PISCIS",
+          "fuente" : "Astrolibrary",
+          "orden" : 1,
+          "texto" : "Los nativos de Piscis son comprensivos, compasivos, modestos, idealistas, intuitivos, agradables, adaptables, psíquicos, emocionales, creativos, reservados, versátiles, imaginativos y abnegados. También pueden ser impresionables, indecisos, autocompasivos, hipersensibles y cambiantes. Necesitan servir a los demás.\n\nLos nativos de Piscis son sentimentales y románticos enamorados. A veces, esperan demasiado de los demás y luego se sienten heridos si la otra persona no les ayuda. Tienen una fuerte tendencia a colocar a su ser querido en un pedestal. Esto les lleva a la desilusión cuando descubren que su ser querido también tiene defectos.\n\nEl símbolo de Piscis son dos peces que van en direcciones opuestas conectados por una cuerda. Un pez representa la personalidad y el otro representa el espíritu. Estas dos fuerzas opuestas operan dentro de Piscis, provocando inseguridad e indecisión. Manejar estas fuerzas de manera positiva les resulta muy difícil. Algunos buscarán escapar de estas presiones mediante la comida, el alcohol, las drogas u otros excesos. Eso es lo que representa uno de los peces. El otro pez representa a Piscis elevándose a grandes alturas a través de la abnegación, el sacrificio y luego el logro máximo. Los nativos de Piscis aprenden a través del sufrimiento y necesitan aprender a perseverar.\n\nLos nativos de Piscis tienden a absorber la información y el entorno que los rodea. Por eso es importante que se rodeen de personas y circunstancias edificantes. Los nativos de Piscis son personas creativas, autosuficientes y con una mente extremadamente activa, debido a su fuerte imaginación, con la que en ocasiones pueden dejarse llevar. Sienten y sienten cosas de las que otros no son conscientes.\n\nLos nativos de Piscis generalmente no poseen una gran fuerza de voluntad ni tienen un enfoque dinámico ante la vida. Aunque por fuera pueden parecer muy decididos, en el fondo se están gestando dudas internas. Esta inseguridad les hace necesitar que los demás los tranquilicen. Una de sus mayores necesidades es aprender a comprender sus altibajos emocionales. Como tienden a dudar de sus propias conclusiones, necesitan aprender a creer en sí mismos.\n\nLos nativos de Piscis son muy generosos con su tiempo para ayudar a otras personas. Siempre se sienten mejor cuando sirven a los demás de alguna manera. Al usar su compasión exteriormente por los demás, no se volverán tan malhumorados ni introvertidos. Dado que los nativos de Piscis son reacios a herir a los demás o a afrontar cualquier tipo de confrontación, pueden verse envueltos en situaciones emocionales muy difíciles que les resulta extremadamente difícil superar. A veces les cuesta decir que no y se quedan en situaciones malas pensando que de alguna manera pueden cambiar a la otra persona y entonces todo estará bien. A algunos nativos de Piscis les encanta jugar al mártir, mientras que otros necesitan jugar al salvador. Los nativos de Piscis tienden a pensar con el corazón más que con la cabeza y otros pueden utilizarlos fácilmente. Muchos caen en cualquier tipo de historia triste, en detrimento suyo propio. Sus corazones están en el lugar correcto, solo necesitan ser más realistas y con los pies en la tierra.\n\nLos nativos de Piscis pueden ser muy reservados, pero hacen amigos con bastante facilidad y les son bastante leales. No les gustan especialmente las peleas verbales o combativas, pero defenderán a sus amigos de manera sutil.\n\nLos nativos de Piscis a veces carecen de vitalidad, lo que a menudo da a la gente la idea de que son vagos. Bueno, algunos lo son y a los nativos de Piscis en general les gusta posponer las cosas. Un Piscis necesita suficiente tiempo cada día para estar solo mientras recupera sus energías fluctuantes.\n\nEl deseo innato de Piscis de escapar de la vida física se puede utilizar de manera constructiva a través de la creatividad. Les atraen muchas formas de arte, danza y música. Parecen conocer instintivamente sus propias capacidades y limitaciones. Des…",
+          "tipo" : "natal_planeta_signo",
+          "titulo" : "☉ Sol de revolución en ♓ Piscis"
+        },
+        {
+          "clave" : "LUNA_ACUARIO",
+          "fuente" : "Astrolibrary",
+          "orden" : 1,
+          "texto" : "Si tienes la Luna en Acuario, tus emociones tienden a estar guiadas por el intelecto y puedes mostrarte muy desapegado a la hora de lidiar con ellas. Otros pueden pensar que eres frío y distante porque no entienden la forma en que manejas tus sentimientos. Esta posición estabiliza tus emociones. Encuentra seguridad al tratar y trabajar con grupos de personas, especialmente en esfuerzos que benefician a la mayoría. Eres inventivo, original y de pensamiento progresista y quieres hacer del mundo un lugar mejor para vivir. Los lazos y apegos familiares pueden no ser tan importantes para ti como lo son para los demás y quizás a menudo consideres a tus amigos más cercanos a ti que a tus parientes consanguíneos. Necesitas libertad e independencia en tus relaciones con los demás. A veces retrocedes si se acercan demasiado. Odias mucho a una pareja celosa y posesiva. Te gusta experimentar y jugar en el campo. Hay poco cariño por lo convencional y lo tradicional. Tiendes a ser amigable, intuitivo, humano, progresista e independiente. Eres de mente abierta y deseas investigar todo conocimiento. Es posible que tenga dificultades para comprender las necesidades emocionales de los demás. A veces expresas ideas inusuales simplemente para sorprender o sorprender a los demás y sacarlos de su letargo o simplemente para ver qué tipo de reacción obtendrás. En el lado negativo, puedes ser impersonal, testarudo, errático, rebelde, rígido, emocionalmente estrecho y egoísta.",
+          "tipo" : "natal_planeta_signo",
+          "titulo" : "☽ Luna de revolución en ♒ Acuario"
+        },
+        {
+          "clave" : "MERCURIO_PISCIS",
+          "fuente" : "Astrolibrary",
+          "orden" : 1,
+          "texto" : "Si tienes Mercurio en Piscis, tú, tus pensamientos y tus formas de comunicarte tienden a ser idealistas, psíquicos, intuitivos, imaginativos, comprensivos, diplomáticos, extremadamente sensibles, compasivos y visionarios. En el lado negativo, puedes ser perezoso, poco práctico, soñador, demasiado sensible, postergador, indiferente y distraído. Es posible que le falte un fuerte deseo de trabajar o de esforzarse en hacer cualquier cosa que requiera mucha fuerza, organización, paciencia y responsabilidad. Preferirías ser poeta o músico que científico o mecánico. Es posible que el aprendizaje formal de libros no sea su área de fortaleza, sin embargo, puede absorber conocimientos de las maneras más notables si está interesado en el área temática. Eres sensible a tu entorno y, por lo tanto, debes tener cuidado con los entornos en los que te mueves. Tus nervios y tu salud mental requieren que descanses periódicamente lejos del ruido del mundo laboral diario. Tómate un tiempo para estar a solas contigo mismo y reagruparte. Pero no demasiado tiempo, ya que tienes tendencia a dejarte llevar por ti mismo y por tus problemas. La curación mediante técnicas de visualización o la curación mediante la imposición de manos puede resultarle atractiva. Es posible que tengas gran interés y talento en el arte, la música, el teatro o la poesía. Tu imaginación puede estar bastante desarrollada. Debido a que tiende a pensar en términos de abstracciones mentales, traducir sus pensamientos e impresiones a un lenguaje concreto y cotidiano puede resultarle difícil a veces y, en consecuencia, puede parecer menos inteligente o al menos menos ingenioso y verbal que otros. No le gusta que le limiten a los hechos y sigue su instinto más que la lógica. Eres intuitivo y capaz de sentir cuáles son los pensamientos y sentimientos de los demás, incluso antes de que te digan algo. A veces te sumerges tanto en tu propio mundo de pensamiento e imaginación que pasas por alto cosas de tu entorno inmediato y tangible. Tienes una mente extremadamente abierta y crees que todo es posible. Las fuerzas intangibles o espirituales te parecen tan reales como cualquier cosa en el mundo concreto y a menudo te formas una opinión sobre una persona o situación sin mucho conocimiento fáctico de ellas, y tus impresiones suelen ser correctas. Es importante mantener la mente ocupada positivamente, ya que soñar despierto tiende a tomar direcciones extrañas.",
+          "tipo" : "natal_planeta_signo",
+          "titulo" : "☿ Mercurio de revolución en ♓ Piscis"
+        },
+        {
+          "clave" : "VENUS_ARIES",
+          "fuente" : "Astrolibrary",
+          "orden" : 1,
+          "texto" : "Venus desea relaciones, sociabilidad y afecto. Aries es franco, exigente y quiere tomar la iniciativa. Por lo tanto, si tienes Venus en Aries, puedes ser muy ardiente y perseverante en las relaciones. Tus sentimientos y pasiones se despiertan fácilmente y normalmente intentas tomar la iniciativa en los asuntos sociales y del corazón. Sales y consigues lo que crees que quieres. El problema es que, una vez adquirido, es posible que te canses de tenerlo. La emoción de la persecución es más importante para ti que la captura final. Por lo tanto, sus romances pueden comenzar con una llamarada de emoción y gloria para terminar en aburrimiento y monotonía. Siempre hay nuevos campos que conquistar y hay que ir tras ellos. Es casi una cruzada para ti. Las peores cualidades de Venus son esforzarse demasiado en complacer a los demás y tomar la línea de menor resistencia. Entonces, en las relaciones, puedes elegir parejas que tienden a dominarte y quieren que hagas las cosas a su manera a expensas de tus propios deseos. Venus en Aries te pide que seas asertivo, pero no dominante, complaciente, pero no un trapo. Eres independiente y tienes un enfoque impulsivo hacia el amor. Te gusta la competitividad y tal vez buscas peleas sólo por la acción y la emoción. Puedes ser muy desconsiderado con los demás porque a veces no piensas en tus acciones y en los efectos que tienen en las personas más cercanas a ti. La impaciencia y el egoísmo pueden ser un problema para usted. Vea ideas de regalos para personas con Venus en Aries. Más sobre Venus en Aries.",
+          "tipo" : "natal_planeta_signo",
+          "titulo" : "♀ Venus de revolución en ♈ Aries"
+        },
+        {
+          "clave" : "MARTE_PISCIS",
+          "fuente" : "Astrolibrary",
+          "orden" : 1,
+          "texto" : "Si tienes Marte en Piscis, tus energías y agresividad tienden a manifestarse de manera no combativa ni competitiva. Eres un poco pacifista y no te gusta enfrentarte a nadie ni a nada de manera directa y confrontativa. Trabajar con personas o situaciones o trabajar detrás de escena, en secreto, es más tu estilo preferido. Si es necesario, es más tu tendencia a renunciar a algo que a luchar por ello. Debido a que su ego no está especialmente interesado en los logros personales, la glorificación, las ventajas materiales o ganar a expensas de otra persona, puede parecerle a los demás como alguien de voluntad débil o ineficaz. Estar en la cima, ser el mejor o el primero no significa mucho para ti, por lo que puedes ser muy feliz en un papel secundario, trabajando en beneficio de otros o por una causa en la que crees.\n\nEs posible que experimente dificultades para planificar metas claras y definidas para usted en el mundo real. No estás seguro de lo que quieres de la vida, excepto que instintivamente pareces saber que tienes y necesitas encontrar un propósito espiritual. Tienes muchos sueños, altos ideales y un fuerte impulso místico o religioso. También tienes una imaginación creativa y puedes aplicarte con éxito al arte o la música. Eres intuitivo, divertido y diplomático, tranquilo por fuera, pero inquieto por dentro.\n\nEn el lado negativo, puede ser indeciso, procrastinar, demasiado interesado en el lado sensual de la vida y puede recurrir al uso de drogas o alcohol como una forma de escapar de las presiones y responsabilidades de lidiar con la vida cotidiana. Aprender el autocontrol es importante para usted. Actúe, no se limite a soñar despierto.",
+          "tipo" : "natal_planeta_signo",
+          "titulo" : "♂ Marte de revolución en ♓ Piscis"
+        },
+        {
+          "clave" : "JUPITER_CANCER",
+          "fuente" : "Astrolibrary",
+          "orden" : 1,
+          "texto" : "Si tienes a Júpiter en Cáncer, eres cariñoso, pacífico, amigable, sociable, comprensivo y probablemente muy patriótico. Tienes una imaginación muy vívida y muchos sueños utópicos. Probablemente haya interés en las cosas místicas. Tiene buen juicio financiero, especialmente en bienes raíces, con capacidad para acumular dinero y posesiones, especialmente después de la mediana edad. Se recibe mucha ayuda de los padres. Es posible que tenga problemas de peso, especialmente en una etapa avanzada de su vida, porque disfruta de las delicias de la mesa. Es posible que no alcance todo su potencial hasta la mediana edad o la vejez. Puede haber una tendencia a la tacañería, a aferrarse demasiado a recuerdos y posesiones. Puede que seas una rata de carga. El sentimentalismo sensiblero y el exceso de emotividad también pueden ser problemas para usted.",
+          "tipo" : "natal_planeta_signo",
+          "titulo" : "♃ Júpiter de revolución en ♋ Cáncer"
+        },
+        {
+          "clave" : "SATURNO_ARIES",
+          "fuente" : "Astrolibrary",
+          "orden" : 1,
+          "texto" : "La mejor cualidad de Saturno es el sistema y la mejor cualidad de Aries es el liderazgo. Por lo tanto, si tienes a Saturno en Aries, puedes ser un líder muy capaz, uno que sabe qué hacer y no tiene miedo de salir a hacerlo sin importar lo que cueste ni el tiempo que cueste. El combate y la competitividad te impulsan a lograr mayores logros. La autosuficiencia es alta dentro de ti y probablemente sientas que eres más capaz que quienes te rodean, por lo que puedes terminar haciendo todo el trabajo, lo que puede enojarte si sientes que los demás no están cumpliendo con su parte. La peor cualidad de Saturno es el egoísmo y la peor cualidad de Aries es la interferencia con los planes de los demás. Por lo tanto, también eres capaz de entrometerte y tratar de manejar los asuntos de los demás. Usted puede pisotearlos al tratar de lograr que hagan su voluntad en lugar de la suya. Puedes ser un verdadero negrero. No le gustan las restricciones de ningún tipo y no le agrada que los demás le digan qué hacer. Recuerda esto cuando des las órdenes. Los obstáculos, las frustraciones y las limitaciones entran en juego en sus esfuerzos pioneros y emprendedores. La libertad sólo llega a través de la responsabilidad y la disciplina. La impaciencia puede arruinar todo el buen trabajo que intentas hacer. Es posible que sea necesario tener precaución al llevar a cabo sus planes. La estabilidad y la seguridad son importantes para usted y trabaja con esos pensamientos en mente. Los sentimientos de incapacidad pueden impulsarlo a emprender inmensas empresas para sentirse más valorado o digno. El estrés por tratar de lograr demasiado puede hacerte propenso a sufrir dolores de cabeza. Saturno en Aries te pide que seas abnegado.",
+          "tipo" : "natal_planeta_signo",
+          "titulo" : "♄ Saturno de revolución en ♈ Aries"
+        },
+        {
+          "clave" : "URANO_TAURO",
+          "fuente" : "Astrolibrary",
+          "orden" : 1,
+          "texto" : "(1850\/51 – 1858\/59, 1934\/35 – 1941\/42, 2018\/19 – 2025\/26)\n\nTauro resalta la cualidad obstinada de Urano. Si otros signos fijos son prominentes en la carta, el individuo puede decir con orgullo: \"Una vez que haya tomado una decisión, no la cambio\". Sin embargo, si la carta tiende a la indecisión, con un poderoso énfasis en Libra o Piscis, esta es una buena ubicación, ya que brinda una combinación de estabilidad y originalidad uraniana. De cualquier manera, esta ubicación genera tendencias opuestas. Por un lado, la influencia fija de Tauro hace que uno quiera ser convencional. Esto choca con el impulso natural de Urano de liberarse de todas las convenciones. Si se consigue el equilibrio, muchas veces nos encontramos con un individuo original y práctico, que es cuando Urano en Tauro está en su mejor momento.  Lee más sobre Urano en Tauro.",
+          "tipo" : "natal_planeta_signo",
+          "titulo" : "⛢ Urano de revolución en ♉ Tauro"
+        },
+        {
+          "clave" : "SOL_CASA_10",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes el Sol en la décima casa, es posible que desees alcanzar el éxito y el poder en beneficio de los demás o buscar el éxito y el poder para ti mismo sin pensar en nadie más. Quieres brillar y ser reconocido por tus logros. Quieres ser realmente bueno en algo. Existe una fuerte motivación hacia el éxito en una carrera y\/o logros personales. Tienes la capacidad de inspirar a otros a través de tu ejemplo. Eres ambicioso y el engrandecimiento personal es posible. Las personas en las altas esferas pueden ayudar o obstaculizar su carrera.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "☉ Sol de revolución en Casa 10"
+        },
+        {
+          "clave" : "LUNA_CASA_9",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes la Luna en la novena casa, eres un soñador y a menudo reflexionas sobre los aspectos superiores de la vida. Dado que es posible que no esté satisfecho con la forma en que va su vida actualmente, desea buscar nuevos campos. Esta búsqueda puede llevarle a realizar muchos viajes largos, tanto físicos como mentales. La seguridad puede encontrarse en un ideal religioso o filosófico. Tu filosofía de vida es la que te nutre y te da seguridad. Tienes una variedad de intereses, en deportes, pasatiempos y estudios. Eres un profesor estimulante debido a tu interés personal en las materias que enseñas. Realmente son parte de ti y eso se nota en quienes te escuchan. Es posible que tengas sueños precognitivos. Respecto a la vocación: el énfasis se pone en la mente superior, las dimensiones de la filosofía, las costumbres públicas, la religión, el derecho o compartir el razonamiento del público. Las cuestiones relativas a los viajes al extranjero, la reubicación e incluso el cambio de ciudadanía son dimensiones importantes a considerar en la búsqueda de condiciones laborales que traigan el éxito personal.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "☽ Luna de revolución en Casa 9"
+        },
+        {
+          "clave" : "MERCURIO_CASA_9",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes Mercurio en la Casa 9, eres flexible, con una mente adaptable que quizás esté interesada en actividades intelectuales, leyes, religión o filosofía. Tienes muchas ideas y creencias con la capacidad de expresarlas bien verbalmente. Probablemente le gusten los viajes y la cultura extranjera y esto le resulte especialmente educativo. Tienes la capacidad de aprender idiomas extranjeros o de ser traductor. Puedes ser profesor o estar involucrado en la educación superior de alguna otra manera. Puede existir interés en publicaciones o publicidad.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "☿ Mercurio de revolución en Casa 9"
+        },
+        {
+          "clave" : "VENUS_CASA_10",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes Venus en la Casa Décima, tu disposición agradable y tu naturaleza armoniosa te hacen popular en tu carrera y en el mundo en general. La gente parece querer hacer cosas buenas por ti, lo que puede provocarte pereza si abusas de esta energía. Tienes una actitud amorosa y amigable hacia el mundo con una actitud general de optimismo. Esta ubicación puede resultar favorable para hablar en público y cantar. Su voz puede usarse para complacer e inspirar a las personas. Esta posición suele garantizar unas cómodas circunstancias económicas.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "♀ Venus de revolución en Casa 10"
+        },
+        {
+          "clave" : "MARTE_CASA_9",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes a Marte en la Casa 9, tu mente está entusiasta, pero inquieta. Eres independiente en pensamiento. Hay que vigilar vuestro celo religioso para que no se convierta en fanatismo. Tiene opiniones firmes y está feliz de contarlas a cualquiera que quiera escucharlas. Tienes un fuerte deseo de viajar, no necesariamente físicamente, sino mentalmente. Tienes una filosofía liberal, amplia y progresista sobre la vida y no quieres que nadie más te imponga sus creencias. Existe la posibilidad de conflictos con los suegros. Lucharás por tus convicciones. Es posible que deba observar una tendencia a creer que siempre tiene la razón.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "♂ Marte de revolución en Casa 9"
+        },
+        {
+          "clave" : "JUPITER_CASA_2",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes a Júpiter en la Casa 2, tienes la capacidad de tener éxito financiero. El dinero parece llegar a ti y probablemente nunca te hayas perdido una comida en tu vida. Tienes confianza y optimismo en tus talentos y habilidades. Sus ideas e inversiones visionarias suelen prosperar gracias a su valoración intuitiva de las situaciones. Disfrutas de las posesiones materiales y se te puede considerar \"afortunado\". Inspira confianza en los demás y puede beneficiarse de recibir ayuda financiera de otros para desarrollar sus ideas visionarias e idealistas. Debes cuidarte de la autocomplacencia y la extravagancia excesiva. Frena tu deseo por comidas y postres ricos y dulces.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "♃ Júpiter de revolución en Casa 2"
+        },
+        {
+          "clave" : "SATURNO_CASA_10",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes a Saturno en la Casa 10, eres autosuficiente e independiente con buena capacidad para los negocios y la organización. Para usted, el éxito llega lentamente, a través de la perseverancia y el trabajo duro. Debes aceptar tus responsabilidades, de lo contrario la vida será una serie de reveses y fracasos. Perseguir el poder y utilizar a otros para conseguir lo que quieres provocará tu caída. Necesitas controlar tus ambiciones. Tenga cuidado con los puentes que queme; es posible que deba volver a cruzarlos. Puede haber dificultades con cualquiera de los padres debido a su disciplina, rigor o la necesidad de controlar su vida.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "♄ Saturno de revolución en Casa 10"
+        },
+        {
+          "clave" : "NEPTUNO_CASA_10",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes a Neptuno en la Casa Décima, pueden suceder cosas extrañas y confusas con respecto a tu carrera y tu impulso para tener éxito en ella. Esta posición está acompañada de un fuerte idealismo, así que mantén los ojos abiertos y los pies en el suelo. Su carrera puede involucrar algo artístico, inspirador, humanitario, dramático, promocional o psíquico. El teatro, la química, las actividades psíquicas, la fotografía o el tráfico de drogas son posibles salidas profesionales. Su imagen pública puede tener altibajos debido a fuerzas que escapan a su control. Es posible que se produzca un sentimiento de rechazo por parte de uno o ambos padres.\n\nVea otra interpretación de Neptuno en la casa 10 de Aleister Crowley.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "♆ Neptuno de revolución en Casa 10"
+        },
+        {
+          "clave" : "PLUTON_CASA_8",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes a Plutón en la Casa 8, posees una fuerte intuición y buen sentido para los negocios. Tienes una mente analítica, con coraje, fortaleza e interés por el mundo metafísico. Es posible que tengas habilidades clarividentes. Existe la posibilidad de una herencia. Puede haber preocupación o dificultad por el dinero a través del matrimonio o de un socio comercial. Puede haber trastornos financieros y la transformación puede llegar por este medio. Busca el significado de la vida y puede desarrollar una fascinación o interés por la muerte y el más allá. Quieres saber cómo funciona el Universo. Esta posición desarrolla la percepción, la autoconciencia, la independencia y la regeneración. Cualquier tendencia a dominar, controlar o poseer a otros debe abordarse de manera positiva. Será necesario superar una fuerte naturaleza de deseos para que se produzca la regeneración.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "♇ Plutón de revolución en Casa 8"
+        },
+        {
+          "clave" : "URANO_CASA_12",
+          "fuente" : "Astrolibrary",
+          "orden" : 2,
+          "texto" : "Si tienes a Urano en la Casa 12, tiendes a ser muy intuitivo y reservado, con ideales humanitarios. Es posible que tenga sentimientos de soledad. Puede haber dificultades nerviosas. Hay interés por los temas metafísicos. Es posible que tengas experiencias psíquicas únicas que guardas para ti por miedo a ser ridiculizado. Tienes un deseo tremendo de sentirte libre y un cuestionamiento constante sobre el sentido de la vida y de las imperfecciones que ves a tu alrededor. Es necesario sacar a la luz y eliminar las dificultades no resueltas en su mente subconsciente. Tienes tendencia a sentir que algo te va a \"atrapar\", a sorprenderte si no tienes cuidado. Es como si siempre tuvieras una sensación de perdición inminente. Es necesario superar este temor. Se debe desarrollar el autocontrol. Lee más sobre Urano en la casa duodécima.",
+          "tipo" : "natal_planeta_casa",
+          "titulo" : "⛢ Urano de revolución en Casa 12"
+        },
+        {
+          "clave" : "SOL_MC_CONJUNCION",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "El Sol en conjunción con el Medio Cielo natal también se llama Sol culminante. Te hace estar muy orientado a objetivos. El éxito en su carrera es una de sus necesidades más esenciales. Expresas tu identidad a través de logros y trabajas duro para dejar tu huella. Debes gozar de una buena posición social y ser socialmente popular.\n\nEl fracaso puede ser devastador para usted y dañar gravemente su autoestima. Por este motivo, conviene evitar los posibles inconvenientes de este aspecto. Estás orgulloso, pero la arrogancia o el egoísmo causarán mucha resistencia a tus objetivos. Tienes cualidades de liderazgo, pero puedes tender a rebelarte contra las figuras de autoridad. Por esta razón, necesita controlar su ritmo y aprender a trabajar bajo dirección hasta que adquiera las habilidades necesarias para tener éxito.\n\nEstá bien que te sientas importante y pienses que estás destinado a grandes cosas, pero no se lo restriegues en la cara a la gente. Probablemente admirabas a tu padre y te resultaría más fácil avanzar si él te apoyara. Aprenda de sus mayores y superiores y muéstreles respeto. De esta manera, llegarás a la cima y te ganarás el respeto y la distinción que buscas. Si no puede trabajar dentro de una burocracia o ser un pez pequeño en un estanque grande, lo mejor sería que pudiera iniciar un negocio por su cuenta.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "☉ Sol ☌ Conjunción MC (orbe 7.3°)"
+        },
+        {
+          "clave" : "SOL_NEPTUNO_CONJUNCION",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Sol en conjunción con Neptuno natal te hace sentir muy sensible y afectuoso. Tienes una gran imaginación y experimentas una rica vida espiritual y onírica. Debido a su mayor sensibilidad a la energía vibratoria, existe una gran variabilidad en la forma en que las personas manejan ese flujo de energía. Esto puede variar desde la iluminación espiritual hasta la paranoia, dependiendo de las estrellas fijas y otros aspectos de esta conjunción.\n\nProbablemente serás altruista y sumiso a medida que Neptuno eleve tu ego por encima del interés personal. Trasciendes las necesidades y deseos primitivos del ego mientras parte de tu ego se funde con tu entorno. Te vuelves uno con tu pareja, tu familia, tu comunidad y la humanidad.\n\nSu conexión puede ir más allá de lo personal e incluir empatía o comunión con otras formas de vida y el medio ambiente. Con tu ego tan desnudo o expuesto, eres vulnerable a las energías negativas tanto como las energías positivas te potencian. Aquí es donde mirar su gráfico se vuelve más importante, siendo este aspecto más que cualquier otro.\n\nCon aportes negativos en una etapa temprana de la vida, como abuso psicológico o físico, pobreza, discriminación, etc., su ego se protegerá retirándose y escondiéndose de la fuente de energía negativa. En tales casos, usted puede sentirse solo, abandonado, asustado o victimizado.\n\nPara compensar la pérdida de aportes externos, su vívida imaginación crearía realidades alternativas en las que sentirá compañía, apoyo, alimento y propósito. Puedes imaginar personajes que adopten su propia forma en el mundo de los espíritus.\n\nMás adelante, esto puede conducir a una incapacidad para afrontar la realidad, a soñar despierto, a evitar responsabilidades, a mentir, a abusar de sustancias o a sufrir enfermedades mentales. El vacío se puede llenar con la autoexpresión creativa en el mundo real, por ejemplo a través de la religión, el cine, la música, el arte, la poesía, el teatro y los juegos de rol.\n\nLa expresión positiva de este Sol en conjunción con Neptuno se producirá de forma natural con buenas asociaciones de estrellas fijas u otros aspectos útiles. Cambiar el condicionamiento negativo inicial implicará salir lentamente de su burbuja o manta de seguridad para reincorporarse al mundo real exterior. Un ser querido de confianza sería invaluable para brindar apoyo y ayudar a establecer metas.\n\nCompartirse a uno mismo manteniendo un ego sano es clave para afrontar este aspecto natal. Debe aprender a establecer límites realistas, de modo que comparta lo suficiente para mantener relaciones saludables pero conserve lo suficiente para satisfacer sus propias necesidades. El objetivo es confianza, vitalidad y un sentido de propósito.\n\nDemasiado límite conducirá a los ejemplos anteriores del niño retraído. No tener suficientes límites podría llevar a sentirse abrumado por energías negativas, pérdida de vitalidad y enfermedades. Ser egoísta y solidario al mismo tiempo será un trabajo en progreso.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "☉ Sol ☌ Conjunción ♆ Neptuno (orbe 6.53°)"
+        },
+        {
+          "clave" : "SOL_URANO_SEXTIL",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Sol sextil Urano natal te permite expresar emoción, cambio y excentricidad a través de tu ego. Le gusta mostrar sus diferencias a través de una personalidad \"exterior\" y sus intereses y trabajo. Es posible que hayas sido rebelde cuando eras niño. Buscas activamente cambios y entusiasmo en tu vida.\n\nTus peculiaridades y tendencia al cambio generalmente no causan drama ni caos. Incluso otras personas aceptarán tus diferencias porque tienes un efecto estimulante en quienes te rodean. Esta aceptación también surge de la autoconciencia de tu singularidad y de cómo te ven los demás.\n\nEs posible que se sienta atraído por carreras científicas o basadas en Internet, y sería adecuado para temas ocultos como la astrología. Disfrutas de la libertad y la confianza en ti mismo para expresarte con estilo. También eres muy inteligente, ingenioso, inventivo y excepcionalmente creativo.\n\nEs posible que tengas un ego grande y saludable y estés orgulloso de ser diferente. Defenderás a los desvalidos y lucharás contra la injusticia y el gobierno autoritario. Los destellos de perspicacia y una asombrosa capacidad para encontrar formas nuevas y creativas de hacer las cosas pueden conducir a descubrimientos y revelaciones.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "☉ Sol ⚹ Sextil ⛢ Urano (orbe 3.08°)"
+        },
+        {
+          "clave" : "LUNA_PLUTON_CONJUNCION",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Luna en conjunción con Plutón natal da una vida emocional intensa y dramática. Sientes las cosas tan profundamente que controlar cómo reaccionas ante las personas y las situaciones a veces resulta un desafío. También experimenta estados de ánimo extremos y una tendencia hacia estados de ánimo extremos y, a veces, oscuros.\n\nTus emociones y reacciones también están fuertemente influenciadas por tu poderosa intuición. Los sueños, visiones o impresiones psíquicas suelen ser extremadamente vívidos y profundos. Por naturaleza, tienes poco control sobre tu subconsciente, pero tus sentimientos e intuición pueden tomar control sobre tus intenciones y acciones conscientes.\n\nSi está de mal humor, es posible que se sienta abrumado por el miedo y la paranoia. Puede creer que otros están tratando de controlarlo. Pueden seguir comportamientos como la manipulación, la mentira y la intimidación.\n\nLa manipulación emocional es más probable que ocurra en el hogar cuando eres pequeño y en las relaciones íntimas, particularmente con mujeres. Si tu madre fuera entrometida, manipuladora o autoritaria, habrías aprendido ese comportamiento controlador. Si es así, deshacer este lavado de cerebro subconsciente es una prioridad importante y una tarea necesaria antes de poder disfrutar de relaciones saludables.\n\nAfortunadamente, tu poderoso subconsciente tiene tremendos poderes de regeneración y transformación. Puede aprender rápidamente el autoanálisis psicológico y otras técnicas para acceder a recuerdos y sentimientos profundamente enterrados.\n\nLa meditación, la astrología, el trabajo con los sueños y la regresión a vidas pasadas son formas naturales de transformar positivamente las emociones siniestras o los comportamientos destructivos. Tu poderoso subconsciente es capaz de hacer cosas asombrosas.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "☽ Luna ☌ Conjunción ♇ Plutón (orbe 7.92°)"
+        },
+        {
+          "clave" : "LUNA_VENUS_SEXTIL",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Luna sextil Venus natal da una naturaleza dulce, encantadora y adorable. Eres genuinamente cariñoso, amable y afectuoso, con excelentes habilidades sociales.\n\nLa Luna y Venus son suaves, sensibles y pasivos, pero el aspecto sextil es enérgico y expresivo. Entonces, si bien eres amigable y amante de la paz, no eres fácil de convencer y defenderás a ti mismo, a tu familia y a tus valores.\n\nPuedes conquistar a la gente con tu encanto y belleza, y no necesitas aplicar fuerza física o psicológica para salirte con la tuya. Su franqueza y honestidad al compartir sus sentimientos y afectos le brindan buenos amigos, popularidad, atractivo público y, a veces, fama.\n\nLa familia y los buenos amigos son esenciales para su sensación de seguridad. No funciona bien en aislamiento o en entornos desagradables, sucios o peligrosos. Es una persona extrovertida y amante de la diversión, debería disfrutar del éxito relativamente temprano en la vida. La comodidad, la popularidad y la riqueza pueden llegar fácilmente, pero usted gana y merece buena fortuna.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "☽ Luna ⚹ Sextil ♀ Venus (orbe 1.39°)"
+        },
+        {
+          "clave" : "MERCURIO_ASC_CUADRADO",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Mercurio en cuadratura Ascendente natal otorga una mente aguda, curiosidad e inteligencia creativa. Eres excelente con las palabras, ya sea aprendiendo, leyendo, escribiendo o hablando. Tu mente es tan activa que debes mantenerte ocupado con un trabajo mental apasionante y exigente. De lo contrario, puedes ponerte nervioso, distraído o perturbador.\n\nEres una persona de ideas y un comunicador de ideas. Sus ideas pueden ser controvertidas, pero normalmente están bien pensadas y son convincentes. Eres bueno para informar, educar, compartir, aclarar, provocar y entretener a los demás. Por eso, debatir, hablar en público, escribir e incluso cantar y predicar son formas de mantener la mente activa y productiva.\n\nEs probable que estés con otras personas a menudo, pero esto no tiene por qué arruinar las relaciones o afectar tu salud mental si aprendes de la experiencia. A veces puedes ser bastante hablador y obstinado, por lo que es vital reducir la velocidad y escuchar a los demás. Escuche consejos y obtenga segundas opiniones.\n\nSi alguien no está de acuerdo contigo, no lo tomes automáticamente como algo personal. Mantenga el debate a nivel intelectual y evite los chismes y rumores. Puedes ser un embaucador, pero es fundamental conocer tus límites. Hacer reír a la gente es una cosa, pero burlarse o intimidar es otra.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "☿ Mercurio □ Cuadratura ASC de revolución (orbe 4.7°)"
+        },
+        {
+          "clave" : "MERCURIO_JUPITER_TRIGONO",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Mercurio trígono con Júpiter natal brinda una perspectiva amplia y un conocimiento vasto y completo. Tu actitud alegre, tolerante y optimista, tu gran sentido del humor y tu generosidad hacen que sea divertido estar contigo. Debería disfrutar mezclarse con grupos de personas y no debería tener problemas para hacer amigos. Querido y popular, incluso podrías volverte famoso. Posees habilidades sociales elocuentes y formas amistades mutuamente beneficiosas.\n\nEste aspecto ayuda a que su vida transcurra sin problemas gracias a su amplia perspectiva, su perspicacia y su capacidad para planificar el futuro. Júpiter amplifica tus sentidos, procesos de pensamiento y habilidades de comunicación de Mercurio. Tu punto de vista lógico, agilidad mental y visión amplia son ideales para estudiar y enseñar idiomas, filosofía, religión y derecho. Dado su pensamiento orientado al futuro, es posible que también tenga talento para escribir ciencia ficción. Su conocimiento empresarial le ayudará en cualquier carrera que elija.\n\nMercurio en trígono con Júpiter otorga una naturaleza progresista y generosa que favorece las obras de caridad, pero también puedes esperar beneficiarte de la generosidad de otras personas. Valora la libertad de expresión y otros derechos humanos y, sin duda, condenaría la censura. Puedes ser llamativo, contundente e incluso intenso al comunicar tus ideas. La política o el activismo social se adaptarían a tu estilo.\n\nLos viajes de larga distancia serían excelentes para ampliar sus perspectivas y aumentar sus conocimientos generales. Continuarás creciendo intelectualmente a lo largo de tu vida, e incluso podrás manifestar esta expansión a través del ejercicio físico o el culturismo. Quizás el único inconveniente de este aspecto natal positivo sea la tendencia a pensar demasiado, lo que puede provocar agotamiento mental.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "☿ Mercurio △ Trígono ♃ Júpiter (orbe 5.25°)"
+        },
+        {
+          "clave" : "MERCURIO_MC_CONJUNCION",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Mercurio en conjunción con el Medio Cielo natal proporciona un intelecto penetrante y habilidades de comunicación muy por encima del promedio. Lo ves todo y lo ves muy claramente. Generalmente eres imparcial y disfrutas compartir tu perspectiva sobre el mundo. Dar sentido a ideas complejas y comunicarlas en un estilo educativo o entretenido es una parte importante de su papel en la vida. También te debería gustar socializar; cuanta más interacción tengas con los demás, mejor.\n\nPuedes sentirte inquieto o ansioso cuando no tienes nada que hacer, por lo que siempre buscas estimulación mental y experiencias excitantes. La tendencia a distraerse fácilmente podría significar dificultad para concentrarse en un tema a la vez. Sin embargo, Internet se adapta a su estilo de aprendizaje e investigación y puede encontrar rápidamente la información que necesita. Quizás deberías marcar las páginas donde comienzas para poder regresar a tu línea de preguntas original.\n\nAl comunicarse con los demás, utilizar el corazón y la cabeza es fundamental. Tienes el potencial de volverte demasiado intelectual y menos íntimo a menos que tengas una Luna o Venus bien ubicados.\n\nTus habilidades superiores de comunicación y tu rápido ingenio te ayudarán a avanzar en tu carrera. Destacarías en las industrias de los medios y el entretenimiento, desde lector de noticias hasta periodista o comediante. Otras funciones específicas de Mercurio incluyen negocios, comercio, economía, educación primaria y secundaria, transporte, administración, trabajo secretarial o administrativo, análisis, cajero, impuestos, negociación, promociones, ventas telefónicas y ventas generales.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "☿ Mercurio ☌ Conjunción MC (orbe 7.9°)"
+        },
+        {
+          "clave" : "MERCURIO_MARTE_CONJUNCION",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Mercurio en conjunción con Marte natal proporciona una mente rápida, reflejos rápidos y una lengua afilada. Estos atributos son ideales para tomar decisiones rápidas en el calor del momento, mientras otros dudan. Excelentes habilidades de debate le permitirán defender no sólo sus derechos sino también los derechos de los demás.\n\nSu forma entusiasta, directa y valiente de expresarse puede ganarse la admiración en la política, los negocios y el ejército. Sin embargo, este medio directo de comunicación puede generar discusiones y hostilidad en las relaciones más personales y en la vida social.\n\nLa clave para gestionar este potente aspecto es controlar el lado impulsivo y agresivo de Marte. Incluso en tu vida profesional, formar relaciones armoniosas requerirá modificar tu actitud naturalmente defensiva. A menudo sabrás que tienes razón, pero por la paz, debes permitir que otros compartan sus opiniones incluso si parecen equivocadas.\n\nEs en sus relaciones más íntimas donde esta tendencia a discutir plantea los problemas más importantes. Sus amigos y familiares pueden sentirse tratados por sus gestos y estilo de comunicación, incluso cuando crea que se encuentra en un estado de calma. Puede utilizar su agudo intelecto para reconocer cuándo provoca reacciones defensivas u hostiles en los demás. El aumento resultante de la autoconciencia le permitirá moderar su enfoque cuando sus habilidades de lucha no sean necesarias.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "☿ Mercurio ☌ Conjunción ♂ Marte (orbe 0.42°)"
+        },
+        {
+          "clave" : "VENUS_JUPITER_CUADRADO",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Venus en cuadratura con Júpiter natal te convierte en una persona afortunada, creativa y amante de la diversión. Este tiene que ser el mejor de todos los desafiantes aspectos de la cuadratura en astrología. Hay varias dificultades asociadas, pero en general son relativamente fáciles de superar.\n\nTu perspectiva optimista, tu generosidad y tu naturaleza encantadora hacen que sea agradable estar contigo y deberías ser popular y tener poca o ninguna dificultad para hacer amigos. La tensión que existe en tu interior es un buen motivador para la creatividad. Este aspecto favorece cualquier arte, incluido el teatro, la comedia, la música, la escritura creativa, la pintura y la escultura. Tu sentido del humor rozaría el lado descarado.\n\nVenus en cuadratura con Júpiter puede causar problemas de motivación, particularmente en lo que respecta a las tareas diarias y el trabajo monótono que requiere un ingreso. La falta de autodisciplina puede provocar dificultades en el trabajo y en el cumplimiento de otros deberes y responsabilidades esenciales en la vida. Esto es especialmente cierto cuando tienes una familia. Su carisma sólo le permitirá evitar las pesadas tareas de criar hijos hasta cierto punto.\n\nOtras personas pueden percibir que usted tiene una moral cuestionable o \"laxa\". Lo más probable es que esto cause problemas en su vida amorosa, ya que bajar sus estándares puede generar complicaciones o vergüenza. Alternativamente, podría ser que asumir compromisos en las relaciones, como el matrimonio, cause preocupación. A veces, una actitud laxa puede irritar a tu pareja o puedes dar la impresión de que no te importa o que no te pueden molestar.\n\nSin embargo, como se mencionó anteriormente, abordar cualquier debilidad que agregue fricción a sus relaciones no requeriría mucho esfuerzo. Lo mismo se aplica a sus finanzas. Es posible que tenga dificultades para encontrar fondos suficientes para mantener el estilo de vida que desea. Lujos como entretenimiento, diversiones y vacaciones requieren que usted asuma una posición más responsable en su carrera.\n\nEn este aspecto existe una tendencia a sobreestimar sus recursos y a ser extravagante. Los peores escenarios implicarían avaricia y adicción, y es posible que sea necesario controlar su generosidad hacia usted mismo y hacia los demás. Sin embargo, en general, debe disfrutar de suficientes golpes de suerte para evitar muchas dificultades que restringen la capacidad de otras personas de disfrutar la vida al máximo.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♀ Venus □ Cuadratura ♃ Júpiter (orbe 3.69°)"
+        },
+        {
+          "clave" : "VENUS_SATURNO_CONJUNCION",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Venus en conjunción con Saturno natal te convierte en una persona muy leal y afectuosa, pero puedes tener problemas para demostrarlo. Esto puede provocar retrasos y restricciones en el establecimiento de relaciones cercanas. Anhelas amor y cariño, pero parecen existir impedimentos para lograrlo.\n\nEste puede ser un aspecto kármico. Las personas de vidas anteriores que se sintieron traicionadas o heridas por ti te buscarán en esta vida para darte una lección y equilibrar las cosas. Las personas que te lastimaron en encarnaciones anteriores pueden regresar con amor para darte y valiosas lecciones que enseñarte. Una vez que hayas alcanzado cierto punto evolutivo, las dificultades y el dolor darán paso a relaciones amorosas y duraderas.\n\nVenus en conjunción con Saturno puede ser un gran desafío durante el crecimiento. La falta de amor propio o respeto por uno mismo suele ser el principal motivo de timidez o dificultad para mantener relaciones cercanas. Esto sería mucho peor si los padres o los profesores fueran duros contigo. Es posible que hayas enfrentado privaciones, mezquindad, retirada de amor y afecto, o ausencia, especialmente de tu padre. El abuso también es posible, pero el punto principal es que es posible que usted no se haya sentido amado ni valorado por los demás.\n\nEl rechazo, el aislamiento y la soledad exacerban estas dificultades a medida que se pierde el desarrollo de habilidades de interacción social y personal. Es probable que tengas incomodidad social y prefieres relacionarte con una sola persona o con varias personas a la vez.\n\nCuanto más mal te sientas contigo mismo, más gente te evitará. Imagínese llevar un cartel alrededor del cuello que diga \"no es digno de ser amado\". Tu lección kármica en esta vida es amarte a ti mismo para que otros puedan amarte. Es posible que experimentes períodos de aislamiento entre relaciones, y las rupturas y los divorcios son típicos de este aspecto.\n\nSi eres joven, es posible que prefieras la compañía de personas más serias o mayores. Cuando sea mayor, podrá elegir una pareja más joven. La paciencia, el trabajo duro y la determinación serán recompensados. Cuanto más aprendas a aceptarte y amarte a ti mismo, más podrás expresar tu amor y afecto. El respeto por uno mismo genera el respeto de los demás y usted se ganará el amor y la lealtad que se merece.\n\nEste aspecto da un buen sentido del ritmo y talentos creativos sobresalientes. Puedes dar forma a la belleza y la armonía. Sin embargo, las dificultades financieras son posibles hasta que aprenda el valor del dinero y cómo conservar suficiente cantidad para vivir. Con el tiempo, como ocurre con el amor, aprenderás a aferrarte a él y a no experimentar períodos de restricción o pobreza. Ahorrar e invertir te traerá la estabilidad y seguridad que buscas.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♀ Venus ☌ Conjunción ♄ Saturno (orbe 7.92°)"
+        },
+        {
+          "clave" : "MARTE_ASC_CUADRADO",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Marte en cuadratura Ascendente natal te brinda una energía extraordinaria, lo que te hace motivado, motivado y apasionado. También puede motivar e inspirar a otros y es posible que tenga buenas cualidades de liderazgo. Sin embargo, la naturaleza cruda y abrasiva de esta energía dinámica raya en la agresión que puede intimidar y asustar a los demás.\n\nMuchas personas con este aspecto se sienten atraídas por luchar contra la injusticia y defender a los desvalidos. Puedes tener una influencia muy positiva y ayudar a muchas personas canalizando tu agresión hacia la lucha por causas dignas. Podría ser en el feminismo, la igualdad de derechos, los derechos de los trabajadores o alguna otra causa social que te entusiasme.\n\nSin embargo, el mismo activismo radical y el mismo espíritu de lucha agresivo que pueden marcar una diferencia significativa también pueden causar serios problemas en las relaciones. Debe darse cuenta de que el mismo comportamiento puede dañar a sus seres queridos.\n\nSus socios, en particular, pueden encontrarle arrogante, dominante, egoísta, egoísta, exigente, a la defensiva y de piel fina. Es posible que tienda a perder los estribos y arremeter contra la gente. Una pareja fuerte, devota y comprensiva debe permanecer en una relación tan tumultuosa.\n\nLa escritora y activista feminista Betty Friedan tenía Marte en cuadratura ascendente (0°03′). Ella escribió:\n\n“La verdad es que siempre he sido una perra de mal carácter”.\n\nY su marido dijo:\n\n\"Ella cambió el curso de la historia casi sin ayuda de nadie. Fue necesaria una dinamo motivada, súper agresiva, egocéntrica y casi lunática para sacudir al mundo como lo hizo. Desafortunadamente, ella era la misma persona en casa, donde ese tipo de conducta no funciona. Simplemente nunca entendió esto\".\n\nBetty también dio una pista sobre cómo canalizar la energía dinámica de este aspecto:\n\n“La única manera que tiene una mujer, como un hombre, de encontrarse a sí misma, de conocerse como persona, es mediante el trabajo creativo propio.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♂ Marte □ Cuadratura ASC de revolución (orbe 5.1°)"
+        },
+        {
+          "clave" : "MARTE_JUPITER_TRIGONO",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Marte trígono con Júpiter natal es un indicador de éxito en la vida. Algunos pueden llamarte afortunado, pero tu propia suerte la creas a través de una fuerte confianza en ti mismo y de buenas y honestas intenciones. Nadie puede dudar de su sólida ética de trabajo y productividad.\n\nEres audaz, confiado y nunca te avergüenzas de probar suerte en algo nuevo o desafiante. Este aspecto destaca por su físico, apariencia sexy, fuerza y ​​atletismo. La victoria en los deportes y la guerra también se puede aplicar a los negocios y la política, donde su talento de liderazgo atrae a colegas y fanáticos leales.\n\nSerías un buen guerrero, pero tu integridad y generosidad generan más compromisos y situaciones en las que todos ganan que hostilidades. Usted es quien dará el primer paso audaz para hacer que las cosas sucedan en beneficio de todos los involucrados. Puede que sea tu instinto o tu criterio, pero la acción decisiva es tu punto fuerte.\n\nLograr que las personas trabajen juntas en objetivos comunes proviene de su talento creativo. Este es un aspecto del parto en el que aplicas tu amplia energía e iniciativa para crear algo grande, valioso y exitoso.\n\nTambién hay una energía creativa primordial detrás de tu sexualidad. Sin embargo, la forma orgullosa en que expresas tu sexualidad puede estar muy alejada de la supervivencia de la especie. El magnetismo sexual que rezumas te hace ganar muchos admiradores, pero también puede abrirte muchas puertas en la vida.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♂ Marte △ Trígono ♃ Júpiter (orbe 4.84°)"
+        },
+        {
+          "clave" : "MARTE_MC_CONJUNCION",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Marte en conjunción con el Medio Cielo natal te determina a hacer todo a tu manera. Eres muy ambicioso, competitivo y excelente tomando la iniciativa. También conocido como culminación de Marte, este aspecto significa que usted toma decisiones en una fracción de segundo y actúa muy rápidamente, sabiendo exactamente qué hacer. Te enojarías si alguien intentara detenerte y, a veces, te indignarías. Puede que le resulte desafiante, pero escuchar las ideas de los demás le ayudará a evitar discusiones, incluso si solo finge estar interesado.\n\nTe identificas con tus metas, carrera, vocación o lo que sea que te propongas hacer. Si alguien cuestiona tus intenciones, sientes que te está atacando personalmente. Ser consciente de esta tendencia te ayudará a separarte de tus acciones.\n\nTu carrera debería permitirte la independencia y permitirte gastar mucha energía física. Sin embargo, esto no significa que debas ser soldado, trabajador siderúrgico o atleta profesional. Su cerebro quema mucha energía durante el trabajo mental desafiante, y cualquier cosa competitiva, como las ventas y los negocios, sería adecuada para Marte en conjunción con el Medio Cielo. Probablemente le resulte más útil trabajar con menos personas. Aportas tu lado competitivo al trabajo, tu atractivo físico y tu fuerte atractivo sexual.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♂ Marte ☌ Conjunción MC (orbe 7.4°)"
+        },
+        {
+          "clave" : "JUPITER_MC_TRIGONO",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Júpiter trígono Medio Cielo natal te permite hacer una carrera exitosa a partir de tu pasatiempo o de lo que te brinda placer y satisfacción. Es posible que encuentres tu vocación temprano y recibas apoyo y aliento de tus padres. Su vida hogareña temprana es como un campo de entrenamiento para su futura carrera. Este aspecto de la fructificación proporciona abundante energía y entusiasmo. También lo bendice con habilidades y talentos naturales que puede desarrollar en todo su potencial.\n\nTienes una perspectiva optimista, amplia y progresista. Tu naturaleza aventurera, pionera y emprendedora es ideal para marcar la diferencia en los negocios. La riqueza, la influencia y el renombre provienen de seguir tus pasiones. Puede recibir ayuda de familiares, maestros, mentores, superiores y funcionarios gubernamentales.\n\nEl amor por aprender permanecerá contigo mucho tiempo después de la escuela. El interés por la geografía, la filosofía, los idiomas, la poesía, la medicina, la religión, la espiritualidad, el derecho y la política puede conducir a una profesión. Este aspecto también se adapta a carreras en entretenimiento, música, actuación, literatura, astrología y deportes.\n\nEste aspecto también está asociado a la generosidad y a ser un modelo a seguir. Puede compartir su éxito retribuyendo a su comunidad a través de donaciones caritativas o filantropía. Su sentido de justicia social puede llevarlo a defender causas valiosas. Como probablemente recibió ayuda a lo largo del camino, es posible que desee contratar un aprendiz, ser mentor de personas más jóvenes o convertirse en maestro o formador.\n\nPuede parecer educado, educado, humilde, poético y divertido, pero esto puede enmascarar su naturaleza más ambiciosa, obsesiva, perfeccionista y celosa. Quieres triunfar y hacerte notar, o crees que tienes un destino especial que cumplir. La popularidad, la fama y el estatus de celebridad son posibles, pero es posible que te sientas vacío una vez que tu alto perfil público disminuya. Ser el centro de atención también puede exponerte al escrutinio público, a la controversia y al escándalo.\n\nJúpiter en trígono Medio Cielo es un aspecto muy afortunado que significa éxito profesional. Sin embargo, una conjunción de Júpiter o el Medio Cielo con una estrella fija desafiante, o con un aspecto severo de otro planeta, puede conducir a la codicia, el egoísmo, el juego, la adicción y tendencias poco éticas. La alineación de Júpiter Y Medio Cielo con estrellas fijas negativas puede resultar en éxito en empresas inmorales o criminales, así como en infamia y sentencias judiciales. Una vez que te metes en algo, puede ser difícil detenerlo.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♃ Júpiter △ Trígono MC (orbe 2.6°)"
+        },
+        {
+          "clave" : "SATURNO_NEPTUNO_CONJUNCION",
+          "fuente" : "Café Astrology",
+          "orden" : 3,
+          "texto" : "Aspectos planetarios: Saturno en conjunción con Neptuno ¿Qué significa Saturno en conjunción con Neptuno? La respuesta depende de si se trata de un aspecto que ocurre en su carta natal, que se está formando actualmente en el cosmos (aspecto de tránsito a tránsito), que está en tránsito por su carta o que ocurre en una comparación de cartas (astrología de relación de sinastría). Sin embargo, este aspecto entre planetas tiene temas generales comunes. A continuación se muestran interpretaciones de la conjunción de Saturno y Neptuno en estas diversas formas, así como en general. Cuando Saturno y Neptuno se conectan, intentamos integrar nuestras necesidades de tradición, convención y estabilidad con nuestras necesidades de espiritualidad, imaginación e inspiración, así como seguir nuestros ideales. Con Saturno formando una conjunción con Neptuno en la carta natal, te tomas muy en serio tus creencias, ideales y principios. Tu conciencia social está bien desarrollada y juega un papel importante en tu personalidad. Llevar una existencia sencilla te resulta atractivo. Este puede ser un aspecto importante para hacer realidad los sueños. Una posible lucha con este aspecto en su carta implica dificultad para dejar volar realmente su imaginación o derramar su fe en algo. A menudo podrías encontrarte microgestionando tus expectativas, ya que podrías sentir que si no lo haces, te llevarían a una montaña rusa. Si no tienes cuidado, la culpa, la ansiedad o el temor pueden vivir muy cerca de la superficie, listos para aparecer en cualquier momento. Superar esta tendencia es esencial para su felicidad y satisfacción. En verdad, tu inclinación a tomarte las cosas en serio es una fortaleza, pero llevar esto demasiado lejos puede convertirse en una carga. Tenga cuidado de no aferrarse a problemas que no son realmente suyos. Además, tenga cuidado de no sentirse excesivamente culpable. Se marca una gran necesidad de tiempo libre o de soledad. Necesitas tiempo para digerir las cosas y espacio para sacar tus propias conclusiones. Hay una inclinación hacia el secreto y el misterio en este aspecto, y es posible que mantengas tus ideas o creencias cerca de tu pecho. También tienes mucho talento en la investigación. \"Posibles rasgos clave de Saturno en conjunción con Neptuno\". Encontrarás algunos, muchos o todos los siguientes, dependiendo de qué tan fuerte sea este aspecto en la carta natal: Entiende instintivamente el concepto de hacer sacrificios. Se esfuerza por lograr el ideal de compasión y práctica espiritual constante, responsable y disciplinada. Puede mantenerse firme y realista mientras comprende el concepto de infinito. Puede luchar contra el miedo al éxito, la culpa excesiva o un sentimiento de terrible fatalidad. Con Saturno formando una conjunción con Neptuno, nuestros ideales se ponen a prueba. Las circunstancias son tales que necesitamos reconstruir la confianza y la fe. Este tránsito une dos energías muy diferentes, la soñadora y la realista. Hacer realidad planes y sueños puede ser una manifestación. El idealismo práctico está a nuestro alcance y podríamos dedicarnos a un ideal, visión u objetivo particular. Este tránsito afecta o describe profundamente nuestras percepciones. También pone en primer plano nuestras inseguridades y cualquier tendencia latente a la depresión o los sentimientos de aislamiento. La propensión a adivinar o dudar de las cosas es fuerte. La negligencia pasada ahora puede manifestarse de manera más concreta. Puede ser un momento de mayor temor, culpa, cinismo o remordimiento. Es posible que estemos luchando con sentimientos de desánimo y gestionando nuestras expectativas. Los sentimientos de fatalidad inminente pueden persistir hasta que superemos nuestros miedos y preocupaciones. Quizás queramos hacer algo especial, compasivo y generoso, pero nuestro deseo de ganar materialmente, en términos de seguridad o reconocimiento, también está presente. Es un momento en el que podríamos trabajar para hacer realidad nuest…",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♄ Saturno ☌ Conjunción ♆ Neptuno (orbe 1.92°)"
+        },
+        {
+          "clave" : "SATURNO_ASC_SEXTIL",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Saturno sextil Ascendente natal te convierte en una persona seria, sincera y decidida. Este aspecto no significa necesariamente dificultades, pero probablemente aprendiste a ser responsable a una edad temprana. Se enfrenta bien a situaciones difíciles y es posible que se haya vuelto independiente rápidamente. Un estilo de vida loco y de fiesta no es tu estilo.\n\nA veces puedes sentirte como un inadaptado y probablemente tendrás un número relativamente pequeño de amigos. Pero eres un amigo leal y confiable. Es probable que se formen amistades para toda la vida; Podrías hacer amigos mayores cuando seas joven y amigos mucho más jóvenes cuando seas mayor. Saturno sextil Ascendente brinda buenas relaciones con padres, maestros, superiores y autoridades. Sus relaciones pueden implicar ambición compartida, responsabilidad, rutina, tristeza o culpa.\n\nA pesar de ser autosuficiente, el matrimonio le atrae por la estabilidad y la satisfacción que aporta. Probablemente atraerás a alguien leal y comprometido como tú. Formas estrechos vínculos kármicos con personas de tu carrera y de tu vida privada. Siempre se esforzará por respetar los acuerdos y cumplir con sus obligaciones. Del mismo modo, espera que los demás cumplan su parte del trato.\n\nCuanta más gente participe en situaciones sociales, menos cómodo te sentirás. Sin embargo, trabaja bien dentro de grupos y organizaciones más formales con una jerarquía estructurada. La gente aprecia su practicidad y franqueza en su enfoque. Su profundidad de comprensión y su aire de autoridad lo convierten en un buen líder, maestro, mentor y padre. Te ganas el respeto de los demás incluso con tu estilo provocativo y desafiante.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♄ Saturno ⚹ Sextil ASC de revolución (orbe 1.6°)"
+        },
+        {
+          "clave" : "SATURNO_PLUTON_SEXTIL",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Saturno sextil Plutón natal brinda una determinación y resistencia férreas, que pones en práctica para crear algo de valor, algo duradero. Tienes una capacidad fantástica para concentrarte en un proyecto en particular y verlo hasta su finalización.\n\nSigues investigando y trabajando tan duro como una máquina. Los sistemas y el orden son una alta prioridad en su vida, por lo que a menudo adopta un enfoque sistemático, con rutinas y estructuras estrictas para mantener el orden y una sensación de seguridad.\n\nSin embargo, una estricta autodisciplina no restringe su proceso creativo. Puedes encontrar nuevas formas revolucionarias de hacer las cosas. Pero su continuo autodesarrollo generalmente es fluido y no perturbador. Cambias o evolucionas de manera sostenida y ordenada.\n\nSaturno sextil con Plutón también otorga increíbles poderes de resistencia y recuperación. Puedes afrontar cualquier desafío o crisis de frente y ser una fuente de fortaleza para quienes te rodean.\n\nEres un sobreviviente y puedes funcionar eficientemente con muy poco. El respeto y el alto reconocimiento pueden provenir de tus logros. También puede poseer potencial gerencial y podría ascender a un puesto de liderazgo en una gran corporación o departamento gubernamental.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♄ Saturno ⚹ Sextil ♇ Plutón (orbe 1.39°)"
+        },
+        {
+          "clave" : "NEPTUNO_ASC_SEXTIL",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Neptuno sextil Ascendente natal genera fascinación por la vida y las personas y la necesidad de experimentar todo lo que puedas en su forma ideal. Esto te convierte en un aventurero, un viajero y un buscador de la iluminación.\n\nSu espíritu optimista y su sentido de asombro lo llevan a una multitud de intereses variados. Tu necesidad de vivir la vida al máximo puede llevarte a cometer algunos errores. Sin embargo, tienes una visión optimista del fracaso y consideras cada uno de ellos una experiencia de vida valiosa.\n\nLa sensibilidad es la palabra clave principal para este aspecto. Extremadamente intuitivo, ves o sientes cosas que otros no ven. Ser tan receptivo te habría convertido en un niño muy impresionable. Esto puede conducir a un interés y experiencias esclarecedoras sobre la espiritualidad, la religión, las múltiples dimensiones y los fenómenos psíquicos. También es posible el interés por las cuestiones humanitarias y ecológicas.\n\nSer capaz de sentir los estados de ánimo y las necesidades de los demás es un excelente indicador de las habilidades interpersonales. Te vuelve compasivo, caritativo, extremadamente bondadoso y muy agradable. Eres guapo y encantador, y la gente se interesa instantáneamente en ti.\n\nQuieres ser amado incondicionalmente y admirado por los demás, y no tienes miedo de alardear y venderte. Puede atraer a una pareja glamorosa y una mezcla ecléctica de amigos. Sin embargo, también puedes ser igualmente introspectivo, lacónico, contemplativo, retraído y melancólico. A veces tu extrema sensibilidad puede ser abrumadora y obligarte a aislarte y ermitizar.\n\nEstar solitario por un tiempo puede ayudarte a centrarte. También puedes encontrar conexión a tierra en la naturaleza y la lectura. El arte, la música y el cine también te ayudarán a expresar tus talentos creativos únicos. También puedes ser un hábil narrador.\n\nEste es un aspecto positivo. Vivir auténticamente inspira algo en los demás. Sin embargo, su sensibilidad y necesidad de armonía pueden conducir a la sumisión y al miedo al conflicto. Generalmente eres honesto, pero también puedes tener éxito mintiendo. Ser incomprendido, también son posibles comportamientos poco convencionales, ansiedad, depresión y ataques de pánico.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♆ Neptuno ⚹ Sextil ASC de revolución (orbe 3.6°)"
+        },
+        {
+          "clave" : "NEPTUNO_PLUTON_SEXTIL",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Hay 49 aspectos de Neptuno sextil de Plutón desde 1950 hasta 2032, que ocurren en 3 marcos de tiempo separados:\n\n15 de 1950 a 1956\n\n21 de 1976 a 1986\n\n13 de 2026 a 2032\n\nNeptuno sextil Plutón natal otorga un espíritu pionero, lo que te hace no tener miedo de desafiar la forma aceptada de pensar y hacer las cosas. Puedes deconstruir cualquier aspecto de la vida, un sistema, una creencia o un procedimiento. Se pueden eliminar los prejuicios políticos, religiosos, culturales y de género y reconstruirlos en un estado más avanzado y sin adulterar. Estás inspirado por la verdad y el potencial humano.\n\nAccedes al subconsciente masivo y puedes medir los pensamientos predominantes de la humanidad. Compartes con tu generación una idea de hacia dónde se dirige colectivamente la sociedad en un sentido evolutivo. Incluso puedes llevar este sentido compartido de destino a la vida, al planeta y a toda la existencia.\n\nEres un organizador compulsivo y un fanático del control del más alto nivel, pero los demás pueden verte como algo muy diferente. Aunque puedas exhibir tendencias obsesivas en la vida diaria, tus procesos de pensamiento superiores luchan por lograr el orden en el caos y la simplicidad en la complejidad.\n\nLa humanidad está atravesando un salto evolutivo obligado por un cambio poderoso. Usted tiene un papel que desempeñar en la adaptación de la humanidad para sobrevivir a cambios extremos. Una parte importante de esta transformación abarca desde la comunicación hasta la espiritualidad, pasando por la creatividad y la sexualidad. El objetivo final es acercar a las personas, no físicamente, sino en un sentido espiritual.\n\nTe das cuenta de que sólo a través de un movimiento de masas que comparta un único superconsciente puede la humanidad evolucionar lo suficientemente rápido como para evitar la extinción. Una intensa sensibilidad ante la destrucción desatada por la industrialización transformará la generación de energía y frenará la degradación y el agotamiento de los recursos compartidos.\n\nSu aporte a la conciencia de masas transforma la forma en que nos comunicamos y vivimos unos con otros a través de la renovación política, religiosa y cultural. Los viejos sistemas y creencias basados ​​en el imperio y la superioridad se están desintegrando. En su lugar, estamos soñando, o imaginando, un enfoque más humanitario y una responsabilidad compartida por el bienestar de todos y de todo, el sueño colectivo.\n\nMegan Fox 0°00′, Martina Navratilova 0°00′, Megan Rapinoe 0°01′, Rafael Nadal 0°01′, Jo-Wilfried Tsonga 0°02′, Xi Jinping 0°03′, Kris Jenner 0°03′, Piero di Cosimo 0°03′, Rafael de Urbino 0°03′, Tara Reid 0°04′, Willem Dafoe 0°04′, Carrie Fisher 0°04′, Chris Carter 0°04′, Gloria Estefan 0°04′, Alicia Silverstone 0°05′, Richard Gasquet 0°05′, John Edwards 0°05′, Maria Shriver 0°05′, Gilles Villeneuve 0°05′, Rolf de Heer 0°05′, Emmanuel Macron 0°05′, Manuel Ferrara 0°05′, Bill Gates 0°06′, Travis Barker 0°06′, Agnetha Fältskog 0°07′, Sam Altman 0°08′, Maritha Pottenger 0°08′, Bernard Arnault 0°08′, Crystal Gayle 0°09′, Stephen Fry 0°09′, Gates McFadden 0°09′, Colin Prescot 0°10′.\n\nNeptuno sextil Plutón, el 25 de julio de 2026, forma un patrón de aspecto Gran Trígono Menor con Urano. Ver Urano, Neptuno, Plutón 2025 a 2028 – El Triángulo Mágico\n\nNeptuno Sextil Plutón Julio 2026\n\nHay 49 aspectos geocéntricos desde 1950 hasta 2032 que ocurren en 3 períodos de tiempo separados:\n\n15 de 1950 a 1956\n\n21 de 1976 a 1986\n\n13 de 2026 a 2032\n\nPero ocurre con un orbe de dos grados en dos períodos de tiempo separados:\n\n43 años de 1947 a 1990\n\n12 años del 2022 al 2034\n\nHay tres sextiles heliocéntricos:\n\nA lo largo de estos años, Neptuno y Plutón recorren casi la mitad del zodíaco:\n\nNeptuno del 17 de Libra al 14 de Aries\n\nPlutón del 17 de Leo al 14 de Acuario",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♆ Neptuno ⚹ Sextil ♇ Plutón (orbe 3.31°)"
+        },
+        {
+          "clave" : "PLUTON_ASC_TRIGONO",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Plutón trígono Ascendente natal brinda una personalidad profunda, profunda e hipnótica con una tremenda conciencia e inmensos poderes de atracción. Dejas una impresión duradera en quienes te rodean y puedes tener una influencia significativa en la vida de muchos.\n\nTu personalidad intrigante y magnética es muy atractiva, pero a menudo esconde una naturaleza interior más intensa, compleja y oscura. Llamas mucho la atención y puedes volverte muy popular. Sin embargo, cierto grado de timidez puede hacer que te sientas incómodo con demasiada atención, lo que te llevará a encerrarte en tu propio mundo privado con frecuencia.\n\nCuando eras niño eras inteligente, un estudiante brillante y probablemente artístico, tal vez travieso. Valoras tu individualidad e independencia y es posible que hayas desarrollado un fuerte sentido de identidad desde muy temprana edad.\n\nSu nivel de confianza en sí mismo cuando era joven dependía en gran medida de la influencia de su padre, abuelo o pareja, particularmente la influencia paterna; en algunos casos, sería maternal. Los elogios y el refuerzo positivo obviamente conducirían a la confianza y a relaciones adultas saludables.\n\nDeseas la perfección y evolucionas continuamente, a menudo a través de relaciones uno a uno. Incluso los encuentros breves pueden conducir a transformaciones significativas en sus valores, creencias y comportamientos.\n\nLa capacidad innata de comprender los sentimientos e ideas de los demás le permite establecer una relación subconsciente. Esto significa que puedes ganarte rápidamente la confianza de las personas, hacer amigos fácilmente y mantener relaciones estrechas y armoniosas.\n\nSin embargo, la intimidación temprana, el abuso o el condicionamiento negativo de uno de los padres, o una conjunción de estrella fija desafiante pueden llevar a una vida de drama, adicción o crimen. Es posible que tenga numerosas relaciones casuales y serias de diferentes duraciones e intensidades a lo largo de su vida, que a veces pueden superponerse. Son posibles infidelidades en serie, obsesiones sexuales, disputas con compañeros y trastornos neuróticos.\n\nPosee una comprensión profunda de la naturaleza humana y la dinámica de las relaciones. Entonces serías un excelente psicólogo, psicoterapeuta o filósofo. La investigación, la investigación y el espionaje también le convendrían debido a su naturaleza inquisitiva. Puedes resolver misterios, descubrir secretos y guardar secretos, pero también puedes parecer reservado, sospechoso o entrometido. Una fuerte empatía por el sufrimiento y el deseo de ayudar pueden conducir a la participación en organizaciones benéficas y causas sociales.\n\nEste es generalmente un aspecto armonioso y beneficioso, pero incluso con una actitud positiva y éxito, puede haber tragedias familiares desgarradoras que afrontar y encuentros cercanos con la muerte. Son posibles el desaliento, los recuerdos traumáticos, las obsesiones con la muerte y lo oculto y una actitud fatalista.\n\nOtras palabras clave para este aspecto incluyen visionario, aspiracional, apasionado, competitivo, pionero, reformador, estiloso, elegante, creador de tendencias y juicio despiadado.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "♇ Plutón △ Trígono ASC de revolución (orbe 0.3°)"
+        },
+        {
+          "clave" : "URANO_PLUTON_TRIGONO",
+          "fuente" : "Café Astrology",
+          "orden" : 3,
+          "texto" : "¿Qué significa Urano en trígono con Plutón? La respuesta depende de si se trata de un aspecto que ocurre en su carta natal, que se está formando actualmente en el cosmos (aspecto de tránsito a tránsito), que está en tránsito por su carta o que ocurre en una comparación de cartas (astrología de relación de sinastría). Sin embargo, este aspecto entre planetas tiene temas generales comunes. A continuación se muestran interpretaciones de Urano en trígono con Plutón en estas diversas formas y en general. Cuando Urano y Plutón se conectan, se activa nuestra necesidad de reforma y cambio. Tenga en cuenta que este aspecto es generacional y lo comparten muchas personas nacidas en la misma generación. Sus rasgos son compartidos por todos los que tienen este aspecto, pero son más obvios en aquellos que tienen este aspecto resaltado en su carta. Ejemplos de un trígono prominente entre Urano y Plutón son cuando Urano o Plutón están alineados con el Sol, la Luna o el Ascendente. Con Urano formando un trígono con Plutón en la carta natal, crees en el cambio y el progreso, incluso si tienes que agitar las cosas para lograr mejoras. No te conformas automáticamente, ya que naturalmente cuestionas las tradiciones. No te sorprenden muchas cosas en lo que respecta a la psicología humana y, como resultado, eres un buen consejero y persona de apoyo. Encontrar soluciones creativas a los problemas de la vida, junto con su perspectiva y conocimiento únicos, lo distinguen.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "⛢ Urano △ Trígono ♇ Plutón (orbe 6.77°)"
+        },
+        {
+          "clave" : "URANO_ASC_CONJUNCION",
+          "fuente" : "Astrology King",
+          "orden" : 3,
+          "texto" : "Urano en conjunción con el Ascendente natal te da una fuerte necesidad de independencia y una vena rebelde. Eres experimental y original y tienes problemas para adaptarte a la tradición o a los estándares sociales. La energía eléctrica de Urano puede sentirse como ansiedad o nerviosismo, pero también puede dar una intuición brillante y un genio creativo.\n\nLa forma en que expresas tu naturaleza independiente y aventurera depende de aspectos asociados y conjunciones de estrellas fijas. Generalmente, encuentras tendencias o similitudes específicas cuando miras la lista de celebridades con un aspecto particular. Sin embargo, con Urano en conjunción con el Ascendente, no es fácil encontrar ningún vínculo común. Esto debe deberse a la naturaleza excéntrica y cambiante del planeta. Nunca sabes qué esperar, excepto una sorpresa o un cambio.\n\nUna vida llena de cambios y entusiasmo puede generar un sentimiento de inquietud o incapacidad para relajarse. Su relación íntima puede verse afectada por una incapacidad para comprometerse. Debes tener una pareja de mente abierta que acepte tu necesidad de espacio y libertad.\n\nTenga cuidado de que su vago sentido del humor y su necesidad de estimulación no le lleven a burlarse de los demás. Cuanto más aburrida sea tu rutina, más problemas tendrás para realizar cambios. Serías etiquetado como rebelde o traidor y podrías sufrir rechazo y alienarte aún más.\n\nEs fundamental sentirse cómodo siendo único y diferente de la norma. Una vez que encuentre su nicho, podrá volcar su energía creativa en algo constructivo y productivo y hacer algo especial.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "⛢ Urano ☌ Conjunción ASC de revolución (orbe 7.0°)"
+        },
+        {
+          "clave" : "URANO_NEPTUNO_SEXTIL",
+          "fuente" : "Café Astrology",
+          "orden" : 3,
+          "texto" : "Aspectos planetarios: Urano sextil Neptuno ¿Qué significa Urano sextil Neptuno en astrología? La respuesta depende de si se trata de un aspecto que ocurre en su carta natal, que se está formando actualmente en el cosmos (aspecto de tránsito a tránsito), que está en tránsito por su carta o que ocurre en una comparación de cartas (astrología de relación de sinastría). Sin embargo, este aspecto entre planetas tiene temas generales comunes. A continuación se muestran interpretaciones de Urano sextil con Neptuno en estas diversas formas, así como en general. Cuando Urano y Neptuno se conecten, queremos cambiar el status quo. Podemos ser visionarios e inspirados. Con Urano formando un sextil con Neptuno en la carta natal, estás abierto a elevar la conciencia y a ideas, creencias espirituales y estilos de vida alternativos. Te molesta que te digan cómo vivir y qué pensar, y estás totalmente a favor de mejorar, actualizar y reformar áreas neptunianas como la forma en que practicamos la religión, la compasión, el escapismo y la trascendencia. No te gusta que te alimenten a la fuerza con tu espiritualidad o tus sistemas de creencias. Cree que puede hacer realidad sus sueños y ser muy inventivo en esta búsqueda. Eres sensible a la injusticia social y a las dificultades de los desfavorecidos. Se nota tu divertido sentido del humor y tu perspicacia. Vale la pena señalar que este aspecto, aunque poco común, avanza tan lentamente que su influencia dura varios años seguidos. En otras palabras, cuando este aspecto ocurre, permanece en órbita durante muchos años. Por ejemplo, todas las personas nacidas entre 1965 y 1969 tienen este aspecto en sus cartas natales. Este aspecto es compartido por la mayoría de las personas nacidas en uno o dos años cercanos a su fecha de nacimiento. Si bien puede que no siempre sea una influencia muy personal, puede convertirse en un factor fuerte y significativo en el gráfico bajo ciertas condiciones. Por ejemplo, si el Sol o la Luna están alineados con Urano o Neptuno o si cualquiera de los planetas está en ángulo, los astrólogos considerarían este aspecto fuerte y más relevante. Estos casos pueden despertar un interés más profundo sobre su posible influencia.",
+          "tipo" : "aspecto_natal",
+          "titulo" : "⛢ Urano ⚹ Sextil ♆ Neptuno (orbe 3.45°)"
+        }
+      ],
+      "latitude" : -34.6037,
+      "longitude" : -58.3816,
+      "moonFormatted" : "♒ Acuario 12°49'",
+      "moonHouse" : 9,
+      "moonText" : "Las emociones se expanden viajando, estudiando o buscando sentido. Necesitas horizontes amplios para sentirte libre emocionalmente.",
+      "natalChart" : {
+        "ascendant" : {
+          "formatted" : "♊ Géminis 23°12'",
+          "longitude" : 83.20330927571129
+        },
+        "birthDate" : "1985-03-15",
+        "birthTime" : "14:00",
+        "bodies" : [
+          {
+            "formatted" : "♓ Piscis 25°03'",
+            "house" : 9,
+            "key" : "SOL",
+            "label" : "☉ Sol",
+            "longitude" : 355.05730787264844,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♑ Capricornio 19°12'",
+            "house" : 7,
+            "key" : "LUNA",
+            "label" : "☽ Luna",
+            "longitude" : 289.2114704492817,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♈ Aries 13°16'",
+            "house" : 10,
+            "key" : "MERCURIO",
+            "label" : "☿ Mercurio",
+            "longitude" : 13.281318894522018,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♈ Aries 22°13'",
+            "house" : 10,
+            "key" : "VENUS",
+            "label" : "♀ Venus",
+            "longitude" : 22.219114233242205,
+            "retrograde" : true
+          },
+          {
+            "formatted" : "♉ Tauro 00°21'",
+            "house" : 10,
+            "key" : "MARTE",
+            "label" : "♂ Marte",
+            "longitude" : 30.360198569930667,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♒ Acuario 07°57'",
+            "house" : 8,
+            "key" : "JUPITER",
+            "label" : "♃ Júpiter",
+            "longitude" : 307.96374329480835,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♏ Escorpio 28°04'",
+            "house" : 5,
+            "key" : "SATURNO",
+            "label" : "♄ Saturno",
+            "longitude" : 238.0697975466734,
+            "retrograde" : true
+          },
+          {
+            "formatted" : "♐ Sagitario 17°57'",
+            "house" : 6,
+            "key" : "URANO",
+            "label" : "⛢ Urano",
+            "longitude" : 257.9628366917843,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♑ Capricornio 03°30'",
+            "house" : 7,
+            "key" : "NEPTUNO",
+            "label" : "♆ Neptuno",
+            "longitude" : 273.5012631338048,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♏ Escorpio 04°20'",
+            "house" : 4,
+            "key" : "PLUTON",
+            "label" : "♇ Plutón",
+            "longitude" : 214.34976556940617,
+            "retrograde" : true
+          }
+        ],
+        "createdAt" : "1970-01-01T00:00:00Z",
+        "cusps" : [
+          83.20330927571129,
+          117.7460154201604,
+          155.89556737819308,
+          190.7242486493827,
+          218.8308477807543,
+          241.95683567780742,
+          263.20330927571126,
+          297.7460154201604,
+          335.89556737819305,
+          10.724248649382702,
+          38.8308477807543,
+          61.956835677807405
+        ],
+        "houseSystem" : "Placidus",
+        "id" : "22222222-2222-2222-2222-222222222222",
+        "latitude" : -34.6037,
+        "longitude" : -58.3816,
+        "mc" : {
+          "formatted" : "♈ Aries 10°43'",
+          "longitude" : 10.724248649382702
+        },
+        "name" : "Buenos Aires Control",
+        "placeName" : "Buenos Aires, Argentina",
+        "timezone" : "America\/Argentina\/Buenos_Aires"
+      },
+      "natalHouseForSolarAsc" : 12,
+      "natalHouseForSolarMC" : 9,
+      "natalRepetitions" : [
+        {
+          "formatted" : "♓ Piscis 25°03'",
+          "house" : 9,
+          "planetKey" : "SOL",
+          "planetLabel" : "☉ Sol"
+        },
+        {
+          "formatted" : "♈ Aries 11°25'",
+          "house" : 10,
+          "planetKey" : "VENUS",
+          "planetLabel" : "♀ Venus"
+        }
+      ],
+      "placeName" : "Buenos Aires, Argentina",
+      "rulerKey" : "MERCURIO",
+      "rulerLabel" : "☿ Mercurio",
+      "rulerNatalHouse" : 9,
+      "rulerText" : "El regente del año apunta hacia la expansión: la energía se canaliza hacia viajes largos, estudios superiores o la búsqueda de sentido.",
+      "solarChart" : {
+        "ascendant" : {
+          "formatted" : "♊ Géminis 05°09'",
+          "longitude" : 65.15695741939541
+        },
+        "birthDate" : "2026-03-15",
+        "birthTime" : "12:35",
+        "bodies" : [
+          {
+            "formatted" : "♓ Piscis 25°03'",
+            "house" : 10,
+            "key" : "SOL",
+            "label" : "☉ Sol",
+            "longitude" : 355.0573078726783,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♒ Acuario 12°49'",
+            "house" : 9,
+            "key" : "LUNA",
+            "label" : "☽ Luna",
+            "longitude" : 312.8186571529532,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♓ Piscis 09°52'",
+            "house" : 9,
+            "key" : "MERCURIO",
+            "label" : "☿ Mercurio",
+            "longitude" : 339.86684927784825,
+            "retrograde" : true
+          },
+          {
+            "formatted" : "♈ Aries 11°25'",
+            "house" : 10,
+            "key" : "VENUS",
+            "label" : "♀ Venus",
+            "longitude" : 11.431297946654276,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♓ Piscis 10°16'",
+            "house" : 9,
+            "key" : "MARTE",
+            "label" : "♂ Marte",
+            "longitude" : 340.28319123347836,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♋ Cáncer 15°07'",
+            "house" : 2,
+            "key" : "JUPITER",
+            "label" : "♃ Júpiter",
+            "longitude" : 105.12029070073996,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♈ Aries 03°30'",
+            "house" : 10,
+            "key" : "SATURNO",
+            "label" : "♄ Saturno",
+            "longitude" : 3.5099059405760666,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♉ Tauro 28°07'",
+            "house" : 12,
+            "key" : "URANO",
+            "label" : "⛢ Urano",
+            "longitude" : 58.13305937457918,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♈ Aries 01°35'",
+            "house" : 10,
+            "key" : "NEPTUNO",
+            "label" : "♆ Neptuno",
+            "longitude" : 1.5856752346407887,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♒ Acuario 04°53'",
+            "house" : 8,
+            "key" : "PLUTON",
+            "label" : "♇ Plutón",
+            "longitude" : 304.89809294408445,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♓ Piscis 08°57'",
+            "house" : 9,
+            "key" : "NODO_NORTE",
+            "label" : "☊ Nodo Norte",
+            "longitude" : 338.95674556113136,
+            "retrograde" : false
+          },
+          {
+            "formatted" : "♍ Virgo 08°57'",
+            "house" : 3,
+            "key" : "NODO_SUR",
+            "label" : "☋ Nodo Sur",
+            "longitude" : 158.95674556113136,
+            "retrograde" : false
+          }
+        ],
+        "createdAt" : "2026-10-04T18:30:28Z",
+        "cusps" : [
+          65.15695741939541,
+          96.61484161552205,
+          132.15199196017267,
+          167.72671960079947,
+          198.4684786939372,
+          223.60120089862366,
+          245.1569574193954,
+          276.61484161552204,
+          312.15199196017267,
+          347.7267196007994,
+          18.468478693937197,
+          43.60120089862366
+        ],
+        "houseSystem" : "Placidus",
+        "id" : "4B24909A-EB9C-42D1-9820-2EA2530589DE",
+        "latitude" : -34.6037,
+        "longitude" : -58.3816,
+        "mc" : {
+          "formatted" : "♓ Piscis 17°43'",
+          "longitude" : 347.7267196007994
+        },
+        "name" : "Revolución Solar 2026 — Buenos Aires Control",
+        "placeName" : "Buenos Aires, Argentina",
+        "timezone" : "America\/Argentina\/Buenos_Aires"
+      },
+      "solarPlanetsInNatalHouses" : [
+        {
+          "formatted" : "♓ Piscis 25°03'",
+          "natalHouse" : 9,
+          "planetKey" : "SOL",
+          "planetLabel" : "☉ Sol",
+          "solarHouse" : 10
+        },
+        {
+          "formatted" : "♒ Acuario 12°49'",
+          "natalHouse" : 8,
+          "planetKey" : "LUNA",
+          "planetLabel" : "☽ Luna",
+          "solarHouse" : 9
+        },
+        {
+          "formatted" : "♓ Piscis 09°52'",
+          "natalHouse" : 9,
+          "planetKey" : "MERCURIO",
+          "planetLabel" : "☿ Mercurio",
+          "solarHouse" : 9
+        },
+        {
+          "formatted" : "♈ Aries 11°25'",
+          "natalHouse" : 10,
+          "planetKey" : "VENUS",
+          "planetLabel" : "♀ Venus",
+          "solarHouse" : 10
+        },
+        {
+          "formatted" : "♓ Piscis 10°16'",
+          "natalHouse" : 9,
+          "planetKey" : "MARTE",
+          "planetLabel" : "♂ Marte",
+          "solarHouse" : 9
+        },
+        {
+          "formatted" : "♋ Cáncer 15°07'",
+          "natalHouse" : 1,
+          "planetKey" : "JUPITER",
+          "planetLabel" : "♃ Júpiter",
+          "solarHouse" : 2
+        },
+        {
+          "formatted" : "♈ Aries 03°30'",
+          "natalHouse" : 9,
+          "planetKey" : "SATURNO",
+          "planetLabel" : "♄ Saturno",
+          "solarHouse" : 10
+        },
+        {
+          "formatted" : "♉ Tauro 28°07'",
+          "natalHouse" : 11,
+          "planetKey" : "URANO",
+          "planetLabel" : "⛢ Urano",
+          "solarHouse" : 12
+        },
+        {
+          "formatted" : "♈ Aries 01°35'",
+          "natalHouse" : 9,
+          "planetKey" : "NEPTUNO",
+          "planetLabel" : "♆ Neptuno",
+          "solarHouse" : 10
+        },
+        {
+          "formatted" : "♒ Acuario 04°53'",
+          "natalHouse" : 8,
+          "planetKey" : "PLUTON",
+          "planetLabel" : "♇ Plutón",
+          "solarHouse" : 8
+        },
+        {
+          "formatted" : "♓ Piscis 08°57'",
+          "natalHouse" : 9,
+          "planetKey" : "NODO_NORTE",
+          "planetLabel" : "☊ Nodo Norte",
+          "solarHouse" : 9
+        },
+        {
+          "formatted" : "♍ Virgo 08°57'",
+          "natalHouse" : 3,
+          "planetKey" : "NODO_SUR",
+          "planetLabel" : "☋ Nodo Sur",
+          "solarHouse" : 3
+        }
+      ],
+      "timezone" : "America\/Argentina\/Buenos_Aires",
+      "year" : 2026,
+      "yearThemeText" : "Interioridad, retiro, cierre de ciclos y espiritualidad. Es un año para hacer balance, soltar, descansar y preparar internamente lo que vendrá. Puede haber momentos de aislamiento elegido o forzado. La vida interior se enriquece si le das espacio.",
+      "yearThemeTitle" : "Interioridad y cierre de ciclos",
+      "yearToneText" : "El tono del año es de curiosidad, versatilidad y comunicación. Géminis en el Ascendente multiplica los contactos, los estímulos y las opciones. Año de mucho movimiento mental y social."
+    }
+  },
+  "warnings" : [
+
+  ]
+}

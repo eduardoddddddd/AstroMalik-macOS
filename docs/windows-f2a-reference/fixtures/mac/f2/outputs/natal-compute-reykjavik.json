@@ -1,0 +1,132 @@
+{
+  "ascendant": {
+    "formatted": "♏ Escorpio 18°32'",
+    "longitude": 228.53782291742914
+  },
+  "birthDate": "1990-01-01",
+  "birthTime": "06:30",
+  "bodies": [
+    {
+      "formatted": "♑ Capricornio 10°34'",
+      "house": 2,
+      "key": "SOL",
+      "label": "☉ Sol",
+      "longitude": 280.580629263893,
+      "retrograde": false
+    },
+    {
+      "formatted": "♓ Piscis 00°11'",
+      "house": 3,
+      "key": "LUNA",
+      "label": "☽ Luna",
+      "longitude": 330.18596444139786,
+      "retrograde": false
+    },
+    {
+      "formatted": "♑ Capricornio 25°44'",
+      "house": 2,
+      "key": "MERCURIO",
+      "label": "☿ Mercurio",
+      "longitude": 295.73514203812465,
+      "retrograde": true
+    },
+    {
+      "formatted": "♒ Acuario 06°15'",
+      "house": 2,
+      "key": "VENUS",
+      "label": "♀ Venus",
+      "longitude": 306.25071308214757,
+      "retrograde": true
+    },
+    {
+      "formatted": "♐ Sagitario 09°50'",
+      "house": 1,
+      "key": "MARTE",
+      "label": "♂ Marte",
+      "longitude": 249.83882173995704,
+      "retrograde": false
+    },
+    {
+      "formatted": "♋ Cáncer 05°10'",
+      "house": 8,
+      "key": "JUPITER",
+      "label": "♃ Júpiter",
+      "longitude": 95.17962645892737,
+      "retrograde": true
+    },
+    {
+      "formatted": "♑ Capricornio 15°37'",
+      "house": 2,
+      "key": "SATURNO",
+      "label": "♄ Saturno",
+      "longitude": 285.63039678701716,
+      "retrograde": false
+    },
+    {
+      "formatted": "♑ Capricornio 05°46'",
+      "house": 2,
+      "key": "URANO",
+      "label": "⛢ Urano",
+      "longitude": 275.77168627560684,
+      "retrograde": false
+    },
+    {
+      "formatted": "♑ Capricornio 12°01'",
+      "house": 2,
+      "key": "NEPTUNO",
+      "label": "♆ Neptuno",
+      "longitude": 282.0294181845655,
+      "retrograde": false
+    },
+    {
+      "formatted": "♏ Escorpio 17°05'",
+      "house": 12,
+      "key": "PLUTON",
+      "label": "♇ Plutón",
+      "longitude": 227.08684425980442,
+      "retrograde": false
+    },
+    {
+      "formatted": "♒ Acuario 16°51'",
+      "house": 3,
+      "key": "NODO_NORTE",
+      "label": "☊ Nodo Norte",
+      "longitude": 316.8653754209769,
+      "retrograde": false
+    },
+    {
+      "formatted": "♌ Leo 16°51'",
+      "house": 9,
+      "key": "NODO_SUR",
+      "label": "☋ Nodo Sur",
+      "longitude": 136.86537542097687,
+      "retrograde": false
+    }
+  ],
+  "createdAt": "2026-10-04T18:30:31Z",
+  "cusps": [
+    228.53782291742914,
+    257.14326705744054,
+    309.98703026862864,
+    355.871244579345,
+    21.861714995012903,
+    37.75846151526969,
+    48.53782291742914,
+    77.14326705744054,
+    129.98703026862864,
+    175.871244579345,
+    201.86171499501287,
+    217.75846151526966
+  ],
+  "houseSystem": "Placidus",
+  "id": "33333333-3333-3333-3333-333333333333",
+  "latitude": 64.1466,
+  "longitude": -21.9426,
+  "mc": {
+    "formatted": "♍ Virgo 25°52'",
+    "longitude": 175.871244579345
+  },
+  "name": "Reykjavik Control",
+  "placeName": "Reykjavik, Iceland",
+  "timezone": "Atlantic/Reykjavik"
+}

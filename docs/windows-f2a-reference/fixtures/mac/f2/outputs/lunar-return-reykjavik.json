@@ -1,0 +1,1243 @@
+{
+  "chart": {
+    "ascendant": "♏ Escorpio 18°32'",
+    "birthDate": "1990-01-01",
+    "birthTime": "06:30",
+    "houseSystem": "Placidus",
+    "id": "33333333-3333-3333-3333-333333333333",
+    "latitude": 64.1466,
+    "longitude": -21.9426,
+    "mc": "♍ Virgo 25°52'",
+    "name": "Reykjavik Control",
+    "placeName": "Reykjavik, Iceland",
+    "timezone": "Atlantic/Reykjavik"
+  },
+  "events": [
+    {
+      "date": "2026-10-21",
+      "detail": "Retorno lunar #1 (2026-10-21). El foco está en los recursos y la seguridad material.",
+      "id": "lunar-return-1",
+      "priority": 3,
+      "source": "lunar-return",
+      "title": "Revolución lunar #1 — Moderado"
+    },
+    {
+      "date": "2026-11-17",
+      "detail": "Retorno lunar #2 (2026-11-17). El foco está en la transformación y los procesos profundos. Periodo de alta intensidad emocional con 1 aspecto tenso a la Luna.",
+      "id": "lunar-return-2",
+      "priority": 4,
+      "source": "lunar-return",
+      "title": "Revolución lunar #2 — Intenso"
+    },
+    {
+      "date": "2026-12-15",
+      "detail": "Retorno lunar #3 (2026-12-15). El foco está en el hogar y la vida familiar. Periodo de alta intensidad emocional con 2 aspectos tensos a la Luna.",
+      "id": "lunar-return-3",
+      "priority": 5,
+      "source": "lunar-return",
+      "title": "Revolución lunar #3 — Muy intenso"
+    }
+  ],
+  "interpretations": [],
+  "metadata": {
+    "chartID": "33333333-3333-3333-3333-333333333333",
+    "chartName": "Reykjavik Control",
+    "command": "lunar-return",
+    "date": "2026-10-04T00:00:00Z",
+    "format": "json",
+    "generatedAt": "2026-10-04T18:30:29Z",
+    "narrative": "none",
+    "scope": "complete",
+    "timezone": "Atlantic/Reykjavik"
+  },
+  "networkUsed": false,
+  "source": "local",
+  "technicalData": {
+    "lunarReturn": {
+      "count": 3,
+      "events": [
+        {
+          "ageDays": 13442.26836932078,
+          "ageYears": 36.80292503578585,
+          "ascSignKey": "SAGITARIO",
+          "ascSignLabel": "♐ Sagitario",
+          "ascToneText": "Mes de optimismo, expansión y búsqueda de sentido. Sagitario abre horizontes.",
+          "dominantAspects": [
+            {
+              "aspKey": "CUADRADO",
+              "aspLabel": "□ Cuadratura",
+              "corpusClave": "VENUS_PLUTON_CUADRADO",
+              "keyA": "VENUS",
+              "keyB": "PLUTON",
+              "labelA": "♀ Venus",
+              "labelB": "♇ Plutón",
+              "orb": 0.74
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "NEPTUNO_PLUTON_SEXTIL",
+              "keyA": "NEPTUNO",
+              "keyB": "PLUTON",
+              "labelA": "♆ Neptuno",
+              "labelB": "♇ Plutón",
+              "orb": 0.75
+            },
+            {
+              "aspKey": "TRIGONO",
+              "aspLabel": "△ Trígono",
+              "corpusClave": "URANO_PLUTON_TRIGONO",
+              "keyA": "URANO",
+              "keyB": "PLUTON",
+              "labelA": "⛢ Urano",
+              "labelB": "♇ Plutón",
+              "orb": 1.95
+            },
+            {
+              "aspKey": "TRIGONO",
+              "aspLabel": "△ Trígono",
+              "corpusClave": "SOL_LUNA_TRIGONO",
+              "keyA": "SOL",
+              "keyB": "LUNA",
+              "labelA": "☉ Sol",
+              "labelB": "☽ Luna",
+              "orb": 2.04
+            },
+            {
+              "aspKey": "TRIGONO",
+              "aspLabel": "△ Trígono",
+              "corpusClave": "LUNA_VENUS_TRIGONO",
+              "keyA": "LUNA",
+              "keyB": "VENUS",
+              "labelA": "☽ Luna",
+              "labelB": "♀ Venus",
+              "orb": 2.15
+            },
+            {
+              "aspKey": "CUADRADO",
+              "aspLabel": "□ Cuadratura",
+              "corpusClave": "MERCURIO_JUPITER_CUADRADO",
+              "keyA": "MERCURIO",
+              "keyB": "JUPITER",
+              "labelA": "☿ Mercurio",
+              "labelB": "♃ Júpiter",
+              "orb": 2.42
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "URANO_NEPTUNO_SEXTIL",
+              "keyA": "URANO",
+              "keyB": "NEPTUNO",
+              "labelA": "⛢ Urano",
+              "labelB": "♆ Neptuno",
+              "orb": 2.71
+            },
+            {
+              "aspKey": "TRIGONO",
+              "aspLabel": "△ Trígono",
+              "corpusClave": "MARTE_SATURNO_TRIGONO",
+              "keyA": "MARTE",
+              "keyB": "SATURNO",
+              "labelA": "♂ Marte",
+              "labelB": "♄ Saturno",
+              "orb": 3.19
+            },
+            {
+              "aspKey": "CONJUNCION",
+              "aspLabel": "☌ Conjunción",
+              "corpusClave": "SOL_VENUS_CONJUNCION",
+              "keyA": "SOL",
+              "keyB": "VENUS",
+              "labelA": "☉ Sol",
+              "labelB": "♀ Venus",
+              "orb": 4.19
+            },
+            {
+              "aspKey": "CUADRADO",
+              "aspLabel": "□ Cuadratura",
+              "corpusClave": "LUNA_URANO_CUADRADO",
+              "keyA": "LUNA",
+              "keyB": "URANO",
+              "labelA": "☽ Luna",
+              "labelB": "⛢ Urano",
+              "orb": 4.84
+            }
+          ],
+          "exactJD": 2461335.0392026543,
+          "exactLocalDateTime": "2026-10-21 12:56",
+          "exactUTCDateTime": "2026-10-21 12:56",
+          "index": 1,
+          "intensityLabel": "Moderado",
+          "intensityScore": 3,
+          "miniNarrative": "Retorno lunar #1 (2026-10-21). El foco está en los recursos y la seguridad material.",
+          "moon": {
+            "distance": 0.0026199503286345746,
+            "formatted": "♓ Piscis 00°11'",
+            "house": 2,
+            "latitude": 0.1896290973911355,
+            "longitude": 330.1860009718297,
+            "precisionArcseconds": 4.486651050683577e-06,
+            "signKey": "PISCIS",
+            "speed": 12.576450314031451
+          },
+          "moonFocusText": "Mes donde el dinero, los recursos y la seguridad material absorben la energía emocional. Buen momento para organizar la economía.",
+          "natalHouseForReturnAsc": 1,
+          "natalHouseForReturnMC": 11,
+          "returnChart": {
+            "ascendant": {
+              "formatted": "♐ Sagitario 02°51'",
+              "longitude": 242.8581496246449
+            },
+            "birthDate": "2026-10-21",
+            "birthTime": "12:56",
+            "bodies": [
+              {
+                "formatted": "♎ Libra 28°08'",
+                "house": 10,
+                "key": "SOL",
+                "label": "☉ Sol",
+                "longitude": 208.1478508463701,
+                "retrograde": false
+              },
+              {
+                "formatted": "♓ Piscis 00°11'",
+                "house": 2,
+                "key": "LUNA",
+                "label": "☽ Luna",
+                "longitude": 330.1860009718297,
+                "retrograde": false
+              },
+              {
+                "formatted": "♏ Escorpio 20°30'",
+                "house": 11,
+                "key": "MERCURIO",
+                "label": "☿ Mercurio",
+                "longitude": 230.50731945120685,
+                "retrograde": false
+              },
+              {
+                "formatted": "♏ Escorpio 02°20'",
+                "house": 10,
+                "key": "VENUS",
+                "label": "♀ Venus",
+                "longitude": 212.3381275273572,
+                "retrograde": true
+              },
+              {
+                "formatted": "♌ Leo 13°11'",
+                "house": 8,
+                "key": "MARTE",
+                "label": "♂ Marte",
+                "longitude": 133.18784956049308,
+                "retrograde": false
+              },
+              {
+                "formatted": "♌ Leo 22°55'",
+                "house": 8,
+                "key": "JUPITER",
+                "label": "♃ Júpiter",
+                "longitude": 142.93124299257798,
+                "retrograde": false
+              },
+              {
+                "formatted": "♈ Aries 09°59'",
+                "house": 3,
+                "key": "SATURNO",
+                "label": "♄ Saturno",
+                "longitude": 9.998003987727035,
+                "retrograde": true
+              },
+              {
+                "formatted": "♊ Géminis 05°01'",
+                "house": 7,
+                "key": "URANO",
+                "label": "⛢ Urano",
+                "longitude": 65.02935237875998,
+                "retrograde": true
+              },
+              {
+                "formatted": "♈ Aries 02°19'",
+                "house": 3,
+                "key": "NEPTUNO",
+                "label": "♆ Neptuno",
+                "longitude": 2.3213489959709754,
+                "retrograde": true
+              },
+              {
+                "formatted": "♒ Acuario 03°04'",
+                "house": 2,
+                "key": "PLUTON",
+                "label": "♇ Plutón",
+                "longitude": 303.07556278763263,
+                "retrograde": false
+              },
+              {
+                "formatted": "♒ Acuario 28°03'",
+                "house": 2,
+                "key": "NODO_NORTE",
+                "label": "☊ Nodo Norte",
+                "longitude": 328.0584853086766,
+                "retrograde": true
+              },
+              {
+                "formatted": "♌ Leo 28°03'",
+                "house": 8,
+                "key": "NODO_SUR",
+                "label": "☋ Nodo Sur",
+                "longitude": 148.0584853086766,
+                "retrograde": true
+              }
+            ],
+            "createdAt": "2026-10-04T18:30:29Z",
+            "cusps": [
+              242.8581496246449,
+              280.3630131079615,
+              347.8580629077345,
+              23.936033550287902,
+              42.80648933836795,
+              54.541613995193416,
+              62.85814962464491,
+              100.36301310796148,
+              167.8580629077345,
+              203.93603355028793,
+              222.80648933836795,
+              234.5416139951934
+            ],
+            "houseSystem": "Placidus",
+            "id": "2AEBC978-9A21-4609-B220-3913F67AAD4D",
+            "latitude": 64.1466,
+            "longitude": -21.9426,
+            "mc": {
+              "formatted": "♎ Libra 23°56'",
+              "longitude": 203.93603355028793
+            },
+            "name": "Revolucion Lunar #1 — Reykjavik Control",
+            "placeName": "Reykjavik, Iceland",
+            "timezone": "Atlantic/Reykjavik"
+          },
+          "returnPlanetsInNatalHouses": [
+            {
+              "formatted": "♎ Libra 28°08'",
+              "natalHouse": 11,
+              "planetKey": "SOL",
+              "planetLabel": "☉ Sol",
+              "returnHouse": 10
+            },
+            {
+              "formatted": "♓ Piscis 00°11'",
+              "natalHouse": 3,
+              "planetKey": "LUNA",
+              "planetLabel": "☽ Luna",
+              "returnHouse": 2
+            },
+            {
+              "formatted": "♏ Escorpio 20°30'",
+              "natalHouse": 1,
+              "planetKey": "MERCURIO",
+              "planetLabel": "☿ Mercurio",
+              "returnHouse": 11
+            },
+            {
+              "formatted": "♏ Escorpio 02°20'",
+              "natalHouse": 11,
+              "planetKey": "VENUS",
+              "planetLabel": "♀ Venus",
+              "returnHouse": 10
+            },
+            {
+              "formatted": "♌ Leo 13°11'",
+              "natalHouse": 9,
+              "planetKey": "MARTE",
+              "planetLabel": "♂ Marte",
+              "returnHouse": 8
+            },
+            {
+              "formatted": "♌ Leo 22°55'",
+              "natalHouse": 9,
+              "planetKey": "JUPITER",
+              "planetLabel": "♃ Júpiter",
+              "returnHouse": 8
+            },
+            {
+              "formatted": "♈ Aries 09°59'",
+              "natalHouse": 4,
+              "planetKey": "SATURNO",
+              "planetLabel": "♄ Saturno",
+              "returnHouse": 3
+            },
+            {
+              "formatted": "♊ Géminis 05°01'",
+              "natalHouse": 7,
+              "planetKey": "URANO",
+              "planetLabel": "⛢ Urano",
+              "returnHouse": 7
+            },
+            {
+              "formatted": "♈ Aries 02°19'",
+              "natalHouse": 4,
+              "planetKey": "NEPTUNO",
+              "planetLabel": "♆ Neptuno",
+              "returnHouse": 3
+            },
+            {
+              "formatted": "♒ Acuario 03°04'",
+              "natalHouse": 2,
+              "planetKey": "PLUTON",
+              "planetLabel": "♇ Plutón",
+              "returnHouse": 2
+            },
+            {
+              "formatted": "♒ Acuario 28°03'",
+              "natalHouse": 3,
+              "planetKey": "NODO_NORTE",
+              "planetLabel": "☊ Nodo Norte",
+              "returnHouse": 2
+            },
+            {
+              "formatted": "♌ Leo 28°03'",
+              "natalHouse": 9,
+              "planetKey": "NODO_SUR",
+              "planetLabel": "☋ Nodo Sur",
+              "returnHouse": 8
+            }
+          ]
+        },
+        {
+          "ageDays": 13469.632805101573,
+          "ageYears": 36.87784477782772,
+          "ascSignKey": "LEO",
+          "ascSignLabel": "♌ Leo",
+          "ascToneText": "Mes de expresión, creatividad y visibilidad. Leo trae confianza y deseo de brillar.",
+          "dominantAspects": [
+            {
+              "aspKey": "CUADRADO",
+              "aspLabel": "□ Cuadratura",
+              "corpusClave": "SOL_JUPITER_CUADRADO",
+              "keyA": "SOL",
+              "keyB": "JUPITER",
+              "labelA": "☉ Sol",
+              "labelB": "♃ Júpiter",
+              "orb": 0.46
+            },
+            {
+              "aspKey": "CONJUNCION",
+              "aspLabel": "☌ Conjunción",
+              "corpusClave": "MARTE_JUPITER_CONJUNCION",
+              "keyA": "MARTE",
+              "keyB": "JUPITER",
+              "labelA": "♂ Marte",
+              "labelB": "♃ Júpiter",
+              "orb": 0.59
+            },
+            {
+              "aspKey": "TRIGONO",
+              "aspLabel": "△ Trígono",
+              "corpusClave": "URANO_PLUTON_TRIGONO",
+              "keyA": "URANO",
+              "keyB": "PLUTON",
+              "labelA": "⛢ Urano",
+              "labelB": "♇ Plutón",
+              "orb": 0.69
+            },
+            {
+              "aspKey": "CUADRADO",
+              "aspLabel": "□ Cuadratura",
+              "corpusClave": "SOL_MARTE_CUADRADO",
+              "keyA": "SOL",
+              "keyB": "MARTE",
+              "labelA": "☉ Sol",
+              "labelB": "♂ Marte",
+              "orb": 1.06
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "NEPTUNO_PLUTON_SEXTIL",
+              "keyA": "NEPTUNO",
+              "keyB": "PLUTON",
+              "labelA": "♆ Neptuno",
+              "labelB": "♇ Plutón",
+              "orb": 1.53
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "URANO_NEPTUNO_SEXTIL",
+              "keyA": "URANO",
+              "keyB": "NEPTUNO",
+              "labelA": "⛢ Urano",
+              "labelB": "♆ Neptuno",
+              "orb": 2.22
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "VENUS_JUPITER_SEXTIL",
+              "keyA": "VENUS",
+              "keyB": "JUPITER",
+              "labelA": "♀ Venus",
+              "labelB": "♃ Júpiter",
+              "orb": 2.86
+            },
+            {
+              "aspKey": "CUADRADO",
+              "aspLabel": "□ Cuadratura",
+              "corpusClave": "MERCURIO_PLUTON_CUADRADO",
+              "keyA": "MERCURIO",
+              "keyB": "PLUTON",
+              "labelA": "☿ Mercurio",
+              "labelB": "♇ Plutón",
+              "orb": 3.23
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "VENUS_MARTE_SEXTIL",
+              "keyA": "VENUS",
+              "keyB": "MARTE",
+              "labelA": "♀ Venus",
+              "labelB": "♂ Marte",
+              "orb": 3.45
+            },
+            {
+              "aspKey": "OPOSICION",
+              "aspLabel": "☍ Oposición",
+              "corpusClave": "LUNA_MARTE_OPOSICION",
+              "keyA": "LUNA",
+              "keyB": "MARTE",
+              "labelA": "☽ Luna",
+              "labelB": "♂ Marte",
+              "orb": 3.57
+            }
+          ],
+          "exactJD": 2461362.403638435,
+          "exactLocalDateTime": "2026-11-17 21:41",
+          "exactUTCDateTime": "2026-11-17 21:41",
+          "index": 2,
+          "intensityLabel": "Intenso",
+          "intensityScore": 4,
+          "miniNarrative": "Retorno lunar #2 (2026-11-17). El foco está en la transformación y los procesos profundos. Periodo de alta intensidad emocional con 1 aspecto tenso a la Luna.",
+          "moon": {
+            "distance": 0.0026449607831490673,
+            "formatted": "♓ Piscis 00°11'",
+            "house": 8,
+            "latitude": 0.44433158854552746,
+            "longitude": 330.18600097002576,
+            "precisionArcseconds": 2.007482180488296e-06,
+            "signKey": "PISCIS",
+            "speed": 12.302678247540737
+          },
+          "moonFocusText": "Mes de intensidad emocional, transformación y temas profundos. Posibles finales, cierres o renovaciones internas.",
+          "natalHouseForReturnAsc": 8,
+          "natalHouseForReturnMC": 4,
+          "returnChart": {
+            "ascendant": {
+              "formatted": "♌ Leo 09°33'",
+              "longitude": 129.56034313387272
+            },
+            "birthDate": "2026-11-17",
+            "birthTime": "21:41",
+            "bodies": [
+              {
+                "formatted": "♏ Escorpio 25°33'",
+                "house": 5,
+                "key": "SOL",
+                "label": "☉ Sol",
+                "longitude": 235.55640612200853,
+                "retrograde": false
+              },
+              {
+                "formatted": "♓ Piscis 00°11'",
+                "house": 8,
+                "key": "LUNA",
+                "label": "☽ Luna",
+                "longitude": 330.18600097002576,
+                "retrograde": false
+              },
+              {
+                "formatted": "♏ Escorpio 06°33'",
+                "house": 4,
+                "key": "MERCURIO",
+                "label": "☿ Mercurio",
+                "longitude": 216.55541634784782,
+                "retrograde": false
+              },
+              {
+                "formatted": "♎ Libra 23°09'",
+                "house": 4,
+                "key": "VENUS",
+                "label": "♀ Venus",
+                "longitude": 203.1608547246411,
+                "retrograde": false
+              },
+              {
+                "formatted": "♌ Leo 26°36'",
+                "house": 2,
+                "key": "MARTE",
+                "label": "♂ Marte",
+                "longitude": 146.61261733743163,
+                "retrograde": false
+              },
+              {
+                "formatted": "♌ Leo 26°01'",
+                "house": 2,
+                "key": "JUPITER",
+                "label": "♃ Júpiter",
+                "longitude": 146.020272039402,
+                "retrograde": false
+              },
+              {
+                "formatted": "♈ Aries 08°24'",
+                "house": 10,
+                "key": "SATURNO",
+                "label": "♄ Saturno",
+                "longitude": 8.404656486774504,
+                "retrograde": true
+              },
+              {
+                "formatted": "♊ Géminis 04°00'",
+                "house": 11,
+                "key": "URANO",
+                "label": "⛢ Urano",
+                "longitude": 64.01162650432227,
+                "retrograde": true
+              },
+              {
+                "formatted": "♈ Aries 01°47'",
+                "house": 10,
+                "key": "NEPTUNO",
+                "label": "♆ Neptuno",
+                "longitude": 1.788469897247394,
+                "retrograde": true
+              },
+              {
+                "formatted": "♒ Acuario 03°19'",
+                "house": 6,
+                "key": "PLUTON",
+                "label": "♇ Plutón",
+                "longitude": 303.32246721697135,
+                "retrograde": false
+              },
+              {
+                "formatted": "♒ Acuario 25°08'",
+                "house": 8,
+                "key": "NODO_NORTE",
+                "label": "☊ Nodo Norte",
+                "longitude": 325.1440246687802,
+                "retrograde": true
+              },
+              {
+                "formatted": "♌ Leo 25°08'",
+                "house": 2,
+                "key": "NODO_SUR",
+                "label": "☋ Nodo Sur",
+                "longitude": 145.14402466878022,
+                "retrograde": true
+              }
+            ],
+            "createdAt": "2026-10-04T18:30:29Z",
+            "cusps": [
+              129.56034313387272,
+              139.98101608393148,
+              155.29413741304577,
+              180.3575473557197,
+              225.27375142153915,
+              280.32050950662443,
+              309.5603431338727,
+              319.9810160839315,
+              335.29413741304575,
+              0.3575473557197121,
+              45.27375142153913,
+              100.32050950662443
+            ],
+            "houseSystem": "Placidus",
+            "id": "5BD19113-8769-471D-93D0-FCC4012D1923",
+            "latitude": 64.1466,
+            "longitude": -21.9426,
+            "mc": {
+              "formatted": "♈ Aries 00°21'",
+              "longitude": 0.3575473557197121
+            },
+            "name": "Revolucion Lunar #2 — Reykjavik Control",
+            "placeName": "Reykjavik, Iceland",
+            "timezone": "Atlantic/Reykjavik"
+          },
+          "returnPlanetsInNatalHouses": [
+            {
+              "formatted": "♏ Escorpio 25°33'",
+              "natalHouse": 1,
+              "planetKey": "SOL",
+              "planetLabel": "☉ Sol",
+              "returnHouse": 5
+            },
+            {
+              "formatted": "♓ Piscis 00°11'",
+              "natalHouse": 3,
+              "planetKey": "LUNA",
+              "planetLabel": "☽ Luna",
+              "returnHouse": 8
+            },
+            {
+              "formatted": "♏ Escorpio 06°33'",
+              "natalHouse": 11,
+              "planetKey": "MERCURIO",
+              "planetLabel": "☿ Mercurio",
+              "returnHouse": 4
+            },
+            {
+              "formatted": "♎ Libra 23°09'",
+              "natalHouse": 11,
+              "planetKey": "VENUS",
+              "planetLabel": "♀ Venus",
+              "returnHouse": 4
+            },
+            {
+              "formatted": "♌ Leo 26°36'",
+              "natalHouse": 9,
+              "planetKey": "MARTE",
+              "planetLabel": "♂ Marte",
+              "returnHouse": 2
+            },
+            {
+              "formatted": "♌ Leo 26°01'",
+              "natalHouse": 9,
+              "planetKey": "JUPITER",
+              "planetLabel": "♃ Júpiter",
+              "returnHouse": 2
+            },
+            {
+              "formatted": "♈ Aries 08°24'",
+              "natalHouse": 4,
+              "planetKey": "SATURNO",
+              "planetLabel": "♄ Saturno",
+              "returnHouse": 10
+            },
+            {
+              "formatted": "♊ Géminis 04°00'",
+              "natalHouse": 7,
+              "planetKey": "URANO",
+              "planetLabel": "⛢ Urano",
+              "returnHouse": 11
+            },
+            {
+              "formatted": "♈ Aries 01°47'",
+              "natalHouse": 4,
+              "planetKey": "NEPTUNO",
+              "planetLabel": "♆ Neptuno",
+              "returnHouse": 10
+            },
+            {
+              "formatted": "♒ Acuario 03°19'",
+              "natalHouse": 2,
+              "planetKey": "PLUTON",
+              "planetLabel": "♇ Plutón",
+              "returnHouse": 6
+            },
+            {
+              "formatted": "♒ Acuario 25°08'",
+              "natalHouse": 3,
+              "planetKey": "NODO_NORTE",
+              "planetLabel": "☊ Nodo Norte",
+              "returnHouse": 8
+            },
+            {
+              "formatted": "♌ Leo 25°08'",
+              "natalHouse": 9,
+              "planetKey": "NODO_SUR",
+              "planetLabel": "☋ Nodo Sur",
+              "returnHouse": 2
+            }
+          ]
+        },
+        {
+          "ageDays": 13496.935975500848,
+          "ageYears": 36.952596784396576,
+          "ascSignKey": "LIBRA",
+          "ascSignLabel": "♎ Libra",
+          "ascToneText": "Mes de equilibrio, diplomacia y relaciones armónicas. Libra pide belleza y justicia.",
+          "dominantAspects": [
+            {
+              "aspKey": "TRIGONO",
+              "aspLabel": "△ Trígono",
+              "corpusClave": "URANO_PLUTON_TRIGONO",
+              "keyA": "URANO",
+              "keyB": "PLUTON",
+              "labelA": "⛢ Urano",
+              "labelB": "♇ Plutón",
+              "orb": 1
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "URANO_NEPTUNO_SEXTIL",
+              "keyA": "URANO",
+              "keyB": "NEPTUNO",
+              "labelA": "⛢ Urano",
+              "labelB": "♆ Neptuno",
+              "orb": 1.27
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "VENUS_MARTE_SEXTIL",
+              "keyA": "VENUS",
+              "keyB": "MARTE",
+              "labelA": "♀ Venus",
+              "labelB": "♂ Marte",
+              "orb": 1.47
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "NEPTUNO_PLUTON_SEXTIL",
+              "keyA": "NEPTUNO",
+              "keyB": "PLUTON",
+              "labelA": "♆ Neptuno",
+              "labelB": "♇ Plutón",
+              "orb": 2.27
+            },
+            {
+              "aspKey": "CUADRADO",
+              "aspLabel": "□ Cuadratura",
+              "corpusClave": "LUNA_URANO_CUADRADO",
+              "keyA": "LUNA",
+              "keyB": "URANO",
+              "labelA": "☽ Luna",
+              "labelB": "⛢ Urano",
+              "orb": 2.7
+            },
+            {
+              "aspKey": "OPOSICION",
+              "aspLabel": "☍ Oposición",
+              "corpusClave": "LUNA_JUPITER_OPOSICION",
+              "keyA": "LUNA",
+              "keyB": "JUPITER",
+              "labelA": "☽ Luna",
+              "labelB": "♃ Júpiter",
+              "orb": 3.17
+            },
+            {
+              "aspKey": "CUADRADO",
+              "aspLabel": "□ Cuadratura",
+              "corpusClave": "MARTE_URANO_CUADRADO",
+              "keyA": "MARTE",
+              "keyB": "URANO",
+              "labelA": "♂ Marte",
+              "labelB": "⛢ Urano",
+              "orb": 3.66
+            },
+            {
+              "aspKey": "TRIGONO",
+              "aspLabel": "△ Trígono",
+              "corpusClave": "SOL_JUPITER_TRIGONO",
+              "keyA": "SOL",
+              "keyB": "JUPITER",
+              "labelA": "☉ Sol",
+              "labelB": "♃ Júpiter",
+              "orb": 3.8
+            },
+            {
+              "aspKey": "SEXTIL",
+              "aspLabel": "⚹ Sextil",
+              "corpusClave": "SATURNO_PLUTON_SEXTIL",
+              "keyA": "SATURNO",
+              "keyB": "PLUTON",
+              "labelA": "♄ Saturno",
+              "labelB": "♇ Plutón",
+              "orb": 4.06
+            },
+            {
+              "aspKey": "CUADRADO",
+              "aspLabel": "□ Cuadratura",
+              "corpusClave": "VENUS_PLUTON_CUADRADO",
+              "keyA": "VENUS",
+              "keyB": "PLUTON",
+              "labelA": "♀ Venus",
+              "labelB": "♇ Plutón",
+              "orb": 4.13
+            }
+          ],
+          "exactJD": 2461389.7068088343,
+          "exactLocalDateTime": "2026-12-15 04:57",
+          "exactUTCDateTime": "2026-12-15 04:57",
+          "index": 3,
+          "intensityLabel": "Muy intenso",
+          "intensityScore": 5,
+          "miniNarrative": "Retorno lunar #3 (2026-12-15). El foco está en el hogar y la vida familiar. Periodo de alta intensidad emocional con 2 aspectos tensos a la Luna.",
+          "moon": {
+            "distance": 0.0026707949610181424,
+            "formatted": "♓ Piscis 00°11'",
+            "house": 4,
+            "latitude": 0.7103119460187356,
+            "longitude": 330.18600096873956,
+            "precisionArcseconds": 6.6377879193169065e-06,
+            "signKey": "PISCIS",
+            "speed": 12.085076377353035
+          },
+          "moonFocusText": "Mes centrado en el hogar y la familia. Necesitas intimidad, raíces y un espacio seguro. Posibles eventos domésticos.",
+          "natalHouseForReturnAsc": 11,
+          "natalHouseForReturnMC": 9,
+          "returnChart": {
+            "ascendant": {
+              "formatted": "♎ Libra 26°28'",
+              "longitude": 206.47212886431942
+            },
+            "birthDate": "2026-12-15",
+            "birthTime": "04:57",
+            "bodies": [
+              {
+                "formatted": "♐ Sagitario 23°13'",
+                "house": 2,
+                "key": "SOL",
+                "label": "☉ Sol",
+                "longitude": 263.2209489433786,
+                "retrograde": false
+              },
+              {
+                "formatted": "♓ Piscis 00°11'",
+                "house": 4,
+                "key": "LUNA",
+                "label": "☽ Luna",
+                "longitude": 330.18600096873956,
+                "retrograde": false
+              },
+              {
+                "formatted": "♐ Sagitario 13°32'",
+                "house": 2,
+                "key": "MERCURIO",
+                "label": "☿ Mercurio",
+                "longitude": 253.54807503733005,
+                "retrograde": false
+              },
+              {
+                "formatted": "♏ Escorpio 08°00'",
+                "house": 1,
+                "key": "VENUS",
+                "label": "♀ Venus",
+                "longitude": 218.01536905171687,
+                "retrograde": false
+              },
+              {
+                "formatted": "♍ Virgo 06°32'",
+                "house": 10,
+                "key": "MARTE",
+                "label": "♂ Marte",
+                "longitude": 156.5450557559302,
+                "retrograde": false
+              },
+              {
+                "formatted": "♌ Leo 27°01'",
+                "house": 10,
+                "key": "JUPITER",
+                "label": "♃ Júpiter",
+                "longitude": 147.01687893899506,
+                "retrograde": true
+              },
+              {
+                "formatted": "♈ Aries 07°56'",
+                "house": 5,
+                "key": "SATURNO",
+                "label": "♄ Saturno",
+                "longitude": 7.947370047445094,
+                "retrograde": false
+              },
+              {
+                "formatted": "♊ Géminis 02°53'",
+                "house": 8,
+                "key": "URANO",
+                "label": "⛢ Urano",
+                "longitude": 62.88784073360431,
+                "retrograde": true
+              },
+              {
+                "formatted": "♈ Aries 01°36'",
+                "house": 5,
+                "key": "NEPTUNO",
+                "label": "♆ Neptuno",
+                "longitude": 1.6144045635489044,
+                "retrograde": false
+              },
+              {
+                "formatted": "♒ Acuario 03°53'",
+                "house": 3,
+                "key": "PLUTON",
+                "label": "♇ Plutón",
+                "longitude": 303.88714697122043,
+                "retrograde": false
+              },
+              {
+                "formatted": "♒ Acuario 22°13'",
+                "house": 4,
+                "key": "NODO_NORTE",
+                "label": "☊ Nodo Norte",
+                "longitude": 322.2181932352316,
+                "retrograde": false
+              },
+              {
+                "formatted": "♌ Leo 22°13'",
+                "house": 10,
+                "key": "NODO_SUR",
+                "label": "☋ Nodo Sur",
+                "longitude": 142.21819323523158,
+                "retrograde": false
+              }
+            ],
+            "createdAt": "2026-10-04T18:30:29Z",
+            "cusps": [
+              206.47212886431942,
+              230.82566264305586,
+              265.7335568704782,
+              313.91495026492214,
+              348.5869233589799,
+              11.1659867059401,
+              26.472128864319416,
+              50.825662643055864,
+              85.7335568704782,
+              133.91495026492214,
+              168.58692335897987,
+              191.16598670594007
+            ],
+            "houseSystem": "Placidus",
+            "id": "D1618A85-8AE1-4845-B69F-A8B5FF2608B0",
+            "latitude": 64.1466,
+            "longitude": -21.9426,
+            "mc": {
+              "formatted": "♌ Leo 13°54'",
+              "longitude": 133.91495026492214
+            },
+            "name": "Revolucion Lunar #3 — Reykjavik Control",
+            "placeName": "Reykjavik, Iceland",
+            "timezone": "Atlantic/Reykjavik"
+          },
+          "returnPlanetsInNatalHouses": [
+            {
+              "formatted": "♐ Sagitario 23°13'",
+              "natalHouse": 2,
+              "planetKey": "SOL",
+              "planetLabel": "☉ Sol",
+              "returnHouse": 2
+            },
+            {
+              "formatted": "♓ Piscis 00°11'",
+              "natalHouse": 3,
+              "planetKey": "LUNA",
+              "planetLabel": "☽ Luna",
+              "returnHouse": 4
+            },
+            {
+              "formatted": "♐ Sagitario 13°32'",
+              "natalHouse": 1,
+              "planetKey": "MERCURIO",
+              "planetLabel": "☿ Mercurio",
+              "returnHouse": 2
+            },
+            {
+              "formatted": "♏ Escorpio 08°00'",
+              "natalHouse": 12,
+              "planetKey": "VENUS",
+              "planetLabel": "♀ Venus",
+              "returnHouse": 1
+            },
+            {
+              "formatted": "♍ Virgo 06°32'",
+              "natalHouse": 9,
+              "planetKey": "MARTE",
+              "planetLabel": "♂ Marte",
+              "returnHouse": 10
+            },
+            {
+              "formatted": "♌ Leo 27°01'",
+              "natalHouse": 9,
+              "planetKey": "JUPITER",
+              "planetLabel": "♃ Júpiter",
+              "returnHouse": 10
+            },
+            {
+              "formatted": "♈ Aries 07°56'",
+              "natalHouse": 4,
+              "planetKey": "SATURNO",
+              "planetLabel": "♄ Saturno",
+              "returnHouse": 5
+            },
+            {
+              "formatted": "♊ Géminis 02°53'",
+              "natalHouse": 7,
+              "planetKey": "URANO",
+              "planetLabel": "⛢ Urano",
+              "returnHouse": 8
+            },
+            {
+              "formatted": "♈ Aries 01°36'",
+              "natalHouse": 4,
+              "planetKey": "NEPTUNO",
+              "planetLabel": "♆ Neptuno",
+              "returnHouse": 5
+            },
+            {
+              "formatted": "♒ Acuario 03°53'",
+              "natalHouse": 2,
+              "planetKey": "PLUTON",
+              "planetLabel": "♇ Plutón",
+              "returnHouse": 3
+            },
+            {
+              "formatted": "♒ Acuario 22°13'",
+              "natalHouse": 3,
+              "planetKey": "NODO_NORTE",
+              "planetLabel": "☊ Nodo Norte",
+              "returnHouse": 4
+            },
+            {
+              "formatted": "♌ Leo 22°13'",
+              "natalHouse": 9,
+              "planetKey": "NODO_SUR",
+              "planetLabel": "☋ Nodo Sur",
+              "returnHouse": 10
+            }
+          ]
+        }
+      ],
+      "latitude": 64.1466,
+      "longitude": -21.9426,
+      "natalChart": {
+        "ascendant": {
+          "formatted": "♏ Escorpio 18°32'",
+          "longitude": 228.53782291742914
+        },
+        "birthDate": "1990-01-01",
+        "birthTime": "06:30",
+        "bodies": [
+          {
+            "formatted": "♑ Capricornio 10°34'",
+            "house": 2,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 280.58062416478253,
+            "retrograde": false
+          },
+          {
+            "formatted": "♓ Piscis 00°11'",
+            "house": 3,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 330.1860009705834,
+            "retrograde": false
+          },
+          {
+            "formatted": "♑ Capricornio 25°44'",
+            "house": 2,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 295.7351222256668,
+            "retrograde": true
+          },
+          {
+            "formatted": "♒ Acuario 06°15'",
+            "house": 2,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 306.2505868865822,
+            "retrograde": true
+          },
+          {
+            "formatted": "♐ Sagitario 09°50'",
+            "house": 1,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 249.8388231594528,
+            "retrograde": false
+          },
+          {
+            "formatted": "♋ Cáncer 05°10'",
+            "house": 8,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 95.17955826623027,
+            "retrograde": true
+          },
+          {
+            "formatted": "♑ Capricornio 15°37'",
+            "house": 2,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 285.6304205763319,
+            "retrograde": false
+          },
+          {
+            "formatted": "♑ Capricornio 05°46'",
+            "house": 2,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 275.7717211381087,
+            "retrograde": false
+          },
+          {
+            "formatted": "♑ Capricornio 12°01'",
+            "house": 2,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 282.02943126776455,
+            "retrograde": false
+          },
+          {
+            "formatted": "♏ Escorpio 17°05'",
+            "house": 12,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 227.08689296223517,
+            "retrograde": false
+          }
+        ],
+        "createdAt": "1970-01-01T00:00:00Z",
+        "cusps": [
+          228.53782291742914,
+          257.14326705744054,
+          309.98703026862864,
+          355.871244579345,
+          21.861714995012903,
+          37.75846151526969,
+          48.53782291742914,
+          77.14326705744054,
+          129.98703026862864,
+          175.871244579345,
+          201.86171499501287,
+          217.75846151526966
+        ],
+        "houseSystem": "Placidus",
+        "id": "33333333-3333-3333-3333-333333333333",
+        "latitude": 64.1466,
+        "longitude": -21.9426,
+        "mc": {
+          "formatted": "♍ Virgo 25°52'",
+          "longitude": 175.871244579345
+        },
+        "name": "Reykjavik Control",
+        "placeName": "Reykjavik, Iceland",
+        "timezone": "Atlantic/Reykjavik"
+      },
+      "natalMoon": {
+        "formatted": "♓ Piscis 00°11'",
+        "house": 3,
+        "longitude": 330.1860009705834
+      },
+      "placeName": "Reykjavik, Iceland",
+      "startDate": "2026-10-04T00:00:00Z",
+      "statistics": {
+        "averageIntensity": 4,
+        "averageIntervalDays": 27.333803090034053,
+        "longestIntervalDays": 27.36443578079343,
+        "maxDistance": 0.0026707949610181424,
+        "maxSpeed": 12.576450314031451,
+        "meanPrecisionArcseconds": 4.377307050162926e-06,
+        "minDistance": 0.0026199503286345746,
+        "minPrecisionArcseconds": 2.007482180488296e-06,
+        "minSpeed": 12.085076377353035,
+        "mostFrequentMoonHouse": 2,
+        "shortestIntervalDays": 27.303170399274677
+      },
+      "timezone": "Atlantic/Reykjavik"
+    }
+  },
+  "warnings": []
+}

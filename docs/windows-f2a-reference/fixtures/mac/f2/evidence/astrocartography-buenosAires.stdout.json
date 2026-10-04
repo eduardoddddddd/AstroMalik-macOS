@@ -1,0 +1,600 @@
+{
+  "chart" : {
+    "birthDate" : "1985-03-15",
+    "birthTime" : "14:00",
+    "houseSystem" : "Placidus",
+    "id" : "22222222-2222-2222-2222-222222222222",
+    "name" : "Buenos Aires Control",
+    "natalAscendantDegrees" : 83.20330927571129,
+    "natalCuspsDegrees" : [
+      83.20330927571129,
+      117.7460154201604,
+      155.89556737819308,
+      190.7242486493827,
+      218.8308477807543,
+      241.95683567780742,
+      263.20330927571126,
+      297.7460154201604,
+      335.89556737819305,
+      10.724248649382702,
+      38.8308477807543,
+      61.956835677807405
+    ],
+    "natalMCDegrees" : 10.724248649382702,
+    "placeName" : "Buenos Aires, Argentina",
+    "timezone" : "America/Argentina/Buenos_Aires"
+  },
+  "chartLines" : [
+    {
+      "angle" : "ASC",
+      "body" : "SOL",
+      "declinationDegrees" : -1.9644892296942678,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.882235819141209 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "SOL:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 355.46358517224155
+    },
+    {
+      "angle" : "DSC",
+      "body" : "SOL",
+      "declinationDegrees" : -1.9644892296942678,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.882235819141209 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "SOL:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 355.46358517224155
+    },
+    {
+      "angle" : "MC",
+      "body" : "SOL",
+      "declinationDegrees" : -1.9644892296942678,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "SOL:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 355.46358517224155
+    },
+    {
+      "angle" : "IC",
+      "body" : "SOL",
+      "declinationDegrees" : -1.9644892296942678,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "SOL:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 355.46358517224155
+    },
+    {
+      "angle" : "ASC",
+      "body" : "LUNA",
+      "declinationDegrees" : -26.412881039478222,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.7873785272228178 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "LUNA:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 291.4891310487407
+    },
+    {
+      "angle" : "DSC",
+      "body" : "LUNA",
+      "declinationDegrees" : -26.412881039478222,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.7873785272228178 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "LUNA:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 291.4891310487407
+    },
+    {
+      "angle" : "MC",
+      "body" : "LUNA",
+      "declinationDegrees" : -26.412881039478222,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "LUNA:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 291.4891310487407
+    },
+    {
+      "angle" : "IC",
+      "body" : "LUNA",
+      "declinationDegrees" : -26.412881039478222,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "LUNA:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 291.4891310487407
+    },
+    {
+      "angle" : "ASC",
+      "body" : "MERCURIO",
+      "declinationDegrees" : 6.967470992112143,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8784382843188516 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "MERCURIO:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 11.486478007753302
+    },
+    {
+      "angle" : "DSC",
+      "body" : "MERCURIO",
+      "declinationDegrees" : 6.967470992112143,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8784382843188516 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "MERCURIO:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 11.486478007753302
+    },
+    {
+      "angle" : "MC",
+      "body" : "MERCURIO",
+      "declinationDegrees" : 6.967470992112143,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "MERCURIO:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 11.486478007753302
+    },
+    {
+      "angle" : "IC",
+      "body" : "MERCURIO",
+      "declinationDegrees" : 6.967470992112143,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "MERCURIO:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 11.486478007753302
+    },
+    {
+      "angle" : "ASC",
+      "body" : "VENUS",
+      "declinationDegrees" : 15.470527958148203,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8938332614954531 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "VENUS:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 17.705697369491574
+    },
+    {
+      "angle" : "DSC",
+      "body" : "VENUS",
+      "declinationDegrees" : 15.470527958148203,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8938332614954531 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "VENUS:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 17.705697369491574
+    },
+    {
+      "angle" : "MC",
+      "body" : "VENUS",
+      "declinationDegrees" : 15.470527958148203,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "VENUS:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 17.705697369491574
+    },
+    {
+      "angle" : "IC",
+      "body" : "VENUS",
+      "declinationDegrees" : 15.470527958148203,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "VENUS:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 17.705697369491574
+    },
+    {
+      "angle" : "ASC",
+      "body" : "MARTE",
+      "declinationDegrees" : 11.677562615835967,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8795240269889338 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "MARTE:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 28.22454414876627
+    },
+    {
+      "angle" : "DSC",
+      "body" : "MARTE",
+      "declinationDegrees" : 11.677562615835967,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8795240269889338 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "MARTE:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 28.22454414876627
+    },
+    {
+      "angle" : "MC",
+      "body" : "MARTE",
+      "declinationDegrees" : 11.677562615835967,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "MARTE:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 28.22454414876627
+    },
+    {
+      "angle" : "IC",
+      "body" : "MARTE",
+      "declinationDegrees" : 11.677562615835967,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "MARTE:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 28.22454414876627
+    },
+    {
+      "angle" : "ASC",
+      "body" : "JUPITER",
+      "declinationDegrees" : -18.65416238987616,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.881949246554714 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "JUPITER:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 310.4854595367609
+    },
+    {
+      "angle" : "DSC",
+      "body" : "JUPITER",
+      "declinationDegrees" : -18.65416238987616,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.881949246554714 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "JUPITER:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 310.4854595367609
+    },
+    {
+      "angle" : "MC",
+      "body" : "JUPITER",
+      "declinationDegrees" : -18.65416238987616,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "JUPITER:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 310.4854595367609
+    },
+    {
+      "angle" : "IC",
+      "body" : "JUPITER",
+      "declinationDegrees" : -18.65416238987616,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "JUPITER:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 310.4854595367609
+    },
+    {
+      "angle" : "ASC",
+      "body" : "SATURNO",
+      "declinationDegrees" : -17.511742301434474,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8714217172019914 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "SATURNO:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 236.3478445397077
+    },
+    {
+      "angle" : "DSC",
+      "body" : "SATURNO",
+      "declinationDegrees" : -17.511742301434474,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8714217172019914 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "SATURNO:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 236.3478445397077
+    },
+    {
+      "angle" : "MC",
+      "body" : "SATURNO",
+      "declinationDegrees" : -17.511742301434474,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "SATURNO:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 236.3478445397077
+    },
+    {
+      "angle" : "IC",
+      "body" : "SATURNO",
+      "declinationDegrees" : -17.511742301434474,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "SATURNO:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 236.3478445397077
+    },
+    {
+      "angle" : "ASC",
+      "body" : "URANO",
+      "declinationDegrees" : -22.911470500359865,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8989556692999557 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "URANO:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 256.91421694232633
+    },
+    {
+      "angle" : "DSC",
+      "body" : "URANO",
+      "declinationDegrees" : -22.911470500359865,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8989556692999557 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "URANO:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 256.91421694232633
+    },
+    {
+      "angle" : "MC",
+      "body" : "URANO",
+      "declinationDegrees" : -22.911470500359865,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "URANO:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 256.91421694232633
+    },
+    {
+      "angle" : "IC",
+      "body" : "URANO",
+      "declinationDegrees" : -22.911470500359865,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "URANO:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 256.91421694232633
+    },
+    {
+      "angle" : "ASC",
+      "body" : "NEPTUNO",
+      "declinationDegrees" : -22.263743530637058,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8927070781654677 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "NEPTUNO:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 273.78293547843083
+    },
+    {
+      "angle" : "DSC",
+      "body" : "NEPTUNO",
+      "declinationDegrees" : -22.263743530637058,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8927070781654677 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "NEPTUNO:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 273.78293547843083
+    },
+    {
+      "angle" : "MC",
+      "body" : "NEPTUNO",
+      "declinationDegrees" : -22.263743530637058,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "NEPTUNO:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 273.78293547843083
+    },
+    {
+      "angle" : "IC",
+      "body" : "NEPTUNO",
+      "declinationDegrees" : -22.263743530637058,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "NEPTUNO:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 273.78293547843083
+    },
+    {
+      "angle" : "ASC",
+      "body" : "PLUTON",
+      "declinationDegrees" : 3.2283116677224717,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8351432874006787 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "PLUTON:ASC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 217.8068108299676
+    },
+    {
+      "angle" : "DSC",
+      "body" : "PLUTON",
+      "declinationDegrees" : 3.2283116677224717,
+      "diagnostics" : [
+        "Cruce en |latitud| + |declinación| < 90°, tangencia en la igualdad; sin cruce fuera.",
+        "Cota de discretización latitud/longitud: 0.8351432874006787 km; esfera R=6371.0088 km. No es precisión astronómica ni de proyección.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "PLUTON:DSC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 217.8068108299676
+    },
+    {
+      "angle" : "MC",
+      "body" : "PLUTON",
+      "declinationDegrees" : 3.2283116677224717,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "PLUTON:MC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 217.8068108299676
+    },
+    {
+      "angle" : "IC",
+      "body" : "PLUTON",
+      "declinationDegrees" : 3.2283116677224717,
+      "diagnostics" : [
+        "Meridiano de culminación. La longitud es la misma en ambos hemisferios y no implica visibilidad sobre el horizonte.",
+        "f2.1-adaptive-great-circle"
+      ],
+      "hasTrace" : true,
+      "key" : "PLUTON:IC",
+      "returnedFlags" : 2050,
+      "rightAscensionDegrees" : 217.8068108299676
+    }
+  ],
+  "disclaimer" : "Lecturas simbólicas de una tradición interpretativa: no demuestran efectos causales ni predicen resultados. Las distancias son geográficas (esfera de radio 6371.0088 km) y las bandas «cerca/regional» son parámetros del programa, no una medida de intensidad.",
+  "editorial" : {
+    "reviewStatus" : "revisado-por-el-usuario-2026-10-02",
+    "version" : "astrocartography-readings-v1"
+  },
+  "instant" : {
+    "julianDay" : 2446140.2083333335,
+    "timeScale" : "utcApproximatedAsUT1"
+  },
+  "kind" : "astromalik.astrocartography",
+  "method" : {
+    "contractVersion" : 1,
+    "convention" : "geocentric-apparent-of-date-geometric-center-v1",
+    "diagnostics" : [
+
+    ],
+    "distanceAlgorithm" : "f4.1-spherical-arcs-v1",
+    "ephemerisLibraryVersion" : "2.10.03",
+    "ephemerisSource" : "swissEphemeris",
+    "geometryToleranceKm" : 0.9,
+    "linesAlgorithm" : "f1.1-equatorial-snapshot/f2.1-adaptive-great-circle",
+    "sphereRadiusKm" : 6371.0088
+  },
+  "policy" : {
+    "nearKm" : 100,
+    "regionalKm" : 300
+  },
+  "schemaVersion" : 1,
+  "warnings" : [
+
+  ]
+}

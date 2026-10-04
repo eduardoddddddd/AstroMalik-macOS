@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-04",
+  "id": "F636AC19-E8B4-494E-B628-4A954DFD923D",
+  "lunarPhaseAngle": 275.797432,
+  "lunarPhaseLabel": "Cuarto menguante",
+  "positions": [
+    {
+      "formatted": "♎ 10°47'",
+      "longitude": 190.789673,
+      "planetKey": "SOL",
+      "retrograde": false,
+      "signKey": "LIBRA",
+      "speed": 0.98460946
+    },
+    {
+      "formatted": "♋ 16°35'",
+      "longitude": 106.587105,
+      "planetKey": "LUNA",
+      "retrograde": false,
+      "signKey": "CANCER",
+      "speed": 14.10958732
+    },
+    {
+      "formatted": "♏ 04°33'",
+      "longitude": 214.555422,
+      "planetKey": "MERCURIO",
+      "retrograde": false,
+      "signKey": "ESCORPIO",
+      "speed": 1.2577167
+    },
+    {
+      "formatted": "♏ 08°28' ℞",
+      "longitude": 218.481708,
+      "planetKey": "VENUS",
+      "retrograde": true,
+      "signKey": "ESCORPIO",
+      "speed": -0.02713048
+    },
+    {
+      "formatted": "♌ 03°25'",
+      "longitude": 123.4279,
+      "planetKey": "MARTE",
+      "retrograde": false,
+      "signKey": "LEO",
+      "speed": 0.57679993
+    },
+    {
+      "formatted": "♌ 20°07'",
+      "longitude": 140.122247,
+      "planetKey": "JUPITER",
+      "retrograde": false,
+      "signKey": "LEO",
+      "speed": 0.17479197
+    },
+    {
+      "formatted": "♈ 11°20' ℞",
+      "longitude": 11.342958,
+      "planetKey": "SATURNO",
+      "retrograde": true,
+      "signKey": "ARIES",
+      "speed": -0.07861994
+    },
+    {
+      "formatted": "♊ 05°28' ℞",
+      "longitude": 65.472445,
+      "planetKey": "URANO",
+      "retrograde": true,
+      "signKey": "GEMINIS",
+      "speed": -0.01896428
+    },
+    {
+      "formatted": "♈ 02°46' ℞",
+      "longitude": 2.779577,
+      "planetKey": "NEPTUNO",
+      "retrograde": true,
+      "signKey": "ARIES",
+      "speed": -0.02738572
+    },
+    {
+      "formatted": "♒ 03°06' ℞",
+      "longitude": 303.10349,
+      "planetKey": "PLUTON",
+      "retrograde": true,
+      "signKey": "ACUARIO",
+      "speed": -0.00563787
+    },
+    {
+      "formatted": "♒ 29°03'",
+      "longitude": 329.062533,
+      "planetKey": "NODO_NORTE",
+      "retrograde": false,
+      "signKey": "ACUARIO",
+      "speed": 0.00928377
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "ascendant": {
+    "formatted": "♎ Libra 03°32'",
+    "longitude": 183.53577136919696
+  },
+  "birthDate": "1940-07-15",
+  "birthTime": "12:00:00",
+  "bodies": [
+    {
+      "formatted": "♋ Cáncer 22°46'",
+      "house": 10,
+      "key": "SOL",
+      "label": "☉ Sol",
+      "longitude": 112.78260405353758,
+      "retrograde": false
+    },
+    {
+      "formatted": "♐ Sagitario 03°56'",
+      "house": 3,
+      "key": "LUNA",
+      "label": "☽ Luna",
+      "longitude": 243.9492358404489,
+      "retrograde": false
+    },
+    {
+      "formatted": "♌ Leo 03°30'",
+      "house": 10,
+      "key": "MERCURIO",
+      "label": "☿ Mercurio",
+      "longitude": 123.50878838523063,
+      "retrograde": true
+    },
+    {
+      "formatted": "♊ Géminis 26°58'",
+      "house": 9,
+      "key": "VENUS",
+      "label": "♀ Venus",
+      "longitude": 86.972488618279,
+      "retrograde": true
+    },
+    {
+      "formatted": "♌ Leo 07°38'",
+      "house": 11,
+      "key": "MARTE",
+      "label": "♂ Marte",
+      "longitude": 127.642879679506,
+      "retrograde": false
+    },
+    {
+      "formatted": "♉ Tauro 11°41'",
+      "house": 8,
+      "key": "JUPITER",
+      "label": "♃ Júpiter",
+      "longitude": 41.68880531629434,
+      "retrograde": false
+    },
+    {
+      "formatted": "♉ Tauro 13°13'",
+      "house": 8,
+      "key": "SATURNO",
+      "label": "♄ Saturno",
+      "longitude": 43.22276937429348,
+      "retrograde": false
+    },
+    {
+      "formatted": "♉ Tauro 25°13'",
+      "house": 8,
+      "key": "URANO",
+      "label": "⛢ Urano",
+      "longitude": 55.22733267226568,
+      "retrograde": false
+    },
+    {
+      "formatted": "♍ Virgo 23°11'",
+      "house": 12,
+      "key": "NEPTUNO",
+      "label": "♆ Neptuno",
+      "longitude": 173.19047319419505,
+      "retrograde": false
+    },
+    {
+      "formatted": "♌ Leo 02°11'",
+      "house": 10,
+      "key": "PLUTON",
+      "label": "♇ Plutón",
+      "longitude": 122.1931929080066,
+      "retrograde": false
+    },
+    {
+      "formatted": "♎ Libra 14°59'",
+      "house": 1,
+      "key": "NODO_NORTE",
+      "label": "☊ Nodo Norte",
+      "longitude": 194.9954713373077,
+      "retrograde": true
+    },
+    {
+      "formatted": "♈ Aries 14°59'",
+      "house": 7,
+      "key": "NODO_SUR",
+      "label": "☋ Nodo Sur",
+      "longitude": 14.995471337307663,
+      "retrograde": true
+    }
+  ],
+  "createdAt": "2026-10-04T18:30:25Z",
+  "cusps": [
+    183.53577136919696,
+    209.91126711845314,
+    240.4971142172729,
+    274.0767363728519,
+    307.5174261566604,
+    337.7378901342878,
+    3.5357713691969366,
+    29.91126711845311,
+    60.497114217272895,
+    94.07673637285191,
+    127.51742615666042,
+    157.73789013428777
+  ],
+  "houseSystem": "Placidus",
+  "id": "44444444-4444-4444-4444-444444444444",
+  "latitude": 40.4168,
+  "longitude": -3.7038,
+  "mc": {
+    "formatted": "♋ Cáncer 04°04'",
+    "longitude": 94.07673637285191
+  },
+  "name": "Control horario Madrid 1940 (no biografía)",
+  "placeName": "Madrid, España",
+  "timezone": "Europe/Madrid"
+}

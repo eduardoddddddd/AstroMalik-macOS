@@ -1,0 +1,1239 @@
+{
+  "almutenFiguris": {
+    "bonuses": [
+      {
+        "detail": "Regente del día de la semana local",
+        "kind": "regente_dia",
+        "planetKey": "LUNA",
+        "planetLabel": "☽ Luna",
+        "points": 12
+      },
+      {
+        "detail": "Regente de la hora planetaria (día/noche divididos en 12 horas desiguales)",
+        "kind": "regente_hora",
+        "planetKey": "MERCURIO",
+        "planetLabel": "☿ Mercurio",
+        "points": 12
+      },
+      {
+        "detail": "Occidental al Sol",
+        "kind": "orientalidad",
+        "planetKey": "VENUS",
+        "planetLabel": "♀ Venus",
+        "points": 12
+      },
+      {
+        "detail": "Oriental al Sol",
+        "kind": "orientalidad",
+        "planetKey": "JUPITER",
+        "planetLabel": "♃ Júpiter",
+        "points": 12
+      },
+      {
+        "detail": "Oriental al Sol",
+        "kind": "orientalidad",
+        "planetKey": "SATURNO",
+        "planetLabel": "♄ Saturno",
+        "points": 12
+      }
+    ],
+    "notes": [
+      "Ibn Ezra: cinco puntos ponderados por dignidad esencial: Sol, Luna, ASC, Fortuna y sicigia prenatal.",
+      "Triplicidad: regente diurno/nocturno según secta + participante, siguiendo la elección ya usada por EssentialDignityEngine.",
+      "Bonos Lilly +12: regente del día, regente de hora planetaria y fase/orientalidad preferida (superiores orientales; Mercurio/Venus occidentales; Luna creciente)."
+    ],
+    "pointScores": [
+      {
+        "dignityAwards": [
+          {
+            "dignity": "domicilio",
+            "planetKey": "VENUS",
+            "planetLabel": "♀ Venus",
+            "points": 5
+          },
+          {
+            "dignity": "exaltacion",
+            "planetKey": "SATURNO",
+            "planetLabel": "♄ Saturno",
+            "points": 4
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "MERCURIO",
+            "planetLabel": "☿ Mercurio",
+            "points": 3
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "JUPITER",
+            "planetLabel": "♃ Júpiter",
+            "points": 3
+          },
+          {
+            "dignity": "termino",
+            "planetKey": "JUPITER",
+            "planetLabel": "♃ Júpiter",
+            "points": 2
+          },
+          {
+            "dignity": "faz",
+            "planetKey": "SATURNO",
+            "planetLabel": "♄ Saturno",
+            "points": 1
+          }
+        ],
+        "formatted": "♎ Libra 18°36'",
+        "key": "SOL",
+        "longitude": 198.606062,
+        "name": "Sol"
+      },
+      {
+        "dignityAwards": [
+          {
+            "dignity": "domicilio",
+            "planetKey": "VENUS",
+            "planetLabel": "♀ Venus",
+            "points": 5
+          },
+          {
+            "dignity": "exaltacion",
+            "planetKey": "LUNA",
+            "planetLabel": "☽ Luna",
+            "points": 4
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "LUNA",
+            "planetLabel": "☽ Luna",
+            "points": 3
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "MARTE",
+            "planetLabel": "♂ Marte",
+            "points": 3
+          },
+          {
+            "dignity": "termino",
+            "planetKey": "MARTE",
+            "planetLabel": "♂ Marte",
+            "points": 2
+          },
+          {
+            "dignity": "faz",
+            "planetKey": "SATURNO",
+            "planetLabel": "♄ Saturno",
+            "points": 1
+          }
+        ],
+        "formatted": "♉ Tauro 27°41'",
+        "key": "LUNA",
+        "longitude": 57.691921,
+        "name": "Luna"
+      },
+      {
+        "dignityAwards": [
+          {
+            "dignity": "domicilio",
+            "planetKey": "MERCURIO",
+            "planetLabel": "☿ Mercurio",
+            "points": 5
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "MERCURIO",
+            "planetLabel": "☿ Mercurio",
+            "points": 3
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "JUPITER",
+            "planetLabel": "♃ Júpiter",
+            "points": 3
+          },
+          {
+            "dignity": "termino",
+            "planetKey": "MERCURIO",
+            "planetLabel": "☿ Mercurio",
+            "points": 2
+          },
+          {
+            "dignity": "faz",
+            "planetKey": "JUPITER",
+            "planetLabel": "♃ Júpiter",
+            "points": 1
+          }
+        ],
+        "formatted": "♊ Géminis 00°32'",
+        "key": "ASC",
+        "longitude": 60.542776,
+        "name": "Ascendente"
+      },
+      {
+        "dignityAwards": [
+          {
+            "dignity": "domicilio",
+            "planetKey": "VENUS",
+            "planetLabel": "♀ Venus",
+            "points": 5
+          },
+          {
+            "dignity": "exaltacion",
+            "planetKey": "SATURNO",
+            "planetLabel": "♄ Saturno",
+            "points": 4
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "MERCURIO",
+            "planetLabel": "☿ Mercurio",
+            "points": 3
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "JUPITER",
+            "planetLabel": "♃ Júpiter",
+            "points": 3
+          },
+          {
+            "dignity": "termino",
+            "planetKey": "VENUS",
+            "planetLabel": "♀ Venus",
+            "points": 2
+          },
+          {
+            "dignity": "faz",
+            "planetKey": "JUPITER",
+            "planetLabel": "♃ Júpiter",
+            "points": 1
+          }
+        ],
+        "formatted": "♎ Libra 21°27'",
+        "key": "LOTE_FORTUNA",
+        "longitude": 201.456917,
+        "name": "Lote de Fortuna"
+      },
+      {
+        "dignityAwards": [
+          {
+            "dignity": "domicilio",
+            "planetKey": "MARTE",
+            "planetLabel": "♂ Marte",
+            "points": 5
+          },
+          {
+            "dignity": "exaltacion",
+            "planetKey": "SOL",
+            "planetLabel": "☉ Sol",
+            "points": 4
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "JUPITER",
+            "planetLabel": "♃ Júpiter",
+            "points": 3
+          },
+          {
+            "dignity": "triplicidad",
+            "planetKey": "SATURNO",
+            "planetLabel": "♄ Saturno",
+            "points": 3
+          },
+          {
+            "dignity": "termino",
+            "planetKey": "MERCURIO",
+            "planetLabel": "☿ Mercurio",
+            "points": 2
+          },
+          {
+            "dignity": "faz",
+            "planetKey": "SOL",
+            "planetLabel": "☉ Sol",
+            "points": 1
+          }
+        ],
+        "formatted": "♈ Aries 15°02'",
+        "key": "SICIGIA_PRENATAL",
+        "longitude": 15.03932,
+        "name": "Sicigia prenatal"
+      }
+    ],
+    "prenatalSyzygy": {
+      "formatted": "♈ Aries 15°02'",
+      "julianDay": 2443059.705138,
+      "kind": "fullMoon",
+      "longitude": 15.03932
+    },
+    "totalScores": [
+      {
+        "bonusPoints": 12,
+        "essentialPoints": 18,
+        "planetKey": "MERCURIO",
+        "planetLabel": "☿ Mercurio",
+        "total": 30
+      },
+      {
+        "bonusPoints": 12,
+        "essentialPoints": 17,
+        "planetKey": "VENUS",
+        "planetLabel": "♀ Venus",
+        "total": 29
+      },
+      {
+        "bonusPoints": 12,
+        "essentialPoints": 16,
+        "planetKey": "JUPITER",
+        "planetLabel": "♃ Júpiter",
+        "total": 28
+      },
+      {
+        "bonusPoints": 12,
+        "essentialPoints": 13,
+        "planetKey": "SATURNO",
+        "planetLabel": "♄ Saturno",
+        "total": 25
+      },
+      {
+        "bonusPoints": 12,
+        "essentialPoints": 7,
+        "planetKey": "LUNA",
+        "planetLabel": "☽ Luna",
+        "total": 19
+      },
+      {
+        "bonusPoints": 0,
+        "essentialPoints": 10,
+        "planetKey": "MARTE",
+        "planetLabel": "♂ Marte",
+        "total": 10
+      },
+      {
+        "bonusPoints": 0,
+        "essentialPoints": 5,
+        "planetKey": "SOL",
+        "planetLabel": "☉ Sol",
+        "total": 5
+      }
+    ],
+    "winnerKey": "MERCURIO",
+    "winnerLabel": "☿ Mercurio"
+  },
+  "antiscia": {
+    "contacts": [],
+    "points": [
+      {
+        "formatted": "♋ Cáncer 29°36'",
+        "kind": "antiscion",
+        "longitude": 119.600296,
+        "planetKey": "JUPITER",
+        "planetLabel": "♃ Júpiter"
+      },
+      {
+        "formatted": "♑ Capricornio 29°36'",
+        "kind": "contraAntiscion",
+        "longitude": 299.600296,
+        "planetKey": "JUPITER",
+        "planetLabel": "♃ Júpiter"
+      },
+      {
+        "formatted": "♌ Leo 02°18'",
+        "kind": "antiscion",
+        "longitude": 122.308079,
+        "planetKey": "LUNA",
+        "planetLabel": "☽ Luna"
+      },
+      {
+        "formatted": "♒ Acuario 02°18'",
+        "kind": "contraAntiscion",
+        "longitude": 302.308079,
+        "planetKey": "LUNA",
+        "planetLabel": "☽ Luna"
+      },
+      {
+        "formatted": "♒ Acuario 27°59'",
+        "kind": "antiscion",
+        "longitude": 327.990266,
+        "planetKey": "MARTE",
+        "planetLabel": "♂ Marte"
+      },
+      {
+        "formatted": "♌ Leo 27°59'",
+        "kind": "contraAntiscion",
+        "longitude": 147.990266,
+        "planetKey": "MARTE",
+        "planetLabel": "♂ Marte"
+      },
+      {
+        "formatted": "♓ Piscis 28°23'",
+        "kind": "antiscion",
+        "longitude": 358.38895,
+        "planetKey": "MERCURIO",
+        "planetLabel": "☿ Mercurio"
+      },
+      {
+        "formatted": "♍ Virgo 28°23'",
+        "kind": "contraAntiscion",
+        "longitude": 178.38895,
+        "planetKey": "MERCURIO",
+        "planetLabel": "☿ Mercurio"
+      },
+      {
+        "formatted": "♑ Capricornio 18°08'",
+        "kind": "antiscion",
+        "longitude": 288.149419,
+        "planetKey": "NEPTUNO",
+        "planetLabel": "♆ Neptuno"
+      },
+      {
+        "formatted": "♋ Cáncer 18°08'",
+        "kind": "contraAntiscion",
+        "longitude": 108.149419,
+        "planetKey": "NEPTUNO",
+        "planetLabel": "♆ Neptuno"
+      },
+      {
+        "formatted": "♓ Piscis 18°07'",
+        "kind": "antiscion",
+        "longitude": 348.127918,
+        "planetKey": "PLUTON",
+        "planetLabel": "♇ Plutón"
+      },
+      {
+        "formatted": "♍ Virgo 18°07'",
+        "kind": "contraAntiscion",
+        "longitude": 168.127918,
+        "planetKey": "PLUTON",
+        "planetLabel": "♇ Plutón"
+      },
+      {
+        "formatted": "♉ Tauro 15°05'",
+        "kind": "antiscion",
+        "longitude": 45.088384,
+        "planetKey": "SATURNO",
+        "planetLabel": "♄ Saturno"
+      },
+      {
+        "formatted": "♏ Escorpio 15°05'",
+        "kind": "contraAntiscion",
+        "longitude": 225.088384,
+        "planetKey": "SATURNO",
+        "planetLabel": "♄ Saturno"
+      },
+      {
+        "formatted": "♓ Piscis 11°23'",
+        "kind": "antiscion",
+        "longitude": 341.393938,
+        "planetKey": "SOL",
+        "planetLabel": "☉ Sol"
+      },
+      {
+        "formatted": "♍ Virgo 11°23'",
+        "kind": "contraAntiscion",
+        "longitude": 161.393938,
+        "planetKey": "SOL",
+        "planetLabel": "☉ Sol"
+      },
+      {
+        "formatted": "♒ Acuario 23°41'",
+        "kind": "antiscion",
+        "longitude": 323.695409,
+        "planetKey": "URANO",
+        "planetLabel": "⛢ Urano"
+      },
+      {
+        "formatted": "♌ Leo 23°41'",
+        "kind": "contraAntiscion",
+        "longitude": 143.695409,
+        "planetKey": "URANO",
+        "planetLabel": "⛢ Urano"
+      },
+      {
+        "formatted": "♒ Acuario 10°52'",
+        "kind": "antiscion",
+        "longitude": 310.869593,
+        "planetKey": "VENUS",
+        "planetLabel": "♀ Venus"
+      },
+      {
+        "formatted": "♌ Leo 10°52'",
+        "kind": "contraAntiscion",
+        "longitude": 130.869593,
+        "planetKey": "VENUS",
+        "planetLabel": "♀ Venus"
+      }
+    ]
+  },
+  "aspectPatterns": [],
+  "configuration": {
+    "antisciaOrb": 1,
+    "aspectPatternOrb": 6,
+    "declinationOrb": 1,
+    "fixedStarOrb": 1
+  },
+  "declinations": {
+    "bodies": [
+      {
+        "declination": -7.29163,
+        "formatted": "S 07°17'",
+        "key": "SOL",
+        "label": "☉ Sol",
+        "outOfBounds": false
+      },
+      {
+        "declination": 17.53146,
+        "formatted": "N 17°32'",
+        "key": "LUNA",
+        "label": "☽ Luna",
+        "outOfBounds": false
+      },
+      {
+        "declination": 1.09981,
+        "formatted": "N 01°06'",
+        "key": "MERCURIO",
+        "label": "☿ Mercurio",
+        "outOfBounds": false
+      },
+      {
+        "declination": -18.00551,
+        "formatted": "S 18°00'",
+        "key": "VENUS",
+        "label": "♀ Venus",
+        "outOfBounds": false
+      },
+      {
+        "declination": -12.00501,
+        "formatted": "S 12°00'",
+        "key": "MARTE",
+        "label": "♂ Marte",
+        "outOfBounds": false
+      },
+      {
+        "declination": 19.11879,
+        "formatted": "N 19°07'",
+        "key": "JUPITER",
+        "label": "♃ Júpiter",
+        "outOfBounds": false
+      },
+      {
+        "declination": 16.9832,
+        "formatted": "N 16°59'",
+        "key": "SATURNO",
+        "label": "♄ Saturno",
+        "outOfBounds": false
+      },
+      {
+        "declination": -13.20796,
+        "formatted": "S 13°12'",
+        "key": "URANO",
+        "label": "⛢ Urano",
+        "outOfBounds": false
+      },
+      {
+        "declination": -20.74583,
+        "formatted": "S 20°45'",
+        "key": "NEPTUNO",
+        "label": "♆ Neptuno",
+        "outOfBounds": false
+      },
+      {
+        "declination": 10.44255,
+        "formatted": "N 10°27'",
+        "key": "PLUTON",
+        "label": "♇ Plutón",
+        "outOfBounds": false
+      },
+      {
+        "declination": -12.6934,
+        "formatted": "S 12°42'",
+        "key": "NODO_NORTE",
+        "label": "☊ Nodo Norte",
+        "outOfBounds": false
+      },
+      {
+        "declination": 12.6934,
+        "formatted": "N 12°42'",
+        "key": "NODO_SUR",
+        "label": "☋ Nodo Sur",
+        "outOfBounds": false
+      }
+    ],
+    "outOfBounds": [],
+    "pairs": [
+      {
+        "bodyAKey": "NODO_NORTE",
+        "bodyALabel": "☊ Nodo Norte",
+        "bodyBKey": "NODO_SUR",
+        "bodyBLabel": "☋ Nodo Sur",
+        "id": "contraParallel-NODO_NORTE-NODO_SUR",
+        "kind": "contraParallel",
+        "orb": 0
+      },
+      {
+        "bodyAKey": "LUNA",
+        "bodyALabel": "☽ Luna",
+        "bodyBKey": "VENUS",
+        "bodyBLabel": "♀ Venus",
+        "id": "contraParallel-LUNA-VENUS",
+        "kind": "contraParallel",
+        "orb": 0.474
+      },
+      {
+        "bodyAKey": "URANO",
+        "bodyALabel": "⛢ Urano",
+        "bodyBKey": "NODO_SUR",
+        "bodyBLabel": "☋ Nodo Sur",
+        "id": "contraParallel-URANO-NODO_SUR",
+        "kind": "contraParallel",
+        "orb": 0.515
+      },
+      {
+        "bodyAKey": "URANO",
+        "bodyALabel": "⛢ Urano",
+        "bodyBKey": "NODO_NORTE",
+        "bodyBLabel": "☊ Nodo Norte",
+        "id": "parallel-URANO-NODO_NORTE",
+        "kind": "parallel",
+        "orb": 0.515
+      },
+      {
+        "bodyAKey": "LUNA",
+        "bodyALabel": "☽ Luna",
+        "bodyBKey": "SATURNO",
+        "bodyBLabel": "♄ Saturno",
+        "id": "parallel-LUNA-SATURNO",
+        "kind": "parallel",
+        "orb": 0.548
+      },
+      {
+        "bodyAKey": "MARTE",
+        "bodyALabel": "♂ Marte",
+        "bodyBKey": "NODO_SUR",
+        "bodyBLabel": "☋ Nodo Sur",
+        "id": "contraParallel-MARTE-NODO_SUR",
+        "kind": "contraParallel",
+        "orb": 0.688
+      },
+      {
+        "bodyAKey": "MARTE",
+        "bodyALabel": "♂ Marte",
+        "bodyBKey": "NODO_NORTE",
+        "bodyBLabel": "☊ Nodo Norte",
+        "id": "parallel-MARTE-NODO_NORTE",
+        "kind": "parallel",
+        "orb": 0.688
+      }
+    ]
+  },
+  "distribution": {
+    "elements": [
+      {
+        "category": "element",
+        "count": 2,
+        "name": "Fuego",
+        "planetKeys": [
+          "SATURNO",
+          "NEPTUNO"
+        ],
+        "planetLabels": [
+          "♄ Saturno",
+          "♆ Neptuno"
+        ]
+      },
+      {
+        "category": "element",
+        "count": 1,
+        "name": "Tierra",
+        "planetKeys": [
+          "LUNA"
+        ],
+        "planetLabels": [
+          "☽ Luna"
+        ]
+      },
+      {
+        "category": "element",
+        "count": 4,
+        "name": "Aire",
+        "planetKeys": [
+          "SOL",
+          "MERCURIO",
+          "JUPITER",
+          "PLUTON"
+        ],
+        "planetLabels": [
+          "☉ Sol",
+          "☿ Mercurio",
+          "♃ Júpiter",
+          "♇ Plutón"
+        ]
+      },
+      {
+        "category": "element",
+        "count": 3,
+        "name": "Agua",
+        "planetKeys": [
+          "VENUS",
+          "MARTE",
+          "URANO"
+        ],
+        "planetLabels": [
+          "♀ Venus",
+          "♂ Marte",
+          "⛢ Urano"
+        ]
+      }
+    ],
+    "hemispheres": [
+      {
+        "category": "hemisphere",
+        "count": 3,
+        "name": "Norte",
+        "planetKeys": [
+          "LUNA",
+          "JUPITER",
+          "NEPTUNO"
+        ],
+        "planetLabels": [
+          "☽ Luna",
+          "♃ Júpiter",
+          "♆ Neptuno"
+        ]
+      },
+      {
+        "category": "hemisphere",
+        "count": 7,
+        "name": "Sur",
+        "planetKeys": [
+          "SOL",
+          "MERCURIO",
+          "VENUS",
+          "MARTE",
+          "SATURNO",
+          "URANO",
+          "PLUTON"
+        ],
+        "planetLabels": [
+          "☉ Sol",
+          "☿ Mercurio",
+          "♀ Venus",
+          "♂ Marte",
+          "♄ Saturno",
+          "⛢ Urano",
+          "♇ Plutón"
+        ]
+      },
+      {
+        "category": "hemisphere",
+        "count": 2,
+        "name": "Este",
+        "planetKeys": [
+          "LUNA",
+          "JUPITER"
+        ],
+        "planetLabels": [
+          "☽ Luna",
+          "♃ Júpiter"
+        ]
+      },
+      {
+        "category": "hemisphere",
+        "count": 8,
+        "name": "Oeste",
+        "planetKeys": [
+          "SOL",
+          "MERCURIO",
+          "VENUS",
+          "MARTE",
+          "SATURNO",
+          "URANO",
+          "NEPTUNO",
+          "PLUTON"
+        ],
+        "planetLabels": [
+          "☉ Sol",
+          "☿ Mercurio",
+          "♀ Venus",
+          "♂ Marte",
+          "♄ Saturno",
+          "⛢ Urano",
+          "♆ Neptuno",
+          "♇ Plutón"
+        ]
+      }
+    ],
+    "modalities": [
+      {
+        "category": "modality",
+        "count": 3,
+        "name": "Cardinal",
+        "planetKeys": [
+          "SOL",
+          "MERCURIO",
+          "PLUTON"
+        ],
+        "planetLabels": [
+          "☉ Sol",
+          "☿ Mercurio",
+          "♇ Plutón"
+        ]
+      },
+      {
+        "category": "modality",
+        "count": 5,
+        "name": "Fijo",
+        "planetKeys": [
+          "LUNA",
+          "VENUS",
+          "MARTE",
+          "SATURNO",
+          "URANO"
+        ],
+        "planetLabels": [
+          "☽ Luna",
+          "♀ Venus",
+          "♂ Marte",
+          "♄ Saturno",
+          "⛢ Urano"
+        ]
+      },
+      {
+        "category": "modality",
+        "count": 2,
+        "name": "Mutable",
+        "planetKeys": [
+          "JUPITER",
+          "NEPTUNO"
+        ],
+        "planetLabels": [
+          "♃ Júpiter",
+          "♆ Neptuno"
+        ]
+      }
+    ],
+    "quadrants": [
+      {
+        "category": "quadrant",
+        "count": 0,
+        "name": "Cuadrante 1",
+        "planetKeys": [],
+        "planetLabels": []
+      },
+      {
+        "category": "quadrant",
+        "count": 7,
+        "name": "Cuadrante 2",
+        "planetKeys": [
+          "SOL",
+          "MERCURIO",
+          "VENUS",
+          "MARTE",
+          "SATURNO",
+          "URANO",
+          "PLUTON"
+        ],
+        "planetLabels": [
+          "☉ Sol",
+          "☿ Mercurio",
+          "♀ Venus",
+          "♂ Marte",
+          "♄ Saturno",
+          "⛢ Urano",
+          "♇ Plutón"
+        ]
+      },
+      {
+        "category": "quadrant",
+        "count": 1,
+        "name": "Cuadrante 3",
+        "planetKeys": [
+          "NEPTUNO"
+        ],
+        "planetLabels": [
+          "♆ Neptuno"
+        ]
+      },
+      {
+        "category": "quadrant",
+        "count": 2,
+        "name": "Cuadrante 4",
+        "planetKeys": [
+          "LUNA",
+          "JUPITER"
+        ],
+        "planetLabels": [
+          "☽ Luna",
+          "♃ Júpiter"
+        ]
+      }
+    ],
+    "singletons": [
+      {
+        "bucketName": "Tierra",
+        "category": "element",
+        "planetKey": "LUNA",
+        "planetLabel": "☽ Luna"
+      }
+    ]
+  },
+  "fixedStars": {
+    "contacts": [],
+    "epochJulianDay": 2443063.314583,
+    "precessionAppliedDegrees": -0.3244,
+    "stars": [
+      {
+        "formatted": "♉ Tauro 25°50'",
+        "key": "ALGOL",
+        "latitude": 22.42,
+        "longitude": 55.8423,
+        "longitudeJ2000": 56.1667,
+        "magnitude": 2.1,
+        "name": "Algol",
+        "nature": "Saturno/Júpiter"
+      },
+      {
+        "formatted": "♊ Géminis 01°45'",
+        "key": "MIRFAK",
+        "latitude": 30.12,
+        "longitude": 61.7589,
+        "longitudeJ2000": 62.0833,
+        "magnitude": 1.79,
+        "name": "Mirfak",
+        "nature": "Júpiter/Saturno"
+      },
+      {
+        "formatted": "♊ Géminis 09°27'",
+        "key": "ALDEBARAN",
+        "latitude": -5.47,
+        "longitude": 69.4589,
+        "longitudeJ2000": 69.7833,
+        "magnitude": 0.86,
+        "name": "Aldebarán",
+        "nature": "Marte"
+      },
+      {
+        "formatted": "♊ Géminis 16°30'",
+        "key": "RIGEL",
+        "latitude": -31.12,
+        "longitude": 76.5089,
+        "longitudeJ2000": 76.8333,
+        "magnitude": 0.13,
+        "name": "Rigel",
+        "nature": "Júpiter/Saturno"
+      },
+      {
+        "formatted": "♊ Géminis 21°32'",
+        "key": "CAPELLA",
+        "latitude": 22.87,
+        "longitude": 81.5423,
+        "longitudeJ2000": 81.8667,
+        "magnitude": 0.08,
+        "name": "Capella",
+        "nature": "Marte/Mercurio"
+      },
+      {
+        "formatted": "♊ Géminis 28°25'",
+        "key": "BETELGEUSE",
+        "latitude": -16.03,
+        "longitude": 88.4256,
+        "longitudeJ2000": 88.75,
+        "magnitude": 0.5,
+        "name": "Betelgeuse",
+        "nature": "Marte/Mercurio"
+      },
+      {
+        "formatted": "♋ Cáncer 13°45'",
+        "key": "SIRIUS",
+        "latitude": -39.6,
+        "longitude": 103.7589,
+        "longitudeJ2000": 104.0833,
+        "magnitude": -1.46,
+        "name": "Sirius",
+        "nature": "Júpiter/Marte"
+      },
+      {
+        "formatted": "♋ Cáncer 25°28'",
+        "key": "PROCYON",
+        "latitude": -16.02,
+        "longitude": 115.4756,
+        "longitudeJ2000": 115.8,
+        "magnitude": 0.38,
+        "name": "Procyon",
+        "nature": "Mercurio/Marte"
+      },
+      {
+        "formatted": "♌ Leo 29°30'",
+        "key": "REGULUS",
+        "latitude": 0.46,
+        "longitude": 149.5089,
+        "longitudeJ2000": 149.8333,
+        "magnitude": 1.36,
+        "name": "Regulus",
+        "nature": "Marte/Júpiter"
+      },
+      {
+        "formatted": "♍ Virgo 10°59'",
+        "key": "ZOSMA",
+        "latitude": 14.2,
+        "longitude": 160.9923,
+        "longitudeJ2000": 161.3167,
+        "magnitude": 2.56,
+        "name": "Zosma",
+        "nature": "Saturno/Venus"
+      },
+      {
+        "formatted": "♎ Libra 09°36'",
+        "key": "VINDEMIATRIX",
+        "latitude": 16.2,
+        "longitude": 189.6089,
+        "longitudeJ2000": 189.9333,
+        "magnitude": 2.83,
+        "name": "Vindemiatrix",
+        "nature": "Saturno/Mercurio"
+      },
+      {
+        "formatted": "♎ Libra 13°07'",
+        "key": "ALGORAB",
+        "latitude": -16.52,
+        "longitude": 193.1256,
+        "longitudeJ2000": 193.45,
+        "magnitude": 2.94,
+        "name": "Algorab",
+        "nature": "Marte/Saturno"
+      },
+      {
+        "formatted": "♎ Libra 23°30'",
+        "key": "SPICA",
+        "latitude": -0.53,
+        "longitude": 203.5089,
+        "longitudeJ2000": 203.8333,
+        "magnitude": 0.98,
+        "name": "Spica",
+        "nature": "Venus/Marte"
+      },
+      {
+        "formatted": "♎ Libra 23°54'",
+        "key": "ARCTURUS",
+        "latitude": 30.77,
+        "longitude": 203.9089,
+        "longitudeJ2000": 204.2333,
+        "magnitude": -0.05,
+        "name": "Arcturus",
+        "nature": "Marte/Júpiter"
+      },
+      {
+        "formatted": "♏ Escorpio 11°58'",
+        "key": "ALPHECCA",
+        "latitude": 44.3,
+        "longitude": 221.9756,
+        "longitudeJ2000": 222.3,
+        "magnitude": 2.23,
+        "name": "Alphecca",
+        "nature": "Venus/Mercurio"
+      },
+      {
+        "formatted": "♏ Escorpio 29°09'",
+        "key": "TOLIMAN",
+        "latitude": -42.58,
+        "longitude": 239.1589,
+        "longitudeJ2000": 239.4833,
+        "magnitude": -0.01,
+        "name": "Toliman",
+        "nature": "Venus/Júpiter"
+      },
+      {
+        "formatted": "♐ Sagitario 09°26'",
+        "key": "ANTARES",
+        "latitude": -4.57,
+        "longitude": 249.4423,
+        "longitudeJ2000": 249.7667,
+        "magnitude": 1.06,
+        "name": "Antares",
+        "nature": "Marte/Júpiter"
+      },
+      {
+        "formatted": "♑ Capricornio 14°59'",
+        "key": "VEGA",
+        "latitude": 61.73,
+        "longitude": 284.9923,
+        "longitudeJ2000": 285.3167,
+        "magnitude": 0.03,
+        "name": "Vega",
+        "nature": "Venus/Mercurio"
+      },
+      {
+        "formatted": "♓ Piscis 03°32'",
+        "key": "FOMALHAUT",
+        "latitude": -21.13,
+        "longitude": 333.5423,
+        "longitudeJ2000": 333.8667,
+        "magnitude": 1.16,
+        "name": "Fomalhaut",
+        "nature": "Venus/Mercurio"
+      },
+      {
+        "formatted": "♓ Piscis 23°10'",
+        "key": "MARKAB",
+        "latitude": 19.42,
+        "longitude": 353.1756,
+        "longitudeJ2000": 353.5,
+        "magnitude": 2.48,
+        "name": "Markab",
+        "nature": "Marte/Mercurio"
+      },
+      {
+        "formatted": "♓ Piscis 29°02'",
+        "key": "SCHEAT",
+        "latitude": 31.13,
+        "longitude": 359.0423,
+        "longitudeJ2000": 359.3667,
+        "magnitude": 2.42,
+        "name": "Scheat",
+        "nature": "Marte/Mercurio"
+      }
+    ]
+  },
+  "generatedAt": "2026-10-04T18:30:31Z",
+  "lots": [
+    {
+      "dispositorKey": "VENUS",
+      "dispositorLabel": "♀ Venus",
+      "formatted": "♎ Libra 21°27'",
+      "formulaComment": "Día: ASC + Luna - Sol. Noche: ASC + Sol - Luna.",
+      "house": 6,
+      "key": "LOTE_FORTUNE",
+      "kind": "fortune",
+      "longitude": 201.456917,
+      "name": "⊕ Fortuna",
+      "rulerKey": "VENUS",
+      "rulerLabel": "♀ Venus",
+      "signIndex": 6,
+      "signKey": "LIBRA",
+      "signLabel": "♎ Libra"
+    },
+    {
+      "dispositorKey": "SATURNO",
+      "dispositorLabel": "♄ Saturno",
+      "formatted": "♑ Capricornio 09°37'",
+      "formulaComment": "Día: ASC + Sol - Luna. Noche: ASC + Luna - Sol.",
+      "house": 8,
+      "key": "LOTE_SPIRIT",
+      "kind": "spirit",
+      "longitude": 279.628635,
+      "name": "✶ Espíritu",
+      "rulerKey": "SATURNO",
+      "rulerLabel": "♄ Saturno",
+      "signIndex": 9,
+      "signKey": "CAPRICORNIO",
+      "signLabel": "♑ Capricornio"
+    },
+    {
+      "dispositorKey": "LUNA",
+      "dispositorLabel": "☽ Luna",
+      "formatted": "♋ Cáncer 21°02'",
+      "formulaComment": "Día: ASC + Venus - Espíritu. Noche: ASC + Espíritu - Venus.",
+      "house": 3,
+      "key": "LOTE_EROS",
+      "kind": "eros",
+      "longitude": 111.041004,
+      "name": "♡ Eros",
+      "rulerKey": "LUNA",
+      "rulerLabel": "☽ Luna",
+      "signIndex": 3,
+      "signKey": "CANCER",
+      "signLabel": "♋ Cáncer"
+    },
+    {
+      "dispositorKey": "MERCURIO",
+      "dispositorLabel": "☿ Mercurio",
+      "formatted": "♊ Géminis 20°23'",
+      "formulaComment": "Día: ASC + Mercurio - Fortuna. Noche: ASC + Fortuna - Mercurio.",
+      "house": 1,
+      "key": "LOTE_NECESSITY",
+      "kind": "necessity",
+      "longitude": 80.388643,
+      "name": "☿ Necesidad",
+      "rulerKey": "MERCURIO",
+      "rulerLabel": "☿ Mercurio",
+      "signIndex": 2,
+      "signKey": "GEMINIS",
+      "signLabel": "♊ Géminis"
+    },
+    {
+      "dispositorKey": "SATURNO",
+      "dispositorLabel": "♄ Saturno",
+      "formatted": "♑ Capricornio 09°46'",
+      "formulaComment": "Día: ASC + Júpiter - Espíritu. Noche: ASC + Espíritu - Júpiter.",
+      "house": 8,
+      "key": "LOTE_VICTORY",
+      "kind": "victory",
+      "longitude": 279.771707,
+      "name": "♃ Victoria",
+      "rulerKey": "SATURNO",
+      "rulerLabel": "♄ Saturno",
+      "signIndex": 9,
+      "signKey": "CAPRICORNIO",
+      "signLabel": "♑ Capricornio"
+    },
+    {
+      "dispositorKey": "VENUS",
+      "dispositorLabel": "♀ Venus",
+      "formatted": "♉ Tauro 19°59'",
+      "formulaComment": "Día: ASC + Marte - Fortuna. Noche: ASC + Fortuna - Marte.",
+      "house": 12,
+      "key": "LOTE_AUDACITY",
+      "kind": "audacity",
+      "longitude": 49.98996,
+      "name": "♂ Audacia",
+      "rulerKey": "VENUS",
+      "rulerLabel": "♀ Venus",
+      "signIndex": 1,
+      "signKey": "TAURO",
+      "signLabel": "♉ Tauro"
+    },
+    {
+      "dispositorKey": "SOL",
+      "dispositorLabel": "☉ Sol",
+      "formatted": "♌ Leo 07°05'",
+      "formulaComment": "Día: ASC + Saturno - Fortuna. Noche: ASC + Fortuna - Saturno.",
+      "house": 3,
+      "key": "LOTE_NEMESIS",
+      "kind": "nemesis",
+      "longitude": 127.088077,
+      "name": "♄ Némesis",
+      "rulerKey": "SOL",
+      "rulerLabel": "☉ Sol",
+      "signIndex": 4,
+      "signKey": "LEO",
+      "signLabel": "♌ Leo"
+    }
+  ],
+  "receptions": [
+    {
+      "detail": "☉ Sol está en exaltación de ♄ Saturno; ♄ Saturno está en domicilio de ☉ Sol.",
+      "id": "mixed-SATURNO-SOL",
+      "kind": "mixed",
+      "planetAKey": "SOL",
+      "planetALabel": "☉ Sol",
+      "planetBKey": "SATURNO",
+      "planetBLabel": "♄ Saturno"
+    }
+  ],
+  "rulerOfGeniture": {
+    "dignityAwards": [
+      {
+        "dignity": "domicilio",
+        "planetKey": "VENUS",
+        "planetLabel": "♀ Venus",
+        "points": 5
+      }
+    ],
+    "dignitySummary": "domicilio (5)",
+    "luminaryFormatted": "♉ Tauro 27°41'",
+    "luminaryKey": "LUNA",
+    "luminaryLabel": "☽ Luna",
+    "luminaryLongitude": 57.691921,
+    "rulerKey": "VENUS",
+    "rulerLabel": "♀ Venus",
+    "sectLabel": "Nocturna"
+  }
+}

@@ -1,0 +1,690 @@
+{
+  "chart": {
+    "ascendant": "♎ Libra 03°32'",
+    "birthDate": "1940-07-15",
+    "birthTime": "12:00:00",
+    "houseSystem": "Placidus",
+    "id": "44444444-4444-4444-4444-444444444444",
+    "latitude": 40.4168,
+    "longitude": -3.7038,
+    "mc": "♋ Cáncer 04°04'",
+    "name": "Control horario Madrid 1940 (no biografía)",
+    "placeName": "Madrid, España",
+    "timezone": "Europe/Madrid"
+  },
+  "events": [
+    {
+      "date": "2021-10-27",
+      "detail": "Nueva → Creciente",
+      "id": "phase-highlight-45-2021-10-27",
+      "priority": 3,
+      "source": "progression",
+      "title": "La fase lunar progresada entra en fase creciente."
+    },
+    {
+      "date": "2023-12-17",
+      "detail": "♌ Leo → ♍ Virgo",
+      "id": "sign-VENUS-5-2023-12-17",
+      "priority": 4,
+      "source": "progression",
+      "title": "Venus progresada cambia de ♌ Leo a ♍ Virgo."
+    },
+    {
+      "date": "2025-04-23",
+      "detail": "Retrógrado → Directo",
+      "id": "station-NODO_NORTE-Directo-2025-04-23",
+      "priority": 5,
+      "source": "progression",
+      "title": "Nodo Norte progresado estaciona y pasa a movimiento directo."
+    },
+    {
+      "date": "2025-05-04",
+      "detail": "Creciente → Cuarto creciente",
+      "id": "phase-highlight-90-2025-05-04",
+      "priority": 3,
+      "source": "progression",
+      "title": "La fase lunar progresada entra en fase cuarto creciente."
+    },
+    {
+      "date": "2026-09-12",
+      "detail": "Orbe 0.0",
+      "id": "progressedToNatal-LUNA-CONJUNCION-PLUTON-1-2026-09-12",
+      "priority": 5,
+      "source": "progressed-aspect",
+      "title": "Luna ☌ Conjunción Plutón"
+    },
+    {
+      "date": "2026-09-12",
+      "detail": "Orbe 0.0",
+      "id": "progressedToNatal-LUNA-OPOSICION-PLUTON-1-2026-09-12",
+      "priority": 5,
+      "source": "progressed-aspect",
+      "title": "Luna ☍ Oposición Plutón"
+    },
+    {
+      "date": "2026-09-25",
+      "detail": "Orbe 0.0",
+      "id": "progressedToProgressed-LUNA-TRIGONO-MARTE-1-2026-09-25",
+      "priority": 3,
+      "source": "progressed-aspect",
+      "title": "Luna △ Trígono Marte"
+    },
+    {
+      "date": "2026-09-25",
+      "detail": "Orbe 0.0",
+      "id": "progressedToProgressed-LUNA-SEXTIL-MARTE--1-2026-09-25",
+      "priority": 3,
+      "source": "progressed-aspect",
+      "title": "Luna ⚹ Sextil Marte"
+    },
+    {
+      "date": "2026-10-21",
+      "detail": "Orbe 0.0",
+      "id": "progressedToNatal-LUNA-TRIGONO-ASC-1-2026-10-21",
+      "priority": 5,
+      "source": "progressed-aspect",
+      "title": "Luna △ Trígono Ascendente natal"
+    },
+    {
+      "date": "2026-10-21",
+      "detail": "Orbe 0.0",
+      "id": "progressedToNatal-LUNA-CONJUNCION-MERCURIO-1-2026-10-21",
+      "priority": 5,
+      "source": "progressed-aspect",
+      "title": "Luna ☌ Conjunción Mercurio"
+    },
+    {
+      "date": "2026-10-21",
+      "detail": "Orbe 0.0",
+      "id": "progressedToNatal-LUNA-OPOSICION-MERCURIO-1-2026-10-21",
+      "priority": 5,
+      "source": "progressed-aspect",
+      "title": "Luna ☍ Oposición Mercurio"
+    },
+    {
+      "date": "2026-10-21",
+      "detail": "Orbe 0.0",
+      "id": "progressedToNatal-LUNA-SEXTIL-ASC--1-2026-10-21",
+      "priority": 5,
+      "source": "progressed-aspect",
+      "title": "Luna ⚹ Sextil Ascendente natal"
+    },
+    {
+      "date": "2026-11-09",
+      "detail": "Orbe 0.0",
+      "id": "progressedToProgressed-LUNA-CONJUNCION-PLUTON-1-2026-11-09",
+      "priority": 4,
+      "source": "progressed-aspect",
+      "title": "Luna ☌ Conjunción Plutón"
+    },
+    {
+      "date": "2026-11-09",
+      "detail": "Orbe 0.0",
+      "id": "progressedToProgressed-LUNA-OPOSICION-PLUTON-1-2026-11-09",
+      "priority": 4,
+      "source": "progressed-aspect",
+      "title": "Luna ☍ Oposición Plutón"
+    },
+    {
+      "date": "2027-02-19",
+      "detail": "Orbe 0.0",
+      "id": "progressedToNatal-LUNA-CONJUNCION-MARTE-1-2027-02-19",
+      "priority": 5,
+      "source": "progressed-aspect",
+      "title": "Luna ☌ Conjunción Marte"
+    },
+    {
+      "date": "2027-02-19",
+      "detail": "Orbe 0.0",
+      "id": "progressedToNatal-LUNA-OPOSICION-MARTE-1-2027-02-19",
+      "priority": 5,
+      "source": "progressed-aspect",
+      "title": "Luna ☍ Oposición Marte"
+    },
+    {
+      "date": "2029-04-10",
+      "detail": "Cuarto creciente → Gibosa",
+      "id": "phase-highlight-135-2029-04-10",
+      "priority": 3,
+      "source": "progression",
+      "title": "La fase lunar progresada entra en fase gibosa."
+    }
+  ],
+  "interpretations": [],
+  "metadata": {
+    "chartID": "44444444-4444-4444-4444-444444444444",
+    "chartName": "Control horario Madrid 1940 (no biografía)",
+    "command": "progressions",
+    "date": "2026-10-04T00:00:00Z",
+    "format": "json",
+    "generatedAt": "2026-10-04T18:30:30Z",
+    "narrative": "none",
+    "scope": "complete",
+    "timezone": "Europe/Madrid"
+  },
+  "networkUsed": false,
+  "source": "local",
+  "technicalData": {
+    "progressions": {
+      "aspects": [
+        {
+          "applying": true,
+          "aspectKey": "CONJUNCION",
+          "aspectLabel": "☌ Conjunción",
+          "date": "2026-09-12T19:16:57Z",
+          "exactDate": "2026-09-12",
+          "id": "progressedToNatal-LUNA-CONJUNCION-PLUTON-1-2026-09-12",
+          "kind": "progressedToNatal",
+          "orb": 0,
+          "priority": 5,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "PLUTON",
+          "targetLabel": "Plutón"
+        },
+        {
+          "applying": true,
+          "aspectKey": "OPOSICION",
+          "aspectLabel": "☍ Oposición",
+          "date": "2026-09-12T19:16:57Z",
+          "exactDate": "2026-09-12",
+          "id": "progressedToNatal-LUNA-OPOSICION-PLUTON-1-2026-09-12",
+          "kind": "progressedToNatal",
+          "orb": 0,
+          "priority": 5,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "PLUTON",
+          "targetLabel": "Plutón"
+        },
+        {
+          "applying": true,
+          "aspectKey": "TRIGONO",
+          "aspectLabel": "△ Trígono",
+          "date": "2026-09-25T01:28:13Z",
+          "exactDate": "2026-09-25",
+          "id": "progressedToProgressed-LUNA-TRIGONO-MARTE-1-2026-09-25",
+          "kind": "progressedToProgressed",
+          "orb": 0,
+          "priority": 3,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "MARTE",
+          "targetLabel": "Marte"
+        },
+        {
+          "applying": true,
+          "aspectKey": "SEXTIL",
+          "aspectLabel": "⚹ Sextil",
+          "date": "2026-09-25T01:28:14Z",
+          "exactDate": "2026-09-25",
+          "id": "progressedToProgressed-LUNA-SEXTIL-MARTE--1-2026-09-25",
+          "kind": "progressedToProgressed",
+          "orb": 0,
+          "priority": 3,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "MARTE",
+          "targetLabel": "Marte"
+        },
+        {
+          "applying": true,
+          "aspectKey": "OPOSICION",
+          "aspectLabel": "☍ Oposición",
+          "date": "2026-10-21T02:30:12Z",
+          "exactDate": "2026-10-21",
+          "id": "progressedToNatal-LUNA-OPOSICION-MERCURIO-1-2026-10-21",
+          "kind": "progressedToNatal",
+          "orb": 0,
+          "priority": 5,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "MERCURIO",
+          "targetLabel": "Mercurio"
+        },
+        {
+          "applying": true,
+          "aspectKey": "CONJUNCION",
+          "aspectLabel": "☌ Conjunción",
+          "date": "2026-10-21T02:30:12Z",
+          "exactDate": "2026-10-21",
+          "id": "progressedToNatal-LUNA-CONJUNCION-MERCURIO-1-2026-10-21",
+          "kind": "progressedToNatal",
+          "orb": 0,
+          "priority": 5,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "MERCURIO",
+          "targetLabel": "Mercurio"
+        },
+        {
+          "applying": true,
+          "aspectKey": "TRIGONO",
+          "aspectLabel": "△ Trígono",
+          "date": "2026-10-21T21:22:51Z",
+          "exactDate": "2026-10-21",
+          "id": "progressedToNatal-LUNA-TRIGONO-ASC-1-2026-10-21",
+          "kind": "progressedToNatal",
+          "orb": 0,
+          "priority": 5,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "ASC",
+          "targetLabel": "Ascendente natal"
+        },
+        {
+          "applying": true,
+          "aspectKey": "SEXTIL",
+          "aspectLabel": "⚹ Sextil",
+          "date": "2026-10-21T21:22:51Z",
+          "exactDate": "2026-10-21",
+          "id": "progressedToNatal-LUNA-SEXTIL-ASC--1-2026-10-21",
+          "kind": "progressedToNatal",
+          "orb": 0,
+          "priority": 5,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "ASC",
+          "targetLabel": "Ascendente natal"
+        },
+        {
+          "applying": true,
+          "aspectKey": "CONJUNCION",
+          "aspectLabel": "☌ Conjunción",
+          "date": "2026-11-09T22:26:45Z",
+          "exactDate": "2026-11-09",
+          "id": "progressedToProgressed-LUNA-CONJUNCION-PLUTON-1-2026-11-09",
+          "kind": "progressedToProgressed",
+          "orb": 0,
+          "priority": 4,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "PLUTON",
+          "targetLabel": "Plutón"
+        },
+        {
+          "applying": true,
+          "aspectKey": "OPOSICION",
+          "aspectLabel": "☍ Oposición",
+          "date": "2026-11-09T22:26:45Z",
+          "exactDate": "2026-11-09",
+          "id": "progressedToProgressed-LUNA-OPOSICION-PLUTON-1-2026-11-09",
+          "kind": "progressedToProgressed",
+          "orb": 0,
+          "priority": 4,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "PLUTON",
+          "targetLabel": "Plutón"
+        },
+        {
+          "applying": true,
+          "aspectKey": "OPOSICION",
+          "aspectLabel": "☍ Oposición",
+          "date": "2027-02-19T01:48:39Z",
+          "exactDate": "2027-02-19",
+          "id": "progressedToNatal-LUNA-OPOSICION-MARTE-1-2027-02-19",
+          "kind": "progressedToNatal",
+          "orb": 0,
+          "priority": 5,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "MARTE",
+          "targetLabel": "Marte"
+        },
+        {
+          "applying": true,
+          "aspectKey": "CONJUNCION",
+          "aspectLabel": "☌ Conjunción",
+          "date": "2027-02-19T01:48:39Z",
+          "exactDate": "2027-02-19",
+          "id": "progressedToNatal-LUNA-CONJUNCION-MARTE-1-2027-02-19",
+          "kind": "progressedToNatal",
+          "orb": 0,
+          "priority": 5,
+          "progressedKey": "LUNA",
+          "progressedLabel": "Luna",
+          "progressedRetrograde": false,
+          "targetKey": "MARTE",
+          "targetLabel": "Marte"
+        }
+      ],
+      "snapshot": {
+        "ageYears": 86.2209834095476,
+        "ascendant": {
+          "formatted": "♐ Sagitario 10°48'",
+          "house": 1,
+          "key": "ASC",
+          "label": "Ascendente",
+          "longitude": 250.81095436289633
+        },
+        "ascendantMode": "naibod",
+        "bodies": [
+          {
+            "declination": -6.379945339088021,
+            "formatted": "♎ Libra 16°13'",
+            "house": 10,
+            "key": "SOL",
+            "label": "☉ Sol",
+            "longitude": 196.21861874861463,
+            "retrograde": false,
+            "speed": 0.9884567462014933
+          },
+          {
+            "declination": -14.716071653346868,
+            "formatted": "♒ Acuario 02°55'",
+            "house": 2,
+            "key": "LUNA",
+            "label": "☽ Luna",
+            "longitude": 302.92168166843425,
+            "retrograde": false,
+            "speed": 12.54400164771683
+          },
+          {
+            "declination": -16.206610711983835,
+            "formatted": "♏ Escorpio 08°29'",
+            "house": 11,
+            "key": "MERCURIO",
+            "label": "☿ Mercurio",
+            "longitude": 218.49243226738744,
+            "retrograde": false,
+            "speed": 1.320456347668404
+          },
+          {
+            "declination": 10.5888196946662,
+            "formatted": "♍ Virgo 03°09'",
+            "house": 9,
+            "key": "VENUS",
+            "label": "♀ Venus",
+            "longitude": 153.15890558819493,
+            "retrograde": false,
+            "speed": 1.1335575955769779
+          },
+          {
+            "declination": -0.16776410196325184,
+            "formatted": "♎ Libra 02°37'",
+            "house": 10,
+            "key": "MARTE",
+            "label": "♂ Marte",
+            "longitude": 182.63038096467574,
+            "retrograde": false,
+            "speed": 0.6449301697023377
+          },
+          {
+            "declination": 14.611734223429123,
+            "formatted": "♉ Tauro 13°41'",
+            "house": 5,
+            "key": "JUPITER",
+            "label": "♃ Júpiter",
+            "longitude": 43.697196066247876,
+            "retrograde": true,
+            "speed": -0.10679754421977107
+          },
+          {
+            "declination": 13.297976384002075,
+            "formatted": "♉ Tauro 13°13'",
+            "house": 5,
+            "key": "SATURNO",
+            "label": "♄ Saturno",
+            "longitude": 43.21834957364505,
+            "retrograde": true,
+            "speed": -0.06688554218024564
+          },
+          {
+            "declination": 18.884979247693185,
+            "formatted": "♉ Tauro 25°33'",
+            "house": 6,
+            "key": "URANO",
+            "label": "⛢ Urano",
+            "longitude": 55.553479335214504,
+            "retrograde": true,
+            "speed": -0.029335184021840394
+          },
+          {
+            "declination": 2.682100242986258,
+            "formatted": "♍ Virgo 26°01'",
+            "house": 9,
+            "key": "NEPTUNO",
+            "label": "♆ Neptuno",
+            "longitude": 176.02835868736898,
+            "retrograde": false,
+            "speed": 0.03532650361884359
+          },
+          {
+            "declination": 23.11952494107604,
+            "formatted": "♌ Leo 04°11'",
+            "house": 8,
+            "key": "PLUTON",
+            "label": "♇ Plutón",
+            "longitude": 124.18752074562677,
+            "retrograde": false,
+            "speed": 0.011385961141440063
+          },
+          {
+            "declination": -4.363215740241371,
+            "formatted": "♎ Libra 11°01'",
+            "house": 10,
+            "key": "NODO_NORTE",
+            "label": "☊ Nodo Norte",
+            "longitude": 191.0239563670649,
+            "retrograde": false,
+            "speed": 0.005707606819530278
+          }
+        ],
+        "calculatedAt": "2026-10-04T18:30:30Z",
+        "chartID": "44444444-4444-4444-4444-444444444444",
+        "chartName": "Control horario Madrid 1940 (no biografía)",
+        "cusps": [
+          250.81095436289633,
+          284.3028681119322,
+          323.0487366996827,
+          359.37395344121717,
+          28.298754186423878,
+          51.12071341261776,
+          70.81095436289633,
+          104.30286811193218,
+          143.0487366996827,
+          179.37395344121717,
+          208.29875418642388,
+          231.12071341261776
+        ],
+        "highlightedChanges": [
+          {
+            "bodyKey": "LUNA",
+            "bodyLabel": "Luna progresada",
+            "date": "2021-10-27T01:29:59Z",
+            "dateLabel": "2021-10-27",
+            "description": "La fase lunar progresada entra en fase creciente.",
+            "fromValue": "Nueva",
+            "id": "phase-highlight-45-2021-10-27",
+            "kind": "lunarPhase",
+            "longitude": 45,
+            "priority": 3,
+            "toValue": "Creciente"
+          },
+          {
+            "bodyKey": "VENUS",
+            "bodyLabel": "Venus progresada",
+            "date": "2023-12-17T05:58:52Z",
+            "dateLabel": "2023-12-17",
+            "description": "Venus progresada cambia de ♌ Leo a ♍ Virgo.",
+            "fromValue": "♌ Leo",
+            "id": "sign-VENUS-5-2023-12-17",
+            "kind": "planetSign",
+            "longitude": 150,
+            "priority": 4,
+            "toValue": "♍ Virgo"
+          },
+          {
+            "bodyKey": "NODO_NORTE",
+            "bodyLabel": "Nodo Norte progresado",
+            "date": "2025-04-23T07:49:41Z",
+            "dateLabel": "2025-04-23",
+            "description": "Nodo Norte progresado estaciona y pasa a movimiento directo.",
+            "fromValue": "Retrógrado",
+            "id": "station-NODO_NORTE-Directo-2025-04-23",
+            "kind": "station",
+            "longitude": 191.0200763682491,
+            "priority": 5,
+            "toValue": "Directo"
+          },
+          {
+            "bodyKey": "LUNA",
+            "bodyLabel": "Luna progresada",
+            "date": "2025-05-04T12:57:58Z",
+            "dateLabel": "2025-05-04",
+            "description": "La fase lunar progresada entra en fase cuarto creciente.",
+            "fromValue": "Creciente",
+            "id": "phase-highlight-90-2025-05-04",
+            "kind": "lunarPhase",
+            "longitude": 90,
+            "priority": 3,
+            "toValue": "Cuarto creciente"
+          },
+          {
+            "bodyKey": "LUNA",
+            "bodyLabel": "Luna progresada",
+            "date": "2029-04-10T01:44:48Z",
+            "dateLabel": "2029-04-10",
+            "description": "La fase lunar progresada entra en fase gibosa.",
+            "fromValue": "Cuarto creciente",
+            "id": "phase-highlight-135-2029-04-10",
+            "kind": "lunarPhase",
+            "longitude": 135,
+            "priority": 3,
+            "toValue": "Gibosa"
+          }
+        ],
+        "lunarPhase": {
+          "angle": 106.703,
+          "id": "phase-current-106.703",
+          "name": "Cuarto creciente",
+          "nextBoundary": 135,
+          "startsAt": "2026-10-03T23:59:59Z"
+        },
+        "mc": {
+          "formatted": "♍ Virgo 29°22'",
+          "house": 10,
+          "key": "MC",
+          "label": "Medio Cielo",
+          "longitude": 179.37395344121717
+        },
+        "natalJulianDay": 2429825.9583333335,
+        "nextLunarHouseIngresses": [
+          {
+            "bodyKey": "LUNA",
+            "bodyLabel": "Luna progresada",
+            "date": "2028-07-22T21:58:08Z",
+            "dateLabel": "2028-07-22",
+            "description": "La Luna progresada ingresa en Casa 3.",
+            "fromValue": "Casa 2",
+            "id": "moon-house-3-2028-07-22",
+            "kind": "lunarHouse",
+            "longitude": 325.09247337770523,
+            "priority": 4,
+            "toValue": "Casa 3"
+          },
+          {
+            "bodyKey": "LUNA",
+            "bodyLabel": "Luna progresada",
+            "date": "2031-11-26T10:48:07Z",
+            "dateLabel": "2031-11-26",
+            "description": "La Luna progresada ingresa en Casa 4.",
+            "fromValue": "Casa 3",
+            "id": "moon-house-4-2031-11-26",
+            "kind": "lunarHouse",
+            "longitude": 4.900353902364217,
+            "priority": 4,
+            "toValue": "Casa 4"
+          },
+          {
+            "bodyKey": "LUNA",
+            "bodyLabel": "Luna progresada",
+            "date": "2034-06-27T21:10:32Z",
+            "dateLabel": "2034-06-27",
+            "description": "La Luna progresada ingresa en Casa 5.",
+            "fromValue": "Casa 4",
+            "id": "moon-house-5-2034-06-27",
+            "kind": "lunarHouse",
+            "longitude": 35.459168116958175,
+            "priority": 4,
+            "toValue": "Casa 5"
+          }
+        ],
+        "nextLunarPhaseTransitions": [
+          {
+            "angle": 135,
+            "dateLabel": "2029-04-10",
+            "id": "phase-135-2029-04-10",
+            "name": "Gibosa",
+            "nextBoundary": 180,
+            "startsAt": "2029-04-10T04:51:38Z"
+          },
+          {
+            "angle": 180,
+            "dateLabel": "2033-06-03",
+            "id": "phase-180-2033-06-03",
+            "name": "Llena",
+            "nextBoundary": 225,
+            "startsAt": "2033-06-03T02:38:51Z"
+          }
+        ],
+        "nextLunarSignIngresses": [
+          {
+            "bodyKey": "LUNA",
+            "bodyLabel": "Luna progresada",
+            "date": "2028-12-18T10:42:56Z",
+            "dateLabel": "2028-12-18",
+            "description": "La Luna progresada ingresa en ♓ Piscis.",
+            "fromValue": "♒ Acuario",
+            "id": "moon-sign-11-2028-12-18",
+            "kind": "lunarSign",
+            "longitude": 330,
+            "priority": 4,
+            "toValue": "♓ Piscis"
+          },
+          {
+            "bodyKey": "LUNA",
+            "bodyLabel": "Luna progresada",
+            "date": "2031-06-27T19:18:08Z",
+            "dateLabel": "2031-06-27",
+            "description": "La Luna progresada ingresa en ♈ Aries.",
+            "fromValue": "♓ Piscis",
+            "id": "moon-sign-0-2031-06-27",
+            "kind": "lunarSign",
+            "longitude": 0,
+            "priority": 4,
+            "toValue": "♈ Aries"
+          },
+          {
+            "bodyKey": "LUNA",
+            "bodyLabel": "Luna progresada",
+            "date": "2034-01-10T18:47:27Z",
+            "dateLabel": "2034-01-10",
+            "description": "La Luna progresada ingresa en ♉ Tauro.",
+            "fromValue": "♈ Aries",
+            "id": "moon-sign-1-2034-01-10",
+            "kind": "lunarSign",
+            "longitude": 30,
+            "priority": 4,
+            "toValue": "♉ Tauro"
+          }
+        ],
+        "progressedJulianDay": 2429912.179316743,
+        "targetDate": "2026-10-04T00:00:00Z"
+      }
+    }
+  },
+  "warnings": []
+}

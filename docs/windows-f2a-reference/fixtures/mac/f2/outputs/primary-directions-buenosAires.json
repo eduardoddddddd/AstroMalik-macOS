@@ -1,0 +1,141 @@
+{
+  "chart": {
+    "ascendant": "♊ Géminis 23°12'",
+    "birthDate": "1985-03-15",
+    "birthTime": "14:00",
+    "houseSystem": "Placidus",
+    "id": "22222222-2222-2222-2222-222222222222",
+    "latitude": -34.6037,
+    "longitude": -58.3816,
+    "mc": "♈ Aries 10°43'",
+    "name": "Buenos Aires Control",
+    "placeName": "Buenos Aires, Argentina",
+    "timezone": "America/Argentina/Buenos_Aires"
+  },
+  "events": [
+    {
+      "date": "2025-12-21",
+      "detail": "Edad estimada 40.77",
+      "id": "03357111-3498-40A5-B921-DC6206FB02AE",
+      "priority": 3,
+      "source": "primary-direction",
+      "title": "♃ Júpiter □ Cuadratura ASC"
+    },
+    {
+      "date": "2026-08-08",
+      "detail": "Edad estimada 41.40",
+      "id": "D7A1C37D-FBD4-42C2-9804-794B6C74768F",
+      "priority": 2,
+      "source": "primary-direction",
+      "title": "☿ Mercurio △ Trígono ☽ Luna"
+    },
+    {
+      "date": "2027-04-06",
+      "detail": "Edad estimada 42.06",
+      "id": "3067A9EB-20BE-4D27-A0F7-EF4E52670742",
+      "priority": 3,
+      "source": "primary-direction",
+      "title": "♇ Plutón □ Cuadratura ASC"
+    }
+  ],
+  "interpretations": [],
+  "metadata": {
+    "chartID": "22222222-2222-2222-2222-222222222222",
+    "chartName": "Buenos Aires Control",
+    "command": "primary-directions",
+    "date": "2026-10-04T00:00:00Z",
+    "format": "json",
+    "generatedAt": "2026-10-04T18:30:27Z",
+    "narrative": "none",
+    "scope": "complete",
+    "timezone": "America/Argentina/Buenos_Aires"
+  },
+  "networkUsed": false,
+  "source": "local",
+  "technicalData": {
+    "primaryDirections": [
+      {
+        "arc": -40.184840739302956,
+        "aspect": "cuadratura",
+        "aspectAngle": 90,
+        "aspectPlane": "zodiacal",
+        "directionType": "directa",
+        "estimatedAge": 40.77000354011342,
+        "estimatedDate": "2025-12-21T22:51:03Z",
+        "id": "03357111-3498-40A5-B921-DC6206FB02AE",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "JUPITER",
+        "promissorLabel": "♃ Júpiter",
+        "significator": "ASC",
+        "significatorLabel": "ASC",
+        "technicalData": {
+          "geoLatitude": -34.6037,
+          "obliquity": 23.44294245793368,
+          "promissorDeclination": -18.65416238987617,
+          "promissorRA": 310.48545953676086,
+          "ramc": 9.857152202282343,
+          "significatorDeclination": 23.268454624791303,
+          "significatorPole": -34.6037,
+          "significatorRA": 82.5983184794147
+        },
+        "weight": 3
+      },
+      {
+        "arc": -40.8042830998606,
+        "aspect": "trigono",
+        "aspectAngle": 120,
+        "aspectPlane": "zodiacal",
+        "directionType": "directa",
+        "estimatedAge": 41.39846608390374,
+        "estimatedDate": "2026-08-08T11:57:13Z",
+        "id": "D7A1C37D-FBD4-42C2-9804-794B6C74768F",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "MERCURIO",
+        "promissorLabel": "☿ Mercurio",
+        "significator": "LUNA",
+        "significatorLabel": "☽ Luna",
+        "technicalData": {
+          "geoLatitude": -34.6037,
+          "obliquity": 23.44294245793368,
+          "promissorDeclination": 6.9674709921121405,
+          "promissorRA": 11.4864780077533,
+          "ramc": 9.857152202282343,
+          "significatorDeclination": -26.41288103947822,
+          "significatorPole": -31.0933687702509,
+          "significatorRA": 291.4891310487407
+        },
+        "weight": 2
+      },
+      {
+        "arc": -41.45344828978841,
+        "aspect": "cuadratura",
+        "aspectAngle": 90,
+        "aspectPlane": "zodiacal",
+        "directionType": "conversa",
+        "estimatedAge": 42.057084274359575,
+        "estimatedDate": "2027-04-06T01:24:02Z",
+        "id": "3067A9EB-20BE-4D27-A0F7-EF4E52670742",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "PLUTON",
+        "promissorLabel": "♇ Plutón",
+        "significator": "ASC",
+        "significatorLabel": "ASC",
+        "technicalData": {
+          "geoLatitude": -34.6037,
+          "obliquity": 23.44294245793368,
+          "promissorDeclination": 3.2283116677224863,
+          "promissorRA": 217.80681082996756,
+          "ramc": 9.857152202282343,
+          "significatorDeclination": 23.268454624791303,
+          "significatorPole": -17.358215519429,
+          "significatorRA": 82.5983184794147
+        },
+        "weight": 3
+      }
+    ]
+  },
+  "warnings": []
+}

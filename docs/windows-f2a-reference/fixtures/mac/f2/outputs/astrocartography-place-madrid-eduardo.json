@@ -1,0 +1,759 @@
+{
+  "analysis": {
+    "location": {
+      "latitude": 40.4168,
+      "longitude": -3.7038
+    },
+    "proximities": [
+      {
+        "distanceKm": 21.238353314862135,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "LUNA"
+        },
+        "nearestPoint": {
+          "latitude": 40.4926841714339,
+          "longitude": -3.47344738873619
+        }
+      },
+      {
+        "distanceKm": 95.99209103098953,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "JUPITER"
+        },
+        "nearestPoint": {
+          "latitude": 40.79480818520937,
+          "longitude": -2.6815142534110237
+        }
+      },
+      {
+        "distanceKm": 635.5875142869845,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "SATURNO"
+        },
+        "nearestPoint": {
+          "latitude": 40.66105497294232,
+          "longitude": 3.8129886185194835
+        }
+      },
+      {
+        "distanceKm": 758.8473819081271,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "VENUS"
+        },
+        "nearestPoint": {
+          "latitude": 38.02292377167995,
+          "longitude": -11.957616097764458
+        }
+      },
+      {
+        "distanceKm": 840.952710726097,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "NEPTUNO"
+        },
+        "nearestPoint": {
+          "latitude": 44.51229456543897,
+          "longitude": 4.925073223569825
+        }
+      },
+      {
+        "distanceKm": 1096.4775886795403,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "PLUTON"
+        },
+        "nearestPoint": {
+          "latitude": 43.596122672587086,
+          "longitude": -16.28243328044539
+        }
+      },
+      {
+        "distanceKm": 1443.7256563297235,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "URANO"
+        },
+        "nearestPoint": {
+          "latitude": 37.78294726489947,
+          "longitude": -20.11323013399638
+        }
+      },
+      {
+        "distanceKm": 1716.781451449714,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "MARTE"
+        },
+        "nearestPoint": {
+          "latitude": 37.96429378331743,
+          "longitude": -23.414964475446084
+        }
+      },
+      {
+        "distanceKm": 2456.37900226652,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "SOL"
+        },
+        "nearestPoint": {
+          "latitude": 40.405748013538485,
+          "longitude": -32.85056793946899
+        }
+      },
+      {
+        "distanceKm": 3005.0120729568716,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "MERCURIO"
+        },
+        "nearestPoint": {
+          "latitude": 47.527598574409346,
+          "longitude": -40.327798711661785
+        }
+      },
+      {
+        "distanceKm": 3577.750324627667,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "SATURNO"
+        },
+        "nearestPoint": {
+          "latitude": 71.75863777705668,
+          "longitude": -18.267738540803123
+        }
+      },
+      {
+        "distanceKm": 3647.4950949477643,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "SATURNO"
+        },
+        "nearestPoint": {
+          "latitude": 73.01679655885346,
+          "longitude": 3.812988618519512
+        }
+      },
+      {
+        "distanceKm": 4110.703489343293,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "MERCURIO"
+        },
+        "nearestPoint": {
+          "latitude": 54.240431702587095,
+          "longitude": 48.47057610297264
+        }
+      },
+      {
+        "distanceKm": 4558.960849347386,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "NEPTUNO"
+        },
+        "nearestPoint": {
+          "latitude": 59.211061210150866,
+          "longitude": -63.21191942283659
+        }
+      },
+      {
+        "distanceKm": 4670.15531943517,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "NEPTUNO"
+        },
+        "nearestPoint": {
+          "latitude": 69.25417276065892,
+          "longitude": -63.211919422836615
+        }
+      },
+      {
+        "distanceKm": 4952.3462344787,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "SOL"
+        },
+        "nearestPoint": {
+          "latitude": 65.44771585602297,
+          "longitude": 63.40249231573438
+        }
+      },
+      {
+        "distanceKm": 4961.931761497921,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "PLUTON"
+        },
+        "nearestPoint": {
+          "latitude": 65.63447991009221,
+          "longitude": 63.610695181385694
+        }
+      },
+      {
+        "distanceKm": 5142.187456602714,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "JUPITER"
+        },
+        "nearestPoint": {
+          "latitude": 69.63288868717692,
+          "longitude": -75.27411284112756
+        }
+      },
+      {
+        "distanceKm": 5143.635042070483,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "JUPITER"
+        },
+        "nearestPoint": {
+          "latitude": 70.88120823009614,
+          "longitude": -75.27411284112756
+        }
+      },
+      {
+        "distanceKm": 5148.835696366593,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "PLUTON"
+        },
+        "nearestPoint": {
+          "latitude": 79.55744663704334,
+          "longitude": 63.61069518138572
+        }
+      },
+      {
+        "distanceKm": 5234.984224388953,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "LUNA"
+        },
+        "nearestPoint": {
+          "latitude": 72.18806519098905,
+          "longitude": -77.82486105811694
+        }
+      },
+      {
+        "distanceKm": 5235.055211114545,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "DSC",
+          "body": "LUNA"
+        },
+        "nearestPoint": {
+          "latitude": 72.46854278751873,
+          "longitude": -77.82486105811694
+        }
+      },
+      {
+        "distanceKm": 5397.322818279339,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "MARTE"
+        },
+        "nearestPoint": {
+          "latitude": 78.2968924127018,
+          "longitude": 76.1360403914706
+        }
+      },
+      {
+        "distanceKm": 5439.0432182355335,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "MERCURIO"
+        },
+        "nearestPoint": {
+          "latitude": 88.90019345542683,
+          "longitude": 48.47057610297264
+        }
+      },
+      {
+        "distanceKm": 5465.976032204536,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "VENUS"
+        },
+        "nearestPoint": {
+          "latitude": 82.46305443806529,
+          "longitude": -87.2345294716612
+        }
+      },
+      {
+        "distanceKm": 5473.561442324034,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "URANO"
+        },
+        "nearestPoint": {
+          "latitude": 83.08621464064528,
+          "longitude": 80.3693028820573
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "JUPITER"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": 104.72588715887241
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "LUNA"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": 102.17513894188306
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "MARTE"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": -103.86395960852926
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "MERCURIO"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": -131.52942389702736
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "NEPTUNO"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": 116.78808057716338
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "PLUTON"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": -116.38930481861428
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "SATURNO"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": -176.18701138148052
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "SOL"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": -116.59750768426558
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "MC",
+          "body": "URANO"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": -99.6306971179425
+        }
+      },
+      {
+        "distanceKm": 5513.407902235309,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "IC",
+          "body": "VENUS"
+        },
+        "nearestPoint": {
+          "latitude": 90,
+          "longitude": 92.76547052833871
+        }
+      },
+      {
+        "distanceKm": 5557.093430196327,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "VENUS"
+        },
+        "nearestPoint": {
+          "latitude": 71.99448801788256,
+          "longitude": -87.23452947166129
+        }
+      },
+      {
+        "distanceKm": 5801.77958134264,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "URANO"
+        },
+        "nearestPoint": {
+          "latitude": 76.79204446265423,
+          "longitude": -99.6306971179425
+        }
+      },
+      {
+        "distanceKm": 5858.053148925098,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "MARTE"
+        },
+        "nearestPoint": {
+          "latitude": 77.99498636742355,
+          "longitude": -103.86395960852926
+        }
+      },
+      {
+        "distanceKm": 5863.821899347531,
+        "estimatedErrorKm": 0.900001,
+        "lineID": {
+          "angle": "ASC",
+          "body": "SOL"
+        },
+        "nearestPoint": {
+          "latitude": 82.7083674942028,
+          "longitude": -116.59750768426558
+        }
+      }
+    ],
+    "request": {
+      "bodies": [
+        "SOL",
+        "LUNA",
+        "MERCURIO",
+        "VENUS",
+        "MARTE",
+        "JUPITER",
+        "SATURNO",
+        "URANO",
+        "NEPTUNO",
+        "PLUTON"
+      ],
+      "contractVersion": 1,
+      "convention": "geocentric-apparent-of-date-geometric-center-v1",
+      "geometryToleranceKm": 0.9,
+      "instant": {
+        "julianDay": 2443063.314583333,
+        "timeScale": "utcApproximatedAsUT1"
+      }
+    },
+    "sphereRadiusKm": 6371.0088
+  },
+  "curveSnapshot": {
+    "greenwichSiderealDegrees": 313.7619873804721,
+    "positions": [
+      {
+        "body": "SOL",
+        "declinationDegrees": -7.291632505797197,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 197.16447969620648
+      },
+      {
+        "body": "LUNA",
+        "declinationDegrees": 17.531457212481275,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 55.93712632235513
+      },
+      {
+        "body": "MERCURIO",
+        "declinationDegrees": 1.0998065445731806,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 182.23256348344472
+      },
+      {
+        "body": "VENUS",
+        "declinationDegrees": -18.00551198211744,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 226.5274579088108
+      },
+      {
+        "body": "MARTE",
+        "declinationDegrees": -12.00501363257645,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 209.89802777194282
+      },
+      {
+        "body": "JUPITER",
+        "declinationDegrees": 19.11879176990386,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 58.48787453934451
+      },
+      {
+        "body": "SATURNO",
+        "declinationDegrees": 16.983203441146536,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 137.57497599899156
+      },
+      {
+        "body": "URANO",
+        "declinationDegrees": -13.207955537345772,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 214.13129026252957
+      },
+      {
+        "body": "NEPTUNO",
+        "declinationDegrees": -20.745827239341075,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 250.55006795763546
+      },
+      {
+        "body": "PLUTON",
+        "declinationDegrees": 10.442553362956652,
+        "returnedFlags": 2050,
+        "rightAscensionDegrees": 197.3726825618578
+      }
+    ],
+    "provenance": {
+      "algorithmVersion": "f1.1-equatorial-snapshot",
+      "diagnostics": [],
+      "libraryVersion": "2.10.03",
+      "source": "swissEphemeris"
+    },
+    "request": {
+      "bodies": [
+        "SOL",
+        "LUNA",
+        "MERCURIO",
+        "VENUS",
+        "MARTE",
+        "JUPITER",
+        "SATURNO",
+        "URANO",
+        "NEPTUNO",
+        "PLUTON"
+      ],
+      "contractVersion": 1,
+      "convention": "geocentric-apparent-of-date-geometric-center-v1",
+      "geometryToleranceKm": 0.9,
+      "instant": {
+        "julianDay": 2443063.314583333,
+        "timeScale": "utcApproximatedAsUT1"
+      }
+    }
+  },
+  "relocation": {
+    "chart": {
+      "ascendantDegrees": 60.542776128902716,
+      "bodies": [
+        {
+          "body": "SOL",
+          "house": 6,
+          "longitudeDegrees": 198.60606247049995
+        },
+        {
+          "body": "LUNA",
+          "house": 12,
+          "longitudeDegrees": 57.691921399865876
+        },
+        {
+          "body": "MERCURIO",
+          "house": 5,
+          "longitudeDegrees": 181.6110501474883
+        },
+        {
+          "body": "VENUS",
+          "house": 6,
+          "longitudeDegrees": 229.13040682597597
+        },
+        {
+          "body": "MARTE",
+          "house": 6,
+          "longitudeDegrees": 212.00973365954678
+        },
+        {
+          "body": "JUPITER",
+          "house": 12,
+          "longitudeDegrees": 60.39970383263645
+        },
+        {
+          "body": "SATURNO",
+          "house": 4,
+          "longitudeDegrees": 134.91161637914522
+        },
+        {
+          "body": "URANO",
+          "house": 6,
+          "longitudeDegrees": 216.30459088434702
+        },
+        {
+          "body": "NEPTUNO",
+          "house": 7,
+          "longitudeDegrees": 251.85058056545586
+        },
+        {
+          "body": "PLUTON",
+          "house": 5,
+          "longitudeDegrees": 191.87208217286684
+        }
+      ],
+      "cuspsDegrees": [
+        60.542776128902716,
+        84.8885861869915,
+        105.62427285893865,
+        127.64810877414453,
+        155.5232108782467,
+        194.4574454818698,
+        240.54277612890272,
+        264.8885861869915,
+        285.62427285893864,
+        307.64810877414453,
+        335.5232108782467,
+        14.45744548186981
+      ],
+      "destination": {
+        "latitude": 40.4168,
+        "longitude": -3.7038
+      },
+      "diagnostics": [
+        {
+          "code": "retained-natal-geocentric",
+          "message": "Longitudes geocéntricas copiadas sin cambio de la natal; solo se recalculan casas y ángulos en el mismo JD. Casas de cuerpos por longitud eclíptica, no prueba de coincidencia mundana con una línea.",
+          "severity": "information"
+        }
+      ],
+      "houseSystem": "Placidus",
+      "instant": {
+        "julianDay": 2443063.314583333,
+        "timeScale": "utcApproximatedAsUT1"
+      },
+      "mcDegrees": 307.64810877414453,
+      "natalChartID": "11111111-1111-1111-1111-111111111111"
+    },
+    "destinationTimeZone": {
+      "identifier": "Europe/Madrid",
+      "isVerified": true
+    },
+    "provenance": {
+      "algorithmVersion": "f4.2-retained-natal-houses-v1",
+      "diagnostics": [
+        {
+          "code": "retained-natal-geocentric",
+          "message": "Longitudes geocéntricas copiadas sin cambio de la natal; solo se recalculan casas y ángulos en el mismo JD. Casas de cuerpos por longitud eclíptica, no prueba de coincidencia mundana con una línea.",
+          "severity": "information"
+        }
+      ],
+      "libraryVersion": "2.10.03",
+      "source": "swissEphemeris"
+    },
+    "source": {
+      "bodies": [
+        {
+          "body": "SOL",
+          "longitudeDegrees": 198.60606247049995
+        },
+        {
+          "body": "LUNA",
+          "longitudeDegrees": 57.691921399865876
+        },
+        {
+          "body": "MERCURIO",
+          "longitudeDegrees": 181.6110501474883
+        },
+        {
+          "body": "VENUS",
+          "longitudeDegrees": 229.13040682597597
+        },
+        {
+          "body": "MARTE",
+          "longitudeDegrees": 212.00973365954678
+        },
+        {
+          "body": "JUPITER",
+          "longitudeDegrees": 60.39970383263645
+        },
+        {
+          "body": "SATURNO",
+          "longitudeDegrees": 134.91161637914522
+        },
+        {
+          "body": "URANO",
+          "longitudeDegrees": 216.30459088434702
+        },
+        {
+          "body": "NEPTUNO",
+          "longitudeDegrees": 251.85058056545586
+        },
+        {
+          "body": "PLUTON",
+          "longitudeDegrees": 191.87208217286684
+        }
+      ],
+      "houseSystem": "Placidus",
+      "instant": {
+        "julianDay": 2443063.314583333,
+        "timeScale": "utcApproximatedAsUT1"
+      },
+      "natalChartID": "11111111-1111-1111-1111-111111111111"
+    }
+  }
+}

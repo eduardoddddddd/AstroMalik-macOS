@@ -1,0 +1,106 @@
+{
+  "chart": {
+    "ascendant": "♊ Géminis 00°32'",
+    "birthDate": "1976-10-11",
+    "birthTime": "20:33",
+    "houseSystem": "Placidus",
+    "id": "11111111-1111-1111-1111-111111111111",
+    "latitude": 40.4168,
+    "longitude": -3.7038,
+    "mc": "♒ Acuario 07°38'",
+    "name": "Eduardo",
+    "placeName": "Madrid, España",
+    "timezone": "Europe/Madrid"
+  },
+  "events": [
+    {
+      "date": "2026-10-01",
+      "detail": "Edad estimada 49.97",
+      "id": "31CE182E-B090-482C-A9FA-D70E42F001DB",
+      "priority": 1,
+      "source": "primary-direction",
+      "title": "♆ Neptuno △ Trígono ☽ Luna"
+    },
+    {
+      "date": "2027-09-08",
+      "detail": "Edad estimada 50.91",
+      "id": "5CFDAD26-4905-47C5-AF33-8F9B85A19895",
+      "priority": 2,
+      "source": "primary-direction",
+      "title": "♃ Júpiter □ Cuadratura ☉ Sol"
+    }
+  ],
+  "interpretations": [],
+  "metadata": {
+    "chartID": "11111111-1111-1111-1111-111111111111",
+    "chartName": "Eduardo",
+    "command": "primary-directions",
+    "date": "2026-10-04T00:00:00Z",
+    "format": "json",
+    "generatedAt": "2026-10-04T18:30:26Z",
+    "narrative": "none",
+    "scope": "complete",
+    "timezone": "Europe/Madrid"
+  },
+  "networkUsed": false,
+  "source": "local",
+  "technicalData": {
+    "primaryDirections": [
+      {
+        "arc": -49.2522980108167,
+        "aspect": "trigono",
+        "aspectAngle": 120,
+        "aspectPlane": "zodiacal",
+        "directionType": "directa",
+        "estimatedAge": 49.969499127460004,
+        "estimatedDate": "2026-10-01T04:10:45Z",
+        "id": "31CE182E-B090-482C-A9FA-D70E42F001DB",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "NEPTUNO",
+        "promissorLabel": "♆ Neptuno",
+        "significator": "LUNA",
+        "significatorLabel": "☽ Luna",
+        "technicalData": {
+          "geoLatitude": 40.4168,
+          "obliquity": 23.440293863733878,
+          "promissorDeclination": -20.745827239341068,
+          "promissorRA": 250.55006795763543,
+          "ramc": 310.0581873804721,
+          "significatorDeclination": 17.53145721248128,
+          "significatorPole": 40.416477717573635,
+          "significatorRA": 55.93712632235513
+        },
+        "weight": 1
+      },
+      {
+        "arc": -50.17686908484897,
+        "aspect": "cuadratura",
+        "aspectAngle": 90,
+        "aspectPlane": "zodiacal",
+        "directionType": "directa",
+        "estimatedAge": 50.9075336018511,
+        "estimatedDate": "2027-09-08T18:59:22Z",
+        "id": "5CFDAD26-4905-47C5-AF33-8F9B85A19895",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "JUPITER",
+        "promissorLabel": "♃ Júpiter",
+        "significator": "SOL",
+        "significatorLabel": "☉ Sol",
+        "technicalData": {
+          "geoLatitude": 40.4168,
+          "obliquity": 23.440293863733878,
+          "promissorDeclination": 19.11879176990386,
+          "promissorRA": 58.487874539344496,
+          "ramc": 310.0581873804721,
+          "significatorDeclination": -7.291632505797183,
+          "significatorPole": 36.8378202552654,
+          "significatorRA": 197.16447969620643
+        },
+        "weight": 2
+      }
+    ]
+  },
+  "warnings": []
+}

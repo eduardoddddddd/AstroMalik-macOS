@@ -1,0 +1,202 @@
+{
+  "chart" : {
+    "ascendant" : "♊ Géminis 00°32'",
+    "birthDate" : "1976-10-11",
+    "birthTime" : "20:33",
+    "houseSystem" : "Placidus",
+    "id" : "11111111-1111-1111-1111-111111111111",
+    "latitude" : 40.4168,
+    "longitude" : -3.7038,
+    "mc" : "♒ Acuario 07°38'",
+    "name" : "Eduardo",
+    "placeName" : "Madrid, España",
+    "timezone" : "Europe\/Madrid"
+  },
+  "events" : [
+    {
+      "date" : "2026-05-23",
+      "detail" : "Edad exacta 49.61 · arco 49.74°",
+      "id" : "EAE5972B-EF55-4476-9D24-9508A46C69D3",
+      "priority" : 1,
+      "source" : "solar-arc",
+      "title" : "♇ Plutón ⚹ Sextil ☿ Mercurio"
+    },
+    {
+      "date" : "2026-05-30",
+      "detail" : "Edad exacta 49.63 · arco 49.76°",
+      "id" : "269FC5A7-15EA-4DC8-B368-BFC1F0AD9EEF",
+      "priority" : 1,
+      "source" : "solar-arc",
+      "title" : "♆ Neptuno △ Trígono ☿ Mercurio"
+    },
+    {
+      "date" : "2026-09-10",
+      "detail" : "Edad exacta 49.91 · arco 50.04°",
+      "id" : "1ECBD284-272F-43F3-A480-CD0B2E95D28D",
+      "priority" : 2,
+      "source" : "solar-arc",
+      "title" : "IC △ Trígono ☽ Luna"
+    },
+    {
+      "date" : "2026-09-10",
+      "detail" : "Edad exacta 49.91 · arco 50.04°",
+      "id" : "59E895CD-89B2-4195-88D5-7B3086CA0F1B",
+      "priority" : 2,
+      "source" : "solar-arc",
+      "title" : "MC ⚹ Sextil ☽ Luna"
+    },
+    {
+      "date" : "2026-10-21",
+      "detail" : "Edad exacta 50.03 · arco 50.16°",
+      "id" : "A92B0942-2E01-468E-9A06-F1F2C08F42BD",
+      "priority" : 1,
+      "source" : "solar-arc",
+      "title" : "♆ Neptuno □ Cuadratura ♂ Marte"
+    },
+    {
+      "date" : "2027-07-20",
+      "detail" : "Edad exacta 50.77 · arco 50.91°",
+      "id" : "EB3C03AE-BB35-421C-8BDC-8214B6C41AA0",
+      "priority" : 2,
+      "source" : "solar-arc",
+      "title" : "☽ Luna □ Cuadratura ☉ Sol"
+    }
+  ],
+  "interpretations" : [
+
+  ],
+  "metadata" : {
+    "chartID" : "11111111-1111-1111-1111-111111111111",
+    "chartName" : "Eduardo",
+    "command" : "solar-arc",
+    "date" : "2026-10-04T00:00:00Z",
+    "format" : "json",
+    "generatedAt" : "2026-10-04T18:30:26Z",
+    "narrative" : "none",
+    "scope" : "complete",
+    "timezone" : "Europe\/Madrid"
+  },
+  "networkUsed" : false,
+  "source" : "local",
+  "technicalData" : {
+    "solarArc" : [
+      {
+        "aspect" : "sextil",
+        "aspectAngle" : 60,
+        "directedLongitude" : 241.61105014717958,
+        "directedNatalLongitude" : 191.87208217286684,
+        "directedPoint" : "PLUTON",
+        "directedPointLabel" : "♇ Plutón",
+        "exactAge" : 49.610908165806904,
+        "exactDate" : "2026-05-23T04:46:15Z",
+        "id" : "EAE5972B-EF55-4476-9D24-9508A46C69D3",
+        "mode" : "real",
+        "natalLongitude" : 181.6110501474883,
+        "natalPoint" : "MERCURIO",
+        "natalPointLabel" : "☿ Mercurio",
+        "orb" : 0,
+        "polarity" : "acercandose",
+        "solarArc" : 49.73896797431274,
+        "weight" : 1
+      },
+      {
+        "aspect" : "trigono",
+        "aspectAngle" : 120,
+        "directedLongitude" : 301.61105014769134,
+        "directedNatalLongitude" : 251.85058056545586,
+        "directedPoint" : "NEPTUNO",
+        "directedPointLabel" : "♆ Neptuno",
+        "exactAge" : 49.63212542119436,
+        "exactDate" : "2026-05-30T22:45:41Z",
+        "id" : "269FC5A7-15EA-4DC8-B368-BFC1F0AD9EEF",
+        "mode" : "real",
+        "natalLongitude" : 181.6110501474883,
+        "natalPoint" : "MERCURIO",
+        "natalPointLabel" : "☿ Mercurio",
+        "orb" : 0,
+        "polarity" : "acercandose",
+        "solarArc" : 49.76046958223549,
+        "weight" : 1
+      },
+      {
+        "aspect" : "trigono",
+        "aspectAngle" : 120,
+        "directedLongitude" : 177.69192140000627,
+        "directedNatalLongitude" : 127.64810877414453,
+        "directedPoint" : "IC",
+        "directedPointLabel" : "IC",
+        "exactAge" : 49.91171042318456,
+        "exactDate" : "2026-09-10T01:36:12Z",
+        "id" : "1ECBD284-272F-43F3-A480-CD0B2E95D28D",
+        "mode" : "real",
+        "natalLongitude" : 57.691921399865876,
+        "natalPoint" : "LUNA",
+        "natalPointLabel" : "☽ Luna",
+        "orb" : 0,
+        "polarity" : "acercandose",
+        "solarArc" : 50.04381262586173,
+        "weight" : 2
+      },
+      {
+        "aspect" : "sextil",
+        "aspectAngle" : 60,
+        "directedLongitude" : 357.69192140000627,
+        "directedNatalLongitude" : 307.64810877414453,
+        "directedPoint" : "MC",
+        "directedPointLabel" : "MC",
+        "exactAge" : 49.91171042318456,
+        "exactDate" : "2026-09-10T01:36:12Z",
+        "id" : "59E895CD-89B2-4195-88D5-7B3086CA0F1B",
+        "mode" : "real",
+        "natalLongitude" : 57.691921399865876,
+        "natalPoint" : "LUNA",
+        "natalPointLabel" : "☽ Luna",
+        "orb" : 0,
+        "polarity" : "acercandose",
+        "solarArc" : 50.04381262586173,
+        "weight" : 2
+      },
+      {
+        "aspect" : "cuadratura",
+        "aspectAngle" : 90,
+        "directedLongitude" : 302.00973365976404,
+        "directedNatalLongitude" : 251.85058056545586,
+        "directedPoint" : "NEPTUNO",
+        "directedPointLabel" : "♆ Neptuno",
+        "exactAge" : 50.02551528881304,
+        "exactDate" : "2026-10-21T15:13:01Z",
+        "id" : "A92B0942-2E01-468E-9A06-F1F2C08F42BD",
+        "mode" : "real",
+        "natalLongitude" : 212.00973365954678,
+        "natalPoint" : "MARTE",
+        "natalPointLabel" : "♂ Marte",
+        "orb" : 0,
+        "polarity" : "acercandose",
+        "solarArc" : 50.15915309430818,
+        "weight" : 1
+      },
+      {
+        "aspect" : "cuadratura",
+        "aspectAngle" : 90,
+        "directedLongitude" : 108.60606247026207,
+        "directedNatalLongitude" : 57.691921399865876,
+        "directedPoint" : "LUNA",
+        "directedPointLabel" : "☽ Luna",
+        "exactAge" : 50.77036826708354,
+        "exactDate" : "2027-07-20T16:35:53Z",
+        "id" : "EB3C03AE-BB35-421C-8BDC-8214B6C41AA0",
+        "mode" : "real",
+        "natalLongitude" : 198.60606247049995,
+        "natalPoint" : "SOL",
+        "natalPointLabel" : "☉ Sol",
+        "orb" : 0,
+        "polarity" : "acercandose",
+        "solarArc" : 50.9141410703962,
+        "weight" : 2
+      }
+    ]
+  },
+  "warnings" : [
+
+  ]
+}

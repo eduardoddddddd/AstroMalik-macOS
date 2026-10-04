@@ -1,0 +1,176 @@
+{
+  "chart": {
+    "ascendant": "♎ Libra 03°32'",
+    "birthDate": "1940-07-15",
+    "birthTime": "12:00:00",
+    "houseSystem": "Placidus",
+    "id": "44444444-4444-4444-4444-444444444444",
+    "latitude": 40.4168,
+    "longitude": -3.7038,
+    "mc": "♋ Cáncer 04°04'",
+    "name": "Control horario Madrid 1940 (no biografía)",
+    "placeName": "Madrid, España",
+    "timezone": "Europe/Madrid"
+  },
+  "events": [
+    {
+      "date": "2026-01-03",
+      "detail": "Edad estimada 85.47",
+      "id": "EA998129-2C18-4259-93E2-CA526B267D9B",
+      "priority": 3,
+      "source": "primary-direction",
+      "title": "♃ Júpiter ⚹ Sextil ASC"
+    },
+    {
+      "date": "2026-03-27",
+      "detail": "Edad estimada 85.70",
+      "id": "B9CE4ACF-3C36-4474-A0B6-2A4BBE245B71",
+      "priority": 3,
+      "source": "primary-direction",
+      "title": "♄ Saturno △ Trígono MC"
+    },
+    {
+      "date": "2026-06-14",
+      "detail": "Edad estimada 85.91",
+      "id": "81154AF2-02E2-4B06-BFA8-7B8FA85889E0",
+      "priority": 2,
+      "source": "primary-direction",
+      "title": "♃ Júpiter △ Trígono ☽ Luna"
+    },
+    {
+      "date": "2026-07-27",
+      "detail": "Edad estimada 86.03",
+      "id": "53082841-7F59-43B8-B081-5C74FE870F8F",
+      "priority": 2,
+      "source": "primary-direction",
+      "title": "♂ Marte □ Cuadratura ☉ Sol"
+    }
+  ],
+  "interpretations": [],
+  "metadata": {
+    "chartID": "44444444-4444-4444-4444-444444444444",
+    "chartName": "Control horario Madrid 1940 (no biografía)",
+    "command": "primary-directions",
+    "date": "2026-10-04T00:00:00Z",
+    "format": "json",
+    "generatedAt": "2026-10-04T18:30:30Z",
+    "narrative": "none",
+    "scope": "complete",
+    "timezone": "Europe/Madrid"
+  },
+  "networkUsed": false,
+  "source": "local",
+  "technicalData": {
+    "primaryDirections": [
+      {
+        "arc": -84.2433191787695,
+        "aspect": "sextil",
+        "aspectAngle": 60,
+        "aspectPlane": "zodiacal",
+        "directionType": "directa",
+        "estimatedAge": 85.47005183947667,
+        "estimatedDate": "2026-01-03T09:28:27Z",
+        "id": "EA998129-2C18-4259-93E2-CA526B267D9B",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "JUPITER",
+        "promissorLabel": "♃ Júpiter",
+        "significator": "ASC",
+        "significatorLabel": "ASC",
+        "technicalData": {
+          "geoLatitude": 40.4168,
+          "obliquity": 23.444399825146643,
+          "promissorDeclination": 14.231831163951876,
+          "promissorRA": 39.62340922450074,
+          "ramc": 94.44216007338156,
+          "significatorDeclination": -1.4059867305271998,
+          "significatorPole": 40.4168,
+          "significatorRA": 183.244532944718
+        },
+        "weight": 3
+      },
+      {
+        "arc": -84.4677033519559,
+        "aspect": "trigono",
+        "aspectAngle": 120,
+        "aspectPlane": "zodiacal",
+        "directionType": "conversa",
+        "estimatedAge": 85.69770344557617,
+        "estimatedDate": "2026-03-27T13:04:06Z",
+        "id": "B9CE4ACF-3C36-4474-A0B6-2A4BBE245B71",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "SATURNO",
+        "promissorLabel": "♄ Saturno",
+        "significator": "MC",
+        "significatorLabel": "MC",
+        "technicalData": {
+          "geoLatitude": 40.4168,
+          "obliquity": 23.444399825146643,
+          "promissorDeclination": 13.584004032610236,
+          "promissorRA": 41.4922750856734,
+          "ramc": 94.44216007338156,
+          "significatorDeclination": 23.381545590189628,
+          "significatorPole": 30.893283906987072,
+          "significatorRA": 94.44216007338098
+        },
+        "weight": 3
+      },
+      {
+        "arc": -84.68008871216543,
+        "aspect": "trigono",
+        "aspectAngle": 120,
+        "aspectPlane": "zodiacal",
+        "directionType": "directa",
+        "estimatedAge": 85.91318151462676,
+        "estimatedDate": "2026-06-14T05:56:56Z",
+        "id": "81154AF2-02E2-4B06-BFA8-7B8FA85889E0",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "JUPITER",
+        "promissorLabel": "♃ Júpiter",
+        "significator": "LUNA",
+        "significatorLabel": "☽ Luna",
+        "technicalData": {
+          "geoLatitude": 40.4168,
+          "obliquity": 23.444399825146643,
+          "promissorDeclination": 14.231831163951876,
+          "promissorRA": 39.62340922450074,
+          "ramc": 94.44216007338156,
+          "significatorDeclination": -17.20915799060689,
+          "significatorPole": 19.984581940552225,
+          "significatorRA": 242.69420801065695
+        },
+        "weight": 2
+      },
+      {
+        "arc": 84.79628280173986,
+        "aspect": "cuadratura",
+        "aspectAngle": 90,
+        "aspectPlane": "zodiacal",
+        "directionType": "conversa",
+        "estimatedAge": 86.03106759694379,
+        "estimatedDate": "2026-07-27T07:20:18Z",
+        "id": "53082841-7F59-43B8-B081-5C74FE870F8F",
+        "key": "Naibod",
+        "method": "Regiomontanus",
+        "promissor": "MARTE",
+        "promissorLabel": "♂ Marte",
+        "significator": "SOL",
+        "significatorLabel": "☉ Sol",
+        "technicalData": {
+          "geoLatitude": 40.4168,
+          "obliquity": 23.444399825146643,
+          "promissorDeclination": 19.49368424050522,
+          "promissorRA": 130.37144004718724,
+          "ramc": 94.44216007338156,
+          "significatorDeclination": 21.51963520155101,
+          "significatorPole": 21.685235415550224,
+          "significatorRA": 114.59817251955414
+        },
+        "weight": 2
+      }
+    ]
+  },
+  "warnings": []
+}

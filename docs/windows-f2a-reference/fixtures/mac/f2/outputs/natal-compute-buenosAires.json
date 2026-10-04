@@ -1,0 +1,132 @@
+{
+  "ascendant": {
+    "formatted": "♊ Géminis 23°12'",
+    "longitude": 83.20330927571129
+  },
+  "birthDate": "1985-03-15",
+  "birthTime": "14:00",
+  "bodies": [
+    {
+      "formatted": "♓ Piscis 25°03'",
+      "house": 9,
+      "key": "SOL",
+      "label": "☉ Sol",
+      "longitude": 355.05730749050235,
+      "retrograde": false
+    },
+    {
+      "formatted": "♑ Capricornio 19°12'",
+      "house": 7,
+      "key": "LUNA",
+      "label": "☽ Luna",
+      "longitude": 289.2111857357986,
+      "retrograde": false
+    },
+    {
+      "formatted": "♈ Aries 13°16'",
+      "house": 10,
+      "key": "MERCURIO",
+      "label": "☿ Mercurio",
+      "longitude": 13.2813150133244,
+      "retrograde": false
+    },
+    {
+      "formatted": "♈ Aries 22°13'",
+      "house": 10,
+      "key": "VENUS",
+      "label": "♀ Venus",
+      "longitude": 22.219161998081944,
+      "retrograde": true
+    },
+    {
+      "formatted": "♉ Tauro 00°21'",
+      "house": 10,
+      "key": "MARTE",
+      "label": "♂ Marte",
+      "longitude": 30.360203301534785,
+      "retrograde": false
+    },
+    {
+      "formatted": "♒ Acuario 07°57'",
+      "house": 8,
+      "key": "JUPITER",
+      "label": "♃ Júpiter",
+      "longitude": 307.96365443219435,
+      "retrograde": false
+    },
+    {
+      "formatted": "♏ Escorpio 28°04'",
+      "house": 5,
+      "key": "SATURNO",
+      "label": "♄ Saturno",
+      "longitude": 238.06980300844262,
+      "retrograde": true
+    },
+    {
+      "formatted": "♐ Sagitario 17°57'",
+      "house": 6,
+      "key": "URANO",
+      "label": "⛢ Urano",
+      "longitude": 257.9627481398736,
+      "retrograde": false
+    },
+    {
+      "formatted": "♑ Capricornio 03°30'",
+      "house": 7,
+      "key": "NEPTUNO",
+      "label": "♆ Neptuno",
+      "longitude": 273.5012363294383,
+      "retrograde": false
+    },
+    {
+      "formatted": "♏ Escorpio 04°20'",
+      "house": 4,
+      "key": "PLUTON",
+      "label": "♇ Plutón",
+      "longitude": 214.3496923032807,
+      "retrograde": true
+    },
+    {
+      "formatted": "♉ Tauro 19°55'",
+      "house": 11,
+      "key": "NODO_NORTE",
+      "label": "☊ Nodo Norte",
+      "longitude": 49.918227584720846,
+      "retrograde": true
+    },
+    {
+      "formatted": "♏ Escorpio 19°55'",
+      "house": 5,
+      "key": "NODO_SUR",
+      "label": "☋ Nodo Sur",
+      "longitude": 229.91822758472085,
+      "retrograde": true
+    }
+  ],
+  "createdAt": "2026-10-04T18:30:31Z",
+  "cusps": [
+    83.20330927571129,
+    117.7460154201604,
+    155.89556737819308,
+    190.7242486493827,
+    218.8308477807543,
+    241.95683567780742,
+    263.20330927571126,
+    297.7460154201604,
+    335.89556737819305,
+    10.724248649382702,
+    38.8308477807543,
+    61.956835677807405
+  ],
+  "houseSystem": "Placidus",
+  "id": "22222222-2222-2222-2222-222222222222",
+  "latitude": -34.6037,
+  "longitude": -58.3816,
+  "mc": {
+    "formatted": "♈ Aries 10°43'",
+    "longitude": 10.724248649382702
+  },
+  "name": "Buenos Aires Control",
+  "placeName": "Buenos Aires, Argentina",
+  "timezone": "America/Argentina/Buenos_Aires"
+}
