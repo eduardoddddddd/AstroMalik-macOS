@@ -74,7 +74,10 @@ class Host:
         progress = []
         deadline = time.monotonic() + self.timeout
         while True:
-            reply = self.messages.get(timeout=max(.001, deadline - time.monotonic()))
+            try:
+                reply = self.messages.get(timeout=max(.001, deadline - time.monotonic()))
+            except queue.Empty as error:
+                raise TimeoutError(f"{request['method']}: no terminal response within {self.timeout}s") from error
             if isinstance(reply, BaseException):
                 raise reply
             if reply.get("id") != message["id"]:
