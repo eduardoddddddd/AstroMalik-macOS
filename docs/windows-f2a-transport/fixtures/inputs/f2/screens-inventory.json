@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "kind": "capture-inventory-not-screenshots",
+  "screens": [
+    {
+      "id": "nueva-carta",
+      "sidebarLabel": "Nueva Carta",
+      "route": "birthForm",
+      "source": "Sources/AstroMalik/Views/BirthChartForm.swift",
+      "instruction": "Introducir datos civiles de Eduardo de F1; capturar formulario antes de calcular.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "cartas",
+      "sidebarLabel": "Cartas Guardadas",
+      "route": "savedCharts",
+      "source": "Sources/AstroMalik/Views/SavedChartsView.swift",
+      "instruction": "Ver Eduardo, Buenos Aires y Reykjavik importadas en la cuenta de pruebas; abrir Eduardo para fijarla activa.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "lectura",
+      "sidebarLabel": "Lectura",
+      "route": "reading",
+      "source": "Sources/AstroMalik/Views/Reading/NatalReadingView.swift",
+      "instruction": "Carta activa Eduardo; esperar corpus local; no activar IA.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "rectificacion",
+      "sidebarLabel": "Rectificación",
+      "route": "rectification",
+      "source": "Sources/AstroMalik/Views/Rectification/RectificationView.swift",
+      "instruction": "Usar caso sintético rectification.run del manifiesto; no presentarlo como biografía de Eduardo.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "transitos",
+      "sidebarLabel": "Tránsitos",
+      "route": "transits",
+      "source": "Sources/AstroMalik/Views/TransitsView.swift",
+      "instruction": "Elegir Eduardo y rango 2026-10-04 a 2027-04-04 cuando el control lo permita; anotar rango observado.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "progresiones",
+      "sidebarLabel": "Progresiones",
+      "route": "progressions",
+      "source": "Sources/AstroMalik/Views/Progressions/ProgressionsView.swift",
+      "instruction": "Eduardo activa; fecha referencia fija 2026-10-04; esperar cálculo.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "direcciones-primarias",
+      "sidebarLabel": "Direcciones Primarias",
+      "route": "primaryDirections",
+      "source": "Sources/AstroMalik/PrimaryDirections/Views/PrimaryDirectionsView.swift",
+      "instruction": "Eduardo activa; técnica Regiomontanas; registrar configuración y filtros observados.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "profecciones",
+      "sidebarLabel": "Profecciones",
+      "route": "profections",
+      "source": "Sources/AstroMalik/Views/Profections/ProfectionsView.swift",
+      "instruction": "Eduardo activa; fecha referencia 2026-10-04; esperar cálculo.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "firdaria",
+      "sidebarLabel": "Firdaria",
+      "route": "firdaria",
+      "source": "Sources/AstroMalik/Views/Firdaria/FirdariaView.swift",
+      "instruction": "Eduardo activa; fecha referencia 2026-10-04; esperar cálculo.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "zodiacal-releasing",
+      "sidebarLabel": "Zodiacal Releasing",
+      "route": "zodiacalReleasing",
+      "source": "Sources/AstroMalik/Views/ZodiacalReleasing/ZRView.swift",
+      "instruction": "Eduardo activa; registrar lote, profundidad y fecha observados.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "revolucion-solar",
+      "sidebarLabel": "Revolución Solar",
+      "route": "solarReturn",
+      "source": "Sources/AstroMalik/Views/SolarReturnView.swift",
+      "instruction": "Eduardo activa; año 2026, ubicación natal Madrid; esperar cálculo.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "revolucion-lunar",
+      "sidebarLabel": "Revolución Lunar",
+      "route": "lunarReturn",
+      "source": "Sources/AstroMalik/Views/LunarReturnView.swift",
+      "instruction": "Eduardo activa; inicio 2026-10-04, Madrid, tres retornos si control disponible.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "panorama-predictivo",
+      "sidebarLabel": "Panorama Predictivo",
+      "route": "crossPersonal",
+      "source": "Sources/AstroMalik/Views/CrossPersonal/CrossPersonalView.swift",
+      "instruction": "Eduardo activa; fecha 2026-10-04; narrativa externa desactivada.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "sinastria",
+      "sidebarLabel": "Sinastría",
+      "route": "synastry",
+      "source": "Sources/AstroMalik/Views/SynastryView.swift",
+      "instruction": "Elegir Eduardo y Buenos Aires F1; no inventar pareja; esperar tabla/doble rueda.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "horaria",
+      "sidebarLabel": "Horaria",
+      "route": "horaryHome",
+      "source": "Sources/AstroMalik/Horary/Views/HoraryHomeView.swift",
+      "instruction": "Nueva Consulta; petición horary.compute del manifiesto, pregunta de prueba F3.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "astrocartografia",
+      "sidebarLabel": "Astrocartografía",
+      "route": "astrocartography",
+      "source": "Sources/AstroMalik/Astrocartography/UI/AstrocartographyView.swift",
+      "instruction": "Elegir Eduardo; esperar líneas; si mapa base requiere red registrar estado local sin atribuirlo a fallo de líneas.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "efemerides",
+      "sidebarLabel": "Efemérides",
+      "route": "ephemeris",
+      "source": "Sources/AstroMalik/Views/EphemerisCalendarView.swift",
+      "instruction": "Mes octubre 2026; registrar zona y fecha observadas.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "informes",
+      "sidebarLabel": "Informes",
+      "route": "myReports",
+      "source": "Sources/AstroMalik/Views/MyReportsView.swift",
+      "instruction": "Cuenta aislada; vista real con estado vacío si no hay informes, identificarlo en metadata.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "ajustes",
+      "sidebarLabel": "Ajustes",
+      "route": "settings",
+      "source": "Sources/AstroMalik/Views/SettingsView.swift",
+      "instruction": "Capturar apariencia/valores por defecto; evitar revelar claves o tokens.",
+      "requiredSidebar": true
+    },
+    {
+      "id": "natal-rueda",
+      "sidebarLabel": "Cartas Guardadas",
+      "route": "natalResult",
+      "source": "Sources/AstroMalik/Views/NatalChartView.swift",
+      "instruction": "Abrir Eduardo y seleccionar Rueda.",
+      "requiredSidebar": false
+    },
+    {
+      "id": "natal-extendida",
+      "sidebarLabel": "Cartas Guardadas",
+      "route": "natalResult",
+      "source": "Sources/AstroMalik/Views/NatalExtended/NatalExtendedAnalysisView.swift",
+      "instruction": "Abrir Eduardo y seleccionar Análisis extendido; esperar corpus.",
+      "requiredSidebar": false
+    },
+    {
+      "id": "arco-solar",
+      "sidebarLabel": "Direcciones Primarias",
+      "route": "primaryDirections",
+      "source": "Sources/AstroMalik/PrimaryDirections/Views/SolarArcDirectionsView.swift",
+      "instruction": "Cambiar técnica a Arco Solar; Eduardo activa; registrar filtros.",
+      "requiredSidebar": false
+    },
+    {
+      "id": "horaria-resultado",
+      "sidebarLabel": "Horaria",
+      "route": "horaryResult",
+      "source": "Sources/AstroMalik/Horary/Views/HoraryResultView.swift",
+      "instruction": "Calcular petición horary.compute de prueba F3 y abrir resultado real.",
+      "requiredSidebar": false
+    },
+    {
+      "id": "horaria-historial",
+      "sidebarLabel": "Horaria",
+      "route": "horaryHome",
+      "source": "Sources/AstroMalik/Horary/Views/SavedHoraryView.swift",
+      "instruction": "Seleccionar Historial de la cuenta aislada; sin datos personales.",
+      "requiredSidebar": false
+    },
+    {
+      "id": "horaria-diagnostico",
+      "sidebarLabel": "Horaria",
+      "route": "horaryResult",
+      "source": "Sources/AstroMalik/Horary/Views/HoraryDiagnosticsView.swift",
+      "instruction": "Abrir diagnóstico real si accesible desde resultado; no fabricar UI ausente.",
+      "requiredSidebar": false
+    },
+    {
+      "id": "rectificacion-auditoria",
+      "sidebarLabel": "Rectificación",
+      "route": "rectification",
+      "source": "Sources/AstroMalik/Views/Rectification/RectificationAuditSummaryView.swift",
+      "instruction": "Calcular caso sintético del manifiesto y abrir auditoría real.",
+      "requiredSidebar": false
+    },
+    {
+      "id": "ayuda",
+      "sidebarLabel": null,
+      "route": "helpSheet",
+      "source": "Sources/AstroMalik/Views/HelpView.swift",
+      "instruction": "Menú Help → AstroMalik Help; capturar ventana/hoja completa.",
+      "requiredSidebar": false
+    }
+  ],
+  "requirements": [
+    "Real Mac AstroMalik window; source commit recorded",
+    "Isolated test account/data or read-only existing session approved by root",
+    "Light theme and window at least 1100×780 preferred",
+    "Chart Eduardo from F1; exact observed inputs in per-image metadata",
+    "No credentials on screen; no network narrative",
+    "Visual inspection required; loading/placeholders do not prove populated calculation"
+  ]
+}

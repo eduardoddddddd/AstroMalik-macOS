@@ -1,0 +1,25 @@
+[0/1] Planning build
+Building for debugging...
+[0/12] Copying RectificationCalibrationCases.json
+[0/12] Copying phase0-swiss-python-reference.json
+[0/12] Copying phase0-equatorial-synthetic.json
+[0/12] Copying PrimaryDirectionsGolden.json
+[0/12] Write sources
+[0/12] /Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/.build/arm64-apple-macosx/debug/AstroMalikPackageTests.derived/runner.swift
+[0/12] Copying phase0-analytic-lines.json
+[7/16] Write sources
+[9/16] Write swift-version--1AB21518FC5DEDBE.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[11/69] Emitting module AstroMalikCLITests
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikCLITests/AstroMalikCLITests.swift:1:8: error: no such module 'XCTest'
+  1 | import XCTest
+    |        `- error: no such module 'XCTest'
+  2 | import AstroMalik
+  3 | @testable import astromalik_cli
+[12/69] Compiling AstroMalikCLITests AstroMalikCLITests.swift
+/Users/eduardoariasbravo/.codex/worktrees/windows-f1-mac-reference/AstroMalik-macOS/Tests/AstroMalikCLITests/AstroMalikCLITests.swift:1:8: error: no such module 'XCTest'
+  1 | import XCTest
+    |        `- error: no such module 'XCTest'
+  2 | import AstroMalik
+  3 | @testable import astromalik_cli
+error: fatalError

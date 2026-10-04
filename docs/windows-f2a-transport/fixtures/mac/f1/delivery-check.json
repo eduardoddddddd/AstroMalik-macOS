@@ -1,0 +1,1 @@
+{"appExecutableBytes":27178096,"appExecutableMtime":"2026-10-03T17:31:36.398294+02:00","appExecutableSHA256":"a5dbf3544610f04529b75df7d14d04b121306cdd15eb253755077b24dd982636","codesignVerifyExit":0,"commit":"edd8912847723707aaf52f538b5f5b5a669c4f82","exits":{"build":0,"export":0,"golden-restored":0,"package":0,"tests-original":1,"tests-xcode":0},"trackedDiffEmpty":true}
