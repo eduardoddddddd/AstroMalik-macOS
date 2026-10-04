@@ -44,7 +44,25 @@ def provenance_repo(repo, baseline=False):
     resources = repo / "Sources/AstroMalik/Resources"
     resource_hashes = {str(p.relative_to(repo)).replace(os.sep, "/"): sha(p)
                        for p in sorted(resources.rglob("*")) if p.is_file() and (p.suffix == ".se1" or p.name == "corpus.db")}
-    return {"commit": commit, "engineInputsClean": True, "resourceSha256": resource_hashes}
+    source_paths = list((repo / "Sources/CSwissEph").rglob("*.c")) + list((repo / "Sources/CSwissEph").rglob("*.h"))
+    source_paths += [repo / name for name in ("Sources/AstroMalik/EngineRPC.swift", "Sources/AstroMalik/AstroMalikCLIRunner.swift",
+                                              "Sources/AstroMalikCLI/main.swift", "Sources/AstroMalikEngineHost/EngineHost.swift")]
+    sources = {str(p.relative_to(repo)).replace(os.sep, "/"): sha(p) for p in sorted(source_paths) if p.is_file()}
+    return {"commit": commit, "engineInputsClean": True, "resourceSha256": resource_hashes, "sourceSha256": sources}
+
+
+def bundle_hashes(directory, source_resources):
+    files = [p for p in directory.rglob("*") if p.is_file() and (p.suffix == ".se1" or p.name == "corpus.db")]
+    hashes = {}
+    for path in files:
+        digest = sha(path)
+        if path.name in hashes and hashes[path.name] != digest:
+            raise RuntimeError(f"Conflicting resource copies in bundle: {path.name}")
+        hashes[path.name] = digest
+    expected = {Path(name).name: digest for name, digest in source_resources.items()}
+    if hashes != expected:
+        raise RuntimeError("Actual bundle corpus/ephemeris hashes differ from its Mac source resources")
+    return hashes
 
 
 class Host:
@@ -123,7 +141,15 @@ def run(args):
     rpc_info = provenance_repo(args.rpc_repo)
     cli_info.update(binarySha256=sha(args.cli), role="Original Mac CLI baseline")
     rpc_info.update(binarySha256=sha(args.rpc), role="F3 RPC PR#3; not merged into original baseline")
-    baseline_probe = json.loads(args.backend_probe.read_text(encoding="utf-8")) if args.backend_probe else None
+    cli_info["bundleResourceSha256"] = bundle_hashes(args.cli_resources, cli_info["resourceSha256"])
+    rpc_info["bundleResourceSha256"] = bundle_hashes(args.rpc_resources, rpc_info["resourceSha256"])
+    if args.rpc_host_source:
+        rpc_info["hostSourceSha256"] = sha(args.rpc_host_source)
+        rpc_info["hostSourceMeaning"] = "Actual Mac build wrapper source; no Windows source equality assumed"
+        (evidence / "mac-rpc-host-source.swift").write_bytes(args.rpc_host_source.read_bytes())
+    baseline_probe = json.loads(args.backend_probe.read_text(encoding="utf-8"))
+    if baseline_probe.get("platform") != "macOS" or not baseline_probe.get("probes") or any(p.get("backend") != "swiss-files" or p.get("returnedFlags", -1) < 0 for p in baseline_probe["probes"]):
+        raise RuntimeError("Backend probe must contain actual successful Mac Swiss returned flags")
     dump(evidence / "input-template.json", manifest)
     host = None
     try:
@@ -134,6 +160,8 @@ def run(args):
             dump(evidence / "hello.json", hello)
             if hello["networkEnabled"] or hello["ephemerisBackend"] != "swiss-files":
                 raise RuntimeError("Expected local RPC with bundled Swiss files")
+            if baseline_probe["swissVersion"] != hello["swissVersion"]:
+                raise RuntimeError("Baseline observed Swiss version differs from RPC version")
             war_case = next(c for c in manifest["cases"] if c["id"] == "natal-war1940-control")
             war_chart, progress = host.call(war_case["request"])
             manifest["inputs"]["charts"].append(war_chart)
@@ -207,10 +235,13 @@ def main():
     parser.add_argument("--rpc", type=Path, required=True)
     parser.add_argument("--cli-repo", type=Path, required=True)
     parser.add_argument("--rpc-repo", type=Path, required=True)
-    parser.add_argument("--backend-probe", type=Path, help="Observed Swiss returned flags from baseline, not configured hello label")
+    parser.add_argument("--backend-probe", type=Path, required=True, help="Observed Swiss returned flags from baseline, not configured hello label")
+    parser.add_argument("--cli-resources", type=Path, required=True, help="Actual CLI .bundle resources root")
+    parser.add_argument("--rpc-resources", type=Path, required=True, help="Actual RPC bundle/resources root")
+    parser.add_argument("--rpc-host-source", type=Path, help="Actual compiled Mac host wrapper source, preserved as evidence")
     parser.add_argument("--timeout", type=int, default=1800, help="Per calculation deadline, in seconds")
     args = parser.parse_args()
-    for key in ("template", "output", "cli", "rpc", "cli_repo", "rpc_repo", "backend_probe"):
+    for key in ("template", "output", "cli", "rpc", "cli_repo", "rpc_repo", "backend_probe", "cli_resources", "rpc_resources", "rpc_host_source"):
         if getattr(args, key) is not None:
             setattr(args, key, getattr(args, key).resolve())
     run(args)

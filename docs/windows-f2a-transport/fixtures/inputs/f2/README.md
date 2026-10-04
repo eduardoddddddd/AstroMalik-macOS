@@ -33,7 +33,10 @@ bash scripts/mac/gen-fixtures.sh \
   --cli /ruta/baseline/.build/release/astromalik-cli \
   --rpc /ruta/f3/astromalik-engine \
   --cli-repo /ruta/baseline --rpc-repo /ruta/f3 \
-  --backend-probe /ruta/backend-observado.json
+  --backend-probe /ruta/backend-observado.json \
+  --cli-resources /ruta/baseline/.build/release/AstroMalik_AstroMalik.bundle \
+  --rpc-resources /ruta/f3/recursos-reales \
+  --rpc-host-source /ruta/f3/host-compilado.swift
 ```
 
 La carpeta de salida debe ser nueva. Se abre exclusivamente una base temporal;
@@ -42,7 +45,10 @@ stdout y narrativa local se exigen en cada CLI. Se conservan stdout/stderr,
 progreso, hello, hashes de binarios/recursos, commits y la plantilla original.
 `manifest.json` y `SHA256SUMS` aparecen después del lote completo. Un fallo deja
 `failure.json` y no valida la referencia. Los hashes de recursos son del repo
-fuente; hello registra el backend configurado del host. `--backend-probe`
+fuente y del bundle efectivamente seleccionado; se exige que coincidan.
+También se registran fuentes de la fachada, CLI y Swiss C/headers; un wrapper
+Mac adaptado se conserva sin atribuirle igualdad de fuente con Windows.
+Hello registra el backend configurado del host. `--backend-probe`
 adjunta flags realmente observados en el original; no se presenta hello como
 una medición de los flags efectivos del CLI.
 

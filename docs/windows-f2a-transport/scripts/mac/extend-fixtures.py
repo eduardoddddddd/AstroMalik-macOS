@@ -21,6 +21,7 @@ def main():
     edu = {"chart": charts[0]}
     add("natal-extended-eduardo", "natal.extended", edu)
     add("natal-wheelSvg-eduardo", "natal.wheelSvg", dict(edu, size=600))
+    add("transits-timelineSvg-eduardo", "transits.timelineSvg", dict(edu, **manifest["inputs"]["transitRange"], width=800, height=400))
     add("synastry-doubleWheelSvg-eduardo-buenosAires", "synastry.doubleWheelSvg", {"chartA": charts[0], "chartB": charts[1], "size": 700})
     add("primaryDirections-speculum-eduardo", "primaryDirections.speculum", edu)
     add("astrocartography-lines-eduardo", "astrocartography.lines", edu)
