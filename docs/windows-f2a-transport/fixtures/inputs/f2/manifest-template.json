@@ -470,7 +470,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -528,25 +530,39 @@
         "--from",
         "2026-10-04",
         "--to",
-        "2027-04-04"
+        "2027-04-04",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
           {
+            "path": "/events/*/id",
+            "kind": "generated-uuid"
+          },
+          {
+            "path": "/interpretations/*/id",
+            "kind": "generated-uuid-or-exact"
+          },
+          {
             "path": "/metadata/generatedAt",
             "kind": "generated-time"
+          },
+          {
+            "path": "/technicalData/houseIngresses/*/id",
+            "kind": "generated-uuid"
           },
           {
             "path": "/technicalData/transits/*/id",
             "kind": "generated-uuid"
           },
           {
-            "path": "/technicalData/transits/*/samples/*/orb",
+            "path": "/technicalData/transits/*/minOrb",
             "kind": "linear-angle"
           },
           {
-            "path": "/events/*/id",
-            "kind": "generated-uuid"
+            "path": "/technicalData/transits/*/samples/*/orb",
+            "kind": "linear-angle"
           }
         ],
         "arrays": []
@@ -570,7 +586,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -591,6 +609,10 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/progressions/snapshot/bodies/*/declination",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/progressions/snapshot/bodies/*/longitude",
@@ -682,7 +704,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -705,6 +729,36 @@
           {
             "path": "/technicalData/primaryDirections/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/promissorDeclination",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/promissorRA",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/ramc",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorDeclination",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorPole",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorRA",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
           }
         ],
         "arrays": []
@@ -728,7 +782,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -741,6 +797,12 @@
             "kind": "generated-time"
           },
           {
+            "path": "/technicalData/solarArc/*/directedLongitude",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
             "path": "/technicalData/solarArc/*/exactDate",
             "kind": "event-time"
           },
@@ -750,6 +812,10 @@
           },
           {
             "path": "/technicalData/solarArc/*/orb",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/solarArc/*/solarArc",
             "kind": "linear-angle"
           }
         ],
@@ -774,13 +840,15 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
           {
             "path": "/events/*/id",
-            "kind": "generated-uuid"
+            "kind": "generated-uuid-or-exact"
           },
           {
             "path": "/metadata/generatedAt",
@@ -789,6 +857,10 @@
           {
             "path": "/technicalData/profections/activations/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/profections/activations/*/minOrb",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/profections/activations/*/samples/*/orb",
@@ -858,7 +930,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -924,7 +998,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1086,7 +1162,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1180,7 +1258,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1197,7 +1277,7 @@
             "kind": "utc-event-time"
           },
           {
-            "path": "/technicalData/lunarReturn/events/*/moon/distance",
+            "path": "/technicalData/lunarReturn/events/*/moon/latitude",
             "kind": "linear-angle"
           },
           {
@@ -1205,6 +1285,11 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/lunarReturn/events/*/moon/precisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
           },
           {
             "path": "/technicalData/lunarReturn/events/*/returnChart/ascendant/longitude",
@@ -1267,6 +1352,16 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/lunarReturn/statistics/meanPrecisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
+          },
+          {
+            "path": "/technicalData/lunarReturn/statistics/minPrecisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
           }
         ],
         "arrays": []
@@ -1290,10 +1385,21 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
+          {
+            "path": "/events/*/id",
+            "kind": "prefixed-generated-uuid-or-exact",
+            "prefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
           {
             "path": "/metadata/generatedAt",
             "kind": "generated-time"
@@ -1307,15 +1413,72 @@
             "kind": "event-time"
           },
           {
+            "path": "/technicalData/crossPersonal/layers/*/signals/*/id",
+            "kind": "prefixed-generated-uuid-or-exact",
+            "prefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
+          {
             "path": "/technicalData/crossPersonal/layers/*/signals/*/startsAt",
             "kind": "event-time"
           },
           {
             "path": "/technicalData/crossPersonal/metadata/generatedAt",
             "kind": "generated-time"
+          },
+          {
+            "path": "/technicalData/crossPersonal/topics/*/signalIDs",
+            "kind": "uuid-reference-set"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/events",
+            "keys": [
+              "date",
+              "from",
+              "to",
+              "source",
+              "title"
+            ],
+            "optionalKeys": [
+              "date",
+              "from",
+              "to"
+            ],
+            "stableId": "id",
+            "generatedPrefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
+          {
+            "path": "/technicalData/crossPersonal/layers/*/signals",
+            "keys": [
+              "source",
+              "subject",
+              "startsAt",
+              "endsAt",
+              "exactAt",
+              "summary"
+            ],
+            "optionalKeys": [
+              "startsAt",
+              "endsAt",
+              "exactAt"
+            ],
+            "stableId": "id",
+            "generatedPrefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          }
+        ]
       }
     },
     {
@@ -1336,7 +1499,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1392,7 +1557,9 @@
         "--user-db",
         "{userDb}",
         "--month",
-        "2026-10"
+        "2026-10",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1402,7 +1569,7 @@
           },
           {
             "path": "/interpretations/*/id",
-            "kind": "generated-uuid"
+            "kind": "generated-uuid-or-exact"
           },
           {
             "path": "/metadata/generatedAt",
@@ -1423,6 +1590,10 @@
           {
             "path": "/technicalData/transits/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/transits/*/minOrb",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/transits/*/samples/*/orb",
@@ -1450,7 +1621,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1508,25 +1681,39 @@
         "--from",
         "2026-10-04",
         "--to",
-        "2027-04-04"
+        "2027-04-04",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
           {
+            "path": "/events/*/id",
+            "kind": "generated-uuid"
+          },
+          {
+            "path": "/interpretations/*/id",
+            "kind": "generated-uuid-or-exact"
+          },
+          {
             "path": "/metadata/generatedAt",
             "kind": "generated-time"
+          },
+          {
+            "path": "/technicalData/houseIngresses/*/id",
+            "kind": "generated-uuid"
           },
           {
             "path": "/technicalData/transits/*/id",
             "kind": "generated-uuid"
           },
           {
-            "path": "/technicalData/transits/*/samples/*/orb",
+            "path": "/technicalData/transits/*/minOrb",
             "kind": "linear-angle"
           },
           {
-            "path": "/events/*/id",
-            "kind": "generated-uuid"
+            "path": "/technicalData/transits/*/samples/*/orb",
+            "kind": "linear-angle"
           }
         ],
         "arrays": []
@@ -1550,7 +1737,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1571,6 +1760,10 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/progressions/snapshot/bodies/*/declination",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/progressions/snapshot/bodies/*/longitude",
@@ -1662,7 +1855,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1685,6 +1880,36 @@
           {
             "path": "/technicalData/primaryDirections/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/promissorDeclination",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/promissorRA",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/ramc",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorDeclination",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorPole",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorRA",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
           }
         ],
         "arrays": []
@@ -1708,7 +1933,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1721,6 +1948,12 @@
             "kind": "generated-time"
           },
           {
+            "path": "/technicalData/solarArc/*/directedLongitude",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
             "path": "/technicalData/solarArc/*/exactDate",
             "kind": "event-time"
           },
@@ -1730,6 +1963,10 @@
           },
           {
             "path": "/technicalData/solarArc/*/orb",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/solarArc/*/solarArc",
             "kind": "linear-angle"
           }
         ],
@@ -1754,13 +1991,15 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
           {
             "path": "/events/*/id",
-            "kind": "generated-uuid"
+            "kind": "generated-uuid-or-exact"
           },
           {
             "path": "/metadata/generatedAt",
@@ -1769,6 +2008,10 @@
           {
             "path": "/technicalData/profections/activations/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/profections/activations/*/minOrb",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/profections/activations/*/samples/*/orb",
@@ -1838,7 +2081,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -1904,7 +2149,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2066,7 +2313,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2160,7 +2409,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2177,7 +2428,7 @@
             "kind": "utc-event-time"
           },
           {
-            "path": "/technicalData/lunarReturn/events/*/moon/distance",
+            "path": "/technicalData/lunarReturn/events/*/moon/latitude",
             "kind": "linear-angle"
           },
           {
@@ -2185,6 +2436,11 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/lunarReturn/events/*/moon/precisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
           },
           {
             "path": "/technicalData/lunarReturn/events/*/returnChart/ascendant/longitude",
@@ -2247,6 +2503,16 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/lunarReturn/statistics/meanPrecisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
+          },
+          {
+            "path": "/technicalData/lunarReturn/statistics/minPrecisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
           }
         ],
         "arrays": []
@@ -2270,10 +2536,21 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
+          {
+            "path": "/events/*/id",
+            "kind": "prefixed-generated-uuid-or-exact",
+            "prefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
           {
             "path": "/metadata/generatedAt",
             "kind": "generated-time"
@@ -2287,15 +2564,72 @@
             "kind": "event-time"
           },
           {
+            "path": "/technicalData/crossPersonal/layers/*/signals/*/id",
+            "kind": "prefixed-generated-uuid-or-exact",
+            "prefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
+          {
             "path": "/technicalData/crossPersonal/layers/*/signals/*/startsAt",
             "kind": "event-time"
           },
           {
             "path": "/technicalData/crossPersonal/metadata/generatedAt",
             "kind": "generated-time"
+          },
+          {
+            "path": "/technicalData/crossPersonal/topics/*/signalIDs",
+            "kind": "uuid-reference-set"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/events",
+            "keys": [
+              "date",
+              "from",
+              "to",
+              "source",
+              "title"
+            ],
+            "optionalKeys": [
+              "date",
+              "from",
+              "to"
+            ],
+            "stableId": "id",
+            "generatedPrefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
+          {
+            "path": "/technicalData/crossPersonal/layers/*/signals",
+            "keys": [
+              "source",
+              "subject",
+              "startsAt",
+              "endsAt",
+              "exactAt",
+              "summary"
+            ],
+            "optionalKeys": [
+              "startsAt",
+              "endsAt",
+              "exactAt"
+            ],
+            "stableId": "id",
+            "generatedPrefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          }
+        ]
       }
     },
     {
@@ -2316,7 +2650,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2372,7 +2708,9 @@
         "--user-db",
         "{userDb}",
         "--month",
-        "2026-10"
+        "2026-10",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2382,7 +2720,7 @@
           },
           {
             "path": "/interpretations/*/id",
-            "kind": "generated-uuid"
+            "kind": "generated-uuid-or-exact"
           },
           {
             "path": "/metadata/generatedAt",
@@ -2403,6 +2741,10 @@
           {
             "path": "/technicalData/transits/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/transits/*/minOrb",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/transits/*/samples/*/orb",
@@ -2430,7 +2772,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2488,25 +2832,39 @@
         "--from",
         "2026-10-04",
         "--to",
-        "2027-04-04"
+        "2027-04-04",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
           {
+            "path": "/events/*/id",
+            "kind": "generated-uuid"
+          },
+          {
+            "path": "/interpretations/*/id",
+            "kind": "generated-uuid-or-exact"
+          },
+          {
             "path": "/metadata/generatedAt",
             "kind": "generated-time"
+          },
+          {
+            "path": "/technicalData/houseIngresses/*/id",
+            "kind": "generated-uuid"
           },
           {
             "path": "/technicalData/transits/*/id",
             "kind": "generated-uuid"
           },
           {
-            "path": "/technicalData/transits/*/samples/*/orb",
+            "path": "/technicalData/transits/*/minOrb",
             "kind": "linear-angle"
           },
           {
-            "path": "/events/*/id",
-            "kind": "generated-uuid"
+            "path": "/technicalData/transits/*/samples/*/orb",
+            "kind": "linear-angle"
           }
         ],
         "arrays": []
@@ -2530,7 +2888,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2551,6 +2911,10 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/progressions/snapshot/bodies/*/declination",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/progressions/snapshot/bodies/*/longitude",
@@ -2642,7 +3006,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2665,6 +3031,36 @@
           {
             "path": "/technicalData/primaryDirections/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/promissorDeclination",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/promissorRA",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/ramc",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorDeclination",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorPole",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorRA",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
           }
         ],
         "arrays": []
@@ -2688,7 +3084,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2701,6 +3099,12 @@
             "kind": "generated-time"
           },
           {
+            "path": "/technicalData/solarArc/*/directedLongitude",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
             "path": "/technicalData/solarArc/*/exactDate",
             "kind": "event-time"
           },
@@ -2710,6 +3114,10 @@
           },
           {
             "path": "/technicalData/solarArc/*/orb",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/solarArc/*/solarArc",
             "kind": "linear-angle"
           }
         ],
@@ -2734,13 +3142,15 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
           {
             "path": "/events/*/id",
-            "kind": "generated-uuid"
+            "kind": "generated-uuid-or-exact"
           },
           {
             "path": "/metadata/generatedAt",
@@ -2749,6 +3159,10 @@
           {
             "path": "/technicalData/profections/activations/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/profections/activations/*/minOrb",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/profections/activations/*/samples/*/orb",
@@ -2818,7 +3232,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -2884,7 +3300,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3046,7 +3464,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3140,7 +3560,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3157,7 +3579,7 @@
             "kind": "utc-event-time"
           },
           {
-            "path": "/technicalData/lunarReturn/events/*/moon/distance",
+            "path": "/technicalData/lunarReturn/events/*/moon/latitude",
             "kind": "linear-angle"
           },
           {
@@ -3165,6 +3587,11 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/lunarReturn/events/*/moon/precisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
           },
           {
             "path": "/technicalData/lunarReturn/events/*/returnChart/ascendant/longitude",
@@ -3227,6 +3654,16 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/lunarReturn/statistics/meanPrecisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
+          },
+          {
+            "path": "/technicalData/lunarReturn/statistics/minPrecisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
           }
         ],
         "arrays": []
@@ -3250,10 +3687,21 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
+          {
+            "path": "/events/*/id",
+            "kind": "prefixed-generated-uuid-or-exact",
+            "prefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
           {
             "path": "/metadata/generatedAt",
             "kind": "generated-time"
@@ -3267,15 +3715,72 @@
             "kind": "event-time"
           },
           {
+            "path": "/technicalData/crossPersonal/layers/*/signals/*/id",
+            "kind": "prefixed-generated-uuid-or-exact",
+            "prefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
+          {
             "path": "/technicalData/crossPersonal/layers/*/signals/*/startsAt",
             "kind": "event-time"
           },
           {
             "path": "/technicalData/crossPersonal/metadata/generatedAt",
             "kind": "generated-time"
+          },
+          {
+            "path": "/technicalData/crossPersonal/topics/*/signalIDs",
+            "kind": "uuid-reference-set"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/events",
+            "keys": [
+              "date",
+              "from",
+              "to",
+              "source",
+              "title"
+            ],
+            "optionalKeys": [
+              "date",
+              "from",
+              "to"
+            ],
+            "stableId": "id",
+            "generatedPrefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
+          {
+            "path": "/technicalData/crossPersonal/layers/*/signals",
+            "keys": [
+              "source",
+              "subject",
+              "startsAt",
+              "endsAt",
+              "exactAt",
+              "summary"
+            ],
+            "optionalKeys": [
+              "startsAt",
+              "endsAt",
+              "exactAt"
+            ],
+            "stableId": "id",
+            "generatedPrefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          }
+        ]
       }
     },
     {
@@ -3296,7 +3801,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3352,7 +3859,9 @@
         "--user-db",
         "{userDb}",
         "--month",
-        "2026-10"
+        "2026-10",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3362,7 +3871,7 @@
           },
           {
             "path": "/interpretations/*/id",
-            "kind": "generated-uuid"
+            "kind": "generated-uuid-or-exact"
           },
           {
             "path": "/metadata/generatedAt",
@@ -3383,6 +3892,10 @@
           {
             "path": "/technicalData/transits/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/transits/*/minOrb",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/transits/*/samples/*/orb",
@@ -3410,7 +3923,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3468,25 +3983,39 @@
         "--from",
         "2026-10-04",
         "--to",
-        "2027-04-04"
+        "2027-04-04",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
           {
+            "path": "/events/*/id",
+            "kind": "generated-uuid"
+          },
+          {
+            "path": "/interpretations/*/id",
+            "kind": "generated-uuid-or-exact"
+          },
+          {
             "path": "/metadata/generatedAt",
             "kind": "generated-time"
+          },
+          {
+            "path": "/technicalData/houseIngresses/*/id",
+            "kind": "generated-uuid"
           },
           {
             "path": "/technicalData/transits/*/id",
             "kind": "generated-uuid"
           },
           {
-            "path": "/technicalData/transits/*/samples/*/orb",
+            "path": "/technicalData/transits/*/minOrb",
             "kind": "linear-angle"
           },
           {
-            "path": "/events/*/id",
-            "kind": "generated-uuid"
+            "path": "/technicalData/transits/*/samples/*/orb",
+            "kind": "linear-angle"
           }
         ],
         "arrays": []
@@ -3510,7 +4039,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3531,6 +4062,10 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/progressions/snapshot/bodies/*/declination",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/progressions/snapshot/bodies/*/longitude",
@@ -3622,7 +4157,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3645,6 +4182,36 @@
           {
             "path": "/technicalData/primaryDirections/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/promissorDeclination",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/promissorRA",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/ramc",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorDeclination",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorPole",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/primaryDirections/*/technicalData/significatorRA",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
           }
         ],
         "arrays": []
@@ -3668,7 +4235,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3681,6 +4250,12 @@
             "kind": "generated-time"
           },
           {
+            "path": "/technicalData/solarArc/*/directedLongitude",
+            "kind": "angle",
+            "minimum": 0,
+            "maximumExclusive": 360
+          },
+          {
             "path": "/technicalData/solarArc/*/exactDate",
             "kind": "event-time"
           },
@@ -3690,6 +4265,10 @@
           },
           {
             "path": "/technicalData/solarArc/*/orb",
+            "kind": "linear-angle"
+          },
+          {
+            "path": "/technicalData/solarArc/*/solarArc",
             "kind": "linear-angle"
           }
         ],
@@ -3714,13 +4293,15 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
           {
             "path": "/events/*/id",
-            "kind": "generated-uuid"
+            "kind": "generated-uuid-or-exact"
           },
           {
             "path": "/metadata/generatedAt",
@@ -3729,6 +4310,10 @@
           {
             "path": "/technicalData/profections/activations/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/profections/activations/*/minOrb",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/profections/activations/*/samples/*/orb",
@@ -3798,7 +4383,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -3864,7 +4451,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -4026,7 +4615,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -4120,7 +4711,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -4137,7 +4730,7 @@
             "kind": "utc-event-time"
           },
           {
-            "path": "/technicalData/lunarReturn/events/*/moon/distance",
+            "path": "/technicalData/lunarReturn/events/*/moon/latitude",
             "kind": "linear-angle"
           },
           {
@@ -4145,6 +4738,11 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/lunarReturn/events/*/moon/precisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
           },
           {
             "path": "/technicalData/lunarReturn/events/*/returnChart/ascendant/longitude",
@@ -4207,6 +4805,16 @@
             "kind": "angle",
             "minimum": 0,
             "maximumExclusive": 360
+          },
+          {
+            "path": "/technicalData/lunarReturn/statistics/meanPrecisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
+          },
+          {
+            "path": "/technicalData/lunarReturn/statistics/minPrecisionArcseconds",
+            "kind": "arcseconds-angle",
+            "minimum": 0
           }
         ],
         "arrays": []
@@ -4230,10 +4838,21 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
+          {
+            "path": "/events/*/id",
+            "kind": "prefixed-generated-uuid-or-exact",
+            "prefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
           {
             "path": "/metadata/generatedAt",
             "kind": "generated-time"
@@ -4247,15 +4866,72 @@
             "kind": "event-time"
           },
           {
+            "path": "/technicalData/crossPersonal/layers/*/signals/*/id",
+            "kind": "prefixed-generated-uuid-or-exact",
+            "prefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
+          {
             "path": "/technicalData/crossPersonal/layers/*/signals/*/startsAt",
             "kind": "event-time"
           },
           {
             "path": "/technicalData/crossPersonal/metadata/generatedAt",
             "kind": "generated-time"
+          },
+          {
+            "path": "/technicalData/crossPersonal/topics/*/signalIDs",
+            "kind": "uuid-reference-set"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/events",
+            "keys": [
+              "date",
+              "from",
+              "to",
+              "source",
+              "title"
+            ],
+            "optionalKeys": [
+              "date",
+              "from",
+              "to"
+            ],
+            "stableId": "id",
+            "generatedPrefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          },
+          {
+            "path": "/technicalData/crossPersonal/layers/*/signals",
+            "keys": [
+              "source",
+              "subject",
+              "startsAt",
+              "endsAt",
+              "exactAt",
+              "summary"
+            ],
+            "optionalKeys": [
+              "startsAt",
+              "endsAt",
+              "exactAt"
+            ],
+            "stableId": "id",
+            "generatedPrefixes": [
+              "medium.primary.",
+              "medium.solarArc.",
+              "short.transit."
+            ]
+          }
+        ]
       }
     },
     {
@@ -4276,7 +4952,9 @@
         "none",
         "--no-network",
         "--user-db",
-        "{userDb}"
+        "{userDb}",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -4332,7 +5010,9 @@
         "--user-db",
         "{userDb}",
         "--month",
-        "2026-10"
+        "2026-10",
+        "--corpus-db",
+        "{corpusDb}"
       ],
       "comparison": {
         "rules": [
@@ -4342,7 +5022,7 @@
           },
           {
             "path": "/interpretations/*/id",
-            "kind": "generated-uuid"
+            "kind": "generated-uuid-or-exact"
           },
           {
             "path": "/metadata/generatedAt",
@@ -4363,6 +5043,10 @@
           {
             "path": "/technicalData/transits/*/id",
             "kind": "generated-uuid"
+          },
+          {
+            "path": "/technicalData/transits/*/minOrb",
+            "kind": "linear-angle"
           },
           {
             "path": "/technicalData/transits/*/samples/*/orb",
@@ -6880,7 +7564,12 @@
         }
       },
       "comparison": {
-        "rules": [],
+        "rules": [
+          {
+            "path": "/html",
+            "kind": "canonical-newlines"
+          }
+        ],
         "arrays": []
       }
     },
@@ -7014,7 +7703,15 @@
         }
       },
       "comparison": {
-        "rules": [],
+        "rules": [
+          {
+            "path": "/svg",
+            "kind": "xml-uuid-attributes",
+            "attributes": [
+              "data-transit-event"
+            ]
+          }
+        ],
         "arrays": []
       }
     }

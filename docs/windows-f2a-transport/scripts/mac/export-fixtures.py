@@ -12,6 +12,7 @@ import os
 from pathlib import Path
 import platform
 import queue
+import shutil
 import subprocess
 import tempfile
 import threading
@@ -172,14 +173,22 @@ def run(args):
             user_db = directory / "user.db"
             if not user_db.is_file():
                 raise RuntimeError("Isolated imported user.db missing")
+            # --user-db does not override the original CLI's writable corpus cache.
+            # Pin a temporary copy of the verified bundle, never personal Application Support.
+            corpus_sources = list(args.cli_resources.rglob("corpus.db"))
+            if len(corpus_sources) != 1:
+                raise RuntimeError("Require one actual CLI bundled corpus")
+            corpus_db = directory / "corpus.db"
+            shutil.copyfile(corpus_sources[0], corpus_db)
+            effective_corpus_hash = sha(corpus_db)
             for case in manifest["cases"]:
                 if case is war_case:
                     continue
                 print(f"Export {case['id']}", flush=True)
                 if case["transport"] == "cli":
-                    argv = [a.replace("{userDb}", str(user_db)) for a in case["argv"]]
-                    if "--no-network" not in argv or "--allow-network" in argv:
-                        raise RuntimeError("CLI network policy missing")
+                    argv = [a.replace("{userDb}", str(user_db)).replace("{corpusDb}", str(corpus_db)) for a in case["argv"]]
+                    if "--no-network" not in argv or "--allow-network" in argv or "--corpus-db" not in argv:
+                        raise RuntimeError("CLI network/corpus isolation policy missing")
                     completed = subprocess.run([str(args.cli), *argv], env=environment, cwd=directory,
                                                capture_output=True, timeout=args.timeout)
                     (evidence / f"{case['id']}.stdout.json").write_bytes(completed.stdout)
@@ -210,6 +219,7 @@ def run(args):
                                        generatedAt=datetime.now(timezone.utc).isoformat(), operatingSystem=platform.platform(),
                                        timezone="UTC", noNetwork=True, isolatedUserData=True, hello=hello,
                                        backendProbe=baseline_probe, inputTemplateSha256=sha(args.template),
+                                       effectiveCLICorpusSha256=effective_corpus_hash,
                                        inputChartsBackend="F1 Moshier inputs retained; war control computed by F3 Swiss files")
         dump(args.output / "manifest.json", manifest)
         (args.output / "VERSION").write_text(f"baseline {BASE}\ncli {cli_info['commit']}\nrpc {rpc_info['commit']}\nbackend swiss-files\n", encoding="utf-8")
