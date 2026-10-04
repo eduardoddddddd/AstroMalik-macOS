@@ -1,0 +1,20 @@
+{
+  "kind": "authentic-mac-window-capture",
+  "screen": {
+    "id": "lectura",
+    "sidebarLabel": "Lectura",
+    "route": "reading",
+    "source": "Sources/AstroMalik/Views/Reading/NatalReadingView.swift",
+    "instruction": "Carta activa Eduardo; esperar corpus local; no activar IA.",
+    "requiredSidebar": true
+  },
+  "macCommit": "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "capturedAt": "2026-10-04T18:59:19.845438+00:00",
+  "operatingSystem": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "windowID": 438,
+  "observedState": "Vista Lectura natal completa real; carta de prueba Eduardo; 41 textos de corpus, sin IA; ventana ampliada.",
+  "theme": "light",
+  "width": 3104,
+  "height": 1942,
+  "sha256": "67cc5d0336f361d94f2793a658ec00c99bc1d2d6555ce981c89d1bcda11dc27a"
+}

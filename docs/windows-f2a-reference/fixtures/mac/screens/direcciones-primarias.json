@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:09Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Real Direcciones Primarias screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "direcciones-primarias",
+    "instruction" : "Eduardo activa; técnica Regiomontanas; registrar configuración y filtros observados.",
+    "requiredSidebar" : true,
+    "route" : "primaryDirections",
+    "sidebarLabel" : "Direcciones Primarias",
+    "source" : "Sources\/AstroMalik\/PrimaryDirections\/Views\/PrimaryDirectionsView.swift"
+  },
+  "sha256" : "5350a2b46e839c837866507b3fd5daccaf87f09e847856550a7252c3c3243181",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

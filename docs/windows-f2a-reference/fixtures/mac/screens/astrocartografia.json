@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:53Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Real Astrocartografía screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "astrocartografia",
+    "instruction" : "Elegir Eduardo; esperar líneas; si mapa base requiere red registrar estado local sin atribuirlo a fallo de líneas.",
+    "requiredSidebar" : true,
+    "route" : "astrocartography",
+    "sidebarLabel" : "Astrocartografía",
+    "source" : "Sources\/AstroMalik\/Astrocartography\/UI\/AstrocartographyView.swift"
+  },
+  "sha256" : "1434be33cd54cf8abd4151cb26abb66054c3e25c390ff5e35cffa3eb1ae2b0ed",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

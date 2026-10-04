@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:06Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Real Progresiones screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "progresiones",
+    "instruction" : "Eduardo activa; fecha referencia fija 2026-10-04; esperar cálculo.",
+    "requiredSidebar" : true,
+    "route" : "progressions",
+    "sidebarLabel" : "Progresiones",
+    "source" : "Sources\/AstroMalik\/Views\/Progressions\/ProgressionsView.swift"
+  },
+  "sha256" : "bc541878fa2a65c0c0c4b41d34f11a46f613e8d48a2e73b3d35c35f91fbfca61",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

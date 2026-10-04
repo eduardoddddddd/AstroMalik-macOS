@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:50Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Horary new-query screen; test question not submitted.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "horaria",
+    "instruction" : "Nueva Consulta; petición horary.compute del manifiesto, pregunta de prueba F3.",
+    "requiredSidebar" : true,
+    "route" : "horaryHome",
+    "sidebarLabel" : "Horaria",
+    "source" : "Sources\/AstroMalik\/Horary\/Views\/HoraryHomeView.swift"
+  },
+  "sha256" : "6ff6ff43c43faef600944646fd355e7472db591203f62d199a3e6f80af54d9b2",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

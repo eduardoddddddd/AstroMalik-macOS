@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:04Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Transit screen for Eduardo; UTC range 2026-10-04 through 2027-04-04; events=0, houseIngresses=0, calculating=false.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "transitos",
+    "instruction" : "Elegir Eduardo y rango 2026-10-04 a 2027-04-04 cuando el control lo permita; anotar rango observado.",
+    "requiredSidebar" : true,
+    "route" : "transits",
+    "sidebarLabel" : "Tránsitos",
+    "source" : "Sources\/AstroMalik\/Views\/TransitsView.swift"
+  },
+  "sha256" : "b8f2d520708acd8d4ce194a147cba370dae52d69b70c7fbdceed4432942a4595",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

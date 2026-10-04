@@ -1,0 +1,20 @@
+{
+  "kind": "authentic-mac-window-capture",
+  "screen": {
+    "id": "cartas",
+    "sidebarLabel": "Cartas Guardadas",
+    "route": "savedCharts",
+    "source": "Sources/AstroMalik/Views/SavedChartsView.swift",
+    "instruction": "Ver Eduardo, Buenos Aires y Reykjavik importadas en la cuenta de pruebas; abrir Eduardo para fijarla activa.",
+    "requiredSidebar": true
+  },
+  "macCommit": "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "capturedAt": "2026-10-04T18:53:58.957970+00:00",
+  "operatingSystem": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "windowID": 438,
+  "observedState": "Aislamiento verificado por PID 43958 y user.db temporal: tres cartas de F1; vista real Cartas Guardadas; contenido cargado.",
+  "theme": "light",
+  "width": 2064,
+  "height": 1608,
+  "sha256": "c675f870ae78780ae5495390d92280ab058769fdc960134bddd67f79ce84f74a"
+}

@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:11:05Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Reports screen in isolated account; only current visible state captured.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "informes",
+    "instruction" : "Cuenta aislada; vista real con estado vacío si no hay informes, identificarlo en metadata.",
+    "requiredSidebar" : true,
+    "route" : "myReports",
+    "sidebarLabel" : "Informes",
+    "source" : "Sources\/AstroMalik\/Views\/MyReportsView.swift"
+  },
+  "sha256" : "d483f363017886d788bbe1e5fbb1c3397497256030d943b040695b62872be386",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

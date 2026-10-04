@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:00Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Rectification screen in its real default state; synthetic case not submitted.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "rectificacion",
+    "instruction" : "Usar caso sintético rectification.run del manifiesto; no presentarlo como biografía de Eduardo.",
+    "requiredSidebar" : true,
+    "route" : "rectification",
+    "sidebarLabel" : "Rectificación",
+    "source" : "Sources\/AstroMalik\/Views\/Rectification\/RectificationView.swift"
+  },
+  "sha256" : "ed88f00f7874a677b8ab7a72df95ade9f8a4730669fc8a8a1f3211eb3ac9f117",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

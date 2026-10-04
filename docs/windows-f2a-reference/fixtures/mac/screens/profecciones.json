@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:12Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Real Profecciones screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "profecciones",
+    "instruction" : "Eduardo activa; fecha referencia 2026-10-04; esperar cálculo.",
+    "requiredSidebar" : true,
+    "route" : "profections",
+    "sidebarLabel" : "Profecciones",
+    "source" : "Sources\/AstroMalik\/Views\/Profections\/ProfectionsView.swift"
+  },
+  "sha256" : "5e3ae83bc219d85273755bf56397b10d19ba53da4c4252355cb10e536e3ff416",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

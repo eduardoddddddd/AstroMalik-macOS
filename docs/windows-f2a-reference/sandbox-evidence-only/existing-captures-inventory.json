@@ -1,0 +1,154 @@
+[
+  {
+    "id": "ajustes",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "f7a4fb6f1ae958d3a2410a6d205acde05f32b4189eb09a626c07b43fe1fa4e41",
+    "observedState": "Settings screen in unique capture bundle preferences domain; credentials not loaded."
+  },
+  {
+    "id": "astrocartografia",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "1434be33cd54cf8abd4151cb26abb66054c3e25c390ff5e35cffa3eb1ae2b0ed",
+    "observedState": "Real Astrocartografía screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  },
+  {
+    "id": "cartas",
+    "kind": "authentic-mac-window-capture",
+    "width": 2064,
+    "height": 1608,
+    "sha256": "c675f870ae78780ae5495390d92280ab058769fdc960134bddd67f79ce84f74a",
+    "observedState": "Aislamiento verificado por PID 43958 y user.db temporal: tres cartas de F1; vista real Cartas Guardadas; contenido cargado."
+  },
+  {
+    "id": "direcciones-primarias",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "5350a2b46e839c837866507b3fd5daccaf87f09e847856550a7252c3c3243181",
+    "observedState": "Real Direcciones Primarias screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  },
+  {
+    "id": "efemerides",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "f9db321c1a3d5c3c4e7fb941bcd253db14ffb45ec14ccb8da691625ed66af001",
+    "observedState": "Real Efemérides screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  },
+  {
+    "id": "firdaria",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "e09f73e7d4ac120c994c1020ffa5a7166ed67c6df5833ce9fea55460a09f69cc",
+    "observedState": "Real Firdaria screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  },
+  {
+    "id": "horaria",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "6ff6ff43c43faef600944646fd355e7472db591203f62d199a3e6f80af54d9b2",
+    "observedState": "Horary new-query screen; test question not submitted."
+  },
+  {
+    "id": "informes",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "d483f363017886d788bbe1e5fbb1c3397497256030d943b040695b62872be386",
+    "observedState": "Reports screen in isolated account; only current visible state captured."
+  },
+  {
+    "id": "lectura",
+    "kind": "authentic-mac-window-capture",
+    "width": 3104,
+    "height": 1942,
+    "sha256": "67cc5d0336f361d94f2793a658ec00c99bc1d2d6555ce981c89d1bcda11dc27a",
+    "observedState": "Vista Lectura natal completa real; carta de prueba Eduardo; 41 textos de corpus, sin IA; ventana ampliada."
+  },
+  {
+    "id": "nueva-carta",
+    "kind": "authentic-mac-window-capture",
+    "width": 3104,
+    "height": 1942,
+    "sha256": "ea0645aeddba61b45b33e707e049be6dbea929b7c53399dd85364e23245f6145",
+    "observedState": "Formulario real vacío de nueva carta; estado inicial sin cálculo; captura maximizada."
+  },
+  {
+    "id": "panorama-predictivo",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "5ce765672db23d8d818ea183978d59ec5b7934019a2950644075f93cdafc2aad",
+    "observedState": "Real Panorama Predictivo screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  },
+  {
+    "id": "profecciones",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "5e3ae83bc219d85273755bf56397b10d19ba53da4c4252355cb10e536e3ff416",
+    "observedState": "Real Profecciones screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  },
+  {
+    "id": "progresiones",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "bc541878fa2a65c0c0c4b41d34f11a46f613e8d48a2e73b3d35c35f91fbfca61",
+    "observedState": "Real Progresiones screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  },
+  {
+    "id": "rectificacion",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "ed88f00f7874a677b8ab7a72df95ade9f8a4730669fc8a8a1f3211eb3ac9f117",
+    "observedState": "Rectification screen in its real default state; synthetic case not submitted."
+  },
+  {
+    "id": "revolucion-lunar",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "4244a095c556da3a8e4cdf3baa74d73c2140fcf8b2d3b03485ae031a9273fc5b",
+    "observedState": "Real Revolución Lunar screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  },
+  {
+    "id": "revolucion-solar",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "a7ed18cdccd1f111248341f20552e75c37fdf9f4fcd2fb00f223ab617ac65757",
+    "observedState": "Real Revolución Solar screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  },
+  {
+    "id": "sinastria",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "a644d70770184208f6b337968e760435bed3bdad91b09eebd6b59ffe90338b5c",
+    "observedState": "Synastry screen in its actual default state; no relationship asserted."
+  },
+  {
+    "id": "transitos",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "b8f2d520708acd8d4ce194a147cba370dae52d69b70c7fbdceed4432942a4595",
+    "observedState": "Transit screen for Eduardo; UTC range 2026-10-04 through 2027-04-04; events=0, houseIngresses=0, calculating=false."
+  },
+  {
+    "id": "zodiacal-releasing",
+    "kind": "authentic-mac-view-capture",
+    "width": 2880,
+    "height": 1718,
+    "sha256": "c921b36e3bb08c40d16513db128d116f230e0a5a5464ca91825b65f2c4862265",
+    "observedState": "Real Zodiacal Releasing screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds."
+  }
+]

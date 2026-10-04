@@ -1,0 +1,1283 @@
+[
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.004918032786885246,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.009836065573770493,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.014754098360655738,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.019672131147540985,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.02459016393442623,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.029508196721311476,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.03442622950819672,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.03934426229508197,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.04426229508196721,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.04918032786885246,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.054098360655737705,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.05901639344262295,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.06393442622950819,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.06885245901639345,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.07377049180327869,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.07868852459016394,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.08360655737704918,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.08852459016393442,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.09344262295081968,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.09836065573770492,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.10327868852459017,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.10819672131147541,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.11311475409836066,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.1180327868852459,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.12295081967213116,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.12786885245901639,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.13278688524590165,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.1377049180327869,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.14262295081967213,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.14754098360655737,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.15245901639344261,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.15737704918032788,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.16229508196721312,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.16721311475409836,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.1721311475409836,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.17704918032786884,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.1819672131147541,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.18688524590163935,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.1918032786885246,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.19672131147540983,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.20163934426229507,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.20655737704918034,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.21147540983606558,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.21639344262295082,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.22131147540983606,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.22622950819672133,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.23114754098360657,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.2360655737704918,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.24098360655737708,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.24590163934426232,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.25081967213114753,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.25573770491803277,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.260655737704918,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.2655737704918033,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.27049180327868855,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.2754098360655738,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.28032786885245903,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.28524590163934427,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.29016393442622956,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.29508196721311475,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.30491803278688523,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.30983606557377047,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.31475409836065577,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.319672131147541,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.32459016393442625,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3295081967213115,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3344262295081967,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.33934426229508197,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3442622950819672,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.34918032786885245,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3540983606557377,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.359016393442623,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3639344262295082,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.36885245901639346,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3737704918032787,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.37868852459016394,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3836065573770492,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3885245901639344,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.39344262295081966,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.3983606557377049,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.40327868852459015,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.40819672131147544,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4131147540983607,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4180327868852459,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.42295081967213116,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4278688524590164,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.43278688524590164,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4377049180327869,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4426229508196721,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.44754098360655736,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.45245901639344266,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4573770491803279,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.46229508196721314,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4672131147540984,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4721311475409836,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4770491803278689,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.48196721311475416,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4868852459016394,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.49180327868852464,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.4967213114754098,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5016393442622951,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5065573770491804,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5114754098360655,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5163934426229508,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.521311475409836,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5262295081967213,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5311475409836066,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5360655737704918,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5409836065573771,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5459016393442623,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5508196721311476,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5557377049180329,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5606557377049181,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5655737704918034,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5704918032786885,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5754098360655738,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5803278688524591,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5852459016393442,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5901639344262295,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.5950819672131147,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6049180327868853,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6098360655737705,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6147540983606558,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6196721311475409,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6245901639344262,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6295081967213115,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6344262295081967,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.639344262295082,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6442622950819672,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6491803278688525,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6540983606557378,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.659016393442623,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6639344262295083,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6688524590163935,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6737704918032787,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6786885245901639,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6836065573770491,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6885245901639344,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6934426229508197,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.6983606557377049,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7032786885245902,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7081967213114754,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7131147540983607,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.718032786885246,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7229508196721312,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7278688524590164,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7327868852459016,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7377049180327869,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7426229508196722,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7475409836065574,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7524590163934427,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7573770491803279,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7622950819672132,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7672131147540984,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7721311475409836,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7770491803278688,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.781967213114754,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7868852459016393,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7918032786885246,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.7967213114754098,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8016393442622951,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8065573770491803,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8114754098360656,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8163934426229509,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8213114754098361,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8262295081967214,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8311475409836065,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8360655737704918,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8409836065573771,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8459016393442623,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8508196721311476,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8557377049180328,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.860655737704918,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8655737704918033,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8704918032786885,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8754098360655738,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8803278688524591,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8852459016393442,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8901639344262295,
+      "message": "Calculando tránsitos"
+    }
+  },
+  {
+    "id": 2,
+    "progress": {
+      "fraction": 0.8950819672131147,
+      "message": "Calculando tránsitos"
+    }
+  }
+]

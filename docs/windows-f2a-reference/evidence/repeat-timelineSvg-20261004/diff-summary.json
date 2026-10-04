@@ -1,0 +1,14 @@
+{
+  "originalSha256": "4d08af2a3aad74531f801134fe375ec352bbc537e68ab7349215cbd1105566f8",
+  "repeatSha256": "04ac9efc36dd3f32c2c92ebb6fc567a4fe242b78fa2b82ac3a70effc5f146306",
+  "same": false,
+  "differenceCount": 1,
+  "differenceExamples": [
+    [
+      "/svg",
+      "value",
+      "<svg width=\"800\" height=\"400\" viewBox=\"0 0 800 400\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\">\n<rect x=\"0\" y=\"0\" wid",
+      "<svg width=\"800\" height=\"400\" viewBox=\"0 0 800 400\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\">\n<rect x=\"0\" y=\"0\" wid"
+    ]
+  ]
+}

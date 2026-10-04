@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:17Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Real Zodiacal Releasing screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "zodiacal-releasing",
+    "instruction" : "Eduardo activa; registrar lote, profundidad y fecha observados.",
+    "requiredSidebar" : true,
+    "route" : "zodiacalReleasing",
+    "sidebarLabel" : "Zodiacal Releasing",
+    "source" : "Sources\/AstroMalik\/Views\/ZodiacalReleasing\/ZRView.swift"
+  },
+  "sha256" : "c921b36e3bb08c40d16513db128d116f230e0a5a5464ca91825b65f2c4862265",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

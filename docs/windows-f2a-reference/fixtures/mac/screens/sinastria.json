@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:47Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Synastry screen in its actual default state; no relationship asserted.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "sinastria",
+    "instruction" : "Elegir Eduardo y Buenos Aires F1; no inventar pareja; esperar tabla\/doble rueda.",
+    "requiredSidebar" : true,
+    "route" : "synastry",
+    "sidebarLabel" : "Sinastría",
+    "source" : "Sources\/AstroMalik\/Views\/SynastryView.swift"
+  },
+  "sha256" : "a644d70770184208f6b337968e760435bed3bdad91b09eebd6b59ffe90338b5c",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

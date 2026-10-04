@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:10:20Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Real Revolución Solar screen for Eduardo where supported; defaults visible, calculation status allowed to settle for 2.5 seconds.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "revolucion-solar",
+    "instruction" : "Eduardo activa; año 2026, ubicación natal Madrid; esperar cálculo.",
+    "requiredSidebar" : true,
+    "route" : "solarReturn",
+    "sidebarLabel" : "Revolución Solar",
+    "source" : "Sources\/AstroMalik\/Views\/SolarReturnView.swift"
+  },
+  "sha256" : "a7ed18cdccd1f111248341f20552e75c37fdf9f4fcd2fb00f223ab617ac65757",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}

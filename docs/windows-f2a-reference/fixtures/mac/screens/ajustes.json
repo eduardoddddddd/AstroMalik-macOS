@@ -1,0 +1,21 @@
+{
+  "capturedAt" : "2026-10-04T19:12:10Z",
+  "captureMethod" : "NSView.bitmapImageRepForCachingDisplay\/cacheDisplay on the live AstroMalik SwiftUI app window; no other desktop windows captured",
+  "height" : 1718,
+  "kind" : "authentic-mac-view-capture",
+  "macCommit" : "edd8912847723707aaf52f538b5f5b5a669c4f82",
+  "observedState" : "Settings screen in unique capture bundle preferences domain; credentials not loaded.",
+  "operatingSystem" : "Version 27.0.1 (Build 26A434)",
+  "screen" : {
+    "id" : "ajustes",
+    "instruction" : "Capturar apariencia\/valores por defecto; evitar revelar claves o tokens.",
+    "requiredSidebar" : true,
+    "route" : "settings",
+    "sidebarLabel" : "Ajustes",
+    "source" : "Sources\/AstroMalik\/Views\/SettingsView.swift"
+  },
+  "sha256" : "f7a4fb6f1ae958d3a2410a6d205acde05f32b4189eb09a626c07b43fe1fa4e41",
+  "theme" : "light",
+  "width" : 2880,
+  "windowID" : 493
+}
