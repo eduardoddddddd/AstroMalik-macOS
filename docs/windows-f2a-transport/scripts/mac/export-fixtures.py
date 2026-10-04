@@ -34,22 +34,44 @@ def git(repo, *args):
     return subprocess.check_output(["git", "-C", str(repo), *args], text=True).strip()
 
 
-def provenance_repo(repo, baseline=False):
+def provenance_repo(repo, baseline=False, baseline_patch=None):
     commit = git(repo, "rev-parse", "HEAD")
     subprocess.run(["git", "-C", str(repo), "diff", "--exit-code", "HEAD", "--", "Sources", "Package.swift", "Package.resolved"], check=True,
                    stdout=subprocess.DEVNULL)
     if baseline:
         subprocess.run(["git", "-C", str(repo), "merge-base", "--is-ancestor", BASE, "HEAD"], check=True)
-        subprocess.run(["git", "-C", str(repo), "diff", "--exit-code", BASE, "--", "Sources", "Package.swift", "Package.resolved"], check=True,
-                       stdout=subprocess.DEVNULL)
+        if baseline_patch is None:
+            subprocess.run(["git", "-C", str(repo), "diff", "--exit-code", BASE, "--", "Sources", "Package.swift", "Package.resolved"], check=True,
+                           stdout=subprocess.DEVNULL)
+        else:
+            allowed = {"Sources/AstroMalik/Engine/TransitEngine.swift", "Sources/AstroMalik/Reports/Charts/TimelineSVGRenderer.swift"}
+            changed = set(git(repo, "diff", "--name-only", BASE, "--", "Sources", "Package.swift", "Package.resolved").splitlines())
+            if changed != allowed:
+                raise RuntimeError("Baseline may only contain the reviewed stable-transit patch")
+            with tempfile.TemporaryDirectory(prefix="f2-baseline-source-check-") as temporary:
+                check = Path(temporary)
+                for relative in allowed:
+                    target = check / relative
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes(subprocess.check_output(["git", "-C", str(repo), "show", f"{BASE}:{relative}"]))
+                subprocess.run(["git", "-C", str(check), "init", "--quiet"], check=True)
+                subprocess.run(["git", "-C", str(check), "apply", str(baseline_patch)], check=True)
+                for relative in allowed:
+                    if (check / relative).read_bytes().replace(b"\r\n", b"\n") != (repo / relative).read_bytes().replace(b"\r\n", b"\n"):
+                        raise RuntimeError(f"Baseline differs beyond the reviewed patch: {relative}")
     resources = repo / "Sources/AstroMalik/Resources"
     resource_hashes = {str(p.relative_to(repo)).replace(os.sep, "/"): sha(p)
                        for p in sorted(resources.rglob("*")) if p.is_file() and (p.suffix == ".se1" or p.name == "corpus.db")}
     source_paths = list((repo / "Sources/CSwissEph").rglob("*.c")) + list((repo / "Sources/CSwissEph").rglob("*.h"))
-    source_paths += [repo / name for name in ("Sources/AstroMalik/EngineRPC.swift", "Sources/AstroMalik/AstroMalikCLIRunner.swift",
+    source_paths += [repo / name for name in ("Sources/AstroMalik/EngineRPC.swift", "Sources/AstroMalik/Engine/TransitEngine.swift",
+                                              "Sources/AstroMalik/Reports/Charts/TimelineSVGRenderer.swift", "Sources/AstroMalik/AstroMalikCLIRunner.swift",
                                               "Sources/AstroMalikCLI/main.swift", "Sources/AstroMalikEngineHost/EngineHost.swift")]
     sources = {str(p.relative_to(repo)).replace(os.sep, "/"): sha(p) for p in sorted(source_paths) if p.is_file()}
-    return {"commit": commit, "engineInputsClean": True, "resourceSha256": resource_hashes, "sourceSha256": sources}
+    info = {"commit": commit, "engineInputsClean": True, "resourceSha256": resource_hashes, "sourceSha256": sources}
+    if baseline_patch is not None:
+        info["baselineReproducibilityPatchSha256"] = sha(baseline_patch)
+        info["baselineChanges"] = sorted(changed)
+    return info
 
 
 def bundle_hashes(directory, source_resources):
@@ -138,7 +160,7 @@ def run(args):
     environment["TZ"] = "UTC"
     os.environ["TZ"] = "UTC"
     time.tzset()
-    cli_info = provenance_repo(args.cli_repo, baseline=True)
+    cli_info = provenance_repo(args.cli_repo, baseline=True, baseline_patch=args.baseline_patch)
     rpc_info = provenance_repo(args.rpc_repo)
     cli_info.update(binarySha256=sha(args.cli), role="Original Mac CLI baseline")
     rpc_info.update(binarySha256=sha(args.rpc), role="F3 RPC PR#3; not merged into original baseline")
@@ -246,12 +268,13 @@ def main():
     parser.add_argument("--cli-repo", type=Path, required=True)
     parser.add_argument("--rpc-repo", type=Path, required=True)
     parser.add_argument("--backend-probe", type=Path, required=True, help="Observed Swiss returned flags from baseline, not configured hello label")
+    parser.add_argument("--baseline-patch", type=Path, help="Reviewed stable-transit patch; no other baseline source changes permitted")
     parser.add_argument("--cli-resources", type=Path, required=True, help="Actual CLI .bundle resources root")
     parser.add_argument("--rpc-resources", type=Path, required=True, help="Actual RPC bundle/resources root")
     parser.add_argument("--rpc-host-source", type=Path, help="Actual compiled Mac host wrapper source, preserved as evidence")
     parser.add_argument("--timeout", type=int, default=1800, help="Per calculation deadline, in seconds")
     args = parser.parse_args()
-    for key in ("template", "output", "cli", "rpc", "cli_repo", "rpc_repo", "backend_probe", "cli_resources", "rpc_resources", "rpc_host_source"):
+    for key in ("template", "output", "cli", "rpc", "cli_repo", "rpc_repo", "backend_probe", "cli_resources", "rpc_resources", "rpc_host_source", "baseline_patch"):
         if getattr(args, key) is not None:
             setattr(args, key, getattr(args, key).resolve())
     run(args)

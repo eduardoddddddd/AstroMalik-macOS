@@ -1,0 +1,43 @@
+--- a/Sources/AstroMalik/Engine/TransitEngine.swift
++++ b/Sources/AstroMalik/Engine/TransitEngine.swift
+@@ -327,7 +327,9 @@
+         if $0.exactDate != $1.exactDate { return $0.exactDate < $1.exactDate }
+         if $0.score != $1.score { return $0.score > $1.score }
+         if $0.minOrb != $1.minOrb { return $0.minOrb < $1.minOrb }
+-        return $0.transitKey < $1.transitKey
++        if $0.transitKey != $1.transitKey { return $0.transitKey < $1.transitKey }
++        if $0.natalKey != $1.natalKey { return $0.natalKey < $1.natalKey }
++        return $0.aspectKey < $1.aspectKey
+     }
+ }
+ 
+@@ -532,7 +534,10 @@
+         .sorted {
+             if $0.priorityScore != $1.priorityScore { return $0.priorityScore > $1.priorityScore }
+             if $0.exactDate != $1.exactDate { return $0.exactDate < $1.exactDate }
+-            return $0.minOrb < $1.minOrb
++            if $0.minOrb != $1.minOrb { return $0.minOrb < $1.minOrb }
++            if $0.transitKey != $1.transitKey { return $0.transitKey < $1.transitKey }
++            if $0.natalKey != $1.natalKey { return $0.natalKey < $1.natalKey }
++            return $0.aspectKey < $1.aspectKey
+         }
+         .map(\.id)
+     let ranks = Dictionary(uniqueKeysWithValues: sortedIDs.enumerated().map { ($0.element, $0.offset) })
+--- a/Sources/AstroMalik/Reports/Charts/TimelineSVGRenderer.swift
++++ b/Sources/AstroMalik/Reports/Charts/TimelineSVGRenderer.swift
+@@ -46,7 +46,14 @@
+             .rect(x: left, y: y, width: plotWidth, height: bandHeight - 4, fill: index.isMultiple(of: 2) ? "#FFFFFF22" : "#00000008", stroke: theme.palette.neutralRule, strokeWidth: 0.4, rx: 4, attributes: ["data-transit-band": key])
+             .text(x: left - 10, y: y + (bandHeight - 4) / 2, text: label, fontSize: 9, fill: theme.palette.inkSoft, anchor: "end")
+ 
+-        for event in (grouped[key] ?? []).sorted(by: { $0.exactDate < $1.exactDate }) {
++        // Equal-date bars have stable semantic order rather than dictionary/UUID order.
++        for event in (grouped[key] ?? []).sorted(by: {
++            if $0.exactDate != $1.exactDate { return $0.exactDate < $1.exactDate }
++            if $0.natalKey != $1.natalKey { return $0.natalKey < $1.natalKey }
++            if $0.aspectKey != $1.aspectKey { return $0.aspectKey < $1.aspectKey }
++            if $0.fromDate != $1.fromDate { return $0.fromDate < $1.fromDate }
++            return $0.toDate < $1.toDate
++        }) {
+             let start = SVGChartSupport.parseISODate(event.fromDate) ?? SVGChartSupport.parseISODate(event.exactDate) ?? from
+             let end = SVGChartSupport.parseISODate(event.toDate) ?? SVGChartSupport.parseISODate(event.exactDate) ?? start.addingTimeInterval(86_400)
+             let clampedStart = maxDate(start, from)

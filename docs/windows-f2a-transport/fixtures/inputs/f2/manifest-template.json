@@ -565,7 +565,17 @@
             "kind": "linear-angle"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/technicalData/transits",
+            "keys": [
+              "exactDate",
+              "transitKey",
+              "natalKey",
+              "aspectKey"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1600,7 +1610,17 @@
             "kind": "linear-angle"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/technicalData/transits",
+            "keys": [
+              "exactDate",
+              "transitKey",
+              "natalKey",
+              "aspectKey"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1716,7 +1736,17 @@
             "kind": "linear-angle"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/technicalData/transits",
+            "keys": [
+              "exactDate",
+              "transitKey",
+              "natalKey",
+              "aspectKey"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2751,7 +2781,17 @@
             "kind": "linear-angle"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/technicalData/transits",
+            "keys": [
+              "exactDate",
+              "transitKey",
+              "natalKey",
+              "aspectKey"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2867,7 +2907,17 @@
             "kind": "linear-angle"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/technicalData/transits",
+            "keys": [
+              "exactDate",
+              "transitKey",
+              "natalKey",
+              "aspectKey"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3902,7 +3952,17 @@
             "kind": "linear-angle"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/technicalData/transits",
+            "keys": [
+              "exactDate",
+              "transitKey",
+              "natalKey",
+              "aspectKey"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4018,7 +4078,17 @@
             "kind": "linear-angle"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/technicalData/transits",
+            "keys": [
+              "exactDate",
+              "transitKey",
+              "natalKey",
+              "aspectKey"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5053,7 +5123,17 @@
             "kind": "linear-angle"
           }
         ],
-        "arrays": []
+        "arrays": [
+          {
+            "path": "/technicalData/transits",
+            "keys": [
+              "exactDate",
+              "transitKey",
+              "natalKey",
+              "aspectKey"
+            ]
+          }
+        ]
       }
     },
     {
