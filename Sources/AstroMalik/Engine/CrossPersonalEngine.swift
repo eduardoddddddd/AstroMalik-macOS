@@ -656,7 +656,14 @@ private extension CrossPersonalEngine {
 
     static func composeTopicSummary(subject: CrossSubject, signals: [CrossSignal]) -> String {
         let sources = signals.map(\.source)
+        #if os(Windows)
+        // swift-corelibs NSOrderedSet bridging does not reliably deduplicate Swift strings.
+        // Keep first occurrence order, matching the Mac's topic summary.
+        var seenSources = Set<String>()
+        let uniqueSources = sources.filter { seenSources.insert($0).inserted }
+        #else
         let uniqueSources = Array(NSOrderedSet(array: sources)) as? [String] ?? []
+        #endif
         let count = signals.count
         return "\(count) señales · \(uniqueSources.joined(separator: ", "))"
     }

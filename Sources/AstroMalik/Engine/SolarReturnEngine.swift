@@ -197,7 +197,13 @@ enum SolarReturnEngine {
         let date = Date(timeIntervalSince1970: (jd - 2_440_587.5) * 86_400)
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
+        #if os(Windows)
+        // Formatting only: calculate the historical IANA offset for the already-computed return instant.
+        let zone = TimeZone(identifier: timezoneName) ?? TimeZone(secondsFromGMT: 0)!
+        formatter.timeZone = TimeZone(secondsFromGMT: zone.secondsFromGMT(for: date))
+        #else
         formatter.timeZone = TimeZone(identifier: timezoneName) ?? TimeZone(secondsFromGMT: 0)
+        #endif
         formatter.locale = Locale(identifier: "es_ES")
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         return formatter.string(from: date)

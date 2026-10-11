@@ -530,9 +530,13 @@ private func assignPriorityBands(to events: [TransitEvent]) -> [TransitEvent] {
     guard !events.isEmpty else { return [] }
     let sortedIDs = events
         .sorted {
+            #if os(Windows)
+            return transitPriorityPrecedes($0, $1)
+            #else
             if $0.priorityScore != $1.priorityScore { return $0.priorityScore > $1.priorityScore }
             if $0.exactDate != $1.exactDate { return $0.exactDate < $1.exactDate }
             return $0.minOrb < $1.minOrb
+            #endif
         }
         .map(\.id)
     let ranks = Dictionary(uniqueKeysWithValues: sortedIDs.enumerated().map { ($0.element, $0.offset) })
@@ -558,6 +562,21 @@ private func assignPriorityBands(to events: [TransitEvent]) -> [TransitEvent] {
         return updated
     }
 }
+
+#if os(Windows)
+// Equal priority metrics must not inherit dictionary or generated UUID order.
+// No rounding or epsilon: preserve all existing numeric comparisons exactly.
+func transitPriorityPrecedes(_ left: TransitEvent, _ right: TransitEvent) -> Bool {
+    if left.priorityScore != right.priorityScore { return left.priorityScore > right.priorityScore }
+    if left.exactDate != right.exactDate { return left.exactDate < right.exactDate }
+    if left.minOrb != right.minOrb { return left.minOrb < right.minOrb }
+    if left.transitKey != right.transitKey { return left.transitKey < right.transitKey }
+    if left.natalKey != right.natalKey { return left.natalKey < right.natalKey }
+    if left.aspectKey != right.aspectKey { return left.aspectKey < right.aspectKey }
+    if left.fromDate != right.fromDate { return left.fromDate < right.fromDate }
+    return left.toDate < right.toDate
+}
+#endif
 
 private func buildPersonalRelevance(
     natalChart: NatalChart,

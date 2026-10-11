@@ -55,7 +55,12 @@ enum EphemerisUtilities {
         }
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
+        #if os(Windows)
+        // Keep the IANA rules for this event, passing Foundation only its resolved display offset.
+        formatter.timeZone = TimeZone(secondsFromGMT: tz.secondsFromGMT(for: julianDayToDate(jd)))
+        #else
         formatter.timeZone = tz
+        #endif
         formatter.locale = Locale(identifier: "es_ES")
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         return formatter.string(from: julianDayToDate(jd))
@@ -67,7 +72,12 @@ enum EphemerisUtilities {
         }
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
+        #if os(Windows)
+        // Keep the IANA rules for this event, passing Foundation only its resolved display offset.
+        formatter.timeZone = TimeZone(secondsFromGMT: tz.secondsFromGMT(for: julianDayToDate(jd)))
+        #else
         formatter.timeZone = tz
+        #endif
         formatter.locale = Locale(identifier: "es_ES")
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: julianDayToDate(jd))
