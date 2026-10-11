@@ -74,6 +74,13 @@ public struct AstroMalikCLIRequest: Sendable {
     public var nearKm: Double?
     public var regionalKm: Double?
     public var includeReadings: Bool
+    // F3b: overrides set only by the JSON host. The defaults reproduce the
+    // CLI exactly (Naibod; return year of referenceDate; 3 lunar returns;
+    // natal place), so CLI output and earlier RPC answers do not change.
+    var ascendantMode: ASCMode = .naibod
+    var returnYear: Int? = nil
+    var returnCount: Int = 3
+    var returnPlace: (name: String, latitude: Double, longitude: Double, timezone: String)? = nil
 
     public init(
         command: AstroMalikCLICommandKind = .crossPersonal,
@@ -439,7 +446,7 @@ private extension AstroMalikCLIRunner {
 
         case .progressions:
             let engine = SecondaryProgressionEngine()
-            let snapshot = engine.progressions(chart: chart, at: request.referenceDate, ascendantMode: .naibod)
+            let snapshot = engine.progressions(chart: chart, at: request.referenceDate, ascendantMode: request.ascendantMode)
             let aspects = engine.progressedAspects(chart: chart, from: addMonths(-6, to: request.referenceDate) ?? request.referenceDate, to: addMonths(6, to: request.referenceDate) ?? request.referenceDate)
             let data = CLIProgressionsSnapshot(snapshot: snapshot, aspects: aspects)
             let envelope = LocalCLIEnvelope(metadata: metadata(chart: chart, request: request, generatedAt: generatedAt), chart: ChartSummary(chart), technicalData: LocalTechnicalData(progressions: data), events: progressionEvents(data), interpretations: [], warnings: [], source: "local", networkUsed: false)
@@ -447,13 +454,15 @@ private extension AstroMalikCLIRunner {
 
         case .solarReturn:
             guard let corpusStore else { throw AstroMalikCLIRunnerError.io("No se pudo abrir corpus.db para revolución solar.") }
-            let year = Calendar(identifier: .gregorian).component(.year, from: request.referenceDate)
-            let reading = try SolarReturnEngine.calculate(request: SolarReturnRequest(natalChart: chart, year: year, placeName: chart.placeName, latitude: chart.latitude, longitude: chart.longitude, timezone: chart.timezone), corpusStore: corpusStore)
+            let year = request.returnYear ?? Calendar(identifier: .gregorian).component(.year, from: request.referenceDate)
+            let place = request.returnPlace ?? (name: chart.placeName, latitude: chart.latitude, longitude: chart.longitude, timezone: chart.timezone)
+            let reading = try SolarReturnEngine.calculate(request: SolarReturnRequest(natalChart: chart, year: year, placeName: place.name, latitude: place.latitude, longitude: place.longitude, timezone: place.timezone), corpusStore: corpusStore)
             let envelope = LocalCLIEnvelope(metadata: metadata(chart: chart, request: request, generatedAt: generatedAt), chart: ChartSummary(chart), technicalData: LocalTechnicalData(solarReturn: reading), events: solarReturnEvents(reading), interpretations: reading.interpretations.map(CLIInterpretation.init), warnings: [], source: "local", networkUsed: false)
             return try render(envelope: envelope, markdown: solarReturnMarkdown(reading), request: request, title: "Revolución Solar — \(chart.name)")
 
         case .lunarReturn:
-            let reading = try LunarReturnEngine.calculate(request: LunarReturnRequest(natalChart: chart, startDate: request.referenceDate, count: 3, placeName: chart.placeName, latitude: chart.latitude, longitude: chart.longitude, timezone: chart.timezone))
+            let place = request.returnPlace ?? (name: chart.placeName, latitude: chart.latitude, longitude: chart.longitude, timezone: chart.timezone)
+            let reading = try LunarReturnEngine.calculate(request: LunarReturnRequest(natalChart: chart, startDate: request.referenceDate, count: request.returnCount, placeName: place.name, latitude: place.latitude, longitude: place.longitude, timezone: place.timezone))
             let envelope = LocalCLIEnvelope(metadata: metadata(chart: chart, request: request, generatedAt: generatedAt), chart: ChartSummary(chart), technicalData: LocalTechnicalData(lunarReturn: reading), events: lunarReturnEvents(reading), interpretations: [], warnings: [], source: "local", networkUsed: false)
             return try render(envelope: envelope, markdown: lunarReturnMarkdown(reading), request: request, title: "Revolución Lunar — \(chart.name)")
 

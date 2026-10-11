@@ -79,7 +79,8 @@ public actor EngineRPCService {
         "solarArc", "profections", "firdaria", "zodiacalReleasing", "solarReturn", "lunarReturn", "synastry",
         "synastry.doubleWheelSvg", "crossPersonal", "ephemeris.month", "ephemeris.day", "monthlySummary",
         "horary.compute", "horary.list", "horary.get", "horary.save", "rectification.run", "rectification.sessions",
-        "astrocartography.lines", "astrocartography.place", "astrocartography.mapSvg", "reports.html", "settings.get", "settings.set"
+        "astrocartography.lines", "astrocartography.place", "astrocartography.mapSvg", "reports.html", "settings.get", "settings.set",
+        "firdaria.minorPeriods", "time.format", "time.components"
     ]
     private let dataDirectory: URL
     private let macCommit: String
@@ -192,6 +193,29 @@ public actor EngineRPCService {
     private func astro(_ chart: NatalChart) throws -> AstrocartographyResult {
         try AstrocartographyEngine(ephemeris: SwissAstrocartographyEphemeris(ephemerisDirectory: ephemerisPath ?? dataDirectory.appendingPathComponent("moshier").path))
             .calculate(request: AstroChartInput(chart).request())
+    }
+    // F3b: optional return place `{placeName, latitude, longitude, timezone}`.
+    private func returnPlace(_ p: EngineJSON) throws -> (name: String, latitude: Double, longitude: Double, timezone: String)? {
+        guard p["place"] != .null else { return nil }
+        guard let lat = p["place"]["latitude"].double, let lon = p["place"]["longitude"].double,
+              (-90...90).contains(lat), (-180...180).contains(lon) else { throw EngineRPCError.invalid("place: coordenadas obligatorias y dentro de rango") }
+        let tz = try p["place"].required("timezone")
+        guard TimeZone(identifier: tz) != nil else { throw EngineRPCError.invalid("place.timezone inválida") }
+        return (try p["place"].required("placeName"), lat, lon, tz)
+    }
+    /// IANA identifier, or `local` for the host's zone (Mac `TimeZone.current`).
+    private func timeZone(_ p: EngineJSON) throws -> TimeZone {
+        let id = try p.required("timezone")
+        if id == "local" { return TimeZone.current }
+        guard let tz = TimeZone(identifier: id) else { throw EngineRPCError.invalid("timezone inválida") }
+        return tz
+    }
+    private func instants(_ values: EngineJSON, _ key: String) throws -> [Date] {
+        guard let items = values.array, (1...2000).contains(items.count) else { throw EngineRPCError.invalid("\(key): entre 1 y 2000 instantes") }
+        return try items.map { item in
+            guard let s = item.string, let date = EngineJSON.date(s) else { throw EngineRPCError.invalid("\(key): ISO 8601 con zona") }
+            return date
+        }
     }
     public func invoke(method: String, params p: EngineJSON = .object([:]),
                        progress: @escaping @Sendable (Double, String) async -> Void = { _, _ in }) async throws -> EngineJSON {
@@ -353,6 +377,51 @@ public actor EngineRPCService {
             let html = try await ReportService().renderHTML(request: ReportRequest(templateName: type, data: p["data"]))
             return .object(["html": .string(html), "type": .string(type)])
         case "settings.get", "settings.set": return try settings(method, p)
+        case "firdaria.minorPeriods":
+            // Mac FirdariaView calls minorPeriods(for:sect:) per major; nodes have none.
+            let c = try chart(p), engine = FirdariaEngine()
+            let timeline = engine.firdariaTimeline(chart: c, at: try date(p, "referenceDate"))
+            return .array(try timeline.majorPeriods.map { major in
+                .object(["major": try .value(major), "minors": try .value(engine.minorPeriods(for: major, sect: timeline.sect))])
+            })
+        case "time.format":
+            // Same DateFormatter setup as the Mac views: locale, zone, pattern.
+            let tz = try timeZone(p), pattern = try p.required("pattern")
+            guard pattern.count <= 64 else { throw EngineRPCError.invalid("pattern demasiado largo") }
+            let locale = p["locale"].string ?? "es_ES"
+            guard (2...32).contains(locale.count) else { throw EngineRPCError.invalid("locale inválido") }
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: locale); formatter.timeZone = tz; formatter.dateFormat = pattern
+            #if os(Windows)
+            // Foundation's formatter traps on three-part IANA ids (America/Argentina/…), as in 007:
+            // format each instant with its own historical offset. ICU names those zones «GMT-3» anyway.
+            let perInstant = tz.identifier.split(separator: "/").count > 2
+            #else
+            let perInstant = false
+            #endif
+            return .object(["timezone": .string(tz.identifier), "values": .array(try instants(p["instants"], "instants").map { date in
+                if perInstant { formatter.timeZone = TimeZone(secondsFromGMT: tz.secondsFromGMT(for: date)) }
+                return .string(formatter.string(from: date))
+            })])
+        case "time.components":
+            // Same Calendar setup as the Mac views: gregorian in the given zone.
+            let tz = try timeZone(p)
+            let names: [String: Calendar.Component] = ["year": .year, "month": .month, "day": .day, "hour": .hour, "minute": .minute]
+            let requested = try (p["components"].array ?? ["year", "month", "day", "hour"].map(EngineJSON.string)).map { item -> String in
+                guard let name = item.string, names[name] != nil else { throw EngineRPCError.invalid("components: year, month, day, hour o minute") }
+                return name
+            }
+            guard !requested.isEmpty else { throw EngineRPCError.invalid("components vacío") }
+            guard let intervals = p["intervals"].array, (1...2000).contains(intervals.count) else { throw EngineRPCError.invalid("intervals: entre 1 y 2000 pares {from,to}") }
+            var calendar = Calendar(identifier: .gregorian); calendar.timeZone = tz
+            let set = Set(requested.compactMap { names[$0] })
+            return .object(["timezone": .string(tz.identifier), "values": .array(try intervals.map { interval in
+                let pair = try instants(.array([interval["from"], interval["to"]]), "intervals")
+                let comps = calendar.dateComponents(set, from: pair[0], to: pair[1])
+                return .object(Dictionary(uniqueKeysWithValues: requested.map { name in
+                    (name, comps.value(for: names[name]!).map { EngineJSON.integer(Int64($0)) } ?? .null)
+                }))
+            })])
         default:
             let c = try chart(p)
             let commands: [String: AstroMalikCLICommandKind] = ["reading.compose": .natal, "progressions": .progressions, "primaryDirections": .primaryDirections,
@@ -366,7 +435,22 @@ public actor EngineRPCService {
             }
             let scope = p["scope"].string ?? "complete"
             guard let cliScope = AstroMalikCLIScope(rawValue: scope) else { throw EngineRPCError.invalid("scope inválido") }
-            let request = AstroMalikCLIRequest(command: command, referenceDate: reference, month: month, scope: cliScope, narrative: method == "reading.compose" ? .local : .none)
+            var request = AstroMalikCLIRequest(command: command, referenceDate: reference, month: month, scope: cliScope, narrative: method == "reading.compose" ? .local : .none)
+            // F3b: controls of the Mac views; omitted values keep the CLI defaults.
+            switch method {
+            case "progressions":
+                if let mode = p["ascendantMode"].string {
+                    guard let parsed = ASCMode(rawValue: mode) else { throw EngineRPCError.invalid("ascendantMode: naibod o bija") }
+                    request.ascendantMode = parsed
+                } else if p["ascendantMode"] != .null { throw EngineRPCError.invalid("ascendantMode: naibod o bija") }
+            case "solarReturn":
+                if p["year"] != .null { request.returnYear = try p.integer("year", default: 0, range: 1800...2399) }
+                request.returnPlace = try returnPlace(p)
+            case "lunarReturn":
+                request.returnCount = try p.integer("count", default: 3, range: 1...48)
+                request.returnPlace = try returnPlace(p)
+            default: break
+            }
             return try await AstroMalikCLIRunner.rpcOutput(chart: c, request: request, corpus: corpusStore())
         }
     }
