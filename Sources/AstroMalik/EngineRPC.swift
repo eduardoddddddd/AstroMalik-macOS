@@ -74,7 +74,7 @@ public struct EngineRPCError: Error, LocalizedError, Sendable {
 public actor EngineRPCService {
     public static let methods = [
         "system.hello", "charts.list", "charts.get", "charts.save", "charts.delete", "charts.importFromMac",
-        "places.search", "natal.compute", "natal.extended", "natal.wheelSvg", "reading.compose",
+        "places.search", "places.timezone", "natal.compute", "natal.extended", "natal.wheelSvg", "reading.compose",
         "transits.range", "transits.timelineSvg", "progressions", "primaryDirections", "primaryDirections.speculum",
         "solarArc", "profections", "firdaria", "zodiacalReleasing", "solarReturn", "lunarReturn", "synastry",
         "synastry.doubleWheelSvg", "crossPersonal", "ephemeris.month", "ephemeris.day", "monthlySummary",
@@ -206,7 +206,7 @@ public actor EngineRPCService {
     /// IANA identifier, or `local` for the host's zone (Mac `TimeZone.current`).
     private func timeZone(_ p: EngineJSON) throws -> TimeZone {
         let id = try p.required("timezone")
-        if id == "local" { return TimeZone.current }
+        if id == "local" { return HostTimeZone.current }
         guard let tz = TimeZone(identifier: id) else { throw EngineRPCError.invalid("timezone inválida") }
         return tz
     }
@@ -229,7 +229,7 @@ public actor EngineRPCService {
             return .object(["engineVersion": .string("0.3.0"), "protocolVersion": .integer(1), "macCommit": .string(macCommit),
                             "swissVersion": .string(try SwissAstrocartographyEphemeris.libraryVersion()), "ephemerisBackend": .string(backend),
                             "dataDirectory": .string(dataDirectory.path), "methods": .array(Self.methods.map(EngineJSON.string)),
-                            "networkEnabled": .bool(false)])
+                            "networkEnabled": .bool(false), "hostTimeZone": .string(HostTimeZone.current.identifier)])
         case "charts.list":
             let records = try SavedChartRecord.fetchAll(from: db())
             return .array(try records.map { r in
@@ -275,8 +275,23 @@ public actor EngineRPCService {
         case "places.search":
             let query = try p.required("query")
             guard query.count <= 200 else { throw EngineRPCError.invalid("query demasiado larga") }
-            let result = try await AstroPlaceSearchService().search(query: query, online: false)
-            return .object(["places": try .value(result.places), "warning": result.warning.map(EngineJSON.string) ?? .null])
+            // F3c: network only with an explicit `online: true` (Ajustes); Nominatim is never used by default.
+            let online = p["online"].bool ?? false
+            guard p["online"] == .null || p["online"].bool != nil else { throw EngineRPCError.invalid("online: booleano") }
+            let result = try await AstroPlaceSearchService().search(query: query, online: online)
+            // F3c: zone of each place from the real timezone boundaries (birth places).
+            let places = try result.places.map(TimeZoneBoundaries.resolving)
+            return .object(["places": try .value(places), "warning": result.warning.map(EngineJSON.string) ?? .null,
+                            "networkUsed": .bool(online)])
+        case "places.timezone":
+            guard let lat = p["latitude"].double, let lon = p["longitude"].double,
+                  (-90...90).contains(lat), (-180...180).contains(lon) else { throw EngineRPCError.invalid("latitude/longitude obligatorias y dentro de rango") }
+            guard let boundaries = TimeZoneBoundaries.shared else { throw EngineRPCError("INTERNAL", "Faltan los límites de zonas horarias") }
+            let found = boundaries.lookup(latitude: lat, longitude: lon)
+            let zone = try TimeZoneBoundaries.destinationTimeZone(latitude: lat, longitude: lon)
+            return .object(["identifier": .string(zone.identifier), "isVerified": .bool(zone.isVerified),
+                            "candidates": .array((found?.candidates ?? []).map(EngineJSON.string)),
+                            "data": .string(boundaries.dataLabel)])
         case "natal.compute": return try .value(natal(p))
         case "natal.extended": return try .value(NatalExtendedAnalysis.compute(chart: chart(p)))
         case "natal.wheelSvg": return .object(["svg": .string(wheel(chart: try chart(p), theme: .default, size: try p.integer("size", default: 600, range: 256...2048)))])
@@ -297,7 +312,9 @@ public actor EngineRPCService {
             await progress(1, "Tránsitos calculados")
             return .object(["transits": try .value(events), "houseIngresses": try .value(ingresses)])
         case "ephemeris.day", "ephemeris.month":
-            let tz = try p.required("timezone"); guard TimeZone(identifier: tz) != nil else { throw EngineRPCError.invalid("timezone inválida") }
+            // F3c: `local` is the host zone (Mac views use TimeZone.current).
+            var tz = try p.required("timezone"); if tz == "local" { tz = HostTimeZone.current.identifier }
+            guard TimeZone(identifier: tz) != nil else { throw EngineRPCError.invalid("timezone inválida") }
             if method == "ephemeris.month" {
                 let year = try p.integer("year", default: 0, range: 1800...3000), month = try p.integer("month", default: 0, range: 1...12)
                 guard year != 0, month != 0 else { throw EngineRPCError.invalid("year y month obligatorios") }
@@ -449,13 +466,17 @@ public actor EngineRPCService {
             case "lunarReturn":
                 request.returnCount = try p.integer("count", default: 3, range: 1...48)
                 request.returnPlace = try returnPlace(p)
+            case "monthlySummary":
+                // F3c: zone of the month's ephemeris (`local` or IANA); omitted keeps the chart zone.
+                if p["timezone"] != .null { request.ephemerisTimezone = try timeZone(p).identifier }
             default: break
             }
             return try await AstroMalikCLIRunner.rpcOutput(chart: c, request: request, corpus: corpusStore())
         }
     }
     private func settings(_ method: String, _ p: EngineJSON) throws -> EngineJSON {
-        let defaults: [String: EngineJSON] = ["theme": .string("system"), "houseSystem": .string("Placidus"), "language": .string("es"), "excludeMoon": .bool(true)]
+        // F3c: `placesOnline` = Ajustes «Buscar lugares en internet» (off by default).
+        let defaults: [String: EngineJSON] = ["theme": .string("system"), "houseSystem": .string("Placidus"), "language": .string("es"), "excludeMoon": .bool(true), "placesOnline": .bool(false)]
         let d = try db()
         if method == "settings.set" {
             guard let values = p["values"].object, !values.isEmpty else { throw EngineRPCError.invalid("values obligatorio") }
@@ -465,7 +486,7 @@ public actor EngineRPCService {
                 case "theme": guard ["system", "light", "dark"].contains(value.string ?? "") else { throw EngineRPCError.invalid("theme inválido") }
                 case "language": guard value == .string("es") else { throw EngineRPCError.invalid("Solo castellano en esta versión") }
                 case "houseSystem": _ = try AstroRelocationEngine.houseCode(value.string ?? "")
-                default: guard value.bool != nil else { throw EngineRPCError.invalid("excludeMoon debe ser booleano") }
+                default: guard value.bool != nil else { throw EngineRPCError.invalid("\(key) debe ser booleano") }
                 }
             }
             try d.execute("BEGIN IMMEDIATE")

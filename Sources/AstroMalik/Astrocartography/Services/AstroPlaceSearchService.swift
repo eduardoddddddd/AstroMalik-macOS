@@ -47,7 +47,11 @@ struct AstroPlaceSearchService: AstroPlaceSearching {
             components.queryItems = [URLQueryItem(name: "q", value: q), URLQueryItem(name: "format", value: "json"),
                 URLQueryItem(name: "limit", value: "10"), URLQueryItem(name: "featuretype", value: "city")]
             var request = URLRequest(url: components.url!); request.timeoutInterval = 15
+            #if os(Windows)
+            request.setValue("AstroMalik/1.0 (Windows)", forHTTPHeaderField: "User-Agent")
+            #else
             request.setValue("AstroMalik/1.0 (macOS)", forHTTPHeaderField: "User-Agent")
+            #endif
             let (data, response) = try await URLSession.shared.data(for: request)
             try Task.checkCancellation()
             guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {

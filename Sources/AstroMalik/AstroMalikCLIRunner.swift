@@ -81,6 +81,9 @@ public struct AstroMalikCLIRequest: Sendable {
     var returnYear: Int? = nil
     var returnCount: Int = 3
     var returnPlace: (name: String, latitude: Double, longitude: Double, timezone: String)? = nil
+    // F3c: zone of the monthly summary ephemeris (Mac view: TimeZone.current);
+    // nil keeps the CLI behaviour (chart zone).
+    var ephemerisTimezone: String? = nil
 
     public init(
         command: AstroMalikCLICommandKind = .crossPersonal,
@@ -360,7 +363,7 @@ private extension AstroMalikCLIRunner {
             guard let corpusStore else { throw AstroMalikCLIRunnerError.io("No se pudo abrir corpus.db para mensual.") }
             let (year, month) = try resolveMonth(request)
             guard let bounds = MonthlySummaryEngine.monthBounds(year: year, month: month) else { throw AstroMalikCLIRunnerError.generic("Mes inválido: \(request.month ?? "")") }
-            let ephemeris = try await EphemerisEngine.computeMonth(year: year, month: month, timezone: chart.timezone)
+            let ephemeris = try await EphemerisEngine.computeMonth(year: year, month: month, timezone: request.ephemerisTimezone ?? chart.timezone)
             let transits = try await computeTransitPeriod(natalChart: chart, fromDate: bounds.start, toDate: bounds.end, timezone: chart.timezone, excludeMoon: true, corpusStore: corpusStore)
             let ingresses = try detectHouseIngresses(natalChart: chart, fromDate: bounds.start, toDate: bounds.end, excludeMoon: true, corpusStore: corpusStore)
             let summary = MonthlySummaryEngine.generateSummary(ephemeris: ephemeris, natalChart: chart, transits: transits, ingresses: ingresses)

@@ -28,6 +28,7 @@ let package = Package(
             resources: [
                 .copy("Resources/corpus.db"),
                 .copy("Resources/cities_seed.json"),
+                .copy("Resources/timezone_boundaries.bin"),
                 .copy("Resources/fixed_stars.json"),
                 .copy("Resources/ephe"),
                 .copy("Resources/Astrocartography"),
