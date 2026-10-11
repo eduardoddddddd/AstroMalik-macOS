@@ -828,7 +828,13 @@ final class SecondaryProgressionEngine {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.locale = Locale(identifier: "es_ES")
+        #if os(Windows)
+        // Foundation formatters trap on some IANA aliases; resolve only this instant's display offset.
+        let zone = TimeZone(identifier: timezone) ?? TimeZone.current
+        formatter.timeZone = TimeZone(secondsFromGMT: zone.secondsFromGMT(for: date))
+        #else
         formatter.timeZone = TimeZone(identifier: timezone) ?? TimeZone.current
+        #endif
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: date)
     }
