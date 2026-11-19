@@ -611,7 +611,7 @@ final class SecondaryProgressionEngine {
             guard let date = calendarUTC.date(byAdding: .day, value: dayIndex, to: calendarUTC.startOfDay(for: fromDate)) else { continue }
             let samples = try aspectTrackSamples(chart: chart, natalJD: natalJD, date: date, natalPoints: natalPoints, mode: ascendantMode)
             for sample in samples {
-                if let prev = previous[sample.key], prev.value * sample.value <= 0 {
+                if let prev = previous[sample.key], Self.crossesAspect(prev.value, sample.value) {
                     if let exact = try? bisectAspectDate(chart: chart, natalJD: natalJD, low: prev.date, high: sample.date, key: sample.key, natalPoints: natalPoints, mode: ascendantMode) {
                         let progressedPoints = try progressedAspectPoints(chart: chart, natalJD: natalJD, date: exact, mode: ascendantMode)
                         let exactSample = try aspectTrackSample(for: sample.key, progressedPoints: progressedPoints, natalPoints: natalPoints)
@@ -789,6 +789,13 @@ final class SecondaryProgressionEngine {
             AspectPoint(key: "PARTE_FORTUNA", label: "Parte de Fortuna natal", longitude: fortune, retrograde: false, isPlanet: false),
             AspectPoint(key: "PARTE_ESPIRITU", label: "Parte del Espíritu natal", longitude: spirit, retrograde: false, isPlanet: false),
         ]
+    }
+
+    // La distancia firmada salta de +180 a −180 en el punto opuesto al objetivo: ese cambio de
+    // signo no es un aspecto exacto (daba su espejo el mismo día, ☌ con ☍ o ⚹ con △, con orbe 0).
+    // Solo cuenta el paso por cero real, con ambos valores cerca del objetivo.
+    static func crossesAspect(_ previous: Double, _ current: Double) -> Bool {
+        abs(previous) < 90 && abs(current) < 90 && previous * current <= 0
     }
 
     private func signedAspectDistance(source: Double, target: Double, angle: Double, direction: Int) -> Double {

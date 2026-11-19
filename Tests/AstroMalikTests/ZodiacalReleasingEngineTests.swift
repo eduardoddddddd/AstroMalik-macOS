@@ -53,19 +53,94 @@ final class ZodiacalReleasingEngineTests: XCTestCase {
         XCTAssertEqual(firstL2.angularity, .angular)
     }
 
-    func testLoosingOfBondInFirstFortuneL1JumpsToOppositeOfL1Start() throws {
+    func testShortL1NeverLoosesTheBond() throws {
+        // L1 Libra (8 años) dura menos que los 12 L2 (211 meses de 30 días): no hay LB
+        // y los L2 avanzan en orden desde Libra, también al pasar por Capricornio.
         let chart = try zrReferenceChart()
         let timeline = ZodiacalReleasingEngine().zr(chart: chart, lot: .fortune, depth: 2)
         let firstL1 = try XCTUnwrap(timeline.periods.first)
-        let lbIndex = try XCTUnwrap(firstL1.children.firstIndex { $0.hasLoosingOfBond })
-        let lbPeriod = firstL1.children[lbIndex]
-        let nextPeriod = try XCTUnwrap(firstL1.children[safe: lbIndex + 1])
 
         XCTAssertEqual(firstL1.signLabel, "♎ Libra")
-        XCTAssertEqual(lbPeriod.signLabel, "♑ Capricornio")
-        XCTAssertEqual(nextPeriod.signLabel, "♈ Aries")
-        XCTAssertTrue(lbPeriod.events.contains { $0.kind == .loosingOfBond })
-        XCTAssertTrue(timeline.highlightedEvents.contains { $0.kind == .loosingOfBond && $0.date == lbPeriod.endDate })
+        XCTAssertFalse(firstL1.children.contains { $0.hasLoosingOfBond })
+        for (offset, child) in firstL1.children.enumerated() {
+            XCTAssertEqual(child.signIndex, (firstL1.signIndex + offset) % 12)
+        }
+    }
+
+    func testFortuneCapricornL1LoosesTheBondOnceAfterTwelveSigns() throws {
+        // Carta de Eduardo (Madrid 1976-10-11 20:32): L1 Fortuna ♑ 2011-10-11 → 2038-10-11.
+        // Antes el L2 se quedaba fijo en ♋ (L2 1–13) porque el lazo se soltaba en cada
+        // paso por Cáncer o Capricornio.
+        let chart = try zrReferenceChart(birthTime: "20:32")
+        let timeline = ZodiacalReleasingEngine().zr(chart: chart, lot: .fortune, depth: 2)
+        let date = zrLocalDate(year: 2026, month: 11, day: 19, hour: 12, timezoneName: "Europe/Madrid")
+        let l1 = try XCTUnwrap(timeline.currentL1(at: date))
+        let signs = l1.children.map(\.signLabel)
+
+        XCTAssertEqual(l1.signLabel, "♑ Capricornio")
+        XCTAssertEqual(Array(signs.prefix(13)), [
+            "♑ Capricornio", "♒ Acuario", "♓ Piscis", "♈ Aries", "♉ Tauro", "♊ Géminis",
+            "♋ Cáncer", "♌ Leo", "♍ Virgo", "♎ Libra", "♏ Escorpio", "♐ Sagitario",
+            "♋ Cáncer",
+        ])
+        XCTAssertEqual(Array(signs.dropFirst(13)), ["♌ Leo", "♍ Virgo", "♎ Libra", "♏ Escorpio", "♐ Sagitario", "♑ Capricornio"])
+
+        let lbPeriods = l1.children.filter(\.hasLoosingOfBond)
+        XCTAssertEqual(lbPeriods.count, 1)
+        let lbPeriod = try XCTUnwrap(lbPeriods.first)
+        XCTAssertEqual(lbPeriod.signLabel, "♐ Sagitario")
+        XCTAssertEqual(lbPeriod.sequenceIndex, 11)
+        XCTAssertEqual(lbPeriod.endDate, l1.children[12].startDate)
+        let lbEvents = timeline.highlightedEvents.filter { $0.kind == .loosingOfBond && $0.parentSignIndex == l1.signIndex }
+        XCTAssertEqual(lbEvents.count, 1)
+        XCTAssertEqual(lbEvents.first?.date, lbPeriod.endDate)
+
+        // Picos: los L2 angulares al L1 (♑ ♈ ♋ ♎), también el ♋ tras el salto.
+        let peaks = l1.children.filter(\.isPeak).map(\.signLabel)
+        XCTAssertEqual(peaks, ["♑ Capricornio", "♈ Aries", "♋ Cáncer", "♎ Libra", "♋ Cáncer", "♎ Libra", "♑ Capricornio"])
+        XCTAssertTrue(l1.children[12].isPeak)
+    }
+
+    func testLoosingOfBondRuleHoldsForEveryL1OfFortuneAndSpirit() throws {
+        let chart = try zrReferenceChart(birthTime: "20:32")
+        let engine = ZodiacalReleasingEngine()
+        let twelveL2Days = Double(ZodiacalReleasingEngine.signYears.reduce(0, +)) * 30
+
+        for lot in ZRLot.allCases {
+            let timeline = engine.zr(chart: chart, lot: lot, depth: 2)
+            XCTAssertEqual(timeline.periods.count, 12)
+            for l1 in timeline.periods {
+                let l1Days = l1.endDate.timeIntervalSince(l1.startDate) / 86_400
+                let lbIndices = l1.children.indices.filter { l1.children[$0].hasLoosingOfBond }
+                for (offset, child) in l1.children.prefix(12).enumerated() {
+                    XCTAssertEqual(child.signIndex, (l1.signIndex + offset) % 12, "\(lot) L1 \(l1.signLabel)")
+                }
+                guard l1Days > twelveL2Days else {
+                    XCTAssertTrue(lbIndices.isEmpty, "\(lot) L1 \(l1.signLabel) no debe soltar el lazo")
+                    continue
+                }
+                XCTAssertEqual(lbIndices, [11], "\(lot) L1 \(l1.signLabel)")
+                XCTAssertEqual(l1.children[12].signIndex, (l1.signIndex + 6) % 12, "\(lot) L1 \(l1.signLabel)")
+                for index in l1.children.indices.dropFirst(13) {
+                    XCTAssertEqual(l1.children[index].signIndex, (l1.children[index - 1].signIndex + 1) % 12)
+                }
+            }
+        }
+    }
+
+    func testSpiritAquariusL1LoosesTheBondIntoLeo() throws {
+        let chart = try zrReferenceChart(birthTime: "20:32")
+        let timeline = ZodiacalReleasingEngine().zr(chart: chart, lot: .spirit, depth: 2)
+        let date = zrLocalDate(year: 2026, month: 11, day: 19, hour: 12, timezoneName: "Europe/Madrid")
+        let l1 = try XCTUnwrap(timeline.currentL1(at: date))
+
+        XCTAssertEqual(l1.signLabel, "♒ Acuario")
+        XCTAssertEqual(l1.children[11].signLabel, "♑ Capricornio")
+        XCTAssertTrue(l1.children[11].hasLoosingOfBond)
+        XCTAssertEqual(l1.children[12].signLabel, "♌ Leo")
+        XCTAssertTrue(l1.children[12].isPeak)
+        XCTAssertEqual(l1.children.filter(\.hasLoosingOfBond).count, 1)
+        XCTAssertEqual(l1.children.filter { $0.signIndex == 3 }.count, 1, "Cáncer no fija el L2")
     }
 
     func testAge49ExpectedL1Chapters() throws {
@@ -160,10 +235,10 @@ private final class ZRMockJoplinHTTPClient: JoplinHTTPClient {
     }
 }
 
-private func zrReferenceChart() throws -> NatalChart {
+private func zrReferenceChart(birthTime: String = "20:33") throws -> NatalChart {
     let jdResult = try julianDayFromLocal(
         birthDate: "1976-10-11",
-        birthTime: "20:33",
+        birthTime: birthTime,
         timezoneName: "Europe/Madrid"
     )
     var chart = try AstroEngine.computeNatalChart(
@@ -173,7 +248,7 @@ private func zrReferenceChart() throws -> NatalChart {
     )
     chart.name = "Referencia"
     chart.birthDate = "1976-10-11"
-    chart.birthTime = "20:33"
+    chart.birthTime = birthTime
     chart.timezone = "Europe/Madrid"
     chart.placeName = "Madrid"
     return chart
