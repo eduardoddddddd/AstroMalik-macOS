@@ -16,6 +16,11 @@ enum VoidOfCourseCalculator {
         .filter { $0.key != "LUNA" }
         .map { (id: $0.id, key: $0.key, label: $0.label) }
 
+    private struct LunarIngress {
+        let jd: Double
+        let signIndex: Int
+    }
+
     private static let searchBackJD = 3.0
     private static let stepJD = 2.0 / 24.0
 
@@ -28,8 +33,9 @@ enum VoidOfCourseCalculator {
         let ingresses = try await lunarIngresses(from: startJD, to: endJD)
         var events: [CelestialEvent] = []
 
-        for ingressJD in ingresses {
+        for ingress in ingresses {
             try Task.checkCancellation()
+            let ingressJD = ingress.jd
             let lastAspect = try findLastLunarAspect(before: ingressJD, lowerLimitJD: max(startJD - searchBackJD, ingressJD - searchBackJD))
             let startVoidJD = lastAspect?.jd ?? max(startJD, ingressJD - searchBackJD)
             guard startVoidJD < ingressJD else { continue }
@@ -43,15 +49,15 @@ enum VoidOfCourseCalculator {
                 ))
             }
             if ingressJD >= startJD && ingressJD <= endJD {
-                events.append(try makeVoidEndEvent(jd: ingressJD, timezone: timezone))
+                events.append(try makeVoidEndEvent(jd: ingressJD, signIndex: ingress.signIndex, timezone: timezone))
             }
         }
 
         return events.sorted { $0.dateUTC < $1.dateUTC }
     }
 
-    private static func lunarIngresses(from startJD: Double, to endJD: Double) async throws -> [Double] {
-        var ingresses: [Double] = []
+    private static func lunarIngresses(from startJD: Double, to endJD: Double) async throws -> [LunarIngress] {
+        var ingresses: [LunarIngress] = []
         var previousJD = startJD
         var previousPosition = try EphemerisUtilities.planetPosition(jd: previousJD, planetID: SE_MOON, bodyName: "Luna")
         var jd = min(startJD + 0.25, endJD)
@@ -72,7 +78,9 @@ enum VoidOfCourseCalculator {
                         try EphemerisUtilities.planetPosition(jd: $0, planetID: SE_MOON, bodyName: "Luna").longitude
                     }
                 )
-                ingresses.append(exactJD)
+                // La bisección (tolerancia de 1 min) puede quedarse justo antes del límite:
+                // el signo de entrada es el del muestreo, no el de la Luna en exactJD.
+                ingresses.append(LunarIngress(jd: exactJD, signIndex: currentSign))
             }
             if currentJD >= endJD { break }
             previousJD = currentJD
@@ -173,17 +181,17 @@ enum VoidOfCourseCalculator {
         )
     }
 
-    private static func makeVoidEndEvent(jd: Double, timezone: String) throws -> CelestialEvent {
-        let moon = try EphemerisUtilities.planetPosition(jd: jd, planetID: SE_MOON, bodyName: "Luna")
-        let signLabel = EphemerisUtilities.signLabel(for: moon.longitude)
-        let signKey = EphemerisUtilities.signKey(for: moon.longitude)
+    private static func makeVoidEndEvent(jd: Double, signIndex: Int, timezone: String) throws -> CelestialEvent {
+        let ingressLongitude = Double(signIndex * 30)
+        let signLabel = EphemerisUtilities.signLabel(for: ingressLongitude)
+        let signKey = EphemerisUtilities.signKey(for: ingressLongitude)
         let local = try EphemerisUtilities.localDateTimeString(fromJD: jd, timezone: timezone)
         let time = try EphemerisUtilities.localTimeString(fromJD: jd, timezone: timezone)
         return CelestialEvent(
             kind: .voidOfCourseEnd,
             dateUTC: EphemerisUtilities.isoUTCString(fromJD: jd),
             dateLocal: local,
-            longitude: EphemerisUtilities.rounded(moon.longitude, places: 6),
+            longitude: ingressLongitude,
             signKey: signKey,
             signLabel: signLabel,
             formatted: "\(signLabel) 00°00'",

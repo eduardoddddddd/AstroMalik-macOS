@@ -104,7 +104,11 @@ enum MundaneAspectCalculator {
         return [aspectAngle, 360 - aspectAngle]
     }
 
-    private static func crossesZero(_ a: Double, _ b: Double) -> Bool {
+    // La distancia firmada salta de +180 a −180 en el punto opuesto al objetivo: ese cambio de
+    // signo no es un aspecto exacto (daba el espejo de cada aspecto: ☌ con ☍, ⚹ con △...).
+    // Solo cuenta el paso por cero real, con ambos valores cerca del objetivo.
+    static func crossesZero(_ a: Double, _ b: Double) -> Bool {
+        guard abs(a) < 90, abs(b) < 90 else { return false }
         if abs(a) < 1e-8 || abs(b) < 1e-8 { return true }
         return a * b < 0
     }

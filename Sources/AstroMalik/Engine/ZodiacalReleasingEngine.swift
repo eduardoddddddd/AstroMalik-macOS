@@ -143,6 +143,10 @@ final class ZodiacalReleasingEngine {
         var cursor = parent.startDate
         var signIndex = parent.signIndex
         var sequence = 0
+        // Valens: el L2 recorre los signos en orden desde el del L1. Solo cuando ha completado
+        // los 12 y le tocaría volver al signo del L1 se suelta el lazo: salta al signo opuesto
+        // al del L1 y sigue en orden desde ahí, sin volver a soltarlo dentro del mismo L1.
+        var bondLoosened = false
 
         while cursor < parent.endDate {
             let nominal = Double(Self.signYears[signIndex])
@@ -170,7 +174,8 @@ final class ZodiacalReleasingEngine {
             }
 
             let shouldLoosenBond = childLevel == .l2
-                && isLoosingSign(signIndex)
+                && !bondLoosened
+                && wrapped(signIndex + 1) == parent.signIndex
                 && end < parent.endDate
             if shouldLoosenBond {
                 let jumpSign = opposite(of: l1SignIndex)
@@ -180,7 +185,7 @@ final class ZodiacalReleasingEngine {
                     level: childLevel,
                     date: end,
                     title: "Loosing of the Bond",
-                    detail: "Al terminar \(SIGN_LABELS[signIndex]) el siguiente L2 salta a \(SIGN_LABELS[jumpSign]), opuesto al inicio L1 \(parent.signLabel).",
+                    detail: "Completados los 12 signos, al terminar \(SIGN_LABELS[signIndex]) el siguiente L2 salta a \(SIGN_LABELS[jumpSign]), opuesto al inicio L1 \(parent.signLabel).",
                     signIndex: signIndex,
                     signKey: SIGN_KEYS[signIndex],
                     signLabel: SIGN_LABELS[signIndex],
@@ -220,6 +225,7 @@ final class ZodiacalReleasingEngine {
             cursor = end
             if shouldLoosenBond {
                 signIndex = opposite(of: l1SignIndex)
+                bondLoosened = true
             } else {
                 signIndex = wrapped(signIndex + 1)
             }
@@ -281,10 +287,6 @@ final class ZodiacalReleasingEngine {
         case 1: return .succedent
         default: return .cadent
         }
-    }
-
-    private func isLoosingSign(_ signIndex: Int) -> Bool {
-        signIndex == 3 || signIndex == 9 // Cáncer o Capricornio
     }
 
     private func opposite(of signIndex: Int) -> Int {

@@ -167,7 +167,7 @@ struct ZRView: View {
                 currentTile(title: "Capítulo L1 actual", period: currentL1, chart: chart, effectiveDate: effectiveDate)
                 currentTile(title: "Sub-período L2 actual", period: currentL2, chart: chart, effectiveDate: effectiveDate)
                 infoTile("Duración restante", value: remainingText(for: currentL2 ?? currentL1, from: effectiveDate, chart: chart))
-                infoTile("Regla LB", value: "Cáncer/Capricornio saltan al opuesto del inicio L1")
+                infoTile("Regla LB", value: "Tras los 12 signos, el L2 salta al opuesto del L1")
             }
         }
         .appCard()
